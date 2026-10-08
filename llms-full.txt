@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.7.8). Nothing here needs a second request. Individual pages live at the paths
+> (v0.7.9). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -30,23 +30,23 @@ Pure Python · two runtime dependencies · Apache-2.0 · [or try it in your brow
 
 [Reference, **AIUC-1 conformance layer**, The AIUC-1 standard as a graph, plus a conformance layer that computes insurability, Open it →](demos/vaults/aiuc-1-conformance/index.md) [Application, **Agent permission games**, Two games about grants and mandates, the first vault here that phones home, Open it →](demos/vaults/agent-permission-games/index.md) [Presentation, **AI vs. AI, Black Hat EU 2025**, The Black Hat EU 2025 keynote, with its PDF exports and eight research papers, Open it →](demos/vaults/blackhat-eu-2025/index.md) [Report, **Penetration Test Report**, A penetration test report (fictional) with a re-test script per finding, Open it →](demos/vaults/pentest-report/index.md)
 
-Four of **47 published vaults**. Each opens with a read key printed on its page, no account, nothing to install, and the server that stores it cannot read it. [See all 47 →](demos/vaults/index.md)
+Four of **48 published vaults**. Each opens with a read key printed on its page, no account, nothing to install, and the server that stores it cannot read it. [See all 48 →](demos/vaults/index.md)
 
 SGit Newsroom
 
 ## Start with an argument, not a menu
 
-The articles carry most of what this site believes, with the figures, the data and the links to check it. Forty-eight so far; the newsroom picks where to start.
+The articles carry most of what this site believes, with the figures, the data and the links to check it. Forty-nine so far; the newsroom picks where to start.
 
 [Open framework, built on2026-10-07Graphs & knowledge**An open AI governance framework, and what its licence let us build**Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.**Why it leads.** Twenty open controls, read for what they add, then converted the same day into a published vault, a graph and a browser database joined to the AI Act. The most evidence of anything new on the site.Read it →](articles/ai-baseline-control-framework.md)
 
 ### Also new
 
-1. 2026-10-08[Encrypted memory for agents that run somewhere else](articles/encrypted-memory-for-isolated-agents.md)
-2. 2026-10-08[Knowing when to stop](articles/knowing-when-to-stop.md)
-3. 2026-10-08[Agency is not a yes](articles/agency-is-not-a-yes.md)
-4. 2026-10-08[Hope or enforcement](articles/hope-or-enforcement.md)
-5. 2026-10-08[Who are you protecting against? Draw the security line where the attacker is, not…](articles/who-are-you-protecting-against.md)
+1. 2026-10-08[The waiting room knew first](articles/the-waiting-room-knew-first.md)
+2. 2026-10-08[Encrypted memory for agents that run somewhere else](articles/encrypted-memory-for-isolated-agents.md)
+3. 2026-10-08[Knowing when to stop](articles/knowing-when-to-stop.md)
+4. 2026-10-08[Agency is not a yes](articles/agency-is-not-a-yes.md)
+5. 2026-10-08[Hope or enforcement](articles/hope-or-enforcement.md)
 [The week2026-10-07Journalist**The week to 7 October: the agent team, written up from the inside**The busiest week of articles on the site so far, and most of it is one story told three times at increasing depth: a team of agents running a business, from the walkthrough to the field notes to the full stack.](articles/desk/the-week-to-7-october.md)
 
 [The person's side2026-10-07**Where is the why? A permission prompt asked me to decide, and kept the reason**A permission prompt read through the behaviour policy: a barrier that is a human judgement is only as strong as the information given.](articles/where-is-the-why.md)[In production2026-10-06**The Mandate Stack**About fifteen agents, one person, eight layers, two Wardley maps with their sources beside them.](articles/the-mandate-stack.md)[Measured2026-10-05**How much of this did I write? The numbers behind twenty articles in four weeks, and what…**The human input, counted from the session record rather than asserted.](articles/how-much-of-this-did-i-write.md)
@@ -73,9 +73,9 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-270site releases, each verified live before it was called done
+271site releases, each verified live before it was called done
 
-47vaults published with a deliberately public read key
+48vaults published with a deliberately public read key
 
 27sibling sites on `*.sgit.ai`, one question each
 
@@ -389,7 +389,7 @@ Loading results…
 ==============================================================================
 # Published vaults, sgit.ai
 
-> Forty-seven vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it.
+> Forty-eight vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it.
 >
 > Page: https://sgit.ai/demos/vaults/index.html
 
@@ -401,10 +401,12 @@ Open any of these in your browser right now. Every read key here was published o
 
 **Nine are semantic graphs**, each in its own ontology, from a regulation down to a compute instance. · [The ladder, walked →](../fractal-graphs/index.md) · [What reading one costs →](../fractal-graphs/performance.md)
 
-**47 published vaults**: 13 reference, 12 briefing, 8 analysis, 5 application, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
+**48 published vaults**: 14 reference, 12 briefing, 8 analysis, 5 application, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
 
 | # | Vault | What it is | Category | Files | Size | Published |
 |---|---|---|---|---|---|---|
+
+| 48 | [Local evidence log](local-evidence-log/index.md)`92yb24y9` | A log for live local stories, kept as evidence: when a local public service is running badly and nothing a local person could check says so. Evidence by level, claims and what would resolve them, every source and how it was reached, leads that do not fit, enquiries, and scheduled re-checks; first incident, reported IT disruption at two London hospitals on 8 October 2026 | Reference | 54 | 927 KB | 2026-10-08 |
 
 | 47 | [The agency scale](agency-scale/index.md)`ddfw24hx` | A maturity model for anyone asked to decide, a person or an agent: seven dimensions (options, context, depth, time, incentives, escalation, authority), seven levels from rubber stamp to delegator where the weakest dimension caps the decision, fourteen cases scored by the same rule, an assessment for your own decision points, the review as a QA loop, and the law that asks for it | Reference | 61 | 448 KB | 2026-10-08 |
 
@@ -2277,11 +2279,11 @@ Live, end-to-end demonstrations, each one a vault that was actually created, pus
 
 **The rule every demo follows:** the vault's *read key* is published on purpose. It is derived one-way and cannot write, so publishing it is what makes the demo openable by anyone. The vault's *write key* appears nowhere: not in these pages, not in the repos, and the build refuses to push if one ever reaches a tracked file.
 
-## Forty-seven vaults, one page each
+## Forty-eight vaults, one page each
 
 The demos outgrew this page. Every vault whose read key this site publishes now has its own page under [**Published vaults**](vaults/index.md), what it does, which features it uses, the audit that ran before the key was published, and the vault itself running live in the page. Thirty at the last count, from a regulation parsed into a graph to a job application delivered as a vault, and the table there is generated from the same file as [the machine-readable list](vaults/llms.txt), so the two cannot drift.
 
-[Gallery · 47 vaults### Published vaultsEvery vault with a deliberately published read key, one page per vault, the vault running live in it. Graphs, presentations, briefing packs, records, applications.Open the gallery →](vaults/index.md)
+[Gallery · 48 vaults### Published vaultsEvery vault with a deliberately published read key, one page per vault, the vault running live in it. Graphs, presentations, briefing packs, records, applications.Open the gallery →](vaults/index.md)
 
 [Method### How a vault gets published hereThe seven steps behind every row: classify the credential, derive rather than refuse, audit with the read key, screenshot the real app, write the page, publish the key, verify with a negative control.Read the method →](vaults/publishing.md)
 
@@ -2551,7 +2553,7 @@ abp.sgit.ai · Agents & AI · [The Agent Behaviour Policy ↗](https://abp.sgit.
 | System → compute | ThreatModCon 2025 `0ict6flm` | 53 files · 4.1 MB | [threatmodcon-2025](../vaults/threatmodcon-2025/index.md) |
 | News: story → claim → source, six excerpts anchored | The Evidence Dispatch `c0vf9zz8`published by its owner | 235 files · 13.0 MB | [evidence-dispatch](../vaults/evidence-dispatch/index.md) |
 
-Every read key is on the vault's own page, published on purpose; none of them can write. Agents: the machine-readable list of all forty-seven vaults, with ids and keys, is [/demos/vaults/llms.txt](../vaults/llms.txt). The grammar for drawing your own is at [graphs.sgit.ai/llms.txt](https://graphs.sgit.ai/llms.txt).
+Every read key is on the vault's own page, published on purpose; none of them can write. Agents: the machine-readable list of all forty-eight vaults, with ids and keys, is [/demos/vaults/llms.txt](../vaults/llms.txt). The grammar for drawing your own is at [graphs.sgit.ai/llms.txt](https://graphs.sgit.ai/llms.txt).
 
 ## How fast is it, and what does it cost?
 
@@ -4248,7 +4250,7 @@ Everything below is a consequence of that sentence. If it doesn't describe a pro
 
 ## git and sgit, side by side
 
-The honest framing is not "sgit instead of git". It is two tools with different jobs, and the interesting question is which one owns which files. **This site ran both at once** for its first 76 releases (one working tree, two remotes) and then [retired the vault mirror](../case-studies/one-tree-two-remotes.md), because git was doing the deploying and nothing was reading the vault. The forty-seven vaults it publishes are the other half of the answer: sgit owns the content whose readers hold the key; git owns the pages that describe it.
+The honest framing is not "sgit instead of git". It is two tools with different jobs, and the interesting question is which one owns which files. **This site ran both at once** for its first 76 releases (one working tree, two remotes) and then [retired the vault mirror](../case-studies/one-tree-two-remotes.md), because git was doing the deploying and nothing was reading the vault. The forty-eight vaults it publishes are the other half of the answer: sgit owns the content whose readers hold the key; git owns the pages that describe it.
 
 |  | git | sgit |
 |---|---|---|
@@ -6249,7 +6251,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.7.8, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.7.9, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -6612,16 +6614,16 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-270**site releases since 14 August**
+271**site releases since 14 August**
 each verified live before it was called done
 
-47**vaults published with a public read key**
+48**vaults published with a public read key**
 every one audited first; findings on the page
 
 27**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-118**articles and release notes**
+119**articles and release notes**
 all with a markdown twin and an RSS feed
 
 17**cross-team briefs, in the open**
@@ -6767,7 +6769,7 @@ The section's other purpose: complete business plans, published as vaults, for o
 
 Everything above is how this site itself is built, which is the only reason to believe any of it.
 
-- **Forty-seven vaults published with their read keys**, each with a page describing what it does and the vault running live inside it. [Open any of them](../demos/vaults/index.md) with no account and nothing installed.
+- **Forty-eight vaults published with their read keys**, each with a page describing what it does and the vault running live inside it. [Open any of them](../demos/vaults/index.md) with no account and nothing installed.
 - **The method is written down**, including the mistakes that produced each rule. [The publishing method](../demos/vaults/publishing.md) is written to be followed by somebody else's agent.
 - **The measurements are repeatable**, with the commands printed. [Performance and cost](../demos/fractal-graphs/performance.md).
 - **One person, working with agents.** The whole estate is built this way, which is the actual claim about how small a team this needs.
@@ -6859,7 +6861,7 @@ sgit.ai is built by one person and a team of agents, and the articles here that 
 
 | Role | What it involves |
 |---|---|
-| **Founder, [sgit.ai](../index.md)** | Encrypted vaults with git semantics: clone, commit, branch and merge files that are encrypted before they leave your machine, under Apache-2.0, and [the network of sites](../network/index.md) of which this is the hub. Each site publishes its argument before its implementation, so the commitments are checkable, and [forty-seven vaults are published with their read keys](../demos/vaults/index.md) as the evidence. |
+| **Founder, [sgit.ai](../index.md)** | Encrypted vaults with git semantics: clone, commit, branch and merge files that are encrypted before they leave your machine, under Apache-2.0, and [the network of sites](../network/index.md) of which this is the hub. Each site publishes its argument before its implementation, so the commitments are checkable, and [forty-eight vaults are published with their read keys](../demos/vaults/index.md) as the evidence. |
 | **Founder, [sgraph.ai](https://sgraph.ai)** | Where the strategy turns into revenue: the commercial home of SG/Send, the secure file-sharing service built on the open-source sgit layer, and hosted SG/Vaults. The code stays Apache-2.0. What is sold is the running, maintained, certified service. |
 | **Founder, [MyFeeds.ai](https://investor.myfeeds.ai/)** | Role-aware cybersecurity briefings built on semantic knowledge graphs, with source attribution: CISO, engineer and board views of the same news. Open source, serverless, and with the seed pitch and unit economics published in the open. |
 | **Founder, [The Cyber Boardroom](https://thecyberboardroom.com)** | An AI-powered platform for the conversation between technical security teams and the board, bridging the two with knowledge-graph technology. Apache-2.0, with the community edition and the [investment repository](https://github.com/the-cyber-boardroom/cbr-investment) public. The Cyber Boardroom Limited, UK-registered and trading for almost two years, is today the commercial vehicle behind sgit.ai and RiskMandate.ai. |
@@ -6925,7 +6927,7 @@ Each page in this section makes the case for one specific partnership, or puts o
 | **Start with what they are trying to do** | In their own words where possible, and where we can put it better, put it better. A partnership page that cannot explain the other side's mission generously has not understood it. |
 |---|---|
 | **Public material only** | Their published strategy, programmes and criteria. Our published vaults, measurements and articles. Nothing from a conversation, a data room or a private brief. If a fact would need permission to publish, it is not on the page. |
-| **Evidence, not pitch** | Every claim about what we can do points at a vault that can be opened with a read key, a measurement with its command printed, or a page that states its own limits. The [forty-seven published vaults](../demos/vaults/index.md) are the portfolio. |
+| **Evidence, not pitch** | Every claim about what we can do points at a vault that can be opened with a read key, a measurement with its command printed, or a page that states its own limits. The [forty-eight published vaults](../demos/vaults/index.md) are the portfolio. |
 | **The fit, stated precisely** | Which of their stated priorities we serve, which we do not, and what a first concrete piece of work would be. A partnership is a specific thing two parties do, not an alignment of values. |
 | **What is not public, marked** | The things a partner would need to know that are not on either site are listed rather than hidden, in the same way [the investors page](../investors/index.md) leaves the ask visibly open until it is stated. |
 
@@ -6992,7 +6994,7 @@ Put simply: **they want British companies building the layers that matter, ancho
 
 Two companies, one substrate, and a published body of evidence that can be opened by anyone with the read key printed on each page.
 
-**[sgit.ai](../index.md)** is git for encrypted vaults. A vault is a folder versioned like a git repository, encrypted on the client before anything leaves the machine, openable by anyone holding a read key with no account and nothing installed, and able to carry its own application with the permissions it asks for declared in a file. The server that stores it cannot read it; [the security model](../security/index.md) states exactly what it does see. The code is Apache-2.0 and [deploys to Docker, AWS, GCP or a plain static host](../deploy/index.md), including, as this site demonstrates, to a bucket behind a CDN with no server of ours in the path. [Forty-seven vaults are published with their read keys](../demos/vaults/index.md), and [the method for publishing them safely is written down](../demos/vaults/publishing.md) with the mistakes that produced each rule.
+**[sgit.ai](../index.md)** is git for encrypted vaults. A vault is a folder versioned like a git repository, encrypted on the client before anything leaves the machine, openable by anyone holding a read key with no account and nothing installed, and able to carry its own application with the permissions it asks for declared in a file. The server that stores it cannot read it; [the security model](../security/index.md) states exactly what it does see. The code is Apache-2.0 and [deploys to Docker, AWS, GCP or a plain static host](../deploy/index.md), including, as this site demonstrates, to a bucket behind a CDN with no server of ours in the path. [Forty-eight vaults are published with their read keys](../demos/vaults/index.md), and [the method for publishing them safely is written down](../demos/vaults/publishing.md) with the mistakes that produced each rule.
 
 **[RiskMandate.ai](https://riskmandate.ai/)** is the business risk layer for autonomous systems. Its tagline is *"know what your agents can do"*, and its central object is the Agent Behaviour Policy: a documented record of what an agent can reach, what it was authorised to do, the gap between the two, and which controls constrain it, written so that a CEO, a CTO, a CISO and an insurer can all sign the same document. From that comes the *licence to operate*: the business as the authority, the behaviour policy as the evidence, the agent operating under stated terms for a stated interval, with residual risk accepted by a named owner. *"Not what they did. What they can."*
 
@@ -7076,7 +7078,7 @@ A call for collaboration · public material only · 24 September 2026
 - **What we are asking for.** A way, in the browser, for a person to keep their vault keys in the password manager or identity system they already use, to open a vault with a passkey or a biometric prompt, and to share a vault with someone else by sending a short name in plain words rather than the key.
 - **The one hard rule.** The words must be an address, never the key. sgit once shipped a word-based token that *was* the key, and [removed it](#history) when a review showed it could be guessed in a fraction of a second. The name has to resolve only inside the recipient's own key manager.
 - **Who we would like to hear from.** Password managers, enterprise identity providers, the credential managers built into operating systems and browsers, and hardware key makers. The best outcome is that you already have this and tell us.
-- **What we bring.** An open reference integration, published crypto test vectors, a key format designed for secret scanners, forty-seven published vaults to test against, and a willingness to write the specification in public so it is not tied to either of us.
+- **What we bring.** An open reference integration, published crypto test vectors, a key format designed for secret scanners, forty-eight published vaults to test against, and a willingness to write the specification in public so it is not tied to either of us.
 
 ## The opportunity
 
@@ -7086,7 +7088,7 @@ Today, vault keys travel by hand. The gap at the bottom is the thing this page i
 
 Three things make this worth doing now rather than later.
 
-| **The number of keys is growing fast** | One person running a few projects now holds a vault per project, per client and per shared folder, and a separate read key for each person they share with, so access can be told apart. [Forty-seven vaults are published on this site alone](../demos/vaults/index.md), each with its own key. |
+| **The number of keys is growing fast** | One person running a few projects now holds a vault per project, per client and per shared folder, and a separate read key for each person they share with, so access can be told apart. [Forty-eight vaults are published on this site alone](../demos/vaults/index.md), each with its own key. |
 |---|---|
 | **Agents are starting to make vaults** | An AI agent that builds a website for a customer, writes up a penetration test or keeps a board pack can hand the result over as a vault. Three business plans published on this site depend on exactly that: [Agent as Webmaster](../demos/vaults/agent-webmaster/index.md) hands a customer their site's vault, [Lesson Loop](../demos/vaults/lesson-loop/index.md) gives every player a vault they hold the key to, and [Company X-Ray](../demos/vaults/company-xray/index.md) hands each customer a key to drop documents into and a vault back at the end. Every one of those hand-overs is a key that has to go to a person, safely, and every agent doing the work needs a key it should not be able to paste anywhere. |
 | **The pattern is not specific to sgit** | Any end-to-end encrypted document, folder or dataset opened in a browser has the same need: a key for the data, held by the user, released to a page only when they agree. Whoever makes that easy for sgit makes it easy for the category. |
@@ -7182,7 +7184,7 @@ Organisations are named below only as examples of the kind of team we mean. Ther
 |---|---|
 | **Crypto that is specified and tested** | AES-256-GCM, HKDF-SHA256 and PBKDF2, with test vectors that the command-line client and the browser must match byte for byte. Keys are derived locally; the host never holds one. |
 | **Keys that say what they are** | Every sgit key carries a prefix naming its kind: `sgit_private_vault_`, `sgit_private_read_` or `sgit_public_read_`. One secret-scanner rule, `sgit_private_`, catches every private key type, and a published read key cannot be mistaken for a leak. |
-| **Real vaults to test against** | [Forty-seven published vaults](../demos/vaults/index.md) across security, regulation, business plans and applications, each with a public read key, plus [the catalogue](../demos/vaults/catalogue/index.md), a vault that lists vaults, which is the closest thing today to the index a key manager would keep. |
+| **Real vaults to test against** | [Forty-eight published vaults](../demos/vaults/index.md) across security, regulation, business plans and applications, each with a public read key, plus [the catalogue](../demos/vaults/catalogue/index.md), a vault that lists vaults, which is the closest thing today to the index a key manager would keep. |
 | **The failures, written down** | [What to do if a vault key is exposed](../case-studies/exposed-vault-key.md), [the publishing method](../demos/vaults/publishing.md) with the mistake behind each rule, and [when not to use sgit](../docs/limitations.md). A key manager partner should know the edges before the first call. |
 
 ## The detail
@@ -7203,7 +7205,7 @@ We can, and will, keep keys inside vaults: a vault that holds the read keys for 
 
 | Exists and runs | Does not exist yet |
 |---|---|
-| Vault keys, read keys and public read keys with self-declaring prefixes. Local derivation. Browser opening from a read key with nothing installed. Forty-seven published vaults. Guidance to keep the vault key in a password manager, which is what this page wants to make first-class. | Any integration with any key manager. Revocation, expiry or a rotation workflow in the product: rotation is a manual re-encryption today, as [the limitations page](../docs/limitations.md) says. The word-name scheme. Agent-scoped keys. All of these are what a collaboration would build. |
+| Vault keys, read keys and public read keys with self-declaring prefixes. Local derivation. Browser opening from a read key with nothing installed. Forty-eight published vaults. Guidance to keep the vault key in a password manager, which is what this page wants to make first-class. | Any integration with any key manager. Revocation, expiry or a rotation workflow in the product: rotation is a manual re-encryption today, as [the limitations page](../docs/limitations.md) says. The word-name scheme. Agent-scoped keys. All of these are what a collaboration would build. |
 
 ## What this page does not claim
 
@@ -7872,7 +7874,7 @@ Proposed partnerships · sgit.ai with the model and voice providers · public ma
 
 # Models do the work. Vaults hold it. We would like to work with the people who make the models.
 
-**An invitation from our side, published in the open.** Almost everything on this site was made with AI: the site itself, the forty-seven published vaults, the diagrams, the narration. The models came from the providers on this page, mostly reached through OpenRouter. What we have built in return is a place for that work to live: encrypted, versioned, openable in a browser with a key, and callable by a model without anyone leaking an API key. We use these providers every day and have no relationship with any of them. This page, and the page for each provider linked from it, sets out where vaults and models meet and what a partnership could be.
+**An invitation from our side, published in the open.** Almost everything on this site was made with AI: the site itself, the forty-eight published vaults, the diagrams, the narration. The models came from the providers on this page, mostly reached through OpenRouter. What we have built in return is a place for that work to live: encrypted, versioned, openable in a browser with a key, and callable by a model without anyone leaking an API key. We use these providers every day and have no relationship with any of them. This page, and the page for each provider linked from it, sets out where vaults and models meet and what a partnership could be.
 
 **Nothing on these pages is confidential, and there has been no conversation yet.** Every statement about a provider comes from its own public pages or documentation, linked. Every statement about sgit points at a published vault or a page on this site. sgit is Apache-2.0, so any provider can build on it without asking. A partnership is about building the connection properly, and being listed where the provider's users look for it.
 
@@ -8003,7 +8005,7 @@ This page is written to be forwarded as it is, and everything on it can be check
 ==============================================================================
 # A proposed partnership between sgit.ai and Anthropic
 
-> This site is already a Claude Code project, and vaults are how its sessions work together. sgit.ai, its briefs, its deployment docs and most of its forty-seven published vaults are built and published by Claude Code sessions that share state through a vault. We would like to turn that working practice into a partnership: a vault connector in Anthropic's Connectors Directory, skills that teach Claude to use vaults well, and a place in the Claude Partner Network.
+> This site is already a Claude Code project, and vaults are how its sessions work together. sgit.ai, its briefs, its deployment docs and most of its forty-eight published vaults are built and published by Claude Code sessions that share state through a vault. We would like to turn that working practice into a partnership: a vault connector in Anthropic's Connectors Directory, skills that teach Claude to use vaults well, and a place in the Claude Partner Network.
 >
 > Page: https://sgit.ai/partnerships/anthropic.html
 
@@ -8013,7 +8015,7 @@ A proposed partnership · sgit.ai with Anthropic · public material only · 24 S
 
 # A proposed partnership between sgit.ai and Anthropic
 
-**This site is already a Claude Code project, and vaults are how its sessions work together.** sgit.ai, its briefs, its deployment docs and most of its forty-seven published vaults are built and published by Claude Code sessions that share state through a vault. We would like to turn that working practice into a partnership: a vault connector in Anthropic's Connectors Directory, skills that teach Claude to use vaults well, and a place in the Claude Partner Network.
+**This site is already a Claude Code project, and vaults are how its sessions work together.** sgit.ai, its briefs, its deployment docs and most of its forty-eight published vaults are built and published by Claude Code sessions that share state through a vault. We would like to turn that working practice into a partnership: a vault connector in Anthropic's Connectors Directory, skills that teach Claude to use vaults well, and a place in the Claude Partner Network.
 
 **Nothing on this page is confidential, and there has been no conversation yet.** Every statement about Anthropic comes from its own public pages, linked. Every statement about sgit points at the [deployment documentation](../deploy/index.md), a published vault or a page on this site. sgit is Apache-2.0, so Anthropic does not need our permission to run it or to build on it. A partnership is about doing that well and together. The general argument is on [the AI providers page](ai-providers.md).
 
@@ -10180,6 +10182,112 @@ From `admin/build/catalogue_derive.py ddfw24hx <read key hex>`, read-only, no to
 
 
 ==============================================================================
+# Local evidence log, live local stories kept as evidence, sgit.ai
+
+> A vault for the moments when a local public service is running badly and nothing a local person could check says so: evidence by level, fourteen claims and what would resolve them, twenty six sources and how each was reached, the leads that do not fit, sixteen places a local could look, the enquiry to the trust, and scheduled re-checks. First incident: reported IT disruption at two London hospitals on 8 October 2026. Published with its read key.
+>
+> Page: https://sgit.ai/demos/vaults/local-evidence-log/index.html
+
+[Home](../../../index.md) / [Vaults](../index.md) / Local evidence log
+
+# Local evidence log: live local stories, kept as evidence
+
+A vault for the moments when a local public service is running badly, the people affected find out on the spot, and nothing they could have checked beforehand says so. It keeps the evidence by level, from heard second-hand to independently corroborated; the claims and what would resolve each; every source and how it was accessed; the leads that do not fit, with their real dates; the enquiries, sent or not; and regular re-checks of the public sources. Its first incident is reported IT disruption at two London hospitals on the afternoon of 8 October 2026. It was published with the article [The waiting room knew first](../../../articles/the-waiting-room-knew-first.md).
+
+The overview, as the app opens.
+
+**Open it yourself. The key is the whole credential.**
+ Read key: `sgit_public_read_4900050df2cd015ca92b35898b328c4ebd35818d4dc3170e6bc2f1a72bdbadd4:92yb24y9`
+ In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_public_read_4900050df2cd015ca92b35898b328c4ebd35818d4dc3170e6bc2f1a72bdbadd4%3A92yb24y9) · From the CLI: `sgit clone sgit_public_read_4900050df2cd015ca92b35898b328c4ebd35818d4dc3170e6bc2f1a72bdbadd4:92yb24y9`
+Published deliberately under the `sgit_public_read_` prefix, and **derived** one-way from a vault key kept in the gitignored tier and never published. Classified with `check_credential.py` before it touched this page, read back with the published key alone by `catalogue_derive.py`, and verified with an all-zeros read key as the negative control.
+
+## See it live, here
+
+The vault opens as an app: the incident, the timeline, the claims, the sources, the leads that do not fit, where a local could look, the enquiries, the re-checks, the method, and every file with a download button. You can also [**open it in the official UI**](https://dev.vault.sgraph.ai/#sgit_public_read_4900050df2cd015ca92b35898b328c4ebd35818d4dc3170e6bc2f1a72bdbadd4%3A92yb24y9).
+
+## The one idea
+
+When a local service is running badly, the people inside know first, and the people about to set off cannot find out. This log does not try to name and shame anyone. It asks one question, for any hospital, council or operator: where is the source of information for a local person? It answers with evidence, separated by what it can establish, and keeps asking: the sources are re-checked, the enquiry is logged when it is sent and when it is answered, and the status changes only when the evidence does.
+
+## What is in it
+
+claims
+
+### Fourteen claims, by what the evidence supports
+
+One verified: both hospitals are run by Imperial College Healthcare NHS Trust. Two supported first-hand: staff at both sites said the IT systems were down, and a wait of about five hours was announced. The rest are plausible, unresolved, unknown, or not established, among them a national outage, a named failed system, a cyber attack and a recovery. Each claim carries its evidence and what would resolve it.
+
+A status says what the evidence supports, not whether a claim is true.
+
+sources
+
+### Every source, and how it was reached
+
+Twenty six sources from the research, each marked fetched, indexed only, blocked, behind a login, or attempted. The regulator's records, the trust's own announcement of shared IT across four north-west London trusts, the NHS service desk portals that need a login, and the neighbouring trusts' homepages. Blocked is a limit of our access, never evidence about the hospital.
+
+The register, filterable by access outcome.
+
+where could a local look?
+
+### Sixteen places, and whether any is live
+
+Northern Ireland publishes live median waits for every emergency department; Wales has a live service; one English trust's own page is shown as an example; England nationally publishes monthly. The trust's own website, its social account, community groups, outage trackers that track websites rather than wards, comparisons from Alberta, New South Wales and Queensland, and the legal duty to warn and inform, with its limits.
+
+None of the sixteen was found to carry anything about this incident.
+
+enquiries
+
+### The question to the trust, drafted, not yet sent
+
+A short request to the trust's press office: which service failed, the incident reference, start time and recovery, which sites, what "national" meant, whether the redirection was related, and where a patient could have found a notice. The author's agent will send it; the date sent, and the answer, will be logged here. A second entry records the plan to ask clinicians the author knows, who are not named.
+
+Status: drafted, not sent.
+
+checks and method
+
+### Re-checked on a schedule, by a written method
+
+`tools/check_sources.py` fetches each public source anonymously and records the status, a hash of the page and keyword counts; the first run, at 22:37 BST, is in the vault, and later runs will show what changed. The method defines six evidence levels and the logging rules: write down the time, who said it and in what words; separate the observation from the explanation; never log patient details; date-check every lead; and treat "not found" as a result.
+
+The evidence levels and the logging rules.
+
+## How it is built
+
+The records are hand-written JSON, one folder per incident, against shared lists of levels, statuses and access outcomes in `records/method.json`. `tools/build.py` validates every record, every reference, and the privacy and wording rules, and writes the index the app reads; `tools/bundle.py` packs the app into one `index.html`; `tools/gate.py` runs sixteen checks, including that the index and the bundle rebuild byte for byte, that no file holds a family word, an age, a condition, a credential or an em-dash, and that every view renders at desktop and phone widths with no errors and no network requests. The app uses the design system of the [agency scale](../agency-scale/index.md) and [hope or enforcement](../hope-or-enforcement/index.md) vaults. A new incident is a new folder, from the template in the method.
+
+## The audit, honestly
+
+**What was scanned.** Every file before the first commit, and every file again after cloning with the published read key alone: vault-key shapes, every `sgit_` credential prefix, private-key headers, cloud key shapes, the SG/Send access token and the vault's own key. The clone matched the source, file by file.
+
+**What was found.** Nothing. The negative control, an all-zeros read key against the same vault id, returned nothing.
+
+**Privacy.** The patient, their relationship to anyone and their condition are not in the vault, and a gate check refuses the words that would describe them. The observer is "the companion". Staff and the doctor are not named or described. The press office address in the enquiry is the trust's published contact.
+
+**What it does not claim.** It does not claim a national outage, a cause, a cyber attack, or a recovery. It does not claim that the trust hid anything; no evidence of that was found. A fetch result is a fact about what our client could retrieve, not about the hospital's systems.
+
+**Write-key status:** escrowed, in the gitignored credential tier, before this page was written.
+
+## Derived facts
+
+From `admin/build/catalogue_derive.py 92yb24y9 <read key hex>`, read-only, no token, no clone.
+
+- **Files:** 54 · **plaintext size:** 927 KB
+- **Commits:** 3 · **last updated:** 2026-10-08 · **HEAD:** `obj-cas-imm-5edc53908c0f`
+- **Top level:** `PUBLIC.md`, `README.md`, `REALITY.md`, `app.json`, `app/`, `checks/`, `data/`, `index.html`, `records/`, `tools/`, `versions/`
+- **File types:** .json ×17, .js ×14, .css ×13, .md ×4, .py ×4, .html ×2
+- **Vault app:** yes, entry `index.html` · **browser-renderable:** yes
+
+## Notes
+
+**Where this came from.** An afternoon at two London hospitals, a research report written that evening, a voice memo by Dinis Cruz, and the site's fictional [Mill Street Bridge](../bridge-simulation/index.md), of which this is the live counterpart.
+
+**Who wrote this.** [agent@riskmandate.ai](mailto:agent@riskmandate.ai) (Claude Opus 5.5, `claude-opus-5-5`), in the sgit.ai site session, for RiskMandate.ai and sgit.ai. AI-generated text, disclosed as Article 50 of the EU AI Act asks; the person with editorial responsibility is Dinis Cruz. Replies to [agent@riskmandate.ai](mailto:agent@riskmandate.ai).
+
+[← All published vaults](../index.md)
+
+
+
+==============================================================================
 # Every sgit repository: how the sites, the tools and the code are built, guidance
 
 > The page above the vault guidance, the team section, coding.sgit.ai and nfrs.sgit.ai: what every repository in the estate carries regardless of what it is for. The brief published in full, written by a person or an agent; the reality and corrections files; one version going up on every push; the gate and the release discipline; the review folder with its self set; the code rules by reference to coding.sgit.ai; credentials; the requirements that are not features; people, agents and writing; and two checklists, one for a new repository and one for an existing one.
@@ -11935,12 +12043,14 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.7.8**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
+The site version (**v0.7.9**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
 
-| v0.7.8 | 2026-10-08 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.7...v0.7.8) | CLOUD PATTERN FIX. In Encrypted memory for isolated agents, the cloud diagram drew the Lambda option outside the VPC. The agents have to reach whichever server is chosen, so both options now sit inside the VPC: an internal load balancer on a private address, and behind it either the container (EC2, Fargate or Kubernetes) or the same app on Lambda attached to the VPC, both with S3 storage through a VPC endpoint. Figure, Mermaid source, text and the self-hosting docs page updated.**Updated:**[Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes](../articles/encrypted-memory-for-isolated-agents.md), [Self-hosting a vault server for agents, sgit Docs](../docs/self-host-for-agents.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.7...v0.7.8). |
+| v0.7.9 | 2026-10-08 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.8...v0.7.9) | THE WAITING ROOM KNEW FIRST. A new article and a new vault, from a live local story. On the afternoon of 8 October 2026 staff at two London hospitals of one trust said the IT systems were down, about five hours was announced, and a doctor called it national; nothing a local person could check before leaving home showed it. The article is about the gap, not the hospital: where local information comes from now, what parts of the UK already publish (Northern Ireland live emergency waits for every hospital, Wales live, England no national page), the thinning of local news and social feeds, and the narrow legal duty to warn. The vault, Local evidence log (92yb24y9, read key published), keeps the evidence by six levels, fourteen claims and what would resolve them, twenty six sources with how each was reached, the leads that do not fit, sixteen places a local could look, the enquiry to the trust (drafted, not sent), and scheduled source re-checks; 16-check gate, audited with the read key. No patient details anywhere. Vault page, four figures, graph JSON.**New:**[Local evidence log, live local stories kept as evidence](../demos/vaults/local-evidence-log/index.md), [The waiting room knew first: a live local story, and the gap where local information used to be](../articles/the-waiting-room-knew-first.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.8...v0.7.9). |
+
+| v0.7.8 | 2026-10-08 | [git be27891d](https://github.com/SGit-AI/SGit-AI__Website/commit/be27891d) | CLOUD PATTERN FIX. In Encrypted memory for isolated agents, the cloud diagram drew the Lambda option outside the VPC. The agents have to reach whichever server is chosen, so both options now sit inside the VPC: an internal load balancer on a private address, and behind it either the container (EC2, Fargate or Kubernetes) or the same app on Lambda attached to the VPC, both with S3 storage through a VPC endpoint. Figure, Mermaid source, text and the self-hosting docs page updated.**Updated:**[Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes](../articles/encrypted-memory-for-isolated-agents.md), [Self-hosting a vault server for agents, sgit Docs](../docs/self-host-for-agents.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/be27891d). |
 
 | v0.7.7 | 2026-10-08 | [git b39da50f](https://github.com/SGit-AI/SGit-AI__Website/commit/b39da50f) | ENCRYPTED MEMORY FOR ISOLATED AGENTS. A new article and a new docs page on sgit deployment patterns, from a voice memo. Agents are safer in isolated, often ephemeral places, which takes away the shared drive and the disk; the memory has to live where the owner controls it and a breach exposes nothing. Five patterns, each a Mermaid diagram with its source: a Mac mini with the vault container and a folder (Docker Compose file and agent entry point), one agent run with a scoped clone, Kubernetes (Deployment, Service, NetworkPolicy, a Job per task), a private cloud VPC with S3 and CloudFront, and two servers holding one vault. Tested on a local server with sgit-ai 0.20.0: scoped clone, push from a second agent, replication to a second server and a restore after a restart, and a search of the server's storage that found no plaintext and no file names. Also shown: a scoped clone is not an access boundary, the deployment docs' --endpoint should be --base-url, and pip installs need mcp<2. New docs page Self-hosting a vault server for agents, with links from the docs index, limitations and the deploy page. Six figures, graph JSON.**New:**[Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes](../articles/encrypted-memory-for-isolated-agents.md), [Self-hosting a vault server for agents, sgit Docs](../docs/self-host-for-agents.md).**Updated:**[Agents sharing one vault, sgit Docs](../docs/agents-sharing-one-vault.md), [Documentation, sgit](../docs/index.md), [Run your own SG/Send server (sgit.ai)](../deploy/index.md), [When NOT to use sgit, Docs](../docs/limitations.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/b39da50f). |
 
@@ -13640,7 +13750,7 @@ A vault credential is the whole thing you need: the address, the capability and 
 
 ## Two capabilities, and one is derived from the other
 
-A vault key carries read *and* write. A read key carries read only, and is derived from the vault key by a one-way function, so a read key can never be turned back into write access. That derivation is the whole publishing model on this site: [forty-seven vaults](../demos/vaults/index.md) hand out read keys on purpose, and not one of them can be used to change anything.
+A vault key carries read *and* write. A read key carries read only, and is derived from the vault key by a one-way function, so a read key can never be turned back into write access. That derivation is the whole publishing model on this site: [forty-eight vaults](../demos/vaults/index.md) hand out read keys on purpose, and not one of them can be used to change anything.
 
 *[diagram]*
 
@@ -15400,7 +15510,7 @@ There is a longer account of this one in [Green does not mean live](../articles/
 >
 > Page: https://sgit.ai/articles/index.html
 
-Edition of 2026-10-0748 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.7.8
+Edition of 2026-10-0749 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.7.9
 
 # SGit Newsroom
 
@@ -15412,17 +15522,17 @@ From the editor Second edition, the same day. The lead moves to the open AI gove
 
 ## Latest
 
-1. 2026-10-08[Encrypted memory for agents that run somewhere else](../articles/encrypted-memory-for-isolated-agents.md)
-2. 2026-10-08[Knowing when to stop](../articles/knowing-when-to-stop.md)
-3. 2026-10-08[Agency is not a yes](../articles/agency-is-not-a-yes.md)
-4. 2026-10-08[Hope or enforcement](../articles/hope-or-enforcement.md)
-5. 2026-10-08[Who are you protecting against? Draw the security line where the attacker is, not…](../articles/who-are-you-protecting-against.md)
-6. 2026-10-08[Every mistake added a rule](../articles/every-mistake-added-a-rule.md)
-7. 2026-10-07[Liquid content needs water](../articles/liquid-content-needs-water.md)
-8. 2026-10-07[The bridge, followed to the end](../articles/the-bridge-followed-to-the-end.md)
-9. 2026-10-07[Story vault underneath, Reader Skills on top](../articles/story-vault-meets-reader-skills.md)
-10. 2026-10-07[Zoom into an agent's behaviour policy and you find the business logic](../articles/the-behaviour-policy-is-the-business-logic.md)
-[Every article, 48 →](../articles/index.md#all)
+1. 2026-10-08[The waiting room knew first](../articles/the-waiting-room-knew-first.md)
+2. 2026-10-08[Encrypted memory for agents that run somewhere else](../articles/encrypted-memory-for-isolated-agents.md)
+3. 2026-10-08[Knowing when to stop](../articles/knowing-when-to-stop.md)
+4. 2026-10-08[Agency is not a yes](../articles/agency-is-not-a-yes.md)
+5. 2026-10-08[Hope or enforcement](../articles/hope-or-enforcement.md)
+6. 2026-10-08[Who are you protecting against? Draw the security line where the attacker is, not…](../articles/who-are-you-protecting-against.md)
+7. 2026-10-08[Every mistake added a rule](../articles/every-mistake-added-a-rule.md)
+8. 2026-10-07[Liquid content needs water](../articles/liquid-content-needs-water.md)
+9. 2026-10-07[The bridge, followed to the end](../articles/the-bridge-followed-to-the-end.md)
+10. 2026-10-07[Story vault underneath, Reader Skills on top](../articles/story-vault-meets-reader-skills.md)
+[Every article, 49 →](../articles/index.md#all)
 
 ## Highlights
 
@@ -15440,7 +15550,7 @@ From the editor Second edition, the same day. The lead moves to the open AI gove
 
 ## Every article, newest first
 
-[2026-10-08Vaults & method4 threads**Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes**Agents in isolated, ephemeral places need memory that outlives them. Five sgit deployment patterns, from a Mac mini to Kubernetes, with ciphertext-only servers.](encrypted-memory-for-isolated-agents.md) [2026-10-08Agents & policy7 threads**Knowing when to stop: what experience gives people, and what we have to design into agents**Knowing when to stop is the hard part for people and agents: what experience gives people, and the constraints that give agents the same perspective.](knowing-when-to-stop.md) [2026-10-08Agents & policy7 threads**Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source**A yes or no is not agency: seven dimensions, a seven-level scale for people and agents, and the review as a QA step that fixes the source.](agency-is-not-a-yes.md) [2026-10-08Agents & policy4 threads**Hope or enforcement: one customer service agent, three designs, and who keeps each promise**One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.](hope-or-enforcement.md) [2026-10-08Agents & policy3 threads**Who are you protecting against? Draw the security line where the attacker is, not above it**Before deciding how secure to be, name the attacker: a six-tier ladder, an air-gapped Mac mini read against it, and eight startups drawing their line.](who-are-you-protecting-against.md) [2026-10-08Agents & policy8 threads**Every mistake added a rule: complexity, agents, and the way back to shipping**When every agent mistake adds a rule, complexity wins: map the process, move each piece right as a small shipped component, and keep the rigour for the work.](every-mistake-added-a-rule.md) [2026-10-07News & evidence7 threads**Liquid content needs water: liquefy the journalist's notebook, not the finished product**A reply to FT Strategies on liquid content: the water is the reporting, so liquefy the journalist's notebook, keep the writing theirs, and pay per use.](liquid-content-needs-water.md) [2026-10-07News & evidence4 threads**The bridge, followed to the end: what one local story is worth when it is kept as a graph**A bridge closure simulated on a story vault: newsworthy on 5 days, needed on 57, used by three readers, four buyers and an agent, and paid back to its sources.](the-bridge-followed-to-the-end.md) [2026-10-07News & evidence4 threads**Story vault underneath, Reader Skills on top: why local journalism has the most to gain**Markus Franz's Reader Skills on top, the story vault underneath: each skill is a graph query, and local stories can pay back down their chain of sources.](story-vault-meets-reader-skills.md) [2026-10-07Agents & policy5 threads**Zoom into an agent's behaviour policy and you find the business logic**Below the first rules, an agent's behaviour policy is the business: functions, processes, clients, values. Layered, owned, counted, and where vendors plug in.](the-behaviour-policy-is-the-business-logic.md) [2026-10-07Agents & policy4 threads**A locked-down desktop for an agent, by the minute, is still hard to rent**Nine properties a safe agent desktop needs, nine products against them, the macOS day-long lease, and the startup credits that would pay for testing it.](an-agent-desktop-by-the-minute.md) [2026-10-07Graphs & knowledge7 threads**An open AI governance framework, and what its licence let us build**Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.](ai-baseline-control-framework.md) [2026-10-07Agents & policy12 threads**Where is the why? A permission prompt asked me to decide, and kept the reason**A prompt asked for a decision and kept the reason. Read through the policy, the law on uninformed consent, and the fixes that worked: put the why in the prompt.](where-is-the-why.md) [2026-10-06Agents & policy22 threads**The Mandate Stack: a multi-agent system in production, layer by layer**A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.](the-mandate-stack.md) [2026-10-06Agents & policy9 threads**Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has**An OS has two hard walls, the kernel and the user; an agent on a laptop runs inside the one marked you, so the agents run in the cloud with a vault as shared drive.](why-my-agents-do-not-run-on-my-laptop.md) [2026-10-06Startups & strategy6 threads**The deck I could not download: an author-first home for presentations, as a business plan somebody else can build**One download offered as a subscription, an author paid nothing, and a design for the service the author would have chosen: vaults, keys, seven roles, 85% to the author.](the-deck-i-could-not-download.md) [2026-10-06Agents & policy21 threads**The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from**Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.](the-agent-team-as-it-runs.md) [2026-10-06Agents & policy13 threads**A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser**The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.](a-personal-agent-that-keeps-your-secrets.md) [2026-10-05Agents & policy5 threads**The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered**A global GitHub Actions outage read the way aviation reads an incident: independent inquiry, near-miss reporting, second and third stories, vaults for the evidence.](the-investigation-github-owes-its-customers.md) [2026-10-05Agents & policy8 threads**Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it**Due diligence never scaled because it was a form; a buyer can now send an agent into a vendor's environment and read what the code and the practices are.](send-an-agent-not-a-spreadsheet.md) [2026-10-05Graphs & knowledge10 threads**How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was**Twenty articles in four weeks, measured from the session record: 63,000 words in, 85,000 out, no one-line prompts, and the real input is twenty years of writing.](how-much-of-this-did-i-write.md) [2026-10-05Graphs & knowledge11 threads**If somebody built a company on code review: how I would do it, and why it is only now possible**A reader's seven questions answered as a company plan: one reader for every layer, review as a science, and the layers as the customer's own.](if-somebody-built-a-company-on-code-review.md) [2026-10-05Agents & policy9 threads**The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard**A week of designing identities for agents and users met Google's terms; what survived is a passkey-unlocked keyring and a gap nobody sells.](the-identity-we-wanted-to-give-the-agents.md) [2026-10-04Agents & policy8 threads**The wall under the reply: end an email with the state of the thread, not the thread**End an email reply with the state of the thread for this reader, not the quoted wall: decided, open, next, who is on copy, with links to the record.](the-wall-under-the-reply.md) [2026-10-03Graphs & knowledge14 threads**Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one**Agentic memory as context management: many published, fractal, provenance-carrying memories rather than one store, shown in the session that wrote the article.](memory-is-not-a-spectator-sport.md) [2026-10-03Graphs & knowledge11 threads**Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it**Source code is layers within layers, each a graph with its own vocabulary; code review should read a change at every one, and a vault shows it done on real code.](code-review-as-a-fractal-semantic-graph.md) [2026-10-02Agents & policy12 threads**Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send**How to copy a working agentic email setup in phases: a mailbox and Claude seat of the agent's own, one session with a policy, then roles talking in files.](replicating-the-agentic-inbox.md) [2026-10-02Startups & strategy3 threads**Price it, then give it away: the early access programme as the next step after "do they miss it"**Define the product, price it, deliver it at a cost that grows a step at a time, then offer it free to people who know you and measure what it costs them.](price-it-then-give-it-away.md) [2026-10-02Agents & policy18 threads**Footprint and blast radius: what the agent actually did, and what it would have cost**Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.](footprint-and-blast-radius.md) [2026-10-01Graphs & knowledge16 threads**Custom UIs are not the exception: the inbox in 2026, where every message has its own universe**Every message has a graph, so it can be shaped for the reader's moment; a custom interface per moment is now how interfaces get made, and each gets a policy.](custom-uis-are-not-the-exception.md) [2026-09-30Agents & policy14 threads**The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up**Agents, the infrastructure meant to contain them, and risk management run on spreadsheets are arriving at once, and together they are one scenario.](ultimate-insider-three-collisions.md) [2026-09-29News & evidence6 threads**The reader was always the product: a corrected history of how news got into this mess**News has sold the reader to advertisers since 1833; the web took the monopoly, the platforms made the reader measurable, and AI took the traffic.](how-news-got-here.md) [2026-09-29Agents & policy18 threads**Six agents, one inbox: what a real multi-agent setup taught me about access policies**An access policy for an agent is only as real as its worst row: every rule in a real six-agent setup, graded by how it is enforced today.](six-agents-one-inbox.md) [2026-09-28News & evidence6 threads**Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read**AI answer engines pay to read the web as HTML; a publisher who serves markdown, dates, hashes and a typed graph saves them tokens and should get a share.](token-bill-nobody-is-sending.md) [2026-09-27Vaults & method5 threads**A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down**The food chain is a data problem: one encrypted vault per party, joined by append lanes and a typed graph, could cut the waste that keeps prices high.](supply-chain-of-vaults.md) [2026-09-24Agents & policy14 threads**Every risk is already accepted. The only question is by whom, and for how long.**A risk exists the moment the exposure does, so somebody is already carrying it; the only questions worth asking are who has accepted it and until when.](every-risk-is-already-accepted.md) [2026-09-24Agents & policy11 threads**Before you give an agent a connector, give the connector a twin**An agent with a Gmail or Calendar connector can do things the platform cannot undo; a journal of every call, replayed, shows what it did and what can go back.](connector-twin-before-you-deploy-an-agent.md) [2026-09-22News & evidence7 threads**The future of news is the story vault, not the paywall**A story is a graph of claims and evidence and the article is one projection of it; keep the graph in a vault and sell what the article was made from.](future-of-news-story-vault-not-paywall.md) [2026-09-21Startups & strategy4 threads**For a startup, the most important question is whether they miss it**Ship something usable, give it away briefly, take it away and see whether anybody misses it; charge at a profit before you talk to investors.](the-question-is-whether-they-miss-it.md) [2026-09-21Startups & strategy3 threads**The SaaS apocalypse will be decided by inertia, not by AI**Incumbents and newcomers have the same AI; what separates them is how much past success each has to protect, so inertia decides which SaaS companies survive.](saas-apocalypse-decided-by-inertia-not-by-ai.md) [2026-09-20Graphs & knowledge17 threads**Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema**A fractal semantic graph has no privileged level and no single schema: each world keeps its own vocabulary and connects to others through named edges.](introducing-fractal-semantic-graphs.md) [2026-09-07Site & engineering1 thread**The proof moved up, the homepage after the rebuild, next to the before pictures**The rebuilt homepage puts four real vaults under one sentence, picks six by the job they do, and computes its numbers at build time from the site's own data.](proof-moved-up.md) [2026-09-07Site & engineering1 thread**The proof is two clicks behind the claim, what the homepage gets wrong, and the fix**The homepage leads with encryption, which cannot be seen, while twenty-five vaults a stranger can open in one click sit two clicks away in a table.](proof-behind-the-claim.md) [2026-08-27Site & engineering1 thread**A chat box on a site with no server, the plan, and the trade it makes**sgit.ai has no server, so its directory chat runs a local matcher by default, takes your own key as an opt-in, and leaves the vault bridge unbuilt.](chat-on-a-static-site.md) [2026-08-26Site & engineering2 threads**Twenty sites in fifteen days, and what that did to the writing**One site became twenty repositories in fifteen days because each argument needed its own version history, and the index now starts from a question.](nineteen-sites.md) [2026-08-25Vaults & method4 threads**Git for things you cannot put on GitHub**sgit is git for files you cannot put on GitHub: encrypted before they leave your machine, versioned like git, stored where the server cannot read a byte.](what-sgit-is.md) [2026-08-19Vaults & method2 threads**Seven vaults, one method**Publishing seven encrypted vaults in a fortnight produced a method, and every rule in it exists because something went wrong first.](seven-vaults-one-method.md) [2026-08-17Site & engineering2 threads**Green does not mean live**Two releases passed every check and never reached the site because the checks stopped at the git remote; a release now ends by asking the live site its version.](green-does-not-mean-live.md)
+[2026-10-08News & evidence2 threads**The waiting room knew first: a live local story, and the gap where local information used to be**Staff at two London hospitals said the IT was down; nothing a local could check showed it. A live local story about where local information comes from now.](the-waiting-room-knew-first.md) [2026-10-08Vaults & method4 threads**Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes**Agents in isolated, ephemeral places need memory that outlives them. Five sgit deployment patterns, from a Mac mini to Kubernetes, with ciphertext-only servers.](encrypted-memory-for-isolated-agents.md) [2026-10-08Agents & policy7 threads**Knowing when to stop: what experience gives people, and what we have to design into agents**Knowing when to stop is the hard part for people and agents: what experience gives people, and the constraints that give agents the same perspective.](knowing-when-to-stop.md) [2026-10-08Agents & policy7 threads**Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source**A yes or no is not agency: seven dimensions, a seven-level scale for people and agents, and the review as a QA step that fixes the source.](agency-is-not-a-yes.md) [2026-10-08Agents & policy4 threads**Hope or enforcement: one customer service agent, three designs, and who keeps each promise**One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.](hope-or-enforcement.md) [2026-10-08Agents & policy3 threads**Who are you protecting against? Draw the security line where the attacker is, not above it**Before deciding how secure to be, name the attacker: a six-tier ladder, an air-gapped Mac mini read against it, and eight startups drawing their line.](who-are-you-protecting-against.md) [2026-10-08Agents & policy8 threads**Every mistake added a rule: complexity, agents, and the way back to shipping**When every agent mistake adds a rule, complexity wins: map the process, move each piece right as a small shipped component, and keep the rigour for the work.](every-mistake-added-a-rule.md) [2026-10-07News & evidence7 threads**Liquid content needs water: liquefy the journalist's notebook, not the finished product**A reply to FT Strategies on liquid content: the water is the reporting, so liquefy the journalist's notebook, keep the writing theirs, and pay per use.](liquid-content-needs-water.md) [2026-10-07News & evidence5 threads**The bridge, followed to the end: what one local story is worth when it is kept as a graph**A bridge closure simulated on a story vault: newsworthy on 5 days, needed on 57, used by three readers, four buyers and an agent, and paid back to its sources.](the-bridge-followed-to-the-end.md) [2026-10-07News & evidence5 threads**Story vault underneath, Reader Skills on top: why local journalism has the most to gain**Markus Franz's Reader Skills on top, the story vault underneath: each skill is a graph query, and local stories can pay back down their chain of sources.](story-vault-meets-reader-skills.md) [2026-10-07Agents & policy5 threads**Zoom into an agent's behaviour policy and you find the business logic**Below the first rules, an agent's behaviour policy is the business: functions, processes, clients, values. Layered, owned, counted, and where vendors plug in.](the-behaviour-policy-is-the-business-logic.md) [2026-10-07Agents & policy4 threads**A locked-down desktop for an agent, by the minute, is still hard to rent**Nine properties a safe agent desktop needs, nine products against them, the macOS day-long lease, and the startup credits that would pay for testing it.](an-agent-desktop-by-the-minute.md) [2026-10-07Graphs & knowledge7 threads**An open AI governance framework, and what its licence let us build**Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.](ai-baseline-control-framework.md) [2026-10-07Agents & policy12 threads**Where is the why? A permission prompt asked me to decide, and kept the reason**A prompt asked for a decision and kept the reason. Read through the policy, the law on uninformed consent, and the fixes that worked: put the why in the prompt.](where-is-the-why.md) [2026-10-06Agents & policy22 threads**The Mandate Stack: a multi-agent system in production, layer by layer**A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.](the-mandate-stack.md) [2026-10-06Agents & policy9 threads**Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has**An OS has two hard walls, the kernel and the user; an agent on a laptop runs inside the one marked you, so the agents run in the cloud with a vault as shared drive.](why-my-agents-do-not-run-on-my-laptop.md) [2026-10-06Startups & strategy6 threads**The deck I could not download: an author-first home for presentations, as a business plan somebody else can build**One download offered as a subscription, an author paid nothing, and a design for the service the author would have chosen: vaults, keys, seven roles, 85% to the author.](the-deck-i-could-not-download.md) [2026-10-06Agents & policy21 threads**The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from**Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.](the-agent-team-as-it-runs.md) [2026-10-06Agents & policy13 threads**A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser**The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.](a-personal-agent-that-keeps-your-secrets.md) [2026-10-05Agents & policy5 threads**The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered**A global GitHub Actions outage read the way aviation reads an incident: independent inquiry, near-miss reporting, second and third stories, vaults for the evidence.](the-investigation-github-owes-its-customers.md) [2026-10-05Agents & policy8 threads**Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it**Due diligence never scaled because it was a form; a buyer can now send an agent into a vendor's environment and read what the code and the practices are.](send-an-agent-not-a-spreadsheet.md) [2026-10-05Graphs & knowledge10 threads**How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was**Twenty articles in four weeks, measured from the session record: 63,000 words in, 85,000 out, no one-line prompts, and the real input is twenty years of writing.](how-much-of-this-did-i-write.md) [2026-10-05Graphs & knowledge11 threads**If somebody built a company on code review: how I would do it, and why it is only now possible**A reader's seven questions answered as a company plan: one reader for every layer, review as a science, and the layers as the customer's own.](if-somebody-built-a-company-on-code-review.md) [2026-10-05Agents & policy9 threads**The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard**A week of designing identities for agents and users met Google's terms; what survived is a passkey-unlocked keyring and a gap nobody sells.](the-identity-we-wanted-to-give-the-agents.md) [2026-10-04Agents & policy8 threads**The wall under the reply: end an email with the state of the thread, not the thread**End an email reply with the state of the thread for this reader, not the quoted wall: decided, open, next, who is on copy, with links to the record.](the-wall-under-the-reply.md) [2026-10-03Graphs & knowledge14 threads**Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one**Agentic memory as context management: many published, fractal, provenance-carrying memories rather than one store, shown in the session that wrote the article.](memory-is-not-a-spectator-sport.md) [2026-10-03Graphs & knowledge11 threads**Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it**Source code is layers within layers, each a graph with its own vocabulary; code review should read a change at every one, and a vault shows it done on real code.](code-review-as-a-fractal-semantic-graph.md) [2026-10-02Agents & policy12 threads**Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send**How to copy a working agentic email setup in phases: a mailbox and Claude seat of the agent's own, one session with a policy, then roles talking in files.](replicating-the-agentic-inbox.md) [2026-10-02Startups & strategy3 threads**Price it, then give it away: the early access programme as the next step after "do they miss it"**Define the product, price it, deliver it at a cost that grows a step at a time, then offer it free to people who know you and measure what it costs them.](price-it-then-give-it-away.md) [2026-10-02Agents & policy18 threads**Footprint and blast radius: what the agent actually did, and what it would have cost**Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.](footprint-and-blast-radius.md) [2026-10-01Graphs & knowledge16 threads**Custom UIs are not the exception: the inbox in 2026, where every message has its own universe**Every message has a graph, so it can be shaped for the reader's moment; a custom interface per moment is now how interfaces get made, and each gets a policy.](custom-uis-are-not-the-exception.md) [2026-09-30Agents & policy14 threads**The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up**Agents, the infrastructure meant to contain them, and risk management run on spreadsheets are arriving at once, and together they are one scenario.](ultimate-insider-three-collisions.md) [2026-09-29News & evidence6 threads**The reader was always the product: a corrected history of how news got into this mess**News has sold the reader to advertisers since 1833; the web took the monopoly, the platforms made the reader measurable, and AI took the traffic.](how-news-got-here.md) [2026-09-29Agents & policy18 threads**Six agents, one inbox: what a real multi-agent setup taught me about access policies**An access policy for an agent is only as real as its worst row: every rule in a real six-agent setup, graded by how it is enforced today.](six-agents-one-inbox.md) [2026-09-28News & evidence6 threads**Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read**AI answer engines pay to read the web as HTML; a publisher who serves markdown, dates, hashes and a typed graph saves them tokens and should get a share.](token-bill-nobody-is-sending.md) [2026-09-27Vaults & method5 threads**A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down**The food chain is a data problem: one encrypted vault per party, joined by append lanes and a typed graph, could cut the waste that keeps prices high.](supply-chain-of-vaults.md) [2026-09-24Agents & policy14 threads**Every risk is already accepted. The only question is by whom, and for how long.**A risk exists the moment the exposure does, so somebody is already carrying it; the only questions worth asking are who has accepted it and until when.](every-risk-is-already-accepted.md) [2026-09-24Agents & policy11 threads**Before you give an agent a connector, give the connector a twin**An agent with a Gmail or Calendar connector can do things the platform cannot undo; a journal of every call, replayed, shows what it did and what can go back.](connector-twin-before-you-deploy-an-agent.md) [2026-09-22News & evidence7 threads**The future of news is the story vault, not the paywall**A story is a graph of claims and evidence and the article is one projection of it; keep the graph in a vault and sell what the article was made from.](future-of-news-story-vault-not-paywall.md) [2026-09-21Startups & strategy4 threads**For a startup, the most important question is whether they miss it**Ship something usable, give it away briefly, take it away and see whether anybody misses it; charge at a profit before you talk to investors.](the-question-is-whether-they-miss-it.md) [2026-09-21Startups & strategy3 threads**The SaaS apocalypse will be decided by inertia, not by AI**Incumbents and newcomers have the same AI; what separates them is how much past success each has to protect, so inertia decides which SaaS companies survive.](saas-apocalypse-decided-by-inertia-not-by-ai.md) [2026-09-20Graphs & knowledge17 threads**Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema**A fractal semantic graph has no privileged level and no single schema: each world keeps its own vocabulary and connects to others through named edges.](introducing-fractal-semantic-graphs.md) [2026-09-07Site & engineering1 thread**The proof moved up, the homepage after the rebuild, next to the before pictures**The rebuilt homepage puts four real vaults under one sentence, picks six by the job they do, and computes its numbers at build time from the site's own data.](proof-moved-up.md) [2026-09-07Site & engineering1 thread**The proof is two clicks behind the claim, what the homepage gets wrong, and the fix**The homepage leads with encryption, which cannot be seen, while twenty-five vaults a stranger can open in one click sit two clicks away in a table.](proof-behind-the-claim.md) [2026-08-27Site & engineering1 thread**A chat box on a site with no server, the plan, and the trade it makes**sgit.ai has no server, so its directory chat runs a local matcher by default, takes your own key as an opt-in, and leaves the vault bridge unbuilt.](chat-on-a-static-site.md) [2026-08-26Site & engineering2 threads**Twenty sites in fifteen days, and what that did to the writing**One site became twenty repositories in fifteen days because each argument needed its own version history, and the index now starts from a question.](nineteen-sites.md) [2026-08-25Vaults & method4 threads**Git for things you cannot put on GitHub**sgit is git for files you cannot put on GitHub: encrypted before they leave your machine, versioned like git, stored where the server cannot read a byte.](what-sgit-is.md) [2026-08-19Vaults & method2 threads**Seven vaults, one method**Publishing seven encrypted vaults in a fortnight produced a method, and every rule in it exists because something went wrong first.](seven-vaults-one-method.md) [2026-08-17Site & engineering2 threads**Green does not mean live**Two releases passed every check and never reached the site because the checks stopped at the git remote; a release now ends by asking the live site its version.](green-does-not-mean-live.md)
 
 Nothing matches. Clear the search or pick another topic.
 
@@ -15448,6 +15558,7 @@ Nothing matches. Clear the search or pick another topic.
 
 Read from the links the articles make to each other. [The same thing drawn as a map](graphs.md#map), and every article as its own graph.
 
+- [**The waiting room knew first**](the-waiting-room-knew-first.md) builds on [The bridge, followed to the end](the-bridge-followed-to-the-end.md), [Story vault underneath, Reader Skills on top](story-vault-meets-reader-skills.md).
 - [**Encrypted memory for agents that run somewhere else**](encrypted-memory-for-isolated-agents.md) builds on [Why my agents do not run on my laptop](why-my-agents-do-not-run-on-my-laptop.md), [A locked-down desktop for an agent, by the minute…](an-agent-desktop-by-the-minute.md), [Who are you protecting against? Draw the security…](who-are-you-protecting-against.md), [The agent team as it runs](the-agent-team-as-it-runs.md).
 - [**Knowing when to stop**](knowing-when-to-stop.md) builds on [Agency is not a yes](agency-is-not-a-yes.md), [How much of this did I write? The numbers behind…](how-much-of-this-did-i-write.md), [Who are you protecting against? Draw the security…](who-are-you-protecting-against.md), [Every mistake added a rule](every-mistake-added-a-rule.md), [Hope or enforcement](hope-or-enforcement.md), [Memory is not a spectator sport](memory-is-not-a-spectator-sport.md), [The agent team as it runs](the-agent-team-as-it-runs.md).
 - [**Agency is not a yes**](agency-is-not-a-yes.md) builds on [Where is the why? A permission prompt asked me to…](where-is-the-why.md), [Fractal Semantic Graphs](introducing-fractal-semantic-graphs.md), [Hope or enforcement](hope-or-enforcement.md), [How much of this did I write? The numbers behind…](how-much-of-this-did-i-write.md), [Every risk is already accepted](every-risk-is-already-accepted.md), [The agent team as it runs](the-agent-team-as-it-runs.md); continued by [Knowing when to stop](knowing-when-to-stop.md).
@@ -15455,8 +15566,8 @@ Read from the links the articles make to each other. [The same thing drawn as a 
 - [**Who are you protecting against? Draw the security…**](who-are-you-protecting-against.md) builds on [Every risk is already accepted](every-risk-is-already-accepted.md); continued by [Encrypted memory for agents that run somewhere else](encrypted-memory-for-isolated-agents.md), [Knowing when to stop](knowing-when-to-stop.md).
 - [**Every mistake added a rule**](every-mistake-added-a-rule.md) builds on [The agent team as it runs](the-agent-team-as-it-runs.md), [Memory is not a spectator sport](memory-is-not-a-spectator-sport.md), [Git for things you cannot put on GitHub](what-sgit-is.md), [Every risk is already accepted](every-risk-is-already-accepted.md), [Footprint and blast radius](footprint-and-blast-radius.md), [The bridge, followed to the end](the-bridge-followed-to-the-end.md), [Green does not mean live](green-does-not-mean-live.md); continued by [Knowing when to stop](knowing-when-to-stop.md).
 - [**Liquid content needs water**](liquid-content-needs-water.md) builds on [Fractal Semantic Graphs](introducing-fractal-semantic-graphs.md), [The future of news is the story vault, not the…](future-of-news-story-vault-not-paywall.md), [Custom UIs are not the exception](custom-uis-are-not-the-exception.md), [The bridge, followed to the end](the-bridge-followed-to-the-end.md), [How much of this did I write? The numbers behind…](how-much-of-this-did-i-write.md), [The reader was always the product](how-news-got-here.md), [Sixteen thousand fetches, ten clicks, and a token…](token-bill-nobody-is-sending.md).
-- [**The bridge, followed to the end**](the-bridge-followed-to-the-end.md) builds on [Story vault underneath, Reader Skills on top](story-vault-meets-reader-skills.md); continued by [Every mistake added a rule](every-mistake-added-a-rule.md), [Liquid content needs water](liquid-content-needs-water.md), [Story vault underneath, Reader Skills on top](story-vault-meets-reader-skills.md).
-- [**Story vault underneath, Reader Skills on top**](story-vault-meets-reader-skills.md) builds on [The future of news is the story vault, not the…](future-of-news-story-vault-not-paywall.md), [The reader was always the product](how-news-got-here.md), [The bridge, followed to the end](the-bridge-followed-to-the-end.md); continued by [The bridge, followed to the end](the-bridge-followed-to-the-end.md).
+- [**The bridge, followed to the end**](the-bridge-followed-to-the-end.md) builds on [Story vault underneath, Reader Skills on top](story-vault-meets-reader-skills.md); continued by [The waiting room knew first](the-waiting-room-knew-first.md), [Every mistake added a rule](every-mistake-added-a-rule.md), [Liquid content needs water](liquid-content-needs-water.md), [Story vault underneath, Reader Skills on top](story-vault-meets-reader-skills.md).
+- [**Story vault underneath, Reader Skills on top**](story-vault-meets-reader-skills.md) builds on [The future of news is the story vault, not the…](future-of-news-story-vault-not-paywall.md), [The reader was always the product](how-news-got-here.md), [The bridge, followed to the end](the-bridge-followed-to-the-end.md); continued by [The waiting room knew first](the-waiting-room-knew-first.md), [The bridge, followed to the end](the-bridge-followed-to-the-end.md).
 - [**Zoom into an agent's behaviour policy and you find…**](the-behaviour-policy-is-the-business-logic.md) builds on [Six agents, one inbox](six-agents-one-inbox.md), [Fractal Semantic Graphs](introducing-fractal-semantic-graphs.md), [Every risk is already accepted](every-risk-is-already-accepted.md), [An open AI governance framework, and what its…](ai-baseline-control-framework.md); continued by [Hope or enforcement](hope-or-enforcement.md).
 - [**A locked-down desktop for an agent, by the minute…**](an-agent-desktop-by-the-minute.md) builds on [Why my agents do not run on my laptop](why-my-agents-do-not-run-on-my-laptop.md), [The Mandate Stack](the-mandate-stack.md), [Where is the why? A permission prompt asked me to…](where-is-the-why.md); continued by [Encrypted memory for agents that run somewhere else](encrypted-memory-for-isolated-agents.md).
 - [**An open AI governance framework, and what its…**](ai-baseline-control-framework.md) builds on [Six agents, one inbox](six-agents-one-inbox.md), [The identity we wanted to give the agents](the-identity-we-wanted-to-give-the-agents.md), [Where is the why? A permission prompt asked me to…](where-is-the-why.md), [Fractal Semantic Graphs](introducing-fractal-semantic-graphs.md), [Every risk is already accepted](every-risk-is-already-accepted.md), [Code review as a fractal semantic graph](code-review-as-a-fractal-semantic-graph.md); continued by [Zoom into an agent's behaviour policy and you find…](the-behaviour-policy-is-the-business-logic.md).
@@ -19446,7 +19557,7 @@ The site is the identity, the keys are pinned, the messages are signed. The oper
 2. **Bind the editor to the projection.** Every published projection from a newsroom vault carries a binding of its editor of record over its hash. The Article 50 exemption becomes provable from the vault with a read key. First candidates: The Evidence Dispatch and pt.newsroom.sgit.ai.
 3. **Bind the operator to the contact file.** The operator of every site agent is bound to the file that publishes its keys, and rotations carry the binding forward, so the network's agents have machine identity from the domain and human identity from the person.
 
-What we bring: evidence vaults with read keys and no host that can read them; the story graph and the agent behaviour policy as records made at the time with versions pinned; append lanes and signed messaging between agents, running since September; forty-seven published vaults and two newsrooms to bind against today. What Authentitas brings: a verified natural person from a chipped passport or national eID; a binding at the moment of creation; independence; and a held identity for the pseudonymous contributor, disclosed by due process.
+What we bring: evidence vaults with read keys and no host that can read them; the story graph and the agent behaviour policy as records made at the time with versions pinned; append lanes and signed messaging between agents, running since September; forty-eight published vaults and two newsrooms to bind against today. What Authentitas brings: a verified natural person from a chipped passport or national eID; a binding at the moment of creation; independence; and a held identity for the pseudonymous contributor, disclosed by due process.
 
 Three integrations, each small. Three of the four clauses already run.
 
@@ -19564,6 +19675,171 @@ The articles could be shorter. Several of these could be half the length with th
 5 unchanged paragraphs
 
 [← Back to the article](../how-much-of-this-did-i-write.md)
+
+
+
+==============================================================================
+# The waiting room knew first: a live local story, and the gap where local information used to be, sgit.ai
+
+> This afternoon, at two London hospitals, staff told the people in front of them that the IT systems were down. One waiting room was announced at about five hours, and a doctor said the problem was national. Nothing a person could check before leaving home showed any of it: no notice from the trust, no post, no local story, no dated search result. This is not a story about one hospital, whose staff were working through it, and it is not yet a story about a national outage, which has not been confirmed. It is a story about where local information is supposed to come from now. The information existed; it reached people only once they were already in the waiting room. Northern Ireland publishes live emergency waits for every hospital, updated tonight at 10.20 pm, and Wales has a live service; England has no national equivalent, and I found no live or disruption page for the trust involved. Local news has thinned out, and the social feeds that used to carry this kind of thing have fragmented. So I have started a vault to log this as a live local story, with the evidence separated by level, the public sources checked on a schedule, and an enquiry to the trust that my agent will send. It is the real counterpart of the fictional bridge story, and the first of several.
+>
+> Page: https://sgit.ai/articles/the-waiting-room-knew-first.html
+
+[Home](../index.md) / [Articles](index.md) / The waiting room knew first: a live local story, and the gap where local information used to be
+
+# The waiting room knew first: a live local story, and the gap where local information used to be
+
+By [Dinis Cruz](../about/index.md) · 2026-10-08 · [v0.7.9](../admin/versions.md) · local-newslive-evidencenhshospitalspublic-informationit-outageevidence-levelsvaultsagentsstory-vaultnews-desertsarticle
+
+***Abstract:** This afternoon, at two London hospitals, staff told the people in front of them that the IT systems were down. One waiting room was announced at about five hours, and a doctor said the problem was national. Nothing a person could check before leaving home showed any of it: no notice from the trust, no post, no local story, no dated search result. This is not a story about one hospital, whose staff were working through it, and it is not yet a story about a national outage, which has not been confirmed. It is a story about where local information is supposed to come from now. The information existed; it reached people only once they were already in the waiting room. Northern Ireland publishes live emergency waits for every hospital, updated tonight at 10.20 pm, and Wales has a live service; England has no national equivalent, and I found no live or disruption page for the trust involved. Local news has thinned out, and the social feeds that used to carry this kind of thing have fragmented. So I have started a vault to log this as a live local story, with the evidence separated by level, the public sources checked on a schedule, and an enquiry to the trust that my agent will send. It is the real counterpart of the fictional bridge story, and the first of several.*
+
+What the people inside knew this afternoon, and where a local person could have looked before leaving home. The information existed. It reached people only once they were already in the waiting room.
+
+**Where this comes from.** I spent this afternoon at two London hospitals, accompanying someone to an appointment; they are fine, and nothing about them belongs in this article. What happened around us does. The research behind it was done this evening, with care to separate what I saw from what I was told and from what anyone can verify, and it is all in [the vault](../demos/vaults/local-evidence-log/index.md). It follows [The Mill Street Bridge](../articles/the-bridge-followed-to-the-end.md), a fictional local story kept as a story vault. This one is real, and it is still happening.
+
+## In short
+
+- **Two hospital sites, one afternoon, the same message from staff: the IT systems are down.** One waiting room was announced at about five hours. A doctor said the problem was national.
+- **Nothing a local person could check before leaving home showed it.** No notice from the trust, no matching post, no local story, nothing dated today in search. The channels that do carry operational status need a login or an NHS network connection.
+- **This is not naming and shaming.** Both sites are run by the same trust, and its staff were working through it in front of us. The question is about the channel, not the people: when a service is running badly, where does a local person find out in time to plan their day?
+- **Parts of the UK already answer that question for emergency waits.** Northern Ireland publishes live median waits for every emergency department; Wales has a live service; some English trusts publish their own. England has no national live page, and I found nothing live for this trust.
+- **The places that used to carry this have thinned out.** Local newsrooms have closed, and the social feeds where you could once find a post saying "avoid X today, systems down" are more fragmented and less trusted.
+- **So I have started a vault to log it**, as a live local story: the evidence by level, the open questions, the public sources re-checked on a schedule, and an enquiry to the trust that my agent will send. It is the first of several.
+
+**The gap, Mermaid source**
+
+[rendered image](images/le-gap.webp)
+
+```
+flowchart TB
+  subgraph inside["What the people inside knew, this afternoon"]
+    direction LR
+    ST["Staff at the desk<br/>'the IT systems are down'"]
+    DR["A doctor<br/>'it is national'"]
+    IN["Internal bulletins<br/>and supplier alerts"]
+    SD["NHS service desk portals<br/>login or NHS network needed"]
+  end
+  subgraph outside["Where a local person could look before leaving home"]
+    direction LR
+    WS["The hospital's website"]
+    SO["Social media"]
+    LN["Local news"]
+    SE["A search engine"]
+  end
+  P(["Someone deciding<br/>whether to go now,<br/>later or tomorrow"])
+  ST -- "said out loud,<br/>to people already there" --> P
+  DR -- "said in the room" --> P
+  IN -. "not public" .-x P
+  SD -. "registration, login,<br/>NHS network" .-x P
+  WS -. "no notice found" .-x P
+  SO -. "no matching post found" .-x P
+  LN -. "no story found" .-x P
+  SE -. "nothing dated today" .-x P
+```
+
+## What happened, separated by level
+
+I am going to be careful here, because the easiest thing to do with an afternoon like this is to turn it into a bigger story than the evidence supports. So each item is labelled with what it is.
+
+| What | Level | What it does not establish |
+|---|---|---|
+| Staff at Charing Cross Hospital said the IT systems were down | Told on the spot by staff | Which systems, how many, since when |
+| We were directed to Western Eye Hospital | Observed first-hand | Why; it is a specialist service, and the referral could have been for the care needed |
+| Staff at Western Eye also said the IT systems were down | Told on the spot by staff | That it was the same fault |
+| An approximately five-hour wait was announced | Told on the spot by staff, as an announcement | An actual five-hour wait, or how much of it the IT added |
+| The waiting room was almost full | Observed first-hand | The cause, or how unusual that is for the department |
+| A doctor said the problem was national | Heard second-hand: said to the patient, passed on to me | What "national" meant: a national service, a supplier, or a regional fault |
+
+And from the research, which is in the vault with every source and how it was accessed:
+
+- **Both sites are run by one trust**, Imperial College Healthcare NHS Trust, according to the Care Quality Commission's records. That matters: two sites of one organisation are not two independent pieces of evidence for a national outage.
+- **The trust shares IT with its neighbours.** Its own announcement from October 2025 describes a joint IT function and a common Cerner patient administration system across four north-west London trusts. That makes a shared regional dependency a fair line of enquiry. It does not make Cerner, or anything else, the failed system; what failed has not been said publicly.
+- **The leads that look relevant do not fit.** A London power notice from another hospital was dated three days ago. Two NHS maintenance windows tonight start at 18:00, after the afternoon. An e-Referral outage is scheduled for tomorrow night. Each was checked against the date on the page, not the date in the search result.
+- **Nothing confirms or rules out a national incident.** The NHS service desk status portal, the NHS.net Connect status page and the supplier's support portal all asked for a login. Not finding an incident there is a limit of access, not evidence that there was none.
+The same afternoon in the vault: fourteen claims grouped by what the evidence supports, each with its evidence, its level and what would resolve it.
+
+So the honest summary is: a credible first-hand account of IT disruption at two sites of one trust, with a long announced wait, national scope unconfirmed, cause unknown, recovery unknown. That is a small story by news standards. It is not small if you are deciding whether to set off now.
+
+## Newsworthy to me
+
+What strikes me most is not the outage. IT fails, and the staff I saw were doing what staff do: telling people, apologising, getting on with it. What strikes me is that the only way to find out was to be there.
+
+If I had known at lunchtime that both sites were running without their systems, with a five-hour wait being announced, I could have made a different decision. Gone later, gone tomorrow if it could wait, gone somewhere else, or at least gone knowing what the day would look like. We could not make that decision well, because the one fact that mattered was not available anywhere I could look.
+
+That is the gap. It is not that someone hid anything; the research found no sign of that, and the channels that do exist are built for NHS staff and suppliers, not for patients. It is that this kind of information is not newsworthy to a newsroom, not in scope for a national status page, and not anyone's job to publish for the people about to walk through the door. And yet, for those people, it is the most newsworthy thing happening that afternoon.
+
+## Where a local person could look, today
+
+The research for this article looked for public, live or near-live information about how a hospital is running. Here is what exists, verified this evening.
+
+| Where | What it publishes | How fresh |
+|---|---|---|
+| Northern Ireland, [nidirect](https://www.nidirect.gov.uk/articles/emergency-department-average-waiting-times) | Median time of patients currently waiting, for every emergency department | Live; the page read "Last updated: 10.20 pm, Thursday 8 October 2026" |
+| Wales, [My A&E Live](https://aeinfo.nhs.wales/) | Typical time you are likely to spend, for most hospitals | Live |
+| England, some trusts, for example [Mid Cheshire](https://www.mcht.nhs.uk/patients-and-visitors/waiting-times-feed) | Current waits for majors and minors, patients in the department | Live, with no timestamp shown |
+| England, nationally | Monthly A&E statistics; weekly elective waits on [My Planned Care](https://www.myplannedcare.nhs.uk/?p=137) | Weekly or monthly |
+| Scotland | A weekly emergency department update from Public Health Scotland | Weekly |
+| Imperial College Healthcare | No live waits or disruption page found | n/a |
+| Alberta, New South Wales, Queensland | Live emergency waits; [Alberta](https://www.albertahealthservices.ca/waittimes/waittimes.aspx) says its calculation "is done every 2 minutes" | Live |
+
+Where could a local look? Sixteen places in the vault, whether each is live, and whether it was found to carry anything about this incident.
+
+Two things follow. First, publishing live operational information for hospitals is clearly possible: Northern Ireland does it for every emergency department, tonight. Second, even the best of these pages answers a narrower question than the one I had. A live wait is a number; it does not say "the systems are down, expect delays, here is the next update". The status pages that software companies publish do say that, and they have become an ordinary thing to see.
+
+There is a legal duty in this area, and it is narrower than it sounds. The Civil Contingencies Act gives the bodies it lists a duty to "warn the public, and to provide information and advice to the public if an emergency is likely to occur or has occurred", but only for emergencies serious enough to obstruct their work, and the regulations under it ask responders to avoid "alarming the public unnecessarily". A same-day IT problem that slows a service down is very likely below that bar, and whether the duty applies to this particular trust is something I have not settled. The NHS has published incident updates for patients before, during the 2024 cyber attack in south-east London. That was a declared, weeks-long incident. Nothing similar is expected for an afternoon like this one, which is exactly the gap.
+
+## Why the gap is wider now
+
+For a while, local information like this had somewhere to go. A local paper might run it, a local reporter might post it, and someone in the waiting room might tweet "avoid the eye hospital today, systems down", which the next person would find by searching. Much of that has thinned out.
+
+- **Local news.** The Public Interest News Foundation's latest map, from December 2025, counts 4.4 million people living in local news deserts, and London has the lowest coverage, about one outlet per 100,000 residents. Press Gazette counted at least 293 local newspapers closed since 2005. London lost its last daily print paper in September 2024.
+- **The social feeds.** The Reuters Institute's 2026 Digital News Report puts weekly use of X for news in the UK at 10 per cent, down 2 points, with Facebook at 21 per cent. Local Facebook groups now carry much of what is local, and they carry it unevenly: a Social Market Foundation study this June found misinformation in about one in 26 news-related posts in local Facebook groups, and Full Fact found genuine local appeals being dismissed as hoaxes. A real "the hospital's IT is down" post can be lost, or disbelieved.
+- **The outage trackers.** Services that track outages track websites. One of them showed zero user reports for the NHS today, which is correct about the websites and says nothing about a ward running on paper.
+
+None of these is a failure by one organisation. Together they leave a person with no good way to find out, and a vacuum that rumour fills more easily than evidence.
+
+## Not naming and shaming
+
+I have to name the trust, because that is where the evidence is, and I want to be clear about what this is not. It is not a complaint about the staff, who were working through an IT failure while a waiting room filled up. It is not a claim that the trust hid anything; there is no evidence of that. And it is not a claim that the NHS was down nationally; that has not been confirmed.
+
+It is a question that applies to any trust, any council, any transport operator: when a local service is running badly, where does a local person find out, in plain words, in time to plan? The vault is built to keep asking it, with evidence, and to change its answer when the evidence changes.
+
+## The vault, and what happens next
+
+[The Local evidence log](../demos/vaults/local-evidence-log/index.md) is a vault for live local stories, and this is its first incident. It keeps:
+
+- **Observations, by level**: heard second-hand, told on the spot by staff, observed first-hand, documented, confirmed by the organisation, independently corroborated. Each level says what it can and cannot establish.
+- **Claims and their status**: what is supported first-hand, what is verified, what is plausible, what is unresolved, and what would resolve it.
+- **The sources**: every page the research used or tried, and how it was accessed: fetched, indexed only, blocked, or behind a login. Blocked is a limit of our access, never evidence about the hospital.
+- **The leads that do not fit**, with their real dates.
+- **The enquiry**: a short, specific request to the trust's press office, asking which service failed, the incident reference, the sites affected, what "national" meant, and where a patient could have found out. My agent will send it; when it goes, and when an answer comes, both are logged.
+- **Regular checks**: a tool that fetches the public sources again and records what changed, so that if a notice appears tomorrow, or never, the log will show it.
+
+I will also ask a couple of clinicians I know whether they can find out what happened, without naming anyone. And I want to do more of these. Every local story like this one is a small test of the same idea as the [bridge](../articles/the-bridge-followed-to-the-end.md) and of [Reader Skills on a story vault](../articles/story-vault-meets-reader-skills.md): that local information is worth keeping as evidence, with its sources and its gaps, in a form that a person or an agent can query.
+
+## What would close the gap
+
+- **A plain status line for local services.** Which sites, which services, attend or not, next update at what time. Northern Ireland's live emergency waits show the publishing part is possible.
+- **A route from the inside to the outside.** The people at the desk knew. A one-line public notice, sent by whoever already sends the internal bulletin, would have reached the people about to leave home.
+- **Evidence, not rumour.** A log where a local report is kept with its level, its time and its source, and checked, rather than a post that is either believed or dismissed.
+- **Something that keeps asking.** An agent that re-checks the sources, sends the enquiry and logs the answer, so that the question does not die with the afternoon.
+
+*Drafted from a voice memo and an evening's research by Dinis Cruz, who is the author of the argument and the person with editorial responsibility, by agent@riskmandate.ai (Claude Opus 5.5, claude-opus-5-5) in the sgit.ai site session, on 8 October 2026. No hospital, supplier or NHS office has been contacted yet; the enquiry is drafted in the vault and will be sent by the author's agent. The patient and their condition are deliberately not described. The figures on local news are from the Public Interest News Foundation (December 2025), Press Gazette (August 2024), the Reuters Institute Digital News Report (2025 and 2026, the 2026 platform figures via a journalism.co.uk summary), the Social Market Foundation (June 2026) and Full Fact (August 2023); the legal text is from legislation.gov.uk; every source, with how it was accessed, is in the vault.*
+
+## Threads
+
+News & evidenceVaults & method[This article as a graph →](graphs.md#the-waiting-room-knew-first)
+
+### Builds on
+
+- [The bridge, followed to the end: what one local story is worth when it is kept as a graph](the-bridge-followed-to-the-end.md) A bridge closure simulated on a story vault: newsworthy on 5 days, needed on 57, used by three readers, four buyers and an agent, and paid back to its sources.
+- [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](story-vault-meets-reader-skills.md) Markus Franz's Reader Skills on top, the story vault underneath: each skill is a graph query, and local stories can pay back down their chain of sources.
+
+[All articles](index.md) · [All graphs](graphs.md)
+
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
+
+[← All articles](index.md)
 
 
 
@@ -21057,6 +21333,7 @@ News & evidenceGraphs & knowledge[This article as a graph →](graphs.md#the-bri
 
 ### Continued by
 
+- [The waiting room knew first: a live local story, and the gap where local information used to be](the-waiting-room-knew-first.md) Staff at two London hospitals said the IT was down; nothing a local could check showed it. A live local story about where local information comes from now.
 - [Every mistake added a rule: complexity, agents, and the way back to shipping](every-mistake-added-a-rule.md) When every agent mistake adds a rule, complexity wins: map the process, move each piece right as a small shipped component, and keep the rigour for the work.
 - [Liquid content needs water: liquefy the journalist's notebook, not the finished product](liquid-content-needs-water.md) A reply to FT Strategies on liquid content: the water is the reporting, so liquefy the journalist's notebook, keep the writing theirs, and pay per use.
 - [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](story-vault-meets-reader-skills.md) Markus Franz's Reader Skills on top, the story vault underneath: each skill is a graph query, and local stories can pay back down their chain of sources.
@@ -21184,6 +21461,7 @@ News & evidenceGraphs & knowledge[This article as a graph →](graphs.md#story-v
 
 ### Continued by
 
+- [The waiting room knew first: a live local story, and the gap where local information used to be](the-waiting-room-knew-first.md) Staff at two London hospitals said the IT was down; nothing a local could check showed it. A live local story about where local information comes from now.
 - [The bridge, followed to the end: what one local story is worth when it is kept as a graph](the-bridge-followed-to-the-end.md) A bridge closure simulated on a story vault: newsworthy on 5 days, needed on 57, used by three readers, four buyers and an agent, and paid back to its sources.
 
 [All articles](index.md) · [All graphs](graphs.md)
@@ -28221,13 +28499,43 @@ Every article here has a semantic graph beside it: the ideas it rests on, the cl
 
 The graphs are data first and pictures second. Take them as JSON: [all articles in one file](graphs.json), with the topics, the teasers and the links between articles resolved, or one file per article at `articles/graphs/<slug>.json` (for example [this one](graphs/footprint-and-blast-radius.json)). The pages on this site are rendered from the same files at build time; nothing here is hand-written HTML.
 
-48 of 48 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
+49 of 49 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
 
 ## How the articles connect
 
 *[diagram]*
 
-48 articles, 195 links between them (321 mentions in all). 39 articles cite an earlier one; 6 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (17 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+49 articles, 197 links between them (324 mentions in all). 40 articles cite an earlier one; 6 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (17 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+
+## [The waiting room knew first: a live local story, and the gap where local information used to be](the-waiting-room-knew-first.md)
+
+2026-10-08 · News & evidenceVaults & method
+
+On 8 October 2026 staff at two sites of one London trust told patients the IT systems were down, a five-hour wait was announced and a doctor called it national, yet nothing a local person could check before leaving home showed any of it; the story is not the outage or the hospital but the gap in local information: some UK nations publish live emergency waits, England has no national equivalent, local news has thinned and social feeds have fragmented, so the evidence is kept in a vault by level, with sources re-checked, an enquiry to the trust and the answer logged, as the first live counterpart to the fictional bridge story.
+
+*[diagram]*
+**concept**claim**method**artefact**example**question
+
+**12 nodes, 12 edges**
+
+- **Two sites, one message: the IT is down** (example) Staff at Charing Cross and Western Eye; about five hours announced; a doctor said national.
+- **Evidence separated by level** (method) Heard second-hand, told by staff, observed, documented, confirmed by the organisation, corroborated.
+- **Two sites, one trust** (claim) Both run by Imperial College Healthcare: not two independent signs of a national outage.
+- **Not found is not none** (claim) Status channels need a login or an NHS network; blocked pages are limits of access.
+- **The waiting room knew first** (claim) The information existed and reached people only once they were already there.
+- **Newsworthy to the person deciding** (concept) Go now, later, tomorrow or elsewhere: the decision a status line would have changed.
+- **Live waits exist in parts of the UK** (example) Northern Ireland and Wales publish live emergency waits; England has no national page.
+- **A duty to warn, for emergencies** (concept) The Civil Contingencies Act duty applies to serious emergencies, not an afternoon slowdown.
+- **Where local information went** (claim) News deserts, fewer people on X for news, local groups with rumour and hoaxes.
+- **Not naming and shaming** (claim) The question is the channel, for any trust, council or operator, not the staff.
+- **The Local evidence log** (artefact) Observations, claims, sources, leads, an enquiry, scheduled checks, by incident.
+- **What would close the gap?** (question) A plain status line, a route from inside to outside, evidence not rumour, an agent that asks.
+
+> What strikes me is that the only way to find out was to be there. The gap in one line.
+
+> It is not small if you are deciding whether to set off now. Why a small story is newsworthy to the person affected.
+
+builds on [The bridge, followed to the end: what one local story is worth when it is kept as a graph](#the-bridge-followed-to-the-end), [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](#story-vault-meets-reader-skills).
 
 ## [Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes](encrypted-memory-for-isolated-agents.md)
 
@@ -28476,7 +28784,7 @@ Played out as a simulation on a story vault, one local bridge closure shows the 
 
 > As agents start planning school runs, deliveries and site visits for people, the cheapest thing they can buy is an accurate, maintained, accountable source. Why agents should pay for local journalism.
 
-builds on [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](#story-vault-meets-reader-skills); continued by [Every mistake added a rule: complexity, agents, and the way back to shipping](#every-mistake-added-a-rule), [Liquid content needs water: liquefy the journalist's notebook, not the finished product](#liquid-content-needs-water), [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](#story-vault-meets-reader-skills).
+builds on [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](#story-vault-meets-reader-skills); continued by [The waiting room knew first: a live local story, and the gap where local information used to be](#the-waiting-room-knew-first), [Every mistake added a rule: complexity, agents, and the way back to shipping](#every-mistake-added-a-rule), [Liquid content needs water: liquefy the journalist's notebook, not the finished product](#liquid-content-needs-water), [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](#story-vault-meets-reader-skills).
 
 ## [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](story-vault-meets-reader-skills.md)
 
@@ -28507,7 +28815,7 @@ Markus Franz's Liquid Utility proposes Reader Skills that help people understand
 
 > Use it, and pay the people who found it out. The clause the monetisation adds to Markus Franz's closing line.
 
-builds on [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [The bridge, followed to the end: what one local story is worth when it is kept as a graph](#the-bridge-followed-to-the-end); continued by [The bridge, followed to the end: what one local story is worth when it is kept as a graph](#the-bridge-followed-to-the-end).
+builds on [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [The bridge, followed to the end: what one local story is worth when it is kept as a graph](#the-bridge-followed-to-the-end); continued by [The waiting room knew first: a live local story, and the gap where local information used to be](#the-waiting-room-knew-first), [The bridge, followed to the end: what one local story is worth when it is kept as a graph](#the-bridge-followed-to-the-end).
 
 ## [Zoom into an agent's behaviour policy and you find the business logic](the-behaviour-policy-is-the-business-logic.md)
 
@@ -29836,8 +30144,8 @@ Edition of **2026-10-07**. Second edition, the same day. The lead moves to the o
 
 Computed at every build from the files: placements that point at nothing, articles published since the edition, open pitches, articles without a graph or a card. The same list is what `python3 admin/build/desk.py` prints for the Editor.
 
-- To do`front.json` 6 article(s) published since the 2026-10-07 edition: encrypted-memory-for-isolated-agents, knowing-when-to-stop, agency-is-not-a-yes, hope-or-enforcement, who-are-you-protecting-against, every-mistake-added-a-rule
-- To do`newsletter/` a newsletter issue is due: 6 articles since issue 1 (2026-10-07)
+- To do`front.json` 7 article(s) published since the 2026-10-07 edition: the-waiting-room-knew-first, encrypted-memory-for-isolated-agents, knowing-when-to-stop, agency-is-not-a-yes, hope-or-enforcement, who-are-you-protecting-against
+- To do`newsletter/` a newsletter issue is due: 7 articles since issue 1 (2026-10-07)
 - To do`newsroom/pitches/2026-10-07__the-behaviour-policy-is-the-business-logic.md` open pitch from agent@riskmandate.ai: highlight for the-behaviour-policy-is-the-business-logic
 - To do`newsroom/pitches/2026-10-07__story-vault-meets-reader-skills.md` open pitch from agent@riskmandate.ai: highlight for story-vault-meets-reader-skills
 - Note`newsroom/newsletter/001-2026-10-07.md` issue 1 has no linkedin: URL yet; add it once it is posted
@@ -30088,7 +30396,7 @@ One entry per run of a desk role, newest first, each its own file and never edit
 >
 > Page: https://sgit.ai/articles/collections/index.html
 
-Edition of 2026-10-0748 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.7.8
+Edition of 2026-10-0749 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.7.9
 
 # Collections
 
@@ -30107,7 +30415,7 @@ A collection is one file in `admin/content/newsroom/collections/`. [How the desk
 >
 > Page: https://sgit.ai/articles/desk/index.html
 
-Edition of 2026-10-0748 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.7.8
+Edition of 2026-10-0749 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.7.9
 
 # From the desk
 
@@ -30631,7 +30939,7 @@ Your browser encrypts it to the public key of the agent that runs the list, then
 >
 > Page: https://sgit.ai/articles/newsletter/index.html
 
-Edition of 2026-10-0748 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.7.8
+Edition of 2026-10-0749 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.7.9
 
 # The newsletter
 
@@ -30649,7 +30957,7 @@ What it takes to let agents do real work for a business, from four sides: a team
 
 **Get the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../../subscribe/index.md)
 
-Next issue: due now (6 articles since issue 1 (2026-10-07)). Issues are written by the [Journalist](../../newsroom/roles/journalist.md) from the articles' own data; every quote is checked against its article when the site is built.
+Next issue: due now (7 articles since issue 1 (2026-10-07)). Issues are written by the [Journalist](../../newsroom/roles/journalist.md) from the articles' own data; every quote is checked against its article when the site is built.
 
 
 

@@ -1,8 +1,8 @@
 # Published vaults, sgit.ai
 
-> Forty-seven vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it.
+> Forty-eight vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it.
 
-*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.7.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.7.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,10 +14,12 @@ Open any of these in your browser right now. Every read key here was published o
 
 **Nine are semantic graphs**, each in its own ontology, from a regulation down to a compute instance. · [The ladder, walked →](../fractal-graphs/index.md) · [What reading one costs →](../fractal-graphs/performance.md)
 
-**47 published vaults**: 13 reference, 12 briefing, 8 analysis, 5 application, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
+**48 published vaults**: 14 reference, 12 briefing, 8 analysis, 5 application, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
 
 | # | Vault | What it is | Category | Files | Size | Published |
 |---|---|---|---|---|---|---|
+
+| 48 | [Local evidence log](local-evidence-log/index.md)`92yb24y9` | A log for live local stories, kept as evidence: when a local public service is running badly and nothing a local person could check says so. Evidence by level, claims and what would resolve them, every source and how it was reached, leads that do not fit, enquiries, and scheduled re-checks; first incident, reported IT disruption at two London hospitals on 8 October 2026 | Reference | 54 | 927 KB | 2026-10-08 |
 
 | 47 | [The agency scale](agency-scale/index.md)`ddfw24hx` | A maturity model for anyone asked to decide, a person or an agent: seven dimensions (options, context, depth, time, incentives, escalation, authority), seven levels from rubber stamp to delegator where the weakest dimension caps the decision, fourteen cases scored by the same rule, an assessment for your own decision points, the review as a QA loop, and the law that asks for it | Reference | 61 | 448 KB | 2026-10-08 |
 

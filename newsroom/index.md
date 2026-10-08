@@ -2,7 +2,7 @@
 
 > How the articles on sgit.ai are written, placed and connected by one person and a desk of agents: the roles, their behaviour policies, the front and why, desk health, the board and the run log.
 
-*Source: <https://sgit.ai/newsroom/index.html> · site v0.7.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/newsroom/index.html> · site v0.7.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -46,8 +46,8 @@ Edition of **2026-10-07**. Second edition, the same day. The lead moves to the o
 
 Computed at every build from the files: placements that point at nothing, articles published since the edition, open pitches, articles without a graph or a card. The same list is what `python3 admin/build/desk.py` prints for the Editor.
 
-- To do`front.json` 6 article(s) published since the 2026-10-07 edition: encrypted-memory-for-isolated-agents, knowing-when-to-stop, agency-is-not-a-yes, hope-or-enforcement, who-are-you-protecting-against, every-mistake-added-a-rule
-- To do`newsletter/` a newsletter issue is due: 6 articles since issue 1 (2026-10-07)
+- To do`front.json` 7 article(s) published since the 2026-10-07 edition: the-waiting-room-knew-first, encrypted-memory-for-isolated-agents, knowing-when-to-stop, agency-is-not-a-yes, hope-or-enforcement, who-are-you-protecting-against
+- To do`newsletter/` a newsletter issue is due: 7 articles since issue 1 (2026-10-07)
 - To do`newsroom/pitches/2026-10-07__the-behaviour-policy-is-the-business-logic.md` open pitch from agent@riskmandate.ai: highlight for the-behaviour-policy-is-the-business-logic
 - To do`newsroom/pitches/2026-10-07__story-vault-meets-reader-skills.md` open pitch from agent@riskmandate.ai: highlight for story-vault-meets-reader-skills
 - Note`newsroom/newsletter/001-2026-10-07.md` issue 1 has no linkedin: URL yet; add it once it is posted

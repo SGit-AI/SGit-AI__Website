@@ -1,0 +1,97 @@
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / Local evidence log</p>
+  <h1>Local evidence log: live local stories, kept as evidence</h1>
+  <p class="lead">A vault for the moments when a local public service is running badly, the people affected find out on the spot, and nothing they could have checked beforehand says so. It keeps the evidence by level, from heard second-hand to independently corroborated; the claims and what would resolve each; every source and how it was accessed; the leads that do not fit, with their real dates; the enquiries, sent or not; and regular re-checks of the public sources. Its first incident is reported IT disruption at two London hospitals on the afternoon of 8 October 2026. It was published with the article <a href="../../../articles/the-waiting-room-knew-first.html">The waiting room knew first</a>.</p>
+
+  <figure class="shot" data-shot="app-overview.webp" data-dir="images/" data-alt="The app's overview: where would a local person find out? The one question, the current incident with its status line, what we know and what we do not."><figcaption>The overview, as the app opens.</figcaption></figure>
+
+  <div class="note"><b>Open it yourself. The key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_public_read_4900050df2cd015ca92b35898b328c4ebd35818d4dc3170e6bc2f1a72bdbadd4:92yb24y9</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_public_read_4900050df2cd015ca92b35898b328c4ebd35818d4dc3170e6bc2f1a72bdbadd4%3A92yb24y9" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone sgit_public_read_4900050df2cd015ca92b35898b328c4ebd35818d4dc3170e6bc2f1a72bdbadd4:92yb24y9</code><br>
+  <span class="small dim">Published deliberately under the <code>sgit_public_read_</code> prefix, and <b>derived</b> one-way from a vault key kept in the gitignored tier and never published. Classified with <code>check_credential.py</code> before it touched this page, read back with the published key alone by <code>catalogue_derive.py</code>, and verified with an all-zeros read key as the negative control.</span></div>
+
+  <h2 id="live">See it live, here</h2>
+  <p class="small dim" style="margin:.2rem 0 .9rem">The vault opens as an app: the incident, the timeline, the claims, the sources, the leads that do not fit, where a local could look, the enquiries, the re-checks, the method, and every file with a download button. You can also <a href="https://dev.vault.sgraph.ai/#sgit_public_read_4900050df2cd015ca92b35898b328c4ebd35818d4dc3170e6bc2f1a72bdbadd4%3A92yb24y9" rel="noopener" target="_blank"><b>open it in the official UI</b></a>.</p>
+  <div class="sgv-uiembed" data-vault="92yb24y9" data-readkey="4900050df2cd015ca92b35898b328c4ebd35818d4dc3170e6bc2f1a72bdbadd4" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js'].forEach(function (f) {
+      fetch('../../../assets/' + f).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function (t) { (0, eval)(t); }).catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>The one idea</h2>
+  <p>When a local service is running badly, the people inside know first, and the people about to set off cannot find out. This log does not try to name and shame anyone. It asks one question, for any hospital, council or operator: where is the source of information for a local person? It answers with evidence, separated by what it can establish, and keeps asking: the sources are re-checked, the enquiry is logged when it is sent and when it is answered, and the status changes only when the evidence does.</p>
+
+  <h2>What is in it</h2>
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">claims</span>
+        <h3>Fourteen claims, by what the evidence supports</h3>
+        <p>One verified: both hospitals are run by Imperial College Healthcare NHS Trust. Two supported first-hand: staff at both sites said the IT systems were down, and a wait of about five hours was announced. The rest are plausible, unresolved, unknown, or not established, among them a national outage, a named failed system, a cyber attack and a recovery. Each claim carries its evidence and what would resolve it.</p>
+      </div>
+      <figure class="shot" data-shot="app-claims.webp" data-dir="images/" data-alt="The claims board: counts per status, then columns of claim cards with their evidence, levels and what would resolve them."><figcaption>A status says what the evidence supports, not whether a claim is true.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">sources</span>
+        <h3>Every source, and how it was reached</h3>
+        <p>Twenty six sources from the research, each marked fetched, indexed only, blocked, behind a login, or attempted. The regulator's records, the trust's own announcement of shared IT across four north-west London trusts, the NHS service desk portals that need a login, and the neighbouring trusts' homepages. Blocked is a limit of our access, never evidence about the hospital.</p>
+      </div>
+      <figure class="shot" data-shot="app-sources.webp" data-dir="images/" data-alt="The source register, filterable by access outcome, with each source's publisher, link and what it was used for."><figcaption>The register, filterable by access outcome.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">where could a local look?</span>
+        <h3>Sixteen places, and whether any is live</h3>
+        <p>Northern Ireland publishes live median waits for every emergency department; Wales has a live service; one English trust's own page is shown as an example; England nationally publishes monthly. The trust's own website, its social account, community groups, outage trackers that track websites rather than wards, comparisons from Alberta, New South Wales and Queensland, and the legal duty to warn and inform, with its limits.</p>
+      </div>
+      <figure class="shot" data-shot="app-landscape.webp" data-dir="images/" data-alt="Where could a local look: a table of sixteen places with what each shows, whether it is live and whether it covered this incident."><figcaption>None of the sixteen was found to carry anything about this incident.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">enquiries</span>
+        <h3>The question to the trust, drafted, not yet sent</h3>
+        <p>A short request to the trust's press office: which service failed, the incident reference, start time and recovery, which sites, what "national" meant, whether the redirection was related, and where a patient could have found a notice. The author's agent will send it; the date sent, and the answer, will be logged here. A second entry records the plan to ask clinicians the author knows, who are not named.</p>
+      </div>
+      <figure class="shot" data-shot="app-enquiries.webp" data-dir="images/" data-alt="The enquiries view: the drafted press office enquiry with its status, drafted not sent, and the planned clinician questions."><figcaption>Status: drafted, not sent.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">checks and method</span>
+        <h3>Re-checked on a schedule, by a written method</h3>
+        <p><code>tools/check_sources.py</code> fetches each public source anonymously and records the status, a hash of the page and keyword counts; the first run, at 22:37 BST, is in the vault, and later runs will show what changed. The method defines six evidence levels and the logging rules: write down the time, who said it and in what words; separate the observation from the explanation; never log patient details; date-check every lead; and treat "not found" as a result.</p>
+      </div>
+      <figure class="shot" data-shot="app-method.webp" data-dir="images/" data-alt="The method view: the evidence levels from heard second-hand to independently corroborated, with what each can and cannot establish, and the logging rules."><figcaption>The evidence levels and the logging rules.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>How it is built</h2>
+  <p>The records are hand-written JSON, one folder per incident, against shared lists of levels, statuses and access outcomes in <code>records/method.json</code>. <code>tools/build.py</code> validates every record, every reference, and the privacy and wording rules, and writes the index the app reads; <code>tools/bundle.py</code> packs the app into one <code>index.html</code>; <code>tools/gate.py</code> runs sixteen checks, including that the index and the bundle rebuild byte for byte, that no file holds a family word, an age, a condition, a credential or an em-dash, and that every view renders at desktop and phone widths with no errors and no network requests. The app uses the design system of the <a href="../agency-scale/index.html">agency scale</a> and <a href="../hope-or-enforcement/index.html">hope or enforcement</a> vaults. A new incident is a new folder, from the template in the method.</p>
+
+  <h2>The audit, honestly</h2>
+  <p><b>What was scanned.</b> Every file before the first commit, and every file again after cloning with the published read key alone: vault-key shapes, every <code>sgit_</code> credential prefix, private-key headers, cloud key shapes, the SG/Send access token and the vault's own key. The clone matched the source, file by file.</p>
+  <p><b>What was found.</b> Nothing. The negative control, an all-zeros read key against the same vault id, returned nothing.</p>
+  <p><b>Privacy.</b> The patient, their relationship to anyone and their condition are not in the vault, and a gate check refuses the words that would describe them. The observer is "the companion". Staff and the doctor are not named or described. The press office address in the enquiry is the trust's published contact.</p>
+  <p><b>What it does not claim.</b> It does not claim a national outage, a cause, a cyber attack, or a recovery. It does not claim that the trust hid anything; no evidence of that was found. A fetch result is a fact about what our client could retrieve, not about the hospital's systems.</p>
+  <p><b>Write-key status:</b> escrowed, in the gitignored credential tier, before this page was written.</p>
+
+  <h2>Derived facts</h2>
+  <p class="small dim">From <code>admin/build/catalogue_derive.py 92yb24y9 &lt;read key hex&gt;</code>, read-only, no token, no clone.</p>
+  <ul>
+    <li><b>Files:</b> 54 · <b>plaintext size:</b> 927 KB</li>
+    <li><b>Commits:</b> 3 · <b>last updated:</b> 2026-10-08 · <b>HEAD:</b> <code>obj-cas-imm-5edc53908c0f</code></li>
+    <li><b>Top level:</b> <code>PUBLIC.md</code>, <code>README.md</code>, <code>REALITY.md</code>, <code>app.json</code>, <code>app/</code>, <code>checks/</code>, <code>data/</code>, <code>index.html</code>, <code>records/</code>, <code>tools/</code>, <code>versions/</code></li>
+    <li><b>File types:</b> .json ×17, .js ×14, .css ×13, .md ×4, .py ×4, .html ×2</li>
+    <li><b>Vault app:</b> yes, entry <code>index.html</code> · <b>browser-renderable:</b> yes</li>
+  </ul>
+
+  <h2>Notes</h2>
+  <p><b>Where this came from.</b> An afternoon at two London hospitals, a research report written that evening, a voice memo by Dinis Cruz, and the site's fictional <a href="../bridge-simulation/index.html">Mill Street Bridge</a>, of which this is the live counterpart.</p>
+  <p><b>Who wrote this.</b> <a href="mailto:agent@riskmandate.ai">agent@riskmandate.ai</a> (Claude Opus 5.5, <code>claude-opus-5-5</code>), in the sgit.ai site session, for RiskMandate.ai and sgit.ai. AI-generated text, disclosed as Article 50 of the EU AI Act asks; the person with editorial responsibility is Dinis Cruz. Replies to <a href="mailto:agent@riskmandate.ai">agent@riskmandate.ai</a>.</p>
+
+  <p class="small dim" style="margin-top:2rem"><a href="../index.html">&larr; All published vaults</a></p>
+</main>

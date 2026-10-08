@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,13 +14,43 @@ Every article here has a semantic graph beside it: the ideas it rests on, the cl
 
 The graphs are data first and pictures second. Take them as JSON: [all articles in one file](graphs.json), with the topics, the teasers and the links between articles resolved, or one file per article at `articles/graphs/<slug>.json` (for example [this one](graphs/footprint-and-blast-radius.json)). The pages on this site are rendered from the same files at build time; nothing here is hand-written HTML.
 
-48 of 48 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
+49 of 49 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
 
 ## How the articles connect
 
 *[diagram]*
 
-48 articles, 195 links between them (321 mentions in all). 39 articles cite an earlier one; 6 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (17 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+49 articles, 197 links between them (324 mentions in all). 40 articles cite an earlier one; 6 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (17 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+
+## [The waiting room knew first: a live local story, and the gap where local information used to be](the-waiting-room-knew-first.md)
+
+2026-10-08 · News & evidenceVaults & method
+
+On 8 October 2026 staff at two sites of one London trust told patients the IT systems were down, a five-hour wait was announced and a doctor called it national, yet nothing a local person could check before leaving home showed any of it; the story is not the outage or the hospital but the gap in local information: some UK nations publish live emergency waits, England has no national equivalent, local news has thinned and social feeds have fragmented, so the evidence is kept in a vault by level, with sources re-checked, an enquiry to the trust and the answer logged, as the first live counterpart to the fictional bridge story.
+
+*[diagram]*
+**concept**claim**method**artefact**example**question
+
+**12 nodes, 12 edges**
+
+- **Two sites, one message: the IT is down** (example) Staff at Charing Cross and Western Eye; about five hours announced; a doctor said national.
+- **Evidence separated by level** (method) Heard second-hand, told by staff, observed, documented, confirmed by the organisation, corroborated.
+- **Two sites, one trust** (claim) Both run by Imperial College Healthcare: not two independent signs of a national outage.
+- **Not found is not none** (claim) Status channels need a login or an NHS network; blocked pages are limits of access.
+- **The waiting room knew first** (claim) The information existed and reached people only once they were already there.
+- **Newsworthy to the person deciding** (concept) Go now, later, tomorrow or elsewhere: the decision a status line would have changed.
+- **Live waits exist in parts of the UK** (example) Northern Ireland and Wales publish live emergency waits; England has no national page.
+- **A duty to warn, for emergencies** (concept) The Civil Contingencies Act duty applies to serious emergencies, not an afternoon slowdown.
+- **Where local information went** (claim) News deserts, fewer people on X for news, local groups with rumour and hoaxes.
+- **Not naming and shaming** (claim) The question is the channel, for any trust, council or operator, not the staff.
+- **The Local evidence log** (artefact) Observations, claims, sources, leads, an enquiry, scheduled checks, by incident.
+- **What would close the gap?** (question) A plain status line, a route from inside to outside, evidence not rumour, an agent that asks.
+
+> What strikes me is that the only way to find out was to be there. The gap in one line.
+
+> It is not small if you are deciding whether to set off now. Why a small story is newsworthy to the person affected.
+
+builds on [The bridge, followed to the end: what one local story is worth when it is kept as a graph](#the-bridge-followed-to-the-end), [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](#story-vault-meets-reader-skills).
 
 ## [Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes](encrypted-memory-for-isolated-agents.md)
 
@@ -269,7 +299,7 @@ Played out as a simulation on a story vault, one local bridge closure shows the 
 
 > As agents start planning school runs, deliveries and site visits for people, the cheapest thing they can buy is an accurate, maintained, accountable source. Why agents should pay for local journalism.
 
-builds on [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](#story-vault-meets-reader-skills); continued by [Every mistake added a rule: complexity, agents, and the way back to shipping](#every-mistake-added-a-rule), [Liquid content needs water: liquefy the journalist's notebook, not the finished product](#liquid-content-needs-water), [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](#story-vault-meets-reader-skills).
+builds on [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](#story-vault-meets-reader-skills); continued by [The waiting room knew first: a live local story, and the gap where local information used to be](#the-waiting-room-knew-first), [Every mistake added a rule: complexity, agents, and the way back to shipping](#every-mistake-added-a-rule), [Liquid content needs water: liquefy the journalist's notebook, not the finished product](#liquid-content-needs-water), [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](#story-vault-meets-reader-skills).
 
 ## [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](story-vault-meets-reader-skills.md)
 
@@ -300,7 +330,7 @@ Markus Franz's Liquid Utility proposes Reader Skills that help people understand
 
 > Use it, and pay the people who found it out. The clause the monetisation adds to Markus Franz's closing line.
 
-builds on [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [The bridge, followed to the end: what one local story is worth when it is kept as a graph](#the-bridge-followed-to-the-end); continued by [The bridge, followed to the end: what one local story is worth when it is kept as a graph](#the-bridge-followed-to-the-end).
+builds on [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [The bridge, followed to the end: what one local story is worth when it is kept as a graph](#the-bridge-followed-to-the-end); continued by [The waiting room knew first: a live local story, and the gap where local information used to be](#the-waiting-room-knew-first), [The bridge, followed to the end: what one local story is worth when it is kept as a graph](#the-bridge-followed-to-the-end).
 
 ## [Zoom into an agent's behaviour policy and you find the business logic](the-behaviour-policy-is-the-business-logic.md)
 
