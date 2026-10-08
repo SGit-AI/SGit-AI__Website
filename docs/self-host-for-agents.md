@@ -2,7 +2,7 @@
 
 > Encrypted memory for agents in VMs, containers, a Mac mini or ephemeral jobs: run the SG/Send container with an access token and a storage folder, create the vault, the agent's clone-work-push entry point, Docker Compose, Kubernetes manifests, the cloud, a second server, what the server holds, and the errors you may meet (--endpoint, mcp<2, port 8080).
 
-*Source: <https://sgit.ai/docs/self-host-for-agents.html> · site v0.7.7 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/self-host-for-agents.html> · site v0.7.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -215,7 +215,7 @@ Not run on a cluster for this guide; it parses as YAML and uses only the image's
 
 ## 6. The cloud
 
-The deployment docs have CloudFormation templates for [Lambda, Fargate and EC2](../deploy/index.md), marked as written and lint-clean with live validation in progress. As written they put a public endpoint in front: a Function URL, a load balancer, or an instance with its own certificate. For agents, the shape the article draws is the same container in a private subnet, `s3` storage, agents reaching it on a private address, a VPN to any machine outside, and CloudFront with a VPC origin if you want the vault UI from a phone. Treat that as a design to adapt the templates to, not a template.
+The deployment docs have CloudFormation templates for [Lambda, Fargate and EC2](../deploy/index.md), marked as written and lint-clean with live validation in progress. As written they put a public endpoint in front: a Function URL, a load balancer, or an instance with its own certificate. For agents, the shape the article draws keeps everything the agents talk to inside the VPC: an internal load balancer with a private address, and behind it either the container (EC2, Fargate or Kubernetes) or the same app on Lambda attached to the VPC, both with `s3` storage through a VPC endpoint; a VPN to any machine outside; and CloudFront with a VPC origin if you want the vault UI from a phone. Treat that as a design to adapt the templates to, not a template.
 
 ## 7. A second server
 

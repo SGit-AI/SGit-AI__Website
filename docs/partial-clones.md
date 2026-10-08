@@ -2,7 +2,7 @@
 
 > sgit clone --path holds one folder and carries the rest by id; --depth holds the newest commits only. Measured on a 600-commit vault: one folder in 14 s against 80 s for the whole vault. The rules, widening with sgit fetch, the commands that need a full clone, and the two edges.
 
-*Source: <https://sgit.ai/docs/partial-clones.html> · site v0.7.7 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/partial-clones.html> · site v0.7.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-08",
-  "site_version": "v0.7.7",
+  "site_version": "v0.7.8",
   "schema": "https://sgit.ai/articles/graphs.html",
   "topics": [
     {
@@ -157,7 +157,7 @@
             "id": "cloud",
             "label": "The cloud, with no public route",
             "kind": "method",
-            "summary": "EC2 or Fargate in a private subnet, S3, VPN to the Mac mini, CloudFront for phones."
+            "summary": "Container or Lambda, both inside the VPC behind an internal load balancer; S3, a VPN, CloudFront."
           },
           {
             "id": "replica",

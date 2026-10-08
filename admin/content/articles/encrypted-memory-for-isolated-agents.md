@@ -237,36 +237,41 @@ flowchart LR
 
 ## Pattern four: the cloud, with no public route to the server
 
-!shot dp-cloud.webp | images/ | The server runs on EC2 or Fargate in a private subnet with its objects in S3. Agents in the VPC reach it on a private address, the Mac mini joins over a VPN, and CloudFront can give the owner a stable name and TLS without a public address on the server.
+!shot dp-cloud.webp | images/ | Everything the agents talk to is inside the VPC: an internal load balancer on a private address, and behind it the vault server, either the container on EC2, Fargate or Kubernetes, or the same app on Lambda attached to the VPC, with S3 behind both. The Mac mini joins over a VPN, and CloudFront can give the owner a stable name and TLS without a public address on the server.
 
-When the agents run in the cloud, on EC2, as Fargate tasks or on GPU instances, the server can run next to them. The shape I would use: the container on EC2 or Fargate in a private subnet, storage in S3 so the server itself holds nothing it would miss, the agents reaching it on a private address with the access token, and the Mac mini joining over a site-to-site VPN, so the agents at home and in the cloud share one memory. If you want the vault UI from a phone, CloudFront in front gives the server a stable DNS name and TLS, and can reach an origin in a private subnet through a VPC origin, so the server still has no public address of its own.
+When the agents run in the cloud, on EC2, as Fargate tasks, as Kubernetes pods or on GPU instances, the server runs next to them, inside the same VPC, because that is where the agents have to reach it. The shape I would use: an internal load balancer with a private address only, the vault server behind it, storage in S3 through a VPC endpoint so the server itself holds nothing it would miss, the agents calling the load balancer with the access token, and the Mac mini joining over a site-to-site VPN, so the agents at home and in the cloud share one memory. If you want the vault UI from a phone, CloudFront in front gives the server a stable DNS name and TLS, and can reach the internal load balancer through a VPC origin, so the server still has no public address of its own.
 
-There is also a serverless variant: the same FastAPI app on Lambda with the web adapter, behind a Function URL or CloudFront, with `s3` storage because Lambda has no disk that lasts. It scales to zero, which suits memory that is written in bursts.
+Behind the load balancer you pick one of two servers, and both sit inside the VPC. The first is the container, on EC2, as a Fargate task or as a Kubernetes Deployment. The second is the same FastAPI app on Lambda with the web adapter, attached to the VPC and registered as the load balancer's target, with `s3` storage because Lambda has no disk that lasts. Lambda scales to zero, which suits memory that is written in bursts; the container suits agents that clone and push all day. To the agents they look the same: one private address, one access token, the same vault.
 
-Be honest with yourself about the status. The deployment docs mark the CloudFormation templates for Lambda, Fargate and EC2 as written and lint-clean, with live validation in progress, and as written they put a public endpoint in front: a Function URL, a load balancer, an instance with a certificate. The private variant above is how I would adapt them, not a template you can deploy today. The Docker image is the part that is ready.
+Be honest with yourself about the status. The deployment docs mark the CloudFormation templates for Lambda, Fargate and EC2 as written and lint-clean, with live validation in progress, and as written they put a public endpoint in front: a Function URL, a load balancer, an instance with a certificate. The private shape above, with either server inside the VPC, is how I would adapt them, not a template you can deploy today. The Docker image is the part that is ready.
 
 !source The cloud variant, Mermaid source | images/dp-cloud.webp
 ```
 flowchart LR
   subgraph aws["Cloud account"]
     CF["CloudFront<br/>stable DNS name and TLS"]
-    subgraph vpc["VPC: the server has no public route"]
+    subgraph vpc["VPC: no public route to the vault server"]
       direction TB
-      SV["sg-send-vault<br/>EC2 instance or Fargate task"]
-      AG["agents: EC2, Fargate tasks,<br/>GPU instances"]
+      AG["agents: EC2, Fargate tasks,<br/>GPU instances, Kubernetes pods"]
+      LB["internal load balancer<br/>private address only"]
+      subgraph opts["the vault server: pick one, both inside the VPC"]
+        direction TB
+        SV["sg-send-vault container<br/>EC2, Fargate or Kubernetes"]
+        LM["sg-send-vault on Lambda<br/>web adapter, attached to the VPC<br/>template in progress"]
+      end
     end
     S3[("S3 bucket<br/>ciphertext only")]
-    LM["or Lambda with the web adapter<br/>template in progress"]
   end
   HOME["Mac mini at home or in the office"]
   PH["The owner's devices"]
-  AG -- "private address, access token" --> SV
-  SV -- "SEND__STORAGE_MODE=s3" --> S3
+  AG -- "access token" --> LB
+  LB --> SV
+  LB -.-> LM
+  SV -- "SEND__STORAGE_MODE=s3<br/>through a VPC endpoint" --> S3
   LM -.-> S3
-  HOME -- "site-to-site VPN into the VPC" --> SV
+  HOME -- "site-to-site VPN into the VPC" --> LB
   PH -- "https, access token" --> CF
-  CF -- "VPC origin" --> SV
-  CF -.-> LM
+  CF -- "VPC origin" --> LB
 ```
 
 ## Pattern five: two servers, one vault

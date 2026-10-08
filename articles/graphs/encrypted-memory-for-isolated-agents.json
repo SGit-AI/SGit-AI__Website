@@ -60,7 +60,7 @@
       "id": "cloud",
       "label": "The cloud, with no public route",
       "kind": "method",
-      "summary": "EC2 or Fargate in a private subnet, S3, VPN to the Mac mini, CloudFront for phones."
+      "summary": "Container or Lambda, both inside the VPC behind an internal load balancer; S3, a VPN, CloudFront."
     },
     {
       "id": "replica",

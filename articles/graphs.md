@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.7 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -41,7 +41,7 @@ Agents are safer in isolated places, but isolation takes away the shared drive a
 - **Scoped clones make it fast** (example) One folder of a 600-commit vault in 14 s against 80 s for the whole.
 - **A scoped clone is not a boundary** (claim) sgit fetch widened a1's clone to a2's folder: one vault per trust boundary.
 - **Kubernetes: a Deployment and Jobs** (method) One replica on disk or more on S3, ClusterIP, NetworkPolicy, a Secret per agent.
-- **The cloud, with no public route** (method) EC2 or Fargate in a private subnet, S3, VPN to the Mac mini, CloudFront for phones.
+- **The cloud, with no public route** (method) Container or Lambda, both inside the VPC behind an internal load balancer; S3, a VPN, CloudFront.
 - **Two servers, one vault** (example) Push to a backup remote; any clone restored a memory-mode server after a restart.
 - **A breach gives away ciphertext** (claim) No plaintext, no file names in storage; vault ids, sizes, timing, a write-key hash.
 - **The trust sits with the agents** (claim) Writing agents hold the vault key on disk; ephemeral boxes and per-agent secrets matter.

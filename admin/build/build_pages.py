@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.7'
+SITE_VERSION = 'v0.7.8'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.7', '2026-10-08', 'this release',
+    ('v0.7.8', '2026-10-08', 'this release',
+     "CLOUD PATTERN FIX. In Encrypted memory for isolated agents, the cloud diagram drew the Lambda option outside the VPC. The agents have to reach whichever server is chosen, so both options now sit inside the VPC: an internal load balancer on a private address, and behind it either the container (EC2, Fargate or Kubernetes) or the same app on Lambda attached to the VPC, both with S3 storage through a VPC endpoint. Figure, Mermaid source, text and the self-hosting docs page updated.",),
+    ('v0.7.7', '2026-10-08', 'git b39da50f',
      "ENCRYPTED MEMORY FOR ISOLATED AGENTS. A new article and a new docs page on sgit deployment patterns, from a voice memo. Agents are safer in isolated, often ephemeral places, which takes away the shared drive and the disk; the memory has to live where the owner controls it and a breach exposes nothing. Five patterns, each a Mermaid diagram with its source: a Mac mini with the vault container and a folder (Docker Compose file and agent entry point), one agent run with a scoped clone, Kubernetes (Deployment, Service, NetworkPolicy, a Job per task), a private cloud VPC with S3 and CloudFront, and two servers holding one vault. Tested on a local server with sgit-ai 0.20.0: scoped clone, push from a second agent, replication to a second server and a restore after a restart, and a search of the server's storage that found no plaintext and no file names. Also shown: a scoped clone is not an access boundary, the deployment docs' --endpoint should be --base-url, and pip installs need mcp<2. New docs page Self-hosting a vault server for agents, with links from the docs index, limitations and the deploy page. Six figures, graph JSON.",),
     ('v0.7.6', '2026-10-08', 'git 4da1cb49',
      "KNOWING WHEN TO STOP. A new article, from a voice memo, read after Agency is not a yes. The hardest call is often when to stop, for people and for agents. People: security champions who automated whole classes of bugs away and then debated whether GUIDs were random enough (a version 4 UUID has 122 random bits); delivery teams that hit every KPI and did not move the business; teams that find work as they grow. What stopped them was perspective, much of what seniority is: the attackers, the phase of the business on a Wardley map, the bottleneck, good enough, and shipping to see whether it mattered. Agents have the same problem by design, because their range is the feature. The answer is constraints that carry perspective: direction, a mandate, memory with the bigger picture, graphs that narrow the scope, a stop named in advance, one kind of work per step, a reviewer with agency, and shipping. One figure, graph JSON.",),
