@@ -2,7 +2,7 @@
 
 > A simulation of Markus Franz's bridge example on a story vault: a fictional bridge closure from first notice to reopening, the journalism that got the date right, three readers whose graphs meet the story graph, institutions and an agent buying from it, and where every penny goes. Published with its read key.
 
-*Source: <https://sgit.ai/demos/vaults/bridge-simulation/index.html> · site v0.6.102 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/bridge-simulation/index.html> · site v0.6.103 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -20,7 +20,7 @@ Read them in order, or start with the one you need: the idea, the connection, th
 
 you are here
 
-4 · The vaultThe Mill Street BridgeThe working simulation: 22 views, the economics, an API, and every assumption written down. Fictional throughout.[The vault's page](../../../demos/vaults/bridge-simulation/index.md)[Open the app](../../../demos/vaults/bridge-simulation/index.md#live)
+4 · The vaultThe Mill Street BridgeThe working simulation: 22 views, the economics, an API, and every assumption written down. Fictional throughout.[The vault's page](../../../demos/vaults/bridge-simulation/index.md)[Open the vault ↗](https://dev.vault.sgraph.ai/#sgit_public_read_cb3838a0e965dc9d5af9009fef6e867dbdf18a8fc615cb3f5f2bee5424639705%3Avk3jlgzb)
 
 The vault, view by view: twenty of its twenty-two views, the nine new in v0.2 outlined.
 

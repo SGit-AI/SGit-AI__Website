@@ -3,15 +3,46 @@
     "title": "One story, four ways in",
     "note": "Read them in order, or start with the one you need: the idea, the connection, the simulation explained, and the working vault.",
     "items": [
-      {"label": "1 · The original", "title": "The Article Is Only the Beginning", "line": "Markus Franz's proposal: Liquid Utility, six Reader Skills, and a bridge closure as the example.",
-       "href": "https://www.linkedin.com/pulse/article-only-beginning-markus-franz-qzyqe/", "image": "/articles/images/lu-chatgpt-infographic.webp", "external": true},
-      {"label": "2 · The connection", "title": "Story vault underneath, Reader Skills on top", "line": "Why his skills and the story vault are two halves of one system, and why local journalism has the most to gain.",
-       "href": "/articles/story-vault-meets-reader-skills.html", "image": "/og/story-vault-meets-reader-skills.jpg"},
-      {"label": "3 · The simulation, explained", "title": "The bridge, followed to the end", "line": "One closure from first notice to reopening: the journalism, three readers, the buyers, the money, and two years on.",
-       "href": "/articles/the-bridge-followed-to-the-end.html", "image": "/og/the-bridge-followed-to-the-end.jpg"},
-      {"label": "4 · The vault", "title": "The Mill Street Bridge", "line": "The working simulation: 22 views, the economics, an API, and every assumption written down. Fictional throughout.",
-       "href": "/demos/vaults/bridge-simulation/index.html", "image": "/demos/vaults/bridge-simulation/images/app-overview-v2.webp",
-       "links": [{"text": "The vault's page", "href": "/demos/vaults/bridge-simulation/index.html"}, {"text": "Open the app", "href": "/demos/vaults/bridge-simulation/index.html#live"}]}
+      {
+        "label": "1 · The original",
+        "title": "The Article Is Only the Beginning",
+        "line": "Markus Franz's proposal: Liquid Utility, six Reader Skills, and a bridge closure as the example.",
+        "href": "https://www.linkedin.com/pulse/article-only-beginning-markus-franz-qzyqe/",
+        "image": "/articles/images/lu-chatgpt-infographic.webp",
+        "external": true
+      },
+      {
+        "label": "2 · The connection",
+        "title": "Story vault underneath, Reader Skills on top",
+        "line": "Why his skills and the story vault are two halves of one system, and why local journalism has the most to gain.",
+        "href": "/articles/story-vault-meets-reader-skills.html",
+        "image": "/og/story-vault-meets-reader-skills.jpg"
+      },
+      {
+        "label": "3 · The simulation, explained",
+        "title": "The bridge, followed to the end",
+        "line": "One closure from first notice to reopening: the journalism, three readers, the buyers, the money, and two years on.",
+        "href": "/articles/the-bridge-followed-to-the-end.html",
+        "image": "/og/the-bridge-followed-to-the-end.jpg"
+      },
+      {
+        "label": "4 · The vault",
+        "title": "The Mill Street Bridge",
+        "line": "The working simulation: 22 views, the economics, an API, and every assumption written down. Fictional throughout.",
+        "href": "/demos/vaults/bridge-simulation/index.html",
+        "image": "/demos/vaults/bridge-simulation/images/app-overview-v2.webp",
+        "links": [
+          {
+            "text": "The vault's page",
+            "href": "/demos/vaults/bridge-simulation/index.html"
+          },
+          {
+            "text": "Open the vault",
+            "href": "https://dev.vault.sgraph.ai/#sgit_public_read_cb3838a0e965dc9d5af9009fef6e867dbdf18a8fc615cb3f5f2bee5424639705%3Avk3jlgzb",
+            "external": true
+          }
+        ]
+      }
     ]
   }
 }

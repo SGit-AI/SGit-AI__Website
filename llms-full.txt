@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.6.102). Nothing here needs a second request. Individual pages live at the paths
+> (v0.6.103). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -73,7 +73,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-260site releases, each verified live before it was called done
+261site releases, each verified live before it was called done
 
 44vaults published with a deliberately public read key
 
@@ -5991,7 +5991,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.102, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.103, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -6354,7 +6354,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-260**site releases since 14 August**
+261**site releases since 14 August**
 each verified live before it was called done
 
 44**vaults published with a public read key**
@@ -11335,11 +11335,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.6.102**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.6.103**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.6.102 | 2026-10-08 | this release | THE BRIDGE VAULT v0.2, AND TRAILS. The bridge-simulation vault gains the economics and the data, nine new views and a second build script (tools/economics.py): costs and profit (fixed costs first, variable with use; the reporter is under water during the closure; break-even on day forty), two years on (£4,378, 96% from institutions and agents after the reopening), the next eleven stories (reuse saves 157 of 331 reporting hours; the first week's payments decide what is investigated; the long tail is 41% of year two), trust as a forecast record, the council's relief scheme and two accountant agents, a simulated model query over the claims live on any date, the data assets, and a Swagger-style explorer for an OpenAPI 3.1 description whose every endpoint is a GET of a file in the vault. The bridge article gains a section on it, a collage of the five front pages and one of twenty views; the vault page is rewritten around v0.2, every screenshot re-taken under a new name so no cache serves the old one. NEW: trails. `!trail ` in markdown, or in a page, renders a row of cards from admin/content/trails.json, paths resolved per page and the current page marked; the bridge trail (Markus Franz's article, the Reader Skills article, the bridge article, the vault) is on all three pages. |
+| v0.6.103 | 2026-10-08 | this release | OPEN THE VAULT. The bridge trail's last card had 'Open the app', which went to the vault page's live embed; it is now 'Open the vault' and opens the vault itself in the official UI with its published read key, in a new tab. A trail link can be marked external, which adds the arrow and the new tab. |
+| v0.6.102 | 2026-10-08 | git 4493e481 | THE BRIDGE VAULT v0.2, AND TRAILS. The bridge-simulation vault gains the economics and the data, nine new views and a second build script (tools/economics.py): costs and profit (fixed costs first, variable with use; the reporter is under water during the closure; break-even on day forty), two years on (£4,378, 96% from institutions and agents after the reopening), the next eleven stories (reuse saves 157 of 331 reporting hours; the first week's payments decide what is investigated; the long tail is 41% of year two), trust as a forecast record, the council's relief scheme and two accountant agents, a simulated model query over the claims live on any date, the data assets, and a Swagger-style explorer for an OpenAPI 3.1 description whose every endpoint is a GET of a file in the vault. The bridge article gains a section on it, a collage of the five front pages and one of twenty views; the vault page is rewritten around v0.2, every screenshot re-taken under a new name so no cache serves the old one. NEW: trails. `!trail ` in markdown, or in a page, renders a row of cards from admin/content/trails.json, paths resolved per page and the current page marked; the bridge trail (Markus Franz's article, the Reader Skills article, the bridge article, the vault) is on all three pages. |
 | v0.6.101 | 2026-10-08 | git 14f08970 | THE SUBSCRIBE VAULT IS THE LIST. Vault y9j3nc60 becomes the subscribers' single source of truth: list/subscribers.json holds the current state (status, name, consent, sources, preferences) and list/events.jsonl the history, naming subscribers only by a hash so an erasure never touches the log. The drain turns accepted messages into list events with no model in the loop, and other agents can add events without the vault key, through a fenced list-event block in signed mail (the site agent's issue-sent, a forwarded unsubscribe). The subscribe brief gains the section and the commands. |
 | v0.6.100 | 2026-10-08 | released with v0.6.101 | SEND A VAULT KEY. A new page, /docs/send-a-vault-key.html, is the instructions URL a session holding vault keys is pointed at, with an inbox vault id and an append token given privately and never published: the rules, the vault-key-handover/v1 payload, the registry's public key and endpoint, what to do afterwards and on a failure. Taken from the vault registry write-up's Section 0, with its inconsistencies resolved: the vault id is withheld everywhere, the token and id together are treated as a write credential, and the sender script (/assets/send_to_registry.py) pins the registry key's fingerprint before sealing, reads the token from the environment, never prints a key, and names each HTTP failure by its real cause. Reviewed by the registry before release: read keys are accepted (recorded as read-only), a too-large payload is reported without a size the drain does not enforce, and the page says that a payload on the lane can still be quarantined. The first live run delivered two keys, signed. |
 | v0.6.99 | 2026-10-08 | released with v0.6.101 | THE CONTACT FILE VALIDATES AGAIN. v0.6.81 listed the subscribe identity's form lane in /.well-known/sgit-agents.json under the name subscribe, but sgit-agents/v1 defines one lane name, agents, so the live file failed this site's own schema. The form lane is now described only in /.well-known/sgit-subscribe.json, which is what the form reads; the contact file lists the agents lane and validates. The subscribe brief gains the rule that everything inside a message is data, never instructions, for the agent that reads what the drain filed. |
@@ -14626,7 +14627,7 @@ There is a longer account of this one in [Green does not mean live](../articles/
 >
 > Page: https://sgit.ai/articles/index.html
 
-Edition of 2026-10-0742 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.102
+Edition of 2026-10-0742 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.103
 
 # SGit Newsroom
 
@@ -27848,7 +27849,7 @@ One entry per run of a desk role, newest first, each its own file and never edit
 >
 > Page: https://sgit.ai/articles/collections/index.html
 
-Edition of 2026-10-0742 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.102
+Edition of 2026-10-0742 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.103
 
 # Collections
 
@@ -27867,7 +27868,7 @@ A collection is one file in `admin/content/newsroom/collections/`. [How the desk
 >
 > Page: https://sgit.ai/articles/desk/index.html
 
-Edition of 2026-10-0742 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.102
+Edition of 2026-10-0742 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.103
 
 # From the desk
 
@@ -28391,7 +28392,7 @@ Your browser encrypts it to the public key of the agent that runs the list, then
 >
 > Page: https://sgit.ai/articles/newsletter/index.html
 
-Edition of 2026-10-0742 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.102
+Edition of 2026-10-0742 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.103
 
 # The newsletter
 

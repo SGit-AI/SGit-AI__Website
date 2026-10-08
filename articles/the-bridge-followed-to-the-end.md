@@ -2,7 +2,7 @@
 
 > A simulation of Markus Franz's bridge example, played out on a story vault from the council's first notice to the first car across. A fictional town's main bridge closes; the council says one week, the contract on site says three, an independent engineer says five to seven, and it opens after forty-six days. The paper leads with it five times; readers need it on fifty-seven days. Three readers, a parent, a café owner on the far bank and a plumber who works both banks, use the same claims in three different ways, each from their own graph, and make better decisions with them: an after-school club booked in time, £640 of stock not wasted and £1,200 of relief claimed, nine hours of driving saved. A county highways team, an investor, a national desk and a routing agent buy from the same graph, and the agent spends a seventh of what it would have spent searching, and is right from the first week. Everything they pay, £2,707 in the simulation, walks back down the claims to the reporter, the paper and the resident whose photos were the evidence. The vault is published with its read key.
 
-*Source: <https://sgit.ai/articles/the-bridge-followed-to-the-end.html> · site v0.6.102 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/the-bridge-followed-to-the-end.html> · site v0.6.103 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -26,7 +26,7 @@ Read them in order, or start with the one you need: the idea, the connection, th
 
 [1 · The originalThe Article Is Only the Beginning ↗Markus Franz's proposal: Liquid Utility, six Reader Skills, and a bridge closure as the example.](https://www.linkedin.com/pulse/article-only-beginning-markus-franz-qzyqe/)[2 · The connectionStory vault underneath, Reader Skills on topWhy his skills and the story vault are two halves of one system, and why local journalism has the most to gain.](../articles/story-vault-meets-reader-skills.md)[you are here3 · The simulation, explainedThe bridge, followed to the endOne closure from first notice to reopening: the journalism, three readers, the buyers, the money, and two years on.](../articles/the-bridge-followed-to-the-end.md)
 
-4 · The vaultThe Mill Street BridgeThe working simulation: 22 views, the economics, an API, and every assumption written down. Fictional throughout.[The vault's page](../demos/vaults/bridge-simulation/index.md)[Open the app](../demos/vaults/bridge-simulation/index.md#live)
+4 · The vaultThe Mill Street BridgeThe working simulation: 22 views, the economics, an API, and every assumption written down. Fictional throughout.[The vault's page](../demos/vaults/bridge-simulation/index.md)[Open the vault ↗](https://dev.vault.sgraph.ai/#sgit_public_read_cb3838a0e965dc9d5af9009fef6e867dbdf18a8fc615cb3f5f2bee5424639705%3Avk3jlgzb)
 
 ## The journalism is getting the date right
 

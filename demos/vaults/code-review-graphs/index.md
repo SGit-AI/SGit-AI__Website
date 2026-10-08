@@ -2,7 +2,7 @@
 
 > One real codebase read as a fractal semantic graph from its syntax tree: eleven stories, 72 commands, 13 packages, 377 classes, 1,111 methods and 2,592 calls, two method streams, one commit read upwards to the nine commands and six stories it can reach, and ten house rules checked against the graph. Nothing produced by running the code; the scripts are in the vault.
 
-*Source: <https://sgit.ai/demos/vaults/code-review-graphs/index.html> · site v0.6.102 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/code-review-graphs/index.html> · site v0.6.103 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.102'
+SITE_VERSION = 'v0.6.103'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,11 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.102', '2026-10-08', 'this release',
+    ('v0.6.103', '2026-10-08', 'this release',
+     "OPEN THE VAULT. The bridge trail's last card had 'Open the app', which went to the vault page's live embed; it is "
+     "now 'Open the vault' and opens the vault itself in the official UI with its published read key, in a new tab. A "
+     "trail link can be marked external, which adds the arrow and the new tab.",),
+    ('v0.6.102', '2026-10-08', 'git 4493e481',
      "THE BRIDGE VAULT v0.2, AND TRAILS. The bridge-simulation vault gains the economics and the data, nine new views "
      "and a second build script (tools/economics.py): costs and profit (fixed costs first, variable with use; the "
      "reporter is under water during the closure; break-even on day forty), two years on (£4,378, 96% from "
@@ -3928,7 +3932,9 @@ def expand_trails(path, body):
                      f'<span class="trail-d">{html.escape(it["line"])}</span>')
             badge = '<span class="trail-here">you are here</span>' if here else ''
             if it.get('links'):
-                links = ''.join(f'<a href="{html.escape(rel(l["href"]), quote=True)}">{html.escape(l["text"])}</a>' for l in it['links'])
+                links = ''.join(f'<a href="{html.escape(rel(l["href"]), quote=True)}"'
+                                + (' target="_blank" rel="noopener"' if l.get('external') else '')
+                                + f'>{html.escape(l["text"])}{" &#8599;" if l.get("external") else ""}</a>' for l in it['links'])
                 cards.append(f'<div class="trail-c{" here" if here else ""}">{badge}<a href="{html.escape(rel(it["href"]), quote=True)}">{img}</a>'
                              f'<div class="trail-b">{body_}<span class="trail-l">{links}</span></div></div>')
             else:
