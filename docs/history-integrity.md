@@ -12,6 +12,8 @@
 
 Requires sgit-ai 0.19.0 or newer: `sgit version` to check, `sgit update` to upgrade. **Nothing changes for an existing vault until its owner raises it** with `sgit vault format`; until then every client, old or new, behaves as it did in 0.18.0.
 
+**Three known issues in 0.20.0**, all fixed for the next release (0.21.0, not yet on PyPI): [`signatures-required` can lock out older clones](#signatures); [accepting a rewind keeps the removed commits](#rewinds); and `sgit history reset` and `history show` need the full `obj-cas-imm-…` id, not the short one `history log` prints. Each section below says what to do meanwhile. This site checked the fixes on 8 October 2026 against the CLI team's pinned build.
+
 A vault is a Merkle tree of encrypted objects: every file, folder and commit is stored under the hash of its ciphertext, every commit names its parents and its root folder by those hashes, and every object and ref is AES-256-GCM encrypted under a key the server never holds. So the server cannot alter a byte of history without it failing to decrypt, and `sgit check fsck` finds anything missing or corrupt. 0.19.0 adds what that model did not give you: who may open a vault, 128-bit addresses, a branch pointer that only moves forward, and signatures you can check. All of it is per vault and off by default.
 
 ## The format gate: `sgit vault format`
@@ -82,7 +84,7 @@ $ sgit pull
   ▸ Branch index: restored 2 entr(y/ies) the remote copy had lost
 ```
 
-You do not have to do anything; it is the reason a raised gate survives a web push.
+You do not have to do anything; it is the reason a raised gate survives a web push. In 0.20.0 a clone without an access token may warn that it could not refresh the branch index (`HTTP 401`); the pull still works.
 
 ## Rewinds: the named branch only moves forward
 
@@ -101,7 +103,7 @@ was a deliberate `sgit push --force`, run `sgit pull --accept-rewind`; otherwise
 tampering and check with the vault owner. Nothing was changed.
 ```
 
-- **You, or a teammate, force-pushed on purpose** (after `sgit history reset`, say): every other clone runs `sgit pull --accept-rewind` once. The clone that pushed needs nothing.
+- **You, or a teammate, force-pushed on purpose** (after `sgit history reset`, say): every other clone runs `sgit pull --accept-rewind` once. The clone that pushed needs nothing. **Known issue in 0.20.0, fixed for the next release.** After `sgit pull --accept-rewind` the clone keeps the commits the rewind removed, and `status` then suggests `sgit push`, which would put them back. **Do not push.** Run `sgit history reset obj-cas-imm-<new head>` with the full id of the new head (from `sgit history log` in a fresh clone, or from the owner); `sgit status` then says `in sync with remote`. If you had unpushed work of your own, copy it out first and commit it again after the reset.
 - **Nobody did**: do not accept it. Your clone still holds the newer history; `sgit push` would put it back. Tell the vault owner.
 - **The web UI pushed**: today the web UI's push does not compare before writing, so two people saving at the same moment can drop one person's commits. The CLI reports that as a rewind, and it is right to. The web UI team is moving to compare-and-swap.
 
@@ -135,13 +137,15 @@ pull was refused before anything was merged. Ask the vault owner, or relax the p
 
 Turn it on only for vaults written by 0.19.0+ CLIs with their keys: today's web UI does not sign, and history from before 0.19.0 is not retroactively verifiable. `sgit migrate apply` refuses on a vault with signed commits (a migration rewrites history) unless `--force`.
 
+**Known issue in 0.20.0, fixed for the next release.** A clone made before a new teammate joined refuses that teammate's signed commits as `no-key`, and removing the policy does not free it: an older clone even switches the policy back on for everyone when it pulls. **Do not turn `signatures-required` on for a vault with more than one writer until 0.21.0.** If a clone is stuck, copy out any unpushed work and clone the vault again.
+
 ## A checklist for raising a vault
 
 1. Every agent that writes to it is on 0.19.0 or newer (`sgit version`). Point them at [Update sgit-ai to 0.20.0](update-to-0-20-0.md).
 2. `sgit check fsck` is clean and `sgit check verify` shows no *bad* commits.
 3. `sgit vault format --set 2 --min-client 0.19.0`.
 4. Each agent's next `sgit pull` picks the gate up; nothing else to do.
-5. `signatures-required` only once no web-UI writes are expected on the vault.
+5. `signatures-required` only once no web-UI writes are expected on the vault, and, on 0.20.0, only if it has a single writer (see the known issue above).
 
 From the sgit-ai team's 0.19.0 and 0.20.0 notes. The old-client messages were found by this site's own check of the 0.19.0 draft, which had said "a validation error"; the CLI team confirmed them and added the warning that 0.20.0 prints when a vault is raised. Release notes: [sgit-ai 0.20.0 (includes 0.19.0)](../updates/index.md#sgit-ai-0-20-0).
 

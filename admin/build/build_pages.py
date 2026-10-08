@@ -38,7 +38,11 @@ VERSION_LOG = [
      "0.19.0 and 0.20.0 installs and found that an older client on a raised vault does not fail with a "
      "validation error, as the draft said, but blames the data ('integrity check refused vault data', "
      "'missing file ... sgit check fsck'), pointing at the wrong fix. The CLI team confirmed it and shipped "
-     "0.20.0 with a warning on raise; every page here quotes the real messages and says the fix is sgit update."),
+     "0.20.0 with a warning on raise; every page here quotes the real messages and says the fix is sgit update. Testing 0.20.0 from PyPI the "
+     "way a team uses it then found three bugs (signatures-required locking out older clones and coming back "
+     "after removal, accept-rewind keeping the removed commits, short ids refused); the CLI team fixed them for "
+     "0.21.0, this site re-ran the scenarios against their pinned build, and the pages carry the 0.20.0 caveats "
+     "with workarounds checked on 0.20.0 itself."),
     ('v0.6.103', '2026-10-08', 'git 890a0eb4',
      "OPEN THE VAULT. The bridge trail's last card had 'Open the app', which went to the vault page's live embed; it is "
      "now 'Open the vault' and opens the vault itself in the official UI with its published read key, in a new tab. A "

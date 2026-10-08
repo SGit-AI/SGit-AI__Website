@@ -141,12 +141,21 @@ sgit-ai v0.20.0</pre>
   <p><b>Message 2</b>, on any command, once the owner has raised the vault's minimum client: <code>error: this vault needs sgit-ai &gt;= X.Y.Z and this is …: run `sgit update`, then try again</code>. Do exactly that.</p>
   <p><b>Message 3</b>, only if you are still on 0.18.x or older and the owner has raised the vault: a fresh clone says <code>error: integrity check refused vault data … the host served corrupt or substituted content: do not trust this source</code>, and a pull says <code>error: missing file — object obj-cas-imm-… is not in the local store</code> with a hint to run <code>sgit check fsck</code>. <b>Neither hint applies.</b> The vault is fine; your client cannot read its new ids. Do not run <code>vault move</code> or <code>fsck --repair</code>. Run <code>sgit update</code> and retry.</p>
 
-  <h2>4. If you are the vault owner</h2>
+  <h2>4. Known issues in 0.20.0</h2>
+  <p>All fixed for the next release (0.21.0, not yet on PyPI). Until then:</p>
+  <ul>
+    <li><b>Known issue in 0.20.0, fixed for the next release.</b> After <code>sgit pull --accept-rewind</code> the clone keeps the commits the rewind removed, and <code>status</code> then suggests <code>sgit push</code>, which would put them back. <b>Do not push.</b> Run <code>sgit history reset obj-cas-imm-&lt;new head&gt;</code> with the full id of the new head (from <code>sgit history log</code> in a fresh clone, or from the owner); <code>sgit status</code> then says <code>in sync with remote</code>. If you had unpushed work of your own, copy it out first and commit it again after the reset.</li>
+    <li><b>Known issue in 0.20.0, fixed for the next release.</b> A clone made before a new teammate joined refuses that teammate's signed commits as <code>no-key</code>, and removing the policy does not free it: an older clone even switches the policy back on for everyone when it pulls. <b>Do not turn <code>signatures-required</code> on for a vault with more than one writer until 0.21.0.</b> If a clone is stuck, copy out any unpushed work and clone the vault again.</li>
+    <li><code>sgit history reset</code> and <code>sgit history show</code> need the full <code>obj-cas-imm-…</code> id; the 12-character one <code>history log</code> prints is not accepted. Prefix it with <code>obj-cas-imm-</code>.</li>
+    <li>A clone without an access token may warn that it could not refresh the branch index (<code>HTTP 401</code>). Harmless: the pull still works.</li>
+  </ul>
+
+  <h2>5. If you are the vault owner</h2>
   <p>Raise a vault only once every agent that writes to it is on 0.19.0 or newer: an older agent fails on a raised vault with Message 3, not with an update message. Then:</p>
 <pre class="shell"><span class="p">$</span> <span class="cmd">sgit vault format --set 2 --min-client 0.19.0</span></pre>
   <p>0.20.0 prints a note saying exactly this when you raise a vault. New objects get 128-bit ids, old ones stay, no move. <a href="history-integrity.html">History integrity</a> has the rest: the gate, signatures, rewinds and the checklist.</p>
 
-  <h2>5. If you want the detail</h2>
+  <h2>6. If you want the detail</h2>
   <ul>
     <li><a href="history-integrity.html">History integrity</a>: the format gate, verifying signatures, rewinds, and who can open a raised vault.</li>
     <li><a href="../updates/index.html#sgit-ai-0-20-0">Release notes: sgit-ai 0.20.0 (includes 0.19.0)</a>.</li>

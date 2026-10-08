@@ -5355,6 +5355,8 @@ The team this was worked out on is described in [The agent team as it runs](../a
 
 Requires sgit-ai 0.19.0 or newer: `sgit version` to check, `sgit update` to upgrade. **Nothing changes for an existing vault until its owner raises it** with `sgit vault format`; until then every client, old or new, behaves as it did in 0.18.0.
 
+**Three known issues in 0.20.0**, all fixed for the next release (0.21.0, not yet on PyPI): [`signatures-required` can lock out older clones](#signatures); [accepting a rewind keeps the removed commits](#rewinds); and `sgit history reset` and `history show` need the full `obj-cas-imm-…` id, not the short one `history log` prints. Each section below says what to do meanwhile. This site checked the fixes on 8 October 2026 against the CLI team's pinned build.
+
 A vault is a Merkle tree of encrypted objects: every file, folder and commit is stored under the hash of its ciphertext, every commit names its parents and its root folder by those hashes, and every object and ref is AES-256-GCM encrypted under a key the server never holds. So the server cannot alter a byte of history without it failing to decrypt, and `sgit check fsck` finds anything missing or corrupt. 0.19.0 adds what that model did not give you: who may open a vault, 128-bit addresses, a branch pointer that only moves forward, and signatures you can check. All of it is per vault and off by default.
 
 ## The format gate: `sgit vault format`
@@ -5425,7 +5427,7 @@ $ sgit pull
   ▸ Branch index: restored 2 entr(y/ies) the remote copy had lost
 ```
 
-You do not have to do anything; it is the reason a raised gate survives a web push.
+You do not have to do anything; it is the reason a raised gate survives a web push. In 0.20.0 a clone without an access token may warn that it could not refresh the branch index (`HTTP 401`); the pull still works.
 
 ## Rewinds: the named branch only moves forward
 
@@ -5444,7 +5446,7 @@ was a deliberate `sgit push --force`, run `sgit pull --accept-rewind`; otherwise
 tampering and check with the vault owner. Nothing was changed.
 ```
 
-- **You, or a teammate, force-pushed on purpose** (after `sgit history reset`, say): every other clone runs `sgit pull --accept-rewind` once. The clone that pushed needs nothing.
+- **You, or a teammate, force-pushed on purpose** (after `sgit history reset`, say): every other clone runs `sgit pull --accept-rewind` once. The clone that pushed needs nothing. **Known issue in 0.20.0, fixed for the next release.** After `sgit pull --accept-rewind` the clone keeps the commits the rewind removed, and `status` then suggests `sgit push`, which would put them back. **Do not push.** Run `sgit history reset obj-cas-imm-<new head>` with the full id of the new head (from `sgit history log` in a fresh clone, or from the owner); `sgit status` then says `in sync with remote`. If you had unpushed work of your own, copy it out first and commit it again after the reset.
 - **Nobody did**: do not accept it. Your clone still holds the newer history; `sgit push` would put it back. Tell the vault owner.
 - **The web UI pushed**: today the web UI's push does not compare before writing, so two people saving at the same moment can drop one person's commits. The CLI reports that as a rewind, and it is right to. The web UI team is moving to compare-and-swap.
 
@@ -5478,13 +5480,15 @@ pull was refused before anything was merged. Ask the vault owner, or relax the p
 
 Turn it on only for vaults written by 0.19.0+ CLIs with their keys: today's web UI does not sign, and history from before 0.19.0 is not retroactively verifiable. `sgit migrate apply` refuses on a vault with signed commits (a migration rewrites history) unless `--force`.
 
+**Known issue in 0.20.0, fixed for the next release.** A clone made before a new teammate joined refuses that teammate's signed commits as `no-key`, and removing the policy does not free it: an older clone even switches the policy back on for everyone when it pulls. **Do not turn `signatures-required` on for a vault with more than one writer until 0.21.0.** If a clone is stuck, copy out any unpushed work and clone the vault again.
+
 ## A checklist for raising a vault
 
 1. Every agent that writes to it is on 0.19.0 or newer (`sgit version`). Point them at [Update sgit-ai to 0.20.0](update-to-0-20-0.md).
 2. `sgit check fsck` is clean and `sgit check verify` shows no *bad* commits.
 3. `sgit vault format --set 2 --min-client 0.19.0`.
 4. Each agent's next `sgit pull` picks the gate up; nothing else to do.
-5. `signatures-required` only once no web-UI writes are expected on the vault.
+5. `signatures-required` only once no web-UI writes are expected on the vault, and, on 0.20.0, only if it has a single writer (see the known issue above).
 
 From the sgit-ai team's 0.19.0 and 0.20.0 notes. The old-client messages were found by this site's own check of the 0.19.0 draft, which had said "a validation error"; the CLI team confirmed them and added the warning that 0.20.0 prints when a vault is raised. Release notes: [sgit-ai 0.20.0 (includes 0.19.0)](../updates/index.md#sgit-ai-0-20-0).
 
@@ -5531,7 +5535,16 @@ Every command works as in 0.18.0. Three things are new:
 
 **Message 3**, only if you are still on 0.18.x or older and the owner has raised the vault: a fresh clone says `error: integrity check refused vault data … the host served corrupt or substituted content: do not trust this source`, and a pull says `error: missing file — object obj-cas-imm-… is not in the local store` with a hint to run `sgit check fsck`. **Neither hint applies.** The vault is fine; your client cannot read its new ids. Do not run `vault move` or `fsck --repair`. Run `sgit update` and retry.
 
-## 4. If you are the vault owner
+## 4. Known issues in 0.20.0
+
+All fixed for the next release (0.21.0, not yet on PyPI). Until then:
+
+- **Known issue in 0.20.0, fixed for the next release.** After `sgit pull --accept-rewind` the clone keeps the commits the rewind removed, and `status` then suggests `sgit push`, which would put them back. **Do not push.** Run `sgit history reset obj-cas-imm-<new head>` with the full id of the new head (from `sgit history log` in a fresh clone, or from the owner); `sgit status` then says `in sync with remote`. If you had unpushed work of your own, copy it out first and commit it again after the reset.
+- **Known issue in 0.20.0, fixed for the next release.** A clone made before a new teammate joined refuses that teammate's signed commits as `no-key`, and removing the policy does not free it: an older clone even switches the policy back on for everyone when it pulls. **Do not turn `signatures-required` on for a vault with more than one writer until 0.21.0.** If a clone is stuck, copy out any unpushed work and clone the vault again.
+- `sgit history reset` and `sgit history show` need the full `obj-cas-imm-…` id; the 12-character one `history log` prints is not accepted. Prefix it with `obj-cas-imm-`.
+- A clone without an access token may warn that it could not refresh the branch index (`HTTP 401`). Harmless: the pull still works.
+
+## 5. If you are the vault owner
 
 Raise a vault only once every agent that writes to it is on 0.19.0 or newer: an older agent fails on a raised vault with Message 3, not with an update message. Then:
 
@@ -5541,7 +5554,7 @@ $ sgit vault format --set 2 --min-client 0.19.0
 
 0.20.0 prints a note saying exactly this when you raise a vault. New objects get 128-bit ids, old ones stay, no move. [History integrity](history-integrity.md) has the rest: the gate, signatures, rewinds and the checklist.
 
-## 5. If you want the detail
+## 6. If you want the detail
 
 - [History integrity](history-integrity.md): the format gate, verifying signatures, rewinds, and who can open a raised vault.
 - [Release notes: sgit-ai 0.20.0 (includes 0.19.0)](../updates/index.md#sgit-ai-0-20-0).
@@ -11557,7 +11570,7 @@ The site version (**v0.6.104**, shown in the nav of every page) increments on ev
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.6.104 | 2026-10-08 | this release | SGIT-AI 0.20.0 (INCLUDES 0.19.0). One release-notes entry for two CLI releases a day apart, so an agent pointed at the newest lands on it; a new guide, History integrity (the format gate, 128-bit ids, signatures, rewinds, the shared branch index); a new agent notice, Update sgit-ai to 0.20.0; and the edits the CLI team asked for on Agents sharing one vault, Partial clones, Working with AI agents and Update to 0.18.0. Before publishing, this site checked the 0.19.0 draft against real 0.17.0, 0.18.0, 0.19.0 and 0.20.0 installs and found that an older client on a raised vault does not fail with a validation error, as the draft said, but blames the data ('integrity check refused vault data', 'missing file ... sgit check fsck'), pointing at the wrong fix. The CLI team confirmed it and shipped 0.20.0 with a warning on raise; every page here quotes the real messages and says the fix is sgit update. |
+| v0.6.104 | 2026-10-08 | this release | SGIT-AI 0.20.0 (INCLUDES 0.19.0). One release-notes entry for two CLI releases a day apart, so an agent pointed at the newest lands on it; a new guide, History integrity (the format gate, 128-bit ids, signatures, rewinds, the shared branch index); a new agent notice, Update sgit-ai to 0.20.0; and the edits the CLI team asked for on Agents sharing one vault, Partial clones, Working with AI agents and Update to 0.18.0. Before publishing, this site checked the 0.19.0 draft against real 0.17.0, 0.18.0, 0.19.0 and 0.20.0 installs and found that an older client on a raised vault does not fail with a validation error, as the draft said, but blames the data ('integrity check refused vault data', 'missing file ... sgit check fsck'), pointing at the wrong fix. The CLI team confirmed it and shipped 0.20.0 with a warning on raise; every page here quotes the real messages and says the fix is sgit update. Testing 0.20.0 from PyPI the way a team uses it then found three bugs (signatures-required locking out older clones and coming back after removal, accept-rewind keeping the removed commits, short ids refused); the CLI team fixed them for 0.21.0, this site re-ran the scenarios against their pinned build, and the pages carry the 0.20.0 caveats with workarounds checked on 0.20.0 itself. |
 | v0.6.103 | 2026-10-08 | git 890a0eb4 | OPEN THE VAULT. The bridge trail's last card had 'Open the app', which went to the vault page's live embed; it is now 'Open the vault' and opens the vault itself in the official UI with its published read key, in a new tab. A trail link can be marked external, which adds the arrow and the new tab. |
 | v0.6.102 | 2026-10-08 | git 4493e481 | THE BRIDGE VAULT v0.2, AND TRAILS. The bridge-simulation vault gains the economics and the data, nine new views and a second build script (tools/economics.py): costs and profit (fixed costs first, variable with use; the reporter is under water during the closure; break-even on day forty), two years on (£4,378, 96% from institutions and agents after the reopening), the next eleven stories (reuse saves 157 of 331 reporting hours; the first week's payments decide what is investigated; the long tail is 41% of year two), trust as a forecast record, the council's relief scheme and two accountant agents, a simulated model query over the claims live on any date, the data assets, and a Swagger-style explorer for an OpenAPI 3.1 description whose every endpoint is a GET of a file in the vault. The bridge article gains a section on it, a collage of the five front pages and one of twenty views; the vault page is rewritten around v0.2, every screenshot re-taken under a new name so no cache serves the old one. NEW: trails. `!trail ` in markdown, or in a page, renders a row of cards from admin/content/trails.json, paths resolved per page and the current page marked; the bridge trail (Markus Franz's article, the Reader Skills article, the bridge article, the vault) is on all three pages. |
 | v0.6.101 | 2026-10-08 | git 14f08970 | THE SUBSCRIBE VAULT IS THE LIST. Vault y9j3nc60 becomes the subscribers' single source of truth: list/subscribers.json holds the current state (status, name, consent, sources, preferences) and list/events.jsonl the history, naming subscribers only by a hash so an erasure never touches the log. The drain turns accepted messages into list events with no model in the loop, and other agents can add events without the vault key, through a fenced list-event block in signed mail (the site agent's issue-sent, a forwarded unsubscribe). The subscribe brief gains the section and the commands. |
@@ -13418,6 +13431,15 @@ sgit-aireleaseclihistory-integritysignaturesagents
 - **`sgit check fsck` re-walked every tree once per commit**: 282,202 tree checks for 8,589 trees, 270 s on the example vault; now 12 s with identical findings.
 - **Every clone left an empty temp directory behind** (`sgit-clone-*`): removed.
 - The "incompatible vault data" hint now says to run `sgit update` first.
+
+## Known issues in 0.20.0, fixed for 0.21.0
+
+Found by this site the same day, testing 0.20.0 from PyPI the way a team uses it (a teammate joining after a policy, an agent following `status`); confirmed and fixed by the CLI team for 0.21.0, which is not yet on PyPI. This site re-ran all five scenarios against the CLI team's pinned fix build and each one now behaves.
+
+- **`signatures-required` can lock out older clones.** A clone made before a new teammate joined refuses that teammate's signed commits as `no-key`; removing the policy does not free it, and the stale clone writes the policy back for everyone. Do not turn it on for a vault with more than one writer until 0.21.0. A stuck clone: copy out unpushed work and clone again.
+- **`pull --accept-rewind` keeps the removed commits**, and `status` then suggests `sgit push`, which would put them back. Do not push: run `sgit history reset obj-cas-imm-<new head>`, after which `status` says `in sync with remote` (checked on 0.20.0 from PyPI).
+- **`history reset` and `history show` need the full `obj-cas-imm-…` id**, not the 12-character one `history log` prints (also true of 0.18.0).
+- **A clone without an access token warns** that it could not refresh the branch index (`HTTP 401`). The pull still works.
 
 ## Compatibility
 

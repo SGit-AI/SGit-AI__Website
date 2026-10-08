@@ -40,7 +40,16 @@ Every command works as in 0.18.0. Three things are new:
 
 **Message 3**, only if you are still on 0.18.x or older and the owner has raised the vault: a fresh clone says `error: integrity check refused vault data … the host served corrupt or substituted content: do not trust this source`, and a pull says `error: missing file — object obj-cas-imm-… is not in the local store` with a hint to run `sgit check fsck`. **Neither hint applies.** The vault is fine; your client cannot read its new ids. Do not run `vault move` or `fsck --repair`. Run `sgit update` and retry.
 
-## 4. If you are the vault owner
+## 4. Known issues in 0.20.0
+
+All fixed for the next release (0.21.0, not yet on PyPI). Until then:
+
+- **Known issue in 0.20.0, fixed for the next release.** After `sgit pull --accept-rewind` the clone keeps the commits the rewind removed, and `status` then suggests `sgit push`, which would put them back. **Do not push.** Run `sgit history reset obj-cas-imm-<new head>` with the full id of the new head (from `sgit history log` in a fresh clone, or from the owner); `sgit status` then says `in sync with remote`. If you had unpushed work of your own, copy it out first and commit it again after the reset.
+- **Known issue in 0.20.0, fixed for the next release.** A clone made before a new teammate joined refuses that teammate's signed commits as `no-key`, and removing the policy does not free it: an older clone even switches the policy back on for everyone when it pulls. **Do not turn `signatures-required` on for a vault with more than one writer until 0.21.0.** If a clone is stuck, copy out any unpushed work and clone the vault again.
+- `sgit history reset` and `sgit history show` need the full `obj-cas-imm-…` id; the 12-character one `history log` prints is not accepted. Prefix it with `obj-cas-imm-`.
+- A clone without an access token may warn that it could not refresh the branch index (`HTTP 401`). Harmless: the pull still works.
+
+## 5. If you are the vault owner
 
 Raise a vault only once every agent that writes to it is on 0.19.0 or newer: an older agent fails on a raised vault with Message 3, not with an update message. Then:
 
@@ -50,7 +59,7 @@ $ sgit vault format --set 2 --min-client 0.19.0
 
 0.20.0 prints a note saying exactly this when you raise a vault. New objects get 128-bit ids, old ones stay, no move. [History integrity](history-integrity.md) has the rest: the gate, signatures, rewinds and the checklist.
 
-## 5. If you want the detail
+## 6. If you want the detail
 
 - [History integrity](history-integrity.md): the format gate, verifying signatures, rewinds, and who can open a raised vault.
 - [Release notes: sgit-ai 0.20.0 (includes 0.19.0)](../updates/index.md#sgit-ai-0-20-0).

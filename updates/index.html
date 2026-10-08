@@ -226,6 +226,14 @@
 <li><b>Every clone left an empty temp directory behind</b> (<code>sgit-clone-*</code>): removed.</li>
 <li>The "incompatible vault data" hint now says to run <code>sgit update</code> first.</li>
 </ul>
+<h2>Known issues in 0.20.0, fixed for 0.21.0</h2>
+<p>Found by this site the same day, testing 0.20.0 from PyPI the way a team uses it (a teammate joining after a policy, an agent following <code>status</code>); confirmed and fixed by the CLI team for 0.21.0, which is not yet on PyPI. This site re-ran all five scenarios against the CLI team's pinned fix build and each one now behaves.</p>
+<ul>
+<li><b><code>signatures-required</code> can lock out older clones.</b> A clone made before a new teammate joined refuses that teammate's signed commits as <code>no-key</code>; removing the policy does not free it, and the stale clone writes the policy back for everyone. Do not turn it on for a vault with more than one writer until 0.21.0. A stuck clone: copy out unpushed work and clone again.</li>
+<li><b><code>pull --accept-rewind</code> keeps the removed commits</b>, and <code>status</code> then suggests <code>sgit push</code>, which would put them back. Do not push: run <code>sgit history reset obj-cas-imm-&lt;new head&gt;</code>, after which <code>status</code> says <code>in sync with remote</code> (checked on 0.20.0 from PyPI).</li>
+<li><b><code>history reset</code> and <code>history show</code> need the full <code>obj-cas-imm-…</code> id</b>, not the 12-character one <code>history log</code> prints (also true of 0.18.0).</li>
+<li><b>A clone without an access token warns</b> that it could not refresh the branch index (<code>HTTP 401</code>). The pull still works.</li>
+</ul>
 <h2>Compatibility</h2>
 <div class="tablewrap"><table>
 <tr><th>Client</th><th>Un-raised vault (format 1)</th><th>Raised vault (format 2)</th></tr>
