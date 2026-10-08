@@ -1,0 +1,104 @@
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / Hope or enforcement</p>
+  <h1>Hope or enforcement: one customer service agent, three designs, and who keeps each promise</h1>
+  <p class="lead">A simulation of the Agent Behaviour Policy at work. One mandate for a customer service agent at a fictional UK homeware shop; three designs of the agent: one model with two connectors, the same model behind a harness of business tools, and a team of narrow agents behind a deterministic identity gateway; sixty-two fictional emails, sixteen of them hostile, run through all three. Every rule in every policy is marked by what enforces it, so the share that is hope, a rule only the model keeps, can be counted. It was published with the article <a href="../../../articles/hope-or-enforcement.html">Hope or enforcement</a>.</p>
+
+  <figure class="shot" data-shot="app-overview.webp" data-dir="images/" data-alt="The app's overview: the same promises kept by different things, with tiles for each design's hope share, unbounded excess, tokens per email and hostile emails with an open path."><figcaption>The overview, as the app opens.</figcaption></figure>
+
+  <div class="note"><b>Open it yourself. The key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_public_read_21c37a5a4b730d351a5de1d8c3fc9dfc59de8b14e7328f1b0ef64a9a81ad49fe:wz9dw0m5</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_public_read_21c37a5a4b730d351a5de1d8c3fc9dfc59de8b14e7328f1b0ef64a9a81ad49fe%3Awz9dw0m5" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone sgit_public_read_21c37a5a4b730d351a5de1d8c3fc9dfc59de8b14e7328f1b0ef64a9a81ad49fe:wz9dw0m5</code><br>
+  <span class="small dim">Published deliberately under the <code>sgit_public_read_</code> prefix, and <b>derived</b> one-way from a vault key kept in the gitignored tier and never published. Classified with <code>check_credential.py</code> before it touched this page, read back with the published key alone by <code>catalogue_derive.py</code>, and verified with an all-zeros read key as the negative control.</span></div>
+
+  <h2 id="live">See it live, here</h2>
+  <p class="small dim" style="margin:.2rem 0 .9rem">The vault opens as an app: the mandate, each design with its flow, tools and policy, a comparison, the mailbox with every email through every design, the analyst's report after the run, the tokens, the client's promises, and a year you can recompute with your own assumptions. You can also <a href="https://dev.vault.sgraph.ai/#sgit_public_read_21c37a5a4b730d351a5de1d8c3fc9dfc59de8b14e7328f1b0ef64a9a81ad49fe%3Awz9dw0m5" rel="noopener" target="_blank"><b>open it in the official UI</b></a>.</p>
+  <div class="sgv-uiembed" data-vault="wz9dw0m5" data-readkey="21c37a5a4b730d351a5de1d8c3fc9dfc59de8b14e7328f1b0ef64a9a81ad49fe" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js'].forEach(function (f) {
+      fetch('../../../assets/' + f).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function (t) { (0, eval)(t); }).catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>The one idea</h2>
+  <p>In principle every design has a rule for every behaviour. The difference is who enforces each rule, and how much the agent can reach. The <a href="https://abp.sgit.ai/">Agent Behaviour Policy</a> records, for every capability, what stands in the way: nothing; an expectation, a rule in prose enforced by nobody; a setting the agent's own account could flip; or a boundary enforced above the grant, out of the agent's reach. Its test: "A control bounds a grant only if it is enforced by something the grant does not include." Refactor the agent so that its reach shrinks, and the policy shrinks with it, because it no longer has to forbid what the agent cannot do.</p>
+
+  <h2>What is in it</h2>
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">three designs</span>
+        <h3>The same mandate, built three ways</h3>
+        <p><b>Design 1</b> connects one model to the whole mailbox, with Google's broadest mail scope, and to a read-write database role, with a careful 38-rule policy: 37 of the rules are expectations. <b>Design 2</b> puts the model behind fourteen business tools with some limits in code: six rules become boundaries, sixteen stay expectations. <b>Design 3</b> is a code gateway that binds each run to one verified customer, then nine narrow agents with tools that take no customer argument: 27 of 35 rules are boundaries, and the largest single policy is 70 words.</p>
+      </div>
+      <figure class="shot" data-shot="app-design-d3.webp" data-dir="images/" data-alt="Design 3's page: tiles for 35 rules, a 22.9% hope share, zero unbounded excess, zero mandated limits resting on hope, 19 tools and 4,380 tokens per email; the flow from email to gateway; and the grant, mandate and delta."><figcaption>Design 3: the grant equals the mandate, and nothing outside it is in reach.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">compare</span>
+        <h3>Twenty-five actions, three grants</h3>
+        <p>Every action in the ABP's verb.object.reach shape, with its undo class, and for each design whether it is granted and what stands in the way. The excess falls from twelve actions to seven to none; the mandated limits that rest on hope stay at six in the first two designs and fall to none in the third.</p>
+      </div>
+      <figure class="shot" data-shot="app-compare.webp" data-dir="images/" data-alt="The compare view: headline numbers side by side for the three designs, then a matrix of twenty-five actions by three designs with the barrier glyph in each cell."><figcaption>Side by side, action by action.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the mailbox</span>
+        <h3>Sixty-two emails through every design</h3>
+        <p>Forty-six ordinary emails across thirteen query types and sixteen hostile ones: injected instructions, impersonation, a request for another customer's address, a phishing link, a fake supplier changing bank details, a compromised customer mailbox and voucher farming. For each email and design: what handles it, the tokens it costs, and for the hostile ones what could happen if the model were fooled, and what held.</p>
+      </div>
+      <figure class="shot" data-shot="app-email-m60.webp" data-dir="images/" data-alt="One hostile email, from a compromised customer mailbox, through the three designs: an open path held by nothing but the model in Designs 1 and 2, and an open path held by the model inside limits set by boundaries in Design 3."><figcaption>A compromised mailbox: the one kind of attack that works inside the mandate.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">what is left</span>
+        <h3>The policy finds what the refactor missed</h3>
+        <p>Two hostile emails still get somewhere in Design 3, because they use the mandate itself. The policy is the map of what still rests on hope, and for each line the boundary to build next: confirm a new address by email, cap automatic refunds and vouchers per customer, require an image for a damage claim, and keep tone and accuracy as an expectation, sampled by a person.</p>
+      </div>
+      <figure class="shot" data-shot="app-next.webp" data-dir="images/" data-alt="A table of four lines: what Design 3's policy still says, the barrier today, which is an expectation in every line, the boundary to build next, and the email that found it."><figcaption>What the policy still says, and the boundary to build next.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">after the run</span>
+        <h3>How did the policy survive?</h3>
+        <p>The analyst's report: for each rule, how often ordinary mail exercised it, how often hostile mail tested it, and whether a boundary held or the result rested on the model, plus the rules nothing used. In Design 1, all 138 tests rest on the model. In Design 3, 52 of 85 are held by a boundary. Tokens are reported against the 8,000 budget: about 35,000 per email in Design 1, 7,500 in Design 2 and 4,400 in Design 3.</p>
+      </div>
+      <figure class="shot" data-shot="app-usage.webp" data-dir="images/" data-alt="The analyst's report for Design 1: 38 rules, 7 exercised, 23 tested, 0 of 138 tests held by a boundary, 138 resting on the model, 9 never used, and a bar that is all expectation."><figcaption>Design 1 after the run: every test rested on the model.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the client</span>
+        <h3>The promises, and who keeps them</h3>
+        <p>Eight promises a vendor would make to the shop, and for each design the barrier behind each, in plain words. A promise is as strong as the weakest thing it rests on. Design 1 keeps none by a boundary, Design 2 one, Design 3 six. The year view recomputes the business case live as you change how often a rule in prose fails, how much mail is hostile, and what an exposed record costs.</p>
+      </div>
+      <figure class="shot" data-shot="app-client.webp" data-dir="images/" data-alt="The promises table: promises as rows, the three designs as columns, each cell an expectation or a boundary with an explanation."><figcaption>No score: the record of who keeps each promise.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>How it is built</h2>
+  <p><code>tools/simulate.py</code> writes every data file from the tables in it: the company, the assumptions, the mandate, the designs, the mailbox, the runs, the report and the year. It is deterministic; no model is called, and the assumptions that are not facts are labelled illustrative. The app uses the same design system as the <a href="../threat-sized-security/index.html">threat-sized security</a> and <a href="../bridge-simulation/index.html">bridge simulation</a> vaults: four themes, a template that escapes by default, one folder per view, one bundled <code>index.html</code>. <code>tools/gate.py</code> runs twenty checks, including that the simulation reproduces the data byte for byte, that the browser's port of the year matches the Python one, and that every view renders at desktop and phone widths with no errors and no network requests.</p>
+
+  <h2>The audit, honestly</h2>
+  <p><b>What was scanned.</b> Every file before the first commit, and every file again after cloning with the published read key alone: vault-key shapes, every <code>sgit_</code> credential prefix, private-key headers, cloud key shapes, the SG/Send access token and the vault's own key. The clone was compared with the source, file by file, and matched.</p>
+  <p><b>What was found.</b> Nothing. The negative control, an all-zeros read key against the same vault id, returned nothing.</p>
+  <p><b>What it does not claim.</b> The simulation does not measure any model. Whether a hostile email gets past a rule in prose is an assumption, set by default to one in fifty and adjustable. The designs are illustrations of a pattern, not a product; the shop and its mail are invented. The ABP itself publishes the record and never a verdict, and so does this vault.</p>
+  <p><b>Write-key status:</b> escrowed, in the gitignored credential tier, before this page was written.</p>
+
+  <h2>Derived facts</h2>
+  <p class="small dim">From <code>admin/build/catalogue_derive.py wz9dw0m5 &lt;read key hex&gt;</code>, read-only, no token, no clone.</p>
+  <ul>
+    <li><b>Files:</b> 67 · <b>plaintext size:</b> 1,068 KB</li>
+    <li><b>Commits:</b> 2 · <b>last updated:</b> 2026-10-08 · <b>HEAD:</b> <code>obj-cas-imm-1fe1419ea9bb</code></li>
+    <li><b>Top level:</b> <code>BRIEF-CORRECTIONS.md</code>, <code>PUBLIC.md</code>, <code>README.md</code>, <code>REALITY.md</code>, <code>app.json</code>, <code>app/</code>, <code>data/</code>, <code>index.html</code>, <code>tests/</code>, <code>tools/</code>, <code>versions/</code></li>
+    <li><b>File types:</b> .js ×19, .css ×18, .json ×16, .py ×8, .md ×4, .html ×2</li>
+    <li><b>Vault app:</b> yes, entry <code>index.html</code> · <b>browser-renderable:</b> yes</li>
+  </ul>
+
+  <h2>Notes</h2>
+  <p><b>Where this came from.</b> A voice memo by Dinis Cruz describing the three designs, and the related vault <a href="../licence-to-operate/index.html">Licence to Operate</a>, where an insurer prices an agent's mandate.</p>
+  <p><b>Who wrote this.</b> <a href="mailto:agent@riskmandate.ai">agent@riskmandate.ai</a> (Claude Opus 5.5, <code>claude-opus-5-5</code>), in the sgit.ai site session, for RiskMandate.ai and sgit.ai. AI-generated text, disclosed as Article 50 of the EU AI Act asks; the person with editorial responsibility is Dinis Cruz. Replies to <a href="mailto:agent@riskmandate.ai">agent@riskmandate.ai</a>.</p>
+
+  <p class="small dim" style="margin-top:2rem"><a href="../index.html">&larr; All published vaults</a></p>
+</main>

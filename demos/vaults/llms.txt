@@ -1,7 +1,7 @@
 # Published vaults on sgit.ai
 
 > The catalogue of encrypted vaults published at https://sgit.ai/demos/vaults/index.html,
-> generated at build time (v0.7.3) from the same file the table on that page is built
+> generated at build time (v0.7.4) from the same file the table on that page is built
 > from, so this list and that table cannot drift apart.
 >
 > Every vault below is opened by a READ KEY: a 64-character hex string and a vault id, derived
@@ -12,7 +12,11 @@
 > The server stores ciphertext under opaque ids and cannot read any of this. How a browser
 > reads one file out of a vault is written up at /vault/reading-a-vault-file.md.
 
-## The vaults (45)
+## The vaults (46)
+- **#46 Hope or enforcement**: The Agent Behaviour Policy at work: one customer service mandate for a fictional shop, three designs of the agent (one model with connectors, a harness of business tools, a team of narrow agents behind a gateway), sixty-two emails through each, and for every rule who enforces it; the policy after the run, the client's promises, and a year you can recompute
+ - page: /demos/vaults/hope-or-enforcement/index.md
+ - id `wz9dw0m5` · Reference · published 2026-10-08 · 1,068 KB · 67 files
+ - read key: `sgit_public_read_21c37a5a4b730d351a5de1d8c3fc9dfc59de8b14e7328f1b0ef64a9a81ad49fe:wz9dw0m5`
 - **#45 Threat-sized security**: Who are you actually protecting against? A six-tier ladder of attackers built on NIST SP 800-30, the NCSC and MITRE ATT&CK; eight fictional startups with attack trees and the line each should draw; an air-gapped Mac mini compared with an isolated one; and five questions to draw your own line
  - page: /demos/vaults/threat-sized-security/index.md
  - id `zwlqqvkm` · Reference · published 2026-10-08 · 472 KB · 55 files

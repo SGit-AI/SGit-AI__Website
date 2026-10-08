@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.3 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.4 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,13 +14,43 @@ Every article here has a semantic graph beside it: the ideas it rests on, the cl
 
 The graphs are data first and pictures second. Take them as JSON: [all articles in one file](graphs.json), with the topics, the teasers and the links between articles resolved, or one file per article at `articles/graphs/<slug>.json` (for example [this one](graphs/footprint-and-blast-radius.json)). The pages on this site are rendered from the same files at build time; nothing here is hand-written HTML.
 
-44 of 44 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
+45 of 45 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
 
 ## How the articles connect
 
 *[diagram]*
 
-44 articles, 176 links between them (299 mentions in all). 35 articles cite an earlier one; 6 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Six agents, one inbox](#six-agents-one-inbox) (16 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+45 articles, 178 links between them (301 mentions in all). 36 articles cite an earlier one; 6 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Six agents, one inbox](#six-agents-one-inbox) (16 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+
+## [Hope or enforcement: one customer service agent, three designs, and who keeps each promise](hope-or-enforcement.md)
+
+2026-10-08 · Agents & policyVaults & method
+
+Every design of an agent can have a rule for every behaviour; what differs is who enforces each rule and how much the agent can reach, so refactoring a customer service agent from one model with broad connectors, to a harness of business tools, to a team of narrow agents behind a deterministic identity gateway turns most of its policy from expectations the model keeps into boundaries it cannot reach, shrinks the policy because it no longer has to forbid what is impossible, cuts tokens, and leaves a short map of what still rests on hope and which boundary to build next, read after every run and shown to the client as a record rather than a score.
+
+*[diagram]*
+**concept**claim**method**artefact**example
+
+**12 nodes, 11 edges**
+
+- **A customer service agent on a shop's inbox** (example) Fictional shop, 38,000 customers, 1,400 emails a week; one mandate of twelve actions.
+- **Hope and enforcement** (concept) Expectation is a rule the model keeps; boundary is a limit the agent cannot reach; only the second is a control.
+- **Design 1: one agent, two connectors** (example) 38-rule policy, 97% hope; one run reaches 38,000 records, any refund, any address; 35,000 tokens per email.
+- **Design 2: a harness of business tools** (example) Reach falls to 1,000 records, 5,000 GBP, 20 emails; six rules move into code; 73% still hope.
+- **Tool signatures are where policy hopes** (claim) Every argument naming a customer, an order or an address is a rule the model must keep.
+- **Design 3: a team behind a gateway** (example) Runs bound to one verified customer; 23% hope; unbounded excess zero; 4,400 tokens per email.
+- **More tools, each narrower** (claim) Granular tools carry business knowledge in code: once per order, before dispatch, the bound customer.
+- **Narrow agents still have too much power** (claim) A compromised mailbox and voucher farming work inside the mandate; the policy finds them.
+- **The policy says which boundary to build next** (method) Address confirmation, per-customer refund and voucher caps, sampled review of tone.
+- **Read the policy after every run** (method) What was exercised, what hostile mail tested, what held; tokens against the budget.
+- **The client sees the record, not a score** (artefact) Eight promises, and for each design what keeps each one; the business case from the same record.
+- **Hope or enforcement, the vault** (artefact) The mandate, three designs, 62 emails, the analyst's report and a recomputable year.
+
+> Every design has a policy for every behaviour. The difference is who enforces it. The thesis.
+
+> The design breaks its own budget rule on every email, which is what happens to a budget that is an expectation. Tokens as a policy like any other.
+
+builds on [Zoom into an agent's behaviour policy and you find the business logic](#the-behaviour-policy-is-the-business-logic), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs).
 
 ## [Who are you protecting against? Draw the security line where the attacker is, not above it](who-are-you-protecting-against.md)
 
@@ -212,7 +242,7 @@ The first rules written for an agent are mechanical and vendors enforce them wel
 
 > A control attached to a written rule is worth more than one switched on in general, because the customer can see what it bought. Why the behaviour policy is a good integration point for vendors.
 
-builds on [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [An open AI governance framework, and what its licence let us build](#ai-baseline-control-framework).
+builds on [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [An open AI governance framework, and what its licence let us build](#ai-baseline-control-framework); continued by [Hope or enforcement: one customer service agent, three designs, and who keeps each promise](#hope-or-enforcement).
 
 ## [A locked-down desktop for an agent, by the minute, is still hard to rent](an-agent-desktop-by-the-minute.md)
 
@@ -438,7 +468,7 @@ A running team of twelve Claude agents is described as a system and as a set of 
 
 > A memory that can be shown to its subject is a memory that has been kept to what can be shown. The privacy design showing through the product design: the what-we-know-about-you pack.
 
-builds on [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents); continued by [Every mistake added a rule: complexity, agents, and the way back to shipping](#every-mistake-added-a-rule), [Where is the why? A permission prompt asked me to decide, and kept the reason](#where-is-the-why), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets).
+builds on [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents); continued by [Hope or enforcement: one customer service agent, three designs, and who keeps each promise](#hope-or-enforcement), [Every mistake added a rule: complexity, agents, and the way back to shipping](#every-mistake-added-a-rule), [Where is the why? A permission prompt asked me to decide, and kept the reason](#where-is-the-why), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets).
 
 ## [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](a-personal-agent-that-keeps-your-secrets.md)
 
