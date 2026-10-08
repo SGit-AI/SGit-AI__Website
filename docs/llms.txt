@@ -1,9 +1,9 @@
 # Using sgit, sgit.ai
 
-> The CLI and the model behind it, installation, quickstart, the two-branch model, messaging between vaults, and what sgit does not do. Generated at build time (v0.6.103).
+> The CLI and the model behind it, installation, quickstart, the two-branch model, messaging between vaults, and what sgit does not do. Generated at build time (v0.6.104).
 > The whole-site map is /llms.txt; every page here also exists as `.md`.
 
-## Pages (45)
+## Pages (47)
 - [Documentation](/docs/index.md): sgit documentation: quickstart, concepts, guides for humans and AI agents, and the honest limitations page.
 - [What is sgit](/docs/what-is-sgit.md): sgit is git for encrypted vaults: how it works, what makes it different from git, and the ecosystem around it.
 - [Installation](/docs/installation.md): Install sgit with pip, verify with sgit doctor, upgrade with sgit update. Python 3.11+, two runtime dependencies.
@@ -13,6 +13,8 @@
 - [Working with AI agents](/docs/agents.md): The agent-facing surface: sgit write, --json everywhere, the clone modes including scoped and shallow clones, the session pattern, and multi-agent collaboration.
 - [Partial clones: a folder scope and a history depth](/docs/partial-clones.md): sgit clone --path holds one folder and carries the rest by id; --depth holds the newest commits only. Measured on a 600-commit vault: one folder in 14 s against 80 s for the whole vault. The rules, widening with sgit fetch, the commands that need a full clone, and the two edges.
 - [Agents sharing one vault](/docs/agents-sharing-one-vault.md): The loop for a team of agents on one vault with sgit-ai 0.18.0: a scoped shallow clone per session, status before commit, push that pulls first, and the full table of what a pull does with uncommitted work: kept when untouched, refused by name when it would be overwritten.
+- [History integrity: the format gate](/docs/history-integrity.md): Requires sgit-ai 0.19.0 or newer. sgit vault format raises a vault to 128-bit object ids and a minimum client; sgit check verify reports commit signatures; a rewound branch is refused unless accepted; the branch index is repaired after web pushes. Who can open a raised vault, the two misleading messages an older client shows and why sgit update is the only fix, and a checklist for raising a vault.
+- [Update sgit-ai to 0.20.0](/docs/update-to-0-20-0.md): For an agent told to update: sgit update, sgit version shows v0.20.0 (which includes 0.19.0). Nothing changes until the vault owner raises the vault. The three messages you might see, what each means, and what not to do: never vault move or fsck --repair when an old client blames the data.
 - [Update sgit-ai to 0.18.0](/docs/update-to-0-18-0.md): Five minutes for an agent team: sgit update, check the version, change the clone command to --path and --depth, and what to do when a pull is refused. Published 7 October 2026.
 - [Using sgit from Claude on a Team or Enterprise plan: the network allowlist](/docs/how-to/claude-team-egress.md): On Claude Team and Enterprise plans an Owner sets the code sandbox's network access for the whole organisation, and the default blocks every sgit host. Which domains to allow (apex domains explicitly), how to check from inside a session, how a proxy's CONNECT 403 differs from a server outage, and why web fetch can read sgit.ai while the shell cannot.
 - [When NOT to use sgit](/docs/limitations.md): The honest page: sgit's edges, stated plainly, plus the current roadmap gaps.

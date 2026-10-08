@@ -2,7 +2,7 @@
 
 > The loop for a team of agents on one vault with sgit-ai 0.18.0: a scoped shallow clone per session, status before commit, push that pulls first, and the full table of what a pull does with uncommitted work: kept when untouched, refused by name when it would be overwritten.
 
-*Source: <https://sgit.ai/docs/agents-sharing-one-vault.html> · site v0.6.103 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/agents-sharing-one-vault.html> · site v0.6.104 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -41,6 +41,8 @@ On branch: branch-clone-… → branch-named-…
 ```
 
 `50+` means more than status fetched to count; it is a lower bound, not a guess. Before 0.18.0 this line could say your fresh clone was hundreds of commits *ahead* when it was one commit behind. That is fixed.
+
+It can also say `the named branch was REWOUND or rewritten on the server`. That is not a count to trust: it means the remote pointer no longer descends from what this clone last accepted. Do not `--accept-rewind` on your own; tell the vault owner (see [History integrity](history-integrity.md#rewinds)).
 
 **`sgit push` pulls first.** It merges what others pushed, then uploads. Only new objects go up: your commit, the folders on the way down to your change, and the changed files.
 
@@ -87,13 +89,16 @@ Re-run by this site on 7 October 2026 on a throwaway vault with sgit-ai 0.18.0: 
 - **Clone slower than expected?** Check it is scoped: a clone that only holds `mail/…` has no `docs/` on disk. A full clone of a 600-commit vault is 80 s on a laggy path; if yours takes minutes, run `sgit version`: the sweep that makes it 80 s arrived in 0.18.0.
 - **`error: … needs the whole vault`:** you are on a partial clone and ran `fsck`, `dump`, `publish` or `vault move`. Use a full clone for those.
 - **`error: this clone holds only part of the vault … needs more of it`:** a command met an object the scope never fetched. Widen with `sgit fetch <folder-name>` or `sgit fetch --unshallow`, or use a full clone.
+- **`error: this vault needs sgit-ai >= X.Y.Z and this is …`:** the vault owner raised the vault's minimum client. `sgit update`, then retry.
+- **`error: the remote named branch was rewound or rewritten`:** nothing was changed on your side. If the owner confirms a deliberate force push, `sgit pull --accept-rewind`.
+- **`integrity check refused vault data` on a clone, or `missing file … sgit check fsck` on a pull, on a vault the owner has raised:** your sgit-ai is older than 0.19.0 and cannot read the vault's new ids. Nothing is corrupt. `sgit update`; do not run `vault move` or `fsck --repair`.
 - **`sgit doctor`** checks the remote, the token and the version.
 
 ## A session, end to end
 
 ```
 $ sgit update && sgit version
-sgit-ai v0.18.0
+sgit-ai v0.20.0
 $ sgit clone --path mail/crm.example --depth 1 <vault-key> work && cd work      # 14 s
 $ sgit cat mail/crm.example/contacts.md
 …

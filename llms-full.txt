@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.6.103). Nothing here needs a second request. Individual pages live at the paths
+> (v0.6.104). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -73,7 +73,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-261site releases, each verified live before it was called done
+262site releases, each verified live before it was called done
 
 44vaults published with a deliberately public read key
 
@@ -4696,7 +4696,7 @@ Start with the five-minute quickstart. If you know git, the Rosetta stone will m
 
 ## Guides
 
-[Working on a vault: start hereThe practices that get repeated most, and where each answer lives](guidance/index.md) [Three surfaces_page.json, a vault app, or a site page, pick this first](surfaces.md) [Working with AI agentswrite, --json, the clone modes, multi-agent patterns](agents.md) [Partial clones--path and --depth: clone one folder in seconds, widen or deepen later](partial-clones.md) [Agents sharing one vaultThe loop for a team on one vault, and what a pull does with uncommitted work](agents-sharing-one-vault.md) [Update sgit-ai to 0.18.0Five minutes: update, check, change your clone command](update-to-0-18-0.md) [Use casesFive workflows, all on shipped commands](../use-cases/index.md) [SG/Vault platformThe browser app, vault apps, the window.sg bridge](vault/index.md)
+[Working on a vault: start hereThe practices that get repeated most, and where each answer lives](guidance/index.md) [Three surfaces_page.json, a vault app, or a site page, pick this first](surfaces.md) [Working with AI agentswrite, --json, the clone modes, multi-agent patterns](agents.md) [Partial clones--path and --depth: clone one folder in seconds, widen or deepen later](partial-clones.md) [Agents sharing one vaultThe loop for a team on one vault, and what a pull does with uncommitted work](agents-sharing-one-vault.md) [History integrityThe format gate, verifying signatures, rewinds, and who can open a raised vault](history-integrity.md) [Update sgit-ai to 0.20.0Two minutes: update, check, the three messages you might see (includes 0.19.0)](update-to-0-20-0.md) [Update sgit-ai to 0.18.0Five minutes: update, check, change your clone command](update-to-0-18-0.md) [Use casesFive workflows, all on shipped commands](../use-cases/index.md) [SG/Vault platformThe browser app, vault apps, the window.sg bridge](vault/index.md)
 
 ## Project
 
@@ -5051,6 +5051,8 @@ For a team of agents on one vault, read [Agents sharing one vault](agents-sharin
 - `sgit history show <commit>` and `sgit history diff` are **read-only**: they fetch missing objects on demand without merging, so an agent can inspect a peer's commit without touching its own working copy.
 - `sgit resolve --show` renders base/ours/theirs with a per-file verdict, so genuine conflicts are distinguishable from noise, by a human or by an agent.
 
+Since 0.19.0 a vault can require signed commits and refuse clients older than a version its owner sets; see [History integrity](history-integrity.md).
+
 ```
 # agent A  $ sgit branch new feature-analysis … commit … push
 # agent B  $ sgit history show obj-cas-imm-c4e81a   # look, don't merge
@@ -5177,6 +5179,8 @@ error: `sgit check fsck` needs the whole vault, and this clone holds only part o
 
 Any other command that happens to need an object the clone never fetched says the same thing in its own words, rather than suggesting the vault is corrupt.
 
+`sgit check verify` (0.19.0 and newer) works on a partial clone: a scoped clone checks the commits it holds, a shallow one walks to its boundary. See [History integrity](history-integrity.md#signatures).
+
 ## Shallow clone: `--depth N`
 
 ```
@@ -5258,6 +5262,8 @@ On branch: branch-clone-… → branch-named-…
 
 `50+` means more than status fetched to count; it is a lower bound, not a guess. Before 0.18.0 this line could say your fresh clone was hundreds of commits *ahead* when it was one commit behind. That is fixed.
 
+It can also say `the named branch was REWOUND or rewritten on the server`. That is not a count to trust: it means the remote pointer no longer descends from what this clone last accepted. Do not `--accept-rewind` on your own; tell the vault owner (see [History integrity](history-integrity.md#rewinds)).
+
 **`sgit push` pulls first.** It merges what others pushed, then uploads. Only new objects go up: your commit, the folders on the way down to your change, and the changed files.
 
 ## What happens to work you have not committed
@@ -5303,13 +5309,16 @@ Re-run by this site on 7 October 2026 on a throwaway vault with sgit-ai 0.18.0: 
 - **Clone slower than expected?** Check it is scoped: a clone that only holds `mail/…` has no `docs/` on disk. A full clone of a 600-commit vault is 80 s on a laggy path; if yours takes minutes, run `sgit version`: the sweep that makes it 80 s arrived in 0.18.0.
 - **`error: … needs the whole vault`:** you are on a partial clone and ran `fsck`, `dump`, `publish` or `vault move`. Use a full clone for those.
 - **`error: this clone holds only part of the vault … needs more of it`:** a command met an object the scope never fetched. Widen with `sgit fetch <folder-name>` or `sgit fetch --unshallow`, or use a full clone.
+- **`error: this vault needs sgit-ai >= X.Y.Z and this is …`:** the vault owner raised the vault's minimum client. `sgit update`, then retry.
+- **`error: the remote named branch was rewound or rewritten`:** nothing was changed on your side. If the owner confirms a deliberate force push, `sgit pull --accept-rewind`.
+- **`integrity check refused vault data` on a clone, or `missing file … sgit check fsck` on a pull, on a vault the owner has raised:** your sgit-ai is older than 0.19.0 and cannot read the vault's new ids. Nothing is corrupt. `sgit update`; do not run `vault move` or `fsck --repair`.
 - **`sgit doctor`** checks the remote, the token and the version.
 
 ## A session, end to end
 
 ```
 $ sgit update && sgit version
-sgit-ai v0.18.0
+sgit-ai v0.20.0
 $ sgit clone --path mail/crm.example --depth 1 <vault-key> work && cd work      # 14 s
 $ sgit cat mail/crm.example/contacts.md
 …
@@ -5334,6 +5343,213 @@ The team this was worked out on is described in [The agent team as it runs](../a
 
 
 ==============================================================================
+# History integrity: the format gate, verifying signatures, and rewinds, sgit Docs
+
+> Requires sgit-ai 0.19.0 or newer. sgit vault format raises a vault to 128-bit object ids and a minimum client; sgit check verify reports commit signatures; a rewound branch is refused unless accepted; the branch index is repaired after web pushes. Who can open a raised vault, the two misleading messages an older client shows and why sgit update is the only fix, and a checklist for raising a vault.
+>
+> Page: https://sgit.ai/docs/history-integrity.html
+
+[Docs](index.md) / Guides
+
+# History integrity: the format gate, verifying signatures, and rewinds
+
+Requires sgit-ai 0.19.0 or newer: `sgit version` to check, `sgit update` to upgrade. **Nothing changes for an existing vault until its owner raises it** with `sgit vault format`; until then every client, old or new, behaves as it did in 0.18.0.
+
+A vault is a Merkle tree of encrypted objects: every file, folder and commit is stored under the hash of its ciphertext, every commit names its parents and its root folder by those hashes, and every object and ref is AES-256-GCM encrypted under a key the server never holds. So the server cannot alter a byte of history without it failing to decrypt, and `sgit check fsck` finds anything missing or corrupt. 0.19.0 adds what that model did not give you: who may open a vault, 128-bit addresses, a branch pointer that only moves forward, and signatures you can check. All of it is per vault and off by default.
+
+## The format gate: `sgit vault format`
+
+Every vault has a gate in its branch index. A vault that has never been touched by this command reads as format 1 with no minimum client, which is exactly the 0.18.0 behaviour.
+
+```
+$ sgit vault format
+  Format:      1  (new objects get 12-hex ids)
+  Min client:  none   (this client: v0.20.0)
+  Features:    none
+
+Raise it with: sgit vault format --set 2 --min-client <X.Y.Z> [--feature signatures-required]
+  Clients older than --min-client refuse the vault by name (sgit update); existing objects are untouched.
+```
+
+The owner raises it, from any clone with the vault key:
+
+```
+$ sgit vault format --set 2 --min-client 0.19.0
+Vault format updated and written to the server.
+
+  Note: once a new object is written here, sgit-ai older than 0.19.0 cannot read this vault.
+        Those clients do not know this gate exists, so they will NOT say "update": a fresh clone
+        reports "integrity check refused vault data" and a pull reports "missing file … run
+        sgit check fsck". The fix for them is `sgit update`, never `vault move` or `fsck --repair`.
+        Raise a vault only once every agent that writes to it is on 0.19.0 or newer.
+  Format:      2  (new objects get 32-hex ids)
+  Min client:  0.19.0   (this client: v0.20.0)
+  Features:    ids-128
+```
+
+- **`--set 2`**: from now on, every new object this vault stores gets a 128-bit content address (`obj-cas-imm-` plus 32 hex characters) instead of 48 bits. Existing objects keep their ids and still verify; a clone holds both. Nothing is re-encrypted and no `vault move` is needed. A format cannot go back down: `error: … format cannot go down (vault is at 2); objects already written at the wider id would be unreadable`.
+- **`--min-client X.Y.Z`**: a client from 0.19.0 on that is older than this refuses the vault by name: `error: this vault needs sgit-ai >= 0.20.0 and this is 0.19.0: run `sgit update`, then try again`. You cannot set a minimum you do not meet yourself (`… you would lock yourself out`). Compared on the three numbers; a dev build is never refused.
+- **`--feature NAME` / `--remove-feature NAME`**: policies. `signatures-required` is the one that exists today, [below](#signatures).
+
+**Why 128 bits.** A 48-bit address is plenty against the server, which cannot produce decryptable bytes at all. It is not plenty against someone who holds the vault key and wants to swap an object for another with the same address: that is 248 hashes, hours on a GPU. On a raised vault it is 2128. Cost on the shared CRM vault used as the example in these pages (674 commits, 19,780 objects): 1.5 % more bytes, no visible change in time.
+
+## Who can open a raised vault
+
+| Client | Un-raised vault (format 1) | Raised vault (format 2) |
+|---|---|---|
+| sgit-ai 0.20.0, 0.19.0 | works, unchanged | works; refuses by name if below the vault's `--min-client` |
+| sgit-ai 0.18.x and older | works, unchanged | **fails, and blames the data.** A fresh clone says `integrity check refused vault data`; a pull says `missing file … sgit check fsck`. The fix is `sgit update` |
+| The web UI | works | reads it; its pushes still write 48-bit ids and drop the index gate until its update ships, and the next CLI pull repairs the index |
+
+**The one thing to plan.** A client older than 0.19.0 does not know the gate exists, so it cannot tell you to update. Raising the vault does nothing to it by itself; the first object written at a 32-hex id after the raise is what stops it, and it stops with one of these, both of which read like damage:
+
+```
+error: integrity check refused vault data — clone needs object obj-cas-imm-…, which was
+refused by the content-address check … the host served corrupt or substituted content:
+do not trust this source.
+
+error: missing file — object obj-cas-imm-… is not in the local store
+  hint: try "sgit check fsck ." to check and repair
+```
+
+**Neither hint applies.** Nothing is corrupt and nothing was lost: an old client cannot parse a 32-hex id. Do not run `sgit vault move` or `fsck --repair`. Run `sgit update` and retry. Checked on this site on 8 October 2026 with real 0.17.0 and 0.18.0 installs against a throwaway vault on the live dev API: those are the messages, word for word.
+
+**The rule for vault owners:** raise a vault only once every agent that writes to it is on 0.19.0 or newer, and pass `--min-client 0.19.0` so that clients from 0.19.0 on refuse by name rather than by symptom.
+
+## The branch index is shared, and now repaired
+
+The branch index lists every clone branch, maps each to its signing key, and carries the gate. The web UI currently overwrites it with a single entry on every push, which used to lose the other entries for good. From 0.19.0 the CLI treats the index as a shared document: `pull` reads the remote copy, merges it with the local one (every branch, the stronger gate) and writes the merge back with compare-and-swap; `push` registers a clone branch the same way.
+
+```
+$ sgit pull
+  ▸ Branch index: restored 2 entr(y/ies) the remote copy had lost
+```
+
+You do not have to do anything; it is the reason a raised gate survives a web push.
+
+## Rewinds: the named branch only moves forward
+
+The named branch is a pointer. The server, or anyone with the key running `sgit push --force`, can point it at an older or unrelated commit. Each clone now remembers the last remote head it accepted, and a new head that does not descend from it is a **rewind**.
+
+```
+$ sgit status
+  Remote: the named branch was REWOUND or rewritten on the server (it no longer descends from obj-cas-imm-…)
+          if that was a deliberate `sgit push --force`, run: sgit pull --accept-rewind
+          otherwise treat it as tampering and check with the vault owner
+
+$ sgit pull
+error: the remote named branch was rewound or rewritten: it pointed at obj-cas-imm-… the last
+time this clone saw it and now points at obj-cas-imm-…, which does not descend from it. If this
+was a deliberate `sgit push --force`, run `sgit pull --accept-rewind`; otherwise treat it as
+tampering and check with the vault owner. Nothing was changed.
+```
+
+- **You, or a teammate, force-pushed on purpose** (after `sgit history reset`, say): every other clone runs `sgit pull --accept-rewind` once. The clone that pushed needs nothing.
+- **Nobody did**: do not accept it. Your clone still holds the newer history; `sgit push` would put it back. Tell the vault owner.
+- **The web UI pushed**: today the web UI's push does not compare before writing, so two people saving at the same moment can drop one person's commits. The CLI reports that as a rewind, and it is right to. The web UI team is moving to compare-and-swap.
+
+Normal forward moves, a clone's first pull, and a fresh `sgit init` over an existing vault id are never rewinds.
+
+## Signatures: `sgit check verify`
+
+Every CLI commit is signed with the clone branch's ECDSA P-256 key. 0.19.0 is the first release that checks them.
+
+```
+$ sgit check verify
+Checked 674 commit(s): 247 verified, 0 bad, 112 unsigned, 315 without a known key, 0 missing
+```
+
+| Status | Meaning |
+|---|---|
+| verified | the signature checks under the key the commit names, or the key the branch index maps its branch to |
+| bad | the signature does not check: the commit was altered after signing. `fsck` fails on this |
+| unsigned | written without a key: the web UI, or a clone with no local signing key |
+| without a known key | signed, but neither the commit nor the index says by which key: commits from before 0.19.0 whose branch has left the index |
+
+New commits carry their key id and sign canonical bytes (RFC 8785 over the stored commit JSON, minus the signature), so from 0.19.0 on "without a known key" stops growing; older signatures still verify. `sgit check fsck` prints the same summary, and on the example vault now takes 12 s instead of 270 s. `check verify` works on a [partial clone](partial-clones.md) too: a scoped clone checks the commits it holds, a shallow one stops at its boundary.
+
+**Requiring signatures.** `sgit vault format --feature signatures-required` makes every `pull` refuse the first incoming commit that is not *verified*, by name, before merging:
+
+```
+error: this vault requires signed commits and incoming commit obj-cas-imm-… is unsigned; the
+pull was refused before anything was merged. Ask the vault owner, or relax the policy with
+`sgit vault format --remove-feature signatures-required`.
+```
+
+Turn it on only for vaults written by 0.19.0+ CLIs with their keys: today's web UI does not sign, and history from before 0.19.0 is not retroactively verifiable. `sgit migrate apply` refuses on a vault with signed commits (a migration rewrites history) unless `--force`.
+
+## A checklist for raising a vault
+
+1. Every agent that writes to it is on 0.19.0 or newer (`sgit version`). Point them at [Update sgit-ai to 0.20.0](update-to-0-20-0.md).
+2. `sgit check fsck` is clean and `sgit check verify` shows no *bad* commits.
+3. `sgit vault format --set 2 --min-client 0.19.0`.
+4. Each agent's next `sgit pull` picks the gate up; nothing else to do.
+5. `signatures-required` only once no web-UI writes are expected on the vault.
+
+From the sgit-ai team's 0.19.0 and 0.20.0 notes. The old-client messages were found by this site's own check of the 0.19.0 draft, which had said "a validation error"; the CLI team confirmed them and added the warning that 0.20.0 prints when a vault is raised. Release notes: [sgit-ai 0.20.0 (includes 0.19.0)](../updates/index.md#sgit-ai-0-20-0).
+
+
+
+==============================================================================
+# Update sgit-ai to 0.20.0, sgit Docs
+
+> For an agent told to update: sgit update, sgit version shows v0.20.0 (which includes 0.19.0). Nothing changes until the vault owner raises the vault. The three messages you might see, what each means, and what not to do: never vault move or fsck --repair when an old client blames the data.
+>
+> Page: https://sgit.ai/docs/update-to-0-20-0.html
+
+[Docs](index.md) / Guides
+
+# Update sgit-ai to 0.20.0
+
+A short page for an agent, or a person running agents, that has been told "read this, update to the latest version". Two minutes. sgit-ai 0.20.0 was published to PyPI on 8 October 2026 and includes everything in 0.19.0 (7 October); there is no reason to stop at 0.19.0.
+
+## 1. Update and check
+
+```
+$ sgit update          # wraps: pip install --upgrade sgit-ai
+$ sgit version
+sgit-ai v0.20.0
+```
+
+If `sgit version` still shows an older version, you have more than one Python environment; run `python -m pip install --upgrade sgit-ai` in the one your harness uses, then check again. [Installation](installation.md) has the rest.
+
+## 2. What changes for you: nothing, until the vault owner raises the vault
+
+Every command works as in 0.18.0. Three things are new:
+
+| New | What it means for you |
+|---|---|
+| `sgit check verify` | how many commits in the vault have a verifiable signature. Read-only; works on a partial clone |
+| `sgit vault format` | shows the vault's format and minimum client. Only the vault owner changes it |
+| `sgit check fsck` | now takes seconds, not minutes, and prints a signature summary |
+
+## 3. Three messages you might see
+
+**Message 1**, on `status` or `pull`: `the named branch was REWOUND or rewritten on the server`. Someone force-pushed, or the server served an old pointer. Nothing was changed on your side. Do not accept it on your own; tell the vault owner. If the owner says it was deliberate: `sgit pull --accept-rewind`.
+
+**Message 2**, on any command, once the owner has raised the vault's minimum client: `error: this vault needs sgit-ai >= X.Y.Z and this is …: run `sgit update`, then try again`. Do exactly that.
+
+**Message 3**, only if you are still on 0.18.x or older and the owner has raised the vault: a fresh clone says `error: integrity check refused vault data … the host served corrupt or substituted content: do not trust this source`, and a pull says `error: missing file — object obj-cas-imm-… is not in the local store` with a hint to run `sgit check fsck`. **Neither hint applies.** The vault is fine; your client cannot read its new ids. Do not run `vault move` or `fsck --repair`. Run `sgit update` and retry.
+
+## 4. If you are the vault owner
+
+Raise a vault only once every agent that writes to it is on 0.19.0 or newer: an older agent fails on a raised vault with Message 3, not with an update message. Then:
+
+```
+$ sgit vault format --set 2 --min-client 0.19.0
+```
+
+0.20.0 prints a note saying exactly this when you raise a vault. New objects get 128-bit ids, old ones stay, no move. [History integrity](history-integrity.md) has the rest: the gate, signatures, rewinds and the checklist.
+
+## 5. If you want the detail
+
+- [History integrity](history-integrity.md): the format gate, verifying signatures, rewinds, and who can open a raised vault.
+- [Release notes: sgit-ai 0.20.0 (includes 0.19.0)](../updates/index.md#sgit-ai-0-20-0).
+- [Agents sharing one vault](agents-sharing-one-vault.md): the loop for a team on one vault.
+
+
+
+==============================================================================
 # Update sgit-ai to 0.18.0, sgit Docs
 
 > Five minutes for an agent team: sgit update, check the version, change the clone command to --path and --depth, and what to do when a pull is refused. Published 7 October 2026.
@@ -5343,6 +5559,8 @@ The team this was worked out on is described in [The agent team as it runs](../a
 [Docs](index.md) / Guides
 
 # Update sgit-ai to 0.18.0
+
+**0.20.0 is out** and includes 0.19.0: the page to follow now is [Update sgit-ai to 0.20.0](update-to-0-20-0.md). This page is kept for what 0.18.0 changed.
 
 A short page for an agent, or a person running agents, that has been told "read this and update". Five minutes. sgit-ai 0.18.0 was published to PyPI on 7 October 2026.
 
@@ -5991,7 +6209,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.103, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.104, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -6354,7 +6572,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-261**site releases since 14 August**
+262**site releases since 14 August**
 each verified live before it was called done
 
 44**vaults published with a public read key**
@@ -6363,7 +6581,7 @@ every one audited first; findings on the page
 27**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-112**articles and release notes**
+113**articles and release notes**
 all with a markdown twin and an RSS feed
 
 17**cross-team briefs, in the open**
@@ -11335,11 +11553,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.6.103**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.6.104**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.6.103 | 2026-10-08 | this release | OPEN THE VAULT. The bridge trail's last card had 'Open the app', which went to the vault page's live embed; it is now 'Open the vault' and opens the vault itself in the official UI with its published read key, in a new tab. A trail link can be marked external, which adds the arrow and the new tab. |
+| v0.6.104 | 2026-10-08 | this release | SGIT-AI 0.20.0 (INCLUDES 0.19.0). One release-notes entry for two CLI releases a day apart, so an agent pointed at the newest lands on it; a new guide, History integrity (the format gate, 128-bit ids, signatures, rewinds, the shared branch index); a new agent notice, Update sgit-ai to 0.20.0; and the edits the CLI team asked for on Agents sharing one vault, Partial clones, Working with AI agents and Update to 0.18.0. Before publishing, this site checked the 0.19.0 draft against real 0.17.0, 0.18.0, 0.19.0 and 0.20.0 installs and found that an older client on a raised vault does not fail with a validation error, as the draft said, but blames the data ('integrity check refused vault data', 'missing file ... sgit check fsck'), pointing at the wrong fix. The CLI team confirmed it and shipped 0.20.0 with a warning on raise; every page here quotes the real messages and says the fix is sgit update. |
+| v0.6.103 | 2026-10-08 | git 890a0eb4 | OPEN THE VAULT. The bridge trail's last card had 'Open the app', which went to the vault page's live embed; it is now 'Open the vault' and opens the vault itself in the official UI with its published read key, in a new tab. A trail link can be marked external, which adds the arrow and the new tab. |
 | v0.6.102 | 2026-10-08 | git 4493e481 | THE BRIDGE VAULT v0.2, AND TRAILS. The bridge-simulation vault gains the economics and the data, nine new views and a second build script (tools/economics.py): costs and profit (fixed costs first, variable with use; the reporter is under water during the closure; break-even on day forty), two years on (£4,378, 96% from institutions and agents after the reopening), the next eleven stories (reuse saves 157 of 331 reporting hours; the first week's payments decide what is investigated; the long tail is 41% of year two), trust as a forecast record, the council's relief scheme and two accountant agents, a simulated model query over the claims live on any date, the data assets, and a Swagger-style explorer for an OpenAPI 3.1 description whose every endpoint is a GET of a file in the vault. The bridge article gains a section on it, a collage of the five front pages and one of twenty views; the vault page is rewritten around v0.2, every screenshot re-taken under a new name so no cache serves the old one. NEW: trails. `!trail ` in markdown, or in a page, renders a row of cards from admin/content/trails.json, paths resolved per page and the current page marked; the bridge trail (Markus Franz's article, the Reader Skills article, the bridge article, the vault) is on all three pages. |
 | v0.6.101 | 2026-10-08 | git 14f08970 | THE SUBSCRIBE VAULT IS THE LIST. Vault y9j3nc60 becomes the subscribers' single source of truth: list/subscribers.json holds the current state (status, name, consent, sources, preferences) and list/events.jsonl the history, naming subscribers only by a hash so an erasure never touches the log. The drain turns accepted messages into list events with no model in the loop, and other agents can add events without the vault key, through a fenced list-event block in signed mail (the site agent's issue-sent, a forwarded unsubscribe). The subscribe brief gains the section and the commands. |
 | v0.6.100 | 2026-10-08 | released with v0.6.101 | SEND A VAULT KEY. A new page, /docs/send-a-vault-key.html, is the instructions URL a session holding vault keys is pointed at, with an inbox vault id and an append token given privately and never published: the rules, the vault-key-handover/v1 payload, the registry's public key and endpoint, what to do afterwards and on a failure. Taken from the vault registry write-up's Section 0, with its inconsistencies resolved: the vault id is withheld everywhere, the token and id together are treated as a write credential, and the sender script (/assets/send_to_registry.py) pins the registry key's fingerprint before sealing, reads the token from the environment, never prints a key, and names each HTTP failure by its real cause. Reviewed by the registry before release: read keys are accepted (recorded as read-only), a too-large payload is reported without a size the drain does not enforce, and the page says that a payload on the lane can still be quarantined. The first live run delivered two keys, signed. |
@@ -13080,8 +13299,9 @@ What changed on sgit and on this site, as it happens, one entry per story rather
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
 
-**70 entries, newest first**
+**71 entries, newest first**
 
+- 2026-10-08[sgit-ai 0.20.0 (includes 0.19.0): a vault whose history you can verify, and an honest warning when you raise it](#sgit-ai-0-20-0)
 - 2026-10-07[The articles get a newsroom: publish by adding a file, placement by one editor](#the-newsroom)
 - 2026-10-07[The SGit Newsroom, and a newsletter instead of an email per article](#sgit-newsroom-newsletter)
 - 2026-10-07[sgit-ai 0.18.0: scoped and shallow clones, a pull that keeps your work, and a clone twice as fast](#sgit-ai-0-18-0)
@@ -13152,6 +13372,66 @@ Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the 
 - 2026-08-17[Three walkthroughs, read back as documents](#three-walkthroughs-read-back-as-documents)
 - 2026-08-17[Printing stopped costing every reader](#printing-stopped-costing-every-reader)
 - 2026-08-17[Green does not mean live](#green-does-not-mean-live)
+
+## 2026-10-08
+
+### [sgit-ai 0.20.0 (includes 0.19.0): a vault whose history you can verify, and an honest warning when you raise it](#sgit-ai-0-20-0) [v0.6.104](../admin/versions.md)
+
+sgit-aireleaseclihistory-integritysignaturesagents
+
+**The CLI's release notes for two releases a day apart, carried as one entry so an agent pointed here lands on the newest.** sgit-ai 0.19.0 reached PyPI on 7 October 2026 and 0.20.0 on 8 October; 0.20.0 is 0.19.0 plus one warning, below. Upgrade with `sgit update`; check with `sgit version`. The short version for an agent team is [Update sgit-ai to 0.20.0](../docs/update-to-0-20-0.md); the guide is [History integrity](../docs/history-integrity.md).
+
+0.18.0 made a large shared vault fast to clone and safe to pull. 0.19.0 makes its history verifiable: a vault can say which client may open it, new objects can get 128-bit content addresses, the branch index survives being overwritten, a rolled-back branch is refused rather than silently taken, and commit signatures can be checked and required. **Nothing changes for an existing vault until its owner raises it**; every default is the 0.18.0 behaviour. Numbers are the CLI team's, measured on the same anonymised shared CRM vault as the 0.18.0 notes plus a throwaway vault on the live dev API.
+
+## What changed, in one table
+
+| Area | 0.18.0 | 0.19.0 and 0.20.0 |
+|---|---|---|
+| Object ids | 48-bit content addresses | 48-bit by default; **128-bit for new objects on a vault raised to format 2**, old objects untouched, no `vault move` |
+| Which client may open a vault | any | the vault can set a minimum; clients from 0.19.0 on that are older refuse by name: `this vault needs sgit-ai >= X.Y.Z …: run sgit update` |
+| The branch index when the web UI pushes | its other entries were lost | the next CLI `pull` restores them, and CLI writes use compare-and-swap |
+| A rolled-back or rewritten branch on the server | taken silently | `status` says `REWOUND`; `pull` refuses; `pull --accept-rewind` takes it after a deliberate `push --force` |
+| Commit signatures | written, never checked | `sgit check verify`; a summary in `fsck`; per-vault `signatures-required` refuses unverified incoming commits |
+| `sgit check fsck` on a 674-commit vault | 270 s | 12 s, same findings |
+| `pull` after `status` on a clone several commits behind | left intermediate trees unfetched | fetches them |
+| Raising a vault (0.20.0) | n/a | prints what older clients will see, and that the fix for them is `sgit update` |
+
+## New in 0.19.0
+
+**`sgit vault format`, the format gate.** It shows `Format`, `Min client` and `Features`, and the owner raises it with `--set 2`, `--min-client X.Y.Z` and `--feature signatures-required`. The gate lives in the vault's encrypted branch index and is read by every command. Absent, it means format 1 and no minimum: every vault that exists today. A format can only go up, and a minimum you do not meet yourself is refused ("you would lock yourself out"). Raising to format 2 changes nothing already stored: new commits, trees and files get 128-bit ids, existing ones keep theirs, both verify, and a clone holds both. Cost on the example vault: +1.5 % of bytes, no visible change in time.
+
+**`sgit check verify [--limit N]`, signatures.** Every CLI commit since the first release carries an ECDSA signature; 0.19.0 is the first release that checks it, and reports each commit as verified, bad, unsigned or without a known key. New commits also carry the id of their signing key and sign canonical bytes (RFC 8785 over the stored commit JSON minus the signature), so verification no longer depends on the branch index still listing the branch that made them; older signatures still verify. `fsck` prints the same summary and fails on a *bad* signature. `sgit vault format --feature signatures-required` makes `pull` refuse, by name and before merging, any incoming commit that does not verify.
+
+**Rewinds.** Each clone remembers the last remote head it accepted. A remote head that does not descend from it is a rewind: a rollback, a rewritten history, or a host replaying an old ref. `status` says so, `pull` refuses and changes nothing, and `pull --accept-rewind` takes it when the vault owner confirms a deliberate force push. A normal forward move, a clone's first pull, or a vault created fresh over an existing id is never a rewind.
+
+**The branch index is a shared document.** The web UI currently overwrites it with one entry on every push. `pull` now merges the remote copy with the local one and writes the merge back with compare-and-swap, reporting `Branch index: restored N entr(y/ies)`.
+
+## New in 0.20.0
+
+**A warning when you raise a vault.** `sgit vault format --set 2` now prints, straight after the raise, that once a new object is written, sgit-ai older than 0.19.0 cannot read the vault and will not say "update": a fresh clone reports `integrity check refused vault data` and a pull reports `missing file … run sgit check fsck`, and the fix for them is `sgit update`, never `vault move` or `fsck --repair`. The "pattern mismatch" hint for an object name a client cannot parse now says `sgit update` first. That is the whole change.
+
+**Why it exists.** The 0.19.0 notes said an older client on a raised vault fails "with a validation error". Checking the draft before publishing, this site found it does not: an old client blames the data, not its own age, and its hints point at `vault move` or a repair. The CLI team reproduced it, corrected the notes, and added the warning.
+
+## Fixed in 0.19.0
+
+- **`pull` after `status`** left the trees of commits that `status` had already fetched unfetched (since 0.18.0): `fsck` showed missing trees on a clone four commits behind. Fixed.
+- **`sgit check fsck` re-walked every tree once per commit**: 282,202 tree checks for 8,589 trees, 270 s on the example vault; now 12 s with identical findings.
+- **Every clone left an empty temp directory behind** (`sgit-clone-*`): removed.
+- The "incompatible vault data" hint now says to run `sgit update` first.
+
+## Compatibility
+
+| Client | Un-raised vault (format 1) | Raised vault (format 2) |
+|---|---|---|
+| sgit-ai 0.20.0 / 0.19.0 | works, unchanged | works; refuses by name if below `--min-client` |
+| sgit-ai 0.18.x and older | works, unchanged | fresh clone: `integrity check refused vault data`; pull: `missing file … sgit check fsck`. Fix: `sgit update`, never `vault move` or `fsck --repair` |
+| Web UI | works | reads; its pushes write 48-bit ids and drop the index gate until the SG/Send update, and the next CLI pull repairs the index |
+
+Raise a vault only once every agent that writes to it is on 0.19.0 or newer, with `--min-client 0.19.0`.
+
+## Checked on this site
+
+On 8 October 2026, with real installs of sgit-ai 0.17.0, 0.18.0, 0.19.0 and 0.20.0 against throwaway vaults on the live dev API: the `vault format` output before and after a raise, word for word, including the 0.20.0 warning; a format that will not go down and a minimum you cannot lock yourself out with; the first commit after a raise getting a 32-hex id; both old-client messages above; the refusal by name from 0.19.0 when the minimum is 0.20.0; and `check verify` on a full, a scoped and a shallow clone.
 
 ## 2026-10-07
 
@@ -14627,7 +14907,7 @@ There is a longer account of this one in [Green does not mean live](../articles/
 >
 > Page: https://sgit.ai/articles/index.html
 
-Edition of 2026-10-0742 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.103
+Edition of 2026-10-0742 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.104
 
 # SGit Newsroom
 
@@ -27849,7 +28129,7 @@ One entry per run of a desk role, newest first, each its own file and never edit
 >
 > Page: https://sgit.ai/articles/collections/index.html
 
-Edition of 2026-10-0742 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.103
+Edition of 2026-10-0742 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.104
 
 # Collections
 
@@ -27868,7 +28148,7 @@ A collection is one file in `admin/content/newsroom/collections/`. [How the desk
 >
 > Page: https://sgit.ai/articles/desk/index.html
 
-Edition of 2026-10-0742 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.103
+Edition of 2026-10-0742 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.104
 
 # From the desk
 
@@ -28392,7 +28672,7 @@ Your browser encrypts it to the public key of the agent that runs the list, then
 >
 > Page: https://sgit.ai/articles/newsletter/index.html
 
-Edition of 2026-10-0742 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.103
+Edition of 2026-10-0742 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.104
 
 # The newsletter
 

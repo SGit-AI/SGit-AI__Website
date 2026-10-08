@@ -53,6 +53,7 @@
     <li><code>sgit history show &lt;commit&gt;</code> and <code>sgit history diff</code> are <b>read-only</b>: they fetch missing objects on demand without merging, so an agent can inspect a peer's commit without touching its own working copy.</li>
     <li><code>sgit resolve --show</code> renders base/ours/theirs with a per-file verdict, so genuine conflicts are distinguishable from noise, by a human or by an agent.</li>
   </ul>
+  <p>Since 0.19.0 a vault can require signed commits and refuse clients older than a version its owner sets; see <a href="history-integrity.html">History integrity</a>.</p>
 <pre class="shell"><span class="d"># agent A</span>  <span class="p">$</span> <span class="cmd">sgit branch new feature-analysis</span> … commit … push
 <span class="d"># agent B</span>  <span class="p">$</span> <span class="cmd">sgit history show obj-cas-imm-c4e81a</span>   <span class="d"># look, don't merge</span>
 <span class="d"># human  </span>  <span class="p">$</span> <span class="cmd">sgit pull</span> → review in SG/Vault → merge</pre>

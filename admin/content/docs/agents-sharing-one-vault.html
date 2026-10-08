@@ -19,6 +19,7 @@
 <pre class="shell">On branch: branch-clone-… → branch-named-…
   Remote: remote has 3 new commits — run: sgit pull</pre>
   <p><code>50+</code> means more than status fetched to count; it is a lower bound, not a guess. Before 0.18.0 this line could say your fresh clone was hundreds of commits <em>ahead</em> when it was one commit behind. That is fixed.</p>
+  <p>It can also say <code>the named branch was REWOUND or rewritten on the server</code>. That is not a count to trust: it means the remote pointer no longer descends from what this clone last accepted. Do not <code>--accept-rewind</code> on your own; tell the vault owner (see <a href="history-integrity.html#rewinds">History integrity</a>).</p>
   <p><b><code>sgit push</code> pulls first.</b> It merges what others pushed, then uploads. Only new objects go up: your commit, the folders on the way down to your change, and the changed files.</p>
 
   <h2 id="uncommitted">What happens to work you have not committed</h2>
@@ -56,12 +57,15 @@ commit them (sgit commit) or stash them (sgit vault stash) and pull again; nothi
     <li><b>Clone slower than expected?</b> Check it is scoped: a clone that only holds <code>mail/…</code> has no <code>docs/</code> on disk. A full clone of a 600-commit vault is 80 s on a laggy path; if yours takes minutes, run <code>sgit version</code>: the sweep that makes it 80 s arrived in 0.18.0.</li>
     <li><b><code>error: … needs the whole vault</code>:</b> you are on a partial clone and ran <code>fsck</code>, <code>dump</code>, <code>publish</code> or <code>vault move</code>. Use a full clone for those.</li>
     <li><b><code>error: this clone holds only part of the vault … needs more of it</code>:</b> a command met an object the scope never fetched. Widen with <code>sgit fetch &lt;folder-name&gt;</code> or <code>sgit fetch --unshallow</code>, or use a full clone.</li>
+    <li><b><code>error: this vault needs sgit-ai &gt;= X.Y.Z and this is …</code>:</b> the vault owner raised the vault's minimum client. <code>sgit update</code>, then retry.</li>
+    <li><b><code>error: the remote named branch was rewound or rewritten</code>:</b> nothing was changed on your side. If the owner confirms a deliberate force push, <code>sgit pull --accept-rewind</code>.</li>
+    <li><b><code>integrity check refused vault data</code> on a clone, or <code>missing file … sgit check fsck</code> on a pull, on a vault the owner has raised:</b> your sgit-ai is older than 0.19.0 and cannot read the vault's new ids. Nothing is corrupt. <code>sgit update</code>; do not run <code>vault move</code> or <code>fsck --repair</code>.</li>
     <li><b><code>sgit doctor</code></b> checks the remote, the token and the version.</li>
   </ul>
 
   <h2>A session, end to end</h2>
 <pre class="shell"><span class="p">$</span> <span class="cmd">sgit update &amp;&amp; sgit version</span>
-sgit-ai v0.18.0
+sgit-ai v0.20.0
 <span class="p">$</span> <span class="cmd">sgit clone --path mail/crm.example --depth 1 &lt;vault-key&gt; work &amp;&amp; cd work</span>      <span class="d"># 14 s</span>
 <span class="p">$</span> <span class="cmd">sgit cat mail/crm.example/contacts.md</span>
 …

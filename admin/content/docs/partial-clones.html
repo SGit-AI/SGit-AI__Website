@@ -80,6 +80,7 @@ error: `sgit check fsck` needs the whole vault, and this clone holds only part o
 (folders: mail/crm.example). Run it from a full clone, or widen this one:
 `sgit fetch &lt;folder-name&gt;` adds a folder, `sgit fetch --unshallow` fetches the history.</pre>
   <p>Any other command that happens to need an object the clone never fetched says the same thing in its own words, rather than suggesting the vault is corrupt.</p>
+  <p><code>sgit check verify</code> (0.19.0 and newer) works on a partial clone: a scoped clone checks the commits it holds, a shallow one walks to its boundary. See <a href="history-integrity.html#signatures">History integrity</a>.</p>
 
   <h2 id="depth">Shallow clone: <code>--depth N</code></h2>
 <pre class="shell"><span class="p">$</span> <span class="cmd">sgit clone --depth 1 &lt;vault-key&gt; workspace</span>

@@ -1,0 +1,106 @@
+<main class="doc">
+  <p class="crumb"><a href="index.html">Docs</a> / Guides</p>
+  <h1>History integrity: the format gate, verifying signatures, and rewinds</h1>
+  <p class="lead">Requires sgit-ai 0.19.0 or newer: <code>sgit version</code> to check, <code>sgit update</code> to upgrade. <b>Nothing changes for an existing vault until its owner raises it</b> with <code>sgit vault format</code>; until then every client, old or new, behaves as it did in 0.18.0.</p>
+
+  <p>A vault is a Merkle tree of encrypted objects: every file, folder and commit is stored under the hash of its ciphertext, every commit names its parents and its root folder by those hashes, and every object and ref is AES-256-GCM encrypted under a key the server never holds. So the server cannot alter a byte of history without it failing to decrypt, and <code>sgit check fsck</code> finds anything missing or corrupt. 0.19.0 adds what that model did not give you: who may open a vault, 128-bit addresses, a branch pointer that only moves forward, and signatures you can check. All of it is per vault and off by default.</p>
+
+  <h2 id="gate">The format gate: <code>sgit vault format</code></h2>
+  <p>Every vault has a gate in its branch index. A vault that has never been touched by this command reads as format 1 with no minimum client, which is exactly the 0.18.0 behaviour.</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit vault format</span>
+  Format:      1  (new objects get 12-hex ids)
+  Min client:  none   (this client: v0.20.0)
+  Features:    none
+
+Raise it with: sgit vault format --set 2 --min-client &lt;X.Y.Z&gt; [--feature signatures-required]
+  Clients older than --min-client refuse the vault by name (sgit update); existing objects are untouched.</pre>
+  <p>The owner raises it, from any clone with the vault key:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit vault format --set 2 --min-client 0.19.0</span>
+Vault format updated and written to the server.
+
+  Note: once a new object is written here, sgit-ai older than 0.19.0 cannot read this vault.
+        Those clients do not know this gate exists, so they will NOT say "update": a fresh clone
+        reports "integrity check refused vault data" and a pull reports "missing file … run
+        sgit check fsck". The fix for them is `sgit update`, never `vault move` or `fsck --repair`.
+        Raise a vault only once every agent that writes to it is on 0.19.0 or newer.
+  Format:      2  (new objects get 32-hex ids)
+  Min client:  0.19.0   (this client: v0.20.0)
+  Features:    ids-128</pre>
+  <ul>
+    <li><b><code>--set 2</code></b>: from now on, every new object this vault stores gets a 128-bit content address (<code>obj-cas-imm-</code> plus 32 hex characters) instead of 48 bits. Existing objects keep their ids and still verify; a clone holds both. Nothing is re-encrypted and no <code>vault move</code> is needed. A format cannot go back down: <code>error: … format cannot go down (vault is at 2); objects already written at the wider id would be unreadable</code>.</li>
+    <li><b><code>--min-client X.Y.Z</code></b>: a client from 0.19.0 on that is older than this refuses the vault by name: <code>error: this vault needs sgit-ai &gt;= 0.20.0 and this is 0.19.0: run `sgit update`, then try again</code>. You cannot set a minimum you do not meet yourself (<code>… you would lock yourself out</code>). Compared on the three numbers; a dev build is never refused.</li>
+    <li><b><code>--feature NAME</code> / <code>--remove-feature NAME</code></b>: policies. <code>signatures-required</code> is the one that exists today, <a href="#signatures">below</a>.</li>
+  </ul>
+  <p><b>Why 128 bits.</b> A 48-bit address is plenty against the server, which cannot produce decryptable bytes at all. It is not plenty against someone who holds the vault key and wants to swap an object for another with the same address: that is 2<sup>48</sup> hashes, hours on a GPU. On a raised vault it is 2<sup>128</sup>. Cost on the shared CRM vault used as the example in these pages (674 commits, 19,780 objects): 1.5 % more bytes, no visible change in time.</p>
+
+  <h2 id="compatibility">Who can open a raised vault</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Client</th><th>Un-raised vault (format 1)</th><th>Raised vault (format 2)</th></tr>
+    <tr><td>sgit-ai 0.20.0, 0.19.0</td><td>works, unchanged</td><td>works; refuses by name if below the vault's <code>--min-client</code></td></tr>
+    <tr><td>sgit-ai 0.18.x and older</td><td>works, unchanged</td><td><b>fails, and blames the data.</b> A fresh clone says <code>integrity check refused vault data</code>; a pull says <code>missing file … sgit check fsck</code>. The fix is <code>sgit update</code></td></tr>
+    <tr><td>The web UI</td><td>works</td><td>reads it; its pushes still write 48-bit ids and drop the index gate until its update ships, and the next CLI pull repairs the index</td></tr>
+  </table></div>
+  <p><b>The one thing to plan.</b> A client older than 0.19.0 does not know the gate exists, so it cannot tell you to update. Raising the vault does nothing to it by itself; the first object written at a 32-hex id after the raise is what stops it, and it stops with one of these, both of which read like damage:</p>
+<pre class="shell">error: integrity check refused vault data — clone needs object obj-cas-imm-…, which was
+refused by the content-address check … the host served corrupt or substituted content:
+do not trust this source.
+
+error: missing file — object obj-cas-imm-… is not in the local store
+  hint: try "sgit check fsck ." to check and repair</pre>
+  <p><b>Neither hint applies.</b> Nothing is corrupt and nothing was lost: an old client cannot parse a 32-hex id. Do not run <code>sgit vault move</code> or <code>fsck --repair</code>. Run <code>sgit update</code> and retry. Checked on this site on 8 October 2026 with real 0.17.0 and 0.18.0 installs against a throwaway vault on the live dev API: those are the messages, word for word.</p>
+  <p><b>The rule for vault owners:</b> raise a vault only once every agent that writes to it is on 0.19.0 or newer, and pass <code>--min-client 0.19.0</code> so that clients from 0.19.0 on refuse by name rather than by symptom.</p>
+
+  <h2 id="index">The branch index is shared, and now repaired</h2>
+  <p>The branch index lists every clone branch, maps each to its signing key, and carries the gate. The web UI currently overwrites it with a single entry on every push, which used to lose the other entries for good. From 0.19.0 the CLI treats the index as a shared document: <code>pull</code> reads the remote copy, merges it with the local one (every branch, the stronger gate) and writes the merge back with compare-and-swap; <code>push</code> registers a clone branch the same way.</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit pull</span>
+  ▸ Branch index: restored 2 entr(y/ies) the remote copy had lost</pre>
+  <p>You do not have to do anything; it is the reason a raised gate survives a web push.</p>
+
+  <h2 id="rewinds">Rewinds: the named branch only moves forward</h2>
+  <p>The named branch is a pointer. The server, or anyone with the key running <code>sgit push --force</code>, can point it at an older or unrelated commit. Each clone now remembers the last remote head it accepted, and a new head that does not descend from it is a <b>rewind</b>.</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit status</span>
+  Remote: the named branch was REWOUND or rewritten on the server (it no longer descends from obj-cas-imm-…)
+          if that was a deliberate `sgit push --force`, run: sgit pull --accept-rewind
+          otherwise treat it as tampering and check with the vault owner
+
+<span class="p">$</span> <span class="cmd">sgit pull</span>
+error: the remote named branch was rewound or rewritten: it pointed at obj-cas-imm-… the last
+time this clone saw it and now points at obj-cas-imm-…, which does not descend from it. If this
+was a deliberate `sgit push --force`, run `sgit pull --accept-rewind`; otherwise treat it as
+tampering and check with the vault owner. Nothing was changed.</pre>
+  <ul>
+    <li><b>You, or a teammate, force-pushed on purpose</b> (after <code>sgit history reset</code>, say): every other clone runs <code>sgit pull --accept-rewind</code> once. The clone that pushed needs nothing.</li>
+    <li><b>Nobody did</b>: do not accept it. Your clone still holds the newer history; <code>sgit push</code> would put it back. Tell the vault owner.</li>
+    <li><b>The web UI pushed</b>: today the web UI's push does not compare before writing, so two people saving at the same moment can drop one person's commits. The CLI reports that as a rewind, and it is right to. The web UI team is moving to compare-and-swap.</li>
+  </ul>
+  <p>Normal forward moves, a clone's first pull, and a fresh <code>sgit init</code> over an existing vault id are never rewinds.</p>
+
+  <h2 id="signatures">Signatures: <code>sgit check verify</code></h2>
+  <p>Every CLI commit is signed with the clone branch's ECDSA P-256 key. 0.19.0 is the first release that checks them.</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit check verify</span>
+Checked 674 commit(s): 247 verified, 0 bad, 112 unsigned, 315 without a known key, 0 missing</pre>
+  <div class="tablewrap"><table>
+    <tr><th>Status</th><th>Meaning</th></tr>
+    <tr><td>verified</td><td>the signature checks under the key the commit names, or the key the branch index maps its branch to</td></tr>
+    <tr><td>bad</td><td>the signature does not check: the commit was altered after signing. <code>fsck</code> fails on this</td></tr>
+    <tr><td>unsigned</td><td>written without a key: the web UI, or a clone with no local signing key</td></tr>
+    <tr><td>without a known key</td><td>signed, but neither the commit nor the index says by which key: commits from before 0.19.0 whose branch has left the index</td></tr>
+  </table></div>
+  <p>New commits carry their key id and sign canonical bytes (RFC 8785 over the stored commit JSON, minus the signature), so from 0.19.0 on "without a known key" stops growing; older signatures still verify. <code>sgit check fsck</code> prints the same summary, and on the example vault now takes 12 s instead of 270 s. <code>check verify</code> works on a <a href="partial-clones.html">partial clone</a> too: a scoped clone checks the commits it holds, a shallow one stops at its boundary.</p>
+  <p><b>Requiring signatures.</b> <code>sgit vault format --feature signatures-required</code> makes every <code>pull</code> refuse the first incoming commit that is not <i>verified</i>, by name, before merging:</p>
+<pre class="shell">error: this vault requires signed commits and incoming commit obj-cas-imm-… is unsigned; the
+pull was refused before anything was merged. Ask the vault owner, or relax the policy with
+`sgit vault format --remove-feature signatures-required`.</pre>
+  <p>Turn it on only for vaults written by 0.19.0+ CLIs with their keys: today's web UI does not sign, and history from before 0.19.0 is not retroactively verifiable. <code>sgit migrate apply</code> refuses on a vault with signed commits (a migration rewrites history) unless <code>--force</code>.</p>
+
+  <h2 id="checklist">A checklist for raising a vault</h2>
+  <ol>
+    <li>Every agent that writes to it is on 0.19.0 or newer (<code>sgit version</code>). Point them at <a href="update-to-0-20-0.html">Update sgit-ai to 0.20.0</a>.</li>
+    <li><code>sgit check fsck</code> is clean and <code>sgit check verify</code> shows no <i>bad</i> commits.</li>
+    <li><code>sgit vault format --set 2 --min-client 0.19.0</code>.</li>
+    <li>Each agent's next <code>sgit pull</code> picks the gate up; nothing else to do.</li>
+    <li><code>signatures-required</code> only once no web-UI writes are expected on the vault.</li>
+  </ol>
+
+  <p class="small dim">From the sgit-ai team's 0.19.0 and 0.20.0 notes. The old-client messages were found by this site's own check of the 0.19.0 draft, which had said "a validation error"; the CLI team confirmed them and added the warning that 0.20.0 prints when a vault is raised. Release notes: <a href="../updates/index.html#sgit-ai-0-20-0">sgit-ai 0.20.0 (includes 0.19.0)</a>.</p>
+</main>

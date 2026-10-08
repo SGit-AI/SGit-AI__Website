@@ -26,7 +26,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.6.103</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.6.104</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
  <div class="ni ni-has">
@@ -115,12 +115,13 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.6.103 &middot; 8 Oct 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.6.104 &middot; 8 Oct 2026</span></a></div>
 <main class="doc">
  <h1>Updates</h1>
  <p class="lead">What changed on sgit and on this site, as it happens, one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
  <p class="small dim">Follow along: <a href="feed.xml">RSS</a> &middot; <a href="updates.json">JSON</a>. Every entry links to the release that carries it.</p>
- <details class="updtoc" open><summary>70 entries, newest first</summary><ul>
+ <details class="updtoc" open><summary>71 entries, newest first</summary><ul>
+<li><span class="dim">2026-10-08</span> <a href="#sgit-ai-0-20-0">sgit-ai 0.20.0 (includes 0.19.0): a vault whose history you can verify, and an honest warning when you raise it</a></li>
 <li><span class="dim">2026-10-07</span> <a href="#the-newsroom">The articles get a newsroom: publish by adding a file, placement by one editor</a></li>
 <li><span class="dim">2026-10-07</span> <a href="#sgit-newsroom-newsletter">The SGit Newsroom, and a newsletter instead of an email per article</a></li>
 <li><span class="dim">2026-10-07</span> <a href="#sgit-ai-0-18-0">sgit-ai 0.18.0: scoped and shallow clones, a pull that keeps your work, and a clone twice as fast</a></li>
@@ -192,6 +193,50 @@
 <li><span class="dim">2026-08-17</span> <a href="#printing-stopped-costing-every-reader">Printing stopped costing every reader</a></li>
 <li><span class="dim">2026-08-17</span> <a href="#green-does-not-mean-live">Green does not mean live</a></li>
  </ul></details>
+ <h2 class="upd-date">2026-10-08</h2>
+ <article class="upd" id="sgit-ai-0-20-0">
+ <h3><a href="#sgit-ai-0-20-0">sgit-ai 0.20.0 (includes 0.19.0): a vault whose history you can verify, and an honest warning when you raise it</a> <a class="upd-ver" href="../admin/versions.html">v0.6.104</a></h3>
+ <p class="chips"><span class="chip">sgit-ai</span><span class="chip">release</span><span class="chip">cli</span><span class="chip">history-integrity</span><span class="chip">signatures</span><span class="chip">agents</span></p>
+<p><b>The CLI's release notes for two releases a day apart, carried as one entry so an agent pointed here lands on the newest.</b> sgit-ai 0.19.0 reached PyPI on 7 October 2026 and 0.20.0 on 8 October; 0.20.0 is 0.19.0 plus one warning, below. Upgrade with <code>sgit update</code>; check with <code>sgit version</code>. The short version for an agent team is <a href="../docs/update-to-0-20-0.html">Update sgit-ai to 0.20.0</a>; the guide is <a href="../docs/history-integrity.html">History integrity</a>.</p>
+<p>0.18.0 made a large shared vault fast to clone and safe to pull. 0.19.0 makes its history verifiable: a vault can say which client may open it, new objects can get 128-bit content addresses, the branch index survives being overwritten, a rolled-back branch is refused rather than silently taken, and commit signatures can be checked and required. <b>Nothing changes for an existing vault until its owner raises it</b>; every default is the 0.18.0 behaviour. Numbers are the CLI team's, measured on the same anonymised shared CRM vault as the 0.18.0 notes plus a throwaway vault on the live dev API.</p>
+<h2>What changed, in one table</h2>
+<div class="tablewrap"><table>
+<tr><th>Area</th><th>0.18.0</th><th>0.19.0 and 0.20.0</th></tr>
+<tr><td>Object ids</td><td>48-bit content addresses</td><td>48-bit by default; <b>128-bit for new objects on a vault raised to format 2</b>, old objects untouched, no <code>vault move</code></td></tr>
+<tr><td>Which client may open a vault</td><td>any</td><td>the vault can set a minimum; clients from 0.19.0 on that are older refuse by name: <code>this vault needs sgit-ai &gt;= X.Y.Z …: run sgit update</code></td></tr>
+<tr><td>The branch index when the web UI pushes</td><td>its other entries were lost</td><td>the next CLI <code>pull</code> restores them, and CLI writes use compare-and-swap</td></tr>
+<tr><td>A rolled-back or rewritten branch on the server</td><td>taken silently</td><td><code>status</code> says <code>REWOUND</code>; <code>pull</code> refuses; <code>pull --accept-rewind</code> takes it after a deliberate <code>push --force</code></td></tr>
+<tr><td>Commit signatures</td><td>written, never checked</td><td><code>sgit check verify</code>; a summary in <code>fsck</code>; per-vault <code>signatures-required</code> refuses unverified incoming commits</td></tr>
+<tr><td><code>sgit check fsck</code> on a 674-commit vault</td><td>270 s</td><td>12 s, same findings</td></tr>
+<tr><td><code>pull</code> after <code>status</code> on a clone several commits behind</td><td>left intermediate trees unfetched</td><td>fetches them</td></tr>
+<tr><td>Raising a vault (0.20.0)</td><td>n/a</td><td>prints what older clients will see, and that the fix for them is <code>sgit update</code></td></tr>
+</table></div>
+<h2>New in 0.19.0</h2>
+<p><b><code>sgit vault format</code>, the format gate.</b> It shows <code>Format</code>, <code>Min client</code> and <code>Features</code>, and the owner raises it with <code>--set 2</code>, <code>--min-client X.Y.Z</code> and <code>--feature signatures-required</code>. The gate lives in the vault's encrypted branch index and is read by every command. Absent, it means format 1 and no minimum: every vault that exists today. A format can only go up, and a minimum you do not meet yourself is refused ("you would lock yourself out"). Raising to format 2 changes nothing already stored: new commits, trees and files get 128-bit ids, existing ones keep theirs, both verify, and a clone holds both. Cost on the example vault: +1.5 % of bytes, no visible change in time.</p>
+<p><b><code>sgit check verify [--limit N]</code>, signatures.</b> Every CLI commit since the first release carries an ECDSA signature; 0.19.0 is the first release that checks it, and reports each commit as verified, bad, unsigned or without a known key. New commits also carry the id of their signing key and sign canonical bytes (RFC 8785 over the stored commit JSON minus the signature), so verification no longer depends on the branch index still listing the branch that made them; older signatures still verify. <code>fsck</code> prints the same summary and fails on a <em>bad</em> signature. <code>sgit vault format --feature signatures-required</code> makes <code>pull</code> refuse, by name and before merging, any incoming commit that does not verify.</p>
+<p><b>Rewinds.</b> Each clone remembers the last remote head it accepted. A remote head that does not descend from it is a rewind: a rollback, a rewritten history, or a host replaying an old ref. <code>status</code> says so, <code>pull</code> refuses and changes nothing, and <code>pull --accept-rewind</code> takes it when the vault owner confirms a deliberate force push. A normal forward move, a clone's first pull, or a vault created fresh over an existing id is never a rewind.</p>
+<p><b>The branch index is a shared document.</b> The web UI currently overwrites it with one entry on every push. <code>pull</code> now merges the remote copy with the local one and writes the merge back with compare-and-swap, reporting <code>Branch index: restored N entr(y/ies)</code>.</p>
+<h2>New in 0.20.0</h2>
+<p><b>A warning when you raise a vault.</b> <code>sgit vault format --set 2</code> now prints, straight after the raise, that once a new object is written, sgit-ai older than 0.19.0 cannot read the vault and will not say "update": a fresh clone reports <code>integrity check refused vault data</code> and a pull reports <code>missing file … run sgit check fsck</code>, and the fix for them is <code>sgit update</code>, never <code>vault move</code> or <code>fsck --repair</code>. The "pattern mismatch" hint for an object name a client cannot parse now says <code>sgit update</code> first. That is the whole change.</p>
+<p><b>Why it exists.</b> The 0.19.0 notes said an older client on a raised vault fails "with a validation error". Checking the draft before publishing, this site found it does not: an old client blames the data, not its own age, and its hints point at <code>vault move</code> or a repair. The CLI team reproduced it, corrected the notes, and added the warning.</p>
+<h2>Fixed in 0.19.0</h2>
+<ul>
+<li><b><code>pull</code> after <code>status</code></b> left the trees of commits that <code>status</code> had already fetched unfetched (since 0.18.0): <code>fsck</code> showed missing trees on a clone four commits behind. Fixed.</li>
+<li><b><code>sgit check fsck</code> re-walked every tree once per commit</b>: 282,202 tree checks for 8,589 trees, 270 s on the example vault; now 12 s with identical findings.</li>
+<li><b>Every clone left an empty temp directory behind</b> (<code>sgit-clone-*</code>): removed.</li>
+<li>The "incompatible vault data" hint now says to run <code>sgit update</code> first.</li>
+</ul>
+<h2>Compatibility</h2>
+<div class="tablewrap"><table>
+<tr><th>Client</th><th>Un-raised vault (format 1)</th><th>Raised vault (format 2)</th></tr>
+<tr><td>sgit-ai 0.20.0 / 0.19.0</td><td>works, unchanged</td><td>works; refuses by name if below <code>--min-client</code></td></tr>
+<tr><td>sgit-ai 0.18.x and older</td><td>works, unchanged</td><td>fresh clone: <code>integrity check refused vault data</code>; pull: <code>missing file … sgit check fsck</code>. Fix: <code>sgit update</code>, never <code>vault move</code> or <code>fsck --repair</code></td></tr>
+<tr><td>Web UI</td><td>works</td><td>reads; its pushes write 48-bit ids and drop the index gate until the SG/Send update, and the next CLI pull repairs the index</td></tr>
+</table></div>
+<p>Raise a vault only once every agent that writes to it is on 0.19.0 or newer, with <code>--min-client 0.19.0</code>.</p>
+<h2>Checked on this site</h2>
+<p>On 8 October 2026, with real installs of sgit-ai 0.17.0, 0.18.0, 0.19.0 and 0.20.0 against throwaway vaults on the live dev API: the <code>vault format</code> output before and after a raise, word for word, including the 0.20.0 warning; a format that will not go down and a minimum you cannot lock yourself out with; the first commit after a raise getting a 32-hex id; both old-client messages above; the refusal by name from 0.19.0 when the minimum is 0.20.0; and <code>check verify</code> on a full, a scoped and a shallow clone.</p>
+ </article>
  <h2 class="upd-date">2026-10-07</h2>
  <article class="upd" id="the-newsroom">
  <h3><a href="#the-newsroom">The articles get a newsroom: publish by adding a file, placement by one editor</a> <a class="upd-ver" href="../admin/versions.html">v0.6.85</a></h3>
@@ -1238,7 +1283,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.6.103</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.6.104</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -1281,7 +1326,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.103';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.104';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

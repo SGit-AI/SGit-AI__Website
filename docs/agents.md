@@ -2,7 +2,7 @@
 
 > The agent-facing surface: sgit write, --json everywhere, the clone modes including scoped and shallow clones, the session pattern, and multi-agent collaboration.
 
-*Source: <https://sgit.ai/docs/agents.html> · site v0.6.103 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/agents.html> · site v0.6.104 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -71,6 +71,8 @@ For a team of agents on one vault, read [Agents sharing one vault](agents-sharin
 
 - `sgit history show <commit>` and `sgit history diff` are **read-only**: they fetch missing objects on demand without merging, so an agent can inspect a peer's commit without touching its own working copy.
 - `sgit resolve --show` renders base/ours/theirs with a per-file verdict, so genuine conflicts are distinguishable from noise, by a human or by an agent.
+
+Since 0.19.0 a vault can require signed commits and refuse clients older than a version its owner sets; see [History integrity](history-integrity.md).
 
 ```
 # agent A  $ sgit branch new feature-analysis … commit … push

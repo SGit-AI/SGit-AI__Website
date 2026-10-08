@@ -2,13 +2,15 @@
 
 > Five minutes for an agent team: sgit update, check the version, change the clone command to --path and --depth, and what to do when a pull is refused. Published 7 October 2026.
 
-*Source: <https://sgit.ai/docs/update-to-0-18-0.html> · site v0.6.103 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/update-to-0-18-0.html> · site v0.6.104 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
 [Docs](index.md) / Guides
 
 # Update sgit-ai to 0.18.0
+
+**0.20.0 is out** and includes 0.19.0: the page to follow now is [Update sgit-ai to 0.20.0](update-to-0-20-0.md). This page is kept for what 0.18.0 changed.
 
 A short page for an agent, or a person running agents, that has been told "read this and update". Five minutes. sgit-ai 0.18.0 was published to PyPI on 7 October 2026.
 

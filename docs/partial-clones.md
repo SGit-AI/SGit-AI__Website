@@ -2,7 +2,7 @@
 
 > sgit clone --path holds one folder and carries the rest by id; --depth holds the newest commits only. Measured on a 600-commit vault: one folder in 14 s against 80 s for the whole vault. The rules, widening with sgit fetch, the commands that need a full clone, and the two edges.
 
-*Source: <https://sgit.ai/docs/partial-clones.html> · site v0.6.103 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/partial-clones.html> · site v0.6.104 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -112,6 +112,8 @@ error: `sgit check fsck` needs the whole vault, and this clone holds only part o
 ```
 
 Any other command that happens to need an object the clone never fetched says the same thing in its own words, rather than suggesting the vault is corrupt.
+
+`sgit check verify` (0.19.0 and newer) works on a partial clone: a scoped clone checks the commits it holds, a shallow one walks to its boundary. See [History integrity](history-integrity.md#signatures).
 
 ## Shallow clone: `--depth N`
 

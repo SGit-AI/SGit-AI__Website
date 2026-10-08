@@ -1,8 +1,23 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-08",
-  "site_version": "v0.6.103",
+  "site_version": "v0.6.104",
   "updates": [
+    {
+      "slug": "sgit-ai-0-20-0",
+      "title": "sgit-ai 0.20.0 (includes 0.19.0): a vault whose history you can verify, and an honest warning when you raise it",
+      "date": "2026-10-08",
+      "version": "v0.6.104",
+      "tags": [
+        "sgit-ai",
+        "release",
+        "cli",
+        "history-integrity",
+        "signatures",
+        "agents"
+      ],
+      "summary": "The CLI's release notes for two releases a day apart, carried as one entry so an agent pointed here lands on the newest. sgit ai 0.19.0 reached PyPI on 7 October 2026 and 0.20.0 on 8 October; 0.20.0 is 0.19.0 plus one warning, below. Upgrade with sgit update ;…"
+    },
     {
       "slug": "the-newsroom",
       "title": "The articles get a newsroom: publish by adding a file, placement by one editor",
