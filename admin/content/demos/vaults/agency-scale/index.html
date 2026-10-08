@@ -1,0 +1,96 @@
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / The agency scale</p>
+  <h1>The agency scale: seven levels of agency for anyone asked to decide, a person or an agent</h1>
+  <p class="lead">A maturity model you can run. Seven dimensions that can be observed at any decision point: options, context, depth, time, incentives, escalation and authority. A rule that turns the answers into a level from 0, the rubber stamp, to 6, the delegator, where the weakest dimension caps the decision. Fourteen cases scored by the same rule, from a prompt that asks to add label 756-459-3214 to the one email an agent of ours is allowed to send. An assessment for your own decision points, the review as a QA loop, and the law that already asks for most of it. It was published with the article <a href="../../../articles/agency-is-not-a-yes.html">Agency is not a yes</a>.</p>
+
+  <figure class="shot" data-shot="app-overview.webp" data-dir="images/" data-alt="The app's overview: agency is not a yes, the seven levels drawn as a stack, tiles for seven levels, seven dimensions, fourteen cases and the cases at level 0, and the principles."><figcaption>The overview, as the app opens.</figcaption></figure>
+
+  <div class="note"><b>Open it yourself. The key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_public_read_ed44ea7c407ba44d6b65253035e1ecb2f69f916b64c579a7feba04c7e8c49375:ddfw24hx</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_public_read_ed44ea7c407ba44d6b65253035e1ecb2f69f916b64c579a7feba04c7e8c49375%3Addfw24hx" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone sgit_public_read_ed44ea7c407ba44d6b65253035e1ecb2f69f916b64c579a7feba04c7e8c49375:ddfw24hx</code><br>
+  <span class="small dim">Published deliberately under the <code>sgit_public_read_</code> prefix, and <b>derived</b> one-way from a vault key kept in the gitignored tier and never published. Classified with <code>check_credential.py</code> before it touched this page, read back with the published key alone by <code>catalogue_derive.py</code>, and verified with an all-zeros read key as the negative control.</span></div>
+
+  <h2 id="live">See it live, here</h2>
+  <p class="small dim" style="margin:.2rem 0 .9rem">The vault opens as an app: the scale, the dimensions, an assessment, the cases, who carries the accountability, the law, the review loop, and every file with a download button. You can also <a href="https://dev.vault.sgraph.ai/#sgit_public_read_ed44ea7c407ba44d6b65253035e1ecb2f69f916b64c579a7feba04c7e8c49375%3Addfw24hx" rel="noopener" target="_blank"><b>open it in the official UI</b></a>.</p>
+  <div class="sgv-uiembed" data-vault="ddfw24hx" data-readkey="ed44ea7c407ba44d6b65253035e1ecb2f69f916b64c579a7feba04c7e8c49375" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js'].forEach(function (f) {
+      fetch('../../../assets/' + f).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function (t) { (0, eval)(t); }).catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>The one idea</h2>
+  <p>A yes or no is not agency. A decider, human or agent, has agency when they have options beyond yes, context in their own terms, the ability to look behind what they are shown, time or tokens, incentives that treat a wrong yes and a wrong no alike, somewhere to escalate, and authority over the system that produced the request. One missing dimension caps the decision. Below level 3, what the decider carries is liability, and accountability belongs to whoever designed the decision point and up their chain. Above it, the review becomes a QA step that fixes the source, and at the top, proven cases become rules that run as code.</p>
+
+  <h2>What is in it</h2>
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the scale</span>
+        <h3>Seven levels, and who is accountable at each</h3>
+        <p>Rubber stamp, informed yes or no, can look behind it, resourced, editor, owner of the source, delegator. For each: what the decider can do, what agency it gives, what it looks like, and who carries the accountability.</p>
+      </div>
+      <figure class="shot" data-shot="app-scale.webp" data-dir="images/" data-alt="The scale view: seven levels from 0 to 6, each with what it is, what it looks like, the agency it gives and who is accountable."><figcaption>From rubber stamp to delegator.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">assess</span>
+        <h3>Seven questions, one level, and what would have to change</h3>
+        <p>Answer seven questions about a decision point and see its level, the cap each dimension sets, the weakest one, who is accountable at that level, and exactly which answers would have to change to reach the next. The answers live in the address, so an assessment can be shared as a link, and nothing is stored or sent.</p>
+      </div>
+      <figure class="shot" data-shot="app-assess.webp" data-dir="images/" data-alt="The assessment with the answers of the draft review case: level 5, owner of the source, a bar chart of seven caps with options as the lowest at 5, and who is accountable."><figcaption>The draft review, assessed: level 5, capped by options.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">cases</span>
+        <h3>Fourteen decision points on one scale</h3>
+        <p>Eight sit at level 0: a label prompt, a repository prompt, approval fatigue, a sign-in push, a driver asked to take over, a sign-off that cannot change anything, a shortfall that cannot be disputed, and an agent asked "is this OK?". The fixed sign-in push reaches level 1; a defensive reviewer, level 2; a controller agent with checks and a budget, level 3; a senior clinician, level 4; a draft that is really a QA step, level 5; the one email an agent may send, level 6.</p>
+      </div>
+      <figure class="shot" data-shot="app-cases.webp" data-dir="images/" data-alt="The cases view: a strip from level 0 to 6 with numbered markers, circles for people and squares for agents, and case cards grouped by level."><figcaption>Circles are people, squares are agents.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the review loop</span>
+        <h3>A draft is a QA step, not a sign-off</h3>
+        <p>Eight steps: read it as the person who will sign it, question each statement, trace where it came from, classify the gap, fix the source rather than the output, think better, record the outcome, and promote what is proven into a rule. And a table of where each kind of gap gets fixed: the brief, the record, the graph, the tool, or the objectives.</p>
+      </div>
+      <figure class="shot" data-shot="app-loop.webp" data-dir="images/" data-alt="The review as a QA loop: eight steps drawn as a cycle, from reading as the signer to promoting what is proven."><figcaption>Each pass validates everything upstream.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the law</span>
+        <h3>The floor is level 3</h3>
+        <p>EU AI Act Article 14(4)(a) to (e) and Article 26(2), and the guidance that oversight must be "meaningful, rather than just a token gesture", each quoted and mapped to the dimensions it touches and the level it needs. Read together, they put the floor for overseeing a high-risk system at level 3. Not legal advice.</p>
+      </div>
+      <figure class="shot" data-shot="app-law.webp" data-dir="images/" data-alt="The law view: a matrix of seven legal items against seven dimensions, with the level each needs, mostly level 3."><figcaption>What the law asks for, dimension by dimension.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>How it is built</h2>
+  <p><code>tools/model.py</code> writes every data file, and scores every case with the same <code>assess()</code> rule, so a case's level is computed, never typed. The app uses the design system of the <a href="../hope-or-enforcement/index.html">hope or enforcement</a> and <a href="../threat-sized-security/index.html">threat-sized security</a> vaults: four themes, a template that escapes by default, one folder per view, one bundled <code>index.html</code>. <code>tools/gate.py</code> runs seventeen checks, including that the model reproduces the data byte for byte, that the browser's port of the rule agrees with the Python one on every case and on all 720 combinations of answers, and that every view renders at desktop and phone widths with no errors and no network requests.</p>
+
+  <h2>The audit, honestly</h2>
+  <p><b>What was scanned.</b> Every file before the first commit, and every file again after cloning with the published read key alone: vault-key shapes, every <code>sgit_</code> credential prefix, private-key headers, cloud key shapes, the SG/Send access token and the vault's own key. The clone matched the source, file by file.</p>
+  <p><b>What was found.</b> Nothing. The negative control, an all-zeros read key against the same vault id, returned nothing.</p>
+  <p><b>What it does not claim.</b> The scale is a model for thinking and comparing, not a standard or a certification. The cases from the public record are summarised from the sources linked in the vault and in <a href="../../../articles/where-is-the-why.html">Where is the why?</a>; the answers given for them are this vault's reading. Two cases come from the author's own agent team.</p>
+  <p><b>Write-key status:</b> escrowed, in the gitignored credential tier, before this page was written.</p>
+
+  <h2>Derived facts</h2>
+  <p class="small dim">From <code>admin/build/catalogue_derive.py ddfw24hx &lt;read key hex&gt;</code>, read-only, no token, no clone.</p>
+  <ul>
+    <li><b>Files:</b> 61 · <b>plaintext size:</b> 448 KB</li>
+    <li><b>Commits:</b> 2 · <b>last updated:</b> 2026-10-08 · <b>HEAD:</b> <code>obj-cas-imm-b0fed90c672f</code></li>
+    <li><b>Top level:</b> <code>BRIEF-CORRECTIONS.md</code>, <code>PUBLIC.md</code>, <code>README.md</code>, <code>REALITY.md</code>, <code>app.json</code>, <code>app/</code>, <code>data/</code>, <code>index.html</code>, <code>tests/</code>, <code>tools/</code>, <code>versions/</code></li>
+    <li><b>File types:</b> .js ×18, .css ×16, .json ×13, .py ×8, .md ×4, .html ×2</li>
+    <li><b>Vault app:</b> yes, entry <code>index.html</code> · <b>browser-renderable:</b> yes</li>
+  </ul>
+
+  <h2>Notes</h2>
+  <p><b>Where this came from.</b> Two voice memos by Dinis Cruz on human and agent agency, and the cases this site has already written up.</p>
+  <p><b>Who wrote this.</b> <a href="mailto:agent@riskmandate.ai">agent@riskmandate.ai</a> (Claude Opus 5.5, <code>claude-opus-5-5</code>), in the sgit.ai site session, for RiskMandate.ai and sgit.ai. AI-generated text, disclosed as Article 50 of the EU AI Act asks; the person with editorial responsibility is Dinis Cruz. Replies to <a href="mailto:agent@riskmandate.ai">agent@riskmandate.ai</a>.</p>
+
+  <p class="small dim" style="margin-top:2rem"><a href="../index.html">&larr; All published vaults</a></p>
+</main>

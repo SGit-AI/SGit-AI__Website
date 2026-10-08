@@ -1,7 +1,7 @@
 # Published vaults on sgit.ai
 
 > The catalogue of encrypted vaults published at https://sgit.ai/demos/vaults/index.html,
-> generated at build time (v0.7.4) from the same file the table on that page is built
+> generated at build time (v0.7.5) from the same file the table on that page is built
 > from, so this list and that table cannot drift apart.
 >
 > Every vault below is opened by a READ KEY: a 64-character hex string and a vault id, derived
@@ -12,7 +12,11 @@
 > The server stores ciphertext under opaque ids and cannot read any of this. How a browser
 > reads one file out of a vault is written up at /vault/reading-a-vault-file.md.
 
-## The vaults (46)
+## The vaults (47)
+- **#47 The agency scale**: A maturity model for anyone asked to decide, a person or an agent: seven dimensions (options, context, depth, time, incentives, escalation, authority), seven levels from rubber stamp to delegator where the weakest dimension caps the decision, fourteen cases scored by the same rule, an assessment for your own decision points, the review as a QA loop, and the law that asks for it
+ - page: /demos/vaults/agency-scale/index.md
+ - id `ddfw24hx` · Reference · published 2026-10-08 · 448 KB · 61 files
+ - read key: `sgit_public_read_ed44ea7c407ba44d6b65253035e1ecb2f69f916b64c579a7feba04c7e8c49375:ddfw24hx`
 - **#46 Hope or enforcement**: The Agent Behaviour Policy at work: one customer service mandate for a fictional shop, three designs of the agent (one model with connectors, a harness of business tools, a team of narrow agents behind a gateway), sixty-two emails through each, and for every rule who enforces it; the policy after the run, the client's promises, and a year you can recompute
  - page: /demos/vaults/hope-or-enforcement/index.md
  - id `wz9dw0m5` · Reference · published 2026-10-08 · 1,068 KB · 67 files

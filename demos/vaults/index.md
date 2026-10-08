@@ -1,8 +1,8 @@
 # Published vaults, sgit.ai
 
-> Forty-six vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it.
+> Forty-seven vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it.
 
-*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.7.4 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.7.5 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,10 +14,12 @@ Open any of these in your browser right now. Every read key here was published o
 
 **Nine are semantic graphs**, each in its own ontology, from a regulation down to a compute instance. · [The ladder, walked →](../fractal-graphs/index.md) · [What reading one costs →](../fractal-graphs/performance.md)
 
-**46 published vaults**: 12 briefing, 12 reference, 8 analysis, 5 application, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
+**47 published vaults**: 13 reference, 12 briefing, 8 analysis, 5 application, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
 
 | # | Vault | What it is | Category | Files | Size | Published |
 |---|---|---|---|---|---|---|
+
+| 47 | [The agency scale](agency-scale/index.md)`ddfw24hx` | A maturity model for anyone asked to decide, a person or an agent: seven dimensions (options, context, depth, time, incentives, escalation, authority), seven levels from rubber stamp to delegator where the weakest dimension caps the decision, fourteen cases scored by the same rule, an assessment for your own decision points, the review as a QA loop, and the law that asks for it | Reference | 61 | 448 KB | 2026-10-08 |
 
 | 46 | [Hope or enforcement](hope-or-enforcement/index.md)`wz9dw0m5` | The Agent Behaviour Policy at work: one customer service mandate for a fictional shop, three designs of the agent (one model with connectors, a harness of business tools, a team of narrow agents behind a gateway), sixty-two emails through each, and for every rule who enforces it; the policy after the run, the client's promises, and a year you can recompute | Reference | 67 | 1,068 KB | 2026-10-08 |
 

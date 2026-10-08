@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.4'
+SITE_VERSION = 'v0.7.5'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.4', '2026-10-08', 'this release',
+    ('v0.7.5', '2026-10-08', 'this release',
+     "AGENCY IS NOT A YES. A new article and a new vault on human and agent agency, from two voice memos. A yes or no is the least interesting part of a decision; agency needs options, context in the decider's terms, depth (provenance, zoom), time or tokens, symmetric incentives, escalation and authority over the source. The vault, The agency scale (ddfw24hx, read key published), turns those into seven levels from rubber stamp to delegator where the weakest dimension caps the decision, scores fourteen cases by the same rule (eight at level 0, from the label-ID prompt to an agent asked 'is this OK?'; the author's draft review at 5; the one email an agent may send at 6), offers an assessment for any decision point, draws the review as a QA loop that fixes the source, and maps the EU AI Act's oversight articles to a floor at level 3. Below level 3, accountability belongs to whoever designed the decision point. 17-check gate, audited with the read key. Vault page, figures, graph JSON.",),
+    ('v0.7.4', '2026-10-08', 'git 43f2f081',
      "HOPE OR ENFORCEMENT. A new article and a new vault showing the Agent Behaviour Policy at work. One customer service mandate for a fictional homeware shop, built three ways: one model connected to the mailbox and the database with a careful 38-rule policy (97% of it expectations, kept only by the model); the same model behind a harness of fourteen business tools (73%); and a team of nine narrow agents behind a deterministic identity gateway, with tools bound to the verified customer (23%, unbounded excess zero). Sixty-two fictional emails, sixteen hostile, go through all three; one run's reach falls from 38,000 records, any refund and any address to one customer, 100 GBP per order and no other address; tokens per email from about 35,000 to 4,400. Two hostile emails still work inside the narrow design's mandate, and the policy names the boundary to build next for each. The vault (wz9dw0m5, read key published) has the mandate, the designs and their policies, every email through every design, the analyst's report after the run, the client's promises and a year that recomputes live; deterministic simulation, a 20-check gate, audited with the read key. Vault page, figures, graph JSON.",),
     ('v0.7.3', '2026-10-08', 'git a2314406',
      "WHO ARE YOU PROTECTING AGAINST? A new article and a new vault. The article, from a voice memo, starts from an entrepreneur's design, a Mac mini that will never touch the internet, with nothing installed and the application written in the Perl that ships with macOS, and asks who that protects against: three questions (threat agent, attack vector, sophistication), a six-tier ladder from your own mistakes to states built on NIST SP 800-30, the NCSC's commodity, targeted and elevated threats and MITRE ATT&CK, the note that DSIT's AI Risk Management Toolkit asks who the new threat actors are without defining them, the Mac mini read tier by tier, local versus cloud, and selling better than the customer's baseline rather than beyond their needs. The vault, Threat-sized security (zwlqqvkm, read key published), holds the ladder, eight fictional startups each with assets, an attack tree with an ATT&CK technique on every branch and the line it should draw, a compare matrix, the Mac mini comparison and a five-question questionnaire; four themes, a 19-check gate, audited with the read key. Vault page, five figures, graph JSON. The bridge simulation's catalogue line now says three institutions, as its pages do.",),    ('v0.7.2', '2026-10-08', 'git cb675bdc',
