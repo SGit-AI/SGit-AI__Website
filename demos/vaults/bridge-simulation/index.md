@@ -2,7 +2,7 @@
 
 > A simulation of Markus Franz's bridge example on a story vault: a fictional bridge closure from first notice to reopening, the journalism that got the date right, three readers whose graphs meet the story graph, institutions and an agent buying from it, and where every penny goes. Published with its read key.
 
-*Source: <https://sgit.ai/demos/vaults/bridge-simulation/index.html> · site v0.7.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/bridge-simulation/index.html> · site v0.7.10 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -95,9 +95,9 @@ The five days the bridge was news, and every day in between.
 
 costs and profit
 
-### A profit for every party
+### A profit for every business, and pay for the reporter
 
-Fixed costs, mostly the reporting, land in the first week; variable costs follow use and come to about 9% of revenue. The reporter is on the Courier's payroll: her base salary for 31 hours is the Courier's cost, and a 20% top-up on every use is hers, £541 by the reopening, about £47 an hour in all. The Courier makes £274 after paying her, the infrastructure share covers its costs, and the story breaks even on 5 November. Thirty-one hours is what the first week's payments justified; below about 1,000 followers it would not have paid for its reporting at all.
+Fixed costs, mostly the reporting, land in the first week; variable costs follow use and come to about 9% of revenue. The reporter is on the Courier's payroll and is paid, not in profit: a base salary of £930 for 31 hours, which is the Courier's cost, plus a commission of 20% on every use, £541 by the reopening, £1,471 in all, about £47 an hour. The Courier makes £274 after paying her, the infrastructure share covers its costs, and the story breaks even on 5 November. Thirty-one hours is what the first week's payments justified; below about 1,000 followers it would not have paid for its reporting at all.
 
 Fixed costs first, variable costs with use.
 
@@ -105,7 +105,7 @@ two years on
 
 ### News for seven weeks, paying for two years
 
-After the reopening a council review, loss adjusters, the county's inspections of eight sister bridges, a fund, a procurement watchdog, researchers, an insurer and other towns with the same bridge keep buying the record. Two years: £4,378, £1,871 of it profit. After the reopening 96% of revenue comes from institutions and agents, and because her top-up keeps arriving after her base stops, the reporter's rate rises from £48 to £51 an hour.
+After the reopening a council review, loss adjusters, the county's inspections of eight sister bridges, a fund, a procurement watchdog, researchers, an insurer and other towns with the same bridge keep buying the record. Two years: £4,378, £1,871 of it profit. After the reopening 96% of revenue comes from institutions and agents, and because her commission keeps arriving after her base stops, the reporter's rate rises from £48 to £51 an hour.
 
 The buyers move from the town to the institutions.
 
@@ -113,7 +113,7 @@ the next stories
 
 ### Reuse, a payment signal, and a long tail that stacks
 
-Eleven more stories over two years, each starting with the council, the portal, the routes and the contributors already in the graph: 157 reporting hours saved. The first week's payments, from readers and from institutions asking ahead, decide what is investigated, what gets a tracker and what gets a brief. By year two 41% of revenue comes from stories more than three months old, and across all twelve the reporter earns £65 an hour, base and top-up together. Beside each story: what the editor expected, and what the town actually paid for.
+Eleven more stories over two years, each starting with the council, the portal, the routes and the contributors already in the graph: 157 reporting hours saved. The first week's payments, from readers and from institutions asking ahead, decide what is investigated, what gets a tracker and what gets a brief. By year two 41% of revenue comes from stories more than three months old, and across all twelve the reporter earns £65 an hour, base and commission together. Beside each story: what the editor expected, and what the town actually paid for.
 
 The payment is the signal; the tail is the business.
 
@@ -181,10 +181,10 @@ What the editor expected, and what the town paid for.
 
 From `admin/build/catalogue_derive.py vk3jlgzb <read key hex>`, read-only, no token, no clone.
 
-- **Files:** 126 · **plaintext size:** 908 KB
-- **Commits:** 6 · **last updated:** 2026-10-08
+- **Files:** 127 · **plaintext size:** 913 KB
+- **Commits:** 7 · **last updated:** 2026-10-08
 - **Top level:** `BRIEF-CORRECTIONS.md`, `PUBLIC.md`, `README.md`, `REALITY.md`, `api/`, `app.json`, `app/`, `data/`, `docs/`, `index.html`, `tests/`, `tools/`, `versions/`
-- **File types:** .json ×27, .css ×25, .html ×24, .js ×24, .py ×14, .md ×12
+- **File types:** .json ×28, .css ×25, .html ×24, .js ×24, .py ×14, .md ×12
 - **Vault app:** yes, entry `index.html` · **browser-renderable:** yes
 
 ## Notes

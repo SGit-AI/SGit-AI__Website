@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.9'
+SITE_VERSION = 'v0.7.10'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.9', '2026-10-08', 'this release',
+    ('v0.7.10', '2026-10-08', 'this release',
+     "THE REPORTER IS PAID, NOT IN PROFIT. A correction to the Mill Street Bridge vault (v0.3.1) and its pages, after Dinis spotted it: the economics table counted the reporter's £930 base salary as her income and again as her cost, so her 'profit' was only the top-up. Her salary is the Courier's cost, not hers. Her row now shows pay: base salary £930 plus a commission of 20% of every use, £541.48, £1,471.48 in all, with no cost and no profit; 'top-up' is now 'commission' throughout. Every figure is unchanged. Vault page, article and three screenshots updated.",),
+    ('v0.7.9', '2026-10-08', 'git ee22b824',
      "THE WAITING ROOM KNEW FIRST. A new article and a new vault, from a live local story. On the afternoon of 8 October 2026 staff at two London hospitals of one trust said the IT systems were down, about five hours was announced, and a doctor called it national; nothing a local person could check before leaving home showed it. The article is about the gap, not the hospital: where local information comes from now, what parts of the UK already publish (Northern Ireland live emergency waits for every hospital, Wales live, England no national page), the thinning of local news and social feeds, and the narrow legal duty to warn. The vault, Local evidence log (92yb24y9, read key published), keeps the evidence by six levels, fourteen claims and what would resolve them, twenty six sources with how each was reached, the leads that do not fit, sixteen places a local could look, the enquiry to the trust (drafted, not sent), and scheduled source re-checks; 16-check gate, audited with the read key. No patient details anywhere. Vault page, four figures, graph JSON.",),
     ('v0.7.8', '2026-10-08', 'git be27891d',
      "CLOUD PATTERN FIX. In Encrypted memory for isolated agents, the cloud diagram drew the Lambda option outside the VPC. The agents have to reach whichever server is chosen, so both options now sit inside the VPC: an internal load balancer on a private address, and behind it either the container (EC2, Fargate or Kubernetes) or the same app on Lambda attached to the VPC, both with S3 storage through a VPC endpoint. Figure, Mermaid source, text and the self-hosting docs page updated.",),

@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.7.9). Nothing here needs a second request. Individual pages live at the paths
+> (v0.7.10). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -73,7 +73,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-271site releases, each verified live before it was called done
+272site releases, each verified live before it was called done
 
 48vaults published with a deliberately public read key
 
@@ -414,7 +414,7 @@ Open any of these in your browser right now. Every read key here was published o
 
 | 45 | [Threat-sized security](threat-sized-security/index.md)`zwlqqvkm` | Who are you actually protecting against? A six-tier ladder of attackers built on NIST SP 800-30, the NCSC and MITRE ATT&CK; eight fictional startups with attack trees and the line each should draw; an air-gapped Mac mini compared with an isolated one; and five questions to draw your own line | Reference | 55 | 472 KB | 2026-10-08 |
 
-| 44 | [The Mill Street Bridge](bridge-simulation/index.md)`vk3jlgzb` | A simulation of Markus Franz's bridge example on a story vault: one fictional local bridge closure from first notice to reopening, the journalism that got the date right, the paper on five dates, three readers whose own graphs meet the story graph, three institutions and an agent buying from the same graph, and where every penny goes; every figure computed from written assumptions; v0.2 adds the economics and the data, v0.3 a new navigation, four themes and a reviewed, gated codebase | Reference | 126 | 908 KB | 2026-10-07 |
+| 44 | [The Mill Street Bridge](bridge-simulation/index.md)`vk3jlgzb` | A simulation of Markus Franz's bridge example on a story vault: one fictional local bridge closure from first notice to reopening, the journalism that got the date right, the paper on five dates, three readers whose own graphs meet the story graph, three institutions and an agent buying from the same graph, and where every penny goes; every figure computed from written assumptions; v0.2 adds the economics and the data, v0.3 a new navigation, four themes and a reviewed, gated codebase | Reference | 127 | 913 KB | 2026-10-07 |
 
 | 43 | [AI BCF as a graph](aibcf-graph/index.md)`lop5iqzw` | Jan van Dijke's AI Baseline Control Framework v1.0 (CC BY-SA 4.0) converted from its CSV export into a semantic graph: ontology, SKOS taxonomy, JSON-LD and Turtle, eighty hyperlinked documents, a SQLite database that runs in the browser, and a join from every AI Act citation to the law's text in the Regulation Graph vault; a fractal graph view, a crosswalk, SQL and triple-pattern consoles | Reference | 143 | 3.0 MB | 2026-10-07 |
 
@@ -6251,7 +6251,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.7.9, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.7.10, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -6614,7 +6614,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-271**site releases since 14 August**
+272**site releases since 14 August**
 each verified live before it was called done
 
 48**vaults published with a public read key**
@@ -9747,9 +9747,9 @@ The five days the bridge was news, and every day in between.
 
 costs and profit
 
-### A profit for every party
+### A profit for every business, and pay for the reporter
 
-Fixed costs, mostly the reporting, land in the first week; variable costs follow use and come to about 9% of revenue. The reporter is on the Courier's payroll: her base salary for 31 hours is the Courier's cost, and a 20% top-up on every use is hers, £541 by the reopening, about £47 an hour in all. The Courier makes £274 after paying her, the infrastructure share covers its costs, and the story breaks even on 5 November. Thirty-one hours is what the first week's payments justified; below about 1,000 followers it would not have paid for its reporting at all.
+Fixed costs, mostly the reporting, land in the first week; variable costs follow use and come to about 9% of revenue. The reporter is on the Courier's payroll and is paid, not in profit: a base salary of £930 for 31 hours, which is the Courier's cost, plus a commission of 20% on every use, £541 by the reopening, £1,471 in all, about £47 an hour. The Courier makes £274 after paying her, the infrastructure share covers its costs, and the story breaks even on 5 November. Thirty-one hours is what the first week's payments justified; below about 1,000 followers it would not have paid for its reporting at all.
 
 Fixed costs first, variable costs with use.
 
@@ -9757,7 +9757,7 @@ two years on
 
 ### News for seven weeks, paying for two years
 
-After the reopening a council review, loss adjusters, the county's inspections of eight sister bridges, a fund, a procurement watchdog, researchers, an insurer and other towns with the same bridge keep buying the record. Two years: £4,378, £1,871 of it profit. After the reopening 96% of revenue comes from institutions and agents, and because her top-up keeps arriving after her base stops, the reporter's rate rises from £48 to £51 an hour.
+After the reopening a council review, loss adjusters, the county's inspections of eight sister bridges, a fund, a procurement watchdog, researchers, an insurer and other towns with the same bridge keep buying the record. Two years: £4,378, £1,871 of it profit. After the reopening 96% of revenue comes from institutions and agents, and because her commission keeps arriving after her base stops, the reporter's rate rises from £48 to £51 an hour.
 
 The buyers move from the town to the institutions.
 
@@ -9765,7 +9765,7 @@ the next stories
 
 ### Reuse, a payment signal, and a long tail that stacks
 
-Eleven more stories over two years, each starting with the council, the portal, the routes and the contributors already in the graph: 157 reporting hours saved. The first week's payments, from readers and from institutions asking ahead, decide what is investigated, what gets a tracker and what gets a brief. By year two 41% of revenue comes from stories more than three months old, and across all twelve the reporter earns £65 an hour, base and top-up together. Beside each story: what the editor expected, and what the town actually paid for.
+Eleven more stories over two years, each starting with the council, the portal, the routes and the contributors already in the graph: 157 reporting hours saved. The first week's payments, from readers and from institutions asking ahead, decide what is investigated, what gets a tracker and what gets a brief. By year two 41% of revenue comes from stories more than three months old, and across all twelve the reporter earns £65 an hour, base and commission together. Beside each story: what the editor expected, and what the town actually paid for.
 
 The payment is the signal; the tail is the business.
 
@@ -9833,10 +9833,10 @@ What the editor expected, and what the town paid for.
 
 From `admin/build/catalogue_derive.py vk3jlgzb <read key hex>`, read-only, no token, no clone.
 
-- **Files:** 126 · **plaintext size:** 908 KB
-- **Commits:** 6 · **last updated:** 2026-10-08
+- **Files:** 127 · **plaintext size:** 913 KB
+- **Commits:** 7 · **last updated:** 2026-10-08
 - **Top level:** `BRIEF-CORRECTIONS.md`, `PUBLIC.md`, `README.md`, `REALITY.md`, `api/`, `app.json`, `app/`, `data/`, `docs/`, `index.html`, `tests/`, `tools/`, `versions/`
-- **File types:** .json ×27, .css ×25, .html ×24, .js ×24, .py ×14, .md ×12
+- **File types:** .json ×28, .css ×25, .html ×24, .js ×24, .py ×14, .md ×12
 - **Vault app:** yes, entry `index.html` · **browser-renderable:** yes
 
 ## Notes
@@ -12043,12 +12043,14 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.7.9**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
+The site version (**v0.7.10**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
 
-| v0.7.9 | 2026-10-08 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.8...v0.7.9) | THE WAITING ROOM KNEW FIRST. A new article and a new vault, from a live local story. On the afternoon of 8 October 2026 staff at two London hospitals of one trust said the IT systems were down, about five hours was announced, and a doctor called it national; nothing a local person could check before leaving home showed it. The article is about the gap, not the hospital: where local information comes from now, what parts of the UK already publish (Northern Ireland live emergency waits for every hospital, Wales live, England no national page), the thinning of local news and social feeds, and the narrow legal duty to warn. The vault, Local evidence log (92yb24y9, read key published), keeps the evidence by six levels, fourteen claims and what would resolve them, twenty six sources with how each was reached, the leads that do not fit, sixteen places a local could look, the enquiry to the trust (drafted, not sent), and scheduled source re-checks; 16-check gate, audited with the read key. No patient details anywhere. Vault page, four figures, graph JSON.**New:**[Local evidence log, live local stories kept as evidence](../demos/vaults/local-evidence-log/index.md), [The waiting room knew first: a live local story, and the gap where local information used to be](../articles/the-waiting-room-knew-first.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.8...v0.7.9). |
+| v0.7.10 | 2026-10-08 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.9...v0.7.10) | THE REPORTER IS PAID, NOT IN PROFIT. A correction to the Mill Street Bridge vault (v0.3.1) and its pages, after Dinis spotted it: the economics table counted the reporter's £930 base salary as her income and again as her cost, so her 'profit' was only the top-up. Her salary is the Courier's cost, not hers. Her row now shows pay: base salary £930 plus a commission of 20% of every use, £541.48, £1,471.48 in all, with no cost and no profit; 'top-up' is now 'commission' throughout. Every figure is unchanged. Vault page, article and three screenshots updated.**Updated:**[The bridge, followed to the end: what one local story is worth when it is kept as a graph](../articles/the-bridge-followed-to-the-end.md), [The Mill Street Bridge, a story vault simulation of one local story followed to the end](../demos/vaults/bridge-simulation/index.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.9...v0.7.10). |
+
+| v0.7.9 | 2026-10-08 | [git ee22b824](https://github.com/SGit-AI/SGit-AI__Website/commit/ee22b824) | THE WAITING ROOM KNEW FIRST. A new article and a new vault, from a live local story. On the afternoon of 8 October 2026 staff at two London hospitals of one trust said the IT systems were down, about five hours was announced, and a doctor called it national; nothing a local person could check before leaving home showed it. The article is about the gap, not the hospital: where local information comes from now, what parts of the UK already publish (Northern Ireland live emergency waits for every hospital, Wales live, England no national page), the thinning of local news and social feeds, and the narrow legal duty to warn. The vault, Local evidence log (92yb24y9, read key published), keeps the evidence by six levels, fourteen claims and what would resolve them, twenty six sources with how each was reached, the leads that do not fit, sixteen places a local could look, the enquiry to the trust (drafted, not sent), and scheduled source re-checks; 16-check gate, audited with the read key. No patient details anywhere. Vault page, four figures, graph JSON.**New:**[Local evidence log, live local stories kept as evidence](../demos/vaults/local-evidence-log/index.md), [The waiting room knew first: a live local story, and the gap where local information used to be](../articles/the-waiting-room-knew-first.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/ee22b824). |
 
 | v0.7.8 | 2026-10-08 | [git be27891d](https://github.com/SGit-AI/SGit-AI__Website/commit/be27891d) | CLOUD PATTERN FIX. In Encrypted memory for isolated agents, the cloud diagram drew the Lambda option outside the VPC. The agents have to reach whichever server is chosen, so both options now sit inside the VPC: an internal load balancer on a private address, and behind it either the container (EC2, Fargate or Kubernetes) or the same app on Lambda attached to the VPC, both with S3 storage through a VPC endpoint. Figure, Mermaid source, text and the self-hosting docs page updated.**Updated:**[Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes](../articles/encrypted-memory-for-isolated-agents.md), [Self-hosting a vault server for agents, sgit Docs](../docs/self-host-for-agents.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/be27891d). |
 
@@ -15510,7 +15512,7 @@ There is a longer account of this one in [Green does not mean live](../articles/
 >
 > Page: https://sgit.ai/articles/index.html
 
-Edition of 2026-10-0749 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.7.9
+Edition of 2026-10-0749 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.7.10
 
 # SGit Newsroom
 
@@ -19837,6 +19839,8 @@ News & evidenceVaults & method[This article as a graph →](graphs.md#the-waitin
 
 [All articles](index.md) · [All graphs](graphs.md)
 
+**Posting this article on LinkedIn?** The cover is [the-waiting-room-knew-first.jpg](../articles/banners/the-waiting-room-knew-first.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
+
 **Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
@@ -21265,9 +21269,9 @@ And then there are agents. A regional delivery firm's routing agent plans 140 va
 
 ## Where the money goes
 
-Who paid, and where it went: £2,707 from 1,596 readers and businesses, three institutions and an agent; 60% to the Courier, which pays the reporter's base salary out of it, a 20% top-up to the reporter, 10% to the evidence contributors, 10% to infrastructure and payments. The prices, volumes and split are assumptions written in the vault's build script.
+Who paid, and where it went: £2,707 from 1,596 readers and businesses, three institutions and an agent; 60% to the Courier, which pays the reporter's base salary out of it, a 20% commission to the reporter, 10% to the evidence contributors, 10% to infrastructure and payments. The prices, volumes and split are assumptions written in the vault's build script.
 
-In the simulation, one closure earns £2,707. Most of it, £2,408, is small amounts from the town: 1,240 people following the bridge for thirty pence a week while it was closed, forty-six businesses on a business tracker, 310 people paying per alert, five thousand skill runs at two pence. The institutions and the agent add £291. The reporter is on the Courier's payroll: sixty per cent goes to the Courier, which pays her base salary out of it, and twenty per cent comes to her as a top-up on every use, £541 on top of her salary for one story kept right for seven weeks, and still arriving after the bridge reopens. The base is what any newsroom pays; the top-up is what grows with the story, and with the outlet: the larger and more prominent the paper, the larger the top-up the same work earns. Ten per cent goes to infrastructure and payments; and ten per cent to the people whose evidence the claims rest on, shared by how many claims each supported. Priya, the resident who photographed the site notice, the footbridge sign and the first traffic, receives £203. The cycle club that logged the bypass queues twice a day receives £68.
+In the simulation, one closure earns £2,707. Most of it, £2,408, is small amounts from the town: 1,240 people following the bridge for thirty pence a week while it was closed, forty-six businesses on a business tracker, 310 people paying per alert, five thousand skill runs at two pence. The institutions and the agent add £291. The reporter is on the Courier's payroll: sixty per cent goes to the Courier, which pays her base salary out of it, and twenty per cent comes to her as a commission on every use, £541 on top of her salary for one story kept right for seven weeks, and still arriving after the bridge reopens. The base is what any newsroom pays; the commission is what grows with the story, and with the outlet: the larger and more prominent the paper, the larger the commission the same work earns. Ten per cent goes to infrastructure and payments; and ten per cent to the people whose evidence the claims rest on, shared by how many claims each supported. Priya, the resident who photographed the site notice, the footbridge sign and the first traffic, receives £203. The cycle club that logged the bypass queues twice a day receives £68.
 
 Interviewees are not paid. The Courier does not pay for comment, and an anonymous source cannot be paid without being identified. The people paid are the people whose evidence the graph names, which is the mechanism this whole series keeps returning to: *a page that cannot name its source cannot pay it.*
 
@@ -21279,15 +21283,15 @@ The first version of the vault showed who was paid. The question it left open is
 
 The vault, view by view: twenty of its twenty-three views, in the Day theme, the nine added in version 0.2 outlined.
 
-**Costs and profit.** The fixed cost is mostly the reporting, and it comes first: 31 hours of the reporter's time and 4.5 of the editor's, both paid by the Courier, £1,350 with a legal read, set-up and the platform. Thirty-one hours is what the first week's payments justified: enough to dig into the contract and find the engineer, not enough to camp on the bridge, because an hour that does not pay for itself is an hour the next story needs. The variable costs, payments, alerts, compute and hosting, follow use and come to 9.3% of revenue. During the closure every party is in profit: the Courier makes £274 after paying her salary, the infrastructure share covers its costs with £20 to spare, and the reporter's top-up of £541 on a base of £930 comes to about £47 an hour against a base rate of £30. The story breaks even on 5 November, day twenty-five, and the scale chart says why the town mattered: below about 1,000 followers it would not have paid for its reporting, and above that every follower is margin.
+**Costs and profit.** The fixed cost is mostly the reporting, and it comes first: 31 hours of the reporter's time and 4.5 of the editor's, both paid by the Courier, £1,350 with a legal read, set-up and the platform. Thirty-one hours is what the first week's payments justified: enough to dig into the contract and find the engineer, not enough to camp on the bridge, because an hour that does not pay for itself is an hour the next story needs. The variable costs, payments, alerts, compute and hosting, follow use and come to 9.3% of revenue. During the closure every business is in profit and the reporter is well paid: the Courier makes £274 after paying her salary, the infrastructure share covers its costs with £20 to spare, and the reporter, who is paid rather than in profit, earns her base salary of £930 plus a commission of £541, £1,471 in all, about £47 an hour against a base rate of £30. The story breaks even on 5 November, day twenty-five, and the scale chart says why the town mattered: below about 1,000 followers it would not have paid for its reporting, and above that every follower is margin.
 
 Revenue against cost, day by day, crossing on 5 November; and the same story with more or fewer followers, where fixed costs stay put and variable costs follow use.
 
-**Two years on.** The story stopped being news on 4 December. It kept selling. A council post-incident review, loss adjusters handling business-interruption claims, the county's inspections of eight bridges of the same design, a second fund ahead of the contractor's results, a procurement watchdog, a university research group, an insurer and two other towns with the same bridge all buy the record of what was known, when, and from whom. Over two years the bridge earns £4,378 and £1,871 of profit. After the reopening, 96% of its revenue comes from institutions and agents rather than the town: the revenue moves from the local reader to the players who want the data. The reporter's base stops when the work stops and her top-up does not, so her effective rate rises from £48 an hour at the reopening to £51, and Priya's three photographs have earned her £328.
+**Two years on.** The story stopped being news on 4 December. It kept selling. A council post-incident review, loss adjusters handling business-interruption claims, the county's inspections of eight bridges of the same design, a second fund ahead of the contractor's results, a procurement watchdog, a university research group, an insurer and two other towns with the same bridge all buy the record of what was known, when, and from whom. Over two years the bridge earns £4,378 and £1,871 of profit. After the reopening, 96% of its revenue comes from institutions and agents rather than the town: the revenue moves from the local reader to the players who want the data. The reporter's base stops when the work stops and her commission does not, so her effective rate rises from £48 an hour at the reopening to £51, and Priya's three photographs have earned her £328.
 
 Revenue by month over two years, by who paid: the town in October and November, institutions and agents after that, against a cost that is almost all in the first two months.
 
-**The next stories, and the payment as a signal.** The bridge is the first story in the Courier's graph, not the last. The vault plays out eleven more over two years: a school catchment change, the footbridge resurfacing, the county's sister-bridge inspections, a business rates review, a bus timetable, a wharf flood-defence overrun, a contractor's pattern across three councils, a car park, winter floods, a school meals contract and night closures on the bypass. Each starts with the council, the procurement portal, the routes and the contributors already in the graph, which saves 157 of 310 reporting hours. And each is sized by what people paid for in its first week, from readers and from institutions asking ahead: six are investigated, five get a tracker, and the footbridge resurfacing, which few people needed, gets a brief, an hour, and roughly breaks even. That is the argument made concrete: a bridge nobody cares about earns no payments and gets no investigation, and the first payments are what tell the newsroom where to dig. By the second year 41% of revenue comes from stories more than three months old, the twelve together earn £26,523 and £14,731 of profit, and across all of them the reporter earns £65 an hour, base and top-up together.
+**The next stories, and the payment as a signal.** The bridge is the first story in the Courier's graph, not the last. The vault plays out eleven more over two years: a school catchment change, the footbridge resurfacing, the county's sister-bridge inspections, a business rates review, a bus timetable, a wharf flood-defence overrun, a contractor's pattern across three councils, a car park, winter floods, a school meals contract and night closures on the bypass. Each starts with the council, the procurement portal, the routes and the contributors already in the graph, which saves 157 of 310 reporting hours. And each is sized by what people paid for in its first week, from readers and from institutions asking ahead: six are investigated, five get a tracker, and the footbridge resurfacing, which few people needed, gets a brief, an hour, and roughly breaks even. That is the argument made concrete: a bridge nobody cares about earns no payments and gets no investigation, and the first payments are what tell the newsroom where to dig. By the second year 41% of revenue comes from stories more than three months old, the twelve together earn £26,523 and £14,731 of profit, and across all of them the reporter earns £65 an hour, base and commission together.
 
 The money is also the bluntest editor in the building, and an honest one. Beside each story the vault records what the editor expected before the first week and what the town paid for. They agree on five of twelve. On four the town cared more, starting with the bridge itself, which the newsroom expected to be a week of roadworks; on three it cared less. A newsroom close to its community knows a lot about what matters to it, and the community, paying for what it needs, still knows more.
 
@@ -21311,7 +21315,7 @@ Four themes, one set of tokens: the same view in Night, Day, Paper and Ember.
 
 Underneath, an architect agent reviewed the code against the estate's guidance, the vault-app rules on sgit.ai, coding.sgit.ai and nfrs.sgit.ai, and a developer agent applied it. Every view now renders through a template that escapes by default, so data in the vault cannot become markup; a view that cannot load its data says so instead of going blank; the interactive views keep keyboard focus; every chart has a text summary; and a gate of 44 checks, from the bundle contract and byte-for-byte downloads to theme completeness and contrast, fails the build if any of it regresses. The reviews and the decisions are in the vault, as `BRIEF-CORRECTIONS.md` and `REALITY.md`.
 
-The model was corrected in the same version, as described above: the reporter is on the Courier's payroll with a top-up from every use, the reporting was sized by the first week's payments, and every party ends the closure in profit. And beside each story, the vault now records what the editor expected against what the town paid for.
+The model was corrected in the same version, as described above: the reporter is on the Courier's payroll with a commission from every use, the reporting was sized by the first week's payments, and every business ends the closure in profit. (In version 0.3.1 her row was corrected to show pay, base salary plus commission, rather than a profit: her salary is the Courier's cost, not hers.) And beside each story, the vault now records what the editor expected against what the town paid for.
 
 What the editor expected, and what the town paid for: five of twelve agreed; the town cared more about the bridge than the newsroom did.
 
@@ -30396,7 +30400,7 @@ One entry per run of a desk role, newest first, each its own file and never edit
 >
 > Page: https://sgit.ai/articles/collections/index.html
 
-Edition of 2026-10-0749 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.7.9
+Edition of 2026-10-0749 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.7.10
 
 # Collections
 
@@ -30415,7 +30419,7 @@ A collection is one file in `admin/content/newsroom/collections/`. [How the desk
 >
 > Page: https://sgit.ai/articles/desk/index.html
 
-Edition of 2026-10-0749 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.7.9
+Edition of 2026-10-0749 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.7.10
 
 # From the desk
 
@@ -30939,7 +30943,7 @@ Your browser encrypts it to the public key of the agent that runs the list, then
 >
 > Page: https://sgit.ai/articles/newsletter/index.html
 
-Edition of 2026-10-0749 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.7.9
+Edition of 2026-10-0749 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.7.10
 
 # The newsletter
 
