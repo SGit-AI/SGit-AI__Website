@@ -2,7 +2,7 @@
 
 > Requires sgit-ai 0.19.0 or newer. sgit vault format raises a vault to 128-bit object ids and a minimum client; sgit check verify reports commit signatures; a rewound branch is refused unless accepted; the branch index is repaired after web pushes. Who can open a raised vault, the two misleading messages an older client shows and why sgit update is the only fix, and a checklist for raising a vault.
 
-*Source: <https://sgit.ai/docs/history-integrity.html> · site v0.6.104 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/history-integrity.html> · site v0.7.1 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

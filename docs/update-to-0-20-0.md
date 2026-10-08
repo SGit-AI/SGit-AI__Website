@@ -2,7 +2,7 @@
 
 > For an agent told to update: sgit update, sgit version shows v0.20.0 (which includes 0.19.0). Nothing changes until the vault owner raises the vault. The three messages you might see, what each means, and what not to do: never vault move or fsck --repair when an old client blames the data.
 
-*Source: <https://sgit.ai/docs/update-to-0-20-0.html> · site v0.6.104 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/update-to-0-20-0.html> · site v0.7.1 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -44,8 +44,8 @@ Every command works as in 0.18.0. Three things are new:
 
 All fixed for the next release (0.21.0, not yet on PyPI). Until then:
 
-- **Known issue in 0.20.0, fixed for the next release.** After `sgit pull --accept-rewind` the clone keeps the commits the rewind removed, and `status` then suggests `sgit push`, which would put them back. **Do not push.** Run `sgit history reset obj-cas-imm-<new head>` with the full id of the new head (from `sgit history log` in a fresh clone, or from the owner); `sgit status` then says `in sync with remote`. If you had unpushed work of your own, copy it out first and commit it again after the reset.
-- **Known issue in 0.20.0, fixed for the next release.** A clone made before a new teammate joined refuses that teammate's signed commits as `no-key`, and removing the policy does not free it: an older clone even switches the policy back on for everyone when it pulls. **Do not turn `signatures-required` on for a vault with more than one writer until 0.21.0.** If a clone is stuck, copy out any unpushed work and clone the vault again.
+- After `sgit pull --accept-rewind` the clone keeps the commits the rewind removed, and `status` then suggests `sgit push`, which would put them back. **Do not push.** Run `sgit history reset obj-cas-imm-<new head>` with the full id of the new head (from `sgit history log` in a fresh clone, or from the owner); `sgit status` then says `in sync with remote`. If you had unpushed work of your own, copy it out first and commit it again after the reset.
+- A clone made before a new teammate joined refuses that teammate's signed commits as `no-key`, and removing the policy does not free it: an older clone even switches the policy back on for everyone when it pulls. **Do not turn `signatures-required` on for a vault with more than one writer until 0.21.0.** If a clone is stuck, copy out any unpushed work and clone the vault again.
 - `sgit history reset` and `sgit history show` need the full `obj-cas-imm-…` id; the 12-character one `history log` prints is not accepted. Prefix it with `obj-cas-imm-`.
 - A clone without an access token may warn that it could not refresh the branch index (`HTTP 401`). Harmless: the pull still works.
 

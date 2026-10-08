@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens) one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.6.104 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.7.1 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -88,7 +88,7 @@ Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the 
 
 ## 2026-10-08
 
-### [sgit-ai 0.20.0 (includes 0.19.0): a vault whose history you can verify, and an honest warning when you raise it](#sgit-ai-0-20-0) [v0.6.104](../admin/versions.md)
+### [sgit-ai 0.20.0 (includes 0.19.0): a vault whose history you can verify, and an honest warning when you raise it](#sgit-ai-0-20-0) [v0.7.1](../admin/versions.md)
 
 sgit-aireleaseclihistory-integritysignaturesagents
 

@@ -81,7 +81,7 @@ One local topic, one vault, one service, one ledger. If it works, the second top
 
 ## Played out in full
 
-The bridge, the readers, the journalism and the money are now a working simulation: [The bridge, followed to the end](/articles/the-bridge-followed-to-the-end.html), with its [vault](/demos/vaults/bridge-simulation/index.html), which since version 0.2 also counts the costs, the two years of long tail, the stories after it and the trust they build. Three readers, four institutions and an agent use one local story kept as a graph, from the first notice to the reopening, and every payment walks back to the people who found the facts.
+The bridge, the readers, the journalism and the money are now a working simulation: [The bridge, followed to the end](/articles/the-bridge-followed-to-the-end.html), with its [vault](/demos/vaults/bridge-simulation/index.html), which since version 0.2 also counts the costs, the two years of long tail, the stories after it and the trust they build. Three readers, three institutions and an agent use one local story kept as a graph, from the first notice to the reopening, and every payment walks back to the people who found the facts.
 
 Markus ends his article with this line: *"Don't just read our journalism. Use it."* I would add one clause. Use it, and pay the people who found it out.
 

@@ -2,7 +2,7 @@
 
 > Forty-four vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it.
 
-*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.6.104 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.7.1 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -19,7 +19,7 @@ Open any of these in your browser right now. Every read key here was published o
 | # | Vault | What it is | Category | Files | Size | Published |
 |---|---|---|---|---|---|---|
 
-| 44 | [The Mill Street Bridge](bridge-simulation/index.md)`vk3jlgzb` | A simulation of Markus Franz's bridge example on a story vault: one fictional local bridge closure from first notice to reopening, the journalism that got the date right, the paper on five dates, three readers whose own graphs meet the story graph, four institutions and an agent buying from the same graph, and where every penny goes; every figure computed from written assumptions; v0.2 adds costs and profit, two years of long tail, eleven later stories that reuse the graph, a trust record, the council and two accountant agents, simulated model queries, data assets and an API | Reference | 106 | 640 KB | 2026-10-07 |
+| 44 | [The Mill Street Bridge](bridge-simulation/index.md)`vk3jlgzb` | A simulation of Markus Franz's bridge example on a story vault: one fictional local bridge closure from first notice to reopening, the journalism that got the date right, the paper on five dates, three readers whose own graphs meet the story graph, four institutions and an agent buying from the same graph, and where every penny goes; every figure computed from written assumptions; v0.2 adds the economics and the data, v0.3 a new navigation, four themes and a reviewed, gated codebase | Reference | 126 | 908 KB | 2026-10-07 |
 
 | 43 | [AI BCF as a graph](aibcf-graph/index.md)`lop5iqzw` | Jan van Dijke's AI Baseline Control Framework v1.0 (CC BY-SA 4.0) converted from its CSV export into a semantic graph: ontology, SKOS taxonomy, JSON-LD and Turtle, eighty hyperlinked documents, a SQLite database that runs in the browser, and a join from every AI Act citation to the law's text in the Regulation Graph vault; a fractal graph view, a crosswalk, SQL and triple-pattern consoles | Reference | 143 | 3.0 MB | 2026-10-07 |
 
