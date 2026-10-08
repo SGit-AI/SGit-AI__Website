@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.0'
+SITE_VERSION = 'v0.7.1'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.0', '2026-10-08', 'this release',
+    ('v0.7.1', '2026-10-08', 'this release',
+     "EVERY MISTAKE ADDED A RULE. A new article on complexity, for the founders who have become engineers with agents and are doing the right thing: a friend's verification, run by agents in Cowork with ChatGPT reviewing, where the code holds and the process breaks (compaction, lost outputs, 100 KB prompts, scripts edited in place, rules against the harness, rules breeding rules). Two Mermaid Wardley maps show complexity as a position, a custom-built blob of process where commodities already exist, and the same process with each piece made small, shipped and moved right. Then the principles: map it, commoditise small chunks and let them compound, ship and stop, small sessions and your own context, memory as versioned files, slow down when complexity hits, security by asset and attack vector, rules for incidents and machines for enforcement, five environments, reverse-engineer the path, learn the engineering that exists; and direct answers on compaction, audit cards and what deserves a STOP. The friend is not named and the project not described. Four figures, graph JSON.",),
+    ('v0.7.0', '2026-10-08', 'git e328e3be',
      "THE BRIDGE VAULT v0.3, AND A NEW MINOR. The bridge-simulation vault moves to v0.3.0, a design and quality pass "
      "worth a version of the site of its own. Design: drawn on a canvas first, then built; the navigation is five "
      "numbered groups with an icon per view, people as people, counts read from the data, Previous and Next; four "

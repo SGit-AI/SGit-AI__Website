@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Every mistake added a rule: complexity, agents, and the way back to shipping, sgit.ai</title>
+<meta name="description" content="A friend who uses agents better than most, one writing, others verifying, ChatGPT reviewing, every claim resting on an output read in full, sent me two messages about a verification that keeps breaking. The code is holding up. The process around it is not: long sessions compact and skip steps, outputs of failing commands are lost, prompts have grown to 100 KB, scripts are edited in place, the harness suggests what the rules forbid, and every mistake added a rule that caused new mistakes. This is complexity, and it is what hits the founders who are doing the right thing, clever, careful, now working as engineers without the scar tissue of engineering. This article maps their process as a Wardley map, where complexity is a position, custom-built process sitting where commodities already exist, and maps it again with each piece made small, shipped and moved right. Then it sets out the principles I work by: map it, commoditise small chunks and let them compound, ship, keep sessions small and the context yours, memory as versioned files, slow down when complexity hits, security by asset and attack vector, rules for incidents and machines for enforcement, run it in five environments, reverse-engineer the path to the destination, and learn the engineering that already exists. It ends with direct answers to their questions on compaction, audit cards and what deserves a STOP.">
+<link rel="canonical" href="https://sgit.ai/articles/every-mistake-added-a-rule.html">
+<link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/articles/every-mistake-added-a-rule.html">
+<meta property="og:title" content="Every mistake added a rule: complexity, agents, and the way back to shipping, sgit.ai">
+<meta property="og:description" content="A friend who uses agents better than most, one writing, others verifying, ChatGPT reviewing, every claim resting on an output read in full, sent me two messages about a verification that keeps breaking. The code is holding up. The process around it is not: long sessions compact and skip steps, outputs of failing commands are lost, prompts have grown to 100 KB, scripts are edited in place, the harness suggests what the rules forbid, and every mistake added a rule that caused new mistakes. This is complexity, and it is what hits the founders who are doing the right thing, clever, careful, now working as engineers without the scar tissue of engineering. This article maps their process as a Wardley map, where complexity is a position, custom-built process sitting where commodities already exist, and maps it again with each piece made small, shipped and moved right. Then it sets out the principles I work by: map it, commoditise small chunks and let them compound, ship, keep sessions small and the context yours, memory as versioned files, slow down when complexity hits, security by asset and attack vector, rules for incidents and machines for enforcement, run it in five environments, reverse-engineer the path to the destination, and learn the engineering that already exists. It ends with direct answers to their questions on compaction, audit cards and what deserves a STOP.">
+<meta property="og:image" content="https://sgit.ai/og/every-mistake-added-a-rule.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Every mistake added a rule: complexity, agents, and the way back to shipping, sgit.ai">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgit.ai/og/every-mistake-added-a-rule.jpg">
+<link rel="alternate" type="text/markdown" href="every-mistake-added-a-rule.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Every mistake added a rule: complexity, agents, and the way back to shipping, sgit.ai", "headline": "Every mistake added a rule: complexity, agents, and the way back to shipping, sgit.ai", "description": "A friend who uses agents better than most, one writing, others verifying, ChatGPT reviewing, every claim resting on an output read in full, sent me two messages about a verification that keeps breaking. The code is holding up. The process around it is not: long sessions compact and skip steps, outputs of failing commands are lost, prompts have grown to 100 KB, scripts are edited in place, the harness suggests what the rules forbid, and every mistake added a rule that caused new mistakes. This is complexity, and it is what hits the founders who are doing the right thing, clever, careful, now working as engineers without the scar tissue of engineering. This article maps their process as a Wardley map, where complexity is a position, custom-built process sitting where commodities already exist, and maps it again with each piece made small, shipped and moved right. Then it sets out the principles I work by: map it, commoditise small chunks and let them compound, ship, keep sessions small and the context yours, memory as versioned files, slow down when complexity hits, security by asset and attack vector, rules for incidents and machines for enforcement, run it in five environments, reverse-engineer the path to the destination, and learn the engineering that already exists. It ends with direct answers to their questions on compaction, audit cards and what deserves a STOP.", "url": "https://sgit.ai/articles/every-mistake-added-a-rule.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}, "author": {"@type": "Person", "name": "Dinis Cruz", "url": "https://sgit.ai/about/index.html"}, "license": "https://creativecommons.org/licenses/by/4.0/"}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.7.1</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+ <div class="ni ni-has">
+ <a class="nl here" href="../articles/index.html">Newsroom<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl here" href="../articles/index.html">Front page</a>
+ <a class="sl" href="../articles/newsletter/index.html">Newsletter</a>
+ <a class="sl" href="../articles/index.html#all">Every article</a>
+ <a class="sl" href="../articles/collections/index.html">Collections</a>
+ <a class="sl" href="../articles/desk/index.html">From the desk</a>
+ <a class="sl" href="../articles/graphs.html">As graphs</a>
+ <a class="sl" href="../newsroom/index.html">How it runs</a>
+ <a class="sl" href="../subscribe/index.html">Subscribe</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../investors/index.html">Investors</a>
+ <a class="sl" href="../startups/index.html">Startups</a>
+ <a class="sl" href="../startups/business-plans.html">Business plans</a>
+ <a class="sl" href="../about/index.html">About the author</a>
+ <a class="sl" href="../partnerships/index.html">Partnerships</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../docs/index.html">Documentation</a>
+ <a class="sl" href="../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl" href="../docs/guidance/repositories.html">Every repository</a>
+ <a class="sl" href="../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../api/index.html">HTTP API</a>
+ <a class="sl" href="../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../deploy/index.html">Deploy</a>
+ <a class="sl" href="../skills/index.html">Skills</a>
+ <a class="sl" href="../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../demos/index.html">Demos</a>
+ <a class="sl" href="../demos/fractal-graphs/index.html">Fractal graphs</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../agents/index.html">Agents</a></div>
+ <div class="ni ni-has">
+ <a class="nl" href="../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../compare/index.html">Comparisons</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
+ <a class="sl" href="../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../lessons/index.html">Lessons learned</a>
+ <a class="sl" href="../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../team/index.html">How the site is run</a>
+ <a class="sl" href="../team/index.html#roles">Roles</a>
+ <a class="sl" href="../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../team/board.html">The board</a>
+ <a class="sl" href="../updates/index.html">Updates</a>
+ <a class="sl" href="../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../network/index.html">All sites</a>
+ <a class="sl" href="../network/nhi.html">nhi</a>
+ <a class="sl" href="../network/pki.html">pki</a>
+ <a class="sl" href="../network/graphs.html">graphs</a>
+ <a class="sl" href="../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.7.1 &middot; 8 Oct 2026</span></a></div>
+<main class="doc">
+ <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Articles</a> / Every mistake added a rule: complexity, agents, and the way back to shipping</p>
+ <h1>Every mistake added a rule: complexity, agents, and the way back to shipping</h1>
+ <p class="small dim">By <a href="../about/index.html" rel="author">Dinis Cruz</a> &middot; 2026-10-08 &middot; <a href="../admin/versions.html">v0.7.1</a> &middot; <span class="chip">agents</span><span class="chip">complexity</span><span class="chip">wardley-maps</span><span class="chip">engineering-practice</span><span class="chip">context-window</span><span class="chip">compaction</span><span class="chip">memory</span><span class="chip">shipping</span><span class="chip">founders</span><span class="chip">nfrs</span><span class="chip">testing</span><span class="chip">cowork</span><span class="chip">chatgpt</span><span class="chip">article</span></p>
+ <p class="abstract"><em><b>Abstract:</b> A friend who uses agents better than most, one writing, others verifying, ChatGPT reviewing, every claim resting on an output read in full, sent me two messages about a verification that keeps breaking. The code is holding up. The process around it is not: long sessions compact and skip steps, outputs of failing commands are lost, prompts have grown to 100 KB, scripts are edited in place, the harness suggests what the rules forbid, and every mistake added a rule that caused new mistakes. This is complexity, and it is what hits the founders who are doing the right thing, clever, careful, now working as engineers without the scar tissue of engineering. This article maps their process as a Wardley map, where complexity is a position, custom-built process sitting where commodities already exist, and maps it again with each piece made small, shipped and moved right. Then it sets out the principles I work by: map it, commoditise small chunks and let them compound, ship, keep sessions small and the context yours, memory as versioned files, slow down when complexity hits, security by asset and attack vector, rules for incidents and machines for enforcement, run it in five environments, reverse-engineer the path to the destination, and learn the engineering that already exists. It ends with direct answers to their questions on compaction, audit cards and what deserves a STOP.</em></p>
+<figure class="shot" data-shot="cx-loops.webp" data-dir="images/" data-alt="Two ways to answer a mistake an agent makes. Add a rule, and the prompt grows, the session compacts sooner, and compaction decides which rules survive. Ship a component, and the mistake stops being possible, so the rule can go."><figcaption>Two ways to answer a mistake an agent makes. Add a rule, and the prompt grows, the session compacts sooner, and compaction decides which rules survive. Ship a component, and the mistake stops being possible, so the rule can go.</figcaption></figure>
+<div class="note"><b>Where this comes from.</b> A friend sent me two messages about a verification they are running with agents in Cowork, with ChatGPT as a reviewer. Both messages were written with their agents, which says a lot about how they work: the structure, the numbering and the attention to detail are what you get from somebody who has made agents check each other. I recorded a voice memo after reading them, and this article is drafted from the messages and the memo. My friend is not named and their project is not described; the patterns are the point, and they apply to many people I talk to. Cowork and ChatGPT are named because they are the products in use. The session that drafted this article had its own context compacted earlier the same day and carried on from a summary, which is one reason the advice below is written the way it is.</div>
+<h2>In short</h2>
+<ul>
+<li><b>The code is fine. The process is the problem.</b> The tool under verification reproduces its tests, and 812 concurrency attacks produced no failures. What keeps breaking is the machinery around it: compaction, lost outputs, 100 KB prompts, scripts edited in place, rules that fight the harness, and rules that breed rules.</li>
+<li><b>Complexity is a position on a map.</b> In a Wardley map, complexity shows up as a blob of custom-built components sitting where the world already has products and commodities. Every rule added to fix one of them is another custom component in the same place.</li>
+<li><b>Move the pieces right, one at a time.</b> Each failure belongs to a component that can be made small, tested once and shipped: a short policy read from disk, steps that finish before compaction, a wrapper that writes every output, scripts committed before they run, an audit card read from the transcript, and a stop rule reserved for harm.</li>
+<li><b>Shipping is how complexity stays under control.</b> A shipped component is a unit of its own: testable, battle-hardened, usable by somebody else, an agent included. Small shipped components compound. Large unshipped ones accumulate.</li>
+<li><b>You have time.</b> The urge to push through is the most expensive one. If you are not getting faster, complexity is winning, and the answer is to slow down, map it, and break it into pieces.</li>
+</ul>
+<h2>Two messages from somebody doing the right thing</h2>
+<p>My friend is running an independent verification of a tool before it is installed on a machine. The setup is impressive. One agent writes, other agents verify, ChatGPT reviews. The rules are strict: no network, everything sandboxed, every claim resting on an output read in full, and any deviation is a STOP. They are, in other words, doing what I keep telling people to do with agents: not trusting one model's account of its own work, and building the checks in.</p>
+<p>The results on the tool are good. The tests reproduce. 812 concurrency attacks produced no failures. What keeps failing is the process, and they listed the patterns with a precision I wish more incident reports had:</p>
+<ol>
+<li><b>Compaction.</b> Long sessions compact, and afterwards the agent skips mandatory steps or writes its report from the compaction summary. This caused most of the failures.</li>
+<li><b>Lost outputs.</b> When a command exits non-zero, the harness does not save its output to a file and truncates the middle. A whole race run was lost that way.</li>
+<li><b>100 KB prompts.</b> Asked for an exact copy of its prompt, for recovery after compaction, the agent reproduced it from memory, incomplete or wrong. Once that tripped the platform's safety filter.</li>
+<li><b>Scripts edited in place.</b> Afterwards there is no way to prove which bytes actually ran.</li>
+<li><b>The harness against the rules.</b> The harness suggests <code>cat</code>, <code>sed</code> and heredocs, which their rules forbid.</li>
+<li><b>Too many rules.</b> In their words: "Every mistake added a rule, and every new rule caused new mistakes."</li>
+</ol>
+<p>They have already decided what to change: nine small sessions instead of two large ones, a reference folder with hashes instead of a huge prompt, every output written to a file and read in full, scripts versioned and hashed before each run, and a session that compacts closes immediately. And they asked two questions, the second of which is the one I want to answer properly: does this level of rigour make sense, or am I overdoing it?</p>
+<p>Their changes are right. What I want to add is why they are right, because the why is what lets the next problem get the same answer without a seventh pattern and a new rule. The why is complexity, and the tool I use to see it is a Wardley map.</p>
+<h2>Complexity is a position on a map</h2>
+<p>A <a href="https://wardley-maps.sgit.ai/">Wardley map</a> places each component of a system by how visible it is to the user, top to bottom, and by how evolved it is, left to right: genesis, custom-built, product, commodity. A healthy map has a thin custom layer where the value is, resting on parts that are products or commodities. I would go on record saying Wardley maps are what keep my world sane. They let me predict roughly what will happen, and they explain, after the fact, why something happened. When I look back at a failure, it is usually a mismatch on the evolution axis: something treated as a commodity that was still custom, or something rebuilt by hand that the world had already turned into a commodity.</p>
+<p>Here is my friend's verification, mapped. Like every map on this site it is a claim, not a finding, and its source is below the figure so it can be argued with.</p>
+<figure class="shot" data-shot="cx-map-now.webp" data-dir="images/" data-alt="Map one: the verification as it runs. The person preparing the install needs confidence the tool is safe, which comes from a report, which rests on the tool&#x27;s tests, holding, and on a team of agents. The six things that keep failing sit in a blob on the left, each rebuilt by hand inside a prompt every session. Files, hashes and git sit at the far right, unused."><figcaption>Map one: the verification as it runs. The person preparing the install needs confidence the tool is safe, which comes from a report, which rests on the tool's tests, holding, and on a team of agents. The six things that keep failing sit in a blob on the left, each rebuilt by hand inside a prompt every session. Files, hashes and git sit at the far right, unused.</figcaption></figure>
+<p>The tool and its tests are where they should be: custom, because that is the work. The problem is the blob between the agents and the commodities. Recovery after compaction, capture of every output, proof of which bytes ran, a rule set measured in kilobytes, long sessions, and a STOP rule that fires on everything: each is being built by hand, in a prompt, by an agent, every session, from a memory that compaction rewrites. And at the bottom right, unconnected, are files, hashes and version control, which have solved most of those problems for decades.</p>
+<p>That is what complexity looks like on a map. It is not the number of components; it is custom-built components sitting where commodities already exist, so that every one of them has to be maintained by attention. Every rule added to fix one of them is one more custom component in the same place, which is exactly the loop my friend described.</p>
+<details class="src"><summary>Map one, the Mermaid wardley-beta source</summary><div class="src-bar"><button type="button" class="src-copy" data-copy="wardley-beta
+  title The verification as it runs: the process is a custom-built blob
+  anchor &quot;The person preparing the install&quot; [0.97, 0.55]
+  component &quot;Confidence the tool is safe to install&quot; [0.88, 0.42]
+  component &quot;The verification report&quot; [0.80, 0.34]
+  component &quot;The tool&#x27;s tests and race runs&quot; [0.72, 0.46]
+  component &quot;Writer, verifier and reviewer agents&quot; [0.66, 0.30]
+  component &quot;100 KB of rules in the prompt&quot; [0.58, 0.14]
+  component &quot;Recovery after compaction&quot; [0.52, 0.08]
+  component &quot;Long sessions&quot; [0.46, 0.24]
+  component &quot;Capture of every output&quot; [0.42, 0.16]
+  component &quot;Proof of which bytes ran&quot; [0.36, 0.11]
+  component &quot;STOP on every deviation&quot; [0.30, 0.20]
+  component &quot;Cowork and ChatGPT&quot; [0.26, 0.76]
+  component &quot;Sandbox, no network&quot; [0.14, 0.60]
+  component &quot;Files, hashes, git&quot; [0.08, 0.88]
+  &quot;The person preparing the install&quot; --&gt; &quot;Confidence the tool is safe to install&quot;
+  &quot;Confidence the tool is safe to install&quot; --&gt; &quot;The verification report&quot;
+  &quot;The verification report&quot; --&gt; &quot;The tool&#x27;s tests and race runs&quot;
+  &quot;The verification report&quot; --&gt; &quot;Writer, verifier and reviewer agents&quot;
+  &quot;Writer, verifier and reviewer agents&quot; --&gt; &quot;100 KB of rules in the prompt&quot;
+  &quot;Writer, verifier and reviewer agents&quot; --&gt; &quot;Long sessions&quot;
+  &quot;100 KB of rules in the prompt&quot; --&gt; &quot;Recovery after compaction&quot;
+  &quot;Long sessions&quot; --&gt; &quot;Recovery after compaction&quot;
+  &quot;Writer, verifier and reviewer agents&quot; --&gt; &quot;Capture of every output&quot;
+  &quot;Writer, verifier and reviewer agents&quot; --&gt; &quot;Proof of which bytes ran&quot;
+  &quot;Writer, verifier and reviewer agents&quot; --&gt; &quot;STOP on every deviation&quot;
+  &quot;Long sessions&quot; --&gt; &quot;Cowork and ChatGPT&quot;
+  &quot;The tool&#x27;s tests and race runs&quot; --&gt; &quot;Sandbox, no network&quot;"><span class="cp">copy</span></button><a href="images/cx-map-now.webp">rendered image</a></div><pre class="shell">wardley-beta
+  title The verification as it runs: the process is a custom-built blob
+  anchor "The person preparing the install" [0.97, 0.55]
+  component "Confidence the tool is safe to install" [0.88, 0.42]
+  component "The verification report" [0.80, 0.34]
+  component "The tool's tests and race runs" [0.72, 0.46]
+  component "Writer, verifier and reviewer agents" [0.66, 0.30]
+  component "100 KB of rules in the prompt" [0.58, 0.14]
+  component "Recovery after compaction" [0.52, 0.08]
+  component "Long sessions" [0.46, 0.24]
+  component "Capture of every output" [0.42, 0.16]
+  component "Proof of which bytes ran" [0.36, 0.11]
+  component "STOP on every deviation" [0.30, 0.20]
+  component "Cowork and ChatGPT" [0.26, 0.76]
+  component "Sandbox, no network" [0.14, 0.60]
+  component "Files, hashes, git" [0.08, 0.88]
+  "The person preparing the install" --&gt; "Confidence the tool is safe to install"
+  "Confidence the tool is safe to install" --&gt; "The verification report"
+  "The verification report" --&gt; "The tool's tests and race runs"
+  "The verification report" --&gt; "Writer, verifier and reviewer agents"
+  "Writer, verifier and reviewer agents" --&gt; "100 KB of rules in the prompt"
+  "Writer, verifier and reviewer agents" --&gt; "Long sessions"
+  "100 KB of rules in the prompt" --&gt; "Recovery after compaction"
+  "Long sessions" --&gt; "Recovery after compaction"
+  "Writer, verifier and reviewer agents" --&gt; "Capture of every output"
+  "Writer, verifier and reviewer agents" --&gt; "Proof of which bytes ran"
+  "Writer, verifier and reviewer agents" --&gt; "STOP on every deviation"
+  "Long sessions" --&gt; "Cowork and ChatGPT"
+  "The tool's tests and race runs" --&gt; "Sandbox, no network"</pre></details>
+<h2>Move the pieces right</h2>
+<p>The way out is not a better rule. It is to take each piece of the blob, make it a small component with one job, test it once, ship it, and let it move right, so that it stops needing attention. Each of the six patterns maps to one such component.</p>
+<div class="tablewrap"><table>
+<tr><th>What failed</th><th>What it is on the map</th><th>The component that replaces the rule</th></tr>
+<tr><td>Steps skipped after compaction</td><td>State held in the context, which compaction rewrites</td><td>Steps short enough to finish before compaction, reading their state from files and writing it back</td></tr>
+<tr><td>Outputs lost on non-zero exit</td><td>Output capture done by hand</td><td>A run wrapper: every command goes through one small script that writes stdout, stderr, exit code and timing to a file before anything reads it</td></tr>
+<tr><td>100 KB prompts recited from memory</td><td>The model used as storage</td><td>A short policy and a reference folder on disk, with hashes; the session reads them and never recites them</td></tr>
+<tr><td>Scripts edited in place</td><td>Provenance by trust</td><td>Scripts committed and hashed before each run; the run record names the commit</td></tr>
+<tr><td>The harness suggests what the rules forbid</td><td>Rules fighting the environment</td><td>Change the environment, or accept its defaults where they are harmless; a rule that fights the tool loses</td></tr>
+<tr><td>Every mistake adds a rule</td><td>Policy used as the control</td><td>Rules only for incidents, and each rule replaced by structure as soon as one can be built</td></tr>
+</table></div>
+<figure class="shot" data-shot="cx-map-next.webp" data-dir="images/" data-alt="Map two: the same verification with each piece of process made small and drawn moving right. The tool&#x27;s tests and the judgment in the report stay custom, because that is the work. Everything else becomes boring on purpose, leaning on files, hashes and git."><figcaption>Map two: the same verification with each piece of process made small and drawn moving right. The tool's tests and the judgment in the report stay custom, because that is the work. Everything else becomes boring on purpose, leaning on files, hashes and git.</figcaption></figure>
+<p>The table is not new advice. It is what <a href="https://nfrs.sgit.ai/">nfrs.sgit.ai</a> found when it measured this estate against its own list of non-functional requirements and read down the failure column: "what a machine enforces, holds; what attention enforces, drifts." <a href="https://coding.sgit.ai/">coding.sgit.ai</a> found the same from the other side: 31 documented rules, and the working automated enforcement is four structural guards, each of which encodes an incident rather than a rule. The rule that keeps that set healthy, as nfrs.sgit.ai puts it, is that every guard encodes a rule that was violated at least once. Rules that come from incidents, enforced by machines, stay few. Rules that come from worry, enforced by attention, multiply.</p>
+<details class="src"><summary>Map two, the Mermaid wardley-beta source</summary><div class="src-bar"><button type="button" class="src-copy" data-copy="wardley-beta
+  title The same verification, with the process moved right
+  anchor &quot;The person preparing the install&quot; [0.97, 0.55]
+  component &quot;Confidence the tool is safe to install&quot; [0.88, 0.42]
+  component &quot;The verification report&quot; [0.80, 0.40]
+  component &quot;The tool&#x27;s tests and race runs&quot; [0.72, 0.46]
+  component &quot;Writer, verifier and reviewer agents&quot; [0.66, 0.36]
+  component &quot;Short policy read from disk, hashed&quot; [0.58, 0.14]
+  component &quot;Steps that finish before compaction&quot; [0.52, 0.10]
+  component &quot;A run wrapper that writes every output&quot; [0.44, 0.16]
+  component &quot;Scripts committed and hashed before they run&quot; [0.37, 0.12]
+  component &quot;Audit card from the transcript&quot; [0.31, 0.22]
+  component &quot;Harm stops, form is logged&quot; [0.26, 0.26]
+  component &quot;Cowork and ChatGPT&quot; [0.26, 0.76]
+  component &quot;Sandbox, no network&quot; [0.14, 0.60]
+  component &quot;Files, hashes, git&quot; [0.06, 0.88]
+  evolve &quot;Short policy read from disk, hashed&quot; 0.62
+  evolve &quot;Steps that finish before compaction&quot; 0.58
+  evolve &quot;A run wrapper that writes every output&quot; 0.70
+  evolve &quot;Scripts committed and hashed before they run&quot; 0.82
+  evolve &quot;Audit card from the transcript&quot; 0.60
+  evolve &quot;Harm stops, form is logged&quot; 0.56
+  &quot;The person preparing the install&quot; --&gt; &quot;Confidence the tool is safe to install&quot;
+  &quot;Confidence the tool is safe to install&quot; --&gt; &quot;The verification report&quot;
+  &quot;The verification report&quot; --&gt; &quot;The tool&#x27;s tests and race runs&quot;
+  &quot;The verification report&quot; --&gt; &quot;Writer, verifier and reviewer agents&quot;
+  &quot;The verification report&quot; --&gt; &quot;Audit card from the transcript&quot;
+  &quot;Writer, verifier and reviewer agents&quot; --&gt; &quot;Short policy read from disk, hashed&quot;
+  &quot;Writer, verifier and reviewer agents&quot; --&gt; &quot;Steps that finish before compaction&quot;
+  &quot;Writer, verifier and reviewer agents&quot; --&gt; &quot;A run wrapper that writes every output&quot;
+  &quot;Writer, verifier and reviewer agents&quot; --&gt; &quot;Harm stops, form is logged&quot;
+  &quot;A run wrapper that writes every output&quot; --&gt; &quot;Files, hashes, git&quot;
+  &quot;Scripts committed and hashed before they run&quot; --&gt; &quot;Files, hashes, git&quot;
+  &quot;Steps that finish before compaction&quot; --&gt; &quot;Cowork and ChatGPT&quot;
+  &quot;The tool&#x27;s tests and race runs&quot; --&gt; &quot;Sandbox, no network&quot;"><span class="cp">copy</span></button><a href="images/cx-map-next.webp">rendered image</a></div><pre class="shell">wardley-beta
+  title The same verification, with the process moved right
+  anchor "The person preparing the install" [0.97, 0.55]
+  component "Confidence the tool is safe to install" [0.88, 0.42]
+  component "The verification report" [0.80, 0.40]
+  component "The tool's tests and race runs" [0.72, 0.46]
+  component "Writer, verifier and reviewer agents" [0.66, 0.36]
+  component "Short policy read from disk, hashed" [0.58, 0.14]
+  component "Steps that finish before compaction" [0.52, 0.10]
+  component "A run wrapper that writes every output" [0.44, 0.16]
+  component "Scripts committed and hashed before they run" [0.37, 0.12]
+  component "Audit card from the transcript" [0.31, 0.22]
+  component "Harm stops, form is logged" [0.26, 0.26]
+  component "Cowork and ChatGPT" [0.26, 0.76]
+  component "Sandbox, no network" [0.14, 0.60]
+  component "Files, hashes, git" [0.06, 0.88]
+  evolve "Short policy read from disk, hashed" 0.62
+  evolve "Steps that finish before compaction" 0.58
+  evolve "A run wrapper that writes every output" 0.70
+  evolve "Scripts committed and hashed before they run" 0.82
+  evolve "Audit card from the transcript" 0.60
+  evolve "Harm stops, form is logged" 0.56
+  "The person preparing the install" --&gt; "Confidence the tool is safe to install"
+  "Confidence the tool is safe to install" --&gt; "The verification report"
+  "The verification report" --&gt; "The tool's tests and race runs"
+  "The verification report" --&gt; "Writer, verifier and reviewer agents"
+  "The verification report" --&gt; "Audit card from the transcript"
+  "Writer, verifier and reviewer agents" --&gt; "Short policy read from disk, hashed"
+  "Writer, verifier and reviewer agents" --&gt; "Steps that finish before compaction"
+  "Writer, verifier and reviewer agents" --&gt; "A run wrapper that writes every output"
+  "Writer, verifier and reviewer agents" --&gt; "Harm stops, form is logged"
+  "A run wrapper that writes every output" --&gt; "Files, hashes, git"
+  "Scripts committed and hashed before they run" --&gt; "Files, hashes, git"
+  "Steps that finish before compaction" --&gt; "Cowork and ChatGPT"
+  "The tool's tests and race runs" --&gt; "Sandbox, no network"</pre></details>
+<h2>The principles I work by</h2>
+<p>My friend is very clever, and very good at getting agents to keep an eye on other agents. What they do not have yet is the experience that tells an engineer when something is over-engineered, when it is good enough, and when to stop. So here are the principles I operate by. They are written for people, and they are also written to be handed to the agents that watch other agents, because most of them can be checked.</p>
+<h3>1. Map it, and look for the custom-built blob</h3>
+<p>Draw the map of your own project, and draw one of the complexity itself. Get an LLM to teach you the mapping if you have not done it before, and to draw a first version you then argue with. You are looking for components in custom-built that the world treats as a commodity, and for components you are treating as a commodity that are still custom. Both are where the next failure will come from. Then read the doctrine and the gameplay: <a href="https://wardley-maps.sgit.ai/">wardley-maps.sgit.ai</a> lists forty doctrines, from <em>focus on user needs</em> and <em>use appropriate methods</em> to <em>think FIRE</em> (fast, inexpensive, restrained, elegant), <em>manage inertia</em> and <em>there is no core, everything is transient</em>. Several of them are exactly the problem here. <em>Know your users</em> and <em>focus on user needs</em> start with the person preparing the install, not with the process.</p>
+<h3>2. Commoditise small chunks all the time, and let them compound</h3>
+<p>A healthy workflow gets faster the more of it there is. The only way I have found to make that true in practice is to commoditise small chunks continuously, so they compound. If you look back at the work on this site you can trace it: small components that became bigger, that became the base for the next ones, each operating on top of the one below. Each is self-contained, and each keeps its blast radius under control, because it was shipped as a unit of its own: testable, battle-hardened, usable.</p>
+<figure class="shot" data-shot="cx-compound.webp" data-dir="images/" data-alt="How the components compounded on this site, read from the bottom: sgit and encrypted vaults, vault apps and the publishing method, files as the database through Email-FS and Issues-FS, fractal semantic graphs, Agent Behaviour Policies, the agent team, and on top the story vaults and the bridge simulation. Each layer shipped before the next leaned on it."><figcaption>How the components compounded on this site, read from the bottom: sgit and encrypted vaults, vault apps and the publishing method, files as the database through Email-FS and Issues-FS, fractal semantic graphs, Agent Behaviour Policies, the agent team, and on top the story vaults and the bridge simulation. Each layer shipped before the next leaned on it.</figcaption></figure>
+<p>The bridge simulation I published yesterday is a good test of this. It is a 126-file vault with an app, an API description, economics and four themes, and it was quick to build because almost nothing in it was new: the vault, the read key, the publishing method, the graph shapes, the review and the gate all existed already. The problem my friend has is the opposite. They are doing too much at once, so nothing gets to become boring.</p>
+<h3>3. Ship, and stop</h3>
+<p>Shipping is probably the single most important thing, end to end. To ship is to take something and make it usable by somebody else, and that somebody can be an agent: an agent that then gives feedback to another agent counts. If you do not ship, you over-engineer, and with LLMs it is very easy to over-engineer, because they can. Experience is largely knowing when to stop: what is good enough, what is over-engineered, and what is fine as it is. If you are not releasing something, you are probably not solving problems at the right altitude.</p>
+<p>That is why a lot of what I publish is half-baked, by design. Every release teaches me something, usually what is missing, and then I stop. Stopping matters, because it means not continuing for the sake of continuing. I did a lot of newsroom experiments before the story vault work, and I stopped them when they had answered their question; the recent work here would not have been as good if I had pushed those through. Many sgit projects started as a problem I had, were solved to the point where the problem went away, and were left there. That is how it compounds: sometimes on tangents, but always with something shipped.</p>
+<p>Making it public helps more than it seems to, because it removes a lot of complexity. You cannot hide an over-engineered thing in public, and you stop solving problems that do not need solving yet.</p>
+<h3>4. Keep sessions small and the context yours</h3>
+<p>The context window is what the model receives when it makes a call. The problem with large contexts is that you lose control of them, and when Claude or ChatGPT compacts, you do not control how it compresses or what it keeps. I see very few hallucinations these days, and I think it is because my briefs are tight, my sessions are tight, and I have many of them, each isolated, each with one focus. The agent team on this site works that way: <a href="../articles/the-agent-team-as-it-runs.html">one step per agent of up to twelve minutes</a>, each reading its state from files, doing one kind of work, writing its state back and stopping.</p>
+<p>When I started, I had very long threads with an agent, and I would end each one by asking it to write a document with everything we had learned, decided and figured out, so that I could start a new session from that document. That is compression too, but compression you can read and correct. Start new sessions often; a new session is how you reset what is going on.</p>
+<p>A good test: you should be able to open a new session, in Claude or in ChatGPT, and have it productive from the first prompt. The first prompt means the prompt plus the reference material, the project, the history and the guidance, and none of that needs to be large. It needs to be focused, architectural, compressed so that it makes sense, and read by you, because a document nobody reads drifts. If a session needs 100 KB of rules to be productive, the rules are doing the job that structure should do.</p>
+<h3>5. Memory is files, versioned</h3>
+<p>The reason for the file-system approach on this site, a brief, a brief of the brief, comments on the brief, a review, an index, is that every document an agent writes is a compression of what was learned, in a form the next agent can read. It is a graph, and <a href="../articles/memory-is-not-a-spectator-sport.html">memory is not a spectator sport</a>: it is the context you choose to give the next session. Agents talk to each other through Email-FS, work is tracked in <a href="https://issues-fs.sgit.ai/">Issues-FS</a>, and all of it is files, much of it in git and much of it in <a href="../articles/what-sgit-is.html">vaults</a>. Folders work; you can do this with folders. I prefer version control, git or a vault, because then the memory has a history, and you can prove which version of the prompt a session read, which is half of my friend's problem.</p>
+<h3>6. When complexity hits, slow down</h3>
+<p>If you are being hit by complexity, you have a problem, and the answer is to slow down: back to a first draft, break it into small components, take a step back and define them. If compaction is hurting you, you are giving the model far too much context, and you need to bring it down. And remember that you have time. For me the worst reason not to do something properly is "I just have to get this over the line". Compromising now to go faster usually slows you down. The check is simple: if you are not getting faster, you are paying for complexity, and most software teams before us have hit the same wall of diminishing returns. We have a better way now, and it is the one above: small pieces, productised, commoditised, then used to build the whole. That is why I use the file system as my database, keep things isolated, and build one thing on top of another.</p>
+<h3>7. Secure against the threat, not against everything</h3>
+<p>You want things secure; more than that, you want them safe, and those are not the same. Sometimes it is right to ship something that is not fully hardened, as long as its attack surface is controlled: you monitor it, or nothing valuable is reachable from it. In my experience most companies ship software that is far less secure than its users assume; the difference is whether they know which compromises they made. The questions are: what are the assets, what is the threat, what is the attack vector, and what are the customers actually buying? If something runs on an isolated machine with no network and nothing of value on it, many attacks are simply not available, and the requirements drop accordingly. Write the threat model down, one page, publish it, and ask the community whether you are making the right compromises. That will tell you more about whether you are overdoing it than another rule will. The site's articles on <a href="../articles/every-risk-is-already-accepted.html">risk acceptance</a> and <a href="../articles/footprint-and-blast-radius.html">footprint and blast radius</a> go further into how to record the compromises you choose.</p>
+<h3>8. Rules for incidents, machines for enforcement</h3>
+<p>This is the principle the six patterns come down to, and it is the one I would hand straight to the agents that watch other agents. A rule is a weak barrier: it relies on the agent remembering and judging, and in <a href="../articles/the-agent-team-as-it-runs.html">the agent team's own grading</a> the policy text is graded weak. A record, the transcript, the history, the hashes, detects. A boundary, an account the agent does not have or a network it cannot reach, prevents. When a rule fails, the question is not how to word it more strongly but which of the stronger barriers can replace it. On this site, the vaults and the site itself are published through gates of checks that fail the build; the <a href="../articles/the-bridge-followed-to-the-end.html">bridge vault's gate</a> runs 44 of them, and many exist because something broke once. <a href="../articles/green-does-not-mean-live.html">Green does not mean live</a> is the story of one of them.</p>
+<h3>9. Run it in five environments</h3>
+<p>Running in isolation is good. Running in five different environments is better: locally, air-gapped, and on Azure, GCP and AWS. A solution that runs in all of them has had a great many problems solved out of it, because each environment breaks a different assumption. It is the most useful thing to do when complexity starts to hit, because it shows you where the bottlenecks are. Then go back to the question of what you actually want to ship, and get that over the line.</p>
+<h3>10. Reverse-engineer the path to the destination</h3>
+<p>It is very easy now to design very large, comprehensive solutions. They are fine as a destination, but you need to reverse-engineer the five, seven or ten paths that evolve into them. A forest is a useful picture: it grows through stages, each changing the ground for the next, and by the time the big trees stand, many of the earlier species are gone, because they do not fit the ecosystem they helped create. Components are like that. Open source helps here, because it puts little sense of ownership on the technology, and you are glad to get rid of it. The vaults are open source, so I will gladly build a solution that does not use them. That is brutal, but if you have a choice and you do not use what you built, it is not good enough yet. Keep iterating, releasing and shipping, and keep reducing complexity, which is the name of the game.</p>
+<h3>11. Learn the engineering that already exists</h3>
+<p>If you have caught the engineering bug, and with agents many founders have, you are working as an engineer now, so geek out on the practice. Continuous integration, Kanban boards, engineering patterns, the history of what worked: much of what my friend is rediscovering under pressure has a name and a literature. On this site, <a href="https://nfrs.sgit.ai/">nfrs.sgit.ai</a> is the estate's own account of testing, CI, documentation, resilience and the methodology we call Iterative Flow Development, which names developer attention as the scarce resource the whole process exists to protect; and <a href="https://coding.sgit.ai/">coding.sgit.ai</a> is how the code is actually written, counted rather than claimed. Its testing rule, no mocks and no patches, is affordable only because cheap typed objects make the real thing as easy to build as a stand-in: the type system and the testing philosophy are one decision. That is the kind of lesson that is cheaper to read than to rediscover. <a href="https://github.com/the-cyber-boardroom/SGraph-AI__App__Send/blob/dev/team/humans/dinis_cruz/briefs/03/21/v0.16.26__article__who-should-read-the-code.md">Who reads the code</a>, and what quality engineering each stage of evolution needs, is the same map applied to code.</p>
+<h2>Answers to the questions</h2>
+<p><b>Do you let sessions compact, or design every step to finish before?</b> I design steps to finish before compaction, and I keep the state of the step on disk so that compaction, if it happens, loses nothing that matters. Closing a session that compacts is a good rule, because it is a boundary, not a request. And do not ask an agent to recite its prompt: point it at the file, and record the file's hash in the run.</p>
+<p><b>How does the post-session audit card work?</b> It is a script over the transcript, run after the step. It counts tools, tokens, files and network calls, and flags anything outside the agent's policy; the card is attached to the step's record. The point is that the agent does not police itself on every command, which costs attention and context, and that the record is read afterwards by something that was not part of the work. <a href="../articles/footprint-and-blast-radius.html">Footprint and blast radius</a> is the idea behind it, and <a href="../articles/the-agent-team-as-it-runs.html">the agent team</a> describes what the first card flagged.</p>
+<p><b>When an agent makes a mistake of form, do you log it and continue?</b> Yes. Log mistakes of form and carry on; stop for harm, or for a boundary that broke. If everything is a STOP, a STOP stops meaning anything, and the process spends its attention on itself. In the agent team, a stop is a hold file that only a person can release. An accidental calendar call, which failed and sent nothing, was logged by the agent against its own policy rather than treated as a hold.</p>
+<p><b>Is this level of rigour overdoing it?</b> For the process, yes. For the intent, no. The rigour should match the assets and the blast radius. The code is where it was needed, and it is holding. The process around it has become a second product nobody asked for, and it is costing more than the verification it serves. Make the process small and boring, and spend the rigour on the tool.</p>
+<h2>The same lesson, one level up</h2>
+<p>This applies to companies as much as to sessions, and I say it about my own. We have mapped what I think is a strong path, from agent behaviour policies to a licence to operate to insurance. But the customers we talk to are struggling with something much simpler, and our way to market is to break what we have into much simpler components, so that we earn the customers and the projects that need the bigger capabilities. It is brutal, because if it cannot work in the simple use cases, it will struggle in the complex ones. Funding does not always help here; it can give you a false sense of having a product, or of a product being ready to scale when it is not.</p>
+<h2>Where to start</h2>
+<ul>
+<li><b>Draw the map.</b> Your project, then the process around it. Mark the blob.</li>
+<li><b>Pick the most expensive piece of the blob</b> and make it a small tool with one job. Test it. Ship it, even if the only user is your own agents.</li>
+<li><b>Cut the prompt to a page.</b> Move the rest into files the session reads, with hashes.</li>
+<li><b>Make outputs a file by construction</b>, through a wrapper every command goes through.</li>
+<li><b>Commit before you run.</b> The run record names the commit.</li>
+<li><b>Split the STOPs</b>: harm stops, form is logged.</li>
+<li><b>Write the threat model on one page, publish it, and ask</b> whether the compromises are right.</li>
+<li><b>Run it somewhere else</b>, then somewhere else again.</li>
+<li><b>Delete a rule</b> every time a component makes it unnecessary.</li>
+</ul>
+<p>And then ship the next small thing. It probably sounds daunting at first. It is less daunting than the complexity you already have.</p>
+<hr>
+<p><em>Drafted from two messages and a voice memo by Dinis Cruz, who is the author of the argument and the person with editorial responsibility, by agent@riskmandate.ai (Claude Opus 5.5, claude-opus-5-5) in the sgit.ai site session, on 8 October 2026. The messages are paraphrased and their author is not named; the one line quoted from them is theirs. Quotations from nfrs.sgit.ai and coding.sgit.ai are from those sites as published. The doctrine names are Simon Wardley's, as listed on wardley-maps.sgit.ai; Wardley Mapping is provided courtesy of Simon Wardley, CC BY-SA 4.0. The two maps were rendered with Mermaid's wardley-beta diagram from the sources shown, and every placement in them is a claim.</em></p>
+<section class="athreads" id="threads">
+ <h2>Threads</h2>
+ <p class="athreads-meta"><span class="tchip">Agents &amp; policy</span><span class="tchip">Site &amp; engineering</span> <a href="graphs.html#every-mistake-added-a-rule">This article as a graph &rarr;</a></p>
+ <div class="athreads-cols"><div><h3>Builds on</h3><ul><li><a href="the-agent-team-as-it-runs.html">The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from</a> <span class="dim">Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.</span></li><li><a href="memory-is-not-a-spectator-sport.html">Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one</a> <span class="dim">Agentic memory as context management: many published, fractal, provenance-carrying memories rather than one store, shown in the session that wrote the article.</span></li><li><a href="what-sgit-is.html">Git for things you cannot put on GitHub</a> <span class="dim">sgit is git for files you cannot put on GitHub: encrypted before they leave your machine, versioned like git, stored where the server cannot read a byte.</span></li><li><a href="every-risk-is-already-accepted.html">Every risk is already accepted. The only question is by whom, and for how long.</a> <span class="dim">A risk exists the moment the exposure does, so somebody is already carrying it; the only questions worth asking are who has accepted it and until when.</span></li><li><a href="footprint-and-blast-radius.html">Footprint and blast radius: what the agent actually did, and what it would have cost</a> <span class="dim">Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.</span></li><li><a href="the-bridge-followed-to-the-end.html">The bridge, followed to the end: what one local story is worth when it is kept as a graph</a> <span class="dim">A bridge closure simulated on a story vault: newsworthy on 5 days, needed on 57, used by three readers, four buyers and an agent, and paid back to its sources.</span></li><li><a href="green-does-not-mean-live.html">Green does not mean live</a> <span class="dim">Two releases passed every check and never reached the site because the checks stopped at the git remote; a release now ends by asking the live site its version.</span></li></ul></div></div>
+ <p class="small dim"><a href="index.html">All articles</a> &middot; <a href="graphs.html">All graphs</a></p>
+</section>
+ <p class="subteaser"><b>Want the next issue by email.</b> One issue a week or so: what was published, what it adds up to, and what is worth your time. <a class="cta2" href="../subscribe/index.html">Subscribe to the SGit Newsroom &rarr;</a></p>
+ <p class="small dim" style="margin-top:2rem"><a href="index.html">&larr; All articles</a></p>
+</main>
+<script>
+(function () {
+ fetch('../assets/shots.js?v=v0.7.1')
+ .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+ .then(function (t) { (0, eval)(t); })
+ .catch(function (e) { console.error('[shots] component failed to load:', e); });
+}());
+</script>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.7.1</a> · <a href="../admin/index.html">engineering</a> · <a href="every-mistake-added-a-rule.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../docs/surfaces.html">Three surfaces</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../docs/vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
+    <a href="../use-cases/index.html">Use cases</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../docs/briefs/index.html">Cross-team briefs</a>
+    <a href="../articles/index.html#subscribe">Subscribe to new articles</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../llms-full.txt">llms-full.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.7.1';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

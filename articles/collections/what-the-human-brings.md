@@ -2,7 +2,7 @@
 
 > Where the person sits in a loop of agents: the direction, the review, the one step that cannot be undone, measured rather than assumed.
 
-*Source: <https://sgit.ai/articles/collections/what-the-human-brings.html> · site v0.7.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/collections/what-the-human-brings.html> · site v0.7.1 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -22,7 +22,7 @@ The question under all four: if agents write, research, draft and file, what is 
 
 ## The articles
 
-[2026-10-05Graphs & knowledge8 threads**How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was**Twenty articles in four weeks, measured from the session record: 63,000 words in, 85,000 out, no one-line prompts, and the real input is twenty years of writing.](../../articles/how-much-of-this-did-i-write.md)[2026-10-06Agents & policy22 threads**The Mandate Stack: a multi-agent system in production, layer by layer**A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.](../../articles/the-mandate-stack.md)[2026-10-06Agents & policy16 threads**The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from**Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.](../../articles/the-agent-team-as-it-runs.md)[2026-10-04Agents & policy8 threads**The wall under the reply: end an email with the state of the thread, not the thread**End an email reply with the state of the thread for this reader, not the quoted wall: decided, open, next, who is on copy, with links to the record.](../../articles/the-wall-under-the-reply.md)
+[2026-10-05Graphs & knowledge8 threads**How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was**Twenty articles in four weeks, measured from the session record: 63,000 words in, 85,000 out, no one-line prompts, and the real input is twenty years of writing.](../../articles/how-much-of-this-did-i-write.md)[2026-10-06Agents & policy22 threads**The Mandate Stack: a multi-agent system in production, layer by layer**A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.](../../articles/the-mandate-stack.md)[2026-10-06Agents & policy17 threads**The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from**Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.](../../articles/the-agent-team-as-it-runs.md)[2026-10-04Agents & policy8 threads**The wall under the reply: end an email with the state of the thread, not the thread**End an email reply with the state of the thread for this reader, not the quoted wall: decided, open, next, who is on copy, with links to the record.](../../articles/the-wall-under-the-reply.md)
 
 [← All collections](index.md) · [The front page](../index.md)
 

@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-08",
-  "site_version": "v0.7.0",
+  "site_version": "v0.7.1",
   "about": "https://sgit.ai/newsroom/index.html",
   "front": {
     "edition": "2026-10-07",
@@ -72,6 +72,41 @@
     }
   ],
   "articles": [
+    {
+      "slug": "every-mistake-added-a-rule",
+      "title": "Every mistake added a rule: complexity, agents, and the way back to shipping",
+      "date": "2026-10-08",
+      "updated": "",
+      "author": "Dinis Cruz",
+      "url": "https://sgit.ai/articles/every-mistake-added-a-rule.html",
+      "markdown": "https://sgit.ai/articles/every-mistake-added-a-rule.md",
+      "card": "https://sgit.ai/articles/cards/every-mistake-added-a-rule.webp",
+      "graph": "https://sgit.ai/articles/graphs/every-mistake-added-a-rule.json",
+      "teaser": "When every agent mistake adds a rule, complexity wins: map the process, move each piece right as a small shipped component, and keep the rigour for the work.",
+      "summary": "A friend who uses agents better than most, one writing, others verifying, ChatGPT reviewing, every claim resting on an output read in full, sent me two messages about a verification that keeps breaking. The code is holding up. The process around it is not: long sessions compact and skip steps, outputs of failing commands are lost, prompts have grown to 100 KB, scripts are edited in place, the harness suggests what the rules forbid, and every mistake added a rule that caused new mistakes. This is complexity, and it is what hits the founders who are doing the right thing, clever, careful, now working as engineers without the scar tissue of engineering. This article maps their process as a Wardley map, where complexity is a position, custom-built process sitting where commodities already exist, and maps it again with each piece made small, shipped and moved right. Then it sets out the principles I work by: map it, commoditise small chunks and let them compound, ship, keep sessions small and the context yours, memory as versioned files, slow down when complexity hits, security by asset and attack vector, rules for incidents and machines for enforcement, run it in five environments, reverse-engineer the path to the destination, and learn the engineering that already exists. It ends with direct answers to their questions on compaction, audit cards and what deserves a STOP.",
+      "topics": [
+        "agents-and-policy",
+        "site-and-engineering"
+      ],
+      "tags": [
+        "agents",
+        "complexity",
+        "wardley-maps",
+        "engineering-practice",
+        "context-window",
+        "compaction",
+        "memory",
+        "shipping",
+        "founders",
+        "nfrs",
+        "testing",
+        "cowork",
+        "chatgpt",
+        "article"
+      ],
+      "placement": [],
+      "notes": []
+    },
     {
       "slug": "liquid-content-needs-water",
       "title": "Liquid content needs water: liquefy the journalist's notebook, not the finished product",
