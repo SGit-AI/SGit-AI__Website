@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.1'
+SITE_VERSION = 'v0.7.2'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.1', '2026-10-08', 'this release',
+    ('v0.7.2', '2026-10-08', 'this release',
+     "THE VERSIONS PAGE LINKS TO WHAT CHANGED, AND PAGES REFRESH THEMSELVES. Each commit id on this page now links to the commit on GitHub (the newest row to the comparison with the release before), and under each note are the pages that release added or changed, read from git once per release and cached in admin/build/version_changes.json so a build without the history still has them. And a fix for pages that stayed stale on an iPad: GitHub Pages sends every page with a ten-minute cache the site cannot change, and Safari can show a tab from memory long after that. Every page now asks /version.txt, uncached, which release is live, on load, when the tab comes back and when it is restored from memory; if the page is from an older release it reloads once under a URL no cache has seen, then tidies the address. Only on sgit.ai, never in the vault host or a local preview.",),
+    ('v0.7.1', '2026-10-08', 'git 647cb6f4',
      "EVERY MISTAKE ADDED A RULE. A new article on complexity, for the founders who have become engineers with agents and are doing the right thing: a friend's verification, run by agents in Cowork with ChatGPT reviewing, where the code holds and the process breaks (compaction, lost outputs, 100 KB prompts, scripts edited in place, rules against the harness, rules breeding rules). Two Mermaid Wardley maps show complexity as a position, a custom-built blob of process where commodities already exist, and the same process with each piece made small, shipped and moved right. Then the principles: map it, commoditise small chunks and let them compound, ship and stop, small sessions and your own context, memory as versioned files, slow down when complexity hits, security by asset and attack vector, rules for incidents and machines for enforcement, five environments, reverse-engineer the path, learn the engineering that exists; and direct answers on compaction, audit cards and what deserves a STOP. The friend is not named and the project not described. Four figures, graph JSON.",),
     ('v0.7.0', '2026-10-08', 'git e328e3be',
      "THE BRIDGE VAULT v0.3, AND A NEW MINOR. The bridge-simulation vault moves to v0.3.0, a design and quality pass "
@@ -3627,8 +3629,22 @@ async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';
 async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
 async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
 var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+var mine=V.slice(3),last=0;
+function fresh(){if(location.hostname!=='sgit.ai'||Date.now()-last<60000)return;last=Date.now();
+fetch('/version.txt?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.text():''}).then(function(t){t=(t||'').trim();if(!/^v[0-9]+[.][0-9]+[.][0-9]+$/.test(t)||t===mine)return;
+var k='sgit.fresh:'+location.pathname;try{if(sessionStorage.getItem(k)===t)return;sessionStorage.setItem(k,t)}catch(e){}
+var u=new URL(location.href);u.searchParams.set('v',t);location.replace(u.href)}).catch(function(){})}
+try{var u=new URL(location.href);if(u.searchParams.get('v')===mine){u.searchParams.delete('v');history.replaceState(history.state,'',u.pathname+u.search+u.hash)}}catch(e){}
+fresh();addEventListener('pageshow',function(e){if(e.persisted){last=0;fresh()}});document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')fresh()});
+})();
 </script>"""
+
+# The freshness check above: GitHub Pages serves every page with max-age=600 and the site cannot
+# change that, and Safari on an iPad will show a tab from memory well after a release. So the
+# page asks /version.txt (no-store) which release is live; if it is not the one the page was built
+# in, the page reloads once under ?v=<live>, a URL no cache has seen, and then drops the parameter.
+# Only on sgit.ai itself, never in the vault host or a local preview, and once per version per page.
 
 BOOT = BOOT.replace('SITE_VERSION_TOKEN', "'" + SITE_VERSION + "'")
 
@@ -4078,13 +4094,99 @@ def page(path, title, desc, here, body):
     print('wrote', path, f'({len(html)} bytes)')
 
 
+REPO_URL = 'https://github.com/SGit-AI/SGit-AI__Website'
+VERSION_CHANGES = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'version_changes.json')
+
+def git_lines(*args):
+    """Lines from a git command run in the site tree, or None where git or the history is not there."""
+    import subprocess
+    try:
+        r = subprocess.run(['git', '-C', ROOT, *args], capture_output=True, text=True, timeout=30)
+    except (OSError, subprocess.SubprocessError):
+        return None
+    return r.stdout.splitlines() if r.returncode == 0 else None
+
+def version_changes():
+    """{version: [[status, source path], ...]}: the content sources each release added (A) or changed (M).
+    A release is one commit, so `git show` of its id is its change set; the working tree is the change
+    set of 'this release', which is built before it is committed. Released rows are cached in
+    version_changes.json beside this file, so each is read from git once and a build without the
+    history still links them."""
+    try:
+        cache = json.load(open(VERSION_CHANGES))
+    except (OSError, ValueError):
+        cache = {}
+    dirty = False
+    for v, d, c, note in VERSION_LOG:
+        if c.startswith('git ') and v not in cache:
+            lines = git_lines('show', '--no-renames', '--name-status', '--format=', c[4:], '--', 'admin/content')
+            if lines is not None:
+                cache[v] = [l.split('\t', 1) for l in lines if l[:1] in 'AM' and '\t' in l]
+                dirty = True
+    if dirty:
+        with open(VERSION_CHANGES, 'w') as f:
+            json.dump(cache, f, indent=1, sort_keys=True); f.write('\n')
+    out = dict(cache)
+    current = [v for v, d, c, note in VERSION_LOG if c == 'this release']
+    lines = git_lines('status', '--porcelain', '--no-renames', '--untracked-files=all', '--', 'admin/content')
+    if current and lines:
+        out[current[0]] = [['A' if l[:2] in ('??', 'A ') else 'M', l[3:]] for l in lines if 'D' not in l[:2]]
+    return out
+
+def changed_pages(changes):
+    """Source paths to the published pages they produce, deduplicated, new before updated, as
+    (page, title, is_new). articles/graphs/<slug>.json belongs to articles/<slug>.html; images
+    and data files are left to the commit link."""
+    pages = {}
+    for status, src in changes:
+        rel = src[len('admin/content/'):] if src.startswith('admin/content/') else src
+        m = re.match(r'articles/graphs/([^/]+)\.json$', rel)
+        if m:                     page = f'articles/{m.group(1)}.html'
+        elif rel.endswith('.md'):   page = rel[:-3] + '.html'
+        elif rel.endswith('.html'): page = rel
+        else:                     continue
+        if not os.path.isfile(os.path.join(ROOT, page)):
+            continue
+        pages[page] = pages.get(page, False) or (status == 'A' and not m)
+    def title(page):
+        try:
+            t = re.search(r'<title>(.*?)</title>', open(os.path.join(ROOT, page)).read(), re.S).group(1)
+            return re.sub(r', sgit\.ai$', '', html.unescape(t).strip())
+        except (OSError, AttributeError):
+            return page
+    return sorted(((p, title(p), n) for p, n in pages.items()), key=lambda x: (not x[2], x[1].lower()))
+
+def version_links(v, c, changes, prev):
+    """The commit cell, linked to GitHub, and the line of page links under a release's note."""
+    url = (f'{REPO_URL}/commit/{c[4:]}' if c.startswith('git ') else
+           f'{REPO_URL}/compare/{prev}...{v}' if c == 'this release' and prev else None)
+    cell = f'<a href="{url}">{c}</a>' if url else c
+    pages = changed_pages(changes.get(v, []))
+    if not pages and not url:
+        return cell, ''
+    MAX = 8
+    shown = pages[:MAX]
+    def group(label, items):
+        links = ', '.join(f'<a href="../{p}">{html.escape(t)}</a>' for p, t, n in items)
+        return f'<span><b>{label}:</b> {links}.</span>' if items else ''
+    parts = [group('New', [x for x in shown if x[2]]), group('Updated', [x for x in shown if not x[2]])]
+    if len(pages) > MAX:
+        parts.append(f'<span>And {len(pages) - MAX} more pages.</span>')
+    if url:
+        parts.append(f'<span><a href="{url}">Every change, in git</a>.</span>')
+    return cell, '<div class="vchg">' + ' '.join(p for p in parts if p) + '</div>'
+
 def versions_body():
-    rows = '\n'.join(f' <tr><td class="vnum">{v}</td><td>{d}</td><td class="vid">{c}</td><td>{note}</td></tr>'
-        for v, d, c, note in VERSION_LOG)
+    changes = version_changes()
+    def row(i, v, d, c, note):
+        prev = VERSION_LOG[i + 1][0] if i + 1 < len(VERSION_LOG) else None
+        cell, links = version_links(v, c, changes, prev)
+        return f' <tr><td class="vnum">{v}</td><td>{d}</td><td class="vid">{cell}</td><td>{note}{links}</td></tr>'
+    rows = '\n'.join(row(i, *r) for i, r in enumerate(VERSION_LOG))
     return f"""<main class="doc">
   <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Admin</a> / Versions</p>
   <h1>Release history</h1>
-  <p class="lead">The site version (<b>{SITE_VERSION}</b>, shown in the nav of every page) increments on every release. Each release is one git commit on the <code>dev</code> branch of <code>SGit-AI/SGit-AI__Website</code>, and the git log is the authoritative audit trail; this page is the human-readable index of it.</p>
+  <p class="lead">The site version (<b>{SITE_VERSION}</b>, shown in the nav of every page) increments on every release. Each release is one git commit on the <code>dev</code> branch of <code>SGit-AI/SGit-AI__Website</code>, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.</p>
   <div class="tablewrap"><table class="vers">
     <tr><th>Version</th><th>Date</th><th>Commit</th><th>Changes</th></tr>
 {rows}
@@ -6802,6 +6904,8 @@ write_scoped_llms(PAGES)
 print('wrote llms-full.txt (%d bytes)' % len(write_llms_full(PAGES)))
 print('wrote llms.txt (%d bytes)' % len(write_llms(PAGES)))
 print('wrote robots.txt (%d bytes)' % len(write_robots()))
+with open(os.path.join(ROOT, 'version.txt'), 'w') as f:
+    f.write(SITE_VERSION + '\n')   # read by the freshness check in BOOT
 print('wrote sitemap.xml (%d bytes)' % len(write_sitemap(PAGES, BUILD_DATE)))
 
 # The feed and the manifest: derived, never hand-edited, the same rule as the index.

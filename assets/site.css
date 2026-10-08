@@ -247,6 +247,9 @@ section.uc p{color:#34363c;font-size:.93rem}
 /* versions table */
 table.vers td.vnum{font-family:var(--mono);font-weight:700;color:var(--accent-dk);white-space:nowrap}
 table.vers td.vid{font-family:var(--mono);font-size:.72rem;color:var(--dim)}
+table.vers td.vid a{color:inherit}
+table.vers .vchg{margin-top:.4rem;font-size:.8rem;color:var(--dim)}
+table.vers .vchg span{margin-right:.5rem}
 
 /* ---------- footer ---------- */
 footer.site{border-top:1px solid var(--line);margin-top:3.5rem;padding:2.2rem 0 3rem;background:var(--panel2)}
