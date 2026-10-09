@@ -1,8 +1,8 @@
 # Published vaults, sgit.ai
 
-> Forty-eight vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it.
+> Forty-nine vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it.
 
-*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.7.15 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.7.16 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,10 +14,12 @@ Open any of these in your browser right now. Every read key here was published o
 
 **Nine are semantic graphs**, each in its own ontology, from a regulation down to a compute instance. · [The ladder, walked →](../fractal-graphs/index.md) · [What reading one costs →](../fractal-graphs/performance.md)
 
-**48 published vaults**: 14 reference, 12 briefing, 8 analysis, 5 application, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
+**49 published vaults**: 14 reference, 13 briefing, 8 analysis, 5 application, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
 
 | # | Vault | What it is | Category | Files | Size | Published |
 |---|---|---|---|---|---|---|
+
+| 49 | [Agent Desk](agent-desk/index.md)`5ej8boc8` | A business plan for a Mac of the agent's own: a dedicated, locked-down macOS desktop per customer, built per run from encrypted vaults, keys by PKI, erased at the end; Apple's licence quoted with the shapes it allows; three behaviour policies for one customer service agent (23, 11 and 3 rows of unbounded excess); a calculator and a Wardley map | Briefing | 79 | 2633 KB | 2026-10-09 |
 
 | 48 | [Local evidence log](local-evidence-log/index.md)`92yb24y9` | A log for live local stories, kept as evidence: when a local public service is running badly and nothing a local person could check says so. Evidence by level, claims and what would resolve them, every source and how it was reached, leads that do not fit, enquiries, and scheduled re-checks; first incident, reported IT disruption at two London hospitals on 8 October 2026 | Reference | 54 | 927 KB | 2026-10-08 |
 

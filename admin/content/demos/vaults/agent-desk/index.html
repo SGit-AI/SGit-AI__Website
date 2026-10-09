@@ -1,0 +1,105 @@
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / Agent Desk</p>
+  <h1>Agent Desk: a business plan for a Mac of the agent's own</h1>
+  <p class="lead">A business plan, written for somebody else to build: a dedicated macOS desktop for AI agents, started from a clean state per run, built from encrypted vaults by a short bootstrap, given its credentials by key, locked down and observed far beyond what a person's own Mac allows, and erased when the work is done. With what Apple's macOS licence allows, quoted, and the shapes that fit it; the economics with a calculator; a Wardley map; and three Agent Behaviour Policies for the same customer service agent, on your own Mac, on a dedicated Mac and on a hardened one. It was published with the article <a href="../../../articles/a-mac-of-the-agents-own.html">A Mac of the agent's own</a>.</p>
+
+  <figure class="shot" data-shot="app-overview.webp" data-dir="images/" data-alt="The app's overview: Agent Desk, a Mac of the agent's own, with the licence finding first and tiles for the three behaviour policies and the economics."><figcaption>The overview, as the app opens.</figcaption></figure>
+
+  <div class="note"><b>Open it yourself. The key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_public_read_77f48a9980032bbbed4ddd389cf60c7c9391a8449dd060f88c58fa05c602097f:5ej8boc8</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_public_read_77f48a9980032bbbed4ddd389cf60c7c9391a8449dd060f88c58fa05c602097f%3A5ej8boc8" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone sgit_public_read_77f48a9980032bbbed4ddd389cf60c7c9391a8449dd060f88c58fa05c602097f:5ej8boc8</code><br>
+  <span class="small dim">Published deliberately under the <code>sgit_public_read_</code> prefix, and <b>derived</b> one-way from a vault key kept in the gitignored tier and never published. Classified with <code>check_credential.py</code> before it touched this page, read back with the published key alone by <code>catalogue_derive.py</code>, and verified with an all-zeros read key as the negative control. Created, pushed and audited with sgit-ai 0.20.0.</span></div>
+
+  <h2 id="live">See it live, here</h2>
+  <p class="small dim" style="margin:.2rem 0 .9rem">The vault opens as an app: the plan, the need, the architecture, the three desktops, the customer service agent, the economics calculator, the licence, the map, the market, and every file with a download button. You can also <a href="https://dev.vault.sgraph.ai/#sgit_public_read_77f48a9980032bbbed4ddd389cf60c7c9391a8449dd060f88c58fa05c602097f%3A5ej8boc8" rel="noopener" target="_blank"><b>open it in the official UI</b></a>.</p>
+  <div class="sgv-uiembed" data-vault="5ej8boc8" data-readkey="77f48a9980032bbbed4ddd389cf60c7c9391a8449dd060f88c58fa05c602097f" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js'].forEach(function (f) {
+      fetch('../../../assets/' + f).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function (t) { (0, eval)(t); }).catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>The one idea</h2>
+  <p>A Mac of the agent's own, holding only what the agent is meant to have, behind controls it cannot switch off, and gone when the work is done. The pool of Macs rented by the minute that the idea started as is not what Apple's licence allows, so the plan is the shapes that are: a dedicated Mac per customer, run for them, with a per-minute meter on top; developer agents on leased Macs; software for the Mac mini you keep; and a request to Apple for written terms.</p>
+
+  <h2>What is in it</h2>
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the three desktops</span>
+        <h3>The same agent, three behaviour policies</h3>
+        <p>The customer service agent from <a href="../hope-or-enforcement/index.html">Hope or enforcement</a> on three desktops, every row in the published ABP grammar. The excess over the mandate that nothing bounds falls from 23 rows on your own Mac, to 11 on a dedicated Mac, to 3 on a hardened one; rows held by a boundary rise from 0 to 1 to 9.</p>
+      </div>
+      <figure class="shot" data-shot="app-desktops.webp" data-dir="images/" data-alt="The three desktops side by side: your own Mac, a dedicated remote Mac and a hardened dedicated Mac, with the four barrier kinds and the counts for each."><figcaption>Barriers: none, expectation, setting, boundary.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the customer service agent</span>
+        <h3>Twenty-two hostile inputs, three answers</h3>
+        <p>Sixteen inputs from the Hope or enforcement mailbox and six written for a desktop. A boundary or an empty grant stops 0, 2 and 12 of them. On the hardened Mac most of what still depends on the agent comes down to one screen: the shop admin view that shows every customer.</p>
+      </div>
+      <figure class="shot" data-shot="app-case.webp" data-dir="images/" data-alt="The customer service agent view: the mandate and the 22 hostile inputs, with what stopped each one on each desktop."><figcaption>What stopped each input, desktop by desktop.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">architecture</span>
+        <h3>A clean Mac, a key, a vault</h3>
+        <p>Boot a clean macOS, install sgit, decrypt one key with the desktop's own private key, clone the set-up vault scoped, verify and run its signed entry program. Profiles, allowlists, the proxy, the policy and the agent's slice of code and data all come from vaults; the record goes to an audit vault; the session is erased at the end.</p>
+      </div>
+      <figure class="shot" data-shot="app-architecture.webp" data-dir="images/" data-alt="The architecture view: the boot sequence as steps, the vaults and keys, and what each party holds."><figcaption>Each party holds only its slice.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">economics</span>
+        <h3>A meter on a Mac one customer holds</h3>
+        <p>Usage profiles, a standard price a minute, a premium for the first hour, a taper after, and five options a month: your Mac run for you, a dedicated Mac metered, a Mac mini you run yourself, a monthly Mac you run yourself, and daily 24-hour leases. For the author's 104 hours a month: about £211 on a dedicated Mac with the meter, £119 for a Mac mini you look after, £390 for daily leases. Only Apple's prices are sourced; the rest are labelled assumptions.</p>
+      </div>
+      <figure class="shot" data-shot="app-economics.webp" data-dir="images/" data-alt="The economics calculator: sliders for runs, minutes, interactive hours and prices, and the monthly cost of five options with break-even."><figcaption>Move the sliders; the Python model and the page agree.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the 24-hour problem</span>
+        <h3>The licence, quoted, and five shapes against it</h3>
+        <p>Leasing only for Permitted Developer Services, for at least 24 hours, with sole and exclusive use; at most two virtual copies, and no time-sharing; one user at a time; the new "except as otherwise provided in writing" in macOS 27. Then the shapes, A to E, how each sits against those clauses, and the recommendation. A reading, not legal advice.</p>
+      </div>
+      <figure class="shot" data-shot="app-licence.webp" data-dir="images/" data-alt="The licence view: the clauses quoted from Apple's macOS licences and the five business shapes with how each sits against them."><figcaption>Legal advice before anything is sold.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the map</span>
+        <h3>Productising the agent's desktop</h3>
+        <p>A Wardley map with its Mermaid source: the agent desktop moves from custom-built to product, carrying state, keys and lock-down with it, on parts that are already products or commodities.</p>
+      </div>
+      <figure class="shot" data-shot="app-map.webp" data-dir="images/" data-alt="The Wardley map view: the agent desktop moving from custom-built towards product, with its dependencies."><figcaption>Placements are claims to argue with.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>How it is built</h2>
+  <p>Eleven plan documents from <code>plan/00-START-HERE.md</code>; prototypes (the bootstrap, the set-up vault layout, example configuration profiles and allowlists); <code>data/</code> written only by <code>tools/model.py</code>; three diagrams with their Mermaid sources; and an app on the design system of the <a href="../agency-scale/index.html">agency scale</a> and <a href="../local-evidence-log/index.html">local evidence log</a> vaults. <code>tools/gate.py</code> runs 21 checks: the data reproduces byte for byte; every ABP row uses only the 23 published capability primitives and the four barrier kinds, and every count is recomputed; the calculator agrees with the Python model on 1,736 inputs; no hosting provider is named; no credential shape, em-dash or unsupported absolute appears; and every view renders at desktop and phone widths with no errors and no network requests.</p>
+
+  <h2>The audit, honestly</h2>
+  <p><b>What was scanned.</b> Every file before the first commit, and every file again after cloning with the published read key alone: vault-key shapes, every <code>sgit_</code> credential prefix, private-key headers, cloud key shapes, the SG/Send access token and the vault's own key. The clone matched the source, file by file.</p>
+  <p><b>What was found.</b> Nothing. The negative control, an all-zeros read key against the same vault id, returned nothing.</p>
+  <p><b>What was tested, and what was not.</b> The bootstrap's key steps were run on Linux with sgit-ai 0.20.0: a key pair generated, a read key encrypted to it and decrypted, an entry program signed and verified, a tampered one refused; the clone flags were checked against <code>sgit clone --help</code>. Nothing ran on a Mac. Every boundary in the hardened policy is a design, not a measurement, and the five-minute boot is an assumption.</p>
+  <p><b>What it does not claim.</b> The licence section is a reading of Apple's published text, not legal advice. Every number other than Apple's prices is an assumption. No provider is named.</p>
+  <p><b>Write-key status:</b> escrowed, in the gitignored credential tier, before this page was written.</p>
+
+  <h2>Derived facts</h2>
+  <p class="small dim">From <code>admin/build/catalogue_derive.py 5ej8boc8 &lt;read key hex&gt;</code>, read-only, no token, no clone.</p>
+  <ul>
+    <li><b>Files:</b> 79 · <b>plaintext size:</b> 2633 KB</li>
+    <li><b>Commits:</b> 2 · <b>last updated:</b> 2026-10-09 · <b>HEAD:</b> <code>obj-cas-imm-d145bd24a6c8</code></li>
+    <li><b>Top level:</b> <code>PUBLIC.md</code>, <code>README.md</code>, <code>REALITY.md</code>, <code>app.json</code>, <code>app/</code>, <code>data/</code>, <code>diagrams/</code>, <code>index.html</code>, <code>plan/</code>, <code>prototypes/</code>, <code>tools/</code>, <code>versions/</code></li>
+    <li><b>File types:</b> .json ×17, .md ×15, .js ×14, .css ×13, .png ×3, .svg ×3, .webp ×3, .mmd ×3, .py ×3, .html ×2, .mobileconfig ×2, .sh ×1</li>
+    <li><b>Vault app:</b> yes, entry <code>index.html</code> · <b>browser-renderable:</b> yes</li>
+  </ul>
+
+  <h2>Notes</h2>
+  <p><b>Where this came from.</b> A voice memo by Dinis Cruz, after two companies replied with interest to the research behind <a href="../../../articles/an-agent-desktop-by-the-minute.html">A locked-down desktop for an agent, by the minute, is still hard to rent</a>; licence and platform research done for this plan; and the customer service case from <a href="../hope-or-enforcement/index.html">Hope or enforcement</a>.</p>
+  <p><b>Who wrote this.</b> <a href="mailto:agent@riskmandate.ai">agent@riskmandate.ai</a> (Claude Opus 5.5, <code>claude-opus-5-5</code>), in the sgit.ai site session, for RiskMandate.ai and sgit.ai. AI-generated text, disclosed as Article 50 of the EU AI Act asks; the person with editorial responsibility is Dinis Cruz. Replies to <a href="mailto:agent@riskmandate.ai">agent@riskmandate.ai</a>.</p>
+
+  <p class="small dim" style="margin-top:2rem"><a href="../index.html">&larr; All published vaults</a> · <a href="../../../startups/business-plans.html">All business plans</a></p>
+</main>

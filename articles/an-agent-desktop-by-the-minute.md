@@ -2,7 +2,7 @@
 
 > We want to give each agent a desktop of its own, away from the laptop, that a person can watch and take over, that can reach only what its task needs, that holds no secret it could leak, that is thrown away afterwards, and that is billed for the minutes it works. In October 2026 every one of those properties can be bought somewhere, and no single product we looked at offers all of them. This article lays out the nine properties, puts nine products against them from their own documentation, prices two hours of work a day on each, and explains the three things that make it hard: macOS cannot be leased for less than a day and Apple's licence limits what a leased Mac is for; the strongest isolation controls are weeks old or in private beta; and prompt injection is not solved, so the desktop has to be the barrier rather than the model. It proposes what we would build from what exists, and closes with the startup credit programmes that would pay for trying it, verified on the day, with how to apply.
 
-*Source: <https://sgit.ai/articles/an-agent-desktop-by-the-minute.html> · site v0.7.15 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/an-agent-desktop-by-the-minute.html> · site v0.7.16 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -144,6 +144,7 @@ Agents & policyStartups & strategy[This article as a graph →](graphs.md#an-age
 
 ### Continued by
 
+- [A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies](a-mac-of-the-agents-own.md) A business plan for a Mac of the agent's own: what Apple's licence allows, a desktop built from vaults per run, and three behaviour policies for one agent.
 - [Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes](encrypted-memory-for-isolated-agents.md) Agents in isolated, ephemeral places need memory that outlives them. Five sgit deployment patterns, from a Mac mini to Kubernetes, with ciphertext-only servers.
 
 [All articles](index.md) · [All graphs](graphs.md)

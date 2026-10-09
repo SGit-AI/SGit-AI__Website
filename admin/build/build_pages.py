@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.15'
+SITE_VERSION = 'v0.7.16'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.15', '2026-10-09', 'this release',
+    ('v0.7.16', '2026-10-09', 'this release',
+     "A MAC OF THE AGENT'S OWN. A new business plan vault, Agent Desk (5ej8boc8, read key published, the first created and audited with sgit-ai 0.20.0), and its article, from a voice memo after two companies replied to our research on renting an agent a desktop. Agents already have their own mailbox, code-host account and Claude account; the next resource is a desktop, and it should be a Mac. Apple's macOS licence, quoted from versions 15, 26 and 27, rules out a pool of Macs rented by the minute, so the plan is the shapes it allows: your Mac run for you, a dedicated Mac with a per-minute meter, developer agents, software for your own Mac, and asking Apple for terms. A clean desktop per run, built from vaults by a short bootstrap whose key steps were tested, keys by PKI, erased at the end. Three Agent Behaviour Policies for the same customer service agent: unbounded excess 23, 11 and 3 rows. A calculator, a Wardley map, three diagrams with Mermaid sources. No provider named. Vault page, business plans list, graph JSON.",),
+    ('v0.7.15', '2026-10-09', 'git a98a1c20',
      "THE NEWSLETTER AS A BEST-OF ITS PICTURES. Two desk directives: !figure takes one image from an article or a "
      "vault by its path from the repository root, and !collage composes two to six of them into one 1920x1080 picture "
      "with a label under each, rendered by make_banners.mjs into articles/banners/collages/; both fail the build if an "

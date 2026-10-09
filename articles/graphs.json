@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-09",
-  "site_version": "v0.7.15",
+  "site_version": "v0.7.16",
   "schema": "https://sgit.ai/articles/graphs.html",
   "topics": [
     {
@@ -55,6 +55,212 @@
   ],
   "articles": [
     {
+      "slug": "a-mac-of-the-agents-own",
+      "title": "A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies",
+      "date": "2026-10-09",
+      "updated": "",
+      "url": "https://sgit.ai/articles/a-mac-of-the-agents-own.html",
+      "markdown": "https://sgit.ai/articles/a-mac-of-the-agents-own.md",
+      "card": "https://sgit.ai/articles/cards/a-mac-of-the-agents-own.webp",
+      "teaser": "A business plan for a Mac of the agent's own: what Apple's licence allows, a desktop built from vaults per run, and three behaviour policies for one agent.",
+      "topics": [
+        "startups-and-strategy",
+        "agents-and-policy",
+        "vaults-and-method"
+      ],
+      "tags": [
+        "agents",
+        "agent-desktops",
+        "macos",
+        "business-plan",
+        "agent-behaviour-policy",
+        "licensing",
+        "vaults",
+        "pki",
+        "sgit",
+        "wardley-maps",
+        "isolation",
+        "cowork",
+        "computer-use",
+        "article"
+      ],
+      "links_out": [
+        "an-agent-desktop-by-the-minute",
+        "why-my-agents-do-not-run-on-my-laptop",
+        "six-agents-one-inbox",
+        "the-agent-team-as-it-runs",
+        "encrypted-memory-for-isolated-agents",
+        "riskmandate-ten-questions",
+        "hope-or-enforcement"
+      ],
+      "links_in": [],
+      "graph": {
+        "slug": "a-mac-of-the-agents-own",
+        "teaser": "A business plan for a Mac of the agent's own: what Apple's licence allows, a desktop built from vaults per run, and three behaviour policies for one agent.",
+        "topics": [
+          "startups-and-strategy",
+          "agents-and-policy",
+          "vaults-and-method"
+        ],
+        "core_idea": "After a mailbox, a code-host account and a Claude account, an agent's next dedicated resource is a desktop, and it should be a Mac; Apple's licence rules out a pool rented by the minute, so the business is a dedicated Mac per customer, run for them, metered by the minute, built clean per run from encrypted vaults with keys by PKI and erased at the end, plus developer agents, software for your own Mac and a request to Apple for terms; the behaviour policies show why: the same agent's unbounded excess falls from 23 rows to 11 to 3.",
+        "nodes": [
+          {
+            "id": "next",
+            "label": "The next dedicated resource",
+            "kind": "claim",
+            "summary": "After a mailbox, a code-host account and a Claude account, a desktop of the agent's own."
+          },
+          {
+            "id": "mac",
+            "label": "Why a Mac",
+            "kind": "claim",
+            "summary": "Agent desktop apps ship to the Mac first; it is familiar; and it is the one you cannot rent by the minute."
+          },
+          {
+            "id": "licence",
+            "label": "What Apple's licence allows",
+            "kind": "concept",
+            "summary": "Leases of 24 hours or more, for developer services, to one customer; no time-sharing of virtual copies."
+          },
+          {
+            "id": "shapes",
+            "label": "The shapes that are allowed",
+            "kind": "method",
+            "summary": "Your Mac run for you, a dedicated Mac metered, developer agents, software, and asking Apple."
+          },
+          {
+            "id": "vaults",
+            "label": "A clean Mac, a key, a vault",
+            "kind": "method",
+            "summary": "Install sgit, decrypt one key, clone the set-up vault, run its signed program; erase at the end."
+          },
+          {
+            "id": "pki",
+            "label": "Keys by PKI",
+            "kind": "method",
+            "summary": "Each desktop's own key pair; vault keys encrypted to it; the private key in its keychain."
+          },
+          {
+            "id": "abps",
+            "label": "Three desktops, one agent",
+            "kind": "example",
+            "summary": "Unbounded excess 23 on your own Mac, 11 on a dedicated Mac, 3 on a hardened one."
+          },
+          {
+            "id": "admin",
+            "label": "The shop admin screen",
+            "kind": "claim",
+            "summary": "What remains on the hardened Mac is mostly one screen that shows every customer."
+          },
+          {
+            "id": "economics",
+            "label": "A meter on a Mac one customer holds",
+            "kind": "artefact",
+            "summary": "About £211 a month against £119 for a Mac mini you run and £390 for daily leases, on assumptions."
+          },
+          {
+            "id": "map",
+            "label": "Productising the agent's desktop",
+            "kind": "artefact",
+            "summary": "A Wardley map: the desktop moves to product on parts that are already products or commodities."
+          },
+          {
+            "id": "ask",
+            "label": "What are we looking for?",
+            "kind": "question",
+            "summary": "Dedicated Macs with erase and provision APIs, a meter, a developer offer, and a joint approach to Apple."
+          }
+        ],
+        "edges": [
+          {
+            "from": "next",
+            "to": "mac",
+            "rel": "leads-to"
+          },
+          {
+            "from": "mac",
+            "to": "licence",
+            "rel": "depends-on"
+          },
+          {
+            "from": "licence",
+            "to": "shapes",
+            "rel": "produces"
+          },
+          {
+            "from": "vaults",
+            "to": "shapes",
+            "rel": "extends"
+          },
+          {
+            "from": "pki",
+            "to": "vaults",
+            "rel": "extends"
+          },
+          {
+            "from": "abps",
+            "to": "next",
+            "rel": "answers"
+          },
+          {
+            "from": "admin",
+            "to": "abps",
+            "rel": "example-of"
+          },
+          {
+            "from": "economics",
+            "to": "shapes",
+            "rel": "depends-on"
+          },
+          {
+            "from": "map",
+            "to": "shapes",
+            "rel": "compared-with"
+          },
+          {
+            "from": "ask",
+            "to": "shapes",
+            "rel": "answers"
+          }
+        ],
+        "links": {
+          "articles": [
+            "an-agent-desktop-by-the-minute",
+            "why-my-agents-do-not-run-on-my-laptop",
+            "six-agents-one-inbox",
+            "the-agent-team-as-it-runs",
+            "encrypted-memory-for-isolated-agents",
+            "hope-or-enforcement",
+            "riskmandate-ten-questions"
+          ],
+          "pages": [
+            "demos/vaults/agent-desk/index.html",
+            "startups/business-plans.html",
+            "docs/pki.html",
+            "docs/partial-clones.html"
+          ],
+          "sites": [
+            "https://abp.sgit.ai/",
+            "https://riskmandate.ai/"
+          ]
+        },
+        "quotes": [
+          {
+            "text": "The pool of Macs rented by the minute that I first imagined is not allowed.",
+            "why": "The licence finding, stated first."
+          },
+          {
+            "text": "Per-minute pricing survives, as a meter on a Mac one customer holds, never as a share of a Mac that others use.",
+            "why": "How the business model survives the licence."
+          },
+          {
+            "text": "The only secrets are the ones the agent is supposed to have.",
+            "why": "Why a dedicated desktop shrinks the grant."
+          }
+        ]
+      }
+    },
+    {
       "slug": "riskmandate-ten-questions",
       "title": "Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not",
       "date": "2026-10-09",
@@ -105,7 +311,9 @@
         "knowing-when-to-stop",
         "the-investigation-github-owes-its-customers"
       ],
-      "links_in": [],
+      "links_in": [
+        "a-mac-of-the-agents-own"
+      ],
       "graph": {
         "slug": "riskmandate-ten-questions",
         "teaser": "Ten hard questions from a conference, answered in a two-hour interview: what RiskMandate does, what it deliberately is not, and how mature each part is.",
@@ -754,6 +962,7 @@
         "the-agent-team-as-it-runs"
       ],
       "links_in": [
+        "a-mac-of-the-agents-own",
         "riskmandate-ten-questions",
         "how-i-work-with-claude"
       ],
@@ -1398,6 +1607,7 @@
         "the-agent-team-as-it-runs"
       ],
       "links_in": [
+        "a-mac-of-the-agents-own",
         "riskmandate-ten-questions",
         "how-i-work-with-claude",
         "knowing-when-to-stop",
@@ -3003,6 +3213,7 @@
         "where-is-the-why"
       ],
       "links_in": [
+        "a-mac-of-the-agents-own",
         "encrypted-memory-for-isolated-agents"
       ],
       "graph": {
@@ -4087,6 +4298,7 @@
         "a-personal-agent-that-keeps-your-secrets"
       ],
       "links_in": [
+        "a-mac-of-the-agents-own",
         "how-i-work-with-claude",
         "encrypted-memory-for-isolated-agents",
         "an-agent-desktop-by-the-minute",
@@ -4564,6 +4776,7 @@
         "the-identity-we-wanted-to-give-the-agents"
       ],
       "links_in": [
+        "a-mac-of-the-agents-own",
         "riskmandate-ten-questions",
         "how-i-work-with-claude",
         "encrypted-memory-for-isolated-agents",
@@ -8949,6 +9162,7 @@
         "replicating-the-agentic-inbox"
       ],
       "links_in": [
+        "a-mac-of-the-agents-own",
         "riskmandate-ten-questions",
         "the-behaviour-policy-is-the-business-logic",
         "ai-baseline-control-framework",

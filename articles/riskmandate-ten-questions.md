@@ -2,7 +2,7 @@
 
 > My co-founder came back from a conference with ten hard questions, the ones people actually ask about a product like RiskMandate. What happens when an agent bypasses its policy? How do you keep a policy current when the agent gains new powers? What exactly am I paying for? Who is liable when it goes wrong? What stops a big platform absorbing you? Why behaviour and not the supply chain? Who enforces? What happens after a breach? What about agents instructing agents? And what can you measure? I answered them in a two-hour interview with Claude acting as a journalist with an eye for detail, challenging every answer until the whole set was detailed and coherent. This page is the result, written for someone who has not seen the questions: the model every answer rests on, the ten answers in brief, what RiskMandate deliberately is not, an honest table of what is live and what is design, three things the exercise showed we must fix on our own site, and then each question in full, linked to the work behind it.
 
-*Source: <https://sgit.ai/articles/riskmandate-ten-questions.html> · site v0.7.15 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/riskmandate-ten-questions.html> · site v0.7.16 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -399,6 +399,10 @@ Agents & policyStartups & strategy[This article as a graph →](graphs.md#riskma
 - [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](code-review-as-a-fractal-semantic-graph.md) Source code is layers within layers, each a graph with its own vocabulary; code review should read a change at every one, and a vault shows it done on real code.
 - [Knowing when to stop: what experience gives people, and what we have to design into agents](knowing-when-to-stop.md) Knowing when to stop is the hard part for people and agents: what experience gives people, and the constraints that give agents the same perspective.
 - [The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered](the-investigation-github-owes-its-customers.md) A global GitHub Actions outage read the way aviation reads an incident: independent inquiry, near-miss reporting, second and third stories, vaults for the evidence.
+
+### Continued by
+
+- [A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies](a-mac-of-the-agents-own.md) A business plan for a Mac of the agent's own: what Apple's licence allows, a desktop built from vaults per run, and three behaviour policies for one agent.
 
 [All articles](index.md) · [All graphs](graphs.md)
 
