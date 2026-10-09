@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.12'
+SITE_VERSION = 'v0.7.13'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.12', '2026-10-09', 'this release',
+    ('v0.7.13', '2026-10-09', 'this release',
+     "TEN HARD QUESTIONS FOR RISKMANDATE, ANSWERED. A new article from a two-hour interview in which Claude, acting as a journalist with an eye for detail, challenged Dinis on ten questions a co-founder brought back from a conference: bypass, keeping policies current, tailoring and price, insurance and liability, differentiation, the supply chain, who enforces, remediation, agent to agent, and outcomes. Written for readers who have not seen the questions: the model every answer rests on, the questions, the answers in brief, three things RiskMandate deliberately is not, an honest maturity table, three fixes the exercise found on riskmandate.ai (checked and still present), and the ten answers in full, linked to 46 pages across sgit.ai, abp.sgit.ai and riskmandate.ai. One figure with its Mermaid source, graph JSON.",),
+    ('v0.7.12', '2026-10-09', 'git 9d7be0dd',
      "HOW I WORK WITH CLAUDE. A new article, a practical guide from a voice memo and a follow-up note, for people joining the team and anyone setting up their own agentic workflow. One session per major or recurring topic, not one long mixed thread; sessions named 'project | work', agent sessions with an @; an agent is a focused session with a role.md; memory is what the session reads, curated as websites, graphs and vaults wired together; access by default rather than public by default; vaults to share by key instead of broad permissions; review as the step that fixes the brief; four starter prompts; tips on previews, proof-of-concept sites, skills, policies before connectors, and a Cowork session per agent. One figure with its Mermaid source, graph JSON.",),
     ('v0.7.11', '2026-10-08', 'git d0f7e2dd',
      "THE DESK CATCHES UP: THIRD EDITION, TWO COLLECTIONS, NEWSLETTER ISSUE 2. Eleven articles had reached the site "

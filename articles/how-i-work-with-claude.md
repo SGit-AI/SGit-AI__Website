@@ -2,7 +2,7 @@
 
 > A practical guide to the way I work with Claude, written for the people joining the team and for anyone I am helping with their own agentic workflows. It comes from about a year of doing this every day. Keep sessions separate, one per major or recurring topic, and do not let a thread wander across topics. Name them, "project | what we are working on", and give agent sessions an @ name. An agent is a session with a focus and a role.md. What a session knows is what it reads, so curate that memory: my memory is a set of websites, graphs and vaults, wired together, and almost everything in it is open, which makes sharing with agents and people very cheap. Vaults are how agents receive and send information without broad permissions. With all of that in place, the review becomes the quality step: when I find a mistake now, I can usually trace it back to a brief that needed to be better. Then the tips: documents with a preview, small proof-of-concept sites, skills used with care, an Agent Behaviour Policy before every new connector, and a separate Cowork session for each agent at work. With starter prompts you can copy.
 
-*Source: <https://sgit.ai/articles/how-i-work-with-claude.html> · site v0.7.12 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/how-i-work-with-claude.html> · site v0.7.13 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -195,6 +195,8 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#how-i-work
 - [Hope or enforcement: one customer service agent, three designs, and who keeps each promise](hope-or-enforcement.md) One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Posting this article on LinkedIn?** The cover is [how-i-work-with-claude.jpg](../articles/banners/how-i-work-with-claude.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
 **Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 

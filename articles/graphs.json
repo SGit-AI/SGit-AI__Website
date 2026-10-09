@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-09",
-  "site_version": "v0.7.12",
+  "site_version": "v0.7.13",
   "schema": "https://sgit.ai/articles/graphs.html",
   "topics": [
     {
@@ -54,6 +54,251 @@
     "produces"
   ],
   "articles": [
+    {
+      "slug": "riskmandate-ten-questions",
+      "title": "Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not",
+      "date": "2026-10-09",
+      "updated": "",
+      "url": "https://sgit.ai/articles/riskmandate-ten-questions.html",
+      "markdown": "https://sgit.ai/articles/riskmandate-ten-questions.md",
+      "card": "https://sgit.ai/articles/cards/riskmandate-ten-questions.webp",
+      "teaser": "Ten hard questions from a conference, answered in a two-hour interview: what RiskMandate does, what it deliberately is not, and how mature each part is.",
+      "topics": [
+        "agents-and-policy",
+        "startups-and-strategy"
+      ],
+      "tags": [
+        "riskmandate",
+        "agent-behaviour-policy",
+        "mandate",
+        "grant",
+        "delta",
+        "barriers",
+        "insurance",
+        "liability",
+        "enforcement",
+        "supply-chain",
+        "pki",
+        "digital-twins",
+        "metrics",
+        "positioning",
+        "interview",
+        "article"
+      ],
+      "links_out": [
+        "footprint-and-blast-radius",
+        "hope-or-enforcement",
+        "the-behaviour-policy-is-the-business-logic",
+        "introducing-fractal-semantic-graphs",
+        "connector-twin-before-you-deploy-an-agent",
+        "the-agent-team-as-it-runs",
+        "where-is-the-why",
+        "agency-is-not-a-yes",
+        "ultimate-insider-three-collisions",
+        "the-mandate-stack",
+        "six-agents-one-inbox",
+        "the-identity-we-wanted-to-give-the-agents",
+        "what-sgit-is",
+        "encrypted-memory-for-isolated-agents",
+        "every-risk-is-already-accepted",
+        "code-review-as-a-fractal-semantic-graph",
+        "knowing-when-to-stop",
+        "the-investigation-github-owes-its-customers"
+      ],
+      "links_in": [],
+      "graph": {
+        "slug": "riskmandate-ten-questions",
+        "teaser": "Ten hard questions from a conference, answered in a two-hour interview: what RiskMandate does, what it deliberately is not, and how mature each part is.",
+        "topics": [
+          "agents-and-policy",
+          "startups-and-strategy"
+        ],
+        "core_idea": "Every answer rests on four objects for one agent in one deployment, mandate, grant, delta and barriers, and a strict division of roles: RiskMandate authors the policy and pre-commits the verdict, the customer's controls enforce it, a named executive owns the residual risk, and logs calibrate the grant; so RiskMandate is not inline, not an insurer and not one button, the value lands before the action, new capability can only land as excess, and the headline metric is the reduction in risk the business has to accept.",
+        "nodes": [
+          {
+            "id": "model",
+            "label": "Mandate, grant, delta, barriers",
+            "kind": "concept",
+            "summary": "Four objects for one agent in one deployment; only a boundary is a control."
+          },
+          {
+            "id": "roles",
+            "label": "Author, decide, enforce",
+            "kind": "concept",
+            "summary": "RiskMandate authors and pre-commits; the customer's stack enforces; an executive owns the rest."
+          },
+          {
+            "id": "bypass",
+            "label": "The 5k order was possible on day one",
+            "kind": "example",
+            "summary": "Bypass is unbounded excess the policy surfaces before any action."
+          },
+          {
+            "id": "locked",
+            "label": "The mandate is locked business logic",
+            "kind": "claim",
+            "summary": "New capability can only land in the reach, as excess, never as new authority."
+          },
+          {
+            "id": "calibrator",
+            "label": "Reality is the calibrator",
+            "kind": "method",
+            "summary": "The grant is reverse-engineered from logs; documentation said no attachments, Claude found a way."
+          },
+          {
+            "id": "opensource",
+            "label": "Open source, maintained per customer",
+            "kind": "claim",
+            "summary": "The product is a customised, maintained vault; the moat is delivery and trust."
+          },
+          {
+            "id": "liability",
+            "label": "Authorisation is the grant",
+            "kind": "claim",
+            "summary": "Liability sits with the customer from the moment the reach exists; risks route to an executive."
+          },
+          {
+            "id": "insurable",
+            "label": "We make agents insurable",
+            "kind": "claim",
+            "summary": "The record is what an underwriter can price; no risk transfer exists today."
+          },
+          {
+            "id": "supply",
+            "label": "The supply chain is a bigger agent",
+            "kind": "claim",
+            "summary": "A compromise is a grant that exploded or a boundary that vanished; trust travels by connectivity."
+          },
+          {
+            "id": "reversal",
+            "label": "Containment now, reversal next",
+            "kind": "method",
+            "summary": "Circuit breakers pre-committed; twins, replay and version control, bounded by one-way doors."
+          },
+          {
+            "id": "pki",
+            "label": "Authorisation by encryption",
+            "kind": "method",
+            "summary": "Delegated authority attenuated by keys, not inherited by privilege."
+          },
+          {
+            "id": "metric",
+            "label": "What is the headline metric?",
+            "kind": "question",
+            "summary": "Reduction in accepted risk; runtime metrics belong to the enforcement layer."
+          },
+          {
+            "id": "fixes",
+            "label": "Three fixes on our own site",
+            "kind": "artefact",
+            "summary": "Homepage enforcement wording, insurance page tense, the Level 1 price."
+          }
+        ],
+        "edges": [
+          {
+            "from": "model",
+            "to": "roles",
+            "rel": "depends-on"
+          },
+          {
+            "from": "bypass",
+            "to": "model",
+            "rel": "example-of"
+          },
+          {
+            "from": "locked",
+            "to": "model",
+            "rel": "extends"
+          },
+          {
+            "from": "calibrator",
+            "to": "model",
+            "rel": "produces"
+          },
+          {
+            "from": "opensource",
+            "to": "roles",
+            "rel": "extends"
+          },
+          {
+            "from": "liability",
+            "to": "roles",
+            "rel": "depends-on"
+          },
+          {
+            "from": "insurable",
+            "to": "liability",
+            "rel": "leads-to"
+          },
+          {
+            "from": "supply",
+            "to": "model",
+            "rel": "extends"
+          },
+          {
+            "from": "reversal",
+            "to": "roles",
+            "rel": "extends"
+          },
+          {
+            "from": "pki",
+            "to": "supply",
+            "rel": "extends"
+          },
+          {
+            "from": "metric",
+            "to": "model",
+            "rel": "answers"
+          },
+          {
+            "from": "fixes",
+            "to": "roles",
+            "rel": "contrasts"
+          }
+        ],
+        "links": {
+          "articles": [
+            "hope-or-enforcement",
+            "the-behaviour-policy-is-the-business-logic",
+            "footprint-and-blast-radius",
+            "six-agents-one-inbox",
+            "the-mandate-stack",
+            "every-risk-is-already-accepted",
+            "agency-is-not-a-yes",
+            "connector-twin-before-you-deploy-an-agent",
+            "introducing-fractal-semantic-graphs",
+            "the-identity-we-wanted-to-give-the-agents",
+            "what-sgit-is"
+          ],
+          "pages": [
+            "docs/pki.html"
+          ],
+          "sites": [
+            "https://riskmandate.ai/",
+            "https://abp.sgit.ai/",
+            "https://twins.sgit.ai/",
+            "https://pki.sgit.ai/",
+            "https://nhi.sgit.ai/",
+            "https://graphs.sgit.ai/",
+            "https://wardley-maps.sgit.ai/"
+          ]
+        },
+        "quotes": [
+          {
+            "text": "The value is delivered **before** the action, not at it.",
+            "why": "Where the value of a behaviour policy lands."
+          },
+          {
+            "text": "**the moment of authorisation is the moment you granted the reach, not the moment you wrote the mandate.**",
+            "why": "The liability reframe."
+          },
+          {
+            "text": "The supply chain is **just a bigger agent**.",
+            "why": "Why behaviour generalises rather than narrows."
+          }
+        ]
+      }
+    },
     {
       "slug": "how-i-work-with-claude",
       "title": "How I work with Claude: one session per topic, agents with names, and memory you curate",
@@ -509,6 +754,7 @@
         "the-agent-team-as-it-runs"
       ],
       "links_in": [
+        "riskmandate-ten-questions",
         "how-i-work-with-claude"
       ],
       "graph": {
@@ -741,7 +987,9 @@
         "memory-is-not-a-spectator-sport",
         "the-agent-team-as-it-runs"
       ],
-      "links_in": [],
+      "links_in": [
+        "riskmandate-ten-questions"
+      ],
       "graph": {
         "slug": "knowing-when-to-stop",
         "teaser": "Knowing when to stop is the hard part for people and agents: what experience gives people, and the constraints that give agents the same perspective.",
@@ -928,6 +1176,7 @@
         "the-agent-team-as-it-runs"
       ],
       "links_in": [
+        "riskmandate-ten-questions",
         "how-i-work-with-claude",
         "knowing-when-to-stop"
       ],
@@ -1149,6 +1398,7 @@
         "the-agent-team-as-it-runs"
       ],
       "links_in": [
+        "riskmandate-ten-questions",
         "how-i-work-with-claude",
         "knowing-when-to-stop",
         "agency-is-not-a-yes"
@@ -2526,6 +2776,7 @@
         "ai-baseline-control-framework"
       ],
       "links_in": [
+        "riskmandate-ten-questions",
         "hope-or-enforcement"
       ],
       "graph": {
@@ -3233,6 +3484,7 @@
         "a-personal-agent-that-keeps-your-secrets"
       ],
       "links_in": [
+        "riskmandate-ten-questions",
         "agency-is-not-a-yes",
         "an-agent-desktop-by-the-minute",
         "ai-baseline-control-framework"
@@ -3498,6 +3750,7 @@
         "nineteen-sites"
       ],
       "links_in": [
+        "riskmandate-ten-questions",
         "an-agent-desktop-by-the-minute",
         "where-is-the-why"
       ],
@@ -4311,6 +4564,7 @@
         "the-identity-we-wanted-to-give-the-agents"
       ],
       "links_in": [
+        "riskmandate-ten-questions",
         "how-i-work-with-claude",
         "encrypted-memory-for-isolated-agents",
         "knowing-when-to-stop",
@@ -4892,7 +5146,9 @@
         "ultimate-insider-three-collisions",
         "every-risk-is-already-accepted"
       ],
-      "links_in": [],
+      "links_in": [
+        "riskmandate-ten-questions"
+      ],
       "graph": {
         "slug": "the-investigation-github-owes-its-customers",
         "teaser": "A global GitHub Actions outage read the way aviation reads an incident: independent inquiry, near-miss reporting, second and third stories, vaults for the evidence.",
@@ -5951,6 +6207,7 @@
         "ultimate-insider-three-collisions"
       ],
       "links_in": [
+        "riskmandate-ten-questions",
         "ai-baseline-control-framework",
         "the-mandate-stack",
         "the-agent-team-as-it-runs",
@@ -6758,6 +7015,7 @@
         "if-somebody-built-a-company-on-code-review"
       ],
       "links_in": [
+        "riskmandate-ten-questions",
         "ai-baseline-control-framework",
         "the-mandate-stack",
         "send-an-agent-not-a-spreadsheet",
@@ -7554,6 +7812,7 @@
         "six-agents-one-inbox"
       ],
       "links_in": [
+        "riskmandate-ten-questions",
         "every-mistake-added-a-rule",
         "where-is-the-why",
         "the-mandate-stack",
@@ -8152,6 +8411,7 @@
         "introducing-fractal-semantic-graphs"
       ],
       "links_in": [
+        "riskmandate-ten-questions",
         "where-is-the-why",
         "the-mandate-stack",
         "why-my-agents-do-not-run-on-my-laptop",
@@ -8689,6 +8949,7 @@
         "replicating-the-agentic-inbox"
       ],
       "links_in": [
+        "riskmandate-ten-questions",
         "the-behaviour-policy-is-the-business-logic",
         "ai-baseline-control-framework",
         "where-is-the-why",
@@ -9513,6 +9774,7 @@
         "introducing-fractal-semantic-graphs"
       ],
       "links_in": [
+        "riskmandate-ten-questions",
         "agency-is-not-a-yes",
         "who-are-you-protecting-against",
         "every-mistake-added-a-rule",
@@ -9781,6 +10043,7 @@
       ],
       "links_out": [],
       "links_in": [
+        "riskmandate-ten-questions",
         "where-is-the-why",
         "the-mandate-stack",
         "the-agent-team-as-it-runs",
@@ -10806,6 +11069,7 @@
       ],
       "links_out": [],
       "links_in": [
+        "riskmandate-ten-questions",
         "agency-is-not-a-yes",
         "liquid-content-needs-water",
         "the-behaviour-policy-is-the-business-logic",
@@ -11892,6 +12156,7 @@
       ],
       "links_out": [],
       "links_in": [
+        "riskmandate-ten-questions",
         "every-mistake-added-a-rule",
         "the-mandate-stack",
         "a-personal-agent-that-keeps-your-secrets",

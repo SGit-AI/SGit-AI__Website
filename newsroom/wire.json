@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-09",
-  "site_version": "v0.7.12",
+  "site_version": "v0.7.13",
   "about": "https://sgit.ai/newsroom/index.html",
   "front": {
     "edition": "2026-10-08",
@@ -72,6 +72,43 @@
     }
   ],
   "articles": [
+    {
+      "slug": "riskmandate-ten-questions",
+      "title": "Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not",
+      "date": "2026-10-09",
+      "updated": "",
+      "author": "Dinis Cruz",
+      "url": "https://sgit.ai/articles/riskmandate-ten-questions.html",
+      "markdown": "https://sgit.ai/articles/riskmandate-ten-questions.md",
+      "card": "https://sgit.ai/articles/cards/riskmandate-ten-questions.webp",
+      "graph": "https://sgit.ai/articles/graphs/riskmandate-ten-questions.json",
+      "teaser": "Ten hard questions from a conference, answered in a two-hour interview: what RiskMandate does, what it deliberately is not, and how mature each part is.",
+      "summary": "My co-founder came back from a conference with ten hard questions, the ones people actually ask about a product like RiskMandate. What happens when an agent bypasses its policy? How do you keep a policy current when the agent gains new powers? What exactly am I paying for? Who is liable when it goes wrong? What stops a big platform absorbing you? Why behaviour and not the supply chain? Who enforces? What happens after a breach? What about agents instructing agents? And what can you measure? I answered them in a two-hour interview with Claude acting as a journalist with an eye for detail, challenging every answer until the whole set was detailed and coherent. This page is the result, written for someone who has not seen the questions: the model every answer rests on, the ten answers in brief, what RiskMandate deliberately is not, an honest table of what is live and what is design, three things the exercise showed we must fix on our own site, and then each question in full, linked to the work behind it.",
+      "topics": [
+        "agents-and-policy",
+        "startups-and-strategy"
+      ],
+      "tags": [
+        "riskmandate",
+        "agent-behaviour-policy",
+        "mandate",
+        "grant",
+        "delta",
+        "barriers",
+        "insurance",
+        "liability",
+        "enforcement",
+        "supply-chain",
+        "pki",
+        "digital-twins",
+        "metrics",
+        "positioning",
+        "interview",
+        "article"
+      ],
+      "placement": [],
+      "notes": []
+    },
     {
       "slug": "how-i-work-with-claude",
       "title": "How I work with Claude: one session per topic, agents with names, and memory you curate",

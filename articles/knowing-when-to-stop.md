@@ -2,7 +2,7 @@
 
 > The hardest call in most work is not what to do next but when to stop. This article starts with people, because the problem is not new: security champions who had automated away whole classes of bugs and ended up debating whether GUIDs were random enough; development teams that hit every KPI and did not move the business; teams that found more work for themselves as they grew. What stopped them, when something did, was perspective: knowing who the attackers are, which phase the business is in, where the bottleneck is, and what good enough looks like, which is much of what seniority is. Agents have the same problem, worse. Their range is the feature: they can go in any direction, and variability is what makes them useful. But that range means they will keep going, fixing the twenty things they noticed rather than the one that mattered. The answer, for both, is not draconian rules but constraints that carry perspective: direction, a mandate, memory with the bigger picture, graphs that narrow the scope, a stop named before the work begins, one kind of work per step, and shipping often enough that the users tell you whether it mattered.
 
-*Source: <https://sgit.ai/articles/knowing-when-to-stop.html> · site v0.7.12 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/knowing-when-to-stop.html> · site v0.7.13 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -105,6 +105,10 @@ Agents & policyStartups & strategy[This article as a graph →](graphs.md#knowin
 - [Hope or enforcement: one customer service agent, three designs, and who keeps each promise](hope-or-enforcement.md) One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.
 - [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](memory-is-not-a-spectator-sport.md) Agentic memory as context management: many published, fractal, provenance-carrying memories rather than one store, shown in the session that wrote the article.
 - [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](the-agent-team-as-it-runs.md) Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.
+
+### Continued by
+
+- [Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not](riskmandate-ten-questions.md) Ten hard questions from a conference, answered in a two-hour interview: what RiskMandate does, what it deliberately is not, and how mature each part is.
 
 [All articles](index.md) · [All graphs](graphs.md)
 

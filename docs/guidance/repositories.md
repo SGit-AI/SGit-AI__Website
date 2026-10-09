@@ -2,7 +2,7 @@
 
 > The page above the vault guidance, the team section, coding.sgit.ai and nfrs.sgit.ai: what every repository in the estate carries regardless of what it is for. The brief published in full, written by a person or an agent; the reality and corrections files; one version going up on every push; the gate and the release discipline; the review folder with its self set; the code rules by reference to coding.sgit.ai; credentials; the requirements that are not features; people, agents and writing; and two checklists, one for a new repository and one for an existing one.
 
-*Source: <https://sgit.ai/docs/guidance/repositories.html> · site v0.7.12 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/guidance/repositories.html> · site v0.7.13 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
