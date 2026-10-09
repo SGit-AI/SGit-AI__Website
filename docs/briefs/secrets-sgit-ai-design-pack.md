@@ -2,7 +2,7 @@
 
 > Five design documents and a starter prompt from the week a plan to give every agent and user a Google Workspace identity met Google's terms: the Workspace architecture briefing, the onboarding design with the terms research and the tier model, the AWS Cognito variant and why no secret can live in an identity provider, the all-GCP key vault and password manager design, and the secrets.sgit.ai MVP build brief. Published as written, to be corrected.
 
-*Source: <https://sgit.ai/docs/briefs/secrets-sgit-ai-design-pack.html> · site v0.7.18 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/briefs/secrets-sgit-ai-design-pack.html> · site v0.7.19 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

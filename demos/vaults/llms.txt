@@ -1,7 +1,7 @@
 # Published vaults on sgit.ai
 
 > The catalogue of encrypted vaults published at https://sgit.ai/demos/vaults/index.html,
-> generated at build time (v0.7.18) from the same file the table on that page is built
+> generated at build time (v0.7.19) from the same file the table on that page is built
 > from, so this list and that table cannot drift apart.
 >
 > Every vault below is opened by a READ KEY: a 64-character hex string and a vault id, derived
@@ -15,7 +15,7 @@
 ## The vaults (50)
 - **#50 AI Governance Graph**: Hari Kota's ten-layer AI governance stack as a fractal semantic graph: the table kept exactly as posted (46 examples, every cell a node), the ten edges the table already contains, 119 sourced cross-layer edges of ours, each example zoomed into its instrument and provisions, and Hari's three gaps and do-this-today test run as queries on a fictional shop
  - page: /demos/vaults/ai-governance-graph/index.md
- - id `1wp3xpf4` · Reference · published 2026-10-09 · 3003 KB · 78 files
+ - id `1wp3xpf4` · Reference · published 2026-10-09 · 3006 KB · 79 files
  - read key: `sgit_public_read_0a899b9e46ba92b1c2625ef911cbff307814fd3e1abf8a5fa1cf8a31045a01b9:1wp3xpf4`
 - **#49 Agent Desk**: A business plan for a Mac of the agent's own: a dedicated, locked-down macOS desktop per customer, built per run from encrypted vaults, keys by PKI, erased at the end; Apple's licence quoted with the shapes it allows; three behaviour policies for one customer service agent (23, 11 and 3 rows of unbounded excess); a calculator and a Wardley map
  - page: /demos/vaults/agent-desk/index.md

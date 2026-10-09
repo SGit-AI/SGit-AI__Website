@@ -2,7 +2,7 @@
 
 > Owns the front: which article leads, which four are highlighted, what the homepage band carries, which collections are featured, and the one-sentence note that says why. Answers every pitch. Keeps the desk's board and the health of the articles section.
 
-*Source: <https://sgit.ai/newsroom/roles/editor.html> · site v0.7.18 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/newsroom/roles/editor.html> · site v0.7.19 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

@@ -2,7 +2,7 @@
 
 > Hari Kota posted The Full AI Governance Stack, ten layers from principles to people, and asked how I would structure the graph across the layers. This is the answer, built as a vault you can open. Hari's table is kept exactly as posted, every cell a node. The table already contains ten edges between layers before anything is added. Each layer is its own world with its own vocabulary, and the edges between those worlds come from the provisions themselves, so a gap is a missing edge and a missing edge is a query. Hari's three gaps and the "do this today" test run as queries on a fictional shop, and the line "most teams cover only 4 or 5" gets three honest readings.
 
-*Source: <https://sgit.ai/articles/the-ai-governance-stack-as-a-graph.html> · site v0.7.18 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/the-ai-governance-stack-as-a-graph.html> · site v0.7.19 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,7 +14,7 @@ By [Dinis Cruz](../about/index.md) · 2026-10-09 · [v0.7.18](../admin/versions.
 
 ***Abstract:** Hari Kota posted The Full AI Governance Stack, ten layers from principles to people, and asked how I would structure the graph across the layers. This is the answer, built as a vault you can open. Hari's table is kept exactly as posted, every cell a node. The table already contains ten edges between layers before anything is added. Each layer is its own world with its own vocabulary, and the edges between those worlds come from the provisions themselves, so a gap is a missing edge and a missing edge is a query. Hari's three gaps and the "do this today" test run as queries on a fictional shop, and the line "most teams cover only 4 or 5" gets three honest readings.*
 
-Hari Kota posted [The Full AI Governance Stack](#hari): ten layers, what each does, and forty-six global examples, under the line "10 layers. 1 global view. Most teams cover only 4 or 5." I asked in the comments whether the layers had been mapped with fractal semantic graphs, to interconnect them. Hari answered:
+Hari Kota posted [The Full AI Governance Stack](https://lnkd.in/p/erGx6fqM) on LinkedIn: ten layers, what each does, and forty-six global examples ([quoted in full below](#hari)), under the line "10 layers. 1 global view. Most teams cover only 4 or 5." I asked in the comments whether the layers had been mapped with fractal semantic graphs, to interconnect them. Hari answered:
 
 "I haven't mapped it that way. How would you structure the graph across the layers? What would be your take? Curious to know."
 
@@ -313,7 +313,7 @@ The idea of mapping AI law to standards as a graph is not new, and the vault lea
 
 Hari, thank you for the question. The stack is yours and it stays as you drew it; the graph is what grows underneath. If you want a row changed, an example added, or your own organisation's version built the same way, the vault is open, and so am I.
 
-*Written from the comment thread under Hari Kota's LinkedIn post The Full AI Governance Stack (October 2026), whose table is quoted exactly. Researched, built and written by agent@riskmandate.ai (Claude Opus 5.5, claude-opus-5-5) in the sgit.ai site session, for Dinis Cruz, who has editorial responsibility. Facts checked on 9 October 2026 against primary sources where they could be reached; not legal advice.*
+*Written from the comment thread under Hari Kota's LinkedIn post [The Full AI Governance Stack](https://lnkd.in/p/erGx6fqM) (October 2026), whose table is quoted exactly. Researched, built and written by agent@riskmandate.ai (Claude Opus 5.5, claude-opus-5-5) in the sgit.ai site session, for Dinis Cruz, who has editorial responsibility. Facts checked on 9 October 2026 against primary sources where they could be reached; not legal advice.*
 
 ## Threads
 

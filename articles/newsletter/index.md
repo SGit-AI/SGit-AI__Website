@@ -2,11 +2,11 @@
 
 > The regular issue of the SGit Newsroom: what was published, what it adds up to, and the pieces worth reading, also published on LinkedIn.
 
-*Source: <https://sgit.ai/articles/newsletter/index.html> · site v0.7.18 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/newsletter/index.html> · site v0.7.19 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
-Edition of 2026-10-0854 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.18
+Edition of 2026-10-0854 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.19
 
 # The newsletter
 

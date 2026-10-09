@@ -2,7 +2,7 @@
 
 > Hari Kota's ten-layer AI governance stack, kept exactly as posted, turned into a fractal semantic graph: the edges the table already contains, sourced edges between the layers, each example zoomed into the instrument and provisions it names, and the three gaps and the do-this-today test run as queries on a fictional shop. Published with its read key.
 
-*Source: <https://sgit.ai/demos/vaults/ai-governance-graph/index.html> · site v0.7.18 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/ai-governance-graph/index.html> · site v0.7.19 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 # AI Governance Graph: Hari Kota's ten-layer stack as a fractal semantic graph
 
-Hari Kota posted The Full AI Governance Stack: ten layers, what each does, and forty-six global examples. Under it, Dinis Cruz asked whether the layers had been mapped as a fractal semantic graph, and Hari asked back: "How would you structure the graph across the layers?" This vault is the answer, built. Hari's table is kept exactly as posted, every cell a node; the edges the table already contains are drawn first; then each example opens into the instrument it names, its provisions, and the people, controls, tests and records they require. Hari's three gaps and the "do this today" test run as queries on a fictional shop. It was published with the article [The AI governance stack, as a graph](../../../articles/the-ai-governance-stack-as-a-graph.md).
+Hari Kota posted [The Full AI Governance Stack](https://lnkd.in/p/erGx6fqM) on LinkedIn: ten layers, what each does, and forty-six global examples. Under it, Dinis Cruz asked whether the layers had been mapped as a fractal semantic graph, and Hari asked back: "How would you structure the graph across the layers?" This vault is the answer, built. Hari's table is kept exactly as posted, every cell a node; the edges the table already contains are drawn first; then each example opens into the instrument it names, its provisions, and the people, controls, tests and records they require. Hari's three gaps and the "do this today" test run as queries on a fictional shop. It was published with the article [The AI governance stack, as a graph](../../../articles/the-ai-governance-stack-as-a-graph.md).
 
 Hari's table, word for word, every cell a node.
 
@@ -95,15 +95,15 @@ Hari's table, the post and the comment thread are transcribed verbatim into `inp
 
 From `admin/build/catalogue_derive.py 1wp3xpf4 <read key hex>`, read-only, no token, no clone.
 
-- **Files:** 78 · **plaintext size:** 3003 KB
-- **Commits:** 2 · **last updated:** 2026-10-09 · **HEAD:** `obj-cas-imm-69f4df191a98`
+- **Files:** 79 · **plaintext size:** 3006 KB
+- **Commits:** 3 · **last updated:** 2026-10-09 · **HEAD:** `obj-cas-imm-cd3c326330e0`
 - **Top level:** `PUBLIC.md`, `README.md`, `REALITY.md`, `app.json`, `app/`, `data/`, `docs/`, `index.html`, `input/`, `research/`, `templates/`, `tests/`, `tools/`, `versions/`
-- **File types:** .json ×25, .js ×15, .css ×14, .py ×9, .md ×7, .csv ×4, .html ×2, .jsonld ×1, .ttl ×1
+- **File types:** .json ×25, .js ×15, .css ×14, .py ×9, .md ×8, .csv ×4, .html ×2, .jsonld ×1, .ttl ×1
 - **Vault app:** yes, entry `index.html` · **browser-renderable:** yes
 
 ## Notes
 
-**Where this came from.** Hari Kota's LinkedIn post The Full AI Governance Stack, and the comment thread under it, October 2026; the method in [Fractal Semantic Graphs](../../../articles/introducing-fractal-semantic-graphs.md); the worked organisation from [Hope or enforcement](../hope-or-enforcement/index.md). The EU AI Act itself is parsed from official XML in the [Regulation Graph](../regulation-graph/index.md) vault, and an open AI control framework is a graph in [AI BCF as a graph](../aibcf-graph/index.md).
+**Where this came from.** Hari Kota's LinkedIn post [The Full AI Governance Stack](https://lnkd.in/p/erGx6fqM), and the comment thread under it, October 2026; the method in [Fractal Semantic Graphs](../../../articles/introducing-fractal-semantic-graphs.md); the worked organisation from [Hope or enforcement](../hope-or-enforcement/index.md). The EU AI Act itself is parsed from official XML in the [Regulation Graph](../regulation-graph/index.md) vault, and an open AI control framework is a graph in [AI BCF as a graph](../aibcf-graph/index.md).
 
 **Who wrote this.** [agent@riskmandate.ai](mailto:agent@riskmandate.ai) (Claude Opus 5.5, `claude-opus-5-5`), in the sgit.ai site session, for RiskMandate.ai and sgit.ai. AI-generated text, disclosed as Article 50 of the EU AI Act asks; the person with editorial responsibility is Dinis Cruz. Replies to [agent@riskmandate.ai](mailto:agent@riskmandate.ai).
 
