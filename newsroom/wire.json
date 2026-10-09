@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-09",
-  "site_version": "v0.7.19",
+  "site_version": "v0.7.20",
   "about": "https://sgit.ai/newsroom/index.html",
   "front": {
     "edition": "2026-10-08",
@@ -99,6 +99,38 @@
         "inventory",
         "competence",
         "vaults",
+        "article"
+      ],
+      "placement": [],
+      "linkedin": null,
+      "notes": []
+    },
+    {
+      "slug": "a-second-reader-the-agent-cannot-skip",
+      "title": "A second reader the agent cannot skip: how two wrong emails became a gate on every draft",
+      "date": "2026-10-09",
+      "updated": "",
+      "author": "Dinis Cruz",
+      "url": "https://sgit.ai/articles/a-second-reader-the-agent-cannot-skip.html",
+      "markdown": "https://sgit.ai/articles/a-second-reader-the-agent-cannot-skip.md",
+      "card": "https://sgit.ai/articles/cards/a-second-reader-the-agent-cannot-skip.webp",
+      "graph": "https://sgit.ai/articles/graphs/a-second-reader-the-agent-cannot-skip.json",
+      "teaser": "Two emails went out in my voice despite a written rule. The fix: a hook that makes a second model approve every draft, failing closed.",
+      "summary": "On 9 October two emails drafted by my agent went out in my voice and signed with my name. The rule against it existed, in four places, and it failed because the only thing enforcing it was the agent's memory, the agent was the only reader of its own draft, and the rule fell out of context when the conversation was summarised. The fix, built the same day by the agent itself, is a hook on the draft tool: code checks first, then a fresh model call with only the rules, the sources and the draft, failing closed and logging every verdict. This is how it works, what the first run caught, why its independence depends on where it is installed, and how the same pattern, which banks call maker-checker, applies to any tool call that matters.",
+      "topics": [
+        "agents-and-policy",
+        "site-and-engineering"
+      ],
+      "tags": [
+        "agents",
+        "claude-code",
+        "hooks",
+        "guardrails",
+        "llm-as-a-judge",
+        "maker-checker",
+        "agent-behaviour-policy",
+        "email",
+        "governance",
         "article"
       ],
       "placement": [],

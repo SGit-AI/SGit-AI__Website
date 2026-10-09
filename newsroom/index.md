@@ -2,7 +2,7 @@
 
 > How the articles on sgit.ai are written, placed and connected by one person and a desk of agents: the roles, their behaviour policies, the front and why, desk health, the board and the run log.
 
-*Source: <https://sgit.ai/newsroom/index.html> · site v0.7.19 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/newsroom/index.html> · site v0.7.20 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -46,8 +46,8 @@ Edition of **2026-10-08**. Third edition. A day of articles on how agents decide
 
 Computed at every build from the files: placements that point at nothing, articles published since the edition, open pitches, articles without a graph or a card. The same list is what `python3 admin/build/desk.py` prints for the Editor.
 
-- To do`front.json` 5 article(s) published since the 2026-10-08 edition: the-ai-governance-stack-as-a-graph, rfc-0001-public-key-cryptography-for-sgit, a-mac-of-the-agents-own, riskmandate-ten-questions, how-i-work-with-claude
-- To do`newsletter/` a newsletter issue is due: 5 articles since issue 2 (2026-10-08)
+- To do`front.json` 6 article(s) published since the 2026-10-08 edition: the-ai-governance-stack-as-a-graph, a-second-reader-the-agent-cannot-skip, rfc-0001-public-key-cryptography-for-sgit, a-mac-of-the-agents-own, riskmandate-ten-questions, how-i-work-with-claude
+- To do`newsletter/` a newsletter issue is due: 6 articles since issue 2 (2026-10-08)
 - Note`newsroom/newsletter/002-2026-10-08.md` issue 2 has no linkedin: URL yet; add it once it is posted
 
 ## The desk: six roles

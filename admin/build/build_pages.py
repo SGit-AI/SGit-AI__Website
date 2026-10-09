@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.19'
+SITE_VERSION = 'v0.7.20'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.19', '2026-10-09', 'this release',
+    ('v0.7.20', '2026-10-09', 'this release',
+     "A SECOND READER THE AGENT CANNOT SKIP. On 9 October two emails drafted by the inbox agent went out in the founder's voice although a written rule forbade it. The agent's own fix, read against the Claude Code documentation and the research: a hook on the draft tool, code checks first, then a fresh model call with only the rules, the sources and the draft, failing closed and logging every verdict. What the first run caught; six kinds of independence; why placement decides the barrier (a session mod or a plugin is a setting, only managed placement is final); three public ways to build it; maker-checker, two-person rule, AI control, LLM-judge bias, Dual LLM, CaMeL, Rule of Two. Three diagrams with Mermaid sources, an independence infographic, the hot-reload prompt, graph JSON.",),
+    ('v0.7.19', '2026-10-09', 'git 8df16cd1',
      "HARI'S POST, LINKED. The AI governance stack article and the AI Governance Graph vault page now link Hari Kota's LinkedIn post, The Full AI Governance Stack; the vault moves to v0.1.1 with the post as the source of every node in Hari's words, and its derived facts are refreshed.",),
     ('v0.7.18', '2026-10-09', 'git 4255f61d',
      "THE AI GOVERNANCE STACK, AS A GRAPH. An answer, built, to Hari Kota's question under the post The Full AI Governance Stack: how would you structure the graph across the layers? A new vault, AI Governance Graph (1wp3xpf4, read key published), and its article. Hari's table kept exactly as posted, every cell a node (85 nodes in Hari's words, gated byte for byte); the ten edges the table already contains; each layer its own world with one shared grammar; 119 cross-layer edges of ours, each resting on a provision (EU AI Act Art 26(2), Art 4 as reworded by 2026/1744, Annex III 4(a), NIST AI RMF GOVERN 1.6, ISO/IEC 42001 7.2); 2026 changes as dated edges under Hari's labels; the do-this-today test and the gaps in layers 3, 5 and 10 as queries on a fictional shop; what '4 or 5' means, three ways; bring your own CSV. Two diagrams with Mermaid sources, ten app screenshots, vault page, graph JSON.",),

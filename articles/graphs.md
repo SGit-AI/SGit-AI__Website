@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.19 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.20 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,13 +14,13 @@ Every article here has a semantic graph beside it: the ideas it rests on, the cl
 
 The graphs are data first and pictures second. Take them as JSON: [all articles in one file](graphs.json), with the topics, the teasers and the links between articles resolved, or one file per article at `articles/graphs/<slug>.json` (for example [this one](graphs/footprint-and-blast-radius.json)). The pages on this site are rendered from the same files at build time; nothing here is hand-written HTML.
 
-54 of 54 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
+55 of 55 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
 
 ## How the articles connect
 
 *[diagram]*
 
-54 articles, 232 links between them (374 mentions in all). 45 articles cite an earlier one; 6 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (19 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+55 articles, 234 links between them (376 mentions in all). 46 articles cite an earlier one; 6 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (19 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
 
 ## [The AI governance stack, as a graph: an answer to Hari Kota, built](the-ai-governance-stack-as-a-graph.md)
 
@@ -51,6 +51,35 @@ Keep Hari Kota's ten-layer stack exactly as posted as the view and make a fracta
 > A table is correct on the day it is drawn. Why the graph keeps time.
 
 builds on [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph).
+
+## [A second reader the agent cannot skip: how two wrong emails became a gate on every draft](a-second-reader-the-agent-cannot-skip.md)
+
+2026-10-09 · Agents & policySite & engineering
+
+A rule held by the agent it governs is an expectation that can be forgotten, missed or argued around, so the inbox agent's fix after two emails went out in the founder's voice puts a gate on the draft tool itself: deterministic code checks first, then a fresh model call with only the rules, the sources and the draft, a different model from the author, failing closed on anything but an explicit PASS and logging every verdict; its independence depends on where it is installed, a setting while the agent can change it and a boundary only under managed placement, and the pattern is the old maker-checker control applied to any consequential tool call.
+
+*[diagram]*
+**concept**claim**method**artefact**example
+
+**11 nodes, 10 edges**
+
+- **Two emails in the founder's voice** (example) 9 October: a rule written in four places failed, because only the drafter enforced it.
+- **A rule held by the agent it governs** (claim) It can be forgotten at compaction, missed by its author, or argued around.
+- **The draft guard** (artefact) A hook on create_draft and update_draft: code checks, then a fresh checker model.
+- **Code checks first** (method) Signature, HTML, dashes, key shapes and recipients, with no model call.
+- **A fresh checker** (method) No history, no tools, a different model; only rules, sources and the draft.
+- **Fail closed** (method) Hooks fail open by default; errors, timeouts and bad answers must deny.
+- **Six kinds of independence** (concept) What the checker sees, who decides it runs, and who wrote the evidence.
+- **Placement decides the barrier** (claim) A session mod or plugin is a setting; managed placement makes it a boundary.
+- **Maker-checker** (concept) Segregation of duties, the two-person rule, the independent double check.
+- **The reusable pattern** (method) Pick the consequential call, code first, fresh checker, explicit PASS, log.
+- **What the first run caught** (example) Four invented claims, and false FAILs for facts without sources.
+
+> An email that is late is a small cost. An email that goes out wrong cannot be taken back. Why the guard fails closed.
+
+> A rule kept by the agent it governs is hope. The general weakness the guard answers.
+
+builds on [Hope or enforcement: one customer service agent, three designs, and who keeps each promise](#hope-or-enforcement), [Every mistake added a rule: complexity, agents, and the way back to shipping](#every-mistake-added-a-rule).
 
 ## [RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer](rfc-0001-public-key-cryptography-for-sgit.md)
 
@@ -319,7 +348,7 @@ Every design of an agent can have a rule for every behaviour; what differs is wh
 
 > The design breaks its own budget rule on every email, which is what happens to a budget that is an expectation. Tokens as a policy like any other.
 
-builds on [Zoom into an agent's behaviour policy and you find the business logic](#the-behaviour-policy-is-the-business-logic), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs); continued by [A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies](#a-mac-of-the-agents-own), [Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not](#riskmandate-ten-questions), [How I work with Claude: one session per topic, agents with names, and memory you curate](#how-i-work-with-claude), [Knowing when to stop: what experience gives people, and what we have to design into agents](#knowing-when-to-stop), [Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source](#agency-is-not-a-yes).
+builds on [Zoom into an agent's behaviour policy and you find the business logic](#the-behaviour-policy-is-the-business-logic), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs); continued by [A second reader the agent cannot skip: how two wrong emails became a gate on every draft](#a-second-reader-the-agent-cannot-skip), [A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies](#a-mac-of-the-agents-own), [Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not](#riskmandate-ten-questions), [How I work with Claude: one session per topic, agents with names, and memory you curate](#how-i-work-with-claude), [Knowing when to stop: what experience gives people, and what we have to design into agents](#knowing-when-to-stop), [Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source](#agency-is-not-a-yes).
 
 ## [Who are you protecting against? Draw the security line where the attacker is, not above it](who-are-you-protecting-against.md)
 
@@ -386,7 +415,7 @@ Founders who now work as engineers with agents often meet complexity not in thei
 
 > If you are not releasing something, you are probably not solving problems at the right altitude. Shipping as the check on over-engineering.
 
-builds on [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Git for things you cannot put on GitHub](#what-sgit-is), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The bridge, followed to the end: what one local story is worth when it is kept as a graph](#the-bridge-followed-to-the-end), [Green does not mean live](#green-does-not-mean-live); continued by [Knowing when to stop: what experience gives people, and what we have to design into agents](#knowing-when-to-stop).
+builds on [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Git for things you cannot put on GitHub](#what-sgit-is), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The bridge, followed to the end: what one local story is worth when it is kept as a graph](#the-bridge-followed-to-the-end), [Green does not mean live](#green-does-not-mean-live); continued by [A second reader the agent cannot skip: how two wrong emails became a gate on every draft](#a-second-reader-the-agent-cannot-skip), [Knowing when to stop: what experience gives people, and what we have to design into agents](#knowing-when-to-stop).
 
 ## [Liquid content needs water: liquefy the journalist's notebook, not the finished product](liquid-content-needs-water.md)
 

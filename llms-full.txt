@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.7.19). Nothing here needs a second request. Individual pages live at the paths
+> (v0.7.20). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -36,17 +36,17 @@ SGit Newsroom
 
 ## Start with an argument, not a menu
 
-The articles carry most of what this site believes, with the figures, the data and the links to check it. Fifty-four so far; the newsroom picks where to start.
+The articles carry most of what this site believes, with the figures, the data and the links to check it. Fifty-five so far; the newsroom picks where to start.
 
 [Built three ways2026-10-08Agents & policy**Hope or enforcement: one customer service agent, three designs, and who keeps each promise**One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.**Why it leads.** One mandate, three designs and a published vault: the behaviour-policy argument measured rather than asserted, down to which rules a model is only hoped to keep.Read it →](articles/hope-or-enforcement.md)
 
 ### Also new
 
 1. 2026-10-09[The AI governance stack, as a graph](articles/the-ai-governance-stack-as-a-graph.md)
-2. 2026-10-09[RFC 0001](articles/rfc-0001-public-key-cryptography-for-sgit.md)
-3. 2026-10-09[A Mac of the agent's own](articles/a-mac-of-the-agents-own.md)
-4. 2026-10-09[Ten hard questions for RiskMandate, answered](articles/riskmandate-ten-questions.md)
-5. 2026-10-09[How I work with Claude](articles/how-i-work-with-claude.md)
+2. 2026-10-09[A second reader the agent cannot skip](articles/a-second-reader-the-agent-cannot-skip.md)
+3. 2026-10-09[RFC 0001](articles/rfc-0001-public-key-cryptography-for-sgit.md)
+4. 2026-10-09[A Mac of the agent's own](articles/a-mac-of-the-agents-own.md)
+5. 2026-10-09[Ten hard questions for RiskMandate, answered](articles/riskmandate-ten-questions.md)
 [Thread2026-10-08Historian**Range is the feature, so the stop has to be designed**Four articles from one day, written for different reasons, end on the same line: an agent's range is what makes it useful, and it is also why the decision to stop cannot be left to the agent.](articles/desk/range-is-the-feature-so-the-stop-is-designed.md)
 
 [A scale for deciding2026-10-08**Agency is not a yes**Seven dimensions, seven levels, and the line below which a decider carries liability rather than agency. Its own vault holds the scale.](articles/agency-is-not-a-yes.md)[Live, local2026-10-08**The waiting room knew first**A hospital IT outage nobody could check from home, kept as evidence in a vault while it was still happening.](articles/the-waiting-room-knew-first.md)[Complexity2026-10-08**Every mistake added a rule**When every agent mistake adds a rule, the rules become the problem. Mapped, with the way back to shipping.](articles/every-mistake-added-a-rule.md)
@@ -73,7 +73,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-281site releases, each verified live before it was called done
+282site releases, each verified live before it was called done
 
 50vaults published with a deliberately public read key
 
@@ -6255,7 +6255,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.7.19, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.7.20, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -6618,7 +6618,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-281**site releases since 14 August**
+282**site releases since 14 August**
 each verified live before it was called done
 
 50**vaults published with a public read key**
@@ -6627,7 +6627,7 @@ every one audited first; findings on the page
 27**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-124**articles and release notes**
+125**articles and release notes**
 all with a markdown twin and an RSS feed
 
 17**cross-team briefs, in the open**
@@ -12162,12 +12162,14 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.7.19**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
+The site version (**v0.7.20**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
 
-| v0.7.19 | 2026-10-09 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.18...v0.7.19) | HARI'S POST, LINKED. The AI governance stack article and the AI Governance Graph vault page now link Hari Kota's LinkedIn post, The Full AI Governance Stack; the vault moves to v0.1.1 with the post as the source of every node in Hari's words, and its derived facts are refreshed.**Updated:**[AI Governance Graph, Hari Kota's stack as a fractal semantic graph](../demos/vaults/ai-governance-graph/index.md), [The AI governance stack, as a graph: an answer to Hari Kota, built](../articles/the-ai-governance-stack-as-a-graph.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.18...v0.7.19). |
+| v0.7.20 | 2026-10-09 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.19...v0.7.20) | A SECOND READER THE AGENT CANNOT SKIP. On 9 October two emails drafted by the inbox agent went out in the founder's voice although a written rule forbade it. The agent's own fix, read against the Claude Code documentation and the research: a hook on the draft tool, code checks first, then a fresh model call with only the rules, the sources and the draft, failing closed and logging every verdict. What the first run caught; six kinds of independence; why placement decides the barrier (a session mod or a plugin is a setting, only managed placement is final); three public ways to build it; maker-checker, two-person rule, AI control, LLM-judge bias, Dual LLM, CaMeL, Rule of Two. Three diagrams with Mermaid sources, an independence infographic, the hot-reload prompt, graph JSON.**New:**[A second reader the agent cannot skip: how two wrong emails became a gate on every draft](../articles/a-second-reader-the-agent-cannot-skip.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.19...v0.7.20). |
+
+| v0.7.19 | 2026-10-09 | [git 8df16cd1](https://github.com/SGit-AI/SGit-AI__Website/commit/8df16cd1) | HARI'S POST, LINKED. The AI governance stack article and the AI Governance Graph vault page now link Hari Kota's LinkedIn post, The Full AI Governance Stack; the vault moves to v0.1.1 with the post as the source of every node in Hari's words, and its derived facts are refreshed.**Updated:**[AI Governance Graph, Hari Kota's stack as a fractal semantic graph](../demos/vaults/ai-governance-graph/index.md), [The AI governance stack, as a graph: an answer to Hari Kota, built](../articles/the-ai-governance-stack-as-a-graph.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/8df16cd1). |
 
 | v0.7.18 | 2026-10-09 | [git 4255f61d](https://github.com/SGit-AI/SGit-AI__Website/commit/4255f61d) | THE AI GOVERNANCE STACK, AS A GRAPH. An answer, built, to Hari Kota's question under the post The Full AI Governance Stack: how would you structure the graph across the layers? A new vault, AI Governance Graph (1wp3xpf4, read key published), and its article. Hari's table kept exactly as posted, every cell a node (85 nodes in Hari's words, gated byte for byte); the ten edges the table already contains; each layer its own world with one shared grammar; 119 cross-layer edges of ours, each resting on a provision (EU AI Act Art 26(2), Art 4 as reworded by 2026/1744, Annex III 4(a), NIST AI RMF GOVERN 1.6, ISO/IEC 42001 7.2); 2026 changes as dated edges under Hari's labels; the do-this-today test and the gaps in layers 3, 5 and 10 as queries on a fictional shop; what '4 or 5' means, three ways; bring your own CSV. Two diagrams with Mermaid sources, ten app screenshots, vault page, graph JSON.**New:**[AI Governance Graph, Hari Kota's stack as a fractal semantic graph](../demos/vaults/ai-governance-graph/index.md), [The AI governance stack, as a graph: an answer to Hari Kota, built](../articles/the-ai-governance-stack-as-a-graph.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/4255f61d). |
 
@@ -15649,7 +15651,7 @@ There is a longer account of this one in [Green does not mean live](../articles/
 >
 > Page: https://sgit.ai/articles/index.html
 
-Edition of 2026-10-0854 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.19
+Edition of 2026-10-0855 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.20
 
 # SGit Newsroom
 
@@ -15662,16 +15664,16 @@ From the editor Third edition. A day of articles on how agents decide: when to s
 ## Latest
 
 1. 2026-10-09[The AI governance stack, as a graph](../articles/the-ai-governance-stack-as-a-graph.md)
-2. 2026-10-09[RFC 0001](../articles/rfc-0001-public-key-cryptography-for-sgit.md)
-3. 2026-10-09[A Mac of the agent's own](../articles/a-mac-of-the-agents-own.md)
-4. 2026-10-09[Ten hard questions for RiskMandate, answered](../articles/riskmandate-ten-questions.md)
-5. 2026-10-09[How I work with Claude](../articles/how-i-work-with-claude.md)
-6. 2026-10-08[The waiting room knew first](../articles/the-waiting-room-knew-first.md)
-7. 2026-10-08[Encrypted memory for agents that run somewhere else](../articles/encrypted-memory-for-isolated-agents.md)
-8. 2026-10-08[Knowing when to stop](../articles/knowing-when-to-stop.md)
-9. 2026-10-08[Agency is not a yes](../articles/agency-is-not-a-yes.md)
-10. 2026-10-08[Hope or enforcement](../articles/hope-or-enforcement.md)
-[Every article, 54 →](../articles/index.md#all)
+2. 2026-10-09[A second reader the agent cannot skip](../articles/a-second-reader-the-agent-cannot-skip.md)
+3. 2026-10-09[RFC 0001](../articles/rfc-0001-public-key-cryptography-for-sgit.md)
+4. 2026-10-09[A Mac of the agent's own](../articles/a-mac-of-the-agents-own.md)
+5. 2026-10-09[Ten hard questions for RiskMandate, answered](../articles/riskmandate-ten-questions.md)
+6. 2026-10-09[How I work with Claude](../articles/how-i-work-with-claude.md)
+7. 2026-10-08[The waiting room knew first](../articles/the-waiting-room-knew-first.md)
+8. 2026-10-08[Encrypted memory for agents that run somewhere else](../articles/encrypted-memory-for-isolated-agents.md)
+9. 2026-10-08[Knowing when to stop](../articles/knowing-when-to-stop.md)
+10. 2026-10-08[Agency is not a yes](../articles/agency-is-not-a-yes.md)
+[Every article, 55 →](../articles/index.md#all)
 
 ## Highlights
 
@@ -15689,7 +15691,7 @@ From the editor Third edition. A day of articles on how agents decide: when to s
 
 ## Every article, newest first
 
-[2026-10-09Graphs & knowledge2 threads**The AI governance stack, as a graph: an answer to Hari Kota, built**Hari Kota's ten-layer AI governance stack, kept as posted and turned into a fractal semantic graph: the gaps become missing edges, and queries.](the-ai-governance-stack-as-a-graph.md) [2026-10-09Vaults & method1 thread**RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer**A Request for Comments: two key pairs so a reader cannot write, sealed files only named people can open, and fourteen questions for reviewers.](rfc-0001-public-key-cryptography-for-sgit.md) [2026-10-09Startups & strategy7 threads**A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies**A business plan for a Mac of the agent's own: what Apple's licence allows, a desktop built from vaults per run, and three behaviour policies for one agent.](a-mac-of-the-agents-own.md) [2026-10-09Agents & policy19 threads**Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not**Ten hard questions from a conference, answered in a two-hour interview: what RiskMandate does, what it deliberately is not, and how mature each part is.](riskmandate-ten-questions.md) [2026-10-09Agents & policy7 threads**How I work with Claude: one session per topic, agents with names, and memory you curate**A practical guide from a year of daily use: one Claude session per topic, named agents with a role.md, curated memory, vaults, and policy before connectors.](how-i-work-with-claude.md) [2026-10-08News & evidence2 threads**The waiting room knew first: a live local story, and the gap where local information used to be**Staff at two London hospitals said the IT was down; nothing a local could check showed it. A live local story about where local information comes from now.](the-waiting-room-knew-first.md) [2026-10-08Vaults & method8 threads**Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes**Agents in isolated, ephemeral places need memory that outlives them. Five sgit deployment patterns, from a Mac mini to Kubernetes, with ciphertext-only servers.](encrypted-memory-for-isolated-agents.md) [2026-10-08Agents & policy8 threads**Knowing when to stop: what experience gives people, and what we have to design into agents**Knowing when to stop is the hard part for people and agents: what experience gives people, and the constraints that give agents the same perspective.](knowing-when-to-stop.md) [2026-10-08Agents & policy9 threads**Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source**A yes or no is not agency: seven dimensions, a seven-level scale for people and agents, and the review as a QA step that fixes the source.](agency-is-not-a-yes.md) [2026-10-08Agents & policy7 threads**Hope or enforcement: one customer service agent, three designs, and who keeps each promise**One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.](hope-or-enforcement.md) [2026-10-08Agents & policy3 threads**Who are you protecting against? Draw the security line where the attacker is, not above it**Before deciding how secure to be, name the attacker: a six-tier ladder, an air-gapped Mac mini read against it, and eight startups drawing their line.](who-are-you-protecting-against.md) [2026-10-08Agents & policy8 threads**Every mistake added a rule: complexity, agents, and the way back to shipping**When every agent mistake adds a rule, complexity wins: map the process, move each piece right as a small shipped component, and keep the rigour for the work.](every-mistake-added-a-rule.md) [2026-10-07News & evidence7 threads**Liquid content needs water: liquefy the journalist's notebook, not the finished product**A reply to FT Strategies on liquid content: the water is the reporting, so liquefy the journalist's notebook, keep the writing theirs, and pay per use.](liquid-content-needs-water.md) [2026-10-07News & evidence5 threads**The bridge, followed to the end: what one local story is worth when it is kept as a graph**A bridge closure simulated on a story vault: newsworthy on 5 days, needed on 57, used by three readers, four buyers and an agent, and paid back to its sources.](the-bridge-followed-to-the-end.md) [2026-10-07News & evidence5 threads**Story vault underneath, Reader Skills on top: why local journalism has the most to gain**Markus Franz's Reader Skills on top, the story vault underneath: each skill is a graph query, and local stories can pay back down their chain of sources.](story-vault-meets-reader-skills.md) [2026-10-07Agents & policy6 threads**Zoom into an agent's behaviour policy and you find the business logic**Below the first rules, an agent's behaviour policy is the business: functions, processes, clients, values. Layered, owned, counted, and where vendors plug in.](the-behaviour-policy-is-the-business-logic.md) [2026-10-07Agents & policy5 threads**A locked-down desktop for an agent, by the minute, is still hard to rent**Nine properties a safe agent desktop needs, nine products against them, the macOS day-long lease, and the startup credits that would pay for testing it.](an-agent-desktop-by-the-minute.md) [2026-10-07Graphs & knowledge7 threads**An open AI governance framework, and what its licence let us build**Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.](ai-baseline-control-framework.md) [2026-10-07Agents & policy13 threads**Where is the why? A permission prompt asked me to decide, and kept the reason**A prompt asked for a decision and kept the reason. Read through the policy, the law on uninformed consent, and the fixes that worked: put the why in the prompt.](where-is-the-why.md) [2026-10-06Agents & policy23 threads**The Mandate Stack: a multi-agent system in production, layer by layer**A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.](the-mandate-stack.md) [2026-10-06Agents & policy11 threads**Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has**An OS has two hard walls, the kernel and the user; an agent on a laptop runs inside the one marked you, so the agents run in the cloud with a vault as shared drive.](why-my-agents-do-not-run-on-my-laptop.md) [2026-10-06Startups & strategy6 threads**The deck I could not download: an author-first home for presentations, as a business plan somebody else can build**One download offered as a subscription, an author paid nothing, and a design for the service the author would have chosen: vaults, keys, seven roles, 85% to the author.](the-deck-i-could-not-download.md) [2026-10-06Agents & policy24 threads**The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from**Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.](the-agent-team-as-it-runs.md) [2026-10-06Agents & policy13 threads**A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser**The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.](a-personal-agent-that-keeps-your-secrets.md) [2026-10-05Agents & policy6 threads**The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered**A global GitHub Actions outage read the way aviation reads an incident: independent inquiry, near-miss reporting, second and third stories, vaults for the evidence.](the-investigation-github-owes-its-customers.md) [2026-10-05Agents & policy8 threads**Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it**Due diligence never scaled because it was a form; a buyer can now send an agent into a vendor's environment and read what the code and the practices are.](send-an-agent-not-a-spreadsheet.md) [2026-10-05Graphs & knowledge10 threads**How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was**Twenty articles in four weeks, measured from the session record: 63,000 words in, 85,000 out, no one-line prompts, and the real input is twenty years of writing.](how-much-of-this-did-i-write.md) [2026-10-05Graphs & knowledge11 threads**If somebody built a company on code review: how I would do it, and why it is only now possible**A reader's seven questions answered as a company plan: one reader for every layer, review as a science, and the layers as the customer's own.](if-somebody-built-a-company-on-code-review.md) [2026-10-05Agents & policy10 threads**The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard**A week of designing identities for agents and users met Google's terms; what survived is a passkey-unlocked keyring and a gap nobody sells.](the-identity-we-wanted-to-give-the-agents.md) [2026-10-04Agents & policy8 threads**The wall under the reply: end an email with the state of the thread, not the thread**End an email reply with the state of the thread for this reader, not the quoted wall: decided, open, next, who is on copy, with links to the record.](the-wall-under-the-reply.md) [2026-10-03Graphs & knowledge15 threads**Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one**Agentic memory as context management: many published, fractal, provenance-carrying memories rather than one store, shown in the session that wrote the article.](memory-is-not-a-spectator-sport.md) [2026-10-03Graphs & knowledge13 threads**Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it**Source code is layers within layers, each a graph with its own vocabulary; code review should read a change at every one, and a vault shows it done on real code.](code-review-as-a-fractal-semantic-graph.md) [2026-10-02Agents & policy13 threads**Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send**How to copy a working agentic email setup in phases: a mailbox and Claude seat of the agent's own, one session with a policy, then roles talking in files.](replicating-the-agentic-inbox.md) [2026-10-02Startups & strategy3 threads**Price it, then give it away: the early access programme as the next step after "do they miss it"**Define the product, price it, deliver it at a cost that grows a step at a time, then offer it free to people who know you and measure what it costs them.](price-it-then-give-it-away.md) [2026-10-02Agents & policy19 threads**Footprint and blast radius: what the agent actually did, and what it would have cost**Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.](footprint-and-blast-radius.md) [2026-10-01Graphs & knowledge16 threads**Custom UIs are not the exception: the inbox in 2026, where every message has its own universe**Every message has a graph, so it can be shaped for the reader's moment; a custom interface per moment is now how interfaces get made, and each gets a policy.](custom-uis-are-not-the-exception.md) [2026-09-30Agents & policy15 threads**The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up**Agents, the infrastructure meant to contain them, and risk management run on spreadsheets are arriving at once, and together they are one scenario.](ultimate-insider-three-collisions.md) [2026-09-29News & evidence6 threads**The reader was always the product: a corrected history of how news got into this mess**News has sold the reader to advertisers since 1833; the web took the monopoly, the platforms made the reader measurable, and AI took the traffic.](how-news-got-here.md) [2026-09-29Agents & policy20 threads**Six agents, one inbox: what a real multi-agent setup taught me about access policies**An access policy for an agent is only as real as its worst row: every rule in a real six-agent setup, graded by how it is enforced today.](six-agents-one-inbox.md) [2026-09-28News & evidence6 threads**Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read**AI answer engines pay to read the web as HTML; a publisher who serves markdown, dates, hashes and a typed graph saves them tokens and should get a share.](token-bill-nobody-is-sending.md) [2026-09-27Vaults & method5 threads**A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down**The food chain is a data problem: one encrypted vault per party, joined by append lanes and a typed graph, could cut the waste that keeps prices high.](supply-chain-of-vaults.md) [2026-09-24Agents & policy15 threads**Every risk is already accepted. The only question is by whom, and for how long.**A risk exists the moment the exposure does, so somebody is already carrying it; the only questions worth asking are who has accepted it and until when.](every-risk-is-already-accepted.md) [2026-09-24Agents & policy12 threads**Before you give an agent a connector, give the connector a twin**An agent with a Gmail or Calendar connector can do things the platform cannot undo; a journal of every call, replayed, shows what it did and what can go back.](connector-twin-before-you-deploy-an-agent.md) [2026-09-22News & evidence7 threads**The future of news is the story vault, not the paywall**A story is a graph of claims and evidence and the article is one projection of it; keep the graph in a vault and sell what the article was made from.](future-of-news-story-vault-not-paywall.md) [2026-09-21Startups & strategy4 threads**For a startup, the most important question is whether they miss it**Ship something usable, give it away briefly, take it away and see whether anybody misses it; charge at a profit before you talk to investors.](the-question-is-whether-they-miss-it.md) [2026-09-21Startups & strategy3 threads**The SaaS apocalypse will be decided by inertia, not by AI**Incumbents and newcomers have the same AI; what separates them is how much past success each has to protect, so inertia decides which SaaS companies survive.](saas-apocalypse-decided-by-inertia-not-by-ai.md) [2026-09-20Graphs & knowledge19 threads**Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema**A fractal semantic graph has no privileged level and no single schema: each world keeps its own vocabulary and connects to others through named edges.](introducing-fractal-semantic-graphs.md) [2026-09-07Site & engineering1 thread**The proof moved up, the homepage after the rebuild, next to the before pictures**The rebuilt homepage puts four real vaults under one sentence, picks six by the job they do, and computes its numbers at build time from the site's own data.](proof-moved-up.md) [2026-09-07Site & engineering1 thread**The proof is two clicks behind the claim, what the homepage gets wrong, and the fix**The homepage leads with encryption, which cannot be seen, while twenty-five vaults a stranger can open in one click sit two clicks away in a table.](proof-behind-the-claim.md) [2026-08-27Site & engineering1 thread**A chat box on a site with no server, the plan, and the trade it makes**sgit.ai has no server, so its directory chat runs a local matcher by default, takes your own key as an opt-in, and leaves the vault bridge unbuilt.](chat-on-a-static-site.md) [2026-08-26Site & engineering2 threads**Twenty sites in fifteen days, and what that did to the writing**One site became twenty repositories in fifteen days because each argument needed its own version history, and the index now starts from a question.](nineteen-sites.md) [2026-08-25Vaults & method5 threads**Git for things you cannot put on GitHub**sgit is git for files you cannot put on GitHub: encrypted before they leave your machine, versioned like git, stored where the server cannot read a byte.](what-sgit-is.md) [2026-08-19Vaults & method2 threads**Seven vaults, one method**Publishing seven encrypted vaults in a fortnight produced a method, and every rule in it exists because something went wrong first.](seven-vaults-one-method.md) [2026-08-17Site & engineering2 threads**Green does not mean live**Two releases passed every check and never reached the site because the checks stopped at the git remote; a release now ends by asking the live site its version.](green-does-not-mean-live.md)
+[2026-10-09Graphs & knowledge2 threads**The AI governance stack, as a graph: an answer to Hari Kota, built**Hari Kota's ten-layer AI governance stack, kept as posted and turned into a fractal semantic graph: the gaps become missing edges, and queries.](the-ai-governance-stack-as-a-graph.md) [2026-10-09Agents & policy2 threads**A second reader the agent cannot skip: how two wrong emails became a gate on every draft**Two emails went out in my voice despite a written rule. The fix: a hook that makes a second model approve every draft, failing closed.](a-second-reader-the-agent-cannot-skip.md) [2026-10-09Vaults & method1 thread**RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer**A Request for Comments: two key pairs so a reader cannot write, sealed files only named people can open, and fourteen questions for reviewers.](rfc-0001-public-key-cryptography-for-sgit.md) [2026-10-09Startups & strategy7 threads**A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies**A business plan for a Mac of the agent's own: what Apple's licence allows, a desktop built from vaults per run, and three behaviour policies for one agent.](a-mac-of-the-agents-own.md) [2026-10-09Agents & policy19 threads**Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not**Ten hard questions from a conference, answered in a two-hour interview: what RiskMandate does, what it deliberately is not, and how mature each part is.](riskmandate-ten-questions.md) [2026-10-09Agents & policy7 threads**How I work with Claude: one session per topic, agents with names, and memory you curate**A practical guide from a year of daily use: one Claude session per topic, named agents with a role.md, curated memory, vaults, and policy before connectors.](how-i-work-with-claude.md) [2026-10-08News & evidence2 threads**The waiting room knew first: a live local story, and the gap where local information used to be**Staff at two London hospitals said the IT was down; nothing a local could check showed it. A live local story about where local information comes from now.](the-waiting-room-knew-first.md) [2026-10-08Vaults & method8 threads**Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes**Agents in isolated, ephemeral places need memory that outlives them. Five sgit deployment patterns, from a Mac mini to Kubernetes, with ciphertext-only servers.](encrypted-memory-for-isolated-agents.md) [2026-10-08Agents & policy8 threads**Knowing when to stop: what experience gives people, and what we have to design into agents**Knowing when to stop is the hard part for people and agents: what experience gives people, and the constraints that give agents the same perspective.](knowing-when-to-stop.md) [2026-10-08Agents & policy9 threads**Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source**A yes or no is not agency: seven dimensions, a seven-level scale for people and agents, and the review as a QA step that fixes the source.](agency-is-not-a-yes.md) [2026-10-08Agents & policy8 threads**Hope or enforcement: one customer service agent, three designs, and who keeps each promise**One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.](hope-or-enforcement.md) [2026-10-08Agents & policy3 threads**Who are you protecting against? Draw the security line where the attacker is, not above it**Before deciding how secure to be, name the attacker: a six-tier ladder, an air-gapped Mac mini read against it, and eight startups drawing their line.](who-are-you-protecting-against.md) [2026-10-08Agents & policy9 threads**Every mistake added a rule: complexity, agents, and the way back to shipping**When every agent mistake adds a rule, complexity wins: map the process, move each piece right as a small shipped component, and keep the rigour for the work.](every-mistake-added-a-rule.md) [2026-10-07News & evidence7 threads**Liquid content needs water: liquefy the journalist's notebook, not the finished product**A reply to FT Strategies on liquid content: the water is the reporting, so liquefy the journalist's notebook, keep the writing theirs, and pay per use.](liquid-content-needs-water.md) [2026-10-07News & evidence5 threads**The bridge, followed to the end: what one local story is worth when it is kept as a graph**A bridge closure simulated on a story vault: newsworthy on 5 days, needed on 57, used by three readers, four buyers and an agent, and paid back to its sources.](the-bridge-followed-to-the-end.md) [2026-10-07News & evidence5 threads**Story vault underneath, Reader Skills on top: why local journalism has the most to gain**Markus Franz's Reader Skills on top, the story vault underneath: each skill is a graph query, and local stories can pay back down their chain of sources.](story-vault-meets-reader-skills.md) [2026-10-07Agents & policy6 threads**Zoom into an agent's behaviour policy and you find the business logic**Below the first rules, an agent's behaviour policy is the business: functions, processes, clients, values. Layered, owned, counted, and where vendors plug in.](the-behaviour-policy-is-the-business-logic.md) [2026-10-07Agents & policy5 threads**A locked-down desktop for an agent, by the minute, is still hard to rent**Nine properties a safe agent desktop needs, nine products against them, the macOS day-long lease, and the startup credits that would pay for testing it.](an-agent-desktop-by-the-minute.md) [2026-10-07Graphs & knowledge7 threads**An open AI governance framework, and what its licence let us build**Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.](ai-baseline-control-framework.md) [2026-10-07Agents & policy13 threads**Where is the why? A permission prompt asked me to decide, and kept the reason**A prompt asked for a decision and kept the reason. Read through the policy, the law on uninformed consent, and the fixes that worked: put the why in the prompt.](where-is-the-why.md) [2026-10-06Agents & policy23 threads**The Mandate Stack: a multi-agent system in production, layer by layer**A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.](the-mandate-stack.md) [2026-10-06Agents & policy11 threads**Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has**An OS has two hard walls, the kernel and the user; an agent on a laptop runs inside the one marked you, so the agents run in the cloud with a vault as shared drive.](why-my-agents-do-not-run-on-my-laptop.md) [2026-10-06Startups & strategy6 threads**The deck I could not download: an author-first home for presentations, as a business plan somebody else can build**One download offered as a subscription, an author paid nothing, and a design for the service the author would have chosen: vaults, keys, seven roles, 85% to the author.](the-deck-i-could-not-download.md) [2026-10-06Agents & policy24 threads**The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from**Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.](the-agent-team-as-it-runs.md) [2026-10-06Agents & policy13 threads**A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser**The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.](a-personal-agent-that-keeps-your-secrets.md) [2026-10-05Agents & policy6 threads**The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered**A global GitHub Actions outage read the way aviation reads an incident: independent inquiry, near-miss reporting, second and third stories, vaults for the evidence.](the-investigation-github-owes-its-customers.md) [2026-10-05Agents & policy8 threads**Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it**Due diligence never scaled because it was a form; a buyer can now send an agent into a vendor's environment and read what the code and the practices are.](send-an-agent-not-a-spreadsheet.md) [2026-10-05Graphs & knowledge10 threads**How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was**Twenty articles in four weeks, measured from the session record: 63,000 words in, 85,000 out, no one-line prompts, and the real input is twenty years of writing.](how-much-of-this-did-i-write.md) [2026-10-05Graphs & knowledge11 threads**If somebody built a company on code review: how I would do it, and why it is only now possible**A reader's seven questions answered as a company plan: one reader for every layer, review as a science, and the layers as the customer's own.](if-somebody-built-a-company-on-code-review.md) [2026-10-05Agents & policy10 threads**The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard**A week of designing identities for agents and users met Google's terms; what survived is a passkey-unlocked keyring and a gap nobody sells.](the-identity-we-wanted-to-give-the-agents.md) [2026-10-04Agents & policy8 threads**The wall under the reply: end an email with the state of the thread, not the thread**End an email reply with the state of the thread for this reader, not the quoted wall: decided, open, next, who is on copy, with links to the record.](the-wall-under-the-reply.md) [2026-10-03Graphs & knowledge15 threads**Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one**Agentic memory as context management: many published, fractal, provenance-carrying memories rather than one store, shown in the session that wrote the article.](memory-is-not-a-spectator-sport.md) [2026-10-03Graphs & knowledge13 threads**Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it**Source code is layers within layers, each a graph with its own vocabulary; code review should read a change at every one, and a vault shows it done on real code.](code-review-as-a-fractal-semantic-graph.md) [2026-10-02Agents & policy13 threads**Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send**How to copy a working agentic email setup in phases: a mailbox and Claude seat of the agent's own, one session with a policy, then roles talking in files.](replicating-the-agentic-inbox.md) [2026-10-02Startups & strategy3 threads**Price it, then give it away: the early access programme as the next step after "do they miss it"**Define the product, price it, deliver it at a cost that grows a step at a time, then offer it free to people who know you and measure what it costs them.](price-it-then-give-it-away.md) [2026-10-02Agents & policy19 threads**Footprint and blast radius: what the agent actually did, and what it would have cost**Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.](footprint-and-blast-radius.md) [2026-10-01Graphs & knowledge16 threads**Custom UIs are not the exception: the inbox in 2026, where every message has its own universe**Every message has a graph, so it can be shaped for the reader's moment; a custom interface per moment is now how interfaces get made, and each gets a policy.](custom-uis-are-not-the-exception.md) [2026-09-30Agents & policy15 threads**The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up**Agents, the infrastructure meant to contain them, and risk management run on spreadsheets are arriving at once, and together they are one scenario.](ultimate-insider-three-collisions.md) [2026-09-29News & evidence6 threads**The reader was always the product: a corrected history of how news got into this mess**News has sold the reader to advertisers since 1833; the web took the monopoly, the platforms made the reader measurable, and AI took the traffic.](how-news-got-here.md) [2026-09-29Agents & policy20 threads**Six agents, one inbox: what a real multi-agent setup taught me about access policies**An access policy for an agent is only as real as its worst row: every rule in a real six-agent setup, graded by how it is enforced today.](six-agents-one-inbox.md) [2026-09-28News & evidence6 threads**Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read**AI answer engines pay to read the web as HTML; a publisher who serves markdown, dates, hashes and a typed graph saves them tokens and should get a share.](token-bill-nobody-is-sending.md) [2026-09-27Vaults & method5 threads**A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down**The food chain is a data problem: one encrypted vault per party, joined by append lanes and a typed graph, could cut the waste that keeps prices high.](supply-chain-of-vaults.md) [2026-09-24Agents & policy15 threads**Every risk is already accepted. The only question is by whom, and for how long.**A risk exists the moment the exposure does, so somebody is already carrying it; the only questions worth asking are who has accepted it and until when.](every-risk-is-already-accepted.md) [2026-09-24Agents & policy12 threads**Before you give an agent a connector, give the connector a twin**An agent with a Gmail or Calendar connector can do things the platform cannot undo; a journal of every call, replayed, shows what it did and what can go back.](connector-twin-before-you-deploy-an-agent.md) [2026-09-22News & evidence7 threads**The future of news is the story vault, not the paywall**A story is a graph of claims and evidence and the article is one projection of it; keep the graph in a vault and sell what the article was made from.](future-of-news-story-vault-not-paywall.md) [2026-09-21Startups & strategy4 threads**For a startup, the most important question is whether they miss it**Ship something usable, give it away briefly, take it away and see whether anybody misses it; charge at a profit before you talk to investors.](the-question-is-whether-they-miss-it.md) [2026-09-21Startups & strategy3 threads**The SaaS apocalypse will be decided by inertia, not by AI**Incumbents and newcomers have the same AI; what separates them is how much past success each has to protect, so inertia decides which SaaS companies survive.](saas-apocalypse-decided-by-inertia-not-by-ai.md) [2026-09-20Graphs & knowledge19 threads**Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema**A fractal semantic graph has no privileged level and no single schema: each world keeps its own vocabulary and connects to others through named edges.](introducing-fractal-semantic-graphs.md) [2026-09-07Site & engineering1 thread**The proof moved up, the homepage after the rebuild, next to the before pictures**The rebuilt homepage puts four real vaults under one sentence, picks six by the job they do, and computes its numbers at build time from the site's own data.](proof-moved-up.md) [2026-09-07Site & engineering1 thread**The proof is two clicks behind the claim, what the homepage gets wrong, and the fix**The homepage leads with encryption, which cannot be seen, while twenty-five vaults a stranger can open in one click sit two clicks away in a table.](proof-behind-the-claim.md) [2026-08-27Site & engineering1 thread**A chat box on a site with no server, the plan, and the trade it makes**sgit.ai has no server, so its directory chat runs a local matcher by default, takes your own key as an opt-in, and leaves the vault bridge unbuilt.](chat-on-a-static-site.md) [2026-08-26Site & engineering2 threads**Twenty sites in fifteen days, and what that did to the writing**One site became twenty repositories in fifteen days because each argument needed its own version history, and the index now starts from a question.](nineteen-sites.md) [2026-08-25Vaults & method5 threads**Git for things you cannot put on GitHub**sgit is git for files you cannot put on GitHub: encrypted before they leave your machine, versioned like git, stored where the server cannot read a byte.](what-sgit-is.md) [2026-08-19Vaults & method2 threads**Seven vaults, one method**Publishing seven encrypted vaults in a fortnight produced a method, and every rule in it exists because something went wrong first.](seven-vaults-one-method.md) [2026-08-17Site & engineering2 threads**Green does not mean live**Two releases passed every check and never reached the site because the checks stopped at the git remote; a release now ends by asking the live site its version.](green-does-not-mean-live.md)
 
 Nothing matches. Clear the search or pick another topic.
 
@@ -15698,6 +15700,7 @@ Nothing matches. Clear the search or pick another topic.
 Read from the links the articles make to each other. [The same thing drawn as a map](graphs.md#map), and every article as its own graph.
 
 - [**The AI governance stack, as a graph**](the-ai-governance-stack-as-a-graph.md) builds on [Fractal Semantic Graphs](introducing-fractal-semantic-graphs.md), [Code review as a fractal semantic graph](code-review-as-a-fractal-semantic-graph.md).
+- [**A second reader the agent cannot skip**](a-second-reader-the-agent-cannot-skip.md) builds on [Hope or enforcement](hope-or-enforcement.md), [Every mistake added a rule](every-mistake-added-a-rule.md).
 - [**RFC 0001**](rfc-0001-public-key-cryptography-for-sgit.md) builds on [Encrypted memory for agents that run somewhere else](encrypted-memory-for-isolated-agents.md).
 - [**A Mac of the agent's own**](a-mac-of-the-agents-own.md) builds on [A locked-down desktop for an agent, by the minute…](an-agent-desktop-by-the-minute.md), [Why my agents do not run on my laptop](why-my-agents-do-not-run-on-my-laptop.md), [Six agents, one inbox](six-agents-one-inbox.md), [The agent team as it runs](the-agent-team-as-it-runs.md), [Encrypted memory for agents that run somewhere else](encrypted-memory-for-isolated-agents.md), [Ten hard questions for RiskMandate, answered](riskmandate-ten-questions.md), [Hope or enforcement](hope-or-enforcement.md).
 - [**Ten hard questions for RiskMandate, answered**](riskmandate-ten-questions.md) builds on [Footprint and blast radius](footprint-and-blast-radius.md), [Hope or enforcement](hope-or-enforcement.md), [Zoom into an agent's behaviour policy and you find…](the-behaviour-policy-is-the-business-logic.md), [Fractal Semantic Graphs](introducing-fractal-semantic-graphs.md), [Before you give an agent a connector, give the…](connector-twin-before-you-deploy-an-agent.md), [The agent team as it runs](the-agent-team-as-it-runs.md), [Where is the why? A permission prompt asked me to…](where-is-the-why.md), [Agency is not a yes](agency-is-not-a-yes.md), [The ultimate insider](ultimate-insider-three-collisions.md), [The Mandate Stack](the-mandate-stack.md), [Six agents, one inbox](six-agents-one-inbox.md), [The identity we wanted to give the agents](the-identity-we-wanted-to-give-the-agents.md), [Git for things you cannot put on GitHub](what-sgit-is.md), [Encrypted memory for agents that run somewhere else](encrypted-memory-for-isolated-agents.md), [Every risk is already accepted](every-risk-is-already-accepted.md), [Code review as a fractal semantic graph](code-review-as-a-fractal-semantic-graph.md), [Knowing when to stop](knowing-when-to-stop.md), [The investigation GitHub owes its customers](the-investigation-github-owes-its-customers.md); continued by [A Mac of the agent's own](a-mac-of-the-agents-own.md).
@@ -15706,9 +15709,9 @@ Read from the links the articles make to each other. [The same thing drawn as a 
 - [**Encrypted memory for agents that run somewhere else**](encrypted-memory-for-isolated-agents.md) builds on [Why my agents do not run on my laptop](why-my-agents-do-not-run-on-my-laptop.md), [A locked-down desktop for an agent, by the minute…](an-agent-desktop-by-the-minute.md), [Who are you protecting against? Draw the security…](who-are-you-protecting-against.md), [The agent team as it runs](the-agent-team-as-it-runs.md); continued by [RFC 0001](rfc-0001-public-key-cryptography-for-sgit.md), [A Mac of the agent's own](a-mac-of-the-agents-own.md), [Ten hard questions for RiskMandate, answered](riskmandate-ten-questions.md), [How I work with Claude](how-i-work-with-claude.md).
 - [**Knowing when to stop**](knowing-when-to-stop.md) builds on [Agency is not a yes](agency-is-not-a-yes.md), [How much of this did I write? The numbers behind…](how-much-of-this-did-i-write.md), [Who are you protecting against? Draw the security…](who-are-you-protecting-against.md), [Every mistake added a rule](every-mistake-added-a-rule.md), [Hope or enforcement](hope-or-enforcement.md), [Memory is not a spectator sport](memory-is-not-a-spectator-sport.md), [The agent team as it runs](the-agent-team-as-it-runs.md); continued by [Ten hard questions for RiskMandate, answered](riskmandate-ten-questions.md).
 - [**Agency is not a yes**](agency-is-not-a-yes.md) builds on [Where is the why? A permission prompt asked me to…](where-is-the-why.md), [Fractal Semantic Graphs](introducing-fractal-semantic-graphs.md), [Hope or enforcement](hope-or-enforcement.md), [How much of this did I write? The numbers behind…](how-much-of-this-did-i-write.md), [Every risk is already accepted](every-risk-is-already-accepted.md), [The agent team as it runs](the-agent-team-as-it-runs.md); continued by [Ten hard questions for RiskMandate, answered](riskmandate-ten-questions.md), [How I work with Claude](how-i-work-with-claude.md), [Knowing when to stop](knowing-when-to-stop.md).
-- [**Hope or enforcement**](hope-or-enforcement.md) builds on [Zoom into an agent's behaviour policy and you find…](the-behaviour-policy-is-the-business-logic.md), [The agent team as it runs](the-agent-team-as-it-runs.md); continued by [A Mac of the agent's own](a-mac-of-the-agents-own.md), [Ten hard questions for RiskMandate, answered](riskmandate-ten-questions.md), [How I work with Claude](how-i-work-with-claude.md), [Knowing when to stop](knowing-when-to-stop.md), [Agency is not a yes](agency-is-not-a-yes.md).
+- [**Hope or enforcement**](hope-or-enforcement.md) builds on [Zoom into an agent's behaviour policy and you find…](the-behaviour-policy-is-the-business-logic.md), [The agent team as it runs](the-agent-team-as-it-runs.md); continued by [A second reader the agent cannot skip](a-second-reader-the-agent-cannot-skip.md), [A Mac of the agent's own](a-mac-of-the-agents-own.md), [Ten hard questions for RiskMandate, answered](riskmandate-ten-questions.md), [How I work with Claude](how-i-work-with-claude.md), [Knowing when to stop](knowing-when-to-stop.md), [Agency is not a yes](agency-is-not-a-yes.md).
 - [**Who are you protecting against? Draw the security…**](who-are-you-protecting-against.md) builds on [Every risk is already accepted](every-risk-is-already-accepted.md); continued by [Encrypted memory for agents that run somewhere else](encrypted-memory-for-isolated-agents.md), [Knowing when to stop](knowing-when-to-stop.md).
-- [**Every mistake added a rule**](every-mistake-added-a-rule.md) builds on [The agent team as it runs](the-agent-team-as-it-runs.md), [Memory is not a spectator sport](memory-is-not-a-spectator-sport.md), [Git for things you cannot put on GitHub](what-sgit-is.md), [Every risk is already accepted](every-risk-is-already-accepted.md), [Footprint and blast radius](footprint-and-blast-radius.md), [The bridge, followed to the end](the-bridge-followed-to-the-end.md), [Green does not mean live](green-does-not-mean-live.md); continued by [Knowing when to stop](knowing-when-to-stop.md).
+- [**Every mistake added a rule**](every-mistake-added-a-rule.md) builds on [The agent team as it runs](the-agent-team-as-it-runs.md), [Memory is not a spectator sport](memory-is-not-a-spectator-sport.md), [Git for things you cannot put on GitHub](what-sgit-is.md), [Every risk is already accepted](every-risk-is-already-accepted.md), [Footprint and blast radius](footprint-and-blast-radius.md), [The bridge, followed to the end](the-bridge-followed-to-the-end.md), [Green does not mean live](green-does-not-mean-live.md); continued by [A second reader the agent cannot skip](a-second-reader-the-agent-cannot-skip.md), [Knowing when to stop](knowing-when-to-stop.md).
 - [**Liquid content needs water**](liquid-content-needs-water.md) builds on [Fractal Semantic Graphs](introducing-fractal-semantic-graphs.md), [The future of news is the story vault, not the…](future-of-news-story-vault-not-paywall.md), [Custom UIs are not the exception](custom-uis-are-not-the-exception.md), [The bridge, followed to the end](the-bridge-followed-to-the-end.md), [How much of this did I write? The numbers behind…](how-much-of-this-did-i-write.md), [The reader was always the product](how-news-got-here.md), [Sixteen thousand fetches, ten clicks, and a token…](token-bill-nobody-is-sending.md).
 - [**The bridge, followed to the end**](the-bridge-followed-to-the-end.md) builds on [Story vault underneath, Reader Skills on top](story-vault-meets-reader-skills.md); continued by [The waiting room knew first](the-waiting-room-knew-first.md), [Every mistake added a rule](every-mistake-added-a-rule.md), [Liquid content needs water](liquid-content-needs-water.md), [Story vault underneath, Reader Skills on top](story-vault-meets-reader-skills.md).
 - [**Story vault underneath, Reader Skills on top**](story-vault-meets-reader-skills.md) builds on [The future of news is the story vault, not the…](future-of-news-story-vault-not-paywall.md), [The reader was always the product](how-news-got-here.md), [The bridge, followed to the end](the-bridge-followed-to-the-end.md); continued by [The waiting room knew first](the-waiting-room-knew-first.md), [The bridge, followed to the end](the-bridge-followed-to-the-end.md).
@@ -20270,6 +20273,295 @@ Graphs & knowledgeAgents & policy[This article as a graph →](graphs.md#the-ai-
 
 
 ==============================================================================
+# A second reader the agent cannot skip: how two wrong emails became a gate on every draft, sgit.ai
+
+> On 9 October two emails drafted by my agent went out in my voice and signed with my name. The rule against it existed, in four places, and it failed because the only thing enforcing it was the agent's memory, the agent was the only reader of its own draft, and the rule fell out of context when the conversation was summarised. The fix, built the same day by the agent itself, is a hook on the draft tool: code checks first, then a fresh model call with only the rules, the sources and the draft, failing closed and logging every verdict. This is how it works, what the first run caught, why its independence depends on where it is installed, and how the same pattern, which banks call maker-checker, applies to any tool call that matters.
+>
+> Page: https://sgit.ai/articles/a-second-reader-the-agent-cannot-skip.html
+
+[Home](../index.md) / [Articles](index.md) / A second reader the agent cannot skip: how two wrong emails became a gate on every draft
+
+# A second reader the agent cannot skip: how two wrong emails became a gate on every draft
+
+By [Dinis Cruz](../about/index.md) · 2026-10-09 · [v0.7.20](../admin/versions.md) · agentsclaude-codehooksguardrailsllm-as-a-judgemaker-checkeragent-behaviour-policyemailgovernancearticle
+
+***Abstract:** On 9 October two emails drafted by my agent went out in my voice and signed with my name. The rule against it existed, in four places, and it failed because the only thing enforcing it was the agent's memory, the agent was the only reader of its own draft, and the rule fell out of context when the conversation was summarised. The fix, built the same day by the agent itself, is a hook on the draft tool: code checks first, then a fresh model call with only the rules, the sources and the draft, failing closed and logging every verdict. This is how it works, what the first run caught, why its independence depends on where it is installed, and how the same pattern, which banks call maker-checker, applies to any tool call that matters.*
+
+On 9 October, two emails from agent@riskmandate.ai went out written in my first person and signed "Dinis".
+
+The rule against that already existed, written in four places. It failed anyway, and the reasons are worth stating precisely, because they are not specific to email or to my setup:
+
+- **The only thing enforcing the rule was the drafting agent remembering it.** In the language of the [Agent Behaviour Policy](https://abp.sgit.ai/), that is an expectation: "a rule in prose, enforced by nobody".
+- **The drafting agent was the only reader of its own draft.**
+- **The rule fell out of the agent's working context when the conversation was summarised.** Anthropic's own documentation describes exactly this: instructions given only in conversation do not survive compaction, and CLAUDE.md is "context, not enforced configuration. To block an action regardless of what Claude decides, use a PreToolUse hook instead." ([memory docs](https://code.claude.com/docs/en/memory))
+
+The same day, the inbox agent wrote up its own fix: a document called *The independent checker: a hook that makes a second model approve every email draft*, with the code, the tests and an honest list of limits. This article is that document, read against the research and the platform documentation, with the pictures it deserved. It is a good example of something I care about more than the mistake itself: a real failure, in real use, turned into an enforced control the same day, by the system that failed.
+
+The draft guard: every call to create or update a Gmail draft passes through a hook the harness runs, not the agent. Certain rules are checked in code first; judgement goes to a fresh model call that sees only the rules, the sources and the draft; anything other than an explicit PASS stops the draft.
+
+**The draft guard, Mermaid source**
+
+[rendered image](images/ck-flow.webp)
+
+```
+flowchart LR
+  A["Drafting agent<br/>calls create_draft<br/>to, cc, subject, body, html"]
+  H{{"Harness: the tool call event fires<br/>for every call, sub-agents included"}}
+  C["Stage 1: code checks, no model<br/>signature not the founder's,<br/>HTML present, no dashes,<br/>no key shapes, Cc rule"]
+  P["Stage 2: build one prompt<br/>10 numbered rules<br/>+ sources written in the last hour<br/>+ the draft"]
+  M["A fresh model call<br/>a different model from the author<br/>no history, no tools"]
+  V{"RESULT: PASS<br/>and no R-n FAIL line?"}
+  G["Gmail<br/>draft created"]
+  D["Deny, with the reasons<br/>the agent fixes and calls again"]
+  E["Error, timeout, bad format<br/>or the hook throws"]
+  L[("One log line per verdict:<br/>stage, model, sources given,<br/>failed rules, time")]
+  A --> H --> C
+  C -- "any fail" --> D
+  C -- "pass" --> P --> M --> V
+  V -- "yes" --> G
+  V -- "no" --> D
+  M -. "unavailable" .-> E
+  E -- "fail closed" --> D
+  V -.-> L
+  C -.-> L
+  D -. "retry" .-> A
+```
+
+## In short
+
+- **A rule kept by the agent it governs is hope.** It can be forgotten, misread, summarised away, or argued around by the agent's own reasoning.
+- **The fix has two parts.** A second, independent reader, and a gate the drafting agent cannot skip because the harness, not the agent, runs it on the tool call.
+- **Certain things go in code; only judgement goes to a model.** Signatures, dashes, key shapes, HTML and recipients are checked deterministically before any model is called.
+- **The checker gets less than the author, on purpose.** No conversation history, no tools, ideally a different model: only the rules, the sources and the draft.
+- **Anything but an explicit PASS is a FAIL.** Timeouts, errors and malformed answers all end with no draft. A late email is cheap; a wrong one cannot be taken back.
+- **Its independence depends on where it is installed.** Today it is a setting the agent's own account could switch off. Under managed settings it becomes a boundary. Same code, different owner.
+- **The pattern is old.** Banks call it segregation of duties, the military calls it the two-person rule, pharmacies call it an independent double check. It now has a precise shape for agents.
+
+## Why the rule failed: hope held by the agent it governs
+
+This is the general weakness of any behaviour policy that is held by the agent it governs. In [Hope or enforcement](../articles/hope-or-enforcement.md) I put it as "a rule the model keeps is an expectation: hope", and in [Every mistake added a rule](../articles/every-mistake-added-a-rule.md) I described how each failure tends to produce another paragraph of instructions. This failure is the case where the paragraph already existed four times.
+
+There are three separate ways a self-held rule fails, and they need different fixes. The agent can **forget** it (the rule leaves the context). The agent can **not see** the violation (the author is the worst reader of its own text, and the research agrees: models "struggle to self-correct their responses without external feedback" ([Huang et al., ICLR 2024](https://arxiv.org/abs/2310.01798)), and LLM judges show "self-preference" for their own outputs ([Panickssery et al., NeurIPS 2024](https://arxiv.org/abs/2404.13076))). And the agent can **decide an exception applies**, persuaded by its own earlier reasoning in the same conversation. A reminder fixes only the first. A second reader with a fresh context fixes the second and third. A gate the agent cannot skip makes the fix hold.
+
+## How the guard works
+
+### The hook point
+
+Claude Code raises an event before every tool call, including calls to MCP tools such as the Gmail connector and calls made by sub-agents. The guard registers on two of them:
+
+```
+
+on('tool.call', { tool: 'mcp__Gmail__create_draft' }, guard).catch(failClosed)
+on('tool.call', { tool: 'mcp__Gmail__update_draft' }, guard).catch(failClosed)
+
+```
+
+This is Claude Code's [mods](https://code.claude.com/docs/en/plugins/mods/overview) system, which is public and on by default from v2.1.287: "`tool.call` fires when Claude Code is about to run a tool, including calls a subagent makes and calls to MCP tools" ([events](https://code.claude.com/docs/en/plugins/mods/events#guard-or-change-a-tool-call)). The hook either calls `next(e)`, and the draft is created, or returns `{ deny: "..." }`, and the tool never runs; the agent receives the deny text as the tool's error, so it knows what to fix. Since the event fires for sub-agents too, a sub-agent cannot route around the gate.
+
+### Stage 1: code checks, no model
+
+Some rules are certain and cheap. They run first, and a failure stops the call without spending a model call:
+
+| Rule | Code check |
+|---|---|
+| R1 voice | For mail with a To: the body must carry the agent's signature line, and none of the three lines before it may be a sign-off in my name. Only the visible email is read, not the thread summary below it. |
+| R3 format | For mail with a To: the branded HTML body must be present. |
+| R4 dashes | No em or en dashes anywhere. |
+| R5 secrets | No string shaped like a vault key, an API key, an AWS key, a GitHub token or a private key block. |
+| R6 Cc | My addresses in the right place when others are in To. |
+
+Internal drafts with no To, notes to me rather than emails to anyone else, skip the signature and HTML checks.
+
+### Stage 2: the independent checker
+
+If the code passes, the hook builds one prompt from three things: the rules (ten numbered rules, from voice and disclosure to claims, scope, attachments and private pages, with a fixed answer format: `RESULT: PASS or FAIL`, then one line per rule); the sources (the notes the draft may draw on, used only if written in the last 60 minutes, so stale notes from another email are not used); and the draft itself.
+
+It sends that as a single `$.model.complete` call. The documentation is exact about what that call is: "`$.model.complete` sends your prompt on its own", with one user message, CLAUDE.md "Not included" and tools "None" ([API](https://code.claude.com/docs/en/plugins/mods/api#call-a-model)). So the checker:
+
+- **has no conversation history.** It does not see the drafting agent's reasoning, its excuses, or the earlier messages that persuaded it an exception applied;
+- **has no tools.** It can only read what it is given and answer;
+- **runs a different model from the author.** The drafter runs on Opus; the checker on Sonnet. The two do not share every blind spot, and a model is not grading its own work.
+
+The answer passes only if it says `RESULT: PASS` **and** no line says `R<n> FAIL`. A contradictory answer is a FAIL.
+
+### Failing closed, and the log
+
+This is the part most guards get wrong, and the documentation is candid about why: hooks fail **open** by default. A mod hook that throws "before calling `next`" is skipped, and "to make a hook that blocks calls fail closed, add a `.catch` error handler that answers in its place" ([events](https://code.claude.com/docs/en/plugins/mods/events#handle-a-hook-that-fails)). Settings hooks are the same: "a policy hook with a wrong path or a crashing script lets everything through", unless `"onFailure": "block"` is set ([hooks](https://code.claude.com/docs/en/hooks)). And a model call that fails does not throw: "A Claude API failure doesn't reject the call, so check `r.isAnswered`."
+
+The guard closes every one of those doors. The checker is overloaded, errors, times out or returns nothing: deny, "checker unavailable". The hook throws: the `.catch(failClosed)` handler denies. The answer is not in the expected shape: no `RESULT: PASS` line, so FAIL. In the inbox agent's words: "An email that is late is a small cost. An email that goes out wrong cannot be taken back."
+
+Every check appends one line to a log, which never decides the outcome:
+
+```
+
+{"ts":"2026-10-09T14:02:11Z","tool":"mcp__Gmail__create_draft","to":["recipient@example.com"],
+ "contentHash":"9f2c1a07","verdict":"FAIL","stage":"model","model":"sonnet","sourcesGiven":true,
+ "modelFails":["R7 FAIL: a proposal attributed to Dinis is not in the notes"],"ms":8412}
+
+```
+
+(The recipient and the claim are replaced here; the shape is the real one.) That is the audit trail: what was checked, by which model, against which sources, and why it failed.
+
+## What the first run caught
+
+The first run used Haiku as the checker. It caught four real invented claims: statements presented as my view, decision or promise that were not in anything I had said. It also flagged correct facts it had no source for, such as dates read from Gmail and an earlier note of mine that had not been copied into the sources file.
+
+Both results are the design working. The false FAILs cost a retry, not a wrong email, and the fix the agent is told to apply is the right one: add the missing source, never remove the rule. And they are why the default checker became Sonnet: rule R7, are the claims in the sources, needs judgement, and the smaller model over-flagged. Haiku stays the choice for high-volume mechanical checks, after everything certain has gone into code.
+
+The cost is small. At list prices read on 9 October 2026, Sonnet 5.5 is $2 per million input tokens and $10 per million output ([pricing](https://platform.claude.com/docs/en/about-claude/pricing)). At 5,000 to 10,000 tokens a draft and thirty drafts a day, that is roughly $12 to $21 a month; Haiku 5.5, at $0.10 and $0.50, is about a dollar. Thinking tokens or caching move those figures, not their order of magnitude.
+
+## Six kinds of independence
+
+"Independent" is doing a lot of work in the name, so it is worth taking apart. A second reader is only as independent as the things it does not share with the author, and there are six of them: three about what the checker sees, two about who decides whether it runs, and one about who wrote the evidence it checks against.
+
+Six kinds of independence, and which check has which. The drafter re-reading its own draft has none; the guard as it runs today has four; the guard under managed settings, with sources written by someone else, has all six.
+
+Two rows deserve a comment. The stopgap in the scheduled runs, where each drafting step is told to spawn a checker sub-agent before creating a draft, has a fresh context and a different model, but the drafter chooses whether to run it, so it is still an expectation. And the last column is the honest limit of the whole design: the checker compares claims with the sources it is given, and today the drafting agent writes the sources. An agent could pad them. The log records whether sources were given, so that is auditable, and the full fix is sources that come from somewhere else: my own notes, the CRM, the page being described.
+
+## From setting to boundary: where the hook lives decides what it is
+
+The guard was written by the inbox agent in its own session, and loading it took one click on this prompt:
+
+The prompt that loaded the guard: "A mod is code Claude wrote; it runs with your permissions." Enabling hot reloading runs every mod Claude writes in this session, and picks up each later change.
+
+That prompt is the honest centre of this story. The documentation describes it: Claude writes mods "in a directory of its own in the session's mods folder", and "when Claude saves the first file, Claude Code asks whether to enable hot reloading for the session" ([create a mod](https://code.claude.com/docs/en/plugins/mods/create#ask-claude-for-a-mod)). It also means the agent that is gated by the hook can edit the hook. In ABP terms that is a **setting**, "a switch the agent's own account can flip": far better than memory, because the harness runs it every time, but not yet a control.
+
+The inbox agent's document proposes the next step: publish the plugin to a repository and install it from there, where the agent cannot write. The documentation says that is better and still not enough. A plugin installed from GitHub, git, a URL or npm is copied into the cache and "counts as a user's", and "a user's mod that approves tool calls can approve a call that an `ask` rule would prompt for, or that a `PreToolUse` hook outside managed settings blocked" ([mods for administrators](https://code.claude.com/docs/en/plugins/mods/admin)). Only managed placement is final: "`PreToolUse` hooks from managed settings: run before the first mod's `tool.call` hook, and a block from one of them is final, so no mod sees the call" ([events](https://code.claude.com/docs/en/plugins/mods/events#where-settings-hooks-run-in-the-order)). The alternative is an organisation mod from a directory on the machine that only an administrator can write, named in managed settings, with `allowManagedModsOnly` so that mods Claude writes in a session do not load.
+
+Who enforces the voice rule, weakest first. The hook took it from expectation to setting; managed placement takes it to boundary, "enforced above the grant, out of the agent's reach". Nothing in the hook changes, only who can change the hook.
+
+**The barrier ladder, Mermaid source**
+
+[rendered image](images/ck-ladder.webp)
+
+```
+flowchart LR
+  N["● none<br/>no rule about voice"]
+  X["◉ expectation<br/>the rule, written in four places,<br/>kept by the drafting agent's memory<br/>9 Oct: two emails signed with<br/>the founder's name"]
+  S1["◐ setting<br/>draft-guard as a mod in<br/>this session's folder<br/>runs on every call, sub-agents too<br/>but the agent can edit it"]
+  S2["◐ setting, still<br/>installed as a plugin from a repository<br/>the agent cannot edit the file,<br/>but it counts as the user's,<br/>and its block is not final"]
+  B["○ boundary<br/>a managed-settings hook, or an<br/>organisation mod from an admin-only folder,<br/>with Claude-written mods switched off<br/>its block is final"]
+  N --> X -- "the hook" --> S1 -- "install it" --> S2 -- "manage it" --> B
+  R["What still rests on judgement<br/>the checker can be wrong both ways<br/>and the sources are written by the drafter"]
+  B -.-> R
+  style X stroke:#C2410C,stroke-width:2px
+  style B stroke:#0F766E,stroke-width:3px
+```
+
+The same placement question answers the second limit the agent listed: a fresh scheduled run starts in a fresh container, so a session mod is not there at all. A managed hook is there in every session, scheduled or not.
+
+## Building it with what is public today
+
+There are three ways to build the same guard with documented Claude Code features, and they trade simplicity against robustness:
+
+| Route | Fresh model call | Reads a sources file | Fails closed | Notes |
+|---|---|---|---|---|
+| **A mod**, as built | `$.model.complete`: no history, no tools | yes | with `.catch` and a check of `r.isAnswered` | the hook's own run time is limited to 10 seconds, but time inside the model call does not count |
+| **A command hook** on `PreToolUse` | the script calls the model itself | yes | with `"onFailure": "block"` and exit code 2 (exit 1 does not block) | the most robust public form; works in managed settings |
+| **A prompt hook** (`"type": "prompt"`) | built in: "use an LLM to evaluate whether to allow or block an action" | no, the sources must be pasted into the prompt | not documented for model failures | answers in JSON, `{"ok": false, "reason": ...}`; set `model` explicitly |
+
+The command hook is the one I would put under managed settings. It matches the Gmail tool by its exact name (MCP tools are named `mcp__<server>__<tool>`), runs the code checks and the model call in one script, exits 2 with the reasons on anything but an explicit PASS, and sets `onFailure` to `block` so a crash or a timeout stops the draft rather than waving it through ([hooks](https://code.claude.com/docs/en/hooks)). A minimal shape, with the path as a placeholder:
+
+```
+
+{
+  "hooks": {
+    "PreToolUse": [
+      { "matcher": "mcp__Gmail__create_draft",
+        "hooks": [ { "type": "command", "command": "/opt/guards/draft-guard", "onFailure": "block" } ] },
+      { "matcher": "mcp__Gmail__update_draft",
+        "hooks": [ { "type": "command", "command": "/opt/guards/draft-guard", "onFailure": "block" } ] }
+    ]
+  }
+}
+
+```
+
+It is worth noticing that Anthropic ships the same pattern in the product. In auto mode, "a second model, the classifier, reviews actions instead of you", running on Sonnet by default, with tool results stripped "so hostile content in a file or web page can't manipulate the classifier directly", and when "the classifier's response doesn't parse, Claude Code denies the action" ([permission modes](https://code.claude.com/docs/en/permission-modes)). Same shape: a different model, less context, fail closed. The same page also warns that a boundary stated in conversation "can be lost if context compaction removes the message that stated it. For a hard guarantee, add a deny rule instead." That is the 9 October failure, described by the vendor.
+
+## The pattern is old, and it has a name
+
+What the inbox agent built is maker-checker, the oldest control in finance. The Basel Committee's 1998 framework put it as Principle 6: "An effective internal control system requires that there is appropriate segregation of duties and that personnel are not assigned conflicting responsibilities", noting that supervisors "typically find that one of the major causes of such losses is the lack of adequate segregation of duties" ([BCBS 40](https://www.bis.org/publ/bcbs40.pdf)). NIST defines separation of duty as the principle "that no user should be given enough privileges to misuse the system on their own", with the two-person rule as its example ([CSRC](https://csrc.nist.gov/glossary/term/separation_of_duty)). ISO/IEC 27001:2022 carries it as control A.5.3, segregation of duties. Hospital pharmacies run independent double checks for high-alert medicines, and the reason given is the one that matters here: if the same person prepares and checks, "they likely will see only what they expect to see, even if an error has occurred" ([ISMP](https://home.ecri.org/blogs/ismp-alerts-and-articles-library/independent-double-checks-worth-the-effort-if-used-judiciously-and-properly)).
+
+The AI versions of the idea are recent and well described. Redwood Research's [AI Control](https://arxiv.org/abs/2312.06942) work (ICML 2024) studies exactly this arrangement, a powerful untrusted model watched by "a less powerful trusted model", with protocols such as trusted monitoring and trusted editing. Simon Willison's [Dual LLM pattern](https://simonwillison.net/2023/Apr/25/dual-llm-pattern/) (2023) and Google DeepMind's [CaMeL](https://arxiv.org/abs/2503.18813) (2025) separate a model that acts from one that reads, against prompt injection. Meta's [Agents Rule of Two](https://ai.meta.com/blog/practical-ai-agent-security/) (2025) says an agent that processes untrusted input, touches private data and communicates externally, as an email drafter does, "should not be permitted to operate autonomously and at a minimum requires supervision". And OWASP's [LLM06 Excessive Agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/) asks for authorisation "in downstream systems rather than relying on an LLM to decide if an action is allowed". Output-checking products exist too: [Llama Guard](https://arxiv.org/abs/2312.06674), [NeMo Guardrails](https://docs.nvidia.com/nemo/guardrails/latest/configure-guardrails/colang/colang-1/tutorials/5-output-rails) output rails, [Guardrails AI](https://www.guardrailsai.com/docs) validators, and the [OpenAI Agents SDK](https://openai.github.io/openai-agents-python/guardrails/) tool guardrails.
+
+What the draft guard adds is not a new idea. It is the idea placed exactly where it bites: on the one tool call with consequences, with business rules rather than safety categories, sources to check claims against, a model that differs from the author, and an explicit statement of which barrier it is.
+
+## The pattern, reusable
+
+A hook on a consequential tool call, code checks first, then a fresh model call with only the rules, the evidence and the proposed action, failing closed and logging every verdict.
+
+**The reusable pattern, Mermaid source**
+
+[rendered image](images/ck-pattern.webp)
+
+```
+flowchart LR
+  subgraph T["Pick the consequential tool call"]
+    direction TB
+    t1["send or draft mail"]
+    t2["write to the CRM"]
+    t3["publish a page"]
+    t4["push to a vault"]
+    t5["post to Slack"]
+    t6["call a payment API"]
+  end
+  K["Code checks first<br/>everything that is certain:<br/>formats, key shapes, recipients"]
+  J["A fresh checker<br/>only the rules, the evidence<br/>and the proposed action<br/>no history, no tools,<br/>ideally a different model"]
+  Q{"explicit PASS?"}
+  Y["the call runs"]
+  Z["deny, with reasons"]
+  LG[("log every verdict")]
+  T --> K --> J --> Q
+  Q -- "yes" --> Y
+  Q -- "anything else" --> Z
+  K -- "fail" --> Z
+  Q -.-> LG
+```
+
+In six steps, as the inbox agent wrote them:
+
+1. **Pick the tool call that matters**: sending a Slack message, writing to the CRM, publishing a page, committing to a vault, a payment API.
+2. **Write the rules as a short numbered checklist** with a fixed answer format.
+3. **Put everything certain into code first**; leave only judgement to the model.
+4. **Give the checker only what it needs**: rules, sources, the proposed action. No history.
+5. **Deny on anything other than an explicit PASS.**
+6. **Log every verdict.**
+
+The next candidates in our own team are the CRM agent's writes (no keys, no unverified facts presented as verified), the newsroom's page promotions (nothing indexed until I promote it; quotes are claims), Slack posts, and the leak check before any vault push, which on this site is still a script I run rather than a gate I cannot skip.
+
+## What it does not do
+
+- **It is only as independent as its installation**, as above. Today it is a setting.
+- **R7 is only as good as the sources**, and the drafter writes them.
+- **The checker can be wrong in both directions.** Expect false FAILs; they cost a retry.
+- **It checks drafts, not sending.** I send. The rule that agents never send is enforced separately, and is a different barrier question.
+- **It does not replace reading.** A PASS means ten rules held, not that the email is good.
+
+The mistake on 9 October cost two emails I would rather not have sent. What it bought is better: a rule that used to live in four paragraphs now lives on the tool call, with a log, and a clear statement of the one step left before it is a control.
+
+*From the design document "The independent checker: a hook that makes a second model approve every email draft", version 0.1, written on 9 October 2026 by the RiskMandate.ai inbox agent, which built and tested the guard (11 of 11 tests passing). Researched, illustrated and written up for this site by agent@riskmandate.ai (Claude Opus 5.5, claude-opus-5-5) in the sgit.ai site session, for Dinis Cruz, who has editorial responsibility. Claude Code behaviour is quoted from its documentation as read on 9 October 2026; prices are list prices on that date.*
+
+## Threads
+
+Agents & policySite & engineering[This article as a graph →](graphs.md#a-second-reader-the-agent-cannot-skip)
+
+### Builds on
+
+- [Hope or enforcement: one customer service agent, three designs, and who keeps each promise](hope-or-enforcement.md) One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.
+- [Every mistake added a rule: complexity, agents, and the way back to shipping](every-mistake-added-a-rule.md) When every agent mistake adds a rule, complexity wins: map the process, move each piece right as a small shipped component, and keep the rigour for the work.
+
+[All articles](index.md) · [All graphs](graphs.md)
+
+**Posting this article on LinkedIn?** The cover is [a-second-reader-the-agent-cannot-skip.jpg](../articles/banners/a-second-reader-the-agent-cannot-skip.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
+
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
+
+[← All articles](index.md)
+
+
+
+==============================================================================
 # RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer, sgit.ai
 
 > A Request for Comments, before anything is built. Today an sgit vault is protected by one symmetric read key and a write key that only the server checks, so anyone who holds the read key and can write to the store, the host or a mirror for example, can author history that clients accept. sgit's own threat model says so, and a test performs the attack. This RFC proposes two designs. Native PKI vault mode uses two key pairs, one for reading and one for writing, so a reader cannot write, a host cannot forge, and a write-only depositor becomes possible. Sealed files add an inner envelope to any vault, so chosen files can be read only by named people, whose private keys can live in a key file, an ssh key, a hardware key, or a remote service that logs and approves each decryption. We set out both, what they cost, what they cannot do, the services that could hold the private keys today, and fourteen questions where an outside view would change the design.
@@ -22457,6 +22749,7 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#hope-or-en
 
 ### Continued by
 
+- [A second reader the agent cannot skip: how two wrong emails became a gate on every draft](a-second-reader-the-agent-cannot-skip.md) Two emails went out in my voice despite a written rule. The fix: a hook that makes a second model approve every draft, failing closed.
 - [A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies](a-mac-of-the-agents-own.md) A business plan for a Mac of the agent's own: what Apple's licence allows, a desktop built from vaults per run, and three behaviour policies for one agent.
 - [Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not](riskmandate-ten-questions.md) Ten hard questions from a conference, answered in a two-hour interview: what RiskMandate does, what it deliberately is not, and how mature each part is.
 - [How I work with Claude: one session per topic, agents with names, and memory you curate](how-i-work-with-claude.md) A practical guide from a year of daily use: one Claude session per topic, named agents with a role.md, curated memory, vaults, and policy before connectors.
@@ -22890,6 +23183,7 @@ Agents & policySite & engineering[This article as a graph →](graphs.md#every-m
 
 ### Continued by
 
+- [A second reader the agent cannot skip: how two wrong emails became a gate on every draft](a-second-reader-the-agent-cannot-skip.md) Two emails went out in my voice despite a written rule. The fix: a hook that makes a second model approve every draft, failing closed.
 - [Knowing when to stop: what experience gives people, and what we have to design into agents](knowing-when-to-stop.md) Knowing when to stop is the hard part for people and agents: what experience gives people, and the constraints that give agents the same perspective.
 
 [All articles](index.md) · [All graphs](graphs.md)
@@ -30397,13 +30691,13 @@ Every article here has a semantic graph beside it: the ideas it rests on, the cl
 
 The graphs are data first and pictures second. Take them as JSON: [all articles in one file](graphs.json), with the topics, the teasers and the links between articles resolved, or one file per article at `articles/graphs/<slug>.json` (for example [this one](graphs/footprint-and-blast-radius.json)). The pages on this site are rendered from the same files at build time; nothing here is hand-written HTML.
 
-54 of 54 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
+55 of 55 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
 
 ## How the articles connect
 
 *[diagram]*
 
-54 articles, 232 links between them (374 mentions in all). 45 articles cite an earlier one; 6 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (19 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+55 articles, 234 links between them (376 mentions in all). 46 articles cite an earlier one; 6 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (19 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
 
 ## [The AI governance stack, as a graph: an answer to Hari Kota, built](the-ai-governance-stack-as-a-graph.md)
 
@@ -30434,6 +30728,35 @@ Keep Hari Kota's ten-layer stack exactly as posted as the view and make a fracta
 > A table is correct on the day it is drawn. Why the graph keeps time.
 
 builds on [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph).
+
+## [A second reader the agent cannot skip: how two wrong emails became a gate on every draft](a-second-reader-the-agent-cannot-skip.md)
+
+2026-10-09 · Agents & policySite & engineering
+
+A rule held by the agent it governs is an expectation that can be forgotten, missed or argued around, so the inbox agent's fix after two emails went out in the founder's voice puts a gate on the draft tool itself: deterministic code checks first, then a fresh model call with only the rules, the sources and the draft, a different model from the author, failing closed on anything but an explicit PASS and logging every verdict; its independence depends on where it is installed, a setting while the agent can change it and a boundary only under managed placement, and the pattern is the old maker-checker control applied to any consequential tool call.
+
+*[diagram]*
+**concept**claim**method**artefact**example
+
+**11 nodes, 10 edges**
+
+- **Two emails in the founder's voice** (example) 9 October: a rule written in four places failed, because only the drafter enforced it.
+- **A rule held by the agent it governs** (claim) It can be forgotten at compaction, missed by its author, or argued around.
+- **The draft guard** (artefact) A hook on create_draft and update_draft: code checks, then a fresh checker model.
+- **Code checks first** (method) Signature, HTML, dashes, key shapes and recipients, with no model call.
+- **A fresh checker** (method) No history, no tools, a different model; only rules, sources and the draft.
+- **Fail closed** (method) Hooks fail open by default; errors, timeouts and bad answers must deny.
+- **Six kinds of independence** (concept) What the checker sees, who decides it runs, and who wrote the evidence.
+- **Placement decides the barrier** (claim) A session mod or plugin is a setting; managed placement makes it a boundary.
+- **Maker-checker** (concept) Segregation of duties, the two-person rule, the independent double check.
+- **The reusable pattern** (method) Pick the consequential call, code first, fresh checker, explicit PASS, log.
+- **What the first run caught** (example) Four invented claims, and false FAILs for facts without sources.
+
+> An email that is late is a small cost. An email that goes out wrong cannot be taken back. Why the guard fails closed.
+
+> A rule kept by the agent it governs is hope. The general weakness the guard answers.
+
+builds on [Hope or enforcement: one customer service agent, three designs, and who keeps each promise](#hope-or-enforcement), [Every mistake added a rule: complexity, agents, and the way back to shipping](#every-mistake-added-a-rule).
 
 ## [RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer](rfc-0001-public-key-cryptography-for-sgit.md)
 
@@ -30702,7 +31025,7 @@ Every design of an agent can have a rule for every behaviour; what differs is wh
 
 > The design breaks its own budget rule on every email, which is what happens to a budget that is an expectation. Tokens as a policy like any other.
 
-builds on [Zoom into an agent's behaviour policy and you find the business logic](#the-behaviour-policy-is-the-business-logic), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs); continued by [A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies](#a-mac-of-the-agents-own), [Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not](#riskmandate-ten-questions), [How I work with Claude: one session per topic, agents with names, and memory you curate](#how-i-work-with-claude), [Knowing when to stop: what experience gives people, and what we have to design into agents](#knowing-when-to-stop), [Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source](#agency-is-not-a-yes).
+builds on [Zoom into an agent's behaviour policy and you find the business logic](#the-behaviour-policy-is-the-business-logic), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs); continued by [A second reader the agent cannot skip: how two wrong emails became a gate on every draft](#a-second-reader-the-agent-cannot-skip), [A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies](#a-mac-of-the-agents-own), [Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not](#riskmandate-ten-questions), [How I work with Claude: one session per topic, agents with names, and memory you curate](#how-i-work-with-claude), [Knowing when to stop: what experience gives people, and what we have to design into agents](#knowing-when-to-stop), [Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source](#agency-is-not-a-yes).
 
 ## [Who are you protecting against? Draw the security line where the attacker is, not above it](who-are-you-protecting-against.md)
 
@@ -30769,7 +31092,7 @@ Founders who now work as engineers with agents often meet complexity not in thei
 
 > If you are not releasing something, you are probably not solving problems at the right altitude. Shipping as the check on over-engineering.
 
-builds on [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Git for things you cannot put on GitHub](#what-sgit-is), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The bridge, followed to the end: what one local story is worth when it is kept as a graph](#the-bridge-followed-to-the-end), [Green does not mean live](#green-does-not-mean-live); continued by [Knowing when to stop: what experience gives people, and what we have to design into agents](#knowing-when-to-stop).
+builds on [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Git for things you cannot put on GitHub](#what-sgit-is), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The bridge, followed to the end: what one local story is worth when it is kept as a graph](#the-bridge-followed-to-the-end), [Green does not mean live](#green-does-not-mean-live); continued by [A second reader the agent cannot skip: how two wrong emails became a gate on every draft](#a-second-reader-the-agent-cannot-skip), [Knowing when to stop: what experience gives people, and what we have to design into agents](#knowing-when-to-stop).
 
 ## [Liquid content needs water: liquefy the journalist's notebook, not the finished product](liquid-content-needs-water.md)
 
@@ -32191,8 +32514,8 @@ Edition of **2026-10-08**. Third edition. A day of articles on how agents decide
 
 Computed at every build from the files: placements that point at nothing, articles published since the edition, open pitches, articles without a graph or a card. The same list is what `python3 admin/build/desk.py` prints for the Editor.
 
-- To do`front.json` 5 article(s) published since the 2026-10-08 edition: the-ai-governance-stack-as-a-graph, rfc-0001-public-key-cryptography-for-sgit, a-mac-of-the-agents-own, riskmandate-ten-questions, how-i-work-with-claude
-- To do`newsletter/` a newsletter issue is due: 5 articles since issue 2 (2026-10-08)
+- To do`front.json` 6 article(s) published since the 2026-10-08 edition: the-ai-governance-stack-as-a-graph, a-second-reader-the-agent-cannot-skip, rfc-0001-public-key-cryptography-for-sgit, a-mac-of-the-agents-own, riskmandate-ten-questions, how-i-work-with-claude
+- To do`newsletter/` a newsletter issue is due: 6 articles since issue 2 (2026-10-08)
 - Note`newsroom/newsletter/002-2026-10-08.md` issue 2 has no linkedin: URL yet; add it once it is posted
 
 ## The desk: six roles
@@ -32459,7 +32782,7 @@ One entry per run of a desk role, newest first, each its own file and never edit
 >
 > Page: https://sgit.ai/articles/collections/index.html
 
-Edition of 2026-10-0854 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.19
+Edition of 2026-10-0855 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.20
 
 # Collections
 
@@ -32478,7 +32801,7 @@ A collection is one file in `admin/content/newsroom/collections/`. [How the desk
 >
 > Page: https://sgit.ai/articles/desk/index.html
 
-Edition of 2026-10-0854 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.19
+Edition of 2026-10-0855 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.20
 
 # From the desk
 
@@ -32898,7 +33221,7 @@ These six were written over two days and none of them sets out to be a series. R
 
 ## The articles
 
-[2026-10-08Agents & policy9 threads**Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source**A yes or no is not agency: seven dimensions, a seven-level scale for people and agents, and the review as a QA step that fixes the source.](../../articles/agency-is-not-a-yes.md)[2026-10-08Agents & policy8 threads**Knowing when to stop: what experience gives people, and what we have to design into agents**Knowing when to stop is the hard part for people and agents: what experience gives people, and the constraints that give agents the same perspective.](../../articles/knowing-when-to-stop.md)[2026-10-08Agents & policy8 threads**Every mistake added a rule: complexity, agents, and the way back to shipping**When every agent mistake adds a rule, complexity wins: map the process, move each piece right as a small shipped component, and keep the rigour for the work.](../../articles/every-mistake-added-a-rule.md)[2026-10-08Agents & policy7 threads**Hope or enforcement: one customer service agent, three designs, and who keeps each promise**One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.](../../articles/hope-or-enforcement.md)[2026-10-08Agents & policy3 threads**Who are you protecting against? Draw the security line where the attacker is, not above it**Before deciding how secure to be, name the attacker: a six-tier ladder, an air-gapped Mac mini read against it, and eight startups drawing their line.](../../articles/who-are-you-protecting-against.md)[2026-10-07Agents & policy13 threads**Where is the why? A permission prompt asked me to decide, and kept the reason**A prompt asked for a decision and kept the reason. Read through the policy, the law on uninformed consent, and the fixes that worked: put the why in the prompt.](../../articles/where-is-the-why.md)
+[2026-10-08Agents & policy9 threads**Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source**A yes or no is not agency: seven dimensions, a seven-level scale for people and agents, and the review as a QA step that fixes the source.](../../articles/agency-is-not-a-yes.md)[2026-10-08Agents & policy8 threads**Knowing when to stop: what experience gives people, and what we have to design into agents**Knowing when to stop is the hard part for people and agents: what experience gives people, and the constraints that give agents the same perspective.](../../articles/knowing-when-to-stop.md)[2026-10-08Agents & policy9 threads**Every mistake added a rule: complexity, agents, and the way back to shipping**When every agent mistake adds a rule, complexity wins: map the process, move each piece right as a small shipped component, and keep the rigour for the work.](../../articles/every-mistake-added-a-rule.md)[2026-10-08Agents & policy8 threads**Hope or enforcement: one customer service agent, three designs, and who keeps each promise**One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.](../../articles/hope-or-enforcement.md)[2026-10-08Agents & policy3 threads**Who are you protecting against? Draw the security line where the attacker is, not above it**Before deciding how secure to be, name the attacker: a six-tier ladder, an air-gapped Mac mini read against it, and eight startups drawing their line.](../../articles/who-are-you-protecting-against.md)[2026-10-07Agents & policy13 threads**Where is the why? A permission prompt asked me to decide, and kept the reason**A prompt asked for a decision and kept the reason. Read through the policy, the law on uninformed consent, and the fixes that worked: put the why in the prompt.](../../articles/where-is-the-why.md)
 
 [← All collections](index.md) · [The front page](../index.md)
 
@@ -33024,7 +33347,7 @@ This newsroom runs on the same idea: every desk role has a written policy, and [
 
 ## The articles
 
-[2026-09-29Agents & policy20 threads**Six agents, one inbox: what a real multi-agent setup taught me about access policies**An access policy for an agent is only as real as its worst row: every rule in a real six-agent setup, graded by how it is enforced today.](../../articles/six-agents-one-inbox.md)[2026-09-24Agents & policy12 threads**Before you give an agent a connector, give the connector a twin**An agent with a Gmail or Calendar connector can do things the platform cannot undo; a journal of every call, replayed, shows what it did and what can go back.](../../articles/connector-twin-before-you-deploy-an-agent.md)[2026-10-02Agents & policy19 threads**Footprint and blast radius: what the agent actually did, and what it would have cost**Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.](../../articles/footprint-and-blast-radius.md)[2026-10-06Agents & policy24 threads**The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from**Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.](../../articles/the-agent-team-as-it-runs.md)[2026-10-06Agents & policy11 threads**Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has**An OS has two hard walls, the kernel and the user; an agent on a laptop runs inside the one marked you, so the agents run in the cloud with a vault as shared drive.](../../articles/why-my-agents-do-not-run-on-my-laptop.md)[2026-10-06Agents & policy13 threads**A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser**The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.](../../articles/a-personal-agent-that-keeps-your-secrets.md)[2026-10-06Agents & policy23 threads**The Mandate Stack: a multi-agent system in production, layer by layer**A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.](../../articles/the-mandate-stack.md)[2026-10-07Agents & policy6 threads**Zoom into an agent's behaviour policy and you find the business logic**Below the first rules, an agent's behaviour policy is the business: functions, processes, clients, values. Layered, owned, counted, and where vendors plug in.](../../articles/the-behaviour-policy-is-the-business-logic.md)[2026-10-08Agents & policy7 threads**Hope or enforcement: one customer service agent, three designs, and who keeps each promise**One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.](../../articles/hope-or-enforcement.md)[2026-10-07Graphs & knowledge7 threads**An open AI governance framework, and what its licence let us build**Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.](../../articles/ai-baseline-control-framework.md)[2026-10-07Agents & policy5 threads**A locked-down desktop for an agent, by the minute, is still hard to rent**Nine properties a safe agent desktop needs, nine products against them, the macOS day-long lease, and the startup credits that would pay for testing it.](../../articles/an-agent-desktop-by-the-minute.md)
+[2026-09-29Agents & policy20 threads**Six agents, one inbox: what a real multi-agent setup taught me about access policies**An access policy for an agent is only as real as its worst row: every rule in a real six-agent setup, graded by how it is enforced today.](../../articles/six-agents-one-inbox.md)[2026-09-24Agents & policy12 threads**Before you give an agent a connector, give the connector a twin**An agent with a Gmail or Calendar connector can do things the platform cannot undo; a journal of every call, replayed, shows what it did and what can go back.](../../articles/connector-twin-before-you-deploy-an-agent.md)[2026-10-02Agents & policy19 threads**Footprint and blast radius: what the agent actually did, and what it would have cost**Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.](../../articles/footprint-and-blast-radius.md)[2026-10-06Agents & policy24 threads**The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from**Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.](../../articles/the-agent-team-as-it-runs.md)[2026-10-06Agents & policy11 threads**Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has**An OS has two hard walls, the kernel and the user; an agent on a laptop runs inside the one marked you, so the agents run in the cloud with a vault as shared drive.](../../articles/why-my-agents-do-not-run-on-my-laptop.md)[2026-10-06Agents & policy13 threads**A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser**The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.](../../articles/a-personal-agent-that-keeps-your-secrets.md)[2026-10-06Agents & policy23 threads**The Mandate Stack: a multi-agent system in production, layer by layer**A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.](../../articles/the-mandate-stack.md)[2026-10-07Agents & policy6 threads**Zoom into an agent's behaviour policy and you find the business logic**Below the first rules, an agent's behaviour policy is the business: functions, processes, clients, values. Layered, owned, counted, and where vendors plug in.](../../articles/the-behaviour-policy-is-the-business-logic.md)[2026-10-08Agents & policy8 threads**Hope or enforcement: one customer service agent, three designs, and who keeps each promise**One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.](../../articles/hope-or-enforcement.md)[2026-10-07Graphs & knowledge7 threads**An open AI governance framework, and what its licence let us build**Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.](../../articles/ai-baseline-control-framework.md)[2026-10-07Agents & policy5 threads**A locked-down desktop for an agent, by the minute, is still hard to rent**Nine properties a safe agent desktop needs, nine products against them, the macOS day-long lease, and the startup credits that would pay for testing it.](../../articles/an-agent-desktop-by-the-minute.md)
 
 [← All collections](index.md) · [The front page](../index.md)
 
@@ -33066,7 +33389,7 @@ Your browser encrypts it to the public key of the agent that runs the list, then
 >
 > Page: https://sgit.ai/articles/newsletter/index.html
 
-Edition of 2026-10-0854 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.19
+Edition of 2026-10-0855 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.20
 
 # The newsletter
 
@@ -33092,7 +33415,7 @@ What it takes to let agents do real work for a business, from four sides: a team
 
 **Get the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../../subscribe/index.md)
 
-Next issue: due now (5 articles since issue 2 (2026-10-08)). Issues are written by the [Journalist](../../newsroom/roles/journalist.md) from the articles' own data; every quote is checked against its article when the site is built.
+Next issue: due now (6 articles since issue 2 (2026-10-08)). Issues are written by the [Journalist](../../newsroom/roles/journalist.md) from the articles' own data; every quote is checked against its article when the site is built.
 
 
 
