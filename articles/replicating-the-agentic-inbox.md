@@ -2,7 +2,7 @@
 
 > Two calls in one day asked the same thing, how do I copy your email setup, so this is the walkthrough. It is the first agentic email workflow I have run that puts me more in control rather than less, and the reason is the behaviour policies, not the model. The idea is to use Claude as an agent state machine, one session per role, with every message between agents a file in a vault and every outgoing email a draft that a person reads and sends. The setup goes in phases. Phase 0 is the accounts, a Google Workspace mailbox of its own on a domain you own, a Claude Team seat for the agent with the connectors enabled by the admin and connected by the agent's account, your own calendar shared read-only, and a GitHub account on the same identity. Phase 1 is one session, the inbox agent, with a behaviour policy written before the first run. Phase 2 splits the roles, inbox, drafts, CRM, briefs, dev, each a session with its own policy, talking in files through Email-FS lite. Phase 3 adds the interfaces, the record and, when you get there, a conductor that runs every role once on a schedule with a security role first and last. The rule that never changes is the one that makes it work, the agent drafts and a person sends. Revised on 3 October with the dev agent's review: eight figures, the roles as they are now named, the clone cost, the key rotation, and the security hold.
 
-*Source: <https://sgit.ai/articles/replicating-the-agentic-inbox.html> · site v0.7.11 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/replicating-the-agentic-inbox.html> · site v0.7.12 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -175,6 +175,7 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#replicatin
 
 ### Continued by
 
+- [How I work with Claude: one session per topic, agents with names, and memory you curate](how-i-work-with-claude.md) A practical guide from a year of daily use: one Claude session per topic, named agents with a role.md, curated memory, vaults, and policy before connectors.
 - [The Mandate Stack: a multi-agent system in production, layer by layer](the-mandate-stack.md) A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.
 - [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](the-agent-team-as-it-runs.md) Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.
 - [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](how-much-of-this-did-i-write.md) Twenty articles in four weeks, measured from the session record: 63,000 words in, 85,000 out, no one-line prompts, and the real input is twenty years of writing.

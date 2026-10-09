@@ -6,6 +6,23 @@
  "generated_by": "admin/build/build_pages.py",
  "entries": [
   {
+   "slug": "how-i-work-with-claude",
+   "kind": "article",
+   "kicker": "SGit Newsroom",
+   "date": "2026-10-09",
+   "author": "Dinis Cruz",
+   "title": "How I work with Claude: one session per topic, agents with names, and memory you curate",
+   "teaser": "A practical guide from a year of daily use: one Claude session per topic, named agents with a role.md, curated memory, vaults, and policy before connectors.",
+   "ideas": [
+    "Mixed threads mix context",
+    "Access by default",
+    "Policy before connectors"
+   ],
+   "hero": "articles/images/hw-setup.webp",
+   "url": "sgit.ai/articles/how-i-work-with-claude.html",
+   "out": "articles/banners/how-i-work-with-claude.jpg"
+  },
+  {
    "slug": "the-waiting-room-knew-first",
    "kind": "article",
    "kicker": "SGit Newsroom",
@@ -896,10 +913,10 @@
     "Next: an issue picked for what you care about"
    ],
    "mosaic": [
+    "articles/cards/how-i-work-with-claude.webp",
     "articles/cards/the-waiting-room-knew-first.webp",
     "articles/cards/encrypted-memory-for-isolated-agents.webp",
-    "articles/cards/knowing-when-to-stop.webp",
-    "articles/cards/agency-is-not-a-yes.webp"
+    "articles/cards/knowing-when-to-stop.webp"
    ],
    "url": "sgit.ai/subscribe/",
    "out": "articles/banners/subscribe.jpg"

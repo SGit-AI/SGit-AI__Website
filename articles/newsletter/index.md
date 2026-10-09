@@ -2,11 +2,11 @@
 
 > The regular issue of the SGit Newsroom: what was published, what it adds up to, and the pieces worth reading, also published on LinkedIn.
 
-*Source: <https://sgit.ai/articles/newsletter/index.html> · site v0.7.11 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/newsletter/index.html> · site v0.7.12 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
-Edition of 2026-10-0849 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.11
+Edition of 2026-10-0850 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.12
 
 # The newsletter
 
@@ -32,7 +32,7 @@ What it takes to let agents do real work for a business, from four sides: a team
 
 **Get the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../../subscribe/index.md)
 
-Next issue: not yet due (0 article(s) since issue 2; due at 5 or after 7 days). Issues are written by the [Journalist](../../newsroom/roles/journalist.md) from the articles' own data; every quote is checked against its article when the site is built.
+Next issue: not yet due (1 article(s) since issue 2; due at 5 or after 7 days). Issues are written by the [Journalist](../../newsroom/roles/journalist.md) from the articles' own data; every quote is checked against its article when the site is built.
 
 
 ---

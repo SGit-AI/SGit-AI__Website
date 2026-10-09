@@ -2,7 +2,7 @@
 
 > How the articles on sgit.ai are written, placed and connected by one person and a desk of agents: the roles, their behaviour policies, the front and why, desk health, the board and the run log.
 
-*Source: <https://sgit.ai/newsroom/index.html> · site v0.7.11 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/newsroom/index.html> · site v0.7.12 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -46,6 +46,7 @@ Edition of **2026-10-08**. Third edition. A day of articles on how agents decide
 
 Computed at every build from the files: placements that point at nothing, articles published since the edition, open pitches, articles without a graph or a card. The same list is what `python3 admin/build/desk.py` prints for the Editor.
 
+- To do`front.json` 1 article(s) published since the 2026-10-08 edition: how-i-work-with-claude
 - Note`newsroom/newsletter/002-2026-10-08.md` issue 2 has no linkedin: URL yet; add it once it is posted
 
 ## The desk: six roles
