@@ -2,7 +2,7 @@
 
 > A vault for the moments when a local public service is running badly and nothing a local person could check says so: evidence by level, fourteen claims and what would resolve them, twenty six sources and how each was reached, the leads that do not fit, sixteen places a local could look, the enquiry to the trust, and scheduled re-checks. First incident: reported IT disruption at two London hospitals on 8 October 2026. Published with its read key.
 
-*Source: <https://sgit.ai/demos/vaults/local-evidence-log/index.html> · site v0.7.13 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/local-evidence-log/index.html> · site v0.7.14 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

@@ -2,15 +2,15 @@
 
 > The regular issue of the SGit Newsroom: what was published, what it adds up to, and the pieces worth reading, also published on LinkedIn.
 
-*Source: <https://sgit.ai/articles/newsletter/index.html> · site v0.7.13 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/newsletter/index.html> · site v0.7.14 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
-Edition of 2026-10-0851 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.13
+Edition of 2026-10-0851 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.14
 
 # The newsletter
 
-The regular issue of the SGit Newsroom: what was published, what it adds up to, and the pieces worth your time. Weekly, or sooner when there is enough to say. The same issue goes out as a LinkedIn article in *Deterministic GenAI*.
+The regular issue of the SGit Newsroom: what was published, what it adds up to, and the pieces worth your time. Weekly, or sooner when there is enough to say. The same issue goes out as a LinkedIn article in [Deterministic GenAI](https://www.linkedin.com/newsletters/deterministic-genai-7174563523795005440/).
 
 ## Issues
 

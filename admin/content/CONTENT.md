@@ -68,6 +68,7 @@ summary: One or two sentences. Required — it is the card text and the meta des
 version: v0.2.33                 # optional
 tags: ci, deploy                 # optional
 status: published
+linkedin: https://www.linkedin.com/pulse/...   # optional — once cross-posted; shown in the byline
 ---
 ```
 

@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.7.13). Nothing here needs a second request. Individual pages live at the paths
+> (v0.7.14). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -73,7 +73,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-275site releases, each verified live before it was called done
+276site releases, each verified live before it was called done
 
 48vaults published with a deliberately public read key
 
@@ -6251,7 +6251,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.7.13, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.7.14, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -6614,7 +6614,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-275**site releases since 14 August**
+276**site releases since 14 August**
 each verified live before it was called done
 
 48**vaults published with a public read key**
@@ -12043,12 +12043,14 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.7.13**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
+The site version (**v0.7.14**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
 
-| v0.7.13 | 2026-10-09 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.12...v0.7.13) | TEN HARD QUESTIONS FOR RISKMANDATE, ANSWERED. A new article from a two-hour interview in which Claude, acting as a journalist with an eye for detail, challenged Dinis on ten questions a co-founder brought back from a conference: bypass, keeping policies current, tailoring and price, insurance and liability, differentiation, the supply chain, who enforces, remediation, agent to agent, and outcomes. Written for readers who have not seen the questions: the model every answer rests on, the questions, the answers in brief, three things RiskMandate deliberately is not, an honest maturity table, three fixes the exercise found on riskmandate.ai (checked and still present), and the ten answers in full, linked to 46 pages across sgit.ai, abp.sgit.ai and riskmandate.ai. One figure with its Mermaid source, graph JSON.[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.12...v0.7.13). |
+| v0.7.14 | 2026-10-09 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.13...v0.7.14) | THE LINKEDIN SIDE, LINKED. The Deterministic GenAI newsletter's own page is now linked wherever the site names it (the newsletter page, every issue, the subscribe page), its URL supplied by the author rather than guessed. Articles take an optional linkedin: field for the URL of the same piece cross-posted as a LinkedIn article; it shows as 'also on LinkedIn' in the byline and is carried in newsroom/wire.json. First use: liquid content needs water, published on LinkedIn on 9 October.**Updated:**[Liquid content needs water: liquefy the journalist's notebook, not the finished product](../articles/liquid-content-needs-water.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.13...v0.7.14). |
+
+| v0.7.13 | 2026-10-09 | [git 7fc16399](https://github.com/SGit-AI/SGit-AI__Website/commit/7fc16399) | TEN HARD QUESTIONS FOR RISKMANDATE, ANSWERED. A new article from a two-hour interview in which Claude, acting as a journalist with an eye for detail, challenged Dinis on ten questions a co-founder brought back from a conference: bypass, keeping policies current, tailoring and price, insurance and liability, differentiation, the supply chain, who enforces, remediation, agent to agent, and outcomes. Written for readers who have not seen the questions: the model every answer rests on, the questions, the answers in brief, three things RiskMandate deliberately is not, an honest maturity table, three fixes the exercise found on riskmandate.ai (checked and still present), and the ten answers in full, linked to 46 pages across sgit.ai, abp.sgit.ai and riskmandate.ai. One figure with its Mermaid source, graph JSON.**New:**[Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not](../articles/riskmandate-ten-questions.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/7fc16399). |
 
 | v0.7.12 | 2026-10-09 | [git 9d7be0dd](https://github.com/SGit-AI/SGit-AI__Website/commit/9d7be0dd) | HOW I WORK WITH CLAUDE. A new article, a practical guide from a voice memo and a follow-up note, for people joining the team and anyone setting up their own agentic workflow. One session per major or recurring topic, not one long mixed thread; sessions named 'project | work', agent sessions with an @; an agent is a focused session with a role.md; memory is what the session reads, curated as websites, graphs and vaults wired together; access by default rather than public by default; vaults to share by key instead of broad permissions; review as the step that fixes the brief; four starter prompts; tips on previews, proof-of-concept sites, skills, policies before connectors, and a Cowork session per agent. One figure with its Mermaid source, graph JSON.**New:**[How I work with Claude: one session per topic, agents with names, and memory you curate](../articles/how-i-work-with-claude.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/9d7be0dd). |
 
@@ -15518,7 +15520,7 @@ There is a longer account of this one in [Green does not mean live](../articles/
 >
 > Page: https://sgit.ai/articles/index.html
 
-Edition of 2026-10-0851 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.13
+Edition of 2026-10-0851 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.14
 
 # SGit Newsroom
 
@@ -20091,6 +20093,8 @@ Agents & policyStartups & strategy[This article as a graph →](graphs.md#riskma
 
 [All articles](index.md) · [All graphs](graphs.md)
 
+**Posting this article on LinkedIn?** The cover is [riskmandate-ten-questions.jpg](../articles/banners/riskmandate-ten-questions.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
+
 **Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
@@ -21752,7 +21756,7 @@ Agents & policySite & engineering[This article as a graph →](graphs.md#every-m
 
 # Liquid content needs water: liquefy the journalist's notebook, not the finished product
 
-By [Dinis Cruz](../about/index.md) · 2026-10-07 · [v0.6.97](../admin/versions.md) · journalismliquid-contentstory-vaultfractal-semantic-graphsnewsroompersonalisationmicropaymentsagentsft-strategiesarticle
+By [Dinis Cruz](../about/index.md) · 2026-10-07 · [v0.6.97](../admin/versions.md) · [also on LinkedIn ↗](https://www.linkedin.com/pulse/liquid-content-needs-water-liquefy-journalists-notebook-dinis-cruz-cixqe/) · journalismliquid-contentstory-vaultfractal-semantic-graphsnewsroompersonalisationmicropaymentsagentsft-strategiesarticle
 
 ***Abstract:** FT Strategies has published a clear primer on liquid content, journalism built from datafied components that can be shaped into whatever a reader needs. I agree with most of it, and this article is about where I would push. What makes content liquid is the water inside it, and the water is the reporting: the notebook, the interviews, the documents, the hunches, kept with their sources as a graph. So the place to start is not a reinvention of newsroom norms but the opposite, putting the experienced journalist and the way they already work at the centre and giving them tools they have not had, including experts a newsroom could rarely afford. Writing stays theirs, because writing is how the story is found. Read that way, the three things the guide says liquid content is not each become part of it, personalisation becomes the meeting of the reader's graph and the story's, prioritising readers' tastes looks like the brief that produced clickbait, and the money goes beyond advertising, subscriptions and licensing to payment per use that walks back to whoever found the facts.*
 
@@ -31198,7 +31202,7 @@ One entry per run of a desk role, newest first, each its own file and never edit
 >
 > Page: https://sgit.ai/articles/collections/index.html
 
-Edition of 2026-10-0851 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.13
+Edition of 2026-10-0851 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.14
 
 # Collections
 
@@ -31217,7 +31221,7 @@ A collection is one file in `admin/content/newsroom/collections/`. [How the desk
 >
 > Page: https://sgit.ai/articles/desk/index.html
 
-Edition of 2026-10-0851 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.13
+Edition of 2026-10-0851 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.14
 
 # From the desk
 
@@ -31786,7 +31790,7 @@ One issue a week or so, when there is enough to say: what was published on sgit.
 
 - **What is in an issue.** The week's articles grouped by what they are about, the arguments in a few lines each, and quotes checked word for word against the articles when the site is built.
 - **What comes next.** A personalised issue, picked for the topics you care about, from the same articles and their graphs.
-- **Where else.** Each issue is also a LinkedIn article in *Deterministic GenAI*; the articles have a [feed](../articles/feed.xml), and agents can read [the wire](../newsroom/wire.json).
+- **Where else.** Each issue is also a LinkedIn article in [Deterministic GenAI](https://www.linkedin.com/newsletters/deterministic-genai-7174563523795005440/); the articles have a [feed](../articles/feed.xml), and agents can read [the wire](../newsroom/wire.json).
 
 **Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
 
@@ -31805,11 +31809,11 @@ Your browser encrypts it to the public key of the agent that runs the list, then
 >
 > Page: https://sgit.ai/articles/newsletter/index.html
 
-Edition of 2026-10-0851 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.13
+Edition of 2026-10-0851 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.14
 
 # The newsletter
 
-The regular issue of the SGit Newsroom: what was published, what it adds up to, and the pieces worth your time. Weekly, or sooner when there is enough to say. The same issue goes out as a LinkedIn article in *Deterministic GenAI*.
+The regular issue of the SGit Newsroom: what was published, what it adds up to, and the pieces worth your time. Weekly, or sooner when there is enough to say. The same issue goes out as a LinkedIn article in [Deterministic GenAI](https://www.linkedin.com/newsletters/deterministic-genai-7174563523795005440/).
 
 ## Issues
 
@@ -31928,7 +31932,7 @@ A story written while it was happening, with its evidence kept.
 
 - [**The waiting room knew first: a live local story, and the gap where local information used to be**](../../../../../articles/the-waiting-room-knew-first.md). Staff at two London hospitals said the IT was down; nothing a local could check showed it. A live local story about where local information comes from now.
 
-*This is issue 2 of the SGit Newsroom newsletter, also published on LinkedIn in *Deterministic GenAI*. Every article it links to is on [sgit.ai](https://sgit.ai/articles/index.html), with its sources and its data. To get the next issue by email, [subscribe at sgit.ai/subscribe](https://sgit.ai/subscribe/).*
+*This is issue 2 of the SGit Newsroom newsletter, also published on LinkedIn in [Deterministic GenAI](https://www.linkedin.com/newsletters/deterministic-genai-7174563523795005440/). Every article it links to is on [sgit.ai](https://sgit.ai/articles/index.html), with its sources and its data. To get the next issue by email, [subscribe at sgit.ai/subscribe](https://sgit.ai/subscribe/).*
 
 **Posting this issue on LinkedIn?** The cover is [002-how-agents-decide.jpg](../../../../../articles/banners/002-how-agents-decide.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
@@ -32054,7 +32058,7 @@ The author's input measured, a way to price and give away, a service that charge
 - [**The bridge, followed to the end: what one local story is worth when it is kept as a graph**](../../../../../articles/the-bridge-followed-to-the-end.md). A bridge closure simulated on a story vault: newsworthy on 5 days, needed on 57, used by three readers, four buyers and an agent, and paid back to its sources.
 - [**Liquid content needs water: liquefy the journalist's notebook, not the finished product**](../../../../../articles/liquid-content-needs-water.md). A reply to FT Strategies on liquid content: the water is the reporting, so liquefy the journalist's notebook, keep the writing theirs, and pay per use.
 
-*This is issue 1 of the SGit Newsroom newsletter, also published on LinkedIn in *Deterministic GenAI*. Every article it links to is on [sgit.ai](https://sgit.ai/articles/index.html), with its sources and its data. To get the next issue by email, [subscribe at sgit.ai/subscribe](https://sgit.ai/subscribe/).*
+*This is issue 1 of the SGit Newsroom newsletter, also published on LinkedIn in [Deterministic GenAI](https://www.linkedin.com/newsletters/deterministic-genai-7174563523795005440/). Every article it links to is on [sgit.ai](https://sgit.ai/articles/index.html), with its sources and its data. To get the next issue by email, [subscribe at sgit.ai/subscribe](https://sgit.ai/subscribe/).*
 
 **Posting this issue on LinkedIn?** The cover is [001-agents-doing-real-work.jpg](../../../../../articles/banners/001-agents-doing-real-work.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 

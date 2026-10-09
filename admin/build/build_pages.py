@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.13'
+SITE_VERSION = 'v0.7.14'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,13 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.13', '2026-10-09', 'this release',
+    ('v0.7.14', '2026-10-09', 'this release',
+     "THE LINKEDIN SIDE, LINKED. The Deterministic GenAI newsletter's own page is now linked wherever the site names "
+     "it (the newsletter page, every issue, the subscribe page), its URL supplied by the author rather than guessed. "
+     "Articles take an optional linkedin: field for the URL of the same piece cross-posted as a LinkedIn article; it "
+     "shows as 'also on LinkedIn' in the byline and is carried in newsroom/wire.json. First use: liquid content needs "
+     "water, published on LinkedIn on 9 October.",),
+    ('v0.7.13', '2026-10-09', 'git 7fc16399',
      "TEN HARD QUESTIONS FOR RISKMANDATE, ANSWERED. A new article from a two-hour interview in which Claude, acting as a journalist with an eye for detail, challenged Dinis on ten questions a co-founder brought back from a conference: bypass, keeping policies current, tailoring and price, insurance and liability, differentiation, the supply chain, who enforces, remediation, agent to agent, and outcomes. Written for readers who have not seen the questions: the model every answer rests on, the questions, the answers in brief, three things RiskMandate deliberately is not, an honest maturity table, three fixes the exercise found on riskmandate.ai (checked and still present), and the ten answers in full, linked to 46 pages across sgit.ai, abp.sgit.ai and riskmandate.ai. One figure with its Mermaid source, graph JSON.",),
     ('v0.7.12', '2026-10-09', 'git 9d7be0dd',
      "HOW I WORK WITH CLAUDE. A new article, a practical guide from a voice memo and a follow-up note, for people joining the team and anyone setting up their own agentic workflow. One session per major or recurring topic, not one long mixed thread; sessions named 'project | work', agent sessions with an @; an agent is a focused session with a role.md; memory is what the session reads, curated as websites, graphs and vaults wired together; access by default rather than public by default; vaults to share by key instead of broad permissions; review as the step that fixes the brief; four starter prompts; tips on previews, proof-of-concept sites, skills, policies before connectors, and a Cowork session per agent. One figure with its Mermaid source, graph JSON.",),
@@ -6029,6 +6035,8 @@ def article_body(a):
             f' <h1>{a["title"]}</h1>\n'
             f' <p class="small dim">{by}{a["date"]}'
             + (f' &middot; updated {a["updated"]}' if a.get('updated') else '') + ver
+            + (f' &middot; <a href="{_esc(a["linkedin"])}" rel="noopener" target="_blank">also on LinkedIn &#8599;</a>'
+               if a.get('linkedin') else '')
             + (f' &middot; {_chips(a["tags"])}' if a['tags'] else '') + '</p>\n'
             f' <p class="abstract"><em><b>Abstract:</b> {a["summary"]}</em></p>\n'
             + LOADER.md_to_html(a['body'], depth=1, where=a['where'])
@@ -6659,9 +6667,9 @@ def newsroom_log_body():
 # the rendered body into LinkedIn's editor carries it over; the cover is a 1920x1080 banner
 # rendered by admin/build/make_banners.mjs from the data below.
 
-# The URL is left empty until the author supplies it; a guessed URL would be a broken link with
-# the author's name on it. With no URL the name renders as text.
-LINKEDIN_NEWSLETTER = ('Deterministic GenAI', '')
+# The newsletter's own page on LinkedIn, supplied by the author on 9 October (left empty until then,
+# because a guessed URL would be a broken link with the author's name on it).
+LINKEDIN_NEWSLETTER = ('Deterministic GenAI', 'https://www.linkedin.com/newsletters/deterministic-genai-7174563523795005440/')
 
 
 def _nl_name(root=''):
@@ -6878,7 +6886,7 @@ def write_wire():
                       'markdown': f'{base}articles/{a["slug"]}.md', 'card': f'{base}articles/cards/{art_card_img(a)}',
                       'graph': (f'{base}articles/graphs/{a["slug"]}.json' if a['slug'] in GRAPHS else None),
                       'teaser': art_teaser(a), 'summary': a['summary'], 'topics': art_topics(a), 'tags': a['tags'],
-                      'placement': NEWS.placement_of(a['slug']),
+                      'placement': NEWS.placement_of(a['slug']), 'linkedin': a.get('linkedin') or None,
                       'notes': [n['slug'] for n in NOTES_CITING[a['slug']]]} for a in ARTICLES],
         'notes': [{'slug': n['slug'], 'title': n['title'], 'date': n['date'], 'kind': n['kind'], 'role': n['role'],
                    'summary': n['summary'], 'cites': n['cites'], 'url': f'{base}articles/desk/{n["slug"]}.html',

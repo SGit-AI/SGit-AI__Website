@@ -395,6 +395,9 @@ class Content_Loader:
                 # articles leave it out and get no byline.
                 'author': meta.get('author', ''),
                 'author_url': meta.get('author_url', ''),
+                # Optional. The URL of the same piece where it was cross-posted as a LinkedIn
+                # article; shown in the byline and carried in the wire.
+                'linkedin': meta.get('linkedin', ''),
                 'body': body, 'where': where,
             })
         # Newest first: by date, then by time on that date. An article with no time

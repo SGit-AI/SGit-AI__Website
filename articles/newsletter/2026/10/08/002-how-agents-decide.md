@@ -2,7 +2,7 @@
 
 > A day of articles on deciding: what a real decision needs, why an agent that can go anywhere has no reason to stop, what happens when every mistake adds a rule, and one customer service agent built three ways to count which rules are only hoped for. Alongside, a live local story, a hospital outage nobody could check from home, kept as evidence while it was happening.
 
-*Source: <https://sgit.ai/articles/newsletter/2026/10/08/002-how-agents-decide.html> · site v0.7.13 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/newsletter/2026/10/08/002-how-agents-decide.html> · site v0.7.14 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -92,7 +92,7 @@ A story written while it was happening, with its evidence kept.
 
 - [**The waiting room knew first: a live local story, and the gap where local information used to be**](../../../../../articles/the-waiting-room-knew-first.md). Staff at two London hospitals said the IT was down; nothing a local could check showed it. A live local story about where local information comes from now.
 
-*This is issue 2 of the SGit Newsroom newsletter, also published on LinkedIn in *Deterministic GenAI*. Every article it links to is on [sgit.ai](https://sgit.ai/articles/index.html), with its sources and its data. To get the next issue by email, [subscribe at sgit.ai/subscribe](https://sgit.ai/subscribe/).*
+*This is issue 2 of the SGit Newsroom newsletter, also published on LinkedIn in [Deterministic GenAI](https://www.linkedin.com/newsletters/deterministic-genai-7174563523795005440/). Every article it links to is on [sgit.ai](https://sgit.ai/articles/index.html), with its sources and its data. To get the next issue by email, [subscribe at sgit.ai/subscribe](https://sgit.ai/subscribe/).*
 
 **Posting this issue on LinkedIn?** The cover is [002-how-agents-decide.jpg](../../../../../articles/banners/002-how-agents-decide.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 

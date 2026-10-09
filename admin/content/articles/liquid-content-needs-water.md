@@ -3,6 +3,7 @@ title: Liquid content needs water: liquefy the journalist's notebook, not the fi
 date: 2026-10-07
 time: 22:50
 author: Dinis Cruz
+linkedin: https://www.linkedin.com/pulse/liquid-content-needs-water-liquefy-journalists-notebook-dinis-cruz-cixqe/
 author_url: about/index.html
 summary: FT Strategies has published a clear primer on liquid content, journalism built from datafied components that can be shaped into whatever a reader needs. I agree with most of it, and this article is about where I would push. What makes content liquid is the water inside it, and the water is the reporting: the notebook, the interviews, the documents, the hunches, kept with their sources as a graph. So the place to start is not a reinvention of newsroom norms but the opposite, putting the experienced journalist and the way they already work at the centre and giving them tools they have not had, including experts a newsroom could rarely afford. Writing stays theirs, because writing is how the story is found. Read that way, the three things the guide says liquid content is not each become part of it, personalisation becomes the meeting of the reader's graph and the story's, prioritising readers' tastes looks like the brief that produced clickbait, and the money goes beyond advertising, subscriptions and licensing to payment per use that walks back to whoever found the facts.
 version: v0.6.97
