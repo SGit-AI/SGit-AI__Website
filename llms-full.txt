@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.7.14). Nothing here needs a second request. Individual pages live at the paths
+> (v0.7.15). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -73,7 +73,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-276site releases, each verified live before it was called done
+277site releases, each verified live before it was called done
 
 48vaults published with a deliberately public read key
 
@@ -6251,7 +6251,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.7.14, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.7.15, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -6614,7 +6614,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-276**site releases since 14 August**
+277**site releases since 14 August**
 each verified live before it was called done
 
 48**vaults published with a public read key**
@@ -12043,12 +12043,14 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.7.14**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
+The site version (**v0.7.15**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
 
-| v0.7.14 | 2026-10-09 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.13...v0.7.14) | THE LINKEDIN SIDE, LINKED. The Deterministic GenAI newsletter's own page is now linked wherever the site names it (the newsletter page, every issue, the subscribe page), its URL supplied by the author rather than guessed. Articles take an optional linkedin: field for the URL of the same piece cross-posted as a LinkedIn article; it shows as 'also on LinkedIn' in the byline and is carried in newsroom/wire.json. First use: liquid content needs water, published on LinkedIn on 9 October.**Updated:**[Liquid content needs water: liquefy the journalist's notebook, not the finished product](../articles/liquid-content-needs-water.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.13...v0.7.14). |
+| v0.7.15 | 2026-10-09 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.14...v0.7.15) | THE NEWSLETTER AS A BEST-OF ITS PICTURES. Two desk directives: !figure takes one image from an article or a vault by its path from the repository root, and !collage composes two to six of them into one 1920x1080 picture with a label under each, rendered by make_banners.mjs into articles/banners/collages/; both fail the build if an image does not exist. Issue 2 now opens on the day in six pictures, one from each article, and carries the agency scale vault, the two complexity maps, the threat ladder, the three customer service designs and a hostile email, the memory pattern and the local evidence log. The LinkedIn box at the foot of an issue, which the owner used for the last post, now lists every image in the order it appears, with its caption, because LinkedIn keeps the text of a paste and drops its images. A single-day range now reads 'published on'.[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.14...v0.7.15). |
+
+| v0.7.14 | 2026-10-09 | [git 01c4ef0f](https://github.com/SGit-AI/SGit-AI__Website/commit/01c4ef0f) | THE LINKEDIN SIDE, LINKED. The Deterministic GenAI newsletter's own page is now linked wherever the site names it (the newsletter page, every issue, the subscribe page), its URL supplied by the author rather than guessed. Articles take an optional linkedin: field for the URL of the same piece cross-posted as a LinkedIn article; it shows as 'also on LinkedIn' in the byline and is carried in newsroom/wire.json. First use: liquid content needs water, published on LinkedIn on 9 October.**Updated:**[Liquid content needs water: liquefy the journalist's notebook, not the finished product](../articles/liquid-content-needs-water.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/01c4ef0f). |
 
 | v0.7.13 | 2026-10-09 | [git 7fc16399](https://github.com/SGit-AI/SGit-AI__Website/commit/7fc16399) | TEN HARD QUESTIONS FOR RISKMANDATE, ANSWERED. A new article from a two-hour interview in which Claude, acting as a journalist with an eye for detail, challenged Dinis on ten questions a co-founder brought back from a conference: bypass, keeping policies current, tailoring and price, insurance and liability, differentiation, the supply chain, who enforces, remediation, agent to agent, and outcomes. Written for readers who have not seen the questions: the model every answer rests on, the questions, the answers in brief, three things RiskMandate deliberately is not, an honest maturity table, three fixes the exercise found on riskmandate.ai (checked and still present), and the ten answers in full, linked to 46 pages across sgit.ai, abp.sgit.ai and riskmandate.ai. One figure with its Mermaid source, graph JSON.**New:**[Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not](../articles/riskmandate-ten-questions.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/7fc16399). |
 
@@ -15520,7 +15522,7 @@ There is a longer account of this one in [Green does not mean live](../articles/
 >
 > Page: https://sgit.ai/articles/index.html
 
-Edition of 2026-10-0851 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.14
+Edition of 2026-10-0851 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.15
 
 # SGit Newsroom
 
@@ -31202,7 +31204,7 @@ One entry per run of a desk role, newest first, each its own file and never edit
 >
 > Page: https://sgit.ai/articles/collections/index.html
 
-Edition of 2026-10-0851 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.14
+Edition of 2026-10-0851 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.15
 
 # Collections
 
@@ -31221,7 +31223,7 @@ A collection is one file in `admin/content/newsroom/collections/`. [How the desk
 >
 > Page: https://sgit.ai/articles/desk/index.html
 
-Edition of 2026-10-0851 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.14
+Edition of 2026-10-0851 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.15
 
 # From the desk
 
@@ -31809,7 +31811,7 @@ Your browser encrypts it to the public key of the agent that runs the list, then
 >
 > Page: https://sgit.ai/articles/newsletter/index.html
 
-Edition of 2026-10-0851 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.14
+Edition of 2026-10-0851 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.15
 
 # The newsletter
 
@@ -31858,6 +31860,8 @@ By [Dinis Cruz](../../../../../about/index.md), written with the [Journalist](..
 
 What does an agent need to decide well, and what makes it stop? Most of 8 October's articles answer one of those two questions, from the person's side and from the agent's. Alongside them, a live local story, kept as evidence while it was still happening.
 
+The day in six pictures, one from each article
+
 ## A decision is more than a yes
 
 [Agency is not a yes](https://sgit.ai/articles/agency-is-not-a-yes.html) sets out what anyone asked to decide actually needs, a person or an agent: options beyond yes, context in their own terms, time, somewhere to escalate, authority over the system that produced the request, and incentives that treat a wrong yes and a wrong no alike. The scale it builds has seven levels, the weakest dimension caps the whole decision, and its vault holds the scale. One line from it is worth keeping:
@@ -31865,6 +31869,8 @@ What does an agent need to decide well, and what makes it stop? Most of 8 Octobe
 >
 
 Whatever you punish, you teach the other answer.
+
+Inside the agency scale vault: the levels, the decisions scored against them, and the law
 
 ## Knowing when to stop
 
@@ -31874,17 +31880,23 @@ Whatever you punish, you teach the other answer.
 
 An entity that can go anywhere has no natural reason to stop anywhere.
 
+Value rises fast, then flattens. Past the point of diminishing returns, more work is optimising the wrong thing.
+
 [Every mistake added a rule](https://sgit.ai/articles/every-mistake-added-a-rule.html) is what happens when the answer is more instructions: long sessions, prompts that grow to 100 KB, and each new rule causing the next mistake. The way back it maps is to turn each piece of the process into a small, shipped component:
 
 >
 
 If a session needs 100 KB of rules to be productive, the rules are doing the job that structure should do.
 
+The same process mapped twice: as it runs, and with each piece made a small shipped component
+
 And [who are you protecting against?](https://sgit.ai/articles/who-are-you-protecting-against.html) gives security a place to stop: name the attacker first, on a six-tier ladder, and draw the line where the attacker is.
 
 >
 
 The question is who, not how much.
+
+Six tiers of attacker, from your own mistakes to elevated threats, with what stops each.
 
 ## Hope or enforcement
 
@@ -31894,7 +31906,11 @@ The day's lead on the site is [hope or enforcement](https://sgit.ai/articles/hop
 
 Every design has a policy for every behaviour. The difference is who enforces it.
 
+Inside the vault: the three designs, and one hostile email run through each
+
 [Encrypted memory for agents that run somewhere else](https://sgit.ai/articles/encrypted-memory-for-isolated-agents.html) is the infrastructure underneath: five ways to give isolated, short-lived agents a memory that outlives them, with only ciphertext on the server.
+
+The compute is disposable and the memory is not: each run starts from a scoped clone of the vault and ends with a push.
 
 ## A local story, kept as evidence
 
@@ -31904,11 +31920,13 @@ Every design has a policy for every behaviour. The difference is who enforces it
 
 Blocked is a limit of our access, never evidence about the hospital.
 
+The local evidence log: the gap, the claims, and where a local could have looked
+
 One correction from the day before: in [the bridge, followed to the end](https://sgit.ai/articles/the-bridge-followed-to-the-end.html), the reporter's base salary had been counted as both her income and her cost. Her row now shows pay, salary plus commission, and every other figure is unchanged.
 
 ## Everything published on 8 October
 
-Seven articles were published from 2026-10-08 to 2026-10-08, grouped below by what they are about.
+Seven articles were published on 2026-10-08, grouped below by what they are about.
 
 ### Deciding and stopping
 
@@ -31934,7 +31952,16 @@ A story written while it was happening, with its evidence kept.
 
 *This is issue 2 of the SGit Newsroom newsletter, also published on LinkedIn in [Deterministic GenAI](https://www.linkedin.com/newsletters/deterministic-genai-7174563523795005440/). Every article it links to is on [sgit.ai](https://sgit.ai/articles/index.html), with its sources and its data. To get the next issue by email, [subscribe at sgit.ai/subscribe](https://sgit.ai/subscribe/).*
 
-**Posting this issue on LinkedIn?** The cover is [002-how-agents-decide.jpg](../../../../../articles/banners/002-how-agents-decide.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
+**Posting this issue on LinkedIn?** The cover is [002-how-agents-decide.jpg](../../../../../articles/banners/002-how-agents-decide.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page. LinkedIn drops images from a paste, so add these where they appear, in this order, with the caption under each:
+
+1. [002-2026-10-08-week.jpg](../../../../../articles/banners/collages/002-2026-10-08-week.jpg) The day in six pictures, one from each article
+2. [002-2026-10-08-agency-vault.jpg](../../../../../articles/banners/collages/002-2026-10-08-agency-vault.jpg) Inside the agency scale vault: the levels, the decisions scored against them, and the law
+3. [st-stop.webp](../../../../../articles/images/st-stop.webp) Value rises fast, then flattens. Past the point of diminishing returns, more work is optimising the wrong thing.
+4. [002-2026-10-08-maps.jpg](../../../../../articles/banners/collages/002-2026-10-08-maps.jpg) The same process mapped twice: as it runs, and with each piece made a small shipped component
+5. [ts-ladder.webp](../../../../../articles/images/ts-ladder.webp) Six tiers of attacker, from your own mistakes to elevated threats, with what stops each.
+6. [002-2026-10-08-designs.jpg](../../../../../articles/banners/collages/002-2026-10-08-designs.jpg) Inside the vault: the three designs, and one hostile email run through each
+7. [dp-run.webp](../../../../../articles/images/dp-run.webp) The compute is disposable and the memory is not: each run starts from a scoped clone of the vault and ends with a push.
+8. [002-2026-10-08-evidence.jpg](../../../../../articles/banners/collages/002-2026-10-08-evidence.jpg) The local evidence log: the gap, the claims, and where a local could have looked
 
 [← All issues](../../../../../articles/newsletter/index.md)
 

@@ -27,6 +27,9 @@ Directives available in notes and collections, on top of the article markdown:
     !article <article-slug>                  the article's card
     !articles YYYY-MM-DD..YYYY-MM-DD         every article in the range, with its teaser, and the count
     !list <slug>, <slug>, ...                  a hand-grouped list: title and teaser, no dates
+    !figure <repo path> | caption            one image from an article or a vault, e.g. articles/images/x.webp
+    !collage <name> | img :: label, ... | caption   two to six images as one 1920x1080 picture
+                                             (rendered by make_banners.mjs; listed in the LinkedIn box)
     !covers YYYY-MM-DD..YYYY-MM-DD           a promise: every article in the range appears in some !list
                                              in this file, or the build fails and names what is missing
 

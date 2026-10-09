@@ -1234,3 +1234,6 @@ p.subteaser .cta2{white-space:nowrap}
 .trail-here{position:absolute;top:6px;right:6px;font-size:.66rem;font-weight:700;background:var(--accent);color:#fff;border-radius:999px;padding:2px 8px}
 @media (max-width:860px){.trail-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:520px){.trail-row{grid-template-columns:minmax(0,1fr)}}
+figure.shot--collage{margin:1.6rem 0}
+ol.lkit-imgs{margin:.5rem 0 0;padding-left:1.4rem}
+ol.lkit-imgs li{margin:.2rem 0}

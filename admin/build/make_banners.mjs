@@ -47,14 +47,42 @@ const fmtDate = d => new Date(d + 'T00:00:00Z').toLocaleDateString('en-GB', { da
 
 function hashOf(e) {
   const h = crypto.createHash('sha256').update(JSON.stringify(e));
-  for (const p of [e.hero, ...(e.mosaic || [])].filter(Boolean)) {
+  for (const p of [e.hero, ...(e.mosaic || []), ...((e.items || []).map(i => i.src))].filter(Boolean)) {
     const f = path.join(ROOT, p);
     if (fs.existsSync(f)) h.update(String(fs.statSync(f).size) + ':' + crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex'));
   }
   return h.digest('hex').slice(0, 16);
 }
 
+// A collage: several screenshots or infographics from the articles and vaults an issue covers,
+// composed into one image with a label under each, so a reader sees a best-of the week's visuals
+// and a LinkedIn post needs one upload instead of six.
+function collageHtml(e) {
+  const n = e.items.length, cols = n <= 2 ? n : n === 4 ? 2 : 3, rows = Math.ceil(n / cols);
+  const cards = e.items.map(i => `<figure><div class="im"><img src="${url(i.src)}"></div>${i.label ? `<figcaption>${esc(i.label)}</figcaption>` : ''}</figure>`).join('');
+  return `<!doctype html><html><head><meta charset="utf-8"><style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:${W}px;height:${H}px;background:#faf9f5;color:#17181c;font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;overflow:hidden}
+  .top{position:absolute;left:0;right:0;top:0;height:12px;background:#0f766e}
+  .head{position:absolute;left:70px;right:70px;top:44px;display:flex;justify-content:space-between;align-items:baseline}
+  .head b{font-size:24px;letter-spacing:.2em;text-transform:uppercase;color:#0f766e}
+  .head span{font-family:ui-serif,Georgia,serif;font-style:italic;font-size:30px;color:#3d4047}
+  .grid{position:absolute;left:70px;right:70px;top:110px;bottom:86px;display:grid;gap:26px;grid-template-columns:repeat(${cols},1fr);grid-template-rows:repeat(${rows},1fr)}
+  figure{display:flex;flex-direction:column;min-height:0;background:#fff;border:1px solid #e5e1d5;border-radius:14px;box-shadow:0 10px 30px rgba(28,29,33,.10);padding:12px}
+  .im{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:6px;background:#f6f4ee}
+  .im img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+  figcaption{font-size:24px;font-weight:700;line-height:1.25;padding:12px 4px 2px;color:#1c1d21}
+  .foot{position:absolute;left:70px;right:70px;bottom:30px;display:flex;justify-content:space-between;font-size:22px;color:#5c5f66;border-top:2px solid #17181c;padding-top:12px}
+  .foot b{color:#17181c}.foot b i{color:#0f766e;font-style:normal}
+  </style></head><body><div class="top"></div>
+  <div class="head"><b>${esc(e.kicker)}</b><span>${esc(e.title)}</span></div>
+  <div class="grid">${cards}</div>
+  <div class="foot"><span><b>sgit<i>.ai</i></b> &nbsp;&middot;&nbsp; ${esc(e.url)}</span><span>${esc(e.author)}</span></div>
+  </body></html>`;
+}
+
 function html(e) {
+  if (e.kind === 'collage') return collageHtml(e);
   const visual = e.mosaic && e.mosaic.length
     ? `<div class="mosaic n${Math.min(e.mosaic.length, 4)}">${e.mosaic.slice(0, 4).map(m => `<img src="${url(m)}">`).join('')}</div>`
     : e.hero ? `<div class="hero"><img src="${url(e.hero)}"></div>` : `<div class="hero empty"></div>`;

@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.14'
+SITE_VERSION = 'v0.7.15'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,16 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.14', '2026-10-09', 'this release',
+    ('v0.7.15', '2026-10-09', 'this release',
+     "THE NEWSLETTER AS A BEST-OF ITS PICTURES. Two desk directives: !figure takes one image from an article or a "
+     "vault by its path from the repository root, and !collage composes two to six of them into one 1920x1080 picture "
+     "with a label under each, rendered by make_banners.mjs into articles/banners/collages/; both fail the build if an "
+     "image does not exist. Issue 2 now opens on the day in six pictures, one from each article, and carries the agency "
+     "scale vault, the two complexity maps, the threat ladder, the three customer service designs and a hostile email, "
+     "the memory pattern and the local evidence log. The LinkedIn box at the foot of an issue, which the owner used for "
+     "the last post, now lists every image in the order it appears, with its caption, because LinkedIn keeps the text of "
+     "a paste and drops its images. A single-day range now reads 'published on'.",),
+    ('v0.7.14', '2026-10-09', 'git 01c4ef0f',
      "THE LINKEDIN SIDE, LINKED. The Deterministic GenAI newsletter's own page is now linked wherever the site names "
      "it (the newsletter page, every issue, the subscribe page), its URL supplied by the author rather than guessed. "
      "Articles take an optional linkedin: field for the URL of the same piece cross-posted as a LinkedIn article; it "
@@ -6096,6 +6105,19 @@ def _range_list(lo, hi, root):
             f'teaser from its graph.</p><ol>{items}</ol></div>')
 
 
+# Images a desk page used, in order, keyed by the page's source file: the LinkedIn kit lists them
+# for upload (LinkedIn does not carry images in a paste), and the banner manifest renders the collages.
+DESK_MEDIA = {}
+COLLAGE_DIR = 'articles/banners/collages'
+
+
+def _repo_img(path, where):
+    path = path.strip().lstrip('/')
+    if not os.path.exists(os.path.join(ROOT, path)):
+        raise Content_Error(f'{where}: image {path!r} does not exist')
+    return path
+
+
 def desk_md(body, depth, where, quote_src=True):
     """Article markdown, plus four directives that make a short note out of the data the
     articles already carry. A quote is checked against the article's text at build time,
@@ -6117,6 +6139,34 @@ def desk_md(body, depth, where, quote_src=True):
         m_a = re.match(r'^!article\s+([a-z0-9\-]+)\s*$', line)
         m_r = re.match(r'^!articles\s+(\d{4}-\d{2}-\d{2})\.\.(\d{4}-\d{2}-\d{2})\s*$', line)
         m_l = re.match(r'^!list\s+(.+)$', line)
+        m_f = re.match(r'^!figure\s+([^|]+?)\s*(?:\|\s*(.*))?$', line)
+        m_g = re.match(r'^!collage\s+([a-z0-9-]+)\s*\|\s*([^|]+?)\s*\|\s*(.+)$', line)
+        if m_f or m_g:
+            flush()
+            media = DESK_MEDIA.setdefault(where, {'items': [], 'collages': []})
+            if m_f:
+                # !figure <repo path> | caption: one image from an article or a vault, path from the repo root
+                src = _repo_img(m_f.group(1), where); cap = (m_f.group(2) or '').strip()
+                media['items'].append({'src': src, 'caption': cap})
+                out.append(f'<figure class="shot" data-shot="{os.path.basename(src)}" data-dir="{root}{os.path.dirname(src)}/" '
+                           f'data-alt="{_esc(cap)}"><figcaption>{LOADER.inline(cap, depth, where)}</figcaption></figure>')
+            else:
+                # !collage <name> | img :: label, img :: label | caption: several images as one picture,
+                # rendered by make_banners.mjs into articles/banners/collages/<page>-<name>.jpg
+                items = []
+                for part in m_g.group(2).split(','):
+                    src, _, label = part.partition('::')
+                    items.append({'src': _repo_img(src, where), 'label': label.strip()})
+                if not 2 <= len(items) <= 6:
+                    raise Content_Error(f'{where}: a collage takes two to six images')
+                stem = os.path.splitext(os.path.basename(where))[0]
+                out_path = f'{COLLAGE_DIR}/{stem}-{m_g.group(1)}.jpg'
+                cap = m_g.group(3).strip()
+                media['collages'].append({'name': m_g.group(1), 'items': items, 'caption': cap, 'out': out_path})
+                media['items'].append({'src': out_path, 'caption': cap})
+                out.append(f'<figure class="shot shot--collage" data-shot="{os.path.basename(out_path)}" data-dir="{root}{COLLAGE_DIR}/" '
+                           f'data-alt="{_esc(cap)}"><figcaption>{LOADER.inline(cap, depth, where)}</figcaption></figure>')
+            continue
         m_c = re.match(r'^!covers\s+(\d{4}-\d{2}-\d{2})\.\.(\d{4}-\d{2}-\d{2})\s*$', line)
         if m_l or m_c:
             flush()
@@ -6124,7 +6174,8 @@ def desk_md(body, depth, where, quote_src=True):
                 covers.append((m_c.group(1), m_c.group(2)))
                 n = len([a for a in ARTICLES if m_c.group(1) <= a['date'] <= m_c.group(2)])
                 out.append(f'<p class="drange-head">{number_words(n).capitalize()} article{"s" if n != 1 else ""} '
-                           f'were published from {m_c.group(1)} to {m_c.group(2)}, grouped below by what they are about.</p>')
+                           + (f'were published on {m_c.group(1)}' if m_c.group(1) == m_c.group(2) else f'were published from {m_c.group(1)} to {m_c.group(2)}')
+                           + ', grouped below by what they are about.</p>')
                 continue
             slugs = [x.strip() for x in m_l.group(1).split(',') if x.strip()]
             for x in slugs:
@@ -6731,6 +6782,12 @@ def write_banner_manifest():
                               'Next: an issue picked for what you care about'],
                     'mosaic': [f'articles/cards/{art_card_img(a)}' for a in ARTICLES[:4]],
                     'url': 'sgit.ai/subscribe/', 'out': banner_path('subscribe')})
+    for where, media in DESK_MEDIA.items():
+        for c in media['collages']:
+            entries.append({'slug': os.path.basename(c['out'])[:-4], 'kind': 'collage', 'kicker': 'SGit Newsroom',
+                            'title': c['caption'], 'date': '', 'author': 'Dinis Cruz', 'items': c['items'],
+                            'url': 'sgit.ai/articles/', 'out': c['out']})
+    os.makedirs(os.path.join(ROOT, COLLAGE_DIR), exist_ok=True)
     os.makedirs(os.path.join(ROOT, BANNER_DIR), exist_ok=True)
     s = json.dumps({'size': [1920, 1080], 'generated_by': 'admin/build/build_pages.py', 'entries': entries},
                    indent=1, ensure_ascii=False) + '\n'
@@ -6739,15 +6796,21 @@ def write_banner_manifest():
     return s
 
 
-def linkedin_kit(slug, root, what='article'):
-    """A small block at the foot of an article or issue: the cover image at LinkedIn's size,
-    and how to post it. Not part of what gets copied."""
+def linkedin_kit(slug, root, what='article', where=None):
+    """A block at the foot of an article or issue: the cover at LinkedIn's size, then every image
+    the page uses, in the order it appears, with the caption to paste under it. LinkedIn keeps the
+    text of a paste and drops the images, so this list is the upload order. Not part of the copy."""
     if not has_banner(slug):
         return ''
+    imgs = [m for m in DESK_MEDIA.get(where, {}).get('items', []) if os.path.exists(os.path.join(ROOT, m['src']))]
+    lis = ''.join(f'<li><a href="{root}{m["src"]}" download>{os.path.basename(m["src"])}</a>'
+                  + (f' <span class="dim">{_esc(re.sub(r"[*`]", "", m["caption"]))}</span>' if m['caption'] else '') + '</li>'
+                  for m in imgs)
     return (f'\n<aside class="lkit" aria-label="For LinkedIn"><b>Posting this {what} on LinkedIn?</b> '
             f'The cover is <a href="{root}{banner_path(slug)}" download>{slug}.jpg</a> (1920&times;1080, title and key ideas on it). '
-            'Upload it as the article cover, paste the title, then select and copy the body from this page.</aside>')
-
+            'Upload it as the article cover, paste the title, then select and copy the body from this page.'
+            + (f' LinkedIn drops images from a paste, so add these where they appear, in this order, with the caption under each:'
+               f'<ol class="lkit-imgs">{lis}</ol>' if lis else '') + '</aside>')
 
 def _issue_link(i, root):
     li = (f' &middot; <a href="{_esc(i["linkedin"])}" rel="noopener" target="_blank">on LinkedIn &#8599;</a>' if i['linkedin'] else '')
@@ -6803,7 +6866,7 @@ def issue_body(i):
               f'{_nl_name()}. Every article it links to is on '
               f'<a href="https://sgit.ai/articles/index.html">sgit.ai</a>, with its sources and its data. To get the next '
               f'issue by email, <a href="https://sgit.ai/subscribe/">subscribe at sgit.ai/subscribe</a>.</em></p></div>\n'
-            + linkedin_kit(i['slug'], root, 'issue')
+            + linkedin_kit(i['slug'], root, 'issue', i['where'])
             + '\n <p class="small dim" style="margin-top:2rem"><a href="' + root + 'articles/newsletter/index.html">&larr; All issues</a></p>\n</main>\n')
 
 

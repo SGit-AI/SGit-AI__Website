@@ -2,7 +2,7 @@
 
 > A day of articles on deciding: what a real decision needs, why an agent that can go anywhere has no reason to stop, what happens when every mistake adds a rule, and one customer service agent built three ways to count which rules are only hoped for. Alongside, a live local story, a hospital outage nobody could check from home, kept as evidence while it was happening.
 
-*Source: <https://sgit.ai/articles/newsletter/2026/10/08/002-how-agents-decide.html> · site v0.7.14 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/newsletter/2026/10/08/002-how-agents-decide.html> · site v0.7.15 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -18,6 +18,8 @@ By [Dinis Cruz](../../../../../about/index.md), written with the [Journalist](..
 
 What does an agent need to decide well, and what makes it stop? Most of 8 October's articles answer one of those two questions, from the person's side and from the agent's. Alongside them, a live local story, kept as evidence while it was still happening.
 
+The day in six pictures, one from each article
+
 ## A decision is more than a yes
 
 [Agency is not a yes](https://sgit.ai/articles/agency-is-not-a-yes.html) sets out what anyone asked to decide actually needs, a person or an agent: options beyond yes, context in their own terms, time, somewhere to escalate, authority over the system that produced the request, and incentives that treat a wrong yes and a wrong no alike. The scale it builds has seven levels, the weakest dimension caps the whole decision, and its vault holds the scale. One line from it is worth keeping:
@@ -25,6 +27,8 @@ What does an agent need to decide well, and what makes it stop? Most of 8 Octobe
 >
 
 Whatever you punish, you teach the other answer.
+
+Inside the agency scale vault: the levels, the decisions scored against them, and the law
 
 ## Knowing when to stop
 
@@ -34,17 +38,23 @@ Whatever you punish, you teach the other answer.
 
 An entity that can go anywhere has no natural reason to stop anywhere.
 
+Value rises fast, then flattens. Past the point of diminishing returns, more work is optimising the wrong thing.
+
 [Every mistake added a rule](https://sgit.ai/articles/every-mistake-added-a-rule.html) is what happens when the answer is more instructions: long sessions, prompts that grow to 100 KB, and each new rule causing the next mistake. The way back it maps is to turn each piece of the process into a small, shipped component:
 
 >
 
 If a session needs 100 KB of rules to be productive, the rules are doing the job that structure should do.
 
+The same process mapped twice: as it runs, and with each piece made a small shipped component
+
 And [who are you protecting against?](https://sgit.ai/articles/who-are-you-protecting-against.html) gives security a place to stop: name the attacker first, on a six-tier ladder, and draw the line where the attacker is.
 
 >
 
 The question is who, not how much.
+
+Six tiers of attacker, from your own mistakes to elevated threats, with what stops each.
 
 ## Hope or enforcement
 
@@ -54,7 +64,11 @@ The day's lead on the site is [hope or enforcement](https://sgit.ai/articles/hop
 
 Every design has a policy for every behaviour. The difference is who enforces it.
 
+Inside the vault: the three designs, and one hostile email run through each
+
 [Encrypted memory for agents that run somewhere else](https://sgit.ai/articles/encrypted-memory-for-isolated-agents.html) is the infrastructure underneath: five ways to give isolated, short-lived agents a memory that outlives them, with only ciphertext on the server.
+
+The compute is disposable and the memory is not: each run starts from a scoped clone of the vault and ends with a push.
 
 ## A local story, kept as evidence
 
@@ -64,11 +78,13 @@ Every design has a policy for every behaviour. The difference is who enforces it
 
 Blocked is a limit of our access, never evidence about the hospital.
 
+The local evidence log: the gap, the claims, and where a local could have looked
+
 One correction from the day before: in [the bridge, followed to the end](https://sgit.ai/articles/the-bridge-followed-to-the-end.html), the reporter's base salary had been counted as both her income and her cost. Her row now shows pay, salary plus commission, and every other figure is unchanged.
 
 ## Everything published on 8 October
 
-Seven articles were published from 2026-10-08 to 2026-10-08, grouped below by what they are about.
+Seven articles were published on 2026-10-08, grouped below by what they are about.
 
 ### Deciding and stopping
 
@@ -94,7 +110,16 @@ A story written while it was happening, with its evidence kept.
 
 *This is issue 2 of the SGit Newsroom newsletter, also published on LinkedIn in [Deterministic GenAI](https://www.linkedin.com/newsletters/deterministic-genai-7174563523795005440/). Every article it links to is on [sgit.ai](https://sgit.ai/articles/index.html), with its sources and its data. To get the next issue by email, [subscribe at sgit.ai/subscribe](https://sgit.ai/subscribe/).*
 
-**Posting this issue on LinkedIn?** The cover is [002-how-agents-decide.jpg](../../../../../articles/banners/002-how-agents-decide.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
+**Posting this issue on LinkedIn?** The cover is [002-how-agents-decide.jpg](../../../../../articles/banners/002-how-agents-decide.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page. LinkedIn drops images from a paste, so add these where they appear, in this order, with the caption under each:
+
+1. [002-2026-10-08-week.jpg](../../../../../articles/banners/collages/002-2026-10-08-week.jpg) The day in six pictures, one from each article
+2. [002-2026-10-08-agency-vault.jpg](../../../../../articles/banners/collages/002-2026-10-08-agency-vault.jpg) Inside the agency scale vault: the levels, the decisions scored against them, and the law
+3. [st-stop.webp](../../../../../articles/images/st-stop.webp) Value rises fast, then flattens. Past the point of diminishing returns, more work is optimising the wrong thing.
+4. [002-2026-10-08-maps.jpg](../../../../../articles/banners/collages/002-2026-10-08-maps.jpg) The same process mapped twice: as it runs, and with each piece made a small shipped component
+5. [ts-ladder.webp](../../../../../articles/images/ts-ladder.webp) Six tiers of attacker, from your own mistakes to elevated threats, with what stops each.
+6. [002-2026-10-08-designs.jpg](../../../../../articles/banners/collages/002-2026-10-08-designs.jpg) Inside the vault: the three designs, and one hostile email run through each
+7. [dp-run.webp](../../../../../articles/images/dp-run.webp) The compute is disposable and the memory is not: each run starts from a scoped clone of the vault and ends with a push.
+8. [002-2026-10-08-evidence.jpg](../../../../../articles/banners/collages/002-2026-10-08-evidence.jpg) The local evidence log: the gap, the claims, and where a local could have looked
 
 [← All issues](../../../../../articles/newsletter/index.md)
 
