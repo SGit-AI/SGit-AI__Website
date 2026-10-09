@@ -2,7 +2,7 @@
 
 > One customer service mandate for a fictional shop, built three ways: one model with connectors, a harness of business tools, and a team of narrow agents behind a deterministic gateway. Sixty-two emails through each, every policy rule marked by what enforces it, the share that is hope, the analyst's report after the run, the client's promises and a recomputable year. Published with its read key.
 
-*Source: <https://sgit.ai/demos/vaults/hope-or-enforcement/index.html> · site v0.7.17 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/hope-or-enforcement/index.html> · site v0.7.18 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

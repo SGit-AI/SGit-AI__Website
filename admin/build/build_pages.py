@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.17'
+SITE_VERSION = 'v0.7.18'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.17', '2026-10-09', 'this release',
+    ('v0.7.18', '2026-10-09', 'this release',
+     "THE AI GOVERNANCE STACK, AS A GRAPH. An answer, built, to Hari Kota's question under the post The Full AI Governance Stack: how would you structure the graph across the layers? A new vault, AI Governance Graph (1wp3xpf4, read key published), and its article. Hari's table kept exactly as posted, every cell a node (85 nodes in Hari's words, gated byte for byte); the ten edges the table already contains; each layer its own world with one shared grammar; 119 cross-layer edges of ours, each resting on a provision (EU AI Act Art 26(2), Art 4 as reworded by 2026/1744, Annex III 4(a), NIST AI RMF GOVERN 1.6, ISO/IEC 42001 7.2); 2026 changes as dated edges under Hari's labels; the do-this-today test and the gaps in layers 3, 5 and 10 as queries on a fictional shop; what '4 or 5' means, three ways; bring your own CSV. Two diagrams with Mermaid sources, ten app screenshots, vault page, graph JSON.",),
+    ('v0.7.17', '2026-10-09', 'git 75eb72fc',
      "RFC 0001: PUBLIC-KEY CRYPTOGRAPHY FOR SGIT. The site's first Request for Comments, from the sgit CLI agent's design session: nothing is built. Today a read-key holder who can write to the store can author history clients accept; turning the read key into a public key does not fix it, two key pairs do. A writer signature on today's vaults first; native PKI vault mode (readers cannot write, hosts cannot forge, write-only depositors); sealed files, an age v1 inner envelope to named people, with the private key in a file, an ssh key, hardware or a remote service. A landscape of thirty key services and tools, checked from their own documentation: RSA-OAEP-256 is the format the remote services share, approval of each decryption is rare, and three best fits each for a small team, a company that wants every decryption approved, and open source only. Fourteen questions, comments by issue or email. Three diagrams with Mermaid sources, graph JSON. Headings can now carry an {#anchor}.",),
     ('v0.7.16', '2026-10-09', 'git 1677e2ef',
      "A MAC OF THE AGENT'S OWN. A new business plan vault, Agent Desk (5ej8boc8, read key published, the first created and audited with sgit-ai 0.20.0), and its article, from a voice memo after two companies replied to our research on renting an agent a desktop. Agents already have their own mailbox, code-host account and Claude account; the next resource is a desktop, and it should be a Mac. Apple's macOS licence, quoted from versions 15, 26 and 27, rules out a pool of Macs rented by the minute, so the plan is the shapes it allows: your Mac run for you, a dedicated Mac with a per-minute meter, developer agents, software for your own Mac, and asking Apple for terms. A clean desktop per run, built from vaults by a short bootstrap whose key steps were tested, keys by PKI, erased at the end. Three Agent Behaviour Policies for the same customer service agent: unbounded excess 23, 11 and 3 rows. A calculator, a Wardley map, three diagrams with Mermaid sources. No provider named. Vault page, business plans list, graph JSON.",),

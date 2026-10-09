@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-09",
-  "site_version": "v0.7.17",
+  "site_version": "v0.7.18",
   "about": "https://sgit.ai/newsroom/index.html",
   "front": {
     "edition": "2026-10-08",
@@ -72,6 +72,39 @@
     }
   ],
   "articles": [
+    {
+      "slug": "the-ai-governance-stack-as-a-graph",
+      "title": "The AI governance stack, as a graph: an answer to Hari Kota, built",
+      "date": "2026-10-09",
+      "updated": "",
+      "author": "Dinis Cruz",
+      "url": "https://sgit.ai/articles/the-ai-governance-stack-as-a-graph.html",
+      "markdown": "https://sgit.ai/articles/the-ai-governance-stack-as-a-graph.md",
+      "card": "https://sgit.ai/articles/cards/the-ai-governance-stack-as-a-graph.webp",
+      "graph": "https://sgit.ai/articles/graphs/the-ai-governance-stack-as-a-graph.json",
+      "teaser": "Hari Kota's ten-layer AI governance stack, kept as posted and turned into a fractal semantic graph: the gaps become missing edges, and queries.",
+      "summary": "Hari Kota posted The Full AI Governance Stack, ten layers from principles to people, and asked how I would structure the graph across the layers. This is the answer, built as a vault you can open. Hari's table is kept exactly as posted, every cell a node. The table already contains ten edges between layers before anything is added. Each layer is its own world with its own vocabulary, and the edges between those worlds come from the provisions themselves, so a gap is a missing edge and a missing edge is a query. Hari's three gaps and the \"do this today\" test run as queries on a fictional shop, and the line \"most teams cover only 4 or 5\" gets three honest readings.",
+      "topics": [
+        "graphs-and-knowledge",
+        "agents-and-policy"
+      ],
+      "tags": [
+        "ai-governance",
+        "fractal-semantic-graphs",
+        "graphs",
+        "eu-ai-act",
+        "iso-42001",
+        "nist-ai-rmf",
+        "risk",
+        "inventory",
+        "competence",
+        "vaults",
+        "article"
+      ],
+      "placement": [],
+      "linkedin": null,
+      "notes": []
+    },
     {
       "slug": "rfc-0001-public-key-cryptography-for-sgit",
       "title": "RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer",

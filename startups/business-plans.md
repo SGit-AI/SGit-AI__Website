@@ -2,7 +2,7 @@
 
 > Businesses we think should exist on top of sgit, each written up as a vault in enough detail for somebody else to start. Eight plans so far: Agent Desk, Deck Vault, Kit Bag, Company X-Ray, Lesson Loop, Risk Acceptance Office, Connector Twin and Agent as Webmaster. How to take one, what every plan contains, and the offer to build them with partners.
 
-*Source: <https://sgit.ai/startups/business-plans.html> · site v0.7.17 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/startups/business-plans.html> · site v0.7.18 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.7.17). Nothing here needs a second request. Individual pages live at the paths
+> (v0.7.18). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -30,23 +30,23 @@ Pure Python · two runtime dependencies · Apache-2.0 · [or try it in your brow
 
 [Reference, **AIUC-1 conformance layer**, The AIUC-1 standard as a graph, plus a conformance layer that computes insurability, Open it →](demos/vaults/aiuc-1-conformance/index.md) [Application, **Agent permission games**, Two games about grants and mandates, the first vault here that phones home, Open it →](demos/vaults/agent-permission-games/index.md) [Presentation, **AI vs. AI, Black Hat EU 2025**, The Black Hat EU 2025 keynote, with its PDF exports and eight research papers, Open it →](demos/vaults/blackhat-eu-2025/index.md) [Report, **Penetration Test Report**, A penetration test report (fictional) with a re-test script per finding, Open it →](demos/vaults/pentest-report/index.md)
 
-Four of **49 published vaults**. Each opens with a read key printed on its page, no account, nothing to install, and the server that stores it cannot read it. [See all 49 →](demos/vaults/index.md)
+Four of **50 published vaults**. Each opens with a read key printed on its page, no account, nothing to install, and the server that stores it cannot read it. [See all 50 →](demos/vaults/index.md)
 
 SGit Newsroom
 
 ## Start with an argument, not a menu
 
-The articles carry most of what this site believes, with the figures, the data and the links to check it. Fifty-three so far; the newsroom picks where to start.
+The articles carry most of what this site believes, with the figures, the data and the links to check it. Fifty-four so far; the newsroom picks where to start.
 
 [Built three ways2026-10-08Agents & policy**Hope or enforcement: one customer service agent, three designs, and who keeps each promise**One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.**Why it leads.** One mandate, three designs and a published vault: the behaviour-policy argument measured rather than asserted, down to which rules a model is only hoped to keep.Read it →](articles/hope-or-enforcement.md)
 
 ### Also new
 
-1. 2026-10-09[RFC 0001](articles/rfc-0001-public-key-cryptography-for-sgit.md)
-2. 2026-10-09[A Mac of the agent's own](articles/a-mac-of-the-agents-own.md)
-3. 2026-10-09[Ten hard questions for RiskMandate, answered](articles/riskmandate-ten-questions.md)
-4. 2026-10-09[How I work with Claude](articles/how-i-work-with-claude.md)
-5. 2026-10-08[Encrypted memory for agents that run somewhere else](articles/encrypted-memory-for-isolated-agents.md)
+1. 2026-10-09[The AI governance stack, as a graph](articles/the-ai-governance-stack-as-a-graph.md)
+2. 2026-10-09[RFC 0001](articles/rfc-0001-public-key-cryptography-for-sgit.md)
+3. 2026-10-09[A Mac of the agent's own](articles/a-mac-of-the-agents-own.md)
+4. 2026-10-09[Ten hard questions for RiskMandate, answered](articles/riskmandate-ten-questions.md)
+5. 2026-10-09[How I work with Claude](articles/how-i-work-with-claude.md)
 [Thread2026-10-08Historian**Range is the feature, so the stop has to be designed**Four articles from one day, written for different reasons, end on the same line: an agent's range is what makes it useful, and it is also why the decision to stop cannot be left to the agent.](articles/desk/range-is-the-feature-so-the-stop-is-designed.md)
 
 [A scale for deciding2026-10-08**Agency is not a yes**Seven dimensions, seven levels, and the line below which a decider carries liability rather than agency. Its own vault holds the scale.](articles/agency-is-not-a-yes.md)[Live, local2026-10-08**The waiting room knew first**A hospital IT outage nobody could check from home, kept as evidence in a vault while it was still happening.](articles/the-waiting-room-knew-first.md)[Complexity2026-10-08**Every mistake added a rule**When every agent mistake adds a rule, the rules become the problem. Mapped, with the way back to shipping.](articles/every-mistake-added-a-rule.md)
@@ -73,9 +73,9 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-279site releases, each verified live before it was called done
+280site releases, each verified live before it was called done
 
-49vaults published with a deliberately public read key
+50vaults published with a deliberately public read key
 
 27sibling sites on `*.sgit.ai`, one question each
 
@@ -389,7 +389,7 @@ Loading results…
 ==============================================================================
 # Published vaults, sgit.ai
 
-> Forty-nine vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it.
+> Fifty vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it.
 >
 > Page: https://sgit.ai/demos/vaults/index.html
 
@@ -401,10 +401,12 @@ Open any of these in your browser right now. Every read key here was published o
 
 **Nine are semantic graphs**, each in its own ontology, from a regulation down to a compute instance. · [The ladder, walked →](../fractal-graphs/index.md) · [What reading one costs →](../fractal-graphs/performance.md)
 
-**49 published vaults**: 14 reference, 13 briefing, 8 analysis, 5 application, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
+**50 published vaults**: 15 reference, 13 briefing, 8 analysis, 5 application, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
 
 | # | Vault | What it is | Category | Files | Size | Published |
 |---|---|---|---|---|---|---|
+
+| 50 | [AI Governance Graph](ai-governance-graph/index.md)`1wp3xpf4` | Hari Kota's ten-layer AI governance stack as a fractal semantic graph: the table kept exactly as posted (46 examples, every cell a node), the ten edges the table already contains, 119 sourced cross-layer edges of ours, each example zoomed into its instrument and provisions, and Hari's three gaps and do-this-today test run as queries on a fictional shop | Reference | 78 | 3003 KB | 2026-10-09 |
 
 | 49 | [Agent Desk](agent-desk/index.md)`5ej8boc8` | A business plan for a Mac of the agent's own: a dedicated, locked-down macOS desktop per customer, built per run from encrypted vaults, keys by PKI, erased at the end; Apple's licence quoted with the shapes it allows; three behaviour policies for one customer service agent (23, 11 and 3 rows of unbounded excess); a calculator and a Wardley map | Briefing | 79 | 2633 KB | 2026-10-09 |
 
@@ -2281,11 +2283,11 @@ Live, end-to-end demonstrations, each one a vault that was actually created, pus
 
 **The rule every demo follows:** the vault's *read key* is published on purpose. It is derived one-way and cannot write, so publishing it is what makes the demo openable by anyone. The vault's *write key* appears nowhere: not in these pages, not in the repos, and the build refuses to push if one ever reaches a tracked file.
 
-## Forty-nine vaults, one page each
+## Fifty vaults, one page each
 
 The demos outgrew this page. Every vault whose read key this site publishes now has its own page under [**Published vaults**](vaults/index.md), what it does, which features it uses, the audit that ran before the key was published, and the vault itself running live in the page. Thirty at the last count, from a regulation parsed into a graph to a job application delivered as a vault, and the table there is generated from the same file as [the machine-readable list](vaults/llms.txt), so the two cannot drift.
 
-[Gallery · 49 vaults### Published vaultsEvery vault with a deliberately published read key, one page per vault, the vault running live in it. Graphs, presentations, briefing packs, records, applications.Open the gallery →](vaults/index.md)
+[Gallery · 50 vaults### Published vaultsEvery vault with a deliberately published read key, one page per vault, the vault running live in it. Graphs, presentations, briefing packs, records, applications.Open the gallery →](vaults/index.md)
 
 [Method### How a vault gets published hereThe seven steps behind every row: classify the credential, derive rather than refuse, audit with the read key, screenshot the real app, write the page, publish the key, verify with a negative control.Read the method →](vaults/publishing.md)
 
@@ -2555,7 +2557,7 @@ abp.sgit.ai · Agents & AI · [The Agent Behaviour Policy ↗](https://abp.sgit.
 | System → compute | ThreatModCon 2025 `0ict6flm` | 53 files · 4.1 MB | [threatmodcon-2025](../vaults/threatmodcon-2025/index.md) |
 | News: story → claim → source, six excerpts anchored | The Evidence Dispatch `c0vf9zz8`published by its owner | 235 files · 13.0 MB | [evidence-dispatch](../vaults/evidence-dispatch/index.md) |
 
-Every read key is on the vault's own page, published on purpose; none of them can write. Agents: the machine-readable list of all forty-nine vaults, with ids and keys, is [/demos/vaults/llms.txt](../vaults/llms.txt). The grammar for drawing your own is at [graphs.sgit.ai/llms.txt](https://graphs.sgit.ai/llms.txt).
+Every read key is on the vault's own page, published on purpose; none of them can write. Agents: the machine-readable list of all fifty vaults, with ids and keys, is [/demos/vaults/llms.txt](../vaults/llms.txt). The grammar for drawing your own is at [graphs.sgit.ai/llms.txt](https://graphs.sgit.ai/llms.txt).
 
 ## How fast is it, and what does it cost?
 
@@ -4252,7 +4254,7 @@ Everything below is a consequence of that sentence. If it doesn't describe a pro
 
 ## git and sgit, side by side
 
-The honest framing is not "sgit instead of git". It is two tools with different jobs, and the interesting question is which one owns which files. **This site ran both at once** for its first 76 releases (one working tree, two remotes) and then [retired the vault mirror](../case-studies/one-tree-two-remotes.md), because git was doing the deploying and nothing was reading the vault. The forty-nine vaults it publishes are the other half of the answer: sgit owns the content whose readers hold the key; git owns the pages that describe it.
+The honest framing is not "sgit instead of git". It is two tools with different jobs, and the interesting question is which one owns which files. **This site ran both at once** for its first 76 releases (one working tree, two remotes) and then [retired the vault mirror](../case-studies/one-tree-two-remotes.md), because git was doing the deploying and nothing was reading the vault. The fifty vaults it publishes are the other half of the answer: sgit owns the content whose readers hold the key; git owns the pages that describe it.
 
 |  | git | sgit |
 |---|---|---|
@@ -6253,7 +6255,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.7.17, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.7.18, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -6616,16 +6618,16 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-279**site releases since 14 August**
+280**site releases since 14 August**
 each verified live before it was called done
 
-49**vaults published with a public read key**
+50**vaults published with a public read key**
 every one audited first; findings on the page
 
 27**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-123**articles and release notes**
+124**articles and release notes**
 all with a markdown twin and an RSS feed
 
 17**cross-team briefs, in the open**
@@ -6771,7 +6773,7 @@ The section's other purpose: complete business plans, published as vaults, for o
 
 Everything above is how this site itself is built, which is the only reason to believe any of it.
 
-- **Forty-nine vaults published with their read keys**, each with a page describing what it does and the vault running live inside it. [Open any of them](../demos/vaults/index.md) with no account and nothing installed.
+- **Fifty vaults published with their read keys**, each with a page describing what it does and the vault running live inside it. [Open any of them](../demos/vaults/index.md) with no account and nothing installed.
 - **The method is written down**, including the mistakes that produced each rule. [The publishing method](../demos/vaults/publishing.md) is written to be followed by somebody else's agent.
 - **The measurements are repeatable**, with the commands printed. [Performance and cost](../demos/fractal-graphs/performance.md).
 - **One person, working with agents.** The whole estate is built this way, which is the actual claim about how small a team this needs.
@@ -6864,7 +6866,7 @@ sgit.ai is built by one person and a team of agents, and the articles here that 
 
 | Role | What it involves |
 |---|---|
-| **Founder, [sgit.ai](../index.md)** | Encrypted vaults with git semantics: clone, commit, branch and merge files that are encrypted before they leave your machine, under Apache-2.0, and [the network of sites](../network/index.md) of which this is the hub. Each site publishes its argument before its implementation, so the commitments are checkable, and [forty-nine vaults are published with their read keys](../demos/vaults/index.md) as the evidence. |
+| **Founder, [sgit.ai](../index.md)** | Encrypted vaults with git semantics: clone, commit, branch and merge files that are encrypted before they leave your machine, under Apache-2.0, and [the network of sites](../network/index.md) of which this is the hub. Each site publishes its argument before its implementation, so the commitments are checkable, and [fifty vaults are published with their read keys](../demos/vaults/index.md) as the evidence. |
 | **Founder, [sgraph.ai](https://sgraph.ai)** | Where the strategy turns into revenue: the commercial home of SG/Send, the secure file-sharing service built on the open-source sgit layer, and hosted SG/Vaults. The code stays Apache-2.0. What is sold is the running, maintained, certified service. |
 | **Founder, [MyFeeds.ai](https://investor.myfeeds.ai/)** | Role-aware cybersecurity briefings built on semantic knowledge graphs, with source attribution: CISO, engineer and board views of the same news. Open source, serverless, and with the seed pitch and unit economics published in the open. |
 | **Founder, [The Cyber Boardroom](https://thecyberboardroom.com)** | An AI-powered platform for the conversation between technical security teams and the board, bridging the two with knowledge-graph technology. Apache-2.0, with the community edition and the [investment repository](https://github.com/the-cyber-boardroom/cbr-investment) public. The Cyber Boardroom Limited, UK-registered and trading for almost two years, is today the commercial vehicle behind sgit.ai and RiskMandate.ai. |
@@ -6930,7 +6932,7 @@ Each page in this section makes the case for one specific partnership, or puts o
 | **Start with what they are trying to do** | In their own words where possible, and where we can put it better, put it better. A partnership page that cannot explain the other side's mission generously has not understood it. |
 |---|---|
 | **Public material only** | Their published strategy, programmes and criteria. Our published vaults, measurements and articles. Nothing from a conversation, a data room or a private brief. If a fact would need permission to publish, it is not on the page. |
-| **Evidence, not pitch** | Every claim about what we can do points at a vault that can be opened with a read key, a measurement with its command printed, or a page that states its own limits. The [forty-nine published vaults](../demos/vaults/index.md) are the portfolio. |
+| **Evidence, not pitch** | Every claim about what we can do points at a vault that can be opened with a read key, a measurement with its command printed, or a page that states its own limits. The [fifty published vaults](../demos/vaults/index.md) are the portfolio. |
 | **The fit, stated precisely** | Which of their stated priorities we serve, which we do not, and what a first concrete piece of work would be. A partnership is a specific thing two parties do, not an alignment of values. |
 | **What is not public, marked** | The things a partner would need to know that are not on either site are listed rather than hidden, in the same way [the investors page](../investors/index.md) leaves the ask visibly open until it is stated. |
 
@@ -6997,7 +6999,7 @@ Put simply: **they want British companies building the layers that matter, ancho
 
 Two companies, one substrate, and a published body of evidence that can be opened by anyone with the read key printed on each page.
 
-**[sgit.ai](../index.md)** is git for encrypted vaults. A vault is a folder versioned like a git repository, encrypted on the client before anything leaves the machine, openable by anyone holding a read key with no account and nothing installed, and able to carry its own application with the permissions it asks for declared in a file. The server that stores it cannot read it; [the security model](../security/index.md) states exactly what it does see. The code is Apache-2.0 and [deploys to Docker, AWS, GCP or a plain static host](../deploy/index.md), including, as this site demonstrates, to a bucket behind a CDN with no server of ours in the path. [Forty-nine vaults are published with their read keys](../demos/vaults/index.md), and [the method for publishing them safely is written down](../demos/vaults/publishing.md) with the mistakes that produced each rule.
+**[sgit.ai](../index.md)** is git for encrypted vaults. A vault is a folder versioned like a git repository, encrypted on the client before anything leaves the machine, openable by anyone holding a read key with no account and nothing installed, and able to carry its own application with the permissions it asks for declared in a file. The server that stores it cannot read it; [the security model](../security/index.md) states exactly what it does see. The code is Apache-2.0 and [deploys to Docker, AWS, GCP or a plain static host](../deploy/index.md), including, as this site demonstrates, to a bucket behind a CDN with no server of ours in the path. [Fifty vaults are published with their read keys](../demos/vaults/index.md), and [the method for publishing them safely is written down](../demos/vaults/publishing.md) with the mistakes that produced each rule.
 
 **[RiskMandate.ai](https://riskmandate.ai/)** is the business risk layer for autonomous systems. Its tagline is *"know what your agents can do"*, and its central object is the Agent Behaviour Policy: a documented record of what an agent can reach, what it was authorised to do, the gap between the two, and which controls constrain it, written so that a CEO, a CTO, a CISO and an insurer can all sign the same document. From that comes the *licence to operate*: the business as the authority, the behaviour policy as the evidence, the agent operating under stated terms for a stated interval, with residual risk accepted by a named owner. *"Not what they did. What they can."*
 
@@ -7081,7 +7083,7 @@ A call for collaboration · public material only · 24 September 2026
 - **What we are asking for.** A way, in the browser, for a person to keep their vault keys in the password manager or identity system they already use, to open a vault with a passkey or a biometric prompt, and to share a vault with someone else by sending a short name in plain words rather than the key.
 - **The one hard rule.** The words must be an address, never the key. sgit once shipped a word-based token that *was* the key, and [removed it](#history) when a review showed it could be guessed in a fraction of a second. The name has to resolve only inside the recipient's own key manager.
 - **Who we would like to hear from.** Password managers, enterprise identity providers, the credential managers built into operating systems and browsers, and hardware key makers. The best outcome is that you already have this and tell us.
-- **What we bring.** An open reference integration, published crypto test vectors, a key format designed for secret scanners, forty-nine published vaults to test against, and a willingness to write the specification in public so it is not tied to either of us.
+- **What we bring.** An open reference integration, published crypto test vectors, a key format designed for secret scanners, fifty published vaults to test against, and a willingness to write the specification in public so it is not tied to either of us.
 
 ## The opportunity
 
@@ -7091,7 +7093,7 @@ Today, vault keys travel by hand. The gap at the bottom is the thing this page i
 
 Three things make this worth doing now rather than later.
 
-| **The number of keys is growing fast** | One person running a few projects now holds a vault per project, per client and per shared folder, and a separate read key for each person they share with, so access can be told apart. [Forty-nine vaults are published on this site alone](../demos/vaults/index.md), each with its own key. |
+| **The number of keys is growing fast** | One person running a few projects now holds a vault per project, per client and per shared folder, and a separate read key for each person they share with, so access can be told apart. [Fifty vaults are published on this site alone](../demos/vaults/index.md), each with its own key. |
 |---|---|
 | **Agents are starting to make vaults** | An AI agent that builds a website for a customer, writes up a penetration test or keeps a board pack can hand the result over as a vault. Three business plans published on this site depend on exactly that: [Agent as Webmaster](../demos/vaults/agent-webmaster/index.md) hands a customer their site's vault, [Lesson Loop](../demos/vaults/lesson-loop/index.md) gives every player a vault they hold the key to, and [Company X-Ray](../demos/vaults/company-xray/index.md) hands each customer a key to drop documents into and a vault back at the end. Every one of those hand-overs is a key that has to go to a person, safely, and every agent doing the work needs a key it should not be able to paste anywhere. |
 | **The pattern is not specific to sgit** | Any end-to-end encrypted document, folder or dataset opened in a browser has the same need: a key for the data, held by the user, released to a page only when they agree. Whoever makes that easy for sgit makes it easy for the category. |
@@ -7187,7 +7189,7 @@ Organisations are named below only as examples of the kind of team we mean. Ther
 |---|---|
 | **Crypto that is specified and tested** | AES-256-GCM, HKDF-SHA256 and PBKDF2, with test vectors that the command-line client and the browser must match byte for byte. Keys are derived locally; the host never holds one. |
 | **Keys that say what they are** | Every sgit key carries a prefix naming its kind: `sgit_private_vault_`, `sgit_private_read_` or `sgit_public_read_`. One secret-scanner rule, `sgit_private_`, catches every private key type, and a published read key cannot be mistaken for a leak. |
-| **Real vaults to test against** | [Forty-nine published vaults](../demos/vaults/index.md) across security, regulation, business plans and applications, each with a public read key, plus [the catalogue](../demos/vaults/catalogue/index.md), a vault that lists vaults, which is the closest thing today to the index a key manager would keep. |
+| **Real vaults to test against** | [Fifty published vaults](../demos/vaults/index.md) across security, regulation, business plans and applications, each with a public read key, plus [the catalogue](../demos/vaults/catalogue/index.md), a vault that lists vaults, which is the closest thing today to the index a key manager would keep. |
 | **The failures, written down** | [What to do if a vault key is exposed](../case-studies/exposed-vault-key.md), [the publishing method](../demos/vaults/publishing.md) with the mistake behind each rule, and [when not to use sgit](../docs/limitations.md). A key manager partner should know the edges before the first call. |
 
 ## The detail
@@ -7208,7 +7210,7 @@ We can, and will, keep keys inside vaults: a vault that holds the read keys for 
 
 | Exists and runs | Does not exist yet |
 |---|---|
-| Vault keys, read keys and public read keys with self-declaring prefixes. Local derivation. Browser opening from a read key with nothing installed. Forty-nine published vaults. Guidance to keep the vault key in a password manager, which is what this page wants to make first-class. | Any integration with any key manager. Revocation, expiry or a rotation workflow in the product: rotation is a manual re-encryption today, as [the limitations page](../docs/limitations.md) says. The word-name scheme. Agent-scoped keys. All of these are what a collaboration would build. |
+| Vault keys, read keys and public read keys with self-declaring prefixes. Local derivation. Browser opening from a read key with nothing installed. Fifty published vaults. Guidance to keep the vault key in a password manager, which is what this page wants to make first-class. | Any integration with any key manager. Revocation, expiry or a rotation workflow in the product: rotation is a manual re-encryption today, as [the limitations page](../docs/limitations.md) says. The word-name scheme. Agent-scoped keys. All of these are what a collaboration would build. |
 
 ## What this page does not claim
 
@@ -7877,7 +7879,7 @@ Proposed partnerships · sgit.ai with the model and voice providers · public ma
 
 # Models do the work. Vaults hold it. We would like to work with the people who make the models.
 
-**An invitation from our side, published in the open.** Almost everything on this site was made with AI: the site itself, the forty-nine published vaults, the diagrams, the narration. The models came from the providers on this page, mostly reached through OpenRouter. What we have built in return is a place for that work to live: encrypted, versioned, openable in a browser with a key, and callable by a model without anyone leaking an API key. We use these providers every day and have no relationship with any of them. This page, and the page for each provider linked from it, sets out where vaults and models meet and what a partnership could be.
+**An invitation from our side, published in the open.** Almost everything on this site was made with AI: the site itself, the fifty published vaults, the diagrams, the narration. The models came from the providers on this page, mostly reached through OpenRouter. What we have built in return is a place for that work to live: encrypted, versioned, openable in a browser with a key, and callable by a model without anyone leaking an API key. We use these providers every day and have no relationship with any of them. This page, and the page for each provider linked from it, sets out where vaults and models meet and what a partnership could be.
 
 **Nothing on these pages is confidential, and there has been no conversation yet.** Every statement about a provider comes from its own public pages or documentation, linked. Every statement about sgit points at a published vault or a page on this site. sgit is Apache-2.0, so any provider can build on it without asking. A partnership is about building the connection properly, and being listed where the provider's users look for it.
 
@@ -8008,7 +8010,7 @@ This page is written to be forwarded as it is, and everything on it can be check
 ==============================================================================
 # A proposed partnership between sgit.ai and Anthropic
 
-> This site is already a Claude Code project, and vaults are how its sessions work together. sgit.ai, its briefs, its deployment docs and most of its forty-nine published vaults are built and published by Claude Code sessions that share state through a vault. We would like to turn that working practice into a partnership: a vault connector in Anthropic's Connectors Directory, skills that teach Claude to use vaults well, and a place in the Claude Partner Network.
+> This site is already a Claude Code project, and vaults are how its sessions work together. sgit.ai, its briefs, its deployment docs and most of its fifty published vaults are built and published by Claude Code sessions that share state through a vault. We would like to turn that working practice into a partnership: a vault connector in Anthropic's Connectors Directory, skills that teach Claude to use vaults well, and a place in the Claude Partner Network.
 >
 > Page: https://sgit.ai/partnerships/anthropic.html
 
@@ -8018,7 +8020,7 @@ A proposed partnership · sgit.ai with Anthropic · public material only · 24 S
 
 # A proposed partnership between sgit.ai and Anthropic
 
-**This site is already a Claude Code project, and vaults are how its sessions work together.** sgit.ai, its briefs, its deployment docs and most of its forty-nine published vaults are built and published by Claude Code sessions that share state through a vault. We would like to turn that working practice into a partnership: a vault connector in Anthropic's Connectors Directory, skills that teach Claude to use vaults well, and a place in the Claude Partner Network.
+**This site is already a Claude Code project, and vaults are how its sessions work together.** sgit.ai, its briefs, its deployment docs and most of its fifty published vaults are built and published by Claude Code sessions that share state through a vault. We would like to turn that working practice into a partnership: a vault connector in Anthropic's Connectors Directory, skills that teach Claude to use vaults well, and a place in the Claude Partner Network.
 
 **Nothing on this page is confidential, and there has been no conversation yet.** Every statement about Anthropic comes from its own public pages, linked. Every statement about sgit points at the [deployment documentation](../deploy/index.md), a published vault or a page on this site. sgit is Apache-2.0, so Anthropic does not need our permission to run it or to build on it. A partnership is about doing that well and together. The general argument is on [the AI providers page](ai-providers.md).
 
@@ -12160,12 +12162,14 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.7.17**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
+The site version (**v0.7.18**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
 
-| v0.7.17 | 2026-10-09 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.16...v0.7.17) | RFC 0001: PUBLIC-KEY CRYPTOGRAPHY FOR SGIT. The site's first Request for Comments, from the sgit CLI agent's design session: nothing is built. Today a read-key holder who can write to the store can author history clients accept; turning the read key into a public key does not fix it, two key pairs do. A writer signature on today's vaults first; native PKI vault mode (readers cannot write, hosts cannot forge, write-only depositors); sealed files, an age v1 inner envelope to named people, with the private key in a file, an ssh key, hardware or a remote service. A landscape of thirty key services and tools, checked from their own documentation: RSA-OAEP-256 is the format the remote services share, approval of each decryption is rare, and three best fits each for a small team, a company that wants every decryption approved, and open source only. Fourteen questions, comments by issue or email. Three diagrams with Mermaid sources, graph JSON. Headings can now carry an {#anchor}.**New:**[RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer](../articles/rfc-0001-public-key-cryptography-for-sgit.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.16...v0.7.17). |
+| v0.7.18 | 2026-10-09 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.17...v0.7.18) | THE AI GOVERNANCE STACK, AS A GRAPH. An answer, built, to Hari Kota's question under the post The Full AI Governance Stack: how would you structure the graph across the layers? A new vault, AI Governance Graph (1wp3xpf4, read key published), and its article. Hari's table kept exactly as posted, every cell a node (85 nodes in Hari's words, gated byte for byte); the ten edges the table already contains; each layer its own world with one shared grammar; 119 cross-layer edges of ours, each resting on a provision (EU AI Act Art 26(2), Art 4 as reworded by 2026/1744, Annex III 4(a), NIST AI RMF GOVERN 1.6, ISO/IEC 42001 7.2); 2026 changes as dated edges under Hari's labels; the do-this-today test and the gaps in layers 3, 5 and 10 as queries on a fictional shop; what '4 or 5' means, three ways; bring your own CSV. Two diagrams with Mermaid sources, ten app screenshots, vault page, graph JSON.**New:**[AI Governance Graph, Hari Kota's stack as a fractal semantic graph](../demos/vaults/ai-governance-graph/index.md), [The AI governance stack, as a graph: an answer to Hari Kota, built](../articles/the-ai-governance-stack-as-a-graph.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.17...v0.7.18). |
+
+| v0.7.17 | 2026-10-09 | [git 75eb72fc](https://github.com/SGit-AI/SGit-AI__Website/commit/75eb72fc) | RFC 0001: PUBLIC-KEY CRYPTOGRAPHY FOR SGIT. The site's first Request for Comments, from the sgit CLI agent's design session: nothing is built. Today a read-key holder who can write to the store can author history clients accept; turning the read key into a public key does not fix it, two key pairs do. A writer signature on today's vaults first; native PKI vault mode (readers cannot write, hosts cannot forge, write-only depositors); sealed files, an age v1 inner envelope to named people, with the private key in a file, an ssh key, hardware or a remote service. A landscape of thirty key services and tools, checked from their own documentation: RSA-OAEP-256 is the format the remote services share, approval of each decryption is rare, and three best fits each for a small team, a company that wants every decryption approved, and open source only. Fourteen questions, comments by issue or email. Three diagrams with Mermaid sources, graph JSON. Headings can now carry an {#anchor}.**New:**[RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer](../articles/rfc-0001-public-key-cryptography-for-sgit.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/75eb72fc). |
 
 | v0.7.16 | 2026-10-09 | [git 1677e2ef](https://github.com/SGit-AI/SGit-AI__Website/commit/1677e2ef) | A MAC OF THE AGENT'S OWN. A new business plan vault, Agent Desk (5ej8boc8, read key published, the first created and audited with sgit-ai 0.20.0), and its article, from a voice memo after two companies replied to our research on renting an agent a desktop. Agents already have their own mailbox, code-host account and Claude account; the next resource is a desktop, and it should be a Mac. Apple's macOS licence, quoted from versions 15, 26 and 27, rules out a pool of Macs rented by the minute, so the plan is the shapes it allows: your Mac run for you, a dedicated Mac with a per-minute meter, developer agents, software for your own Mac, and asking Apple for terms. A clean desktop per run, built from vaults by a short bootstrap whose key steps were tested, keys by PKI, erased at the end. Three Agent Behaviour Policies for the same customer service agent: unbounded excess 23, 11 and 3 rows. A calculator, a Wardley map, three diagrams with Mermaid sources. No provider named. Vault page, business plans list, graph JSON.**New:**[A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies](../articles/a-mac-of-the-agents-own.md), [Agent Desk, a business plan for a Mac of the agent's own](../demos/vaults/agent-desk/index.md).**Updated:**[Business plans to build on sgit](../startups/business-plans.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/1677e2ef). |
 
@@ -13883,7 +13887,7 @@ A vault credential is the whole thing you need: the address, the capability and 
 
 ## Two capabilities, and one is derived from the other
 
-A vault key carries read *and* write. A read key carries read only, and is derived from the vault key by a one-way function, so a read key can never be turned back into write access. That derivation is the whole publishing model on this site: [forty-nine vaults](../demos/vaults/index.md) hand out read keys on purpose, and not one of them can be used to change anything.
+A vault key carries read *and* write. A read key carries read only, and is derived from the vault key by a one-way function, so a read key can never be turned back into write access. That derivation is the whole publishing model on this site: [fifty vaults](../demos/vaults/index.md) hand out read keys on purpose, and not one of them can be used to change anything.
 
 *[diagram]*
 
@@ -15643,7 +15647,7 @@ There is a longer account of this one in [Green does not mean live](../articles/
 >
 > Page: https://sgit.ai/articles/index.html
 
-Edition of 2026-10-0853 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.17
+Edition of 2026-10-0854 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.18
 
 # SGit Newsroom
 
@@ -15655,17 +15659,17 @@ From the editor Third edition. A day of articles on how agents decide: when to s
 
 ## Latest
 
-1. 2026-10-09[RFC 0001](../articles/rfc-0001-public-key-cryptography-for-sgit.md)
-2. 2026-10-09[A Mac of the agent's own](../articles/a-mac-of-the-agents-own.md)
-3. 2026-10-09[Ten hard questions for RiskMandate, answered](../articles/riskmandate-ten-questions.md)
-4. 2026-10-09[How I work with Claude](../articles/how-i-work-with-claude.md)
-5. 2026-10-08[The waiting room knew first](../articles/the-waiting-room-knew-first.md)
-6. 2026-10-08[Encrypted memory for agents that run somewhere else](../articles/encrypted-memory-for-isolated-agents.md)
-7. 2026-10-08[Knowing when to stop](../articles/knowing-when-to-stop.md)
-8. 2026-10-08[Agency is not a yes](../articles/agency-is-not-a-yes.md)
-9. 2026-10-08[Hope or enforcement](../articles/hope-or-enforcement.md)
-10. 2026-10-08[Who are you protecting against? Draw the security line where the attacker is, not…](../articles/who-are-you-protecting-against.md)
-[Every article, 53 →](../articles/index.md#all)
+1. 2026-10-09[The AI governance stack, as a graph](../articles/the-ai-governance-stack-as-a-graph.md)
+2. 2026-10-09[RFC 0001](../articles/rfc-0001-public-key-cryptography-for-sgit.md)
+3. 2026-10-09[A Mac of the agent's own](../articles/a-mac-of-the-agents-own.md)
+4. 2026-10-09[Ten hard questions for RiskMandate, answered](../articles/riskmandate-ten-questions.md)
+5. 2026-10-09[How I work with Claude](../articles/how-i-work-with-claude.md)
+6. 2026-10-08[The waiting room knew first](../articles/the-waiting-room-knew-first.md)
+7. 2026-10-08[Encrypted memory for agents that run somewhere else](../articles/encrypted-memory-for-isolated-agents.md)
+8. 2026-10-08[Knowing when to stop](../articles/knowing-when-to-stop.md)
+9. 2026-10-08[Agency is not a yes](../articles/agency-is-not-a-yes.md)
+10. 2026-10-08[Hope or enforcement](../articles/hope-or-enforcement.md)
+[Every article, 54 →](../articles/index.md#all)
 
 ## Highlights
 
@@ -15683,7 +15687,7 @@ From the editor Third edition. A day of articles on how agents decide: when to s
 
 ## Every article, newest first
 
-[2026-10-09Vaults & method1 thread**RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer**A Request for Comments: two key pairs so a reader cannot write, sealed files only named people can open, and fourteen questions for reviewers.](rfc-0001-public-key-cryptography-for-sgit.md) [2026-10-09Startups & strategy7 threads**A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies**A business plan for a Mac of the agent's own: what Apple's licence allows, a desktop built from vaults per run, and three behaviour policies for one agent.](a-mac-of-the-agents-own.md) [2026-10-09Agents & policy19 threads**Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not**Ten hard questions from a conference, answered in a two-hour interview: what RiskMandate does, what it deliberately is not, and how mature each part is.](riskmandate-ten-questions.md) [2026-10-09Agents & policy7 threads**How I work with Claude: one session per topic, agents with names, and memory you curate**A practical guide from a year of daily use: one Claude session per topic, named agents with a role.md, curated memory, vaults, and policy before connectors.](how-i-work-with-claude.md) [2026-10-08News & evidence2 threads**The waiting room knew first: a live local story, and the gap where local information used to be**Staff at two London hospitals said the IT was down; nothing a local could check showed it. A live local story about where local information comes from now.](the-waiting-room-knew-first.md) [2026-10-08Vaults & method8 threads**Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes**Agents in isolated, ephemeral places need memory that outlives them. Five sgit deployment patterns, from a Mac mini to Kubernetes, with ciphertext-only servers.](encrypted-memory-for-isolated-agents.md) [2026-10-08Agents & policy8 threads**Knowing when to stop: what experience gives people, and what we have to design into agents**Knowing when to stop is the hard part for people and agents: what experience gives people, and the constraints that give agents the same perspective.](knowing-when-to-stop.md) [2026-10-08Agents & policy9 threads**Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source**A yes or no is not agency: seven dimensions, a seven-level scale for people and agents, and the review as a QA step that fixes the source.](agency-is-not-a-yes.md) [2026-10-08Agents & policy7 threads**Hope or enforcement: one customer service agent, three designs, and who keeps each promise**One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.](hope-or-enforcement.md) [2026-10-08Agents & policy3 threads**Who are you protecting against? Draw the security line where the attacker is, not above it**Before deciding how secure to be, name the attacker: a six-tier ladder, an air-gapped Mac mini read against it, and eight startups drawing their line.](who-are-you-protecting-against.md) [2026-10-08Agents & policy8 threads**Every mistake added a rule: complexity, agents, and the way back to shipping**When every agent mistake adds a rule, complexity wins: map the process, move each piece right as a small shipped component, and keep the rigour for the work.](every-mistake-added-a-rule.md) [2026-10-07News & evidence7 threads**Liquid content needs water: liquefy the journalist's notebook, not the finished product**A reply to FT Strategies on liquid content: the water is the reporting, so liquefy the journalist's notebook, keep the writing theirs, and pay per use.](liquid-content-needs-water.md) [2026-10-07News & evidence5 threads**The bridge, followed to the end: what one local story is worth when it is kept as a graph**A bridge closure simulated on a story vault: newsworthy on 5 days, needed on 57, used by three readers, four buyers and an agent, and paid back to its sources.](the-bridge-followed-to-the-end.md) [2026-10-07News & evidence5 threads**Story vault underneath, Reader Skills on top: why local journalism has the most to gain**Markus Franz's Reader Skills on top, the story vault underneath: each skill is a graph query, and local stories can pay back down their chain of sources.](story-vault-meets-reader-skills.md) [2026-10-07Agents & policy6 threads**Zoom into an agent's behaviour policy and you find the business logic**Below the first rules, an agent's behaviour policy is the business: functions, processes, clients, values. Layered, owned, counted, and where vendors plug in.](the-behaviour-policy-is-the-business-logic.md) [2026-10-07Agents & policy5 threads**A locked-down desktop for an agent, by the minute, is still hard to rent**Nine properties a safe agent desktop needs, nine products against them, the macOS day-long lease, and the startup credits that would pay for testing it.](an-agent-desktop-by-the-minute.md) [2026-10-07Graphs & knowledge7 threads**An open AI governance framework, and what its licence let us build**Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.](ai-baseline-control-framework.md) [2026-10-07Agents & policy13 threads**Where is the why? A permission prompt asked me to decide, and kept the reason**A prompt asked for a decision and kept the reason. Read through the policy, the law on uninformed consent, and the fixes that worked: put the why in the prompt.](where-is-the-why.md) [2026-10-06Agents & policy23 threads**The Mandate Stack: a multi-agent system in production, layer by layer**A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.](the-mandate-stack.md) [2026-10-06Agents & policy11 threads**Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has**An OS has two hard walls, the kernel and the user; an agent on a laptop runs inside the one marked you, so the agents run in the cloud with a vault as shared drive.](why-my-agents-do-not-run-on-my-laptop.md) [2026-10-06Startups & strategy6 threads**The deck I could not download: an author-first home for presentations, as a business plan somebody else can build**One download offered as a subscription, an author paid nothing, and a design for the service the author would have chosen: vaults, keys, seven roles, 85% to the author.](the-deck-i-could-not-download.md) [2026-10-06Agents & policy24 threads**The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from**Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.](the-agent-team-as-it-runs.md) [2026-10-06Agents & policy13 threads**A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser**The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.](a-personal-agent-that-keeps-your-secrets.md) [2026-10-05Agents & policy6 threads**The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered**A global GitHub Actions outage read the way aviation reads an incident: independent inquiry, near-miss reporting, second and third stories, vaults for the evidence.](the-investigation-github-owes-its-customers.md) [2026-10-05Agents & policy8 threads**Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it**Due diligence never scaled because it was a form; a buyer can now send an agent into a vendor's environment and read what the code and the practices are.](send-an-agent-not-a-spreadsheet.md) [2026-10-05Graphs & knowledge10 threads**How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was**Twenty articles in four weeks, measured from the session record: 63,000 words in, 85,000 out, no one-line prompts, and the real input is twenty years of writing.](how-much-of-this-did-i-write.md) [2026-10-05Graphs & knowledge11 threads**If somebody built a company on code review: how I would do it, and why it is only now possible**A reader's seven questions answered as a company plan: one reader for every layer, review as a science, and the layers as the customer's own.](if-somebody-built-a-company-on-code-review.md) [2026-10-05Agents & policy10 threads**The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard**A week of designing identities for agents and users met Google's terms; what survived is a passkey-unlocked keyring and a gap nobody sells.](the-identity-we-wanted-to-give-the-agents.md) [2026-10-04Agents & policy8 threads**The wall under the reply: end an email with the state of the thread, not the thread**End an email reply with the state of the thread for this reader, not the quoted wall: decided, open, next, who is on copy, with links to the record.](the-wall-under-the-reply.md) [2026-10-03Graphs & knowledge15 threads**Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one**Agentic memory as context management: many published, fractal, provenance-carrying memories rather than one store, shown in the session that wrote the article.](memory-is-not-a-spectator-sport.md) [2026-10-03Graphs & knowledge12 threads**Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it**Source code is layers within layers, each a graph with its own vocabulary; code review should read a change at every one, and a vault shows it done on real code.](code-review-as-a-fractal-semantic-graph.md) [2026-10-02Agents & policy13 threads**Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send**How to copy a working agentic email setup in phases: a mailbox and Claude seat of the agent's own, one session with a policy, then roles talking in files.](replicating-the-agentic-inbox.md) [2026-10-02Startups & strategy3 threads**Price it, then give it away: the early access programme as the next step after "do they miss it"**Define the product, price it, deliver it at a cost that grows a step at a time, then offer it free to people who know you and measure what it costs them.](price-it-then-give-it-away.md) [2026-10-02Agents & policy19 threads**Footprint and blast radius: what the agent actually did, and what it would have cost**Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.](footprint-and-blast-radius.md) [2026-10-01Graphs & knowledge16 threads**Custom UIs are not the exception: the inbox in 2026, where every message has its own universe**Every message has a graph, so it can be shaped for the reader's moment; a custom interface per moment is now how interfaces get made, and each gets a policy.](custom-uis-are-not-the-exception.md) [2026-09-30Agents & policy15 threads**The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up**Agents, the infrastructure meant to contain them, and risk management run on spreadsheets are arriving at once, and together they are one scenario.](ultimate-insider-three-collisions.md) [2026-09-29News & evidence6 threads**The reader was always the product: a corrected history of how news got into this mess**News has sold the reader to advertisers since 1833; the web took the monopoly, the platforms made the reader measurable, and AI took the traffic.](how-news-got-here.md) [2026-09-29Agents & policy20 threads**Six agents, one inbox: what a real multi-agent setup taught me about access policies**An access policy for an agent is only as real as its worst row: every rule in a real six-agent setup, graded by how it is enforced today.](six-agents-one-inbox.md) [2026-09-28News & evidence6 threads**Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read**AI answer engines pay to read the web as HTML; a publisher who serves markdown, dates, hashes and a typed graph saves them tokens and should get a share.](token-bill-nobody-is-sending.md) [2026-09-27Vaults & method5 threads**A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down**The food chain is a data problem: one encrypted vault per party, joined by append lanes and a typed graph, could cut the waste that keeps prices high.](supply-chain-of-vaults.md) [2026-09-24Agents & policy15 threads**Every risk is already accepted. The only question is by whom, and for how long.**A risk exists the moment the exposure does, so somebody is already carrying it; the only questions worth asking are who has accepted it and until when.](every-risk-is-already-accepted.md) [2026-09-24Agents & policy12 threads**Before you give an agent a connector, give the connector a twin**An agent with a Gmail or Calendar connector can do things the platform cannot undo; a journal of every call, replayed, shows what it did and what can go back.](connector-twin-before-you-deploy-an-agent.md) [2026-09-22News & evidence7 threads**The future of news is the story vault, not the paywall**A story is a graph of claims and evidence and the article is one projection of it; keep the graph in a vault and sell what the article was made from.](future-of-news-story-vault-not-paywall.md) [2026-09-21Startups & strategy4 threads**For a startup, the most important question is whether they miss it**Ship something usable, give it away briefly, take it away and see whether anybody misses it; charge at a profit before you talk to investors.](the-question-is-whether-they-miss-it.md) [2026-09-21Startups & strategy3 threads**The SaaS apocalypse will be decided by inertia, not by AI**Incumbents and newcomers have the same AI; what separates them is how much past success each has to protect, so inertia decides which SaaS companies survive.](saas-apocalypse-decided-by-inertia-not-by-ai.md) [2026-09-20Graphs & knowledge18 threads**Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema**A fractal semantic graph has no privileged level and no single schema: each world keeps its own vocabulary and connects to others through named edges.](introducing-fractal-semantic-graphs.md) [2026-09-07Site & engineering1 thread**The proof moved up, the homepage after the rebuild, next to the before pictures**The rebuilt homepage puts four real vaults under one sentence, picks six by the job they do, and computes its numbers at build time from the site's own data.](proof-moved-up.md) [2026-09-07Site & engineering1 thread**The proof is two clicks behind the claim, what the homepage gets wrong, and the fix**The homepage leads with encryption, which cannot be seen, while twenty-five vaults a stranger can open in one click sit two clicks away in a table.](proof-behind-the-claim.md) [2026-08-27Site & engineering1 thread**A chat box on a site with no server, the plan, and the trade it makes**sgit.ai has no server, so its directory chat runs a local matcher by default, takes your own key as an opt-in, and leaves the vault bridge unbuilt.](chat-on-a-static-site.md) [2026-08-26Site & engineering2 threads**Twenty sites in fifteen days, and what that did to the writing**One site became twenty repositories in fifteen days because each argument needed its own version history, and the index now starts from a question.](nineteen-sites.md) [2026-08-25Vaults & method5 threads**Git for things you cannot put on GitHub**sgit is git for files you cannot put on GitHub: encrypted before they leave your machine, versioned like git, stored where the server cannot read a byte.](what-sgit-is.md) [2026-08-19Vaults & method2 threads**Seven vaults, one method**Publishing seven encrypted vaults in a fortnight produced a method, and every rule in it exists because something went wrong first.](seven-vaults-one-method.md) [2026-08-17Site & engineering2 threads**Green does not mean live**Two releases passed every check and never reached the site because the checks stopped at the git remote; a release now ends by asking the live site its version.](green-does-not-mean-live.md)
+[2026-10-09Graphs & knowledge2 threads**The AI governance stack, as a graph: an answer to Hari Kota, built**Hari Kota's ten-layer AI governance stack, kept as posted and turned into a fractal semantic graph: the gaps become missing edges, and queries.](the-ai-governance-stack-as-a-graph.md) [2026-10-09Vaults & method1 thread**RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer**A Request for Comments: two key pairs so a reader cannot write, sealed files only named people can open, and fourteen questions for reviewers.](rfc-0001-public-key-cryptography-for-sgit.md) [2026-10-09Startups & strategy7 threads**A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies**A business plan for a Mac of the agent's own: what Apple's licence allows, a desktop built from vaults per run, and three behaviour policies for one agent.](a-mac-of-the-agents-own.md) [2026-10-09Agents & policy19 threads**Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not**Ten hard questions from a conference, answered in a two-hour interview: what RiskMandate does, what it deliberately is not, and how mature each part is.](riskmandate-ten-questions.md) [2026-10-09Agents & policy7 threads**How I work with Claude: one session per topic, agents with names, and memory you curate**A practical guide from a year of daily use: one Claude session per topic, named agents with a role.md, curated memory, vaults, and policy before connectors.](how-i-work-with-claude.md) [2026-10-08News & evidence2 threads**The waiting room knew first: a live local story, and the gap where local information used to be**Staff at two London hospitals said the IT was down; nothing a local could check showed it. A live local story about where local information comes from now.](the-waiting-room-knew-first.md) [2026-10-08Vaults & method8 threads**Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes**Agents in isolated, ephemeral places need memory that outlives them. Five sgit deployment patterns, from a Mac mini to Kubernetes, with ciphertext-only servers.](encrypted-memory-for-isolated-agents.md) [2026-10-08Agents & policy8 threads**Knowing when to stop: what experience gives people, and what we have to design into agents**Knowing when to stop is the hard part for people and agents: what experience gives people, and the constraints that give agents the same perspective.](knowing-when-to-stop.md) [2026-10-08Agents & policy9 threads**Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source**A yes or no is not agency: seven dimensions, a seven-level scale for people and agents, and the review as a QA step that fixes the source.](agency-is-not-a-yes.md) [2026-10-08Agents & policy7 threads**Hope or enforcement: one customer service agent, three designs, and who keeps each promise**One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.](hope-or-enforcement.md) [2026-10-08Agents & policy3 threads**Who are you protecting against? Draw the security line where the attacker is, not above it**Before deciding how secure to be, name the attacker: a six-tier ladder, an air-gapped Mac mini read against it, and eight startups drawing their line.](who-are-you-protecting-against.md) [2026-10-08Agents & policy8 threads**Every mistake added a rule: complexity, agents, and the way back to shipping**When every agent mistake adds a rule, complexity wins: map the process, move each piece right as a small shipped component, and keep the rigour for the work.](every-mistake-added-a-rule.md) [2026-10-07News & evidence7 threads**Liquid content needs water: liquefy the journalist's notebook, not the finished product**A reply to FT Strategies on liquid content: the water is the reporting, so liquefy the journalist's notebook, keep the writing theirs, and pay per use.](liquid-content-needs-water.md) [2026-10-07News & evidence5 threads**The bridge, followed to the end: what one local story is worth when it is kept as a graph**A bridge closure simulated on a story vault: newsworthy on 5 days, needed on 57, used by three readers, four buyers and an agent, and paid back to its sources.](the-bridge-followed-to-the-end.md) [2026-10-07News & evidence5 threads**Story vault underneath, Reader Skills on top: why local journalism has the most to gain**Markus Franz's Reader Skills on top, the story vault underneath: each skill is a graph query, and local stories can pay back down their chain of sources.](story-vault-meets-reader-skills.md) [2026-10-07Agents & policy6 threads**Zoom into an agent's behaviour policy and you find the business logic**Below the first rules, an agent's behaviour policy is the business: functions, processes, clients, values. Layered, owned, counted, and where vendors plug in.](the-behaviour-policy-is-the-business-logic.md) [2026-10-07Agents & policy5 threads**A locked-down desktop for an agent, by the minute, is still hard to rent**Nine properties a safe agent desktop needs, nine products against them, the macOS day-long lease, and the startup credits that would pay for testing it.](an-agent-desktop-by-the-minute.md) [2026-10-07Graphs & knowledge7 threads**An open AI governance framework, and what its licence let us build**Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.](ai-baseline-control-framework.md) [2026-10-07Agents & policy13 threads**Where is the why? A permission prompt asked me to decide, and kept the reason**A prompt asked for a decision and kept the reason. Read through the policy, the law on uninformed consent, and the fixes that worked: put the why in the prompt.](where-is-the-why.md) [2026-10-06Agents & policy23 threads**The Mandate Stack: a multi-agent system in production, layer by layer**A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.](the-mandate-stack.md) [2026-10-06Agents & policy11 threads**Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has**An OS has two hard walls, the kernel and the user; an agent on a laptop runs inside the one marked you, so the agents run in the cloud with a vault as shared drive.](why-my-agents-do-not-run-on-my-laptop.md) [2026-10-06Startups & strategy6 threads**The deck I could not download: an author-first home for presentations, as a business plan somebody else can build**One download offered as a subscription, an author paid nothing, and a design for the service the author would have chosen: vaults, keys, seven roles, 85% to the author.](the-deck-i-could-not-download.md) [2026-10-06Agents & policy24 threads**The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from**Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.](the-agent-team-as-it-runs.md) [2026-10-06Agents & policy13 threads**A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser**The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.](a-personal-agent-that-keeps-your-secrets.md) [2026-10-05Agents & policy6 threads**The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered**A global GitHub Actions outage read the way aviation reads an incident: independent inquiry, near-miss reporting, second and third stories, vaults for the evidence.](the-investigation-github-owes-its-customers.md) [2026-10-05Agents & policy8 threads**Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it**Due diligence never scaled because it was a form; a buyer can now send an agent into a vendor's environment and read what the code and the practices are.](send-an-agent-not-a-spreadsheet.md) [2026-10-05Graphs & knowledge10 threads**How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was**Twenty articles in four weeks, measured from the session record: 63,000 words in, 85,000 out, no one-line prompts, and the real input is twenty years of writing.](how-much-of-this-did-i-write.md) [2026-10-05Graphs & knowledge11 threads**If somebody built a company on code review: how I would do it, and why it is only now possible**A reader's seven questions answered as a company plan: one reader for every layer, review as a science, and the layers as the customer's own.](if-somebody-built-a-company-on-code-review.md) [2026-10-05Agents & policy10 threads**The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard**A week of designing identities for agents and users met Google's terms; what survived is a passkey-unlocked keyring and a gap nobody sells.](the-identity-we-wanted-to-give-the-agents.md) [2026-10-04Agents & policy8 threads**The wall under the reply: end an email with the state of the thread, not the thread**End an email reply with the state of the thread for this reader, not the quoted wall: decided, open, next, who is on copy, with links to the record.](the-wall-under-the-reply.md) [2026-10-03Graphs & knowledge15 threads**Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one**Agentic memory as context management: many published, fractal, provenance-carrying memories rather than one store, shown in the session that wrote the article.](memory-is-not-a-spectator-sport.md) [2026-10-03Graphs & knowledge13 threads**Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it**Source code is layers within layers, each a graph with its own vocabulary; code review should read a change at every one, and a vault shows it done on real code.](code-review-as-a-fractal-semantic-graph.md) [2026-10-02Agents & policy13 threads**Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send**How to copy a working agentic email setup in phases: a mailbox and Claude seat of the agent's own, one session with a policy, then roles talking in files.](replicating-the-agentic-inbox.md) [2026-10-02Startups & strategy3 threads**Price it, then give it away: the early access programme as the next step after "do they miss it"**Define the product, price it, deliver it at a cost that grows a step at a time, then offer it free to people who know you and measure what it costs them.](price-it-then-give-it-away.md) [2026-10-02Agents & policy19 threads**Footprint and blast radius: what the agent actually did, and what it would have cost**Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.](footprint-and-blast-radius.md) [2026-10-01Graphs & knowledge16 threads**Custom UIs are not the exception: the inbox in 2026, where every message has its own universe**Every message has a graph, so it can be shaped for the reader's moment; a custom interface per moment is now how interfaces get made, and each gets a policy.](custom-uis-are-not-the-exception.md) [2026-09-30Agents & policy15 threads**The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up**Agents, the infrastructure meant to contain them, and risk management run on spreadsheets are arriving at once, and together they are one scenario.](ultimate-insider-three-collisions.md) [2026-09-29News & evidence6 threads**The reader was always the product: a corrected history of how news got into this mess**News has sold the reader to advertisers since 1833; the web took the monopoly, the platforms made the reader measurable, and AI took the traffic.](how-news-got-here.md) [2026-09-29Agents & policy20 threads**Six agents, one inbox: what a real multi-agent setup taught me about access policies**An access policy for an agent is only as real as its worst row: every rule in a real six-agent setup, graded by how it is enforced today.](six-agents-one-inbox.md) [2026-09-28News & evidence6 threads**Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read**AI answer engines pay to read the web as HTML; a publisher who serves markdown, dates, hashes and a typed graph saves them tokens and should get a share.](token-bill-nobody-is-sending.md) [2026-09-27Vaults & method5 threads**A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down**The food chain is a data problem: one encrypted vault per party, joined by append lanes and a typed graph, could cut the waste that keeps prices high.](supply-chain-of-vaults.md) [2026-09-24Agents & policy15 threads**Every risk is already accepted. The only question is by whom, and for how long.**A risk exists the moment the exposure does, so somebody is already carrying it; the only questions worth asking are who has accepted it and until when.](every-risk-is-already-accepted.md) [2026-09-24Agents & policy12 threads**Before you give an agent a connector, give the connector a twin**An agent with a Gmail or Calendar connector can do things the platform cannot undo; a journal of every call, replayed, shows what it did and what can go back.](connector-twin-before-you-deploy-an-agent.md) [2026-09-22News & evidence7 threads**The future of news is the story vault, not the paywall**A story is a graph of claims and evidence and the article is one projection of it; keep the graph in a vault and sell what the article was made from.](future-of-news-story-vault-not-paywall.md) [2026-09-21Startups & strategy4 threads**For a startup, the most important question is whether they miss it**Ship something usable, give it away briefly, take it away and see whether anybody misses it; charge at a profit before you talk to investors.](the-question-is-whether-they-miss-it.md) [2026-09-21Startups & strategy3 threads**The SaaS apocalypse will be decided by inertia, not by AI**Incumbents and newcomers have the same AI; what separates them is how much past success each has to protect, so inertia decides which SaaS companies survive.](saas-apocalypse-decided-by-inertia-not-by-ai.md) [2026-09-20Graphs & knowledge19 threads**Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema**A fractal semantic graph has no privileged level and no single schema: each world keeps its own vocabulary and connects to others through named edges.](introducing-fractal-semantic-graphs.md) [2026-09-07Site & engineering1 thread**The proof moved up, the homepage after the rebuild, next to the before pictures**The rebuilt homepage puts four real vaults under one sentence, picks six by the job they do, and computes its numbers at build time from the site's own data.](proof-moved-up.md) [2026-09-07Site & engineering1 thread**The proof is two clicks behind the claim, what the homepage gets wrong, and the fix**The homepage leads with encryption, which cannot be seen, while twenty-five vaults a stranger can open in one click sit two clicks away in a table.](proof-behind-the-claim.md) [2026-08-27Site & engineering1 thread**A chat box on a site with no server, the plan, and the trade it makes**sgit.ai has no server, so its directory chat runs a local matcher by default, takes your own key as an opt-in, and leaves the vault bridge unbuilt.](chat-on-a-static-site.md) [2026-08-26Site & engineering2 threads**Twenty sites in fifteen days, and what that did to the writing**One site became twenty repositories in fifteen days because each argument needed its own version history, and the index now starts from a question.](nineteen-sites.md) [2026-08-25Vaults & method5 threads**Git for things you cannot put on GitHub**sgit is git for files you cannot put on GitHub: encrypted before they leave your machine, versioned like git, stored where the server cannot read a byte.](what-sgit-is.md) [2026-08-19Vaults & method2 threads**Seven vaults, one method**Publishing seven encrypted vaults in a fortnight produced a method, and every rule in it exists because something went wrong first.](seven-vaults-one-method.md) [2026-08-17Site & engineering2 threads**Green does not mean live**Two releases passed every check and never reached the site because the checks stopped at the git remote; a release now ends by asking the live site its version.](green-does-not-mean-live.md)
 
 Nothing matches. Clear the search or pick another topic.
 
@@ -15691,6 +15695,7 @@ Nothing matches. Clear the search or pick another topic.
 
 Read from the links the articles make to each other. [The same thing drawn as a map](graphs.md#map), and every article as its own graph.
 
+- [**The AI governance stack, as a graph**](the-ai-governance-stack-as-a-graph.md) builds on [Fractal Semantic Graphs](introducing-fractal-semantic-graphs.md), [Code review as a fractal semantic graph](code-review-as-a-fractal-semantic-graph.md).
 - [**RFC 0001**](rfc-0001-public-key-cryptography-for-sgit.md) builds on [Encrypted memory for agents that run somewhere else](encrypted-memory-for-isolated-agents.md).
 - [**A Mac of the agent's own**](a-mac-of-the-agents-own.md) builds on [A locked-down desktop for an agent, by the minute…](an-agent-desktop-by-the-minute.md), [Why my agents do not run on my laptop](why-my-agents-do-not-run-on-my-laptop.md), [Six agents, one inbox](six-agents-one-inbox.md), [The agent team as it runs](the-agent-team-as-it-runs.md), [Encrypted memory for agents that run somewhere else](encrypted-memory-for-isolated-agents.md), [Ten hard questions for RiskMandate, answered](riskmandate-ten-questions.md), [Hope or enforcement](hope-or-enforcement.md).
 - [**Ten hard questions for RiskMandate, answered**](riskmandate-ten-questions.md) builds on [Footprint and blast radius](footprint-and-blast-radius.md), [Hope or enforcement](hope-or-enforcement.md), [Zoom into an agent's behaviour policy and you find…](the-behaviour-policy-is-the-business-logic.md), [Fractal Semantic Graphs](introducing-fractal-semantic-graphs.md), [Before you give an agent a connector, give the…](connector-twin-before-you-deploy-an-agent.md), [The agent team as it runs](the-agent-team-as-it-runs.md), [Where is the why? A permission prompt asked me to…](where-is-the-why.md), [Agency is not a yes](agency-is-not-a-yes.md), [The ultimate insider](ultimate-insider-three-collisions.md), [The Mandate Stack](the-mandate-stack.md), [Six agents, one inbox](six-agents-one-inbox.md), [The identity we wanted to give the agents](the-identity-we-wanted-to-give-the-agents.md), [Git for things you cannot put on GitHub](what-sgit-is.md), [Encrypted memory for agents that run somewhere else](encrypted-memory-for-isolated-agents.md), [Every risk is already accepted](every-risk-is-already-accepted.md), [Code review as a fractal semantic graph](code-review-as-a-fractal-semantic-graph.md), [Knowing when to stop](knowing-when-to-stop.md), [The investigation GitHub owes its customers](the-investigation-github-owes-its-customers.md); continued by [A Mac of the agent's own](a-mac-of-the-agents-own.md).
@@ -15721,7 +15726,7 @@ Read from the links the articles make to each other. [The same thing drawn as a 
 - [**The identity we wanted to give the agents**](the-identity-we-wanted-to-give-the-agents.md) builds on [The wall under the reply](the-wall-under-the-reply.md), [Six agents, one inbox](six-agents-one-inbox.md), [Replicating the agentic inbox](replicating-the-agentic-inbox.md), [Footprint and blast radius](footprint-and-blast-radius.md), [The ultimate insider](ultimate-insider-three-collisions.md); continued by [Ten hard questions for RiskMandate, answered](riskmandate-ten-questions.md), [An open AI governance framework, and what its…](ai-baseline-control-framework.md), [The Mandate Stack](the-mandate-stack.md), [The agent team as it runs](the-agent-team-as-it-runs.md), [A personal agent that keeps your secrets](a-personal-agent-that-keeps-your-secrets.md).
 - [**The wall under the reply**](the-wall-under-the-reply.md) builds on [Custom UIs are not the exception](custom-uis-are-not-the-exception.md), [Replicating the agentic inbox](replicating-the-agentic-inbox.md), [Memory is not a spectator sport](memory-is-not-a-spectator-sport.md), [Six agents, one inbox](six-agents-one-inbox.md); continued by [The Mandate Stack](the-mandate-stack.md), [The agent team as it runs](the-agent-team-as-it-runs.md), [How much of this did I write? The numbers behind…](how-much-of-this-did-i-write.md), [The identity we wanted to give the agents](the-identity-we-wanted-to-give-the-agents.md).
 - [**Memory is not a spectator sport**](memory-is-not-a-spectator-sport.md) builds on [Sixteen thousand fetches, ten clicks, and a token…](token-bill-nobody-is-sending.md), [Fractal Semantic Graphs](introducing-fractal-semantic-graphs.md), [Replicating the agentic inbox](replicating-the-agentic-inbox.md), [Custom UIs are not the exception](custom-uis-are-not-the-exception.md), [Six agents, one inbox](six-agents-one-inbox.md), [Code review as a fractal semantic graph](code-review-as-a-fractal-semantic-graph.md), [Price it, then give it away](price-it-then-give-it-away.md); continued by [How I work with Claude](how-i-work-with-claude.md), [Knowing when to stop](knowing-when-to-stop.md), [Every mistake added a rule](every-mistake-added-a-rule.md), [The Mandate Stack](the-mandate-stack.md), [The agent team as it runs](the-agent-team-as-it-runs.md), [A personal agent that keeps your secrets](a-personal-agent-that-keeps-your-secrets.md), [How much of this did I write? The numbers behind…](how-much-of-this-did-i-write.md), [The wall under the reply](the-wall-under-the-reply.md).
-- [**Code review as a fractal semantic graph**](code-review-as-a-fractal-semantic-graph.md) builds on [Fractal Semantic Graphs](introducing-fractal-semantic-graphs.md), [Footprint and blast radius](footprint-and-blast-radius.md), [Custom UIs are not the exception](custom-uis-are-not-the-exception.md), [Every risk is already accepted](every-risk-is-already-accepted.md), [If somebody built a company on code review](if-somebody-built-a-company-on-code-review.md); continued by [Ten hard questions for RiskMandate, answered](riskmandate-ten-questions.md), [An open AI governance framework, and what its…](ai-baseline-control-framework.md), [The Mandate Stack](the-mandate-stack.md), [Send an agent, not a spreadsheet](send-an-agent-not-a-spreadsheet.md), [How much of this did I write? The numbers behind…](how-much-of-this-did-i-write.md), [If somebody built a company on code review](if-somebody-built-a-company-on-code-review.md), [Memory is not a spectator sport](memory-is-not-a-spectator-sport.md).
+- [**Code review as a fractal semantic graph**](code-review-as-a-fractal-semantic-graph.md) builds on [Fractal Semantic Graphs](introducing-fractal-semantic-graphs.md), [Footprint and blast radius](footprint-and-blast-radius.md), [Custom UIs are not the exception](custom-uis-are-not-the-exception.md), [Every risk is already accepted](every-risk-is-already-accepted.md), [If somebody built a company on code review](if-somebody-built-a-company-on-code-review.md); continued by [The AI governance stack, as a graph](the-ai-governance-stack-as-a-graph.md), [Ten hard questions for RiskMandate, answered](riskmandate-ten-questions.md), [An open AI governance framework, and what its…](ai-baseline-control-framework.md), [The Mandate Stack](the-mandate-stack.md), [Send an agent, not a spreadsheet](send-an-agent-not-a-spreadsheet.md), [How much of this did I write? The numbers behind…](how-much-of-this-did-i-write.md), [If somebody built a company on code review](if-somebody-built-a-company-on-code-review.md), [Memory is not a spectator sport](memory-is-not-a-spectator-sport.md).
 - [**Replicating the agentic inbox**](replicating-the-agentic-inbox.md) builds on [Six agents, one inbox](six-agents-one-inbox.md), [Custom UIs are not the exception](custom-uis-are-not-the-exception.md), [Footprint and blast radius](footprint-and-blast-radius.md), [Before you give an agent a connector, give the…](connector-twin-before-you-deploy-an-agent.md), [The ultimate insider](ultimate-insider-three-collisions.md); continued by [How I work with Claude](how-i-work-with-claude.md), [The Mandate Stack](the-mandate-stack.md), [The agent team as it runs](the-agent-team-as-it-runs.md), [How much of this did I write? The numbers behind…](how-much-of-this-did-i-write.md), [The identity we wanted to give the agents](the-identity-we-wanted-to-give-the-agents.md), [The wall under the reply](the-wall-under-the-reply.md), [Memory is not a spectator sport](memory-is-not-a-spectator-sport.md), [Six agents, one inbox](six-agents-one-inbox.md).
 - [**Price it, then give it away**](price-it-then-give-it-away.md) builds on [For a startup, the most important question is…](the-question-is-whether-they-miss-it.md); continued by [Memory is not a spectator sport](memory-is-not-a-spectator-sport.md), [For a startup, the most important question is…](the-question-is-whether-they-miss-it.md).
 - [**Footprint and blast radius**](footprint-and-blast-radius.md) builds on [The ultimate insider](ultimate-insider-three-collisions.md), [Before you give an agent a connector, give the…](connector-twin-before-you-deploy-an-agent.md), [Custom UIs are not the exception](custom-uis-are-not-the-exception.md), [Every risk is already accepted](every-risk-is-already-accepted.md), [Six agents, one inbox](six-agents-one-inbox.md); continued by [Ten hard questions for RiskMandate, answered](riskmandate-ten-questions.md), [Every mistake added a rule](every-mistake-added-a-rule.md), [Where is the why? A permission prompt asked me to…](where-is-the-why.md), [The Mandate Stack](the-mandate-stack.md), [Why my agents do not run on my laptop](why-my-agents-do-not-run-on-my-laptop.md), [The agent team as it runs](the-agent-team-as-it-runs.md), [A personal agent that keeps your secrets](a-personal-agent-that-keeps-your-secrets.md), [The investigation GitHub owes its customers](the-investigation-github-owes-its-customers.md), [Send an agent, not a spreadsheet](send-an-agent-not-a-spreadsheet.md), [If somebody built a company on code review](if-somebody-built-a-company-on-code-review.md), [The identity we wanted to give the agents](the-identity-we-wanted-to-give-the-agents.md), [Code review as a fractal semantic graph](code-review-as-a-fractal-semantic-graph.md), [Replicating the agentic inbox](replicating-the-agentic-inbox.md), [The ultimate insider](ultimate-insider-three-collisions.md).
@@ -15736,7 +15741,7 @@ Read from the links the articles make to each other. [The same thing drawn as a 
 - [**The future of news is the story vault, not the…**](future-of-news-story-vault-not-paywall.md) builds on [For a startup, the most important question is…](the-question-is-whether-they-miss-it.md); continued by [Liquid content needs water](liquid-content-needs-water.md), [Story vault underneath, Reader Skills on top](story-vault-meets-reader-skills.md), [The deck I could not download](the-deck-i-could-not-download.md), [Custom UIs are not the exception](custom-uis-are-not-the-exception.md), [The reader was always the product](how-news-got-here.md), [Sixteen thousand fetches, ten clicks, and a token…](token-bill-nobody-is-sending.md).
 - [**For a startup, the most important question is…**](the-question-is-whether-they-miss-it.md) builds on [Price it, then give it away](price-it-then-give-it-away.md); continued by [If somebody built a company on code review](if-somebody-built-a-company-on-code-review.md), [Price it, then give it away](price-it-then-give-it-away.md), [The future of news is the story vault, not the…](future-of-news-story-vault-not-paywall.md).
 - [**The SaaS apocalypse will be decided by inertia, not…**](saas-apocalypse-decided-by-inertia-not-by-ai.md) continued by [The deck I could not download](the-deck-i-could-not-download.md), [If somebody built a company on code review](if-somebody-built-a-company-on-code-review.md), [A supply chain of vaults](supply-chain-of-vaults.md).
-- [**Fractal Semantic Graphs**](introducing-fractal-semantic-graphs.md) continued by [Ten hard questions for RiskMandate, answered](riskmandate-ten-questions.md), [Agency is not a yes](agency-is-not-a-yes.md), [Liquid content needs water](liquid-content-needs-water.md), [Zoom into an agent's behaviour policy and you find…](the-behaviour-policy-is-the-business-logic.md), [An open AI governance framework, and what its…](ai-baseline-control-framework.md), [The Mandate Stack](the-mandate-stack.md), [The agent team as it runs](the-agent-team-as-it-runs.md), [A personal agent that keeps your secrets](a-personal-agent-that-keeps-your-secrets.md), [How much of this did I write? The numbers behind…](how-much-of-this-did-i-write.md), [If somebody built a company on code review](if-somebody-built-a-company-on-code-review.md), [Memory is not a spectator sport](memory-is-not-a-spectator-sport.md), [Code review as a fractal semantic graph](code-review-as-a-fractal-semantic-graph.md), [Custom UIs are not the exception](custom-uis-are-not-the-exception.md), [The ultimate insider](ultimate-insider-three-collisions.md), [The reader was always the product](how-news-got-here.md), [Sixteen thousand fetches, ten clicks, and a token…](token-bill-nobody-is-sending.md), [A supply chain of vaults](supply-chain-of-vaults.md), [Every risk is already accepted](every-risk-is-already-accepted.md).
+- [**Fractal Semantic Graphs**](introducing-fractal-semantic-graphs.md) continued by [The AI governance stack, as a graph](the-ai-governance-stack-as-a-graph.md), [Ten hard questions for RiskMandate, answered](riskmandate-ten-questions.md), [Agency is not a yes](agency-is-not-a-yes.md), [Liquid content needs water](liquid-content-needs-water.md), [Zoom into an agent's behaviour policy and you find…](the-behaviour-policy-is-the-business-logic.md), [An open AI governance framework, and what its…](ai-baseline-control-framework.md), [The Mandate Stack](the-mandate-stack.md), [The agent team as it runs](the-agent-team-as-it-runs.md), [A personal agent that keeps your secrets](a-personal-agent-that-keeps-your-secrets.md), [How much of this did I write? The numbers behind…](how-much-of-this-did-i-write.md), [If somebody built a company on code review](if-somebody-built-a-company-on-code-review.md), [Memory is not a spectator sport](memory-is-not-a-spectator-sport.md), [Code review as a fractal semantic graph](code-review-as-a-fractal-semantic-graph.md), [Custom UIs are not the exception](custom-uis-are-not-the-exception.md), [The ultimate insider](ultimate-insider-three-collisions.md), [The reader was always the product](how-news-got-here.md), [Sixteen thousand fetches, ten clicks, and a token…](token-bill-nobody-is-sending.md), [A supply chain of vaults](supply-chain-of-vaults.md), [Every risk is already accepted](every-risk-is-already-accepted.md).
 - [**The proof moved up, the homepage after the rebuild…**](proof-moved-up.md) builds on [The proof is two clicks behind the claim, what the…](proof-behind-the-claim.md).
 - [**The proof is two clicks behind the claim, what the…**](proof-behind-the-claim.md) continued by [The proof moved up, the homepage after the rebuild…](proof-moved-up.md).
 - [**A chat box on a site with no server, the plan, and…**](chat-on-a-static-site.md) continued by [Custom UIs are not the exception](custom-uis-are-not-the-exception.md).
@@ -19694,7 +19699,7 @@ The site is the identity, the keys are pinned, the messages are signed. The oper
 2. **Bind the editor to the projection.** Every published projection from a newsroom vault carries a binding of its editor of record over its hash. The Article 50 exemption becomes provable from the vault with a read key. First candidates: The Evidence Dispatch and pt.newsroom.sgit.ai.
 3. **Bind the operator to the contact file.** The operator of every site agent is bound to the file that publishes its keys, and rotations carry the binding forward, so the network's agents have machine identity from the domain and human identity from the person.
 
-What we bring: evidence vaults with read keys and no host that can read them; the story graph and the agent behaviour policy as records made at the time with versions pinned; append lanes and signed messaging between agents, running since September; forty-nine published vaults and two newsrooms to bind against today. What Authentitas brings: a verified natural person from a chipped passport or national eID; a binding at the moment of creation; independence; and a held identity for the pseudonymous contributor, disclosed by due process.
+What we bring: evidence vaults with read keys and no host that can read them; the story graph and the agent behaviour policy as records made at the time with versions pinned; append lanes and signed messaging between agents, running since September; fifty published vaults and two newsrooms to bind against today. What Authentitas brings: a verified natural person from a chipped passport or national eID; a binding at the moment of creation; independence; and a held identity for the pseudonymous contributor, disclosed by due process.
 
 Three integrations, each small. Three of the four clauses already run.
 
@@ -19812,6 +19817,453 @@ The articles could be shorter. Several of these could be half the length with th
 5 unchanged paragraphs
 
 [← Back to the article](../how-much-of-this-did-i-write.md)
+
+
+
+==============================================================================
+# AI Governance Graph, Hari Kota's stack as a fractal semantic graph, sgit.ai
+
+> Hari Kota's ten-layer AI governance stack, kept exactly as posted, turned into a fractal semantic graph: the edges the table already contains, sourced edges between the layers, each example zoomed into the instrument and provisions it names, and the three gaps and the do-this-today test run as queries on a fictional shop. Published with its read key.
+>
+> Page: https://sgit.ai/demos/vaults/ai-governance-graph/index.html
+
+[Home](../../../index.md) / [Vaults](../index.md) / AI Governance Graph
+
+# AI Governance Graph: Hari Kota's ten-layer stack as a fractal semantic graph
+
+Hari Kota posted The Full AI Governance Stack: ten layers, what each does, and forty-six global examples. Under it, Dinis Cruz asked whether the layers had been mapped as a fractal semantic graph, and Hari asked back: "How would you structure the graph across the layers?" This vault is the answer, built. Hari's table is kept exactly as posted, every cell a node; the edges the table already contains are drawn first; then each example opens into the instrument it names, its provisions, and the people, controls, tests and records they require. Hari's three gaps and the "do this today" test run as queries on a fictional shop. It was published with the article [The AI governance stack, as a graph](../../../articles/the-ai-governance-stack-as-a-graph.md).
+
+Hari's table, word for word, every cell a node.
+
+**Open it yourself. The key is the whole credential.**
+ Read key: `sgit_public_read_0a899b9e46ba92b1c2625ef911cbff307814fd3e1abf8a5fa1cf8a31045a01b9:1wp3xpf4`
+ In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_public_read_0a899b9e46ba92b1c2625ef911cbff307814fd3e1abf8a5fa1cf8a31045a01b9%3A1wp3xpf4) · From the CLI: `sgit clone sgit_public_read_0a899b9e46ba92b1c2625ef911cbff307814fd3e1abf8a5fa1cf8a31045a01b9:1wp3xpf4`
+Published deliberately under the `sgit_public_read_` prefix, and **derived** one-way from a vault key kept in the gitignored tier and never published. Classified with `check_credential.py` before it touched this page, read back with the published key alone by `catalogue_derive.py`, and verified with an all-zeros read key as the negative control. Created, pushed and audited with sgit-ai 0.20.0.
+
+## See it live, here
+
+The vault opens as an app: the question, Hari's stack as posted, the same table as a graph, the edges between the layers, the zoom, do this today, the gaps as queries, one instrument across many layers, each layer's world, bring your own, and every source and file. You can also [**open it in the official UI**](https://dev.vault.sgraph.ai/#sgit_public_read_0a899b9e46ba92b1c2625ef911cbff307814fd3e1abf8a5fa1cf8a31045a01b9%3A1wp3xpf4).
+
+## The one idea
+
+Keep the stack as the view and make the graph the model. The ten layers are a great way to read governance, but an obligation does not live in one layer: Article 26(2) of the EU AI Act is binding law that names a person, for a system in the inventory, whose tier comes from a classification, and the evidence that it happened is a record for the board. The value is in the edges between the layers, so a gap is a missing edge, and a missing edge is a query anyone can run.
+
+## What is in it
+
+already a graph
+
+### Hari's table contains ten edges before we add any
+
+Where two rows name the same instrument, role or jurisdiction, the table itself makes an edge across layers. The EU AI Act is in rows 2, 6 and 10 and cites the DPIA of row 6; ISO/IEC 42001 is in rows 4 and 10; the NIST AI RMF in rows 4 and 6; Singapore in rows 3 and 8; the owner of row 5 is the RACI of row 9 and the training of row 10.
+
+The ten curves were in the table all along.
+
+between the layers
+
+### A 10 x 10 matrix of edges, each resting on a provision
+
+329 edges in the knowledge graph, 140 of them between layers: 10 from Hari's table, 11 from what its labels name, and 119 of ours, each citing the fact it rests on and marked as an addition. The busiest cells run from binding law to risk classification (12), from standards to risk classification (10), and from binding law to standards (9).
+
+Click a cell for its edges, provisions and quotes.
+
+zoom
+
+### From one cell of the table down
+
+An example opens into the instrument it names, the instrument into its provisions and dated values, a provision into what it requires, and that into the people, controls, tests and records of the worked example. The breadcrumb always leads back to the cell of Hari's table you started from.
+
+Every deeper node keeps its way home.
+
+do this today
+
+### Hari's test, as a traversal
+
+Pick one of Hollow Oak Home's eight AI systems (a fictional shop) and the app walks it across all ten layers, one row each, with the edge that answers it or a missing edge. Five of eight name an owner and a tier with its basis. The CV screening assistant passes Hari's test and still shows three missing edges: its owner has no literacy or training record, and its bias test result reaches nobody.
+
+A test that passes, and what it does not see.
+
+the gaps, as queries
+
+### Layers 3, 5 and 10, run as queries
+
+Soft law nobody tracks: Singapore, where two systems are used. No live inventory: a meeting transcription tool found in the expenses. Owners nobody trained: the HR Lead, owner and overseer of a high-risk system. Each query shows its plain question, its traversal step by step and its result, and four more follow: obligations without a control, guardrails without a test, results nobody reads, and one instrument across many layers.
+
+A gap is a missing edge.
+
+bring your own
+
+### Your systems, the same queries, in your browser
+
+Paste or load two small CSV files, systems and people, and the do-this-today test and Hari's three gap queries run locally. Nothing is sent anywhere. The templates hold Hollow Oak Home's data as the example.
+
+Local only; the vault is never written.
+
+## How it is built
+
+Hari's table, the post and the comment thread are transcribed verbatim into `input/hari-stack.json`, the single source for the 85 nodes in Hari's words; the gate checks every one byte for byte. Facts about real instruments come from a research pack dated 9 October 2026 (`research/facts.md` and `facts.json`, 114 entries, each with its verified flag); nodes it could not verify carry an unverified badge. `tools/model.py` writes everything in `data/`: 335 nodes, 702 edges, one ontology per layer and 91 verbs, each with its inverse; exports as CSV, JSON-LD and Turtle. The app is on the design system of the [agency scale](../agency-scale/index.md) and [Agent Desk](../agent-desk/index.md) vaults. `tools/gate.py` runs 22 checks, among them: the data reproduces byte for byte; no edge uses `relates_to` or another verb without meaning; every edge cites a source; the matrix equals the count of edges; every query recomputes, in Python and in the browser; no credential shape, em-dash or unsupported absolute appears outside Hari's quoted words; and every view renders at desktop and phone widths with no errors and no network requests.
+
+## The audit, honestly
+
+**What was scanned.** Every file before the first commit, and every file again after cloning with the published read key alone: vault-key shapes, every `sgit_` credential prefix, private-key headers, cloud key shapes, the SG/Send access token, the vault's own key and its write key. The clone matched the source, file by file.
+
+**What was found.** Nothing. The negative control, an all-zeros read key against the same vault id, returned nothing.
+
+**What it does not claim.** It is a method and a worked example. Hollow Oak Home is fictional. Nothing in it says any real organisation complies or does not, and it is not legal advice. Several of Hari's examples moved in 2026 (the EU AI Act was amended by Regulation (EU) 2026/1744, Colorado SB 26-189 repealed and re-enacted SB24-205, Japan passed an AI Promotion Act); the labels stay as posted and the changes sit underneath as dated edges, the older values struck through.
+
+**Write-key status:** escrowed, in the gitignored credential tier, before this page was written.
+
+## Derived facts
+
+From `admin/build/catalogue_derive.py 1wp3xpf4 <read key hex>`, read-only, no token, no clone.
+
+- **Files:** 78 · **plaintext size:** 3003 KB
+- **Commits:** 2 · **last updated:** 2026-10-09 · **HEAD:** `obj-cas-imm-69f4df191a98`
+- **Top level:** `PUBLIC.md`, `README.md`, `REALITY.md`, `app.json`, `app/`, `data/`, `docs/`, `index.html`, `input/`, `research/`, `templates/`, `tests/`, `tools/`, `versions/`
+- **File types:** .json ×25, .js ×15, .css ×14, .py ×9, .md ×7, .csv ×4, .html ×2, .jsonld ×1, .ttl ×1
+- **Vault app:** yes, entry `index.html` · **browser-renderable:** yes
+
+## Notes
+
+**Where this came from.** Hari Kota's LinkedIn post The Full AI Governance Stack, and the comment thread under it, October 2026; the method in [Fractal Semantic Graphs](../../../articles/introducing-fractal-semantic-graphs.md); the worked organisation from [Hope or enforcement](../hope-or-enforcement/index.md). The EU AI Act itself is parsed from official XML in the [Regulation Graph](../regulation-graph/index.md) vault, and an open AI control framework is a graph in [AI BCF as a graph](../aibcf-graph/index.md).
+
+**Who wrote this.** [agent@riskmandate.ai](mailto:agent@riskmandate.ai) (Claude Opus 5.5, `claude-opus-5-5`), in the sgit.ai site session, for RiskMandate.ai and sgit.ai. AI-generated text, disclosed as Article 50 of the EU AI Act asks; the person with editorial responsibility is Dinis Cruz. Replies to [agent@riskmandate.ai](mailto:agent@riskmandate.ai).
+
+[← All published vaults](../index.md)
+
+
+
+==============================================================================
+# The AI governance stack, as a graph: an answer to Hari Kota, built, sgit.ai
+
+> Hari Kota posted The Full AI Governance Stack, ten layers from principles to people, and asked how I would structure the graph across the layers. This is the answer, built as a vault you can open. Hari's table is kept exactly as posted, every cell a node. The table already contains ten edges between layers before anything is added. Each layer is its own world with its own vocabulary, and the edges between those worlds come from the provisions themselves, so a gap is a missing edge and a missing edge is a query. Hari's three gaps and the "do this today" test run as queries on a fictional shop, and the line "most teams cover only 4 or 5" gets three honest readings.
+>
+> Page: https://sgit.ai/articles/the-ai-governance-stack-as-a-graph.html
+
+[Home](../index.md) / [Articles](index.md) / The AI governance stack, as a graph: an answer to Hari Kota, built
+
+# The AI governance stack, as a graph: an answer to Hari Kota, built
+
+By [Dinis Cruz](../about/index.md) · 2026-10-09 · [v0.7.18](../admin/versions.md) · ai-governancefractal-semantic-graphsgraphseu-ai-actiso-42001nist-ai-rmfriskinventorycompetencevaultsarticle
+
+***Abstract:** Hari Kota posted The Full AI Governance Stack, ten layers from principles to people, and asked how I would structure the graph across the layers. This is the answer, built as a vault you can open. Hari's table is kept exactly as posted, every cell a node. The table already contains ten edges between layers before anything is added. Each layer is its own world with its own vocabulary, and the edges between those worlds come from the provisions themselves, so a gap is a missing edge and a missing edge is a query. Hari's three gaps and the "do this today" test run as queries on a fictional shop, and the line "most teams cover only 4 or 5" gets three honest readings.*
+
+Hari Kota posted [The Full AI Governance Stack](#hari): ten layers, what each does, and forty-six global examples, under the line "10 layers. 1 global view. Most teams cover only 4 or 5." I asked in the comments whether the layers had been mapped with fractal semantic graphs, to interconnect them. Hari answered:
+
+"I haven't mapped it that way. How would you structure the graph across the layers? What would be your take? Curious to know."
+
+This is my take, and rather than describe it I built it. The [AI Governance Graph vault](../demos/vaults/ai-governance-graph/index.md) opens as an app with its read key published, and everything below is a view of it.
+
+Hari's stack, exactly as posted: every layer and every example, labels unchanged. The orange edges were already in the table, because the same instrument or practice appears in more than one row. Nothing has been added yet except the lines.
+
+**Hari's table as a graph, Mermaid source**
+
+[rendered image](images/gg-hari-graph.webp)
+
+```
+flowchart LR
+  subgraph L1["1 Principles & Policy"]
+    direction TB
+    e11["OECD AI Principles"]
+    e12["UNESCO Recommendation"]
+    e13["G7 Hiroshima Code of Conduct"]
+    e14["Council of Europe AI Convention"]
+  end
+  subgraph L2["2 Binding Law"]
+    direction TB
+    e21["EU AI Act"]
+    e22["China Generative AI rules"]
+    e23["South Korea AI Basic Act"]
+    e24["Colorado SB 26-189"]
+    e25["India DPDP"]
+    e26["SDAIA (Saudi)"]
+  end
+  subgraph L3["3 Soft Law & National Guidance"]
+    direction TB
+    e31["Singapore Model AI Governance Framework"]
+    e32["Japan AI Guidance for Business"]
+    e33["UK principles-based approach"]
+    e34["UAE sectoral guidance"]
+    e35["Brazil PL 2338/2023 (pending)"]
+  end
+  subgraph L4["4 Standards & Frameworks"]
+    direction TB
+    e41["ISO/IEC 42001"]
+    e42["NIST AI RMF"]
+    e43["ISO 31000"]
+    e44["IEEE 7000 series"]
+  end
+  subgraph L5["5 Inventory & Intake"]
+    direction TB
+    e51["AI use-case register"]
+    e52["owner assignment"]
+    e53["Credo AI"]
+    e54["Holistic AI"]
+    e55["IBM watsonx.governance"]
+    e56["OneTrust"]
+  end
+  subgraph L6["6 Risk Classification & Impact Assessment"]
+    direction TB
+    e61["EU AI Act risk tiers"]
+    e62["AI impact assessment"]
+    e63["DPIA"]
+    e64["NIST MAP"]
+  end
+  subgraph L7["7 Technical Guardrails"]
+    direction TB
+    e71["Guardrails AI"]
+    e72["NeMo Guardrails"]
+    e73["Azure AI Content Safety"]
+    e74["access controls"]
+  end
+  subgraph L8["8 Testing & Evaluation"]
+    direction TB
+    e81["AI Verify (Singapore)"]
+    e82["Fairlearn"]
+    e83["AIF360"]
+    e84["promptfoo"]
+    e85["garak"]
+  end
+  subgraph L9["9 Accountability & Reporting"]
+    direction TB
+    e91["AI committee"]
+    e92["RACI"]
+    e93["model cards"]
+    e94["board risk reporting"]
+  end
+  subgraph L10["10 People & Competence"]
+    direction TB
+    e101["AI literacy duty (EU AI Act)"]
+    e102["ISO 42001 competence requirement"]
+    e103["AIGP (IAPP)"]
+    e104["role-based training"]
+  end
+  e21 -. "same instrument" .- e61
+  e21 -. "same instrument" .- e101
+  e41 -. "same instrument" .- e102
+  e42 -. "same framework" .- e64
+  e31 -. "same regulator's toolkit" .- e81
+  e52 -. "names the owner in" .- e92
+  e92 -. "who is trained by" .- e104
+  e63 -. "named in Art 26(9) and 27(4)" .- e21
+  L1 ~~~ L2 ~~~ L3 ~~~ L4 ~~~ L5
+  L6 ~~~ L7 ~~~ L8 ~~~ L9 ~~~ L10
+  classDef hidden stroke-dasharray:4 3
+  linkStyle 0,1,2,3,4,5,6,7 stroke:#C2410C,stroke-width:2px,color:#C2410C
+```
+
+## In short
+
+- **Keep the stack as the view; make the graph the model.** Hari's ten layers are a great way to read governance, and the vault keeps them exactly as posted. Every cell is a node.
+- **The table already contains a graph.** Before anything is added, ten edges cross the layers: the EU AI Act sits in rows 2, 6 and 10; ISO/IEC 42001 in rows 4 and 10; the NIST AI RMF in rows 4 and 6; Singapore in rows 3 and 8; the owner of row 5 is the RACI of row 9 and the training of row 10.
+- **Each layer is its own world.** Law is articles and paragraphs; standards are clauses and controls; inventory is systems and owners; testing is tests and results. No layer has to adopt another's schema. They share only a grammar, so an edge can be drawn from any of them to any other.
+- **The edges between worlds come from the provisions themselves.** Article 26(2) of the EU AI Act joins binding law to people; GOVERN 1.6 of the NIST AI RMF joins a framework to the inventory. 119 such edges, each citing the fact it rests on.
+- **A gap is a missing edge, and a missing edge is a query.** Hari's "do this today" test, and the three gaps Hari names in layers 3, 5 and 10, run as queries anyone can read, on a fictional shop.
+- **The stack is a snapshot; the graph keeps time.** Several of Hari's examples moved in 2026. The labels stay as posted and the changes sit underneath as dated edges.
+
+## Hari's stack, exactly as posted
+
+This is the mental model the graph has to respect, so it comes first, word for word, from the infographic and the post:
+
+| # | Layer | What it does | Global examples |
+|---|---|---|---|
+| 1 | Principles & Policy | Sets the values and the internal AI policy | OECD AI Principles, UNESCO Recommendation, G7 Hiroshima Code of Conduct, Council of Europe AI Convention |
+| 2 | Binding Law | Maps hard legal obligations by jurisdiction | EU AI Act, China Generative AI rules, South Korea AI Basic Act, Colorado SB 26-189, India DPDP, SDAIA (Saudi) |
+| 3 | Soft Law & National Guidance | Covers regimes with guidance but no AI statute | Singapore Model AI Governance Framework, Japan AI Guidance for Business, UK principles-based approach, UAE sectoral guidance, Brazil PL 2338/2023 (pending) |
+| 4 | Standards & Frameworks | Provides the management-system backbone | ISO/IEC 42001, NIST AI RMF, ISO 31000, IEEE 7000 series |
+| 5 | Inventory & Intake | Tracks every AI use case and its owner | AI use-case register, owner assignment, Credo AI, Holistic AI, IBM watsonx.governance, OneTrust |
+| 6 | Risk Classification & Impact Assessment | Tiers risk before deployment | EU AI Act risk tiers, AI impact assessment, DPIA, NIST MAP |
+| 7 | Technical Guardrails | Enforces controls inside the system | Guardrails AI, NeMo Guardrails, Azure AI Content Safety, access controls |
+| 8 | Testing & Evaluation | Tests for bias, robustness and safety | AI Verify (Singapore), Fairlearn, AIF360, promptfoo, garak |
+| 9 | Accountability & Reporting | Gives the board ownership and evidence | AI committee, RACI, model cards, board risk reporting |
+| 10 | People & Competence | Ensures owners are trained and accountable | AI literacy duty (EU AI Act), ISO 42001 competence requirement, AIGP (IAPP), role-based training |
+
+The post adds the claims the graph will test: "The gaps show up in layers 3, 5 and 10. Many teams track binding law but miss soft-law regimes, keep no live AI inventory, and never ask who is trained to own the risk." And the test: "Do this today: pick one AI system in your company and name the owner and the risk tier. If you can't, you've found your gap."
+
+In the vault this table is the first thing you see, transcribed into one input file that the release gate checks byte for byte against every node that carries Hari's words: ten layers, ten purposes, forty-six examples, the title, the subtitle, the footer and the post's claims, eighty-five nodes in all. Our additions are hidden until you ask for them.
+
+Hari's stack, as posted, in the vault: every cell is a node you can click for its edges and its zoom. Rows 3, 5 and 10 are marked because the post marks them.
+
+## The table already contains a graph
+
+Read a table and every example lives in exactly one row, so the EU AI Act looks like a layer 2 thing. Read it as a graph and the table turns out to say more than its rows do. Where two rows name the same instrument, role or jurisdiction, they share a node one level down, and that shared node is an edge across layers that Hari's table already contained:
+
+- **EU AI Act** (row 2) shares an instrument with **EU AI Act risk tiers** (row 6) and with **AI literacy duty (EU AI Act)** (row 10); the risk tiers and the literacy duty share it with each other.
+- **EU AI Act** (row 2) cites the **DPIA** of row 6: deployers use the provider's information "to comply with their obligation to carry out a data protection impact assessment under Article 35 of Regulation (EU) 2016/679" (Article 26(9)), and the fundamental rights impact assessment now cross-references it (Article 27(4), as amended in 2026).
+- **ISO/IEC 42001** (row 4) shares an instrument with **ISO 42001 competence requirement** (row 10).
+- **NIST AI RMF** (row 4) shares an instrument with **NIST MAP** (row 6).
+- **Singapore Model AI Governance Framework** (row 3) shares a jurisdiction with **AI Verify (Singapore)** (row 8): a soft-law regime that ships its own testing toolkit.
+- **owner assignment** (row 5) names the same role as **RACI** (row 9) and **role-based training** (row 10), and those two name it to each other.
+
+Ten edges, and none of them is ours. That is the first answer to "how would you structure the graph across the layers": start with the edges the people who wrote the layers already drew without drawing them.
+
+The same table as a graph: forty-six example nodes in Hari's ten rows, and the ten curves the table already contained. A toggle adds our cross-layer edges, in a different style, so they cannot be mistaken for Hari's.
+
+## Each layer is its own world
+
+The second answer is the fractal part, and it is the part that makes the rest workable. Each layer gets its own ontology, in its own owners' vocabulary. Binding law is jurisdictions, instruments, articles, paragraphs, obligations and application dates. Standards are clauses, control objectives, framework functions, subcategories and crosswalks. Inventory is AI systems, use cases, vendors, models, data sources and owner records. Testing is tests, metrics, results and tools. Accountability is committees, roles, model cards, board reports, risk registers and acceptances. People are roles, training, certifications and competence evidence.
+
+None of those worlds is asked to fit the others. A lawyer's graph of the EU AI Act should look like the Act, and in the [Regulation Graph](../demos/vaults/regulation-graph/index.md) vault it does: parsed from the official XML, article by article. A risk team's register should look like a register. What the worlds share is only the grammar from [Fractal Semantic Graphs](../articles/introducing-fractal-semantic-graphs.md), five rules:
+
+1. Every edge is a verb, stated in both directions, with an inverse a person would say: a provision `requires` a record, the record `is_required_by` the provision.
+2. `relates_to` is banned, along with every verb that means nothing. The gate refuses them.
+3. Properties carry data, never meaning.
+4. Supersede, never delete.
+5. Never render the whole graph: render the answer to a question.
+
+The vault has ninety-one verbs, each with its inverse, in one file. Every view opens with the question it answers.
+
+Each layer's world: its own node types and verbs, with the five grammar rules that every world shares.
+
+## The edges between worlds come from the provisions
+
+The third answer is where our additions start, and the rule for them is that each one must rest on a provision someone can read. Some of the strongest:
+
+- **Binding law to people.** Article 26(2) of the EU AI Act: "Deployers shall assign human oversight to natural persons who have the necessary competence, training and authority, as well as the necessary support." One sentence, and it joins layer 2 to layer 10, for a system in layer 5 whose tier came from layer 6.
+- **Binding law to people, again, reworded.** Article 4 on AI literacy, as replaced in July 2026 by [Regulation (EU) 2026/1744](https://eur-lex.europa.eu/eli/reg/2026/1744/oj/eng): providers and deployers "shall take measures to support the development of AI literacy of their staff". The 2024 wording stays in the graph, struck through.
+- **Binding law to risk classification.** Article 6 with Annex III. Point 4(a) covers "AI systems intended to be used for the recruitment or selection of natural persons, in particular to place targeted job advertisements, to analyse and filter job applications, and to evaluate candidates".
+- **Framework to inventory.** NIST AI RMF GOVERN 1.6: "Mechanisms are in place to inventory AI systems and are resourced according to organizational risk priorities." This is the clearest anchor I found for Hari's layer 5.
+- **Standard to people.** ISO/IEC 42001 clause 7.2, Competence, which NIST's own [crosswalk](https://airc.nist.gov/airmf-resources/crosswalks/) maps to GOVERN 2.2, training.
+- **Standard to standard.** NIST publishes thirteen official crosswalks, including the AI RMF to ISO/IEC 42001 and to AI Verify: edges between layer 4 and layers 4 and 8 that somebody already wrote down.
+
+Counted, the knowledge graph has 329 edges, 140 of them between layers: the ten from Hari's table, eleven from what Hari's labels name, and 119 of ours, every one citing the fact it rests on and marked as an addition. The busiest cells run from binding law to risk classification (12 edges), from standards to risk classification (10), and from binding law to standards (9).
+
+Between the layers: every edge counted by the layer it starts in and the layer it ends in. Click a cell for its edges, each with its provision, quote and source.
+
+Read per instrument, the same count says something the table cannot. In Hari's table the EU AI Act is one example in row 2. In the graph its articles reach nine of the ten layers, as do ISO/IEC 42001's clauses; the NIST AI RMF reaches eight. That is the argument for a graph in a single row of a table.
+
+One row of the table, many layers of the graph. A diamond is where an instrument lives; a dot is a layer one of its edges reaches.
+
+## Zoom from one cell down
+
+Put the three together and the walk looks like this. Three of Hari's cells name the same instrument. Open it and its provisions appear. Follow two of them into an organisation and they reach a system, its classification and its owner, and at the end there is either a record or a missing edge.
+
+Zoom from one cell of Hari's table to one missing edge. Altitude 0 is Hari's words, 1 the instrument, 2 its provisions with dated wording, 3 one organisation, here fictional. The orange edge is the gap.
+
+**The zoom, Mermaid source**
+
+[rendered image](images/gg-zoom.webp)
+
+```
+flowchart LR
+  subgraph A0["Altitude 0: Hari's table, as posted"]
+    direction TB
+    H2["row 2 · EU AI Act"]
+    H6["row 6 · EU AI Act risk tiers"]
+    H10["row 10 · AI literacy duty (EU AI Act)"]
+  end
+  subgraph A1["Altitude 1: the instrument"]
+    R["Regulation (EU) 2024/1689<br/>amended by 2026/1744"]
+  end
+  subgraph A2["Altitude 2: provisions"]
+    direction TB
+    P4["Art 4 · AI literacy<br/>as reworded in 2026"]
+    P26["Art 26(2) · oversight by persons with<br/>competence, training and authority"]
+    PA["Annex III 4(a) · recruitment<br/>or selection"]
+  end
+  subgraph A3["Altitude 3: Hollow Oak Home, fictional"]
+    direction TB
+    SYS["CV screening assistant · layer 5"]
+    CL["classification · layer 6<br/>assigns: high-risk"]
+    HR["HR Lead · owner and overseer · layer 10"]
+    TR["training or competence record"]
+  end
+  RG["Regulation Graph vault<br/>the Act parsed from official XML"]
+  H2 -- "refers_to" --> R
+  H6 -- "refers_to" --> R
+  H10 -- "refers_to" --> P4
+  R -- "has_part" --> P26
+  R -- "has_part" --> PA
+  R -- "is_detailed_in" --> RG
+  SYS -- "is_classified_in" --> CL
+  CL -- "is_made_on_the_basis_of" --> PA
+  SYS -- "is_owned_by, is_overseen_by" --> HR
+  P26 -- "applies_to" --> SYS
+  P4 -- "applies_to" --> SYS
+  HR -. "has_completed: missing" .-> TR
+  style TR stroke:#C2410C,stroke-width:2px,stroke-dasharray:5 4,color:#C2410C
+  linkStyle 11 stroke:#C2410C,stroke-width:2px,color:#C2410C
+```
+
+Every deeper node keeps a breadcrumb back to the cell of Hari's table it came from, so whoever is reading always knows which part of the original model they are standing under. And the instrument node does not have to hold the whole Act: it `is_detailed_in` the Regulation Graph vault, which does. That jump between vaults is what fractal means in practice: a node in one graph is a whole graph somewhere else, with its own vocabulary, reachable by a named edge.
+
+## The stack is a snapshot; the graph keeps time
+
+The research behind the vault checked every one of Hari's forty-six examples on 9 October 2026, and several had moved during 2026. The EU AI Act was amended by Regulation (EU) 2026/1744, in force from 27 July: the Annex III high-risk obligations now apply from 2 December 2027 and Annex I from 2 August 2028, and Article 4 was reworded. Colorado SB 26-189, signed on 14 May 2026, repealed and re-enacted the original Colorado AI Act, SB24-205, as a narrower law on automated decision-making from 1 January 2027. Japan passed an AI Promotion Act in 2025 and is on version 1.2 of its AI Guidelines for Business. promptfoo became part of OpenAI in March 2026 and remains open source.
+
+None of that makes the table wrong: it names SB 26-189, which is exactly the current law. It shows what a table cannot do. A table is correct on the day it is drawn. A graph keeps the label as posted, puts the instrument underneath, and records each change as a dated edge (`was_amended_by`, `repeals_and_replaces`, `supersedes`) with the old value kept and struck through. Ask "what changed under row 2 this year?" and it is a query. The neutral notes, one per example where we used something more specific than the label, are in the vault's `docs/sources-notes.md`.
+
+## Do this today, as a traversal
+
+Hari's test is the best line in the post, because it is a query in disguise: for a system, follow `is_owned_by` to a person, follow `is_classified_in` to a classification, which `assigns` a tier and `is_made_on_the_basis_of` a provision. If either path ends early, that is the gap.
+
+To run it on something I invented an organisation, deliberately: Hollow Oak Home, the online homeware shop from the [Hope or enforcement](../demos/vaults/hope-or-enforcement/index.md) vault, with eight AI systems, three jurisdictions (the UK, the EU and Singapore) and roles rather than names. It is fictional, its gaps are planted, and nothing in it says anything about a real organisation.
+
+Five of the eight systems pass: an owner and a tier with its basis. The fraud and chargeback score from the payments provider has an owner and no tier. The demand forecasting model has a tier and no owner. The meeting transcription tool somebody bought with a company card has neither.
+
+The more interesting result is a system that passes. The CV screening assistant has an owner, the HR Lead, and a tier, high-risk on the basis of Annex III point 4(a). Walk it across all ten layers, though, and three rows come back red: Article 4 and Article 26(2) apply and the HR Lead has no literacy, training or competence record, and the bias test of its shortlisting outcomes produces a result no report or committee receives. Hari's test is the right first question. The graph is what lets the second, third and tenth questions be asked the same way.
+
+Do this today for the CV screening assistant: the owner and the tier pass, and the walk across ten layers finds three missing edges, in layers 2, 9 and 10.
+
+## Hari's three gaps, as queries
+
+Each of the gaps Hari names becomes a query with a plain question, a traversal written out step by step, and a result:
+
+- **Layer 3, soft law that no role tracks.** Start at each jurisdiction that a guidance document `is_issued_in`; keep the ones where a system `is_deployed_in`; report those with no `is_tracked_by` edge to a role. For Hollow Oak Home: Singapore, where the demand forecast and the transcription tool are used, with three Model AI Governance Frameworks in the graph and no role tracking them.
+- **Layer 5, no live inventory.** Start at each system that `was_found_in` a piece of evidence (expenses, sign-ins, code); report those the register does not record. Result: the meeting transcription tool, found in the September expenses review.
+- **Layer 10, owners without training.** Start at each system whose classification assigns the high-risk tier; follow `is_owned_by` and `is_overseen_by` to roles; report roles with no training or competence record. Result: the HR Lead, with Article 4 and Article 26(2) as the provisions that require it.
+
+Four more follow the same pattern: obligations with nothing meeting them, guardrails with no test, test results that reach no report, and the instruments that reach many layers.
+
+The gaps as queries: Hari's three first, each with the claim it tests, the traversal and the result.
+
+## What "4 or 5" means in a graph
+
+"Most teams cover only 4 or 5" is a good provocation, and in a graph it splits into three questions with three different answers. For the fictional shop: ten of ten layers have at least one complete path for some system; one of ten is complete for every system in the register; and none is complete for every system once the tool found in the expenses is counted. Per system, the layers answered are 10, 7, 10, 4, 6, 9, 0 and 9 of ten.
+
+So "covering a layer" is not one thing. A layer can be covered somewhere and almost nowhere, and a stack has no way to show the difference. The graph lets you say which one you mean, system by system, and the numbers are computed rather than asserted.
+
+## Bring your own
+
+The last view is the one I would start with if I were Hari's reader. Paste two small CSV files, your systems (name, owner role, tier, basis, jurisdictions, where it was found) and your people (role, training), and the do-this-today test and the three gap queries run in your browser. Nothing is sent anywhere and the vault is never written. The templates hold Hollow Oak Home's data as the example.
+
+Bring your own: two CSV inputs and the same queries, computed locally.
+
+## How the vault is built, and what it does not claim
+
+One model script writes every data file: 335 nodes, 702 edges, one ontology per layer, and exports as CSV, JSON-LD and Turtle. Facts about real instruments come only from a research pack dated 9 October 2026, 114 entries, each marked verified or not; where a primary site refused automated access, the fact is shown with an unverified badge rather than presented as checked. A release gate of twenty-two checks reproduces every file byte for byte, refuses meaningless verbs, recounts the matrix, recomputes every query in Python and again in the browser, checks Hari's eighty-five nodes against the transcription, and renders every view at desktop and phone widths with no errors and no network requests.
+
+It is a method and a worked example. Hollow Oak Home is fictional. Nothing in it says any real organisation complies or does not, it names tools only as examples of the layers Hari put them in, and it is not legal advice.
+
+## Prior art
+
+The idea of mapping AI law to standards as a graph is not new, and the vault leans on work that came first. Julio Hernandez, Delaram Golpayegani and Dave Lewis proposed [an open knowledge graph for mapping the EU AI Act to international standards](https://arxiv.org/abs/2408.11925) in 2024. The [AI Risk Ontology (AIRO)](https://w3id.org/AIRO) and the W3C Data Privacy Vocabularies community's [AI extension](https://www.w3.org/community/reports/dpvcg/CG-FINAL-ai-20240801/) give vocabularies for AI systems, risks and the Act. NIST's [crosswalks](https://airc.nist.gov/airmf-resources/crosswalks/) are, in effect, published edges between frameworks. What the vault adds is the fractal shape: Hari's model kept intact at the top, each layer in its own vocabulary, provisions as the source of every edge, an organisation's records at the bottom, and gaps as queries across all of it.
+
+## Open it
+
+- The vault, with its read key: [AI Governance Graph](../demos/vaults/ai-governance-graph/index.md). From the command line: `sgit clone sgit_public_read_0a899b9e46ba92b1c2625ef911cbff307814fd3e1abf8a5fa1cf8a31045a01b9:1wp3xpf4`
+- The method: [Fractal Semantic Graphs](../articles/introducing-fractal-semantic-graphs.md), and the same method applied to code in [code review as a fractal semantic graph](../articles/code-review-as-a-fractal-semantic-graph.md).
+- The EU AI Act itself, as a graph: [Regulation Graph](../demos/vaults/regulation-graph/index.md); an open control framework, as a graph: [AI BCF as a graph](../demos/vaults/aibcf-graph/index.md).
+
+Hari, thank you for the question. The stack is yours and it stays as you drew it; the graph is what grows underneath. If you want a row changed, an example added, or your own organisation's version built the same way, the vault is open, and so am I.
+
+*Written from the comment thread under Hari Kota's LinkedIn post The Full AI Governance Stack (October 2026), whose table is quoted exactly. Researched, built and written by agent@riskmandate.ai (Claude Opus 5.5, claude-opus-5-5) in the sgit.ai site session, for Dinis Cruz, who has editorial responsibility. Facts checked on 9 October 2026 against primary sources where they could be reached; not legal advice.*
+
+## Threads
+
+Graphs & knowledgeAgents & policy[This article as a graph →](graphs.md#the-ai-governance-stack-as-a-graph)
+
+### Builds on
+
+- [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](introducing-fractal-semantic-graphs.md) A fractal semantic graph has no privileged level and no single schema: each world keeps its own vocabulary and connects to others through named edges.
+- [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](code-review-as-a-fractal-semantic-graph.md) Source code is layers within layers, each a graph with its own vocabulary; code review should read a change at every one, and a vault shows it done on real code.
+
+[All articles](index.md) · [All graphs](graphs.md)
+
+**Posting this article on LinkedIn?** The cover is [the-ai-governance-stack-as-a-graph.jpg](../articles/banners/the-ai-governance-stack-as-a-graph.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
+
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
+
+[← All articles](index.md)
 
 
 
@@ -26345,6 +26797,7 @@ Graphs & knowledgeStartups & strategy[This article as a graph →](graphs.md#cod
 
 ### Continued by
 
+- [The AI governance stack, as a graph: an answer to Hari Kota, built](the-ai-governance-stack-as-a-graph.md) Hari Kota's ten-layer AI governance stack, kept as posted and turned into a fractal semantic graph: the gaps become missing edges, and queries.
 - [Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not](riskmandate-ten-questions.md) Ten hard questions from a conference, answered in a two-hour interview: what RiskMandate does, what it deliberately is not, and how mature each part is.
 - [An open AI governance framework, and what its licence let us build](ai-baseline-control-framework.md) Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.
 - [The Mandate Stack: a multi-agent system in production, layer by layer](the-mandate-stack.md) A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.
@@ -29121,6 +29574,7 @@ Graphs & knowledge[This article as a graph →](graphs.md#introducing-fractal-se
 
 ### Continued by
 
+- [The AI governance stack, as a graph: an answer to Hari Kota, built](the-ai-governance-stack-as-a-graph.md) Hari Kota's ten-layer AI governance stack, kept as posted and turned into a fractal semantic graph: the gaps become missing edges, and queries.
 - [Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not](riskmandate-ten-questions.md) Ten hard questions from a conference, answered in a two-hour interview: what RiskMandate does, what it deliberately is not, and how mature each part is.
 - [Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source](agency-is-not-a-yes.md) A yes or no is not agency: seven dimensions, a seven-level scale for people and agents, and the review as a QA step that fixes the source.
 - [Liquid content needs water: liquefy the journalist's notebook, not the finished product](liquid-content-needs-water.md) A reply to FT Strategies on liquid content: the water is the reporting, so liquefy the journalist's notebook, keep the writing theirs, and pay per use.
@@ -29941,13 +30395,43 @@ Every article here has a semantic graph beside it: the ideas it rests on, the cl
 
 The graphs are data first and pictures second. Take them as JSON: [all articles in one file](graphs.json), with the topics, the teasers and the links between articles resolved, or one file per article at `articles/graphs/<slug>.json` (for example [this one](graphs/footprint-and-blast-radius.json)). The pages on this site are rendered from the same files at build time; nothing here is hand-written HTML.
 
-53 of 53 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
+54 of 54 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
 
 ## How the articles connect
 
 *[diagram]*
 
-53 articles, 230 links between them (371 mentions in all). 44 articles cite an earlier one; 6 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Six agents, one inbox](#six-agents-one-inbox) (18 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+54 articles, 232 links between them (374 mentions in all). 45 articles cite an earlier one; 6 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (19 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+
+## [The AI governance stack, as a graph: an answer to Hari Kota, built](the-ai-governance-stack-as-a-graph.md)
+
+2026-10-09 · Graphs & knowledgeAgents & policy
+
+Keep Hari Kota's ten-layer stack exactly as posted as the view and make a fractal semantic graph the model: the table already contains ten edges across layers where rows share an instrument, role or jurisdiction; each layer is its own world with its own ontology, sharing only a grammar of verbs with inverses; the edges between worlds come from the provisions themselves, such as EU AI Act Article 26(2) and NIST AI RMF GOVERN 1.6; changes over time are dated edges rather than rewrites; and a gap is a missing edge, so the do-this-today test and the gaps in layers 3, 5 and 10 become queries anyone can run.
+
+*[diagram]*
+**concept**claim**method**artefact**example**question
+
+**12 nodes, 11 edges**
+
+- **Hari's stack, as posted** (artefact) Ten layers, ten purposes and forty-six examples, kept word for word as nodes.
+- **The table already contains a graph** (claim) Ten edges cross the layers where rows name the same instrument, role or jurisdiction.
+- **Each layer is its own world** (concept) Law, standards, inventory, testing and people each keep their own ontology.
+- **Five grammar rules** (method) Verbs with inverses, no relates_to, data in properties, supersede never delete, render answers.
+- **Edges from provisions** (method) Every added edge rests on a readable provision: Art 26(2), Art 4, Annex III, GOVERN 1.6, 42001 7.2.
+- **Zoom from one cell down** (concept) Cell to instrument to provision to an organisation's systems, owners and records.
+- **The graph keeps time** (claim) 2026 amendments sit under Hari's labels as dated edges, older values struck through.
+- **Do this today, as a traversal** (method) System to owner, and system to classification to tier and basis; a missing step is the gap.
+- **Gaps as queries** (method) Layers 3, 5 and 10 become queries with traversals and results.
+- **Hollow Oak Home** (example) A fictional shop with eight AI systems in three jurisdictions and planted gaps.
+- **What 4 or 5 means** (question) 10 of 10 layers somewhere, 1 of 10 for every system, 0 with the shadow tool.
+- **AI Governance Graph vault** (artefact) 335 nodes, 702 edges, a 22-check gate and an app, published with its read key.
+
+> start with the edges the people who wrote the layers already drew without drawing them The first answer to Hari's question.
+
+> A table is correct on the day it is drawn. Why the graph keeps time.
+
+builds on [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph).
 
 ## [RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer](rfc-0001-public-key-cryptography-for-sgit.md)
 
@@ -30936,7 +31420,7 @@ Source code is already a fractal semantic graph, stories to syntax tree and belo
 
 > The answer is not a faster reviewer reading the same diff. It is a different diff. The article's claim about the review burden of generated code.
 
-builds on [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review); continued by [Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not](#riskmandate-ten-questions), [An open AI governance framework, and what its licence let us build](#ai-baseline-control-framework), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](#send-an-agent-not-a-spreadsheet), [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](#how-much-of-this-did-i-write), [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport).
+builds on [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review); continued by [The AI governance stack, as a graph: an answer to Hari Kota, built](#the-ai-governance-stack-as-a-graph), [Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not](#riskmandate-ten-questions), [An open AI governance framework, and what its licence let us build](#ai-baseline-control-framework), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](#send-an-agent-not-a-spreadsheet), [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](#how-much-of-this-did-i-write), [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport).
 
 ## [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](replicating-the-agentic-inbox.md)
 
@@ -31436,7 +31920,7 @@ Every unit of knowledge is already a graph in its owner's vocabulary, and a shor
 
 > Two graphs, built by different people for different purposes in different vocabularies, joined by declared edges, produced a finding that did not exist in either of them. The evidence that the method does work, not just that it is defined: the amended-articles finding came from the join.
 
-continued by [Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not](#riskmandate-ten-questions), [Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source](#agency-is-not-a-yes), [Liquid content needs water: liquefy the journalist's notebook, not the finished product](#liquid-content-needs-water), [Zoom into an agent's behaviour policy and you find the business logic](#the-behaviour-policy-is-the-business-logic), [An open AI governance framework, and what its licence let us build](#ai-baseline-control-framework), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](#how-much-of-this-did-i-write), [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down](#supply-chain-of-vaults), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted).
+continued by [The AI governance stack, as a graph: an answer to Hari Kota, built](#the-ai-governance-stack-as-a-graph), [Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not](#riskmandate-ten-questions), [Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source](#agency-is-not-a-yes), [Liquid content needs water: liquefy the journalist's notebook, not the finished product](#liquid-content-needs-water), [Zoom into an agent's behaviour policy and you find the business logic](#the-behaviour-policy-is-the-business-logic), [An open AI governance framework, and what its licence let us build](#ai-baseline-control-framework), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](#how-much-of-this-did-i-write), [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down](#supply-chain-of-vaults), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted).
 
 ## [The proof moved up, the homepage after the rebuild, next to the before pictures](proof-moved-up.md)
 
@@ -31705,7 +32189,8 @@ Edition of **2026-10-08**. Third edition. A day of articles on how agents decide
 
 Computed at every build from the files: placements that point at nothing, articles published since the edition, open pitches, articles without a graph or a card. The same list is what `python3 admin/build/desk.py` prints for the Editor.
 
-- To do`front.json` 4 article(s) published since the 2026-10-08 edition: rfc-0001-public-key-cryptography-for-sgit, a-mac-of-the-agents-own, riskmandate-ten-questions, how-i-work-with-claude
+- To do`front.json` 5 article(s) published since the 2026-10-08 edition: the-ai-governance-stack-as-a-graph, rfc-0001-public-key-cryptography-for-sgit, a-mac-of-the-agents-own, riskmandate-ten-questions, how-i-work-with-claude
+- To do`newsletter/` a newsletter issue is due: 5 articles since issue 2 (2026-10-08)
 - Note`newsroom/newsletter/002-2026-10-08.md` issue 2 has no linkedin: URL yet; add it once it is posted
 
 ## The desk: six roles
@@ -31972,7 +32457,7 @@ One entry per run of a desk role, newest first, each its own file and never edit
 >
 > Page: https://sgit.ai/articles/collections/index.html
 
-Edition of 2026-10-0853 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.17
+Edition of 2026-10-0854 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.18
 
 # Collections
 
@@ -31991,7 +32476,7 @@ A collection is one file in `admin/content/newsroom/collections/`. [How the desk
 >
 > Page: https://sgit.ai/articles/desk/index.html
 
-Edition of 2026-10-0853 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.17
+Edition of 2026-10-0854 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.18
 
 # From the desk
 
@@ -32579,7 +33064,7 @@ Your browser encrypts it to the public key of the agent that runs the list, then
 >
 > Page: https://sgit.ai/articles/newsletter/index.html
 
-Edition of 2026-10-0853 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.17
+Edition of 2026-10-0854 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.18
 
 # The newsletter
 
@@ -32605,7 +33090,7 @@ What it takes to let agents do real work for a business, from four sides: a team
 
 **Get the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../../subscribe/index.md)
 
-Next issue: not yet due (4 article(s) since issue 2; due at 5 or after 7 days). Issues are written by the [Journalist](../../newsroom/roles/journalist.md) from the articles' own data; every quote is checked against its article when the site is built.
+Next issue: due now (5 articles since issue 2 (2026-10-08)). Issues are written by the [Journalist](../../newsroom/roles/journalist.md) from the articles' own data; every quote is checked against its article when the site is built.
 
 
 
