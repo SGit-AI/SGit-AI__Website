@@ -2,7 +2,7 @@
 
 > Our agents already have dedicated resources with a small blast radius: their own mailbox, their own code-host account, their own Claude account. The next one is a desktop of their own, and it should be a Mac, because that is where most agent desktop apps arrive first. This is a business plan for somebody else to build, written after two companies replied with interest to the research behind our earlier article on renting an agent a desktop. It started as a pool of Macs rented by the minute, and Apple's licence rules that out: a leased Mac must be held for at least 24 hours, for developer services, by one customer, and virtual copies may not be time-shared. So the plan is the shapes that are allowed: a dedicated Mac per customer, run for them, with a per-minute meter on top and a clean desktop per run built from encrypted vaults; developer agents on leased Macs; software for the Mac mini you keep; and a request to Apple for terms. The reason to want any of it is in the three behaviour policies: the same customer service agent on your own Mac, on a dedicated Mac and on a hardened one, where the excess nothing bounds falls from 23 rows to 11 to 3.
 
-*Source: <https://sgit.ai/articles/a-mac-of-the-agents-own.html> · site v0.7.16 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/a-mac-of-the-agents-own.html> · site v0.7.17 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -246,6 +246,8 @@ Startups & strategyAgents & policyVaults & method[This article as a graph →](g
 - [Hope or enforcement: one customer service agent, three designs, and who keeps each promise](hope-or-enforcement.md) One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Posting this article on LinkedIn?** The cover is [a-mac-of-the-agents-own.jpg](../articles/banners/a-mac-of-the-agents-own.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
 **Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 

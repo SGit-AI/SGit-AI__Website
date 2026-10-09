@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.16 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.17 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,13 +14,42 @@ Every article here has a semantic graph beside it: the ideas it rests on, the cl
 
 The graphs are data first and pictures second. Take them as JSON: [all articles in one file](graphs.json), with the topics, the teasers and the links between articles resolved, or one file per article at `articles/graphs/<slug>.json` (for example [this one](graphs/footprint-and-blast-radius.json)). The pages on this site are rendered from the same files at build time; nothing here is hand-written HTML.
 
-52 of 52 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
+53 of 53 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
 
 ## How the articles connect
 
 *[diagram]*
 
-52 articles, 229 links between them (370 mentions in all). 43 articles cite an earlier one; 6 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Six agents, one inbox](#six-agents-one-inbox) (18 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+53 articles, 230 links between them (371 mentions in all). 44 articles cite an earlier one; 6 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Six agents, one inbox](#six-agents-one-inbox) (18 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+
+## [RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer](rfc-0001-public-key-cryptography-for-sgit.md)
+
+2026-10-09 · Vaults & methodSite & engineering
+
+An sgit vault's read key is symmetric, so anyone who holds it and can write to the store can author history clients accept; turning the read key into a public key does not fix that, but two key pairs do, giving a native PKI vault mode where readers cannot write, hosts cannot forge and write-only depositors become possible, while an optional sealed-files layer encrypts chosen files to named people's public keys with the private key held in a file, an ssh key, hardware or a remote service that logs and approves each decryption; both share a first step, a writer signature on today's vaults, and nothing is built until reviewers have answered fourteen questions.
+
+*[diagram]*
+**concept**claim**method**artefact**example**question
+
+**11 nodes, 11 edges**
+
+- **One symmetric read key** (concept) PBKDF2 derives a read key that encrypts everything and a write key only the server checks.
+- **Whoever can read can forge** (claim) A read-key holder who can write to the store, such as the host or a mirror, can author history.
+- **One key pair is not enough** (claim) The private half yields the public half, and decrypting with a public key is signing; two pairs work.
+- **A writer signature first** (method) An Ed25519 key from a third derivation path signs refs and index on today's vaults.
+- **Native PKI vault mode** (method) A read pair and a write pair; a data key sealed to the read public key; signed heads.
+- **The write-only depositor** (concept) Can add content readers open, cannot read: append to an inbox branch.
+- **Sealed files** (method) An age v1 inner envelope seals chosen files to named people's public keys, on any vault.
+- **Where the private key lives** (artefact) A key file, an ssh key, hardware, or a remote service that logs and approves each unwrap.
+- **Writers can replace blindly** (claim) Sealing needs only public keys, so integrity needs signed envelopes and author rules.
+- **Known shapes** (example) Tahoe-LAFS, Hypercore, git-crypt, SOPS, age and HPKE (RFC 9180).
+- **Fourteen questions** (question) Where an outside view would most change the design, before anything is built.
+
+> Add a second key pair for reading, and every property falls out. The correction to the obvious idea.
+
+> its hard part is not the cryptography but downgrade resistance Where the writer signature's real work is.
+
+builds on [Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes](#encrypted-memory-for-isolated-agents).
 
 ## [A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies](a-mac-of-the-agents-own.md)
 
@@ -171,7 +200,7 @@ Agents are safer in isolated places, but isolation takes away the shared drive a
 
 > `--path` decides what is downloaded, not what can be read. Scoped clones are speed, not an access boundary.
 
-builds on [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [A locked-down desktop for an agent, by the minute, is still hard to rent](#an-agent-desktop-by-the-minute), [Who are you protecting against? Draw the security line where the attacker is, not above it](#who-are-you-protecting-against), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs); continued by [A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies](#a-mac-of-the-agents-own), [Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not](#riskmandate-ten-questions), [How I work with Claude: one session per topic, agents with names, and memory you curate](#how-i-work-with-claude).
+builds on [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [A locked-down desktop for an agent, by the minute, is still hard to rent](#an-agent-desktop-by-the-minute), [Who are you protecting against? Draw the security line where the attacker is, not above it](#who-are-you-protecting-against), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs); continued by [RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer](#rfc-0001-public-key-cryptography-for-sgit), [A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies](#a-mac-of-the-agents-own), [Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not](#riskmandate-ten-questions), [How I work with Claude: one session per topic, agents with names, and memory you curate](#how-i-work-with-claude).
 
 ## [Knowing when to stop: what experience gives people, and what we have to design into agents](knowing-when-to-stop.md)
 

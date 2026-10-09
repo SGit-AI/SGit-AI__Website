@@ -6,6 +6,23 @@
  "generated_by": "admin/build/build_pages.py",
  "entries": [
   {
+   "slug": "rfc-0001-public-key-cryptography-for-sgit",
+   "kind": "article",
+   "kicker": "SGit Newsroom",
+   "date": "2026-10-09",
+   "author": "Dinis Cruz",
+   "title": "RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer",
+   "teaser": "A Request for Comments: two key pairs so a reader cannot write, sealed files only named people can open, and fourteen questions for reviewers.",
+   "ideas": [
+    "Whoever can read can forge",
+    "One key pair is not enough",
+    "Writers can replace blindly"
+   ],
+   "hero": "articles/images/rfc-today.webp",
+   "url": "sgit.ai/articles/rfc-0001-public-key-cryptography-for-sgit.html",
+   "out": "articles/banners/rfc-0001-public-key-cryptography-for-sgit.jpg"
+  },
+  {
    "slug": "a-mac-of-the-agents-own",
    "kind": "article",
    "kicker": "SGit Newsroom",
@@ -947,10 +964,10 @@
     "Next: an issue picked for what you care about"
    ],
    "mosaic": [
+    "articles/cards/rfc-0001-public-key-cryptography-for-sgit.webp",
     "articles/cards/a-mac-of-the-agents-own.webp",
     "articles/cards/riskmandate-ten-questions.webp",
-    "articles/cards/how-i-work-with-claude.webp",
-    "articles/cards/the-waiting-room-knew-first.webp"
+    "articles/cards/how-i-work-with-claude.webp"
    ],
    "url": "sgit.ai/subscribe/",
    "out": "articles/banners/subscribe.jpg"

@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.16'
+SITE_VERSION = 'v0.7.17'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.16', '2026-10-09', 'this release',
+    ('v0.7.17', '2026-10-09', 'this release',
+     "RFC 0001: PUBLIC-KEY CRYPTOGRAPHY FOR SGIT. The site's first Request for Comments, from the sgit CLI agent's design session: nothing is built. Today a read-key holder who can write to the store can author history clients accept; turning the read key into a public key does not fix it, two key pairs do. A writer signature on today's vaults first; native PKI vault mode (readers cannot write, hosts cannot forge, write-only depositors); sealed files, an age v1 inner envelope to named people, with the private key in a file, an ssh key, hardware or a remote service. A landscape of thirty key services and tools, checked from their own documentation: RSA-OAEP-256 is the format the remote services share, approval of each decryption is rare, and three best fits each for a small team, a company that wants every decryption approved, and open source only. Fourteen questions, comments by issue or email. Three diagrams with Mermaid sources, graph JSON. Headings can now carry an {#anchor}.",),
+    ('v0.7.16', '2026-10-09', 'git 1677e2ef',
      "A MAC OF THE AGENT'S OWN. A new business plan vault, Agent Desk (5ej8boc8, read key published, the first created and audited with sgit-ai 0.20.0), and its article, from a voice memo after two companies replied to our research on renting an agent a desktop. Agents already have their own mailbox, code-host account and Claude account; the next resource is a desktop, and it should be a Mac. Apple's macOS licence, quoted from versions 15, 26 and 27, rules out a pool of Macs rented by the minute, so the plan is the shapes it allows: your Mac run for you, a dedicated Mac with a per-minute meter, developer agents, software for your own Mac, and asking Apple for terms. A clean desktop per run, built from vaults by a short bootstrap whose key steps were tested, keys by PKI, erased at the end. Three Agent Behaviour Policies for the same customer service agent: unbounded excess 23, 11 and 3 rows. A calculator, a Wardley map, three diagrams with Mermaid sources. No provider named. Vault page, business plans list, graph JSON.",),
     ('v0.7.15', '2026-10-09', 'git a98a1c20',
      "THE NEWSLETTER AS A BEST-OF ITS PICTURES. Two desk directives: !figure takes one image from an article or a "

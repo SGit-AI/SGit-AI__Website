@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-09",
-  "site_version": "v0.7.16",
+  "site_version": "v0.7.17",
   "about": "https://sgit.ai/newsroom/index.html",
   "front": {
     "edition": "2026-10-08",
@@ -72,6 +72,43 @@
     }
   ],
   "articles": [
+    {
+      "slug": "rfc-0001-public-key-cryptography-for-sgit",
+      "title": "RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer",
+      "date": "2026-10-09",
+      "updated": "",
+      "author": "Dinis Cruz",
+      "url": "https://sgit.ai/articles/rfc-0001-public-key-cryptography-for-sgit.html",
+      "markdown": "https://sgit.ai/articles/rfc-0001-public-key-cryptography-for-sgit.md",
+      "card": "https://sgit.ai/articles/cards/rfc-0001-public-key-cryptography-for-sgit.webp",
+      "graph": "https://sgit.ai/articles/graphs/rfc-0001-public-key-cryptography-for-sgit.json",
+      "teaser": "A Request for Comments: two key pairs so a reader cannot write, sealed files only named people can open, and fourteen questions for reviewers.",
+      "summary": "A Request for Comments, before anything is built. Today an sgit vault is protected by one symmetric read key and a write key that only the server checks, so anyone who holds the read key and can write to the store, the host or a mirror for example, can author history that clients accept. sgit's own threat model says so, and a test performs the attack. This RFC proposes two designs. Native PKI vault mode uses two key pairs, one for reading and one for writing, so a reader cannot write, a host cannot forge, and a write-only depositor becomes possible. Sealed files add an inner envelope to any vault, so chosen files can be read only by named people, whose private keys can live in a key file, an ssh key, a hardware key, or a remote service that logs and approves each decryption. We set out both, what they cost, what they cannot do, the services that could hold the private keys today, and fourteen questions where an outside view would change the design.",
+      "topics": [
+        "vaults-and-method",
+        "site-and-engineering"
+      ],
+      "tags": [
+        "rfc",
+        "sgit",
+        "pki",
+        "public-key-cryptography",
+        "encryption",
+        "signatures",
+        "ed25519",
+        "x25519",
+        "hpke",
+        "age",
+        "sealed-files",
+        "key-management",
+        "threat-model",
+        "request-for-comments",
+        "article"
+      ],
+      "placement": [],
+      "linkedin": null,
+      "notes": []
+    },
     {
       "slug": "a-mac-of-the-agents-own",
       "title": "A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies",

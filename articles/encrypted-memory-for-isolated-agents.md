@@ -2,7 +2,7 @@
 
 > Agents are safer when they run in isolated places: a cloud VM, a local VM, a container on a Mac mini, a GPU machine, a job that exists for one task. Isolation takes away the shared drive, and ephemeral compute takes away the disk, so the memory has to live somewhere else, somewhere the owner controls and a breach does not expose. This article maps how to give those agents encrypted memory with sgit and a vault server you run yourself: one container, an access token, storage in a folder or a bucket, and only ciphertext on the server. Five patterns, each drawn as a diagram with its Mermaid source: a Mac mini with Docker Compose, the life of one ephemeral agent run with a scoped clone, Kubernetes, a private cloud VPC with CloudFront in front, and two servers holding one vault. Every command was run against a local server for this article, including a scoped clone, a push from a second agent, replication to a second server and a restore after a restart, and a search of the server's storage that found none of the plaintext.
 
-*Source: <https://sgit.ai/articles/encrypted-memory-for-isolated-agents.html> · site v0.7.16 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/encrypted-memory-for-isolated-agents.html> · site v0.7.17 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -383,6 +383,7 @@ Vaults & methodAgents & policySite & engineering[This article as a graph →](gr
 
 ### Continued by
 
+- [RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer](rfc-0001-public-key-cryptography-for-sgit.md) A Request for Comments: two key pairs so a reader cannot write, sealed files only named people can open, and fourteen questions for reviewers.
 - [A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies](a-mac-of-the-agents-own.md) A business plan for a Mac of the agent's own: what Apple's licence allows, a desktop built from vaults per run, and three behaviour policies for one agent.
 - [Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not](riskmandate-ten-questions.md) Ten hard questions from a conference, answered in a two-hour interview: what RiskMandate does, what it deliberately is not, and how mature each part is.
 - [How I work with Claude: one session per topic, agents with names, and memory you curate](how-i-work-with-claude.md) A practical guide from a year of daily use: one Claude session per topic, named agents with a role.md, curated memory, vaults, and policy before connectors.

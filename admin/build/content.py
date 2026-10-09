@@ -244,11 +244,12 @@ class Content_Loader:
                 out.append('</table></div>')
                 continue
 
-            m = re.match(r'^(#{2,4})\s+(.*)$', line)
+            m = re.match(r'^(#{2,4})\s+(.*?)(?:\s+\{#([a-z0-9-]+)\})?$', line)   # optional {#anchor}
             if m:
                 flush_para(); flush_list()
                 lvl = len(m.group(1))
-                out.append(f'<h{lvl}>' + self.inline(m.group(2), depth, where) + f'</h{lvl}>')
+                hid = f' id="{m.group(3)}"' if m.group(3) else ''
+                out.append(f'<h{lvl}{hid}>' + self.inline(m.group(2), depth, where) + f'</h{lvl}>')
                 continue
 
             if line.strip() == '---':
