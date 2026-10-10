@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.32'
+SITE_VERSION = 'v0.7.33'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.32', '2026-10-10', 'this release',
+    ('v0.7.33', '2026-10-10', 'this release',
+     "LATEST, IN THE ORDER THINGS WERE PUBLISHED; A FASTER TAG STEP. Latest, the archive, the wire and the feed sort articles by date and time, but the time came from a hand-written time: line, and agents wrote round numbers: on 10 October an article committed at 14:21 said 17:00 and sat above four published after it (24 of 64 articles had a written time that disagreed with git). The time is now the article's first commit, read from git; time: is only the fallback for an article not yet committed, and one dated today with neither takes the build's clock. Older days are re-ordered to match. CI: the tag step pushed every historical tag on every release, about 330 round trips and two minutes the deploy waited on; it now asks the remote once which tags are missing and pushes only those, and when two commits claim one version the oldest wins (v0.7.28 had been given to a superseded commit).",),
+    ('v0.7.32', '2026-10-10', 'git 1a69fcfa',
      "WHERE THE VAULT KEYS LIVE. A new article on vault key management at sgit-ai v0.20.0, after a reader found the gap: "
      "the architecture (S3, a Lambda API behind CloudFront, decryption in the client), the one secret and the keys derived "
      "from it, where vault keys are kept today (a password manager, and a registry vault run by an isolated session), how a "

@@ -2,7 +2,7 @@
 
 > The reference for sgit-ai v0.20.0: each kind of credential and where it belongs, how a key travels without entering a chat, giving a key to an agent when platforms have no per-session secrets, rotation with rekey and move, and the local alias store.
 
-*Source: <https://sgit.ai/docs/key-management.html> · site v0.7.32 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/key-management.html> · site v0.7.33 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

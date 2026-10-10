@@ -2,7 +2,7 @@
 
 > Every published version of the article "Where the vault keys live", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/where-the-vault-keys-live.html> · site v0.7.32 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/where-the-vault-keys-live.html> · site v0.7.33 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,7 +16,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.0.0** | 2026-10-10 | published | 3,580 | first published | this release | [current](../where-the-vault-keys-live.md) |
+| **v1.0.0** | 2026-10-10 | published | 3,580 | first published | [`1a69fcfaf`](https://github.com/SGit-AI/SGit-AI__Website/commit/1a69fcfaf99248e2054c374ffef63d283d66c29c) | [current](../where-the-vault-keys-live.md) |
 
 [← Back to the article](../where-the-vault-keys-live.md) · [All articles](../index.md)
 

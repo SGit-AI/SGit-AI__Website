@@ -76,9 +76,12 @@ Articles get their own page at `/articles/<slug>.html`, generated without a `pag
 row, because an article must be publishable by adding one file too.
 
 Latest, the archive, the wire and the feed list articles newest first, by `date` and then
-by `time`. Set `time` to when you publish (`date -u +%H:%M`). If you leave it out, the build
-uses the time the file was first committed, when that falls on the article's date; an
-article with neither sorts after the timed ones of its day.
+by time. The time is the moment the article's file was first committed, when that falls on
+its date: the build reads it from git, so it cannot be wrong. `time:` is only a fallback, for
+an article not yet committed (a release builds before it commits) or one dated on purpose; an
+uncommitted article dated today with no `time:` takes the build's clock, so it is the newest.
+Until v0.7.33 a written `time:` won, and round numbers (14:30, 17:00) put articles above ones
+published after them.
 
 ## Rules the build enforces
 

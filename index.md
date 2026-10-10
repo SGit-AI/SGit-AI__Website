@@ -2,7 +2,7 @@
 
 > sgit is git for encrypted vaults) and a vault is a unit of work: data, app, history and sources, versioned like git and handed over with a single read key. No account, no hosting, nothing to install for the reader; the server stores ciphertext it cannot read. Twenty-five real vaults you can open.
 
-*Source: <https://sgit.ai/index.html> · site v0.7.32 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/index.html> · site v0.7.33 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -32,9 +32,9 @@ The articles carry most of what this site believes, with the figures, the data a
 ### Also new
 
 1. 2026-10-10[Where the vault keys live](articles/where-the-vault-keys-live.md)
-2. 2026-10-10[Pay to keep your persona](articles/pay-to-keep-your-persona.md)
-3. 2026-10-10[Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the…](articles/who-will-game-the-reading-meter.md)
-4. 2026-10-10[The infographic bake-off](articles/the-infographic-bake-off.md)
+2. 2026-10-10[The infographic bake-off](articles/the-infographic-bake-off.md)
+3. 2026-10-10[Pay to keep your persona](articles/pay-to-keep-your-persona.md)
+4. 2026-10-10[Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the…](articles/who-will-game-the-reading-meter.md)
 5. 2026-10-10[Going live with the reading meter](articles/going-live-with-the-reading-meter.md)
 [Thread2026-10-08Historian**Range is the feature, so the stop has to be designed**Four articles from one day, written for different reasons, end on the same line: an agent's range is what makes it useful, and it is also why the decision to stop cannot be left to the agent.](articles/desk/range-is-the-feature-so-the-stop-is-designed.md)
 
@@ -62,7 +62,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-294site releases, each verified live before it was called done
+295site releases, each verified live before it was called done
 
 53vaults published with a deliberately public read key
 

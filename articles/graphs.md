@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.32 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.33 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -48,6 +48,38 @@ Vaults are encrypted in the client, so the server never holds a key and the key 
 > Nothing between the sender and the registry can read the key, the key is never typed or shown. What the sealed handover changes.
 
 builds on [RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer](#rfc-0001-public-key-cryptography-for-sgit), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes](#encrypted-memory-for-isolated-agents), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets).
+
+## [The infographic bake-off: which image model for which job, judged blind on 10 October 2026](the-infographic-bake-off.md)
+
+2026-10-10 · Site & engineeringNews & evidence
+
+To make infographics part of the newsroom's workflow, every image-output model on OpenRouter on 10 October 2026 was given the same briefs from one article, from 18 words to 2,800, plus an edit, a component, a brand slide and a deck, over five rounds with blind judging and recorded costs; the answer is to choose the model by the job, not the budget: Nano Banana 2.1 for concept slides, charts and decks, Gemini 3 Pro Image when speed matters, GPT-5.4 Image 2 for documents, edits, components and brand slides, with prompt rules learned from the faults and a style reference for every deck.
+
+*[diagram]*
+**concept**claim**method**artefact**example**question
+
+**14 nodes, 16 edges**
+
+- **Which model for which job** (question) Infographics are moving into the newsroom's daily workflow; the choice of model needs evidence.
+- **Every image model on OpenRouter** (concept) Eight models, the auto-router and a code-drawn control; none free.
+- **Eleven briefs from one article** (method) From an 18-word stat card to the whole article, plus edit, component, brand and deck.
+- **Blind judging** (method) A Designer agent fact-checked and scored every image under a random id; OCR as an independent check.
+- **Every cent recorded** (artefact) OpenRouter's usage cost per generation: $10.44 for 101 images.
+- **Cost per usable image** (concept) Half the spend bought images the judge would not use; price per image flatters failure.
+- **Give it the document** (claim) GPT-5.4 Image 2 scored 9 on the document and the whole article; the older GPT-5 Image got worse.
+- **An edit is a redraw** (example) Only GPT-5.4 Image 2 made three changes without breaking anything.
+- **The cheap model's limit** (claim) Nano Banana 2.1 had no usable image where every character was specified.
+- **Slide 1 as a style reference** (method) Attaching slide 1 raised every model's deck consistency from 1 or 2 to 4 or 5 of 5.
+- **Three models, three tiers** (claim) Nano Banana 2.1, Gemini 3 Pro Image, GPT-5.4 Image 2.
+- **Guidance and prompt rules** (artefact) Which model for which job, and rules such as never name the platform and say No other text.
+- **The bake-off vault** (artefact) Every brief, image, score, reason and cost, as an app.
+- **The answer has a date** (question) Models and prices change; the bake-off is built to be run again.
+
+> Give it the document, not a description of the picture. The finding that matches how ChatGPT is best used, and where it applies.
+
+> Choose the model by the job, not by the budget. The conclusion, in the article's own words.
+
+builds on [Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not](#re-anchoring-agent-behaviour-policies), [One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece](#one-article-five-readers).
 
 ## [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](pay-to-keep-your-persona.md)
 
@@ -102,38 +134,6 @@ A reading meter kept entirely in the browser can be cheated by anyone, but the p
 > The struggling reader is protected by the meter asking nothing of them. Why the usability work is aimed at the bottom of the ladder.
 
 builds on [Who are you protecting against? Draw the security line where the attacker is, not above it](#who-are-you-protecting-against), [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending); continued by [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](#pay-to-keep-your-persona), [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter).
-
-## [The infographic bake-off: which image model for which job, judged blind on 10 October 2026](the-infographic-bake-off.md)
-
-2026-10-10 · Site & engineeringNews & evidence
-
-To make infographics part of the newsroom's workflow, every image-output model on OpenRouter on 10 October 2026 was given the same briefs from one article, from 18 words to 2,800, plus an edit, a component, a brand slide and a deck, over five rounds with blind judging and recorded costs; the answer is to choose the model by the job, not the budget: Nano Banana 2.1 for concept slides, charts and decks, Gemini 3 Pro Image when speed matters, GPT-5.4 Image 2 for documents, edits, components and brand slides, with prompt rules learned from the faults and a style reference for every deck.
-
-*[diagram]*
-**concept**claim**method**artefact**example**question
-
-**14 nodes, 16 edges**
-
-- **Which model for which job** (question) Infographics are moving into the newsroom's daily workflow; the choice of model needs evidence.
-- **Every image model on OpenRouter** (concept) Eight models, the auto-router and a code-drawn control; none free.
-- **Eleven briefs from one article** (method) From an 18-word stat card to the whole article, plus edit, component, brand and deck.
-- **Blind judging** (method) A Designer agent fact-checked and scored every image under a random id; OCR as an independent check.
-- **Every cent recorded** (artefact) OpenRouter's usage cost per generation: $10.44 for 101 images.
-- **Cost per usable image** (concept) Half the spend bought images the judge would not use; price per image flatters failure.
-- **Give it the document** (claim) GPT-5.4 Image 2 scored 9 on the document and the whole article; the older GPT-5 Image got worse.
-- **An edit is a redraw** (example) Only GPT-5.4 Image 2 made three changes without breaking anything.
-- **The cheap model's limit** (claim) Nano Banana 2.1 had no usable image where every character was specified.
-- **Slide 1 as a style reference** (method) Attaching slide 1 raised every model's deck consistency from 1 or 2 to 4 or 5 of 5.
-- **Three models, three tiers** (claim) Nano Banana 2.1, Gemini 3 Pro Image, GPT-5.4 Image 2.
-- **Guidance and prompt rules** (artefact) Which model for which job, and rules such as never name the platform and say No other text.
-- **The bake-off vault** (artefact) Every brief, image, score, reason and cost, as an app.
-- **The answer has a date** (question) Models and prices change; the bake-off is built to be run again.
-
-> Give it the document, not a description of the picture. The finding that matches how ChatGPT is best used, and where it applies.
-
-> Choose the model by the job, not by the budget. The conclusion, in the article's own words.
-
-builds on [Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not](#re-anchoring-agent-behaviour-policies), [One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece](#one-article-five-readers).
 
 ## [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](going-live-with-the-reading-meter.md)
 
@@ -223,7 +223,7 @@ Long, evidence-rich articles are hard to consume, and the answer is not shorter 
 
 > a topic ontology tells you what is new to the topic; only a site ontology tells you what is new. The finding that sets the next step.
 
-builds on [Liquid content needs water: liquefy the journalist's notebook, not the finished product](#liquid-content-needs-water), [Zoom into an agent's behaviour policy and you find the business logic](#the-behaviour-policy-is-the-business-logic), [Every mistake added a rule: complexity, agents, and the way back to shipping](#every-mistake-added-a-rule), [Hope or enforcement: one customer service agent, three designs, and who keeps each promise](#hope-or-enforcement), [A second reader the agent cannot skip: how two wrong emails became a gate on every draft](#a-second-reader-the-agent-cannot-skip), [Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not](#re-anchoring-agent-behaviour-policies), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted); continued by [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](#pay-to-keep-your-persona), [The infographic bake-off: which image model for which job, judged blind on 10 October 2026](#the-infographic-bake-off).
+builds on [Liquid content needs water: liquefy the journalist's notebook, not the finished product](#liquid-content-needs-water), [Zoom into an agent's behaviour policy and you find the business logic](#the-behaviour-policy-is-the-business-logic), [Every mistake added a rule: complexity, agents, and the way back to shipping](#every-mistake-added-a-rule), [Hope or enforcement: one customer service agent, three designs, and who keeps each promise](#hope-or-enforcement), [A second reader the agent cannot skip: how two wrong emails became a gate on every draft](#a-second-reader-the-agent-cannot-skip), [Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not](#re-anchoring-agent-behaviour-policies), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted); continued by [The infographic bake-off: which image model for which job, judged blind on 10 October 2026](#the-infographic-bake-off), [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](#pay-to-keep-your-persona).
 
 ## [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](a-meter-in-the-browser.md)
 
@@ -279,6 +279,35 @@ Instructions given only in conversation can be lost when a long session is summa
 
 builds on [A second reader the agent cannot skip: how two wrong emails became a gate on every draft](#a-second-reader-the-agent-cannot-skip); continued by [The infographic bake-off: which image model for which job, judged blind on 10 October 2026](#the-infographic-bake-off), [One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece](#one-article-five-readers).
 
+## [A second reader the agent cannot skip: how two wrong emails became a gate on every draft](a-second-reader-the-agent-cannot-skip.md)
+
+2026-10-09 · Agents & policySite & engineering
+
+A rule held by the agent it governs is an expectation that can be forgotten, missed or argued around, so the inbox agent's fix after two emails went out in the founder's voice puts a gate on the draft tool itself: deterministic code checks first, then a fresh model call with only the rules, the sources and the draft, a different model from the author, failing closed on anything but an explicit PASS and logging every verdict; its independence depends on where it is installed, a setting while the agent can change it and a boundary only under managed placement, and the pattern is the old maker-checker control applied to any consequential tool call.
+
+*[diagram]*
+**concept**claim**method**artefact**example
+
+**11 nodes, 10 edges**
+
+- **Two emails in the founder's voice** (example) 9 October: a rule written in four places failed, because only the drafter enforced it.
+- **A rule held by the agent it governs** (claim) It can be forgotten at compaction, missed by its author, or argued around.
+- **The draft guard** (artefact) A hook on create_draft and update_draft: code checks, then a fresh checker model.
+- **Code checks first** (method) Signature, HTML, dashes, key shapes and recipients, with no model call.
+- **A fresh checker** (method) No history, no tools, a different model; only rules, sources and the draft.
+- **Fail closed** (method) Hooks fail open by default; errors, timeouts and bad answers must deny.
+- **Six kinds of independence** (concept) What the checker sees, who decides it runs, and who wrote the evidence.
+- **Placement decides the barrier** (claim) A session mod or plugin is a setting; managed placement makes it a boundary.
+- **Maker-checker** (concept) Segregation of duties, the two-person rule, the independent double check.
+- **The reusable pattern** (method) Pick the consequential call, code first, fresh checker, explicit PASS, log.
+- **What the first run caught** (example) Four invented claims, and false FAILs for facts without sources.
+
+> An email that is late is a small cost. An email that goes out wrong cannot be taken back. Why the guard fails closed.
+
+> A rule kept by the agent it governs is hope. The general weakness the guard answers.
+
+builds on [Hope or enforcement: one customer service agent, three designs, and who keeps each promise](#hope-or-enforcement), [Every mistake added a rule: complexity, agents, and the way back to shipping](#every-mistake-added-a-rule); continued by [One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece](#one-article-five-readers), [Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not](#re-anchoring-agent-behaviour-policies).
+
 ## [The AI governance stack, as a graph: an answer to Hari Kota, built](the-ai-governance-stack-as-a-graph.md)
 
 2026-10-09 · Graphs & knowledgeAgents & policy
@@ -308,35 +337,6 @@ Keep Hari Kota's ten-layer stack exactly as posted as the view and make a fracta
 > A table is correct on the day it is drawn. Why the graph keeps time.
 
 builds on [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph).
-
-## [A second reader the agent cannot skip: how two wrong emails became a gate on every draft](a-second-reader-the-agent-cannot-skip.md)
-
-2026-10-09 · Agents & policySite & engineering
-
-A rule held by the agent it governs is an expectation that can be forgotten, missed or argued around, so the inbox agent's fix after two emails went out in the founder's voice puts a gate on the draft tool itself: deterministic code checks first, then a fresh model call with only the rules, the sources and the draft, a different model from the author, failing closed on anything but an explicit PASS and logging every verdict; its independence depends on where it is installed, a setting while the agent can change it and a boundary only under managed placement, and the pattern is the old maker-checker control applied to any consequential tool call.
-
-*[diagram]*
-**concept**claim**method**artefact**example
-
-**11 nodes, 10 edges**
-
-- **Two emails in the founder's voice** (example) 9 October: a rule written in four places failed, because only the drafter enforced it.
-- **A rule held by the agent it governs** (claim) It can be forgotten at compaction, missed by its author, or argued around.
-- **The draft guard** (artefact) A hook on create_draft and update_draft: code checks, then a fresh checker model.
-- **Code checks first** (method) Signature, HTML, dashes, key shapes and recipients, with no model call.
-- **A fresh checker** (method) No history, no tools, a different model; only rules, sources and the draft.
-- **Fail closed** (method) Hooks fail open by default; errors, timeouts and bad answers must deny.
-- **Six kinds of independence** (concept) What the checker sees, who decides it runs, and who wrote the evidence.
-- **Placement decides the barrier** (claim) A session mod or plugin is a setting; managed placement makes it a boundary.
-- **Maker-checker** (concept) Segregation of duties, the two-person rule, the independent double check.
-- **The reusable pattern** (method) Pick the consequential call, code first, fresh checker, explicit PASS, log.
-- **What the first run caught** (example) Four invented claims, and false FAILs for facts without sources.
-
-> An email that is late is a small cost. An email that goes out wrong cannot be taken back. Why the guard fails closed.
-
-> A rule kept by the agent it governs is hope. The general weakness the guard answers.
-
-builds on [Hope or enforcement: one customer service agent, three designs, and who keeps each promise](#hope-or-enforcement), [Every mistake added a rule: complexity, agents, and the way back to shipping](#every-mistake-added-a-rule); continued by [One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece](#one-article-five-readers), [Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not](#re-anchoring-agent-behaviour-policies).
 
 ## [RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer](rfc-0001-public-key-cryptography-for-sgit.md)
 

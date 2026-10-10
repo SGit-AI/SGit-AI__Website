@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-10",
-  "site_version": "v0.7.32",
+  "site_version": "v0.7.33",
   "about": "https://sgit.ai/newsroom/index.html",
   "front": {
     "edition": "2026-10-08",
@@ -105,6 +105,40 @@
       "notes": []
     },
     {
+      "slug": "the-infographic-bake-off",
+      "title": "The infographic bake-off: which image model for which job, judged blind on 10 October 2026",
+      "date": "2026-10-10",
+      "updated": "",
+      "author": "Dinis Cruz",
+      "url": "https://sgit.ai/articles/the-infographic-bake-off.html",
+      "markdown": "https://sgit.ai/articles/the-infographic-bake-off.md",
+      "card": "https://sgit.ai/articles/cards/the-infographic-bake-off.webp",
+      "graph": "https://sgit.ai/articles/graphs/the-infographic-bake-off.json",
+      "teaser": "Every image model on OpenRouter, eleven briefs, 101 images judged blind, $10.44: which model for which infographic, and what it costs.",
+      "summary": "The articles here are moving from code-drawn figures to infographics made by image models, and the question was which model, for which job, at what cost. So we ran a bake-off. Every image-output model on OpenRouter on 10 October 2026, its auto-router and our own code-drawn renderer were given the same briefs from one article, from an eighteen-word stat card to the whole 2,800-word article, plus an edit, a UI component, a brand slide and a three-slide deck. Five rounds, models cut after each; 101 images, every one judged blind by a Designer agent; every cent recorded, $10.44 in all; an Accountant and a Data Scientist on the numbers. The result is three models and guidance. Nano Banana 2.1, at four cents an image, for concept slides, charts and decks. Gemini 3 Pro Image, at fourteen cents and twenty seconds, when you are in a hurry. GPT-5.4 Image 2, at seventeen to twenty-three cents and a minute and a half, for anything that starts from a document or where every character is specified. Choose the model by the job, not by the budget.",
+      "topics": [
+        "site-and-engineering",
+        "news-and-evidence"
+      ],
+      "tags": [
+        "infographics",
+        "image-models",
+        "openrouter",
+        "gemini",
+        "gpt-image",
+        "evaluation",
+        "cost",
+        "newsroom",
+        "designer",
+        "accountant",
+        "data-scientist",
+        "article"
+      ],
+      "placement": [],
+      "linkedin": null,
+      "notes": []
+    },
+    {
       "slug": "pay-to-keep-your-persona",
       "title": "Pay to keep your persona: readers should pay because it helps them, not because they feel they should",
       "date": "2026-10-10",
@@ -160,40 +194,6 @@
         "usability",
         "users",
         "agents",
-        "article"
-      ],
-      "placement": [],
-      "linkedin": null,
-      "notes": []
-    },
-    {
-      "slug": "the-infographic-bake-off",
-      "title": "The infographic bake-off: which image model for which job, judged blind on 10 October 2026",
-      "date": "2026-10-10",
-      "updated": "",
-      "author": "Dinis Cruz",
-      "url": "https://sgit.ai/articles/the-infographic-bake-off.html",
-      "markdown": "https://sgit.ai/articles/the-infographic-bake-off.md",
-      "card": "https://sgit.ai/articles/cards/the-infographic-bake-off.webp",
-      "graph": "https://sgit.ai/articles/graphs/the-infographic-bake-off.json",
-      "teaser": "Every image model on OpenRouter, eleven briefs, 101 images judged blind, $10.44: which model for which infographic, and what it costs.",
-      "summary": "The articles here are moving from code-drawn figures to infographics made by image models, and the question was which model, for which job, at what cost. So we ran a bake-off. Every image-output model on OpenRouter on 10 October 2026, its auto-router and our own code-drawn renderer were given the same briefs from one article, from an eighteen-word stat card to the whole 2,800-word article, plus an edit, a UI component, a brand slide and a three-slide deck. Five rounds, models cut after each; 101 images, every one judged blind by a Designer agent; every cent recorded, $10.44 in all; an Accountant and a Data Scientist on the numbers. The result is three models and guidance. Nano Banana 2.1, at four cents an image, for concept slides, charts and decks. Gemini 3 Pro Image, at fourteen cents and twenty seconds, when you are in a hurry. GPT-5.4 Image 2, at seventeen to twenty-three cents and a minute and a half, for anything that starts from a document or where every character is specified. Choose the model by the job, not by the budget.",
-      "topics": [
-        "site-and-engineering",
-        "news-and-evidence"
-      ],
-      "tags": [
-        "infographics",
-        "image-models",
-        "openrouter",
-        "gemini",
-        "gpt-image",
-        "evaluation",
-        "cost",
-        "newsroom",
-        "designer",
-        "accountant",
-        "data-scientist",
         "article"
       ],
       "placement": [],
@@ -361,6 +361,38 @@
       "notes": []
     },
     {
+      "slug": "a-second-reader-the-agent-cannot-skip",
+      "title": "A second reader the agent cannot skip: how two wrong emails became a gate on every draft",
+      "date": "2026-10-09",
+      "updated": "",
+      "author": "Dinis Cruz",
+      "url": "https://sgit.ai/articles/a-second-reader-the-agent-cannot-skip.html",
+      "markdown": "https://sgit.ai/articles/a-second-reader-the-agent-cannot-skip.md",
+      "card": "https://sgit.ai/articles/cards/a-second-reader-the-agent-cannot-skip.webp",
+      "graph": "https://sgit.ai/articles/graphs/a-second-reader-the-agent-cannot-skip.json",
+      "teaser": "Two emails went out in my voice despite a written rule. The fix: a hook that makes a second model approve every draft, failing closed.",
+      "summary": "On 9 October two emails drafted by my agent went out in my voice and signed with my name. The rule against it existed, in four places, and it failed because the only thing enforcing it was the agent's memory, the agent was the only reader of its own draft, and the rule fell out of context when the conversation was summarised. The fix, built the same day by the agent itself, is a hook on the draft tool: code checks first, then a fresh model call with only the rules, the sources and the draft, failing closed and logging every verdict. This is how it works, what the first run caught, why its independence depends on where it is installed, and how the same pattern, which banks call maker-checker, applies to any tool call that matters.",
+      "topics": [
+        "agents-and-policy",
+        "site-and-engineering"
+      ],
+      "tags": [
+        "agents",
+        "claude-code",
+        "hooks",
+        "guardrails",
+        "llm-as-a-judge",
+        "maker-checker",
+        "agent-behaviour-policy",
+        "email",
+        "governance",
+        "article"
+      ],
+      "placement": [],
+      "linkedin": null,
+      "notes": []
+    },
+    {
       "slug": "the-ai-governance-stack-as-a-graph",
       "title": "The AI governance stack, as a graph: an answer to Hari Kota, built",
       "date": "2026-10-09",
@@ -387,38 +419,6 @@
         "inventory",
         "competence",
         "vaults",
-        "article"
-      ],
-      "placement": [],
-      "linkedin": null,
-      "notes": []
-    },
-    {
-      "slug": "a-second-reader-the-agent-cannot-skip",
-      "title": "A second reader the agent cannot skip: how two wrong emails became a gate on every draft",
-      "date": "2026-10-09",
-      "updated": "",
-      "author": "Dinis Cruz",
-      "url": "https://sgit.ai/articles/a-second-reader-the-agent-cannot-skip.html",
-      "markdown": "https://sgit.ai/articles/a-second-reader-the-agent-cannot-skip.md",
-      "card": "https://sgit.ai/articles/cards/a-second-reader-the-agent-cannot-skip.webp",
-      "graph": "https://sgit.ai/articles/graphs/a-second-reader-the-agent-cannot-skip.json",
-      "teaser": "Two emails went out in my voice despite a written rule. The fix: a hook that makes a second model approve every draft, failing closed.",
-      "summary": "On 9 October two emails drafted by my agent went out in my voice and signed with my name. The rule against it existed, in four places, and it failed because the only thing enforcing it was the agent's memory, the agent was the only reader of its own draft, and the rule fell out of context when the conversation was summarised. The fix, built the same day by the agent itself, is a hook on the draft tool: code checks first, then a fresh model call with only the rules, the sources and the draft, failing closed and logging every verdict. This is how it works, what the first run caught, why its independence depends on where it is installed, and how the same pattern, which banks call maker-checker, applies to any tool call that matters.",
-      "topics": [
-        "agents-and-policy",
-        "site-and-engineering"
-      ],
-      "tags": [
-        "agents",
-        "claude-code",
-        "hooks",
-        "guardrails",
-        "llm-as-a-judge",
-        "maker-checker",
-        "agent-behaviour-policy",
-        "email",
-        "governance",
         "article"
       ],
       "placement": [],

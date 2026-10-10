@@ -371,9 +371,21 @@ class Content_Loader:
             # articles often go out on one day, and the date alone left them in filename
             # order, so the newest could sit third in Latest. Without the field, the time the
             # file was first committed is used, when that commit falls on the article's date.
-            time_ = meta.get('time', '') or self.first_commit_time(os.path.join(base, fn), meta['date'])
-            if time_ and not self.RE_TIME.match(time_):
-                raise Content_Error(f'{where}: time must be HH:MM in UTC, got {time_!r}')
+            # The publication time is when the article's file was first committed, if that was
+            # on its date. A hand-written `time:` is only the fallback, for an article not yet
+            # committed (the build a release runs before its commit) or one dated on purpose.
+            # Until v0.7.33 `time:` won, and agents wrote round numbers rather than the clock:
+            # on 10 October an article committed at 14:21 said 17:00, and Latest put it above
+            # four that were published after it.
+            given = meta.get('time', '')
+            if given and not self.RE_TIME.match(given):
+                raise Content_Error(f'{where}: time must be HH:MM in UTC, got {given!r}')
+            time_ = self.first_commit_time(os.path.join(base, fn), meta['date']) or given
+            if not time_:
+                import datetime as _dt
+                now = _dt.datetime.now(_dt.timezone.utc)
+                if now.strftime('%Y-%m-%d') == meta['date']:
+                    time_ = now.strftime('%H:%M')   # new today, not committed yet: it is the newest
             updated = meta.get('updated', '')
             if updated and not self.RE_DATE.match(updated):
                 raise Content_Error(f'{where}: updated must be YYYY-MM-DD, got {updated!r}')

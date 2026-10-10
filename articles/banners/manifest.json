@@ -23,6 +23,23 @@
    "out": "articles/banners/where-the-vault-keys-live.jpg"
   },
   {
+   "slug": "the-infographic-bake-off",
+   "kind": "article",
+   "kicker": "SGit Newsroom",
+   "date": "2026-10-10",
+   "author": "Dinis Cruz",
+   "title": "The infographic bake-off: which image model for which job, judged blind on 10 October 2026",
+   "teaser": "Every image model on OpenRouter, eleven briefs, 101 images judged blind, $10.44: which model for which infographic, and what it costs.",
+   "ideas": [
+    "Give it the document",
+    "The cheap model's limit",
+    "Three models, three tiers"
+   ],
+   "hero": "articles/images/ib-conclusion.webp",
+   "url": "sgit.ai/articles/the-infographic-bake-off.html",
+   "out": "articles/banners/the-infographic-bake-off.jpg"
+  },
+  {
    "slug": "pay-to-keep-your-persona",
    "kind": "article",
    "kicker": "SGit Newsroom",
@@ -55,23 +72,6 @@
    "hero": "articles/images/gg-ladder.webp",
    "url": "sgit.ai/articles/who-will-game-the-reading-meter.html",
    "out": "articles/banners/who-will-game-the-reading-meter.jpg"
-  },
-  {
-   "slug": "the-infographic-bake-off",
-   "kind": "article",
-   "kicker": "SGit Newsroom",
-   "date": "2026-10-10",
-   "author": "Dinis Cruz",
-   "title": "The infographic bake-off: which image model for which job, judged blind on 10 October 2026",
-   "teaser": "Every image model on OpenRouter, eleven briefs, 101 images judged blind, $10.44: which model for which infographic, and what it costs.",
-   "ideas": [
-    "Give it the document",
-    "The cheap model's limit",
-    "Three models, three tiers"
-   ],
-   "hero": "articles/images/ib-conclusion.webp",
-   "url": "sgit.ai/articles/the-infographic-bake-off.html",
-   "out": "articles/banners/the-infographic-bake-off.jpg"
   },
   {
    "slug": "going-live-with-the-reading-meter",
@@ -159,23 +159,6 @@
    "out": "articles/banners/re-anchoring-agent-behaviour-policies.jpg"
   },
   {
-   "slug": "the-ai-governance-stack-as-a-graph",
-   "kind": "article",
-   "kicker": "SGit Newsroom",
-   "date": "2026-10-09",
-   "author": "Dinis Cruz",
-   "title": "The AI governance stack, as a graph: an answer to Hari Kota, built",
-   "teaser": "Hari Kota's ten-layer AI governance stack, kept as posted and turned into a fractal semantic graph: the gaps become missing edges, and queries.",
-   "ideas": [
-    "The table already contains a graph",
-    "The graph keeps time",
-    "Five grammar rules"
-   ],
-   "hero": "articles/images/gg-hari-graph.webp",
-   "url": "sgit.ai/articles/the-ai-governance-stack-as-a-graph.html",
-   "out": "articles/banners/the-ai-governance-stack-as-a-graph.jpg"
-  },
-  {
    "slug": "a-second-reader-the-agent-cannot-skip",
    "kind": "article",
    "kicker": "SGit Newsroom",
@@ -191,6 +174,23 @@
    "hero": "articles/images/ck-flow.webp",
    "url": "sgit.ai/articles/a-second-reader-the-agent-cannot-skip.html",
    "out": "articles/banners/a-second-reader-the-agent-cannot-skip.jpg"
+  },
+  {
+   "slug": "the-ai-governance-stack-as-a-graph",
+   "kind": "article",
+   "kicker": "SGit Newsroom",
+   "date": "2026-10-09",
+   "author": "Dinis Cruz",
+   "title": "The AI governance stack, as a graph: an answer to Hari Kota, built",
+   "teaser": "Hari Kota's ten-layer AI governance stack, kept as posted and turned into a fractal semantic graph: the gaps become missing edges, and queries.",
+   "ideas": [
+    "The table already contains a graph",
+    "The graph keeps time",
+    "Five grammar rules"
+   ],
+   "hero": "articles/images/gg-hari-graph.webp",
+   "url": "sgit.ai/articles/the-ai-governance-stack-as-a-graph.html",
+   "out": "articles/banners/the-ai-governance-stack-as-a-graph.jpg"
   },
   {
    "slug": "rfc-0001-public-key-cryptography-for-sgit",
@@ -1152,9 +1152,9 @@
    ],
    "mosaic": [
     "articles/cards/where-the-vault-keys-live.webp",
+    "articles/cards/the-infographic-bake-off.webp",
     "articles/cards/pay-to-keep-your-persona.webp",
-    "articles/cards/who-will-game-the-reading-meter.webp",
-    "articles/cards/the-infographic-bake-off.webp"
+    "articles/cards/who-will-game-the-reading-meter.webp"
    ],
    "url": "sgit.ai/subscribe/",
    "out": "articles/banners/subscribe.jpg"
