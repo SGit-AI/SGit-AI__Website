@@ -5,6 +5,13 @@
     <link>https://sgit.ai/updates/index.html</link>
     <description>What changed on sgit and on this site, as it happens.</description>
     <item>
+      <title>Rate what you read, and the rating sets the price</title>
+      <link>https://sgit.ai/updates/index.html#the-reader-card</link>
+      <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-reader-card</guid>
+      <pubDate>2026-10-10</pubDate>
+      <description>At the foot of every article there is now a reader card. Three scales, each starting in the middle: How useful was this? sets what you pay: 1 is free, 3 is the price, 5 is double. More like this? changes how often you see pages like it in your newsroom. Level…</description>
+    </item>
+    <item>
       <title>The reading meter goes live: pay for what you read, go below zero if you like</title>
       <link>https://sgit.ai/updates/index.html#the-meter-goes-live</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-meter-goes-live</guid>
@@ -136,13 +143,6 @@
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-mirror-is-gone</guid>
       <pubDate>2026-09-19</pubDate>
       <description>For 76 releases this site was one folder that was both an sgit vault and a git repository, and every release pushed both. Today the vault mirror was removed from the tree, purged from all 112 commits with git filter repo , and the branch force pushed. The repo…</description>
-    </item>
-    <item>
-      <title>The jump, what the fractal property actually adds</title>
-      <link>https://sgit.ai/updates/index.html#the-jump</link>
-      <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-jump</guid>
-      <pubDate>2026-09-19</pubDate>
-      <description>The Fractal Semantic Graphs page said that in a hierarchy depth gives you more detail but no new meaning, because the only verb is &quot;contains&quot; . The author&#x27;s objection came in four parts, and all four are right. A single layer&#x27;s ontology can have a very large n…</description>
     </item>
   </channel>
 </rss>

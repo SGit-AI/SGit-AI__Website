@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.33'
+SITE_VERSION = 'v0.7.34'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,18 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.33', '2026-10-10', 'this release',
+    ('v0.7.34', '2026-10-10', 'this release',
+     "THE READER CARD: RATE IT, AND THE RATING SETS THE PRICE. The line at the foot of every article becomes a card "
+     "headed 'Your reading account', linked to how paying for reading works here, with the balance beside it. It shows "
+     "what the page has cost, how much was read and the price to the end; the article is in the active persona's "
+     "reading list from the first time it is opened (one tap removes it); and three five-step scales, each starting in "
+     "the middle and drawn as an outline until touched: How useful was this? sets the price (1 free, 2 half, 3 the price, "
+     "4 one and a half times, 5 double), More like this? moves the page's topics and tags in the persona, Level of detail "
+     "is kept as the persona's preference and shown in the newsroom. 'Don't charge me' with a reason moves to the end as "
+     "the exception. Ratings are in what a reader shares. SG Meter v1.3.0 (new path; earlier versions kept): rate(), "
+     "the rating and autoKeep config, the sg:meter.rated event; docs updated; going live with the reading meter gains a "
+     "dated note on the change. test_meter.mjs checks the reading list and the free and double prices.",),
+    ('v0.7.33', '2026-10-10', 'git fc0c23e6',
      "LATEST, IN THE ORDER THINGS WERE PUBLISHED; A FASTER TAG STEP. Latest, the archive, the wire and the feed sort articles by date and time, but the time came from a hand-written time: line, and agents wrote round numbers: on 10 October an article committed at 14:21 said 17:00 and sat above four published after it (24 of 64 articles had a written time that disagreed with git). The time is now the article's first commit, read from git; time: is only the fallback for an article not yet committed, and one dated today with neither takes the build's clock. Older days are re-ordered to match. CI: the tag step pushed every historical tag on every release, about 330 round trips and two minutes the deploy waited on; it now asks the remote once which tags are missing and pushes only those, and when two commits claim one version the oldest wins (v0.7.28 had been given to a superseded commit).",),
     ('v0.7.32', '2026-10-10', 'git 1a69fcfa',
      "WHERE THE VAULT KEYS LIVE. A new article on vault key management at sgit-ai v0.20.0, after a reader found the gap: "
@@ -4185,7 +4196,7 @@ def meter_kind(path):
     return 'page', '', []
 
 
-METER_JS = 'assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.js'
+METER_JS = 'assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter.js'
 
 # Five personas a reader can start from (SG Meter v1.1), each a handful of topics and articles
 # chosen from what this site has actually published. A persona is a way to manage focus: the
@@ -4236,7 +4247,11 @@ def meter_config():
         'storageKey': 'sgit.meter.v1', 'start': METER['start'], 'newDays': METER['new_days'], 'symbol': '£',
         'prices': METER['prices'], 'depth': True, 'minDepth': 0.1,
         'topup': METER['topup'], 'packs': METER['packs'],
-        'links': {'account': 'account/index.html', 'topup': 'account/top-up.html'},
+        'links': {'account': 'account/index.html', 'topup': 'account/top-up.html',
+                  'how': 'articles/going-live-with-the-reading-meter.html'},
+        # v1.3: usefulness 1..5 multiplies the price (1 free, 3 the price, 5 double); "more like
+        # this" moves the page's topics and tags in the active persona. Rated in the middle by default.
+        'rating': {'price': [0, 0.5, 1, 1.5, 2], 'more': [-3, -1, 0, 3, 6]}, 'autoKeep': True,
         'picks': {'feed': 'articles/graphs.json', 'base': 'articles/'},
         'links2': {'newsroom': 'account/newsroom.html', 'personas': 'account/personas.html', 'share': 'account/share.html'},
         # v1.2: a reader can send their reading, encrypted in the browser, into the subscribe vault's

@@ -48,6 +48,8 @@ This meter tries a third door. The ask is never made, because the balance is alw
 
 The hypothesis is that a reader who can see an honest running total, and who is never shamed for it, is more willing to settle it than one who is counted and asked. More so as the site gives something back for the history: curation, picks, and in time a front page that is entirely personal to the reader, computed in their browser from what they read and what they declined. The first version of that front page is live the same day: [your newsroom](/account/newsroom.html), one per persona, and why personas are what a reader would pay to keep is in [pay to keep your persona](/articles/pay-to-keep-your-persona.html).
 
+> **Added later the same day, v0.7.34: the reader sets part of the price.** At the foot of every article there is now a reader card with three scales, each starting in the middle. *How useful was this?* changes what you pay: 1 is free, 3 is the price, 5 is double. *More like this?* changes how often you see pages like it. *Level of detail* tells your persona whether you want it lighter or deeper. "Don't charge me" is still there, at the end, as the exception. A page is now charged only as much as you read it *and* only as much as you say it was worth. Paying more for an excellent page is a signal we did not have before; it is in what you can [send us](/account/share.html).
+
 ## Why by depth
 
 Because a page is not one thing. A reader who opens an article, sees in the first paragraph that it is not for them and leaves has not had the same page as one who read it to the end. Charging them the same is a small unfairness repeated many times, and it rewards exactly the wrong writing: a headline that gets the click, followed by a page nobody finishes.

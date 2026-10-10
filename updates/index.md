@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens) one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.7.33 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.7.34 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,8 +12,9 @@ What changed on sgit and on this site, as it happens, one entry per story rather
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
 
-**74 entries, newest first**
+**75 entries, newest first**
 
+- 2026-10-10[Rate what you read, and the rating sets the price](#the-reader-card)
 - 2026-10-10[The reading meter goes live: pay for what you read, go below zero if you like](#the-meter-goes-live)
 - 2026-10-10[Send us your reading, get a front page designed for you](#share-your-reading)
 - 2026-10-10[Personas, and a newsroom of your own](#personas)
@@ -90,6 +91,17 @@ Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the 
 - 2026-08-17[Green does not mean live](#green-does-not-mean-live)
 
 ## 2026-10-10
+
+### [Rate what you read, and the rating sets the price](#the-reader-card) [v0.7.34](../admin/versions.md)
+
+newsroommicropaymentspricingpersonas
+
+**At the foot of every article there is now a reader card.** Three scales, each starting in the middle:
+
+- **How useful was this?** sets what you pay: 1 is free, 3 is the price, 5 is double.
+- **More like this?** changes how often you see pages like it in [your newsroom](../account/newsroom.md).
+- **Level of detail** tells your persona whether you want it lighter or deeper.
+- **Every article you open joins your reading list**, and "don't charge me" is still there, at the end, as the exception. [Why](../articles/going-live-with-the-reading-meter.md).
 
 ### [The reading meter goes live: pay for what you read, go below zero if you like](#the-meter-goes-live) [v0.7.26](../admin/versions.md)
 

@@ -2,13 +2,13 @@
 
 > One web component that charges readers a few pence a page from a balance kept in their own browser, by how far down the page they read; never blocks, allows a negative balance, lets a reader decline with a reason. Install, views, config, events, storage, theming, Stripe.
 
-*Source: <https://sgit.ai/meter/index.html> · site v0.7.33 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/meter/index.html> · site v0.7.34 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
 [Home](../index.md) / [Docs](../docs/index.md) / SG Meter
 
-A library · v1.2.0
+A library · v1.3.0
 
 # SG Meter: a reading meter you can add to any website
 
@@ -22,13 +22,13 @@ Copy two folders into your site, keeping their paths: the component and the base
 
 ```
 assets/components/base/v1/v1.0/v1.0.0/sg-component.js
-assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.js
-assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter-core.js
-assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.tpl
-assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.css
+assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter.js
+assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter-core.js
+assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter.tpl
+assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter.css
 ```
 
-The paths are versioned and immutable, as in [the estate's JavaScript guidance](https://coding.sgit.ai/javascript/index.html): a fix is a new path, so a page that works today keeps loading the same files. Read them first; they are short: [the rules](../assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter-core.js) (no rendering), [the element](../assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.js), [its styles](../assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.css), [the base class](../assets/components/base/v1/v1.0/v1.0.0/sg-component.js).
+The paths are versioned and immutable, as in [the estate's JavaScript guidance](https://coding.sgit.ai/javascript/index.html): a fix is a new path, so a page that works today keeps loading the same files. Read them first; they are short: [the rules](../assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter-core.js) (no rendering), [the element](../assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter.js), [its styles](../assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter.css), [the base class](../assets/components/base/v1/v1.0/v1.0.0/sg-component.js).
 
 Then, on every page, load the module once, give it a config, and say what the page is:
 
@@ -45,7 +45,7 @@ Then, on every page, load the module once, give it a config, and say what the pa
   "topup": { "amount": 500, "link": "https://buy.stripe.com/your-link" },
   "picks": { "feed": "articles/feed.json", "base": "articles/" } }
 </script>
-<script type="module" src="/assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.js"></script>
+<script type="module" src="/assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter.js"></script>
 ```
 
 Every key has a default, so an empty config works. Put `data-root` on `<html>` (for example `data-root="../"`) if your pages are not all at the top level; links the component writes are prefixed with it. This site loads the module with a dynamic `import()` from an inline script instead of a `src`, because its own build forbids script tags that point at files; either works.
@@ -57,7 +57,7 @@ One element, one shared meter: an ES module is evaluated once per page, so howev
 | view | What it shows | Attributes |
 |---|---|---|
 | `balance` | The balance as a small link to the account. Shown in a warmer colour below zero, with a tooltip that says nothing is blocked. Nothing else: no banner, no count of articles read. |  |
-| `page` | Opens this page on the meter and charges it by scroll depth. Shows what it has cost so far, the share read, the price to the end, and "Not worth it? Don't charge me" with four reasons. | `kind`, `date` (YYYY-MM-DD), `topics` (space separated), `title`, `quiet` (charge, show nothing) |
+| `page` | Opens this page on the meter and charges it by scroll depth. At the foot of the text, a reader card (v1.3): what the page has cost, the share read, the reading list, three five-step ratings (how useful, more like this, level of detail), and last, as the exception, "Don't charge me" with a reason. | `kind`, `date` (YYYY-MM-DD), `topics` (space separated), `title`, `quiet` (charge, show nothing) |
 | `account` | Balance, pages opened, spend, what was declined, picks, spend by topic, the history with the depth read, top-ups; pause, export as JSON, start again. |  |
 | `topup` | With `topup.link` set, one button to the payment page. Without, a simulated cart (packs, cart, review, receipt) that says it is simulated. |  |
 | `topped-up` | The page a payment link returns to. Adds `topup.amount` once per `session_id` in the URL. It does not verify the payment; see [the security model](security.md#return). |  |
@@ -75,6 +75,8 @@ This site's own: [newsroom](../account/newsroom.md), [share](../account/share.md
 - **By depth.** A page costs its price times the deepest point the reader has scrolled to, measured on the page's `main` element and rounded to 5%, never less than `minDepth` (default a tenth), so opening a page is not free. Read half, pay half.
 - **Once per page per session.** Scrolling further later in the same browser session tops the same charge up; coming back does not start a second one.
 - **Below zero is allowed.** Nothing is blocked and nothing nags. The balance is shown, that is all.
+- **Usefulness sets the price (v1.3).** The reader rates how useful the page was from 1 to 5, starting in the middle: 1 is free, 2 half, 3 the price, 4 one and a half times, 5 double (`rating.price`). "More like this" (1 to 5) moves the page's topics and tags in the active persona (`rating.more`); "level of detail" is kept as the persona's preference and shown in the newsroom. The scales start in the middle, drawn as an outline until the reader touches them.
+- **The reading list (v1.3).** An article opened for the first time joins the active persona's reading list (`autoKeep`), unless the reader put it out of that persona; one tap removes it.
 - **Declining is allowed.** A reader can refuse to pay for a page, with a reason: the headline promised more than the page gave, not relevant to me, I did not really read it, another reason. The charge is refunded and the reason kept in their history; "not relevant" counts against that page's topics in the picks.
 - **New costs more.** An `article` whose `date` is within `newDays` is priced at `article_new`, judged in the reader's browser, so prices age without a rebuild. Any other `kind` is looked up in `prices`, falling back to `page`.
 - **Storage may fail.** In a browser that blocks storage the page still works, and the account says it cannot keep a balance.
@@ -121,6 +123,7 @@ Dispatched on `document`, bubbling and composed, named `<namespace>:<noun>.<verb
 | `sg:meter.toppedup` | `{credit, source, balance}`; source is `simulated` or `link` |
 | `sg:meter.reset` | `{}` |
 | `sg:meter.persona` | `{active, what}`; what is `active`, `added`, `renamed`, `removed` or `curated` (v1.1) |
+| `sg:meter.rated` | `{path, field, value, cost, balance}`; field is `useful`, `more` or `detail` (v1.3) |
 | `sg:meter.shared` | `{how, pages}`; how is `copied` or `sent` (v1.2) |
 | `sg:meter.restored` | `{reads}`, after a restore from an export (v1.1) |
 | `sg:meter.changed` | `{balance}`, on any saved change; the elements repaint on it |
@@ -137,6 +140,7 @@ One JSON value under `storageKey` in localStorage, and a map of this session's p
   "balance": -12.5, "spent": 512.5, "reads": 91, "declined": 14, "paused": false,
   "log": [ { "id": "…", "at": "…", "path": "/articles/x.html", "title": "…", "kind": "article",
              "topics": ["news"], "price": 10, "depth": 0.55, "cost": 5.5, "persona": "me",
+             "rating": { "useful": 4, "more": 5, "detail": 4 },
              "declined": { "reason": "clickbait", "at": "…", "refunded": 4 } } ],
   "topups":   [ { "ref": "cs_…", "at": "…", "credit": 500, "source": "link" } ],
   "sessions": [ "cs_…" ], "cart": [],
@@ -168,6 +172,7 @@ The first version ran on [pt.newsroom.sgit.ai](https://pt.newsroom.sgit.ai/carte
 
 ## Changelog
 
+- **v1.3.0** (10 October 2026, site v0.7.34). The reader card at the foot of a page: three five-step ratings starting in the middle, usefulness setting the price (free to double), more-like-this moving the persona, level of detail kept as a preference; articles join the reading list when first opened; "don't charge me" moved to the end as the exception. Ratings are in what a reader shares. Events: `sg:meter.rated`. Config: `rating`, `autoKeep`, `links.how`.
 - **v1.2.0** (10 October 2026, site v0.7.31). Sharing: the `share` view, `shareData()` in the core, the `share` config and the `sg:meter.shared` event. A reader sees the exact text, copies it, or sends it encrypted (sgit's hybrid envelope v2, RSA-OAEP-SHA256 and AES-256-GCM, with Web Crypto) into an append lane, with the fingerprint recomputed from the published key before anything is sent. The newsroom and account link to it.
 - **v1.1.0** (10 October 2026, site v0.7.28). Personas: a default one built from all reading and named from its topics, presets offered by the site, as many as the reader wants, reading credited to the active one, Keep and Not for this persona. Four new views: `newsroom`, `personas`, `graph`, `link`. Picks score tags as well as topics. The account view draws the reader's graph and can restore an export. State version 3. v1.0.0 stays at its own path.
 - **v1.0.0** (10 October 2026, site v0.7.26). First packaged release: scroll-depth charging, negative balances, decline with a reason, the balance view, the Stripe return page, picks that count "not relevant" against a topic. Replaces this site's `assets/meter.js` (v0.7.24), which charged on opening and showed a bar when credit ran out.

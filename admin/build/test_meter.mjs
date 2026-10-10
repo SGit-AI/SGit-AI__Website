@@ -75,6 +75,14 @@ try {
     for (let i = 0; i < 4; i++) { await pg.evaluate(() => window.scrollTo(0, document.body.scrollHeight)); await wait(700) }
     s = await state()
     check(s.log[0].cost === 5 && s.balance === 495, `the end costs the whole price (balance ${s.balance}, spent ${s.spent}, cost ${s.log[0].cost}, log ${s.log.length}, reads ${s.reads})`)
+    // the reader card: usefulness sets the price, and the article is in the reading list
+    const rate = n => pg.evaluate(n => document.querySelector('sg-meter[view=page]').shadowRoot.querySelectorAll('.seg')[0].querySelectorAll('button')[n - 1].click(), n)
+    check((await state()).personas[0].on.includes(older.slug), 'an article opened for the first time joins the reading list')
+    await rate(5); await wait(300); s = await state()
+    check(s.log[0].cost === 10 && s.balance === 490, `rated excellent, it costs double (${s.log[0].cost}p)`)
+    await rate(1); await wait(300); s = await state()
+    check(s.log[0].cost === 0 && s.balance === 500, 'rated not useful, it is free')
+    await rate(3); await wait(300)
     // decline
     await pg.evaluate(() => document.querySelector('sg-meter[view=page]').shadowRoot.querySelector('button.link').click()); await wait(200)
     await pg.evaluate(() => document.querySelector('sg-meter[view=page]').shadowRoot.querySelector('.reasons button').click()); await wait(300)

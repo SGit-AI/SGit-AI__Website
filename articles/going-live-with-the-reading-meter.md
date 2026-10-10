@@ -2,7 +2,7 @@
 
 > The reading meter on sgit.ai stops being a demonstration. A page now costs what you read of it: scroll a tenth of the way down a new article and you pay a tenth of 10p. Your balance can go below zero and stay there; nothing is blocked and nothing nags, there is only a small balance in the top bar. If a page was not worth it you can say so, with a reason, and it is not charged. Topping up is one £5 payment on Stripe, with no account and nothing that renews, and the page you come back to adds the credit without being able to check it, on purpose. The meter is also packaged as a library any website can add. This article is the plan and the reasoning, written down before the results: the business case, what we expect, the numbers that would prove us wrong, and the date we look.
 
-*Source: <https://sgit.ai/articles/going-live-with-the-reading-meter.html> · site v0.7.33 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/going-live-with-the-reading-meter.html> · site v0.7.34 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 # Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks
 
-By [Dinis Cruz](../about/index.md) · 2026-10-10 · [article v1.1.0, 2 versions](versions/going-live-with-the-reading-meter.md) · newsroommicropaymentspricingpersonalisationlocal-firstbusiness-casehypothesesstripearticle
+By [Dinis Cruz](../about/index.md) · 2026-10-10 · [article v1.2.0, 3 versions](versions/going-live-with-the-reading-meter.md) · newsroommicropaymentspricingpersonalisationlocal-firstbusiness-casehypothesesstripearticle
 
 ***Abstract:** The reading meter on sgit.ai stops being a demonstration. A page now costs what you read of it: scroll a tenth of the way down a new article and you pay a tenth of 10p. Your balance can go below zero and stay there; nothing is blocked and nothing nags, there is only a small balance in the top bar. If a page was not worth it you can say so, with a reason, and it is not charged. Topping up is one £5 payment on Stripe, with no account and nothing that renews, and the page you come back to adds the credit without being able to check it, on purpose. The meter is also packaged as a library any website can add. This article is the plan and the reasoning, written down before the results: the business case, what we expect, the numbers that would prove us wrong, and the date we look.*
 
@@ -50,6 +50,8 @@ Two things in that are worth noticing. The middle tier sells, in part, the absen
 This meter tries a third door. The ask is never made, because the balance is always visible and the price of each page is stated where you read it. The commitment is never asked for, because you pay for pages after you have read them, as much of them as you read, and you can refuse. And going below zero is not a failure state. It is information you have, about what you have read, kept where only you can see it.
 
 The hypothesis is that a reader who can see an honest running total, and who is never shamed for it, is more willing to settle it than one who is counted and asked. More so as the site gives something back for the history: curation, picks, and in time a front page that is entirely personal to the reader, computed in their browser from what they read and what they declined. The first version of that front page is live the same day: [your newsroom](../account/newsroom.md), one per persona, and why personas are what a reader would pay to keep is in [pay to keep your persona](../articles/pay-to-keep-your-persona.md).
+
+**Added later the same day, v0.7.34: the reader sets part of the price.** At the foot of every article there is now a reader card with three scales, each starting in the middle. *How useful was this?* changes what you pay: 1 is free, 3 is the price, 5 is double. *More like this?* changes how often you see pages like it. *Level of detail* tells your persona whether you want it lighter or deeper. "Don't charge me" is still there, at the end, as the exception. A page is now charged only as much as you read it *and* only as much as you say it was worth. Paying more for an excellent page is a signal we did not have before; it is in what you can [send us](../account/share.md).
 
 ## Why by depth
 

@@ -1,6 +1,6 @@
 <main class="doc">
   <p class="crumb"><a href="../index.html">Home</a> / <a href="../docs/index.html">Docs</a> / SG Meter</p>
-  <p class="eyebrow">A library &middot; v1.2.0</p>
+  <p class="eyebrow">A library &middot; v1.3.0</p>
   <h1>SG Meter: a reading meter you can add to any website</h1>
   <p class="lead">One web component that charges readers a few pence a page from a balance kept in their own browser, by how far down the page they read. It never blocks a page, it lets the balance go below zero, it lets a reader decline to pay for a page and say why, and it turns what they read into personas: named, drawn as a graph, curated by the reader, and as many as they want. No server, no account, no cookies, no third-party script. It is what runs on this site: the balance in the top bar is it.</p>
 
@@ -9,11 +9,11 @@
   <h2 id="install">Install</h2>
   <p>Copy two folders into your site, keeping their paths: the component and the base class it extends (it imports the base by a relative path).</p>
   <pre class="shell">assets/components/base/v1/v1.0/v1.0.0/sg-component.js
-assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.js
-assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter-core.js
-assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.tpl
-assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.css</pre>
-  <p>The paths are versioned and immutable, as in <a href="https://coding.sgit.ai/javascript/index.html">the estate's JavaScript guidance</a>: a fix is a new path, so a page that works today keeps loading the same files. Read them first; they are short: <a href="../assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter-core.js">the rules</a> (no rendering), <a href="../assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.js">the element</a>, <a href="../assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.css">its styles</a>, <a href="../assets/components/base/v1/v1.0/v1.0.0/sg-component.js">the base class</a>.</p>
+assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter.js
+assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter-core.js
+assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter.tpl
+assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter.css</pre>
+  <p>The paths are versioned and immutable, as in <a href="https://coding.sgit.ai/javascript/index.html">the estate's JavaScript guidance</a>: a fix is a new path, so a page that works today keeps loading the same files. Read them first; they are short: <a href="../assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter-core.js">the rules</a> (no rendering), <a href="../assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter.js">the element</a>, <a href="../assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter.css">its styles</a>, <a href="../assets/components/base/v1/v1.0/v1.0.0/sg-component.js">the base class</a>.</p>
   <p>Then, on every page, load the module once, give it a config, and say what the page is:</p>
   <pre class="shell">&lt;!-- in the top bar --&gt;
 &lt;sg-meter view="balance"&gt;&lt;/sg-meter&gt;
@@ -27,7 +27,7 @@ assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.css</pre>
   "topup": { "amount": 500, "link": "https://buy.stripe.com/your-link" },
   "picks": { "feed": "articles/feed.json", "base": "articles/" } }
 &lt;/script&gt;
-&lt;script type="module" src="/assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.js"&gt;&lt;/script&gt;</pre>
+&lt;script type="module" src="/assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter.js"&gt;&lt;/script&gt;</pre>
   <p>Every key has a default, so an empty config works. Put <code>data-root</code> on <code>&lt;html&gt;</code> (for example <code>data-root="../"</code>) if your pages are not all at the top level; links the component writes are prefixed with it. This site loads the module with a dynamic <code>import()</code> from an inline script instead of a <code>src</code>, because its own build forbids script tags that point at files; either works.</p>
 
   <h2 id="views">The eleven views</h2>
@@ -35,7 +35,7 @@ assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.css</pre>
   <div class="tablewrap"><table>
     <tr><th>view</th><th>What it shows</th><th>Attributes</th></tr>
     <tr><td style="white-space:nowrap"><code>balance</code></td><td>The balance as a small link to the account. Shown in a warmer colour below zero, with a tooltip that says nothing is blocked. Nothing else: no banner, no count of articles read.</td><td></td></tr>
-    <tr><td style="white-space:nowrap"><code>page</code></td><td>Opens this page on the meter and charges it by scroll depth. Shows what it has cost so far, the share read, the price to the end, and "Not worth it? Don't charge me" with four reasons.</td><td><code>kind</code>, <code>date</code> (YYYY-MM-DD), <code>topics</code> (space separated), <code>title</code>, <code>quiet</code> (charge, show nothing)</td></tr>
+    <tr><td style="white-space:nowrap"><code>page</code></td><td>Opens this page on the meter and charges it by scroll depth. At the foot of the text, a reader card (v1.3): what the page has cost, the share read, the reading list, three five-step ratings (how useful, more like this, level of detail), and last, as the exception, "Don't charge me" with a reason.</td><td><code>kind</code>, <code>date</code> (YYYY-MM-DD), <code>topics</code> (space separated), <code>title</code>, <code>quiet</code> (charge, show nothing)</td></tr>
     <tr><td style="white-space:nowrap"><code>account</code></td><td>Balance, pages opened, spend, what was declined, picks, spend by topic, the history with the depth read, top-ups; pause, export as JSON, start again.</td><td></td></tr>
     <tr><td style="white-space:nowrap"><code>topup</code></td><td>With <code>topup.link</code> set, one button to the payment page. Without, a simulated cart (packs, cart, review, receipt) that says it is simulated.</td><td></td></tr>
     <tr><td style="white-space:nowrap"><code>topped-up</code></td><td>The page a payment link returns to. Adds <code>topup.amount</code> once per <code>session_id</code> in the URL. It does not verify the payment; see <a href="security.html#return">the security model</a>.</td><td></td></tr>
@@ -53,6 +53,8 @@ assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.css</pre>
     <li><b>By depth.</b> A page costs its price times the deepest point the reader has scrolled to, measured on the page's <code>main</code> element and rounded to 5%, never less than <code>minDepth</code> (default a tenth), so opening a page is not free. Read half, pay half.</li>
     <li><b>Once per page per session.</b> Scrolling further later in the same browser session tops the same charge up; coming back does not start a second one.</li>
     <li><b>Below zero is allowed.</b> Nothing is blocked and nothing nags. The balance is shown, that is all.</li>
+    <li><b>Usefulness sets the price (v1.3).</b> The reader rates how useful the page was from 1 to 5, starting in the middle: 1 is free, 2 half, 3 the price, 4 one and a half times, 5 double (<code>rating.price</code>). "More like this" (1 to 5) moves the page's topics and tags in the active persona (<code>rating.more</code>); "level of detail" is kept as the persona's preference and shown in the newsroom. The scales start in the middle, drawn as an outline until the reader touches them.</li>
+    <li><b>The reading list (v1.3).</b> An article opened for the first time joins the active persona's reading list (<code>autoKeep</code>), unless the reader put it out of that persona; one tap removes it.</li>
     <li><b>Declining is allowed.</b> A reader can refuse to pay for a page, with a reason: the headline promised more than the page gave, not relevant to me, I did not really read it, another reason. The charge is refunded and the reason kept in their history; "not relevant" counts against that page's topics in the picks.</li>
     <li><b>New costs more.</b> An <code>article</code> whose <code>date</code> is within <code>newDays</code> is priced at <code>article_new</code>, judged in the reader's browser, so prices age without a rebuild. Any other <code>kind</code> is looked up in <code>prices</code>, falling back to <code>page</code>.</li>
     <li><b>Storage may fail.</b> In a browser that blocks storage the page still works, and the account says it cannot keep a balance.</li>
@@ -96,6 +98,7 @@ assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.css</pre>
     <tr><td><code>sg:meter.toppedup</code></td><td><code>{credit, source, balance}</code>; source is <code>simulated</code> or <code>link</code></td></tr>
     <tr><td><code>sg:meter.reset</code></td><td><code>{}</code></td></tr>
     <tr><td><code>sg:meter.persona</code></td><td><code>{active, what}</code>; what is <code>active</code>, <code>added</code>, <code>renamed</code>, <code>removed</code> or <code>curated</code> (v1.1)</td></tr>
+    <tr><td><code>sg:meter.rated</code></td><td><code>{path, field, value, cost, balance}</code>; field is <code>useful</code>, <code>more</code> or <code>detail</code> (v1.3)</td></tr>
     <tr><td><code>sg:meter.shared</code></td><td><code>{how, pages}</code>; how is <code>copied</code> or <code>sent</code> (v1.2)</td></tr>
     <tr><td><code>sg:meter.restored</code></td><td><code>{reads}</code>, after a restore from an export (v1.1)</td></tr>
     <tr><td><code>sg:meter.changed</code></td><td><code>{balance}</code>, on any saved change; the elements repaint on it</td></tr>
@@ -109,6 +112,7 @@ assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.css</pre>
   "balance": -12.5, "spent": 512.5, "reads": 91, "declined": 14, "paused": false,
   "log": [ { "id": "…", "at": "…", "path": "/articles/x.html", "title": "…", "kind": "article",
              "topics": ["news"], "price": 10, "depth": 0.55, "cost": 5.5, "persona": "me",
+             "rating": { "useful": 4, "more": 5, "detail": 4 },
              "declined": { "reason": "clickbait", "at": "…", "refunded": 4 } } ],
   "topups":   [ { "ref": "cs_…", "at": "…", "credit": 500, "source": "link" } ],
   "sessions": [ "cs_…" ], "cart": [],
@@ -135,6 +139,7 @@ assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.css</pre>
 
   <h2 id="changelog">Changelog</h2>
   <ul>
+    <li><b>v1.3.0</b> (10 October 2026, site v0.7.34). The reader card at the foot of a page: three five-step ratings starting in the middle, usefulness setting the price (free to double), more-like-this moving the persona, level of detail kept as a preference; articles join the reading list when first opened; "don't charge me" moved to the end as the exception. Ratings are in what a reader shares. Events: <code>sg:meter.rated</code>. Config: <code>rating</code>, <code>autoKeep</code>, <code>links.how</code>.</li>
     <li><b>v1.2.0</b> (10 October 2026, site v0.7.31). Sharing: the <code>share</code> view, <code>shareData()</code> in the core, the <code>share</code> config and the <code>sg:meter.shared</code> event. A reader sees the exact text, copies it, or sends it encrypted (sgit's hybrid envelope v2, RSA-OAEP-SHA256 and AES-256-GCM, with Web Crypto) into an append lane, with the fingerprint recomputed from the published key before anything is sent. The newsroom and account link to it.</li>
     <li><b>v1.1.0</b> (10 October 2026, site v0.7.28). Personas: a default one built from all reading and named from its topics, presets offered by the site, as many as the reader wants, reading credited to the active one, Keep and Not for this persona. Four new views: <code>newsroom</code>, <code>personas</code>, <code>graph</code>, <code>link</code>. Picks score tags as well as topics. The account view draws the reader's graph and can restore an export. State version 3. v1.0.0 stays at its own path.</li>
     <li><b>v1.0.0</b> (10 October 2026, site v0.7.26). First packaged release: scroll-depth charging, negative balances, decline with a reason, the balance view, the Stripe return page, picks that count "not relevant" against a topic. Replaces this site's <code>assets/meter.js</code> (v0.7.24), which charged on opening and showed a bar when credit ran out.</li>
