@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.23'
+SITE_VERSION = 'v0.7.24'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.23', '2026-10-10', 'this release',
+    ('v0.7.24', '2026-10-10', 'this release',
+     "ONE ARTICLE, FIVE READERS. The articles are deep and hard to consume, so they are now read again after they are written by five agents with defined roles: a Librarian that catalogues every fact, claim, number, question and source with its verbatim sentence, a Cartographer and Ontologist that builds concepts and verbs at article, topic and site altitude and draws the maps, a Historian that says what the article added and where it sits, an Explainer that says it in two minutes, and a Storyteller that tells it as a deck. Run on the five behaviour-policy articles of 7 to 10 October: 662 items, 32 problems flagged in published text, 45 concepts, 78 edges, nine maps, five decks of nine slides, and one new concept in the newest article. Those five articles now open with Read it another way (two minutes, the arc, the deck with a PDF, the map, the catalogue with its flags), in the page and its markdown twin. A new vault, Article Views (chtgtd9e, read key published), holds the role files, every output, the renderers, the checks and an app; and the article that tells the story.",),
+    ('v0.7.23', '2026-10-10', 'git ed8f0cd7',
      "ONE MAC, MANY AGENTS; NO NAMES; FULLER COLLAGES. A Mac of the agent's own gains a section on queueing many agents on one Mac: six scenarios against the licence clauses (purpose and who is using macOS decide it, not the queue), the case worth a lawyer's hour, and the narrow ask for Apple's written terms. Threat-sized security: the eight fictional startups are described by what they do instead of named, in the vault (v0.1.2, gate and tests passing, audited from a fresh read-key clone), its screenshots, the article and the ladder figure, which loses its ceiling column. Newsletter collages: three pictures become one large beside two stacked, two pictures hug their content, so screenshots are no longer letterboxed.",),
     ('v0.7.22', '2026-10-10', 'git 0335818e',
      "RE-ANCHORING. Instructions given only in conversation can be lost when a session is summarised; this site's session was summarised eighteen times in a month, keeping about 1.7% each time (an infographic from its own transcript). Re-anchoring keeps the rules in an ABP file and prints it back after every summary (SessionStart, matcher compact); a canary status report, computed from the transcript and checked by a Stop hook, ends every few answers, the brown M&M. Both are running in this session. Three ways a rule fails, one file with three jobs, a measured rule, recipes that age with the platform. Two infographics, a diagram with its Mermaid source, the report on a phone and as a card, graph JSON.",),
@@ -6056,6 +6058,12 @@ VIEW_KIND_LABELS = [('claim', 'Claims'), ('evidence', 'Evidence'), ('data-point'
                     ('artefact', 'Artefacts'), ('entity', 'Names')]
 
 
+def _view_text(t):
+    """Escape a catalogue line; a token with angle brackets (mcp__<server>__<tool>) becomes code,
+    so the markdown twin carries it in backticks rather than as something that looks like HTML."""
+    return re.sub(r'\S*&lt;\S+?&gt;\S*', lambda m: f'<code>{m.group(0)}</code>', _esc(t))
+
+
 def article_views(slug):
     d = os.path.join(VIEWS_DIR, slug)
     if not os.path.isdir(d):
@@ -6114,12 +6122,12 @@ def article_views_block(a):
             its = [i for i in items if i.get('kind') == kind]
             if not its:
                 continue
-            lis = ''.join(f'<li>{_esc(i["text"])} <span class="dim">({_esc(i.get("section", ""))})</span></li>'
+            lis = ''.join(f'<li>{_view_text(i["text"])} <span class="dim">({_esc(i.get("section", ""))})</span></li>'
                           for i in its)
             groups.append(f'<details class="vkind"><summary>{label}: <span class="vn">{len(its)}</span></summary><ul>{lis}</ul></details>')
         flags = cat.get('flags') or []
         flag_html = (f'<details class="vkind vflags"><summary>Flagged for the author: <span class="vn">{len(flags)}</span></summary>'
-                     '<ul>' + ''.join(f'<li>{_esc(f)}</li>' for f in flags) + '</ul></details>') if flags else ''
+                     '<ul>' + ''.join(f'<li>{_view_text(f)}</li>' for f in flags) + '</ul></details>') if flags else ''
         parts.append(('catalogue', 'The catalogue', 'Librarian',
                       f'{len(items)} items, each anchored to a sentence of the article',
                       '<p class="small dim">Everything the article contains, by kind. Every item was extracted '

@@ -1,0 +1,2111 @@
+{
+  "slug": "re-anchoring-agent-behaviour-policies",
+  "title": "Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not",
+  "date": "2026-10-10",
+  "counts": {
+    "evidence": 7,
+    "claim": 26,
+    "example": 3,
+    "source": 8,
+    "definition": 5,
+    "artefact": 7,
+    "data-point": 8,
+    "fact": 22,
+    "limitation": 8,
+    "entity": 5,
+    "method": 10,
+    "decision": 4,
+    "question": 2,
+    "hypothesis": 1
+  },
+  "items": [
+    {
+      "id": "ra-evidence-1",
+      "kind": "evidence",
+      "text": "Claude Code documentation: an instruction that disappeared after compaction was given only in conversation, sits in a nested CLAUDE.md not yet reloaded, or is an unmatched path-scoped rule",
+      "anchor": "If an instruction disappeared after compaction, it was given only in conversation, lives in a nested CLAUDE.md that hasn't reloaded yet, or is a path-scoped rule that hasn't matched a file since",
+      "section": "lead",
+      "supports": [
+        "ra-claim-1"
+      ],
+      "refs": [
+        "https://code.claude.com/docs/en/memory"
+      ],
+      "terms": [
+        "compaction",
+        "instruction",
+        "claude.md",
+        "documentation"
+      ]
+    },
+    {
+      "id": "ra-evidence-2",
+      "kind": "evidence",
+      "text": "Permission modes documentation: a boundary can be lost if compaction removes the message that stated it",
+      "anchor": "can be lost if context compaction removes the message that stated it",
+      "section": "lead",
+      "supports": [
+        "ra-claim-1"
+      ],
+      "refs": [
+        "https://code.claude.com/docs/en/permission-modes"
+      ],
+      "terms": [
+        "compaction",
+        "permission classifier",
+        "boundary"
+      ]
+    },
+    {
+      "id": "ra-claim-1",
+      "kind": "claim",
+      "text": "Instructions given only in conversation can be lost when a long session is summarised",
+      "anchor": "Instructions given only in conversation can be lost when a long session is summarised.",
+      "section": "lead",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "compaction",
+        "instruction",
+        "conversation"
+      ]
+    },
+    {
+      "id": "ra-claim-2",
+      "kind": "claim",
+      "text": "Anthropic's own permission classifier has the same weakness as conversation-only instructions",
+      "anchor": "Anthropic's own permission classifier has the same weakness, in its own words",
+      "section": "lead",
+      "supports": [],
+      "refs": [
+        "https://code.claude.com/docs/en/permission-modes"
+      ],
+      "terms": [
+        "permission classifier",
+        "anthropic"
+      ]
+    },
+    {
+      "id": "ra-claim-3",
+      "kind": "claim",
+      "text": "The documentation sentence is the most important the author read that week about running agents, because it explains a failure just witnessed",
+      "anchor": "That sentence is the most important one I have read this week about running agents, because it explains a failure I had just watched happen.",
+      "section": "lead",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "compaction",
+        "agent"
+      ]
+    },
+    {
+      "id": "ra-example-1",
+      "kind": "example",
+      "text": "On 9 October two emails drafted by an agent went out in the author's voice against a rule written down four times; one reason was the rule fell out of context at a summary",
+      "anchor": "On 9 October two emails drafted by one of my agents went out in my voice, against a rule that had been written down four times",
+      "section": "lead",
+      "supports": [
+        "ra-claim-1"
+      ],
+      "refs": [],
+      "terms": [
+        "incident",
+        "email",
+        "compaction"
+      ]
+    },
+    {
+      "id": "ra-source-1",
+      "kind": "source",
+      "text": "Earlier article on the fix for the email incident: a second reader the agent cannot skip",
+      "anchor": "[a second reader the agent cannot skip](/articles/a-second-reader-the-agent-cannot-skip.html)",
+      "section": "lead",
+      "supports": [],
+      "refs": [
+        "/articles/a-second-reader-the-agent-cannot-skip.html"
+      ],
+      "terms": [
+        "second reader",
+        "article"
+      ]
+    },
+    {
+      "id": "ra-definition-1",
+      "kind": "definition",
+      "text": "Re-anchoring: the technique the author has started calling by that name, for the general problem of rules lost at summaries",
+      "anchor": "This article is about the general problem underneath it, and a technique for it that I have started calling **re-anchoring**.",
+      "section": "lead",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "re-anchoring"
+      ]
+    },
+    {
+      "id": "ra-artefact-1",
+      "kind": "artefact",
+      "text": "Figure ra-compactions.webp: every compaction in this session, read from its transcript",
+      "anchor": "!shot ra-compactions.webp | images/ | What summarisation does to a long session",
+      "section": "lead",
+      "supports": [
+        "ra-data-point-1"
+      ],
+      "refs": [
+        "images/ra-compactions.webp"
+      ],
+      "terms": [
+        "figure",
+        "compaction"
+      ]
+    },
+    {
+      "id": "ra-data-point-1",
+      "kind": "data-point",
+      "text": "Each compaction turned about 785,000 tokens into 9,000 to 19,000 (figure caption)",
+      "anchor": "Each turned about 785,000 tokens into 9,000 to 19,000.",
+      "section": "lead",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "compaction",
+        "token"
+      ]
+    },
+    {
+      "id": "ra-claim-4",
+      "kind": "claim",
+      "text": "Summaries are frequent, heavy and invisible",
+      "anchor": "**Summaries are frequent, heavy and invisible.**",
+      "section": "In short",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "compaction",
+        "summary"
+      ]
+    },
+    {
+      "id": "ra-data-point-2",
+      "kind": "data-point",
+      "text": "About 98% of the context replaced by a model-written summary each time",
+      "anchor": "Each time about 98% of the context was replaced by a summary written by the model, and nothing told me what was kept.",
+      "section": "In short",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "compaction",
+        "context"
+      ]
+    },
+    {
+      "id": "ra-claim-5",
+      "kind": "claim",
+      "text": "A rule held only in conversation has to win every summary; when it does not, nothing tells you",
+      "anchor": "**A rule held only in conversation has to win every summary.** It often will. When it does not, nothing tells you.",
+      "section": "In short",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "rule",
+        "summary",
+        "conversation"
+      ]
+    },
+    {
+      "id": "ra-claim-6",
+      "kind": "claim",
+      "text": "Re-anchoring takes the rule out of the contest: rules are restored, not remembered",
+      "anchor": "The rules are restored, not remembered.",
+      "section": "In short",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "re-anchoring",
+        "rule"
+      ]
+    },
+    {
+      "id": "ra-claim-7",
+      "kind": "claim",
+      "text": "Re-anchoring fixes forgetting, not the other two failures; those need a second reader and a gate",
+      "anchor": "**Re-anchoring fixes forgetting, not the other two failures.**",
+      "section": "In short",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "re-anchoring",
+        "failure mode",
+        "second reader",
+        "gate"
+      ]
+    },
+    {
+      "id": "ra-claim-8",
+      "kind": "claim",
+      "text": "A canary makes the invisible visible: if the report stops appearing the person notices before anything important goes wrong",
+      "anchor": "If it stops appearing, the person notices before anything important goes wrong: the brown M&M.",
+      "section": "In short",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "canary",
+        "status report"
+      ]
+    },
+    {
+      "id": "ra-claim-9",
+      "kind": "claim",
+      "text": "The best recipe changes with every release; keeping it current per rule, platform and version is continuous work",
+      "anchor": "Keeping the recipe current for each rule, on each platform, at each version, is work someone has to do continuously.",
+      "section": "In short",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "recipe",
+        "platform",
+        "version"
+      ]
+    },
+    {
+      "id": "ra-fact-1",
+      "kind": "fact",
+      "text": "The hooks re-anchoring depends on arrived or changed in the last few months",
+      "anchor": "The hooks this depends on arrived or changed in the last few months.",
+      "section": "In short",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "hook",
+        "claude code",
+        "version"
+      ]
+    },
+    {
+      "id": "ra-definition-2",
+      "kind": "definition",
+      "text": "Compaction: in Claude Code, the harness writes a summary of the conversation when context fills and continues from it; manual or automatic",
+      "anchor": "In Claude Code this is compaction, and it can be manual or automatic.",
+      "section": "What summarisation does to a session",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "compaction",
+        "claude code"
+      ]
+    },
+    {
+      "id": "ra-fact-2",
+      "kind": "fact",
+      "text": "When the context fills, the harness writes a summary of the conversation and continues from the summary",
+      "anchor": "When the context fills, the harness writes a summary of the conversation so far and continues from the summary.",
+      "section": "What summarisation does to a session",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "compaction",
+        "harness",
+        "context"
+      ]
+    },
+    {
+      "id": "ra-data-point-3",
+      "kind": "data-point",
+      "text": "Eighteen compactions between 9 September and 9 October, all automatic",
+      "anchor": "Between 9 September and 9 October there were eighteen compactions, all automatic.",
+      "section": "What summarisation does to a session",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "compaction"
+      ]
+    },
+    {
+      "id": "ra-data-point-4",
+      "kind": "data-point",
+      "text": "Each compaction started from about 780,000 to 800,000 tokens and kept 9,000 to 19,000; on average 1.7% kept",
+      "anchor": "Each started from about 780,000 to 800,000 tokens of context and replaced it with 9,000 to 19,000: on average **1.7% kept**.",
+      "section": "What summarisation does to a session",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "compaction",
+        "token"
+      ]
+    },
+    {
+      "id": "ra-data-point-5",
+      "kind": "data-point",
+      "text": "17.8 million tokens of conversation summarised away in total",
+      "anchor": "In total, 17.8 million tokens of conversation have been summarised away.",
+      "section": "What summarisation does to a session",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "compaction",
+        "token"
+      ]
+    },
+    {
+      "id": "ra-data-point-6",
+      "kind": "data-point",
+      "text": "Each summary took 1.2 to 3.4 minutes to write",
+      "anchor": "Each summary took between 1.2 and 3.4 minutes to write.",
+      "section": "What summarisation does to a session",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "compaction",
+        "duration"
+      ]
+    },
+    {
+      "id": "ra-claim-10",
+      "kind": "claim",
+      "text": "Summaries are not criticised: they make a month-long session possible, and the site would not exist in its current form without them",
+      "anchor": "A summary is what makes a month-long session possible at all, and this site would not exist in its current form without it.",
+      "section": "What summarisation does to a session",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "compaction",
+        "summary"
+      ]
+    },
+    {
+      "id": "ra-claim-11",
+      "kind": "claim",
+      "text": "At every summary a conversational rule must be judged important enough to keep, in words the summariser chooses; you are not told when it fails",
+      "anchor": "Every time a summary is written, the rule has to be judged important enough to keep, in words the summariser chooses.",
+      "section": "What summarisation does to a session",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "rule",
+        "summary"
+      ]
+    },
+    {
+      "id": "ra-evidence-3",
+      "kind": "evidence",
+      "text": "Documentation: project-root CLAUDE.md survives compaction and is re-read from disk and re-injected after /compact",
+      "anchor": "Project-root CLAUDE.md survives compaction: after `/compact`, Claude re-reads it from disk and re-injects it into the session",
+      "section": "What summarisation does to a session",
+      "supports": [
+        "ra-claim-12"
+      ],
+      "refs": [
+        "https://code.claude.com/docs/en/memory"
+      ],
+      "terms": [
+        "claude.md",
+        "compaction",
+        "documentation"
+      ]
+    },
+    {
+      "id": "ra-evidence-4",
+      "kind": "evidence",
+      "text": "Documentation: invoked skills are re-injected but capped at 5,000 tokens per skill and 25,000 total, oldest dropped first",
+      "anchor": "capped at 5,000 tokens per skill and 25,000 tokens total; oldest dropped first",
+      "section": "What summarisation does to a session",
+      "supports": [
+        "ra-claim-12"
+      ],
+      "refs": [
+        "https://code.claude.com/docs/en/context-window#what-survives-compaction"
+      ],
+      "terms": [
+        "skill",
+        "compaction",
+        "documentation"
+      ]
+    },
+    {
+      "id": "ra-evidence-5",
+      "kind": "evidence",
+      "text": "Documentation: context added earlier by hooks is summarised with the rest of the conversation",
+      "anchor": "and context that hooks added earlier is \"summarized with the rest of the conversation\"",
+      "section": "What summarisation does to a session",
+      "supports": [
+        "ra-claim-12"
+      ],
+      "refs": [
+        "https://code.claude.com/docs/en/context-window#what-survives-compaction"
+      ],
+      "terms": [
+        "hook",
+        "compaction",
+        "documentation"
+      ]
+    },
+    {
+      "id": "ra-claim-12",
+      "kind": "claim",
+      "text": "The platform already has a pattern: what comes back from disk survives; what lived only in conversation competes",
+      "anchor": "So there is already a pattern in the platform: what comes back from disk survives; what lived only in the conversation competes.",
+      "section": "What summarisation does to a session",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "compaction",
+        "disk",
+        "conversation"
+      ]
+    },
+    {
+      "id": "ra-claim-13",
+      "kind": "claim",
+      "text": "A rule held by the agent it governs can fail in three different ways that need different fixes",
+      "anchor": "A rule held by the agent it governs can fail in three different ways, and they need different fixes:",
+      "section": "Three ways a rule fails",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "failure mode",
+        "rule"
+      ]
+    },
+    {
+      "id": "ra-artefact-2",
+      "kind": "artefact",
+      "text": "Figure ra-failures.webp: re-anchoring fixes forgetting, a second reader fixes the unseen violation, a gate fixes the argued exception",
+      "anchor": "A second reader fixes the violation the author cannot see. A gate fixes the exception the agent argues itself into.",
+      "section": "Three ways a rule fails",
+      "supports": [
+        "ra-claim-13"
+      ],
+      "refs": [
+        "images/ra-failures.webp"
+      ],
+      "terms": [
+        "figure",
+        "failure mode",
+        "second reader",
+        "gate"
+      ]
+    },
+    {
+      "id": "ra-claim-14",
+      "kind": "claim",
+      "text": "Re-anchoring is the first and cheapest of the three fixes, and the others depend on it",
+      "anchor": "Re-anchoring is the first and cheapest of the three, and the others depend on it",
+      "section": "Three ways a rule fails",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "re-anchoring",
+        "second reader",
+        "gate"
+      ]
+    },
+    {
+      "id": "ra-limitation-1",
+      "kind": "limitation",
+      "text": "Re-anchoring does not change a rule's barrier; an expectation stays a rule in prose enforced by nobody, but reliably in view",
+      "anchor": "re-anchoring does not change a rule's barrier",
+      "section": "Three ways a rule fails",
+      "supports": [],
+      "refs": [
+        "https://abp.sgit.ai/"
+      ],
+      "terms": [
+        "barrier",
+        "expectation",
+        "re-anchoring"
+      ]
+    },
+    {
+      "id": "ra-definition-3",
+      "kind": "definition",
+      "text": "Expectation (ABP vocabulary): a rule in prose, enforced by nobody",
+      "anchor": "An expectation stays \"a rule in prose, enforced by nobody\".",
+      "section": "Three ways a rule fails",
+      "supports": [],
+      "refs": [
+        "https://abp.sgit.ai/"
+      ],
+      "terms": [
+        "expectation",
+        "barrier",
+        "agent behaviour policy"
+      ]
+    },
+    {
+      "id": "ra-entity-1",
+      "kind": "entity",
+      "text": "Agent Behaviour Policy (ABP), with its own site abp.sgit.ai",
+      "anchor": "[Agent Behaviour Policy](https://abp.sgit.ai/)",
+      "section": "Three ways a rule fails",
+      "supports": [],
+      "refs": [
+        "https://abp.sgit.ai/"
+      ],
+      "terms": [
+        "agent behaviour policy"
+      ]
+    },
+    {
+      "id": "ra-fact-3",
+      "kind": "fact",
+      "text": "Claude Code has four documented hook places to do re-anchoring",
+      "anchor": "Claude Code has four documented places to do it ([hooks](https://code.claude.com/docs/en/hooks)):",
+      "section": "Re-anchoring: the rules come back from disk",
+      "supports": [],
+      "refs": [
+        "https://code.claude.com/docs/en/hooks"
+      ],
+      "terms": [
+        "hook",
+        "claude code"
+      ]
+    },
+    {
+      "id": "ra-fact-4",
+      "kind": "fact",
+      "text": "SessionStart with matcher compact fires after every compaction and can print the whole policy back; its plain-text stdout is added to context",
+      "anchor": "print the whole policy back: \"Claude Code adds a SessionStart hook's plain-text stdout to Claude's context\"",
+      "section": "Re-anchoring: the rules come back from disk",
+      "supports": [],
+      "refs": [
+        "https://code.claude.com/docs/en/hooks"
+      ],
+      "terms": [
+        "sessionstart",
+        "compact matcher",
+        "hook"
+      ]
+    },
+    {
+      "id": "ra-fact-5",
+      "kind": "fact",
+      "text": "UserPromptSubmit fires before each prompt, including harness-started turns, and can add a short anchor every turn or the full policy every Nth turn as additionalContext",
+      "anchor": "add a short anchor every turn, or the full policy every Nth turn, as `additionalContext`",
+      "section": "Re-anchoring: the rules come back from disk",
+      "supports": [],
+      "refs": [
+        "https://code.claude.com/docs/en/hooks"
+      ],
+      "terms": [
+        "userpromptsubmit",
+        "hook"
+      ]
+    },
+    {
+      "id": "ra-fact-6",
+      "kind": "fact",
+      "text": "PreCompact fires before compaction and can log it or block it",
+      "anchor": "`PreCompact` | before compaction | log that it is about to happen, or block it",
+      "section": "Re-anchoring: the rules come back from disk",
+      "supports": [],
+      "refs": [
+        "https://code.claude.com/docs/en/hooks"
+      ],
+      "terms": [
+        "precompact",
+        "hook"
+      ]
+    },
+    {
+      "id": "ra-fact-7",
+      "kind": "fact",
+      "text": "Stop fires when the agent is about to end its turn and can check a required thing happened, sending the agent back once",
+      "anchor": "check that something the policy requires actually happened, and if not, send the agent back once",
+      "section": "Re-anchoring: the rules come back from disk",
+      "supports": [],
+      "refs": [
+        "https://code.claude.com/docs/en/hooks"
+      ],
+      "terms": [
+        "stop hook",
+        "hook"
+      ]
+    },
+    {
+      "id": "ra-claim-15",
+      "kind": "claim",
+      "text": "The SessionStart compact hook is the heart of re-anchoring: point it at the policy file and the policy is back verbatim when the summary is done",
+      "anchor": "Point it at the policy file and the policy is back, verbatim, the moment the summary is done.",
+      "section": "Re-anchoring: the rules come back from disk",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "sessionstart",
+        "re-anchoring"
+      ]
+    },
+    {
+      "id": "ra-artefact-3",
+      "kind": "artefact",
+      "text": "The settings hooks configuration running in this session: SessionStart (compact), UserPromptSubmit and Stop, each calling abp.py",
+      "anchor": "\"command\": \"python3 ~/.claude/abp/abp.py reanchor\"",
+      "section": "Re-anchoring: the rules come back from disk",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "settings",
+        "hook",
+        "configuration"
+      ]
+    },
+    {
+      "id": "ra-artefact-4",
+      "kind": "artefact",
+      "text": "abp.py at ~/.claude/abp/, with reanchor, prompt and stop steps",
+      "anchor": "python3 ~/.claude/abp/abp.py stop",
+      "section": "Re-anchoring: the rules come back from disk",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "abp.py",
+        "script"
+      ]
+    },
+    {
+      "id": "ra-fact-8",
+      "kind": "fact",
+      "text": "The reanchor step prints a one-line header naming policy v0.1 #a0d6d2, then the policy, and logs that it ran",
+      "anchor": "\"ABP re-anchored after compaction: v0.1 #a0d6d2. The rules below still apply, whatever the summary says\"",
+      "section": "Re-anchoring: the rules come back from disk",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "re-anchoring",
+        "abp.py",
+        "policy version"
+      ]
+    },
+    {
+      "id": "ra-fact-9",
+      "kind": "fact",
+      "text": "The prompt step adds one line to every prompt naming the policy, its version and hash",
+      "anchor": "The `prompt` step adds one line to every prompt, naming the policy, its version and its hash",
+      "section": "Re-anchoring: the rules come back from disk",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "userpromptsubmit",
+        "anchor",
+        "policy version"
+      ]
+    },
+    {
+      "id": "ra-method-1",
+      "kind": "method",
+      "text": "Cheapest version, no hooks: a line in project-root CLAUDE.md saying to read the behaviour policy, since that file is re-read after compaction",
+      "anchor": "The cheapest version needs no hooks at all: a line in the project-root CLAUDE.md that says \"read the behaviour policy in this file before acting\"",
+      "section": "Re-anchoring: the rules come back from disk",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "claude.md",
+        "re-anchoring"
+      ]
+    },
+    {
+      "id": "ra-method-2",
+      "kind": "method",
+      "text": "Bluntest version, no configuration: the person types 'read your instructions again'",
+      "anchor": "And the bluntest version needs no configuration: the person types \"read your instructions again\".",
+      "section": "Re-anchoring: the rules come back from disk",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "re-anchoring",
+        "person"
+      ]
+    },
+    {
+      "id": "ra-claim-16",
+      "kind": "claim",
+      "text": "The point of the hooks is that neither alternative depends on someone remembering",
+      "anchor": "The point of the hooks is that neither depends on someone remembering.",
+      "section": "Re-anchoring: the rules come back from disk",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "hook",
+        "re-anchoring"
+      ]
+    },
+    {
+      "id": "ra-claim-17",
+      "kind": "claim",
+      "text": "Here the Agent Behaviour Policy stops being a document and becomes infrastructure: one file does three jobs",
+      "anchor": "This is where the Agent Behaviour Policy stops being a document and becomes infrastructure.",
+      "section": "One file, three jobs",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "agent behaviour policy",
+        "infrastructure"
+      ]
+    },
+    {
+      "id": "ra-claim-18",
+      "kind": "claim",
+      "text": "Job 1, memory: the file is what the re-anchoring hook prints back; rules survive because they live on disk",
+      "anchor": "The rules survive because they live on disk, not in the conversation.",
+      "section": "One file, three jobs",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "memory",
+        "agent behaviour policy",
+        "disk"
+      ]
+    },
+    {
+      "id": "ra-claim-19",
+      "kind": "claim",
+      "text": "Job 2, the checker's rulebook: the draft guard's numbered rule file, written by the inbox agent, is already an ABP fragment",
+      "anchor": "The draft guard's numbered rule file, written by the inbox agent, is already an ABP fragment under another name.",
+      "section": "One file, three jobs",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "checker",
+        "draft guard",
+        "agent behaviour policy"
+      ]
+    },
+    {
+      "id": "ra-claim-20",
+      "kind": "claim",
+      "text": "Job 3, the enforcement list: every row carries its barrier, so the file says which rules still need a second reader or gate",
+      "anchor": "Every row carries its barrier, so the file says which rules are still expectations, and therefore which need a second reader or a gate next.",
+      "section": "One file, three jobs",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "barrier",
+        "enforcement",
+        "expectation"
+      ]
+    },
+    {
+      "id": "ra-method-3",
+      "kind": "method",
+      "text": "A policy can shape memory directly with rows like keep decisions in decisions.md, moving important parts of a session into files",
+      "anchor": "A row can say \"keep decisions in `decisions.md`\" or \"write the sources file before drafting\"",
+      "section": "One file, three jobs",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "memory",
+        "policy row",
+        "decisions.md"
+      ]
+    },
+    {
+      "id": "ra-claim-21",
+      "kind": "claim",
+      "text": "Such a row is still an expectation but a checkable one: a hook can see whether the file was written",
+      "anchor": "That is still an expectation, but a checkable one: a hook can see whether the file was written.",
+      "section": "One file, three jobs",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "expectation",
+        "hook"
+      ]
+    },
+    {
+      "id": "ra-limitation-2",
+      "kind": "limitation",
+      "text": "Re-anchoring cannot be seen working: a silent hook, unloaded settings or moved policy look like a healthy session",
+      "anchor": "Re-anchoring has a weakness of its own: you cannot see it working.",
+      "section": "The canary: a report that ends every few answers",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "re-anchoring",
+        "canary"
+      ]
+    },
+    {
+      "id": "ra-definition-4",
+      "kind": "definition",
+      "text": "Canary: a short status report at the end of every few answers, the second half of the technique",
+      "anchor": "The agent version is a short status report at the end of every few answers.",
+      "section": "The canary: a report that ends every few answers",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "canary",
+        "status report"
+      ]
+    },
+    {
+      "id": "ra-example-2",
+      "kind": "example",
+      "text": "Van Halen's touring contract asked for M&M's with the brown ones removed, to tell whether the venue read the whole contract including safety parts",
+      "anchor": "Van Halen's touring contract had a clause, in the middle of pages of technical requirements, asking for a bowl of M&M's with the brown ones removed.",
+      "section": "The canary: a report that ends every few answers",
+      "supports": [
+        "ra-claim-8"
+      ],
+      "refs": [
+        "https://www.snopes.com/fact-check/brown-out/",
+        "https://www.npr.org/sections/therecord/2012/02/14/146880432/the-truth-about-van-halen-and-those-brown-m-ms"
+      ],
+      "terms": [
+        "brown m&m",
+        "canary",
+        "van halen"
+      ]
+    },
+    {
+      "id": "ra-evidence-6",
+      "kind": "evidence",
+      "text": "Snopes and NPR both report the clause was a quick check that the venue had read the whole contract",
+      "anchor": "it was a quick way to tell whether the venue had read the whole contract, including the parts about weight and power that kept the crew safe",
+      "section": "The canary: a report that ends every few answers",
+      "supports": [
+        "ra-example-2"
+      ],
+      "refs": [
+        "https://www.snopes.com/fact-check/brown-out/",
+        "https://www.npr.org/sections/therecord/2012/02/14/146880432/the-truth-about-van-halen-and-those-brown-m-ms"
+      ],
+      "terms": [
+        "brown m&m",
+        "van halen"
+      ]
+    },
+    {
+      "id": "ra-source-2",
+      "kind": "source",
+      "text": "Snopes fact-check on the brown M&M's",
+      "anchor": "[Snopes](https://www.snopes.com/fact-check/brown-out/)",
+      "section": "The canary: a report that ends every few answers",
+      "supports": [],
+      "refs": [
+        "https://www.snopes.com/fact-check/brown-out/"
+      ],
+      "terms": [
+        "brown m&m",
+        "snopes"
+      ]
+    },
+    {
+      "id": "ra-source-3",
+      "kind": "source",
+      "text": "NPR, The truth about Van Halen and those brown M&M's",
+      "anchor": "[NPR](https://www.npr.org/sections/therecord/2012/02/14/146880432/the-truth-about-van-halen-and-those-brown-m-ms)",
+      "section": "The canary: a report that ends every few answers",
+      "supports": [],
+      "refs": [
+        "https://www.npr.org/sections/therecord/2012/02/14/146880432/the-truth-about-van-halen-and-those-brown-m-ms"
+      ],
+      "terms": [
+        "brown m&m",
+        "npr"
+      ]
+    },
+    {
+      "id": "ra-entity-2",
+      "kind": "entity",
+      "text": "Van Halen",
+      "anchor": "The idea is old. Van Halen's touring contract had a clause",
+      "section": "The canary: a report that ends every few answers",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "van halen",
+        "brown m&m"
+      ]
+    },
+    {
+      "id": "ra-artefact-5",
+      "kind": "artefact",
+      "text": "Figure ra-phone.webp: the report on a phone in this session on its first day",
+      "anchor": "!shot ra-phone.webp | images/ | The report as it arrived on a phone",
+      "section": "The canary: a report that ends every few answers",
+      "supports": [],
+      "refs": [
+        "images/ra-phone.webp"
+      ],
+      "terms": [
+        "figure",
+        "status report"
+      ]
+    },
+    {
+      "id": "ra-decision-1",
+      "kind": "decision",
+      "text": "The model does not write the numbers: the UserPromptSubmit hook computes the report from the transcript and cost record, because a model-written report would need verifying",
+      "anchor": "A report the model wrote from memory would be one more thing to verify.",
+      "section": "The canary: a report that ends every few answers",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "status report",
+        "userpromptsubmit",
+        "transcript"
+      ]
+    },
+    {
+      "id": "ra-decision-2",
+      "kind": "decision",
+      "text": "The harness checks the report was shown: the Stop hook sends the agent back once if missing, then lets the turn end and logs the miss",
+      "anchor": "If the report is missing it sends the agent back, once, with the block to add; if it is still missing, it lets the turn end and logs the miss.",
+      "section": "The canary: a report that ends every few answers",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "stop hook",
+        "status report"
+      ]
+    },
+    {
+      "id": "ra-claim-22",
+      "kind": "claim",
+      "text": "The show-the-report rule moves from expectation to setting",
+      "anchor": "That one rule, show the report, moves from expectation to setting.",
+      "section": "The canary: a report that ends every few answers",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "barrier",
+        "setting",
+        "expectation"
+      ]
+    },
+    {
+      "id": "ra-decision-3",
+      "kind": "decision",
+      "text": "The person is part of the loop, with /abp-status to show the report and /abp-reload to re-read the policy and state version and hash",
+      "anchor": "`/abp-status` shows it now, and `/abp-reload` makes the agent read the policy again and say its version and hash",
+      "section": "The canary: a report that ends every few answers",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "person",
+        "command",
+        "/abp-status",
+        "/abp-reload"
+      ]
+    },
+    {
+      "id": "ra-artefact-6",
+      "kind": "artefact",
+      "text": "Figure ra-loop.webp with Mermaid source: one policy file, three hooks, two commands, and a person",
+      "anchor": "Re-anchoring and the canary: one policy file, three hooks, two commands, and a person who notices when the report is missing.",
+      "section": "The canary: a report that ends every few answers",
+      "supports": [],
+      "refs": [
+        "images/ra-loop.webp"
+      ],
+      "terms": [
+        "figure",
+        "diagram",
+        "re-anchoring",
+        "canary"
+      ]
+    },
+    {
+      "id": "ra-fact-10",
+      "kind": "fact",
+      "text": "Report line policy: version, hash and rule count; a surprise means the file changed or another is loaded",
+      "anchor": "policy | the version and hash in force, and how many rules | the file changed, or a different one is loaded",
+      "section": "The canary: a report that ends every few answers",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "status report",
+        "policy version"
+      ]
+    },
+    {
+      "id": "ra-fact-11",
+      "kind": "fact",
+      "text": "Report line anchor: re-anchors against compactions; fewer re-anchors than compactions means the hook did not fire",
+      "anchor": "anchor | re-anchors against compactions since the policy started | fewer re-anchors than compactions: the hook did not fire",
+      "section": "The canary: a report that ends every few answers",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "status report",
+        "re-anchoring",
+        "compaction"
+      ]
+    },
+    {
+      "id": "ra-fact-12",
+      "kind": "fact",
+      "text": "Report line cost: session cost and change since last report; a surprise means a long silent task or a loop",
+      "anchor": "cost | the session's cost, and the change since the last report | a long silent task, or a loop",
+      "section": "The canary: a report that ends every few answers",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "status report",
+        "cost"
+      ]
+    },
+    {
+      "id": "ra-fact-13",
+      "kind": "fact",
+      "text": "Report line tokens: output and cached tokens",
+      "anchor": "tokens | output and cached tokens | how much context work the session is doing",
+      "section": "The canary: a report that ends every few answers",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "status report",
+        "token"
+      ]
+    },
+    {
+      "id": "ra-fact-14",
+      "kind": "fact",
+      "text": "Report line web: searches and fetches; a surprise means research not asked for or not seen",
+      "anchor": "web | searches and fetches | research happening that you did not ask for, or did not see",
+      "section": "The canary: a report that ends every few answers",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "status report",
+        "web request"
+      ]
+    },
+    {
+      "id": "ra-fact-15",
+      "kind": "fact",
+      "text": "Report line tools: tool calls and background agents",
+      "anchor": "tools | tool calls and background agents | the shape of the work since the last report",
+      "section": "The canary: a report that ends every few answers",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "status report",
+        "tool call"
+      ]
+    },
+    {
+      "id": "ra-fact-16",
+      "kind": "fact",
+      "text": "Report line commits: commits since the policy started and how many lacked a preceding leak scan; should be zero",
+      "anchor": "commits | commits since the policy started, and how many were not preceded by a leak scan | a rule measured, not asserted: that number should be zero",
+      "section": "The canary: a report that ends every few answers",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "status report",
+        "leak scan",
+        "commit"
+      ]
+    },
+    {
+      "id": "ra-fact-17",
+      "kind": "fact",
+      "text": "Rule 2 of this session's policy is leak scan before every commit",
+      "anchor": "Rule 2 of this session's policy is \"leak scan before every commit\".",
+      "section": "The canary: a report that ends every few answers",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "leak scan",
+        "policy row"
+      ]
+    },
+    {
+      "id": "ra-method-4",
+      "kind": "method",
+      "text": "The report reads the transcript and counts commits not preceded by a scan instead of asking the agent",
+      "anchor": "The report does not ask the agent whether it complied; it reads the transcript and counts commits that were not preceded by a scan.",
+      "section": "The canary: a report that ends every few answers",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "measured rule",
+        "leak scan",
+        "transcript"
+      ]
+    },
+    {
+      "id": "ra-claim-23",
+      "kind": "claim",
+      "text": "A policy row with a number next to it is different from a policy row on its own",
+      "anchor": "A policy row with a number next to it is a different thing from a policy row on its own.",
+      "section": "The canary: a report that ends every few answers",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "measured rule",
+        "policy row"
+      ]
+    },
+    {
+      "id": "ra-artefact-7",
+      "kind": "artefact",
+      "text": "Figure ra-card.webp: branded card version of the report, rendered on request, footer says what to do if it stops appearing",
+      "anchor": "The footer tells the reader what to do if it stops appearing.",
+      "section": "The canary: a report that ends every few answers",
+      "supports": [],
+      "refs": [
+        "images/ra-card.webp"
+      ],
+      "terms": [
+        "figure",
+        "status report"
+      ]
+    },
+    {
+      "id": "ra-example-3",
+      "kind": "example",
+      "text": "The hooks loaded mid-session: added to a user settings file while running, and the next prompt carried the one-line anchor",
+      "anchor": "They were added to a user settings file while the session was running, and the next prompt arrived carrying the policy's one-line anchor.",
+      "section": "Living with it",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "hook",
+        "settings"
+      ]
+    },
+    {
+      "id": "ra-evidence-7",
+      "kind": "evidence",
+      "text": "Documentation: edits to hooks in settings files are normally picked up automatically by the file watcher",
+      "anchor": "normally picked up automatically by the file watcher",
+      "section": "Living with it",
+      "supports": [
+        "ra-example-3"
+      ],
+      "refs": [
+        "https://code.claude.com/docs/en/hooks"
+      ],
+      "terms": [
+        "hook",
+        "settings",
+        "documentation"
+      ]
+    },
+    {
+      "id": "ra-data-point-7",
+      "kind": "data-point",
+      "text": "The first report rendered on a phone at 41 characters wide without wrapping",
+      "anchor": "**The first report rendered on a phone at 41 characters wide** without wrapping.",
+      "section": "Living with it",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "status report",
+        "phone"
+      ]
+    },
+    {
+      "id": "ra-question-1",
+      "kind": "question",
+      "text": "The re-anchor after a compaction has not been observed yet; the article will be updated when it is",
+      "anchor": "**The re-anchor after a compaction has not been observed yet.**",
+      "section": "Living with it",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "re-anchoring",
+        "compaction"
+      ]
+    },
+    {
+      "id": "ra-limitation-3",
+      "kind": "limitation",
+      "text": "The cost line can lag because the harness cost record is written periodically",
+      "anchor": "It comes from the harness's cost record, which is written periodically rather than after every call.",
+      "section": "Living with it",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "cost",
+        "status report"
+      ]
+    },
+    {
+      "id": "ra-question-2",
+      "kind": "question",
+      "text": "Open: how often to show the report (every three answers today), which lines people read, and what else belongs",
+      "anchor": "how often to show it (every three answers today), which lines people actually read, and what else belongs there",
+      "section": "Living with it",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "status report",
+        "frequency"
+      ]
+    },
+    {
+      "id": "ra-data-point-8",
+      "kind": "data-point",
+      "text": "The report is shown every three answers today",
+      "anchor": "We are going to live with it for a while: how often to show it (every three answers today)",
+      "section": "Living with it",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "status report",
+        "frequency"
+      ]
+    },
+    {
+      "id": "ra-fact-18",
+      "kind": "fact",
+      "text": "Mods, the event system the draft guard used, arrived in Claude Code v2.1.287",
+      "anchor": "Mods, the event system the draft guard used, arrived in Claude Code v2.1.287.",
+      "section": "The recipe changes with the platform",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "mod",
+        "claude code",
+        "version"
+      ]
+    },
+    {
+      "id": "ra-fact-19",
+      "kind": "fact",
+      "text": "onFailure: \"block\", making a settings hook fail closed, arrived in v2.1.295",
+      "anchor": "`onFailure: \"block\"`, which makes a settings hook fail closed, arrived in v2.1.295.",
+      "section": "The recipe changes with the platform",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "onfailure",
+        "hook",
+        "version"
+      ]
+    },
+    {
+      "id": "ra-fact-20",
+      "kind": "fact",
+      "text": "Prompt hooks changed how they deny in v2.1.210",
+      "anchor": "Prompt hooks changed how they deny in v2.1.210.",
+      "section": "The recipe changes with the platform",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "prompt hook",
+        "version"
+      ]
+    },
+    {
+      "id": "ra-claim-24",
+      "kind": "claim",
+      "text": "The compact matcher makes re-anchoring a five-line hook rather than a workaround",
+      "anchor": "The `compact` matcher is what makes re-anchoring a five-line hook rather than a workaround.",
+      "section": "The recipe changes with the platform",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "compact matcher",
+        "re-anchoring"
+      ]
+    },
+    {
+      "id": "ra-claim-25",
+      "kind": "claim",
+      "text": "Six months ago the best re-anchoring recipe was different, and will be again in six months; on another platform it is different today",
+      "anchor": "Six months ago the best way to re-anchor a policy was different, and six months from now it will be different again; on another platform it is different today.",
+      "section": "The recipe changes with the platform",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "recipe",
+        "platform"
+      ]
+    },
+    {
+      "id": "ra-definition-5",
+      "kind": "definition",
+      "text": "A behaviour policy row is a rule, its barrier, and the current recipe for keeping it",
+      "anchor": "It is a rule, its barrier, and the current recipe for keeping it",
+      "section": "The recipe changes with the platform",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "policy row",
+        "barrier",
+        "recipe"
+      ]
+    },
+    {
+      "id": "ra-claim-26",
+      "kind": "claim",
+      "text": "The recipe table goes out of date with every release; keeping it current, testing it and costing it is real continuous work",
+      "anchor": "That table goes out of date with every release, and keeping it current, testing it, and noting what each recipe costs is real, continuous work.",
+      "section": "The recipe changes with the platform",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "recipe",
+        "maintenance"
+      ]
+    },
+    {
+      "id": "ra-limitation-4",
+      "kind": "limitation",
+      "text": "A recipe using mods means running agent-written code unsandboxed with your permissions, itself a policy row",
+      "anchor": "a recipe that uses mods means running code the agent wrote, unsandboxed, with your permissions, which is itself a row in the policy",
+      "section": "The recipe changes with the platform",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "mod",
+        "sandbox",
+        "permission"
+      ]
+    },
+    {
+      "id": "ra-decision-4",
+      "kind": "decision",
+      "text": "This session's report runs on settings hooks rather than a mod, because of the cost of running unsandboxed mod code",
+      "anchor": "That is why this session's report runs on settings hooks rather than a mod.",
+      "section": "The recipe changes with the platform",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "settings",
+        "hook",
+        "mod"
+      ]
+    },
+    {
+      "id": "ra-hypothesis-1",
+      "kind": "hypothesis",
+      "text": "A maintained, version-aware library of recipes is what people will pay for, not the policy itself",
+      "anchor": "That maintained, version-aware library of recipes is what I think people will pay for",
+      "section": "The recipe changes with the platform",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "recipe",
+        "business model"
+      ]
+    },
+    {
+      "id": "ra-limitation-5",
+      "kind": "limitation",
+      "text": "Re-anchoring does not enforce anything; a rule in view is still an expectation",
+      "anchor": "**Re-anchoring does not enforce anything.**",
+      "section": "What it does not do",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "re-anchoring",
+        "enforcement",
+        "expectation"
+      ]
+    },
+    {
+      "id": "ra-limitation-6",
+      "kind": "limitation",
+      "text": "The canary is a setting, not a boundary: it lives in a settings file the session could edit and cannot stop an agent ignoring the policy",
+      "anchor": "**The canary is a setting, not a boundary.**",
+      "section": "What it does not do",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "canary",
+        "setting",
+        "boundary"
+      ]
+    },
+    {
+      "id": "ra-limitation-7",
+      "kind": "limitation",
+      "text": "A report can be pasted without the rules being followed; for the rest you need a reader or a gate",
+      "anchor": "**A report can be pasted without the rules being followed.**",
+      "section": "What it does not do",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "status report",
+        "second reader",
+        "gate"
+      ]
+    },
+    {
+      "id": "ra-limitation-8",
+      "kind": "limitation",
+      "text": "Summaries stay a black box; re-anchoring makes what matters independent of them",
+      "anchor": "**The summaries stay a black box.**",
+      "section": "What it does not do",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "summary",
+        "re-anchoring"
+      ]
+    },
+    {
+      "id": "ra-method-5",
+      "kind": "method",
+      "text": "Step 1: write the rules as an ABP file, short enough to re-read (a few hundred words), each rule with its barrier",
+      "anchor": "**Write the rules down as an ABP file**, short enough to re-read (a few hundred words), each rule with its barrier.",
+      "section": "Build your own",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "agent behaviour policy",
+        "barrier"
+      ]
+    },
+    {
+      "id": "ra-method-6",
+      "kind": "method",
+      "text": "Step 2: re-anchor after every compaction with a SessionStart compact hook printing the file, plus a one-line anchor on every prompt",
+      "anchor": "**Re-anchor after every compaction** with a `SessionStart` hook on the `compact` matcher that prints the file, and a one-line anchor on every prompt.",
+      "section": "Build your own",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "re-anchoring",
+        "sessionstart",
+        "compact matcher"
+      ]
+    },
+    {
+      "id": "ra-method-7",
+      "kind": "method",
+      "text": "Step 3: add a canary report every few answers, computed from the transcript, with a Stop hook checking it was shown",
+      "anchor": "**Add a canary**: a short report every few answers, computed from the transcript, with a `Stop` hook that checks it was shown.",
+      "section": "Build your own",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "canary",
+        "stop hook"
+      ]
+    },
+    {
+      "id": "ra-method-8",
+      "kind": "method",
+      "text": "Step 4: give the person two commands, show status and reload the policy",
+      "anchor": "**Give the person two commands**: show the status, and reload the policy.",
+      "section": "Build your own",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "command",
+        "person"
+      ]
+    },
+    {
+      "id": "ra-method-9",
+      "kind": "method",
+      "text": "Step 5: measure one rule in the report so the canary is also evidence",
+      "anchor": "**Measure one rule** in the report, so the canary is also evidence.",
+      "section": "Build your own",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "measured rule",
+        "canary"
+      ]
+    },
+    {
+      "id": "ra-method-10",
+      "kind": "method",
+      "text": "Step 6: move the rules that matter most from expectation to a reader or a gate, using the file as the list",
+      "anchor": "**Move the rules that matter most** from expectation to a reader or a gate, using the file as the list.",
+      "section": "Build your own",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "expectation",
+        "gate",
+        "second reader"
+      ]
+    },
+    {
+      "id": "ra-fact-21",
+      "kind": "fact",
+      "text": "Written from a conversation between Dinis Cruz and agent@riskmandate.ai (Claude Opus 5.5) in the sgit.ai site session, which built and runs under the hooks, on 9 and 10 October 2026",
+      "anchor": "*Written from a conversation between Dinis Cruz and agent@riskmandate.ai (Claude Opus 5.5, claude-opus-5-5) in the sgit.ai site session",
+      "section": "footer",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "provenance",
+        "sgit.ai"
+      ]
+    },
+    {
+      "id": "ra-fact-22",
+      "kind": "fact",
+      "text": "Claude Code behaviour is quoted from its documentation as read on 9 October 2026; compaction figures are from the session transcript",
+      "anchor": "Claude Code behaviour is quoted from its documentation as read on 9 October 2026.",
+      "section": "footer",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "documentation",
+        "provenance"
+      ]
+    },
+    {
+      "id": "ra-entity-3",
+      "kind": "entity",
+      "text": "Claude Code (Anthropic)",
+      "anchor": "Claude Code's documentation says it plainly",
+      "section": "lead",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "claude code",
+        "anthropic"
+      ]
+    },
+    {
+      "id": "ra-entity-4",
+      "kind": "entity",
+      "text": "Dinis Cruz, author",
+      "anchor": "*Written from a conversation between Dinis Cruz and agent@riskmandate.ai",
+      "section": "footer",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "dinis cruz"
+      ]
+    },
+    {
+      "id": "ra-entity-5",
+      "kind": "entity",
+      "text": "Claude Opus 5.5 (claude-opus-5-5), the agent agent@riskmandate.ai",
+      "anchor": "agent@riskmandate.ai (Claude Opus 5.5, claude-opus-5-5)",
+      "section": "footer",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "claude opus 5.5",
+        "agent"
+      ]
+    },
+    {
+      "id": "ra-source-4",
+      "kind": "source",
+      "text": "Claude Code docs: memory",
+      "anchor": "([memory](https://code.claude.com/docs/en/memory))",
+      "section": "lead",
+      "supports": [],
+      "refs": [
+        "https://code.claude.com/docs/en/memory"
+      ],
+      "terms": [
+        "documentation",
+        "memory"
+      ]
+    },
+    {
+      "id": "ra-source-5",
+      "kind": "source",
+      "text": "Claude Code docs: permission modes",
+      "anchor": "([permission modes](https://code.claude.com/docs/en/permission-modes))",
+      "section": "lead",
+      "supports": [],
+      "refs": [
+        "https://code.claude.com/docs/en/permission-modes"
+      ],
+      "terms": [
+        "documentation",
+        "permission classifier"
+      ]
+    },
+    {
+      "id": "ra-source-6",
+      "kind": "source",
+      "text": "Claude Code docs: context window, what survives compaction",
+      "anchor": "([context window](https://code.claude.com/docs/en/context-window#what-survives-compaction))",
+      "section": "What summarisation does to a session",
+      "supports": [],
+      "refs": [
+        "https://code.claude.com/docs/en/context-window#what-survives-compaction"
+      ],
+      "terms": [
+        "documentation",
+        "compaction"
+      ]
+    },
+    {
+      "id": "ra-source-7",
+      "kind": "source",
+      "text": "Claude Code docs: hooks",
+      "anchor": "([hooks](https://code.claude.com/docs/en/hooks))",
+      "section": "Re-anchoring: the rules come back from disk",
+      "supports": [],
+      "refs": [
+        "https://code.claude.com/docs/en/hooks"
+      ],
+      "terms": [
+        "documentation",
+        "hook"
+      ]
+    },
+    {
+      "id": "ra-source-8",
+      "kind": "source",
+      "text": "Agent Behaviour Policy site, abp.sgit.ai",
+      "anchor": "In the vocabulary of the [Agent Behaviour Policy](https://abp.sgit.ai/)",
+      "section": "Three ways a rule fails",
+      "supports": [],
+      "refs": [
+        "https://abp.sgit.ai/"
+      ],
+      "terms": [
+        "agent behaviour policy"
+      ]
+    }
+  ],
+  "terms": {
+    "/abp-reload": [
+      "ra-decision-3"
+    ],
+    "/abp-status": [
+      "ra-decision-3"
+    ],
+    "abp.py": [
+      "ra-artefact-4",
+      "ra-fact-8"
+    ],
+    "agent": [
+      "ra-claim-3",
+      "ra-entity-5"
+    ],
+    "agent behaviour policy": [
+      "ra-definition-3",
+      "ra-entity-1",
+      "ra-claim-17",
+      "ra-claim-18",
+      "ra-claim-19",
+      "ra-method-5",
+      "ra-source-8"
+    ],
+    "anchor": [
+      "ra-fact-9"
+    ],
+    "anthropic": [
+      "ra-claim-2",
+      "ra-entity-3"
+    ],
+    "article": [
+      "ra-source-1"
+    ],
+    "barrier": [
+      "ra-limitation-1",
+      "ra-definition-3",
+      "ra-claim-20",
+      "ra-claim-22",
+      "ra-definition-5",
+      "ra-method-5"
+    ],
+    "boundary": [
+      "ra-evidence-2",
+      "ra-limitation-6"
+    ],
+    "brown m&m": [
+      "ra-example-2",
+      "ra-evidence-6",
+      "ra-source-2",
+      "ra-source-3",
+      "ra-entity-2"
+    ],
+    "business model": [
+      "ra-hypothesis-1"
+    ],
+    "canary": [
+      "ra-claim-8",
+      "ra-limitation-2",
+      "ra-definition-4",
+      "ra-example-2",
+      "ra-artefact-6",
+      "ra-limitation-6",
+      "ra-method-7",
+      "ra-method-9"
+    ],
+    "checker": [
+      "ra-claim-19"
+    ],
+    "claude code": [
+      "ra-fact-1",
+      "ra-definition-2",
+      "ra-fact-3",
+      "ra-fact-18",
+      "ra-entity-3"
+    ],
+    "claude opus 5.5": [
+      "ra-entity-5"
+    ],
+    "claude.md": [
+      "ra-evidence-1",
+      "ra-evidence-3",
+      "ra-method-1"
+    ],
+    "command": [
+      "ra-decision-3",
+      "ra-method-8"
+    ],
+    "commit": [
+      "ra-fact-16"
+    ],
+    "compact matcher": [
+      "ra-fact-4",
+      "ra-claim-24",
+      "ra-method-6"
+    ],
+    "compaction": [
+      "ra-evidence-1",
+      "ra-evidence-2",
+      "ra-claim-1",
+      "ra-claim-3",
+      "ra-example-1",
+      "ra-artefact-1",
+      "ra-data-point-1",
+      "ra-claim-4",
+      "ra-data-point-2",
+      "ra-definition-2",
+      "ra-fact-2",
+      "ra-data-point-3",
+      "ra-data-point-4",
+      "ra-data-point-5",
+      "ra-data-point-6",
+      "ra-claim-10",
+      "ra-evidence-3",
+      "ra-evidence-4",
+      "ra-evidence-5",
+      "ra-claim-12",
+      "ra-fact-11",
+      "ra-question-1",
+      "ra-source-6"
+    ],
+    "configuration": [
+      "ra-artefact-3"
+    ],
+    "context": [
+      "ra-data-point-2",
+      "ra-fact-2"
+    ],
+    "conversation": [
+      "ra-claim-1",
+      "ra-claim-5",
+      "ra-claim-12"
+    ],
+    "cost": [
+      "ra-fact-12",
+      "ra-limitation-3"
+    ],
+    "decisions.md": [
+      "ra-method-3"
+    ],
+    "diagram": [
+      "ra-artefact-6"
+    ],
+    "dinis cruz": [
+      "ra-entity-4"
+    ],
+    "disk": [
+      "ra-claim-12",
+      "ra-claim-18"
+    ],
+    "documentation": [
+      "ra-evidence-1",
+      "ra-evidence-3",
+      "ra-evidence-4",
+      "ra-evidence-5",
+      "ra-evidence-7",
+      "ra-fact-22",
+      "ra-source-4",
+      "ra-source-5",
+      "ra-source-6",
+      "ra-source-7"
+    ],
+    "draft guard": [
+      "ra-claim-19"
+    ],
+    "duration": [
+      "ra-data-point-6"
+    ],
+    "email": [
+      "ra-example-1"
+    ],
+    "enforcement": [
+      "ra-claim-20",
+      "ra-limitation-5"
+    ],
+    "expectation": [
+      "ra-limitation-1",
+      "ra-definition-3",
+      "ra-claim-20",
+      "ra-claim-21",
+      "ra-claim-22",
+      "ra-limitation-5",
+      "ra-method-10"
+    ],
+    "failure mode": [
+      "ra-claim-7",
+      "ra-claim-13",
+      "ra-artefact-2"
+    ],
+    "figure": [
+      "ra-artefact-1",
+      "ra-artefact-2",
+      "ra-artefact-5",
+      "ra-artefact-6",
+      "ra-artefact-7"
+    ],
+    "frequency": [
+      "ra-question-2",
+      "ra-data-point-8"
+    ],
+    "gate": [
+      "ra-claim-7",
+      "ra-artefact-2",
+      "ra-claim-14",
+      "ra-limitation-7",
+      "ra-method-10"
+    ],
+    "harness": [
+      "ra-fact-2"
+    ],
+    "hook": [
+      "ra-fact-1",
+      "ra-evidence-5",
+      "ra-fact-3",
+      "ra-fact-4",
+      "ra-fact-5",
+      "ra-fact-6",
+      "ra-fact-7",
+      "ra-artefact-3",
+      "ra-claim-16",
+      "ra-claim-21",
+      "ra-example-3",
+      "ra-evidence-7",
+      "ra-fact-19",
+      "ra-decision-4",
+      "ra-source-7"
+    ],
+    "incident": [
+      "ra-example-1"
+    ],
+    "infrastructure": [
+      "ra-claim-17"
+    ],
+    "instruction": [
+      "ra-evidence-1",
+      "ra-claim-1"
+    ],
+    "leak scan": [
+      "ra-fact-16",
+      "ra-fact-17",
+      "ra-method-4"
+    ],
+    "maintenance": [
+      "ra-claim-26"
+    ],
+    "measured rule": [
+      "ra-method-4",
+      "ra-claim-23",
+      "ra-method-9"
+    ],
+    "memory": [
+      "ra-claim-18",
+      "ra-method-3",
+      "ra-source-4"
+    ],
+    "mod": [
+      "ra-fact-18",
+      "ra-limitation-4",
+      "ra-decision-4"
+    ],
+    "npr": [
+      "ra-source-3"
+    ],
+    "onfailure": [
+      "ra-fact-19"
+    ],
+    "permission": [
+      "ra-limitation-4"
+    ],
+    "permission classifier": [
+      "ra-evidence-2",
+      "ra-claim-2",
+      "ra-source-5"
+    ],
+    "person": [
+      "ra-method-2",
+      "ra-decision-3",
+      "ra-method-8"
+    ],
+    "phone": [
+      "ra-data-point-7"
+    ],
+    "platform": [
+      "ra-claim-9",
+      "ra-claim-25"
+    ],
+    "policy row": [
+      "ra-method-3",
+      "ra-fact-17",
+      "ra-claim-23",
+      "ra-definition-5"
+    ],
+    "policy version": [
+      "ra-fact-8",
+      "ra-fact-9",
+      "ra-fact-10"
+    ],
+    "precompact": [
+      "ra-fact-6"
+    ],
+    "prompt hook": [
+      "ra-fact-20"
+    ],
+    "provenance": [
+      "ra-fact-21",
+      "ra-fact-22"
+    ],
+    "re-anchoring": [
+      "ra-definition-1",
+      "ra-claim-6",
+      "ra-claim-7",
+      "ra-claim-14",
+      "ra-limitation-1",
+      "ra-claim-15",
+      "ra-fact-8",
+      "ra-method-1",
+      "ra-method-2",
+      "ra-claim-16",
+      "ra-limitation-2",
+      "ra-artefact-6",
+      "ra-fact-11",
+      "ra-question-1",
+      "ra-claim-24",
+      "ra-limitation-5",
+      "ra-limitation-8",
+      "ra-method-6"
+    ],
+    "recipe": [
+      "ra-claim-9",
+      "ra-claim-25",
+      "ra-definition-5",
+      "ra-claim-26",
+      "ra-hypothesis-1"
+    ],
+    "rule": [
+      "ra-claim-5",
+      "ra-claim-6",
+      "ra-claim-11",
+      "ra-claim-13"
+    ],
+    "sandbox": [
+      "ra-limitation-4"
+    ],
+    "script": [
+      "ra-artefact-4"
+    ],
+    "second reader": [
+      "ra-source-1",
+      "ra-claim-7",
+      "ra-artefact-2",
+      "ra-claim-14",
+      "ra-limitation-7",
+      "ra-method-10"
+    ],
+    "sessionstart": [
+      "ra-fact-4",
+      "ra-claim-15",
+      "ra-method-6"
+    ],
+    "setting": [
+      "ra-claim-22",
+      "ra-limitation-6"
+    ],
+    "settings": [
+      "ra-artefact-3",
+      "ra-example-3",
+      "ra-evidence-7",
+      "ra-decision-4"
+    ],
+    "sgit.ai": [
+      "ra-fact-21"
+    ],
+    "skill": [
+      "ra-evidence-4"
+    ],
+    "snopes": [
+      "ra-source-2"
+    ],
+    "status report": [
+      "ra-claim-8",
+      "ra-definition-4",
+      "ra-artefact-5",
+      "ra-decision-1",
+      "ra-decision-2",
+      "ra-fact-10",
+      "ra-fact-11",
+      "ra-fact-12",
+      "ra-fact-13",
+      "ra-fact-14",
+      "ra-fact-15",
+      "ra-fact-16",
+      "ra-artefact-7",
+      "ra-data-point-7",
+      "ra-limitation-3",
+      "ra-question-2",
+      "ra-data-point-8",
+      "ra-limitation-7"
+    ],
+    "stop hook": [
+      "ra-fact-7",
+      "ra-decision-2",
+      "ra-method-7"
+    ],
+    "summary": [
+      "ra-claim-4",
+      "ra-claim-5",
+      "ra-claim-10",
+      "ra-claim-11",
+      "ra-limitation-8"
+    ],
+    "token": [
+      "ra-data-point-1",
+      "ra-data-point-4",
+      "ra-data-point-5",
+      "ra-fact-13"
+    ],
+    "tool call": [
+      "ra-fact-15"
+    ],
+    "transcript": [
+      "ra-decision-1",
+      "ra-method-4"
+    ],
+    "userpromptsubmit": [
+      "ra-fact-5",
+      "ra-fact-9",
+      "ra-decision-1"
+    ],
+    "van halen": [
+      "ra-example-2",
+      "ra-evidence-6",
+      "ra-entity-2"
+    ],
+    "version": [
+      "ra-claim-9",
+      "ra-fact-1",
+      "ra-fact-18",
+      "ra-fact-19",
+      "ra-fact-20"
+    ],
+    "web request": [
+      "ra-fact-14"
+    ]
+  },
+  "flags": [
+    "Total does not reconcile with per-compaction figures: eighteen compactions of about 780,000 to 800,000 tokens give about 14.1 to 14.4 million, but the article says \"In total, 17.8 million tokens of conversation have been summarised away.\" (about 989,000 per compaction).",
+    "\"one of the reasons was that the rule fell out of the agent's context when the conversation was summarised\" and \"a rule that had been written down four times\" are asserted without evidence in this article; support lives in the linked a-second-reader article.",
+    "Superlative in the author's voice: \"That sentence is the most important one I have read this week about running agents\" (house style says no superlatives).",
+    "\"The hooks this depends on arrived or changed in the last few months.\" Only mods (v2.1.287), onFailure (v2.1.295) and prompt-hook deny (v2.1.210) are versioned, with no dates; the compact matcher and SessionStart are not dated, so \"last few months\" is unsupported here.",
+    "Graph gaps: sources/re-anchoring-agent-behaviour-policies.graph.json links omit sources cited in the article: permission-modes docs, NPR and abp.sgit.ai.",
+    "Section 'Three ways a rule fails' names the three failures only in the figure caption (\"Re-anchoring fixes forgetting. A second reader fixes the violation the author cannot see. A gate fixes the exception the agent argues itself into.\"); the prose never lists them, so the content depends on the image directive."
+  ]
+}

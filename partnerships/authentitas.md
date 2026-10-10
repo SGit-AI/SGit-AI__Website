@@ -2,7 +2,7 @@
 
 > A response to Authentitas's briefing paper The Accountability Market: every repair of accountability has been a named person and a record that can be proved. We have built the record: claims walked to hashed evidence, agents described down to what they can reach, licences with a name and an expiry. They prove the person, from a chipped passport or national eID, bound at the moment of creation. Two ladders joined into one, Article 50's second door, the licence to operate against the six requirements of accountability, the insurers as the forcing function, and three integrations. With an eight-page briefing PDF.
 
-*Source: <https://sgit.ai/partnerships/authentitas.html> · site v0.7.23 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/partnerships/authentitas.html> · site v0.7.24 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -74,7 +74,7 @@ The site is the identity, the keys are pinned, the messages are signed. The oper
 2. **Bind the editor to the projection.** Every published projection from a newsroom vault carries a binding of its editor of record over its hash. The Article 50 exemption becomes provable from the vault with a read key. First candidates: The Evidence Dispatch and pt.newsroom.sgit.ai.
 3. **Bind the operator to the contact file.** The operator of every site agent is bound to the file that publishes its keys, and rotations carry the binding forward, so the network's agents have machine identity from the domain and human identity from the person.
 
-What we bring: evidence vaults with read keys and no host that can read them; the story graph and the agent behaviour policy as records made at the time with versions pinned; append lanes and signed messaging between agents, running since September; fifty published vaults and two newsrooms to bind against today. What Authentitas brings: a verified natural person from a chipped passport or national eID; a binding at the moment of creation; independence; and a held identity for the pseudonymous contributor, disclosed by due process.
+What we bring: evidence vaults with read keys and no host that can read them; the story graph and the agent behaviour policy as records made at the time with versions pinned; append lanes and signed messaging between agents, running since September; fifty-one published vaults and two newsrooms to bind against today. What Authentitas brings: a verified natural person from a chipped passport or national eID; a binding at the moment of creation; independence; and a held identity for the pseudonymous contributor, disclosed by due process.
 
 Three integrations, each small. Three of the four clauses already run.
 

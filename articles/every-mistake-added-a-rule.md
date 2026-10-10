@@ -2,7 +2,7 @@
 
 > A friend who uses agents better than most, one writing, others verifying, ChatGPT reviewing, every claim resting on an output read in full, sent me two messages about a verification that keeps breaking. The code is holding up. The process around it is not: long sessions compact and skip steps, outputs of failing commands are lost, prompts have grown to 100 KB, scripts are edited in place, the harness suggests what the rules forbid, and every mistake added a rule that caused new mistakes. This is complexity, and it is what hits the founders who are doing the right thing, clever, careful, now working as engineers without the scar tissue of engineering. This article maps their process as a Wardley map, where complexity is a position, custom-built process sitting where commodities already exist, and maps it again with each piece made small, shipped and moved right. Then it sets out the principles I work by: map it, commoditise small chunks and let them compound, ship, keep sessions small and the context yours, memory as versioned files, slow down when complexity hits, security by asset and attack vector, rules for incidents and machines for enforcement, run it in five environments, reverse-engineer the path to the destination, and learn the engineering that already exists. It ends with direct answers to their questions on compaction, audit cards and what deserves a STOP.
 
-*Source: <https://sgit.ai/articles/every-mistake-added-a-rule.html> · site v0.7.23 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/every-mistake-added-a-rule.html> · site v0.7.24 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -13,6 +13,250 @@
 By [Dinis Cruz](../about/index.md) · 2026-10-08 · [v0.7.1](../admin/versions.md) · agentscomplexitywardley-mapsengineering-practicecontext-windowcompactionmemoryshippingfoundersnfrstestingcoworkchatgptarticle
 
 ***Abstract:** A friend who uses agents better than most, one writing, others verifying, ChatGPT reviewing, every claim resting on an output read in full, sent me two messages about a verification that keeps breaking. The code is holding up. The process around it is not: long sessions compact and skip steps, outputs of failing commands are lost, prompts have grown to 100 KB, scripts are edited in place, the harness suggests what the rules forbid, and every mistake added a rule that caused new mistakes. This is complexity, and it is what hits the founders who are doing the right thing, clever, careful, now working as engineers without the scar tissue of engineering. This article maps their process as a Wardley map, where complexity is a position, custom-built process sitting where commodities already exist, and maps it again with each piece made small, shipped and moved right. Then it sets out the principles I work by: map it, commoditise small chunks and let them compound, ship, keep sessions small and the context yours, memory as versioned files, slow down when complexity hits, security by asset and attack vector, rules for incidents and machines for enforcement, run it in five environments, reverse-engineer the path to the destination, and learn the engineering that already exists. It ends with direct answers to their questions on compaction, audit cards and what deserves a STOP.*
+
+## Read it another way
+
+Views extracted from this article by the desk's readers, after it was written. None adds a claim the article does not make. [How they are made](../articles/one-article-five-readers.md).
+
+**In two minutes (Explainer): When an AI assistant keeps making mistakes, more rules make it worse**
+
+**The point.** A friend checked a software tool using several agents (AI programs that do tasks by themselves), one writing and others checking. The tool held up: 812 attacks produced no failures. The process around it kept breaking: "Every mistake added a rule, and every new rule caused new mistakes." The answer is to stop adding rules and build small, tested pieces that make each mistake impossible, using plain files and version history.
+
+**An example.** When a command failed, the software running the agents did not save its output and cut out the middle, so a whole test run was lost. The fix is not a rule saying "save the output". It is one small script that every command goes through, which writes the output to a file before anything reads it.
+
+**Why it matters to you.** Asked whether all this rigour was overdoing it, the author says: for the process, yes; for the intent, no. If you are not getting faster, complexity is winning, and the answer is to slow down and break the work into small pieces.
+
+**If you remember one thing.** When a rule fails, replace it with something that makes the mistake impossible, then delete the rule.
+
+**Words used.**
+
+- **Compaction:** a long AI conversation replaced by a short summary, losing detail.
+- **Wardley map:** a chart of a system's parts, showing which are custom-made and which are standard products.
+
+**In the arc (Historian): What it added, and where it sits**
+
+**Introduced.**
+
+- Complexity as a position on a Wardley map: custom-built process sitting where commodities already exist (`complexity`).
+- The rule loop: each mistake adds a rule, the prompt grows, the session compacts sooner, and compaction decides which rules survive (`rule-growth`, `compaction`, `forgetting`).
+- The harness as a party that can work against the rules (`harness`).
+- The audit card: a script over the transcript, run after the step, read by something that was not part of the work (`record-reading`).
+
+**The nugget.** "When a rule fails, the question is not how to word it more strongly but which of the stronger barriers can replace it." It turns the previous article's count into a method, and it is the question articles 4 and 5 answer for one rule each.
+
+**Reused.** `agent-behaviour-policy`, the barrier kinds and `accepted-risk` from the-behaviour-policy-is-the-business-logic, though this article does not link it. From before the set: the policy text graded weak in the-agent-team-as-it-runs; footprint and blast radius from footprint-and-blast-radius (the basis of the audit card); memory as files from memory-is-not-a-spectator-sport; risk acceptance from every-risk-is-already-accepted; the bridge vault's gate of 44 checks and green-does-not-mean-live as examples of `gate`. The Cartographer counts `second-reader`, `gate`, `agent-team`, `blast-radius` and `memory-as-files` as new; within the set they are, but four of them have earlier homes on the site.
+
+**Changed.** It moves the argument from a business's policy to an engineer's process, and narrows what a rule is for: "Rules only for incidents, and each rule replaced by structure as soon as one can be built." Article 1 counted rules; this one says to delete them.
+
+**Left open.**
+
+- The friend "asked two questions", but only the second is stated; the answers section answers four (Librarian flag).
+- Map one's six blob components are not the six listed patterns (Librarian flag).
+- "Closing a session that compacts is a good rule, because it is a boundary, not a request." Under the ABP test a close the agent performs on itself is not enforced above its grant; the article does not say what enforces it.
+
+**Contribution.** 11 new / 19 total. A high share for the second article, because it brings in the session's own failure modes (compaction, harness, rule growth) that the business-layer article never touched.
+
+**In pictures (Storyteller): 9 slides**
+
+1 / 92 / 93 / 94 / 95 / 96 / 97 / 98 / 99 / 9
+
+Swipe or scroll sideways. [Download the deck as a PDF](views/every-mistake-added-a-rule/every-mistake-added-a-rule.pdf) (one page per slide, ready for a LinkedIn document post).
+
+**On the map (Cartographer): The argument as a map: why a rule for every mistake makes the process worse, and what replaces the rule.**
+
+The argument as a map: why a rule for every mistake makes the process worse, and what replaces the rule.
+
+**The catalogue (Librarian): 137 items, each anchored to a sentence of the article**
+
+Everything the article contains, by kind. Every item was extracted with the exact sentence it came from, and a script checked each one against the article.
+
+**Claims: 39**
+
+- Adding a rule grows the prompt, brings compaction sooner, and compaction decides which rules survive; shipping a component makes the mistake impossible so the rule can go (lead)
+- The code is fine; the process is the problem (In short)
+- In a Wardley map, complexity shows up as custom-built components where the world already has products and commodities; each fixing rule adds another (In short)
+- Shipping is how complexity stays under control: small shipped components compound, large unshipped ones accumulate (In short)
+- The urge to push through is the most expensive one; if you are not getting faster, complexity is winning (In short)
+- The friend is doing what the author recommends: not trusting one model's account of its own work, and building the checks in (Two messages from somebody doing the right thing)
+- The friend's changes are right; the article adds why, so the next problem gets the same answer without a new rule (Two messages from somebody doing the right thing)
+- A healthy map has a thin custom layer where the value is, resting on products or commodities (Complexity is a position on a map)
+- Wardley maps keep the author's world sane: they predict roughly what will happen and explain why something happened (Complexity is a position on a map)
+- Failures are usually a mismatch on the evolution axis: commodity assumed when still custom, or custom rebuilt when already a commodity (Complexity is a position on a map)
+- The problem is the blob between the agents and the commodities: recovery, output capture, proof of bytes, kilobytes of rules, long sessions, an all-firing STOP, each built by hand every session (Complexity is a position on a map)
+- The way out is not a better rule: make each piece of the blob a small component with one job, test it once, ship it, let it move right (Move the pieces right)
+- Rules from incidents, enforced by machines, stay few; rules from worry, enforced by attention, multiply (Move the pieces right)
+- Custom components the world treats as commodity, and assumed-commodity components still custom, are where the next failure comes from (The principles I work by)
+- Know your users and focus on user needs start with the person preparing the install, not with the process (The principles I work by)
+- Each self-contained component keeps its blast radius under control because it was shipped as a unit of its own (The principles I work by)
+- The friend is doing too much at once, so nothing gets to become boring (The principles I work by)
+- Shipping is probably the single most important thing; without it you over-engineer, which LLMs make very easy (The principles I work by)
+- If you are not releasing something, you are probably not solving problems at the right altitude (The principles I work by)
+- Making it public removes complexity: you cannot hide an over-engineered thing in public (The principles I work by)
+- With large contexts you lose control; when Claude or ChatGPT compacts you do not control what it keeps (The principles I work by)
+- If a session needs 100 KB of rules to be productive, the rules are doing the job structure should do (The principles I work by)
+- Every document an agent writes is a compression of what was learned, in a form the next agent can read; it is a graph (The principles I work by)
+- If compaction is hurting you, you are giving the model far too much context (The principles I work by)
+- Compromising now to go faster usually slows you down (The principles I work by)
+- Secure and safe are not the same; sometimes ship something not fully hardened if its attack surface is controlled (The principles I work by)
+- Most companies ship software far less secure than users assume; the difference is whether they know their compromises (The principles I work by)
+- On an isolated machine with no network and nothing of value, many attacks are not available and requirements drop (The principles I work by)
+- A rule is a weak barrier; a record detects; a boundary prevents (The principles I work by)
+- Running in many environments shows where the bottlenecks are, most useful when complexity starts to hit (The principles I work by)
+- If you have a choice and do not use what you built, it is not good enough yet; the author would build a solution not using the vaults (The principles I work by)
+- Closing a session that compacts is a good rule, because it is a boundary, not a request (Answers to the questions)
+- The agent does not police itself on every command; the record is read afterwards by something not part of the work (Answers to the questions)
+- If everything is a STOP, a STOP stops meaning anything (Answers to the questions)
+- For the process, yes; for the intent, no; rigour should match the assets and blast radius (Answers to the questions)
+- The process has become a second product nobody asked for, costing more than the verification it serves (Answers to the questions)
+- The lesson applies to companies too, including the author's own (The same lesson, one level up)
+- If it cannot work in the simple use cases, it will struggle in the complex ones (The same lesson, one level up)
+- Funding can give a false sense of having a product, or of it being ready to scale (The same lesson, one level up)
+
+**Evidence: 8**
+
+- Pattern 1, compaction: long sessions compact and the agent then skips mandatory steps or writes its report from the summary; this caused most failures (Two messages from somebody doing the right thing)
+- Pattern 2, lost outputs: on non-zero exit the harness does not save the output and truncates the middle (Two messages from somebody doing the right thing)
+- Pattern 3, 100 KB prompts: asked for an exact copy of its prompt for recovery, the agent reproduced it from memory, incomplete or wrong (Two messages from somebody doing the right thing)
+- Pattern 4, scripts edited in place: afterwards there is no way to prove which bytes ran (Two messages from somebody doing the right thing)
+- Pattern 5, the harness against the rules: the harness suggests cat, sed and heredocs, which their rules forbid (Two messages from somebody doing the right thing)
+- Pattern 6, too many rules, quoted from the friend: every mistake added a rule, and every new rule caused new mistakes (Two messages from somebody doing the right thing)
+- nfrs.sgit.ai, reading down its failure column: what a machine enforces, holds; what attention enforces, drifts (Move the pieces right)
+- In the agent team's own grading, the policy text is graded weak (The principles I work by)
+
+**Data points: 8**
+
+- 812 concurrency attacks, 0 failures (Two messages from somebody doing the right thing)
+- Prompts of 100 KB (Two messages from somebody doing the right thing)
+- 9 small sessions planned in place of 2 large ones (Two messages from somebody doing the right thing)
+- coding.sgit.ai: 31 documented rules, and 4 structural guards as the working automated enforcement, each encoding an incident (Move the pieces right)
+- 40 doctrines listed on wardley-maps.sgit.ai (The principles I work by)
+- Bridge simulation: a 126-file vault with an app, an API description, economics and 4 themes (The principles I work by)
+- Agent team: one step per agent of up to 12 minutes (The principles I work by)
+- Bridge vault's gate runs 44 checks, many existing because something broke once (The principles I work by)
+
+**Facts: 5**
+
+- The verification rules: no network, everything sandboxed, every claim resting on an output read in full, any deviation is a STOP (Two messages from somebody doing the right thing)
+- The results on the tool are good; the tests reproduce (Two messages from somebody doing the right thing)
+- Files, hashes and version control have solved most of those problems for decades (Complexity is a position on a map)
+- As nfrs.sgit.ai puts it, every guard encodes a rule that was violated at least once (Move the pieces right)
+- Drafted by agent@riskmandate.ai (Claude Opus 5.5) in the sgit.ai site session on 8 October 2026; Dinis Cruz holds editorial responsibility (colophon (after Where to start))
+
+**Hypotheses: 2**
+
+- The author sees very few hallucinations and thinks it is because briefs and sessions are tight, many and isolated (The principles I work by)
+- A mapped path from agent behaviour policies to a licence to operate to insurance, which the author thinks is strong (The same lesson, one level up)
+
+**Open questions: 5**
+
+- The friend's question: does this level of rigour make sense, or am I overdoing it? (Two messages from somebody doing the right thing)
+- Do you let sessions compact, or design every step to finish before? (Answers to the questions)
+- How does the post-session audit card work? (Answers to the questions)
+- When an agent makes a mistake of form, do you log it and continue? (Answers to the questions)
+- Is this level of rigour overdoing it? (Answers to the questions)
+
+**Definitions: 8**
+
+- Wardley map: places each component by visibility to the user (top to bottom) and evolution (left to right: genesis, custom-built, product, commodity) (Complexity is a position on a map)
+- Complexity (on a map): not the number of components but custom-built components sitting where commodities already exist, each maintained by attention (Complexity is a position on a map)
+- FIRE doctrine: fast, inexpensive, restrained, elegant (The principles I work by)
+- To ship: to make something usable by somebody else, an agent included (The principles I work by)
+- Context window: what the model receives when it makes a call (The principles I work by)
+- Iterative Flow Development: the estate's methodology, naming developer attention as the scarce resource (The principles I work by)
+- Audit card: a script over the transcript, run after the step, counting tools, tokens, files and network calls and flagging anything outside policy (Answers to the questions)
+- In the agent team, a stop is a hold file only a person can release (Answers to the questions)
+
+**Methods: 21**
+
+- Replace steps skipped after compaction with steps short enough to finish before compaction, reading and writing state in files (Move the pieces right)
+- Replace hand output capture with a run wrapper that writes stdout, stderr, exit code and timing to a file before anything reads it (Move the pieces right)
+- Replace 100 KB recited prompts (model used as storage) with a short policy and a hashed reference folder on disk, read never recited (Move the pieces right)
+- Replace provenance by trust with scripts committed and hashed before each run; the run record names the commit (Move the pieces right)
+- Where rules fight the environment, change the environment or accept harmless defaults; a rule that fights the tool loses (Move the pieces right)
+- Where policy is used as the control, keep rules only for incidents and replace each by structure as soon as one can be built (Move the pieces right)
+- Principle 1: map your project and the complexity itself; get an LLM to teach mapping and draw a first version you argue with (The principles I work by)
+- Principle 2: commoditise small chunks continuously so they compound; a healthy workflow gets faster the more of it there is (The principles I work by)
+- End long threads by asking the agent for a document of what was learned and decided, and start a new session from it (The principles I work by)
+- Test: a new session in Claude or ChatGPT should be productive from the first prompt, with focused, compressed reference material read by you (The principles I work by)
+- Principle 6: when complexity hits, slow down, go back to a first draft, break into small components and define them (The principles I work by)
+- Ask: what are the assets, the threat, the attack vector, and what customers buy; write a one-page threat model, publish it, ask the community (The principles I work by)
+- When a rule fails, ask which stronger barrier can replace it, not how to word it more strongly (The principles I work by)
+- Principle 9: run it in five environments, locally, air-gapped, Azure, GCP and AWS; each breaks a different assumption (The principles I work by)
+- Principle 10: reverse-engineer the five, seven or ten paths that evolve into a large design (The principles I work by)
+- Principle 11: learn the engineering that already exists, CI, Kanban, patterns, history of what worked (The principles I work by)
+- Do not ask an agent to recite its prompt: point it at the file and record the file's hash in the run (Answers to the questions)
+- Log mistakes of form and carry on; stop for harm, or for a boundary that broke (Answers to the questions)
+- Where to start: draw the map, make the most expensive piece a small tool, cut the prompt to a page, outputs to file via wrapper, commit before run, split STOPs, publish a threat model, run elsewhere, delete rules (Where to start)
+- Delete a rule every time a component makes it unnecessary (Where to start)
+- Split the STOPs: harm stops, form is logged (Where to start)
+
+**Decisions: 7**
+
+- The friend is not named and their project not described, because the patterns are the point; Cowork and ChatGPT are named because they are the products in use (lead)
+- The friend has decided: nine small sessions instead of two large, a hashed reference folder instead of a huge prompt, outputs to file read in full, scripts versioned and hashed before each run, and a compacting session closes immediately (Two messages from somebody doing the right thing)
+- A lot of what the author publishes is half-baked by design; every release teaches something, and then he stops (The principles I work by)
+- The author prefers version control (git or a vault) for memory, because it gives history and proves which prompt version a session read (The principles I work by)
+- Testing rule of no mocks and no patches, affordable because cheap typed objects make the real thing easy; type system and testing philosophy are one decision (The principles I work by)
+- The author designs steps to finish before compaction and keeps step state on disk (Answers to the questions)
+- Way to market: break what they have into much simpler components to earn customers, because customers struggle with simpler things (The same lesson, one level up)
+
+**Limitations: 3**
+
+- Every map on the site is a claim, not a finding, with its source below the figure so it can be argued with (Complexity is a position on a map)
+- The messages are paraphrased and their author is not named; only one line is quoted from them (colophon (after Where to start))
+- Every placement in the two maps is a claim (colophon (after Where to start))
+
+**Examples: 9**
+
+- The session that drafted this article had its own context compacted earlier the same day and continued from a summary (lead)
+- The friend's case: an independent verification of a tool before it is installed on a machine (Two messages from somebody doing the right thing)
+- A whole race run was lost because a failing command's output was not saved (Two messages from somebody doing the right thing)
+- Once, the recited prompt tripped the platform's safety filter (Two messages from somebody doing the right thing)
+- The bridge simulation, published yesterday, was quick to build because almost nothing in it was new (The principles I work by)
+- The newsroom experiments were stopped once they had answered their question, before the story vault work (The principles I work by)
+- Green does not mean live: the story of one of the gate checks (The principles I work by)
+- The forest picture: stages change the ground for the next; early species are gone when the big trees stand (The principles I work by)
+- An accidental calendar call, which failed and sent nothing, was logged by the agent against its own policy rather than held (Answers to the questions)
+
+**Sources: 8**
+
+- Two messages from an unnamed friend about a verification run with agents in Cowork, with ChatGPT as reviewer (lead)
+- A voice memo recorded by the author after reading the messages; the article is drafted from messages and memo (lead)
+- nfrs.sgit.ai, the estate's account of non-functional requirements, testing, CI, documentation and resilience (The principles I work by)
+- coding.sgit.ai, how the code is actually written, counted rather than claimed (The principles I work by)
+- wardley-maps.sgit.ai, which lists forty doctrines (The principles I work by)
+- Who reads the code, a brief on what quality engineering each stage of evolution needs (The principles I work by)
+- Related site articles: risk acceptance and footprint and blast radius (The principles I work by)
+- Memory is not a spectator sport (site article) (The principles I work by)
+
+**Artefacts: 6**
+
+- Figure cx-loops.webp: two ways to answer an agent mistake, add a rule or ship a component (lead)
+- Map one (cx-map-now.webp): the verification as it runs, six failing things in a blob on the left, files, hashes and git unused at the far right (Complexity is a position on a map)
+- Mermaid wardley-beta source for map one (Complexity is a position on a map)
+- Map two (cx-map-next.webp): the same verification with each piece made small and moving right; tests and report judgment stay custom (Move the pieces right)
+- Mermaid wardley-beta source for map two (Move the pieces right)
+- Figure cx-compound.webp: how the components compounded on this site, from sgit and vaults up to story vaults and the bridge simulation (The principles I work by)
+
+**Names: 8**
+
+- Cowork, the product in which the friend's agents run (lead)
+- ChatGPT, used as reviewer in the friend's verification (Two messages from somebody doing the right thing)
+- Mermaid's wardley-beta diagram, used to render the two maps (colophon (after Where to start))
+- Simon Wardley, originator of the doctrine names and Wardley Mapping (CC BY-SA 4.0) (colophon (after Where to start))
+- Email-FS, through which agents talk to each other (The principles I work by)
+- Issues-FS, where work is tracked (The principles I work by)
+- Agent Behaviour Policies, one of the compounded layers on the site (The principles I work by)
+- Dinis Cruz, author of the argument and person with editorial responsibility (colophon (after Where to start))
+
+**Flagged for the author: 6**
+
+- Count mismatch: the friend 'asked two questions' (anchor: "And they asked two questions, the second of which is the one I want to answer properly"), but 'Answers to the questions' answers four (compaction, audit card, mistakes of form, rigour). The first of the two is never stated.
+- Quote count: the colophon says 'the one line quoted from them is theirs' (anchor: "the one line quoted from them is theirs"), yet the friend's question "does this level of rigour make sense, or am I overdoing it?" is also presented as their words (unquoted, introduced with a colon).
+- Six versus six: map one's caption says 'The six things that keep failing sit in a blob on the left', but the six blob components (100 KB rules, recovery after compaction, long sessions, output capture, proof of bytes, STOP on every deviation) are not the six listed patterns: the map adds 'STOP on every deviation' and 'Long sessions' and omits 'The harness against the rules'. Likewise map two adds an audit card and harm-only stops that the replacement table does not list.
+- Map two source: "Scripts committed and hashed before they run" has no incoming edge (only an edge to "Files, hashes, git"), so it is not connected to the agents or report, unlike the other moved components and unlike its map one counterpart "Proof of which bytes ran".
+- Relative date: "The bridge simulation I published yesterday is a good test of this." depends on the publication date (2026-10-08); a reader of the catalogue cannot resolve 'yesterday' without it.
+- Unsupported in-article: '40 doctrines' ("lists forty doctrines"), '31 documented rules ... four structural guards' and '44 of them' are cited from other sites/articles with no figure or quotation shown here; checkable only at the linked sources.
 
 Two ways to answer a mistake an agent makes. Add a rule, and the prompt grows, the session compacts sooner, and compaction decides which rules survive. Ship a component, and the mistake stops being possible, so the rule can go.
 
@@ -256,6 +500,7 @@ Agents & policySite & engineering[This article as a graph →](graphs.md#every-m
 
 ### Continued by
 
+- [One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece](one-article-five-readers.md) Write the article first, then send five agent readers through it: a catalogue, an ontology and maps, the arc, two minutes, and a deck.
 - [A second reader the agent cannot skip: how two wrong emails became a gate on every draft](a-second-reader-the-agent-cannot-skip.md) Two emails went out in my voice despite a written rule. The fix: a hook that makes a second model approve every draft, failing closed.
 - [Knowing when to stop: what experience gives people, and what we have to design into agents](knowing-when-to-stop.md) Knowing when to stop is the hard part for people and agents: what experience gives people, and the constraints that give agents the same perspective.
 

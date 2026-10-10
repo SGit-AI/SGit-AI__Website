@@ -1,0 +1,1921 @@
+{
+  "slug": "the-behaviour-policy-is-the-business-logic",
+  "title": "Zoom into an agent's behaviour policy and you find the business logic",
+  "date": "2026-10-07",
+  "counts": {
+    "fact": 7,
+    "data-point": 3,
+    "claim": 39,
+    "evidence": 2,
+    "hypothesis": 1,
+    "question": 3,
+    "definition": 11,
+    "method": 2,
+    "decision": 0,
+    "limitation": 4,
+    "example": 14,
+    "source": 7,
+    "artefact": 3,
+    "entity": 5
+  },
+  "items": [
+    {
+      "id": "bl-entity-1",
+      "kind": "entity",
+      "text": "Dinis Cruz, author of the argument and person with editorial responsibility",
+      "anchor": "author: Dinis Cruz",
+      "section": "front matter",
+      "supports": [],
+      "refs": [
+        "about/index.html"
+      ],
+      "terms": [
+        "dinis cruz",
+        "author"
+      ]
+    },
+    {
+      "id": "bl-fact-1",
+      "kind": "fact",
+      "text": "Article published 7 October 2026 at 18:07, version v0.6.91, licence CC BY 4.0",
+      "anchor": "version: v0.6.91",
+      "section": "front matter",
+      "supports": [],
+      "refs": [
+        "https://creativecommons.org/licenses/by/4.0/"
+      ],
+      "terms": [
+        "publication",
+        "licence"
+      ]
+    },
+    {
+      "id": "bl-claim-1",
+      "kind": "claim",
+      "text": "Front matter: a layered behaviour policy, each layer refining the one below with its own owner, is the only way to describe agent behaviour at the granularity a business runs at",
+      "anchor": "is the only way to describe agent behaviour at the granularity a business actually runs at",
+      "section": "front matter",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "behaviour policy",
+        "layer",
+        "granularity"
+      ]
+    },
+    {
+      "id": "bl-claim-2",
+      "kind": "claim",
+      "text": "Vendors cannot and should not try to model the business for each customer; writing it down is what lets the business scale",
+      "anchor": "that vendors cannot and should not try to model it for each customer, and that writing it down is what lets the business scale",
+      "section": "front matter",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "vendor",
+        "scale",
+        "business logic"
+      ]
+    },
+    {
+      "id": "bl-artefact-1",
+      "kind": "artefact",
+      "text": "Figure policy-stack.webp: the fictional firm's email agent layer by layer, with the barrier in the way of each rule",
+      "anchor": "!shot policy-stack.webp | images/ | One fictional firm's email agent, layer by layer, with the barrier that stands in the way of each rule.",
+      "section": "lead",
+      "supports": [],
+      "refs": [
+        "images/policy-stack.webp"
+      ],
+      "terms": [
+        "figure",
+        "policy stack",
+        "barrier"
+      ]
+    },
+    {
+      "id": "bl-claim-3",
+      "kind": "claim",
+      "text": "In the figure the bottom two layers are mechanics and the four above are the firm's business",
+      "anchor": "The bottom two layers are mechanics; the four above them are the firm's business.",
+      "section": "lead",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "layer",
+        "mechanics",
+        "business logic"
+      ]
+    },
+    {
+      "id": "bl-example-1",
+      "kind": "example",
+      "text": "The first rules: do not send email, only draft; do not delete anything; use your own account",
+      "anchor": "Do not send email, only draft it. Do not delete anything. Use your own account, not mine.",
+      "section": "lead",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "mechanical rule",
+        "draft",
+        "account"
+      ]
+    },
+    {
+      "id": "bl-claim-4",
+      "kind": "claim",
+      "text": "The first rules are short, the same in every company, and were the ones the author wrote first for six agents on one inbox",
+      "anchor": "They are short, they are the same in every company, and they are the rules I wrote first when I set up [six agents on one inbox](/articles/six-agents-one-inbox.html).",
+      "section": "lead",
+      "supports": [],
+      "refs": [
+        "/articles/six-agents-one-inbox.html"
+      ],
+      "terms": [
+        "mechanical rule",
+        "six agents one inbox"
+      ]
+    },
+    {
+      "id": "bl-source-1",
+      "kind": "source",
+      "text": "Earlier article: Six agents on one inbox",
+      "anchor": "[six agents on one inbox](/articles/six-agents-one-inbox.html)",
+      "section": "lead",
+      "supports": [],
+      "refs": [
+        "/articles/six-agents-one-inbox.html"
+      ],
+      "terms": [
+        "six agents one inbox",
+        "article"
+      ]
+    },
+    {
+      "id": "bl-question-1",
+      "kind": "question",
+      "text": "The escalating questions: which drafts may it send, replies or new conversations, clients or anybody, prices, unapproved invoices, clients in dispute, interview outcomes",
+      "anchor": "Can it chase an invoice that finance has not approved? Can it write to a client who is in a dispute with us?",
+      "section": "lead",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "invoice",
+        "dispute",
+        "client"
+      ]
+    },
+    {
+      "id": "bl-claim-5",
+      "kind": "claim",
+      "text": "A few questions in, you are no longer describing an agent but the business",
+      "anchor": "A few questions in, you are no longer describing an agent. You are describing the business.",
+      "section": "lead",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "business logic",
+        "agent"
+      ]
+    },
+    {
+      "id": "bl-claim-6",
+      "kind": "claim",
+      "text": "Zoom into an Agent Behaviour Policy and, below the first layer or two, what is captured is business logic, up to what the company is for",
+      "anchor": "below the first layer or two, what you are capturing is business logic: how this company works, function by function and process by process, up to what it is for.",
+      "section": "lead",
+      "supports": [],
+      "refs": [
+        "https://riskmandate.ai/abp.html"
+      ],
+      "terms": [
+        "business logic",
+        "agent behaviour policy",
+        "layer"
+      ]
+    },
+    {
+      "id": "bl-entity-2",
+      "kind": "entity",
+      "text": "Agent Behaviour Policy (ABP), published at riskmandate.ai",
+      "anchor": "Zoom into an [Agent Behaviour Policy](https://riskmandate.ai/abp.html) and",
+      "section": "lead",
+      "supports": [],
+      "refs": [
+        "https://riskmandate.ai/abp.html"
+      ],
+      "terms": [
+        "agent behaviour policy",
+        "abp"
+      ]
+    },
+    {
+      "id": "bl-source-2",
+      "kind": "source",
+      "text": "riskmandate.ai/abp.html, the Agent Behaviour Policy page",
+      "anchor": "[Agent Behaviour Policy](https://riskmandate.ai/abp.html)",
+      "section": "lead",
+      "supports": [],
+      "refs": [
+        "https://riskmandate.ai/abp.html"
+      ],
+      "terms": [
+        "agent behaviour policy",
+        "riskmandate.ai"
+      ]
+    },
+    {
+      "id": "bl-claim-7",
+      "kind": "claim",
+      "text": "Much of the business logic has never been written down; agent-control tools mostly stop before it; it decides whether an agent can be trusted with real work",
+      "anchor": "Much of it has never been written down. The tools that sell agent controls mostly stop before it.",
+      "section": "lead",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "business logic",
+        "vendor",
+        "trust"
+      ]
+    },
+    {
+      "id": "bl-example-2",
+      "kind": "example",
+      "text": "Mechanical rules in the example: own account, platform holds the token, delete switched off, outside forwarding blocked, sending needs a person",
+      "anchor": "Deleting mail is switched off by an administrator. Forwarding to outside domains is blocked. Sending needs a person.",
+      "section": "The bottom is mechanics, and vendors do it well",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "mechanics",
+        "platform",
+        "token"
+      ]
+    },
+    {
+      "id": "bl-claim-8",
+      "kind": "claim",
+      "text": "These are the controls platforms are good at, and they matter more than they look",
+      "anchor": "These are the controls platforms are good at, and they matter more than they look.",
+      "section": "The bottom is mechanics, and vendors do it well",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "platform",
+        "control",
+        "vendor"
+      ]
+    },
+    {
+      "id": "bl-claim-9",
+      "kind": "claim",
+      "text": "Administrator versus ordinary user is one of the oldest controls in computing and still decides most of what an agent can reach",
+      "anchor": "The difference between an administrator and an ordinary user is one of the oldest controls in computing, and it is still the one that decides most of what an agent can reach.",
+      "section": "The bottom is mechanics, and vendors do it well",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "privilege",
+        "administrator",
+        "control"
+      ]
+    },
+    {
+      "id": "bl-definition-1",
+      "kind": "definition",
+      "text": "Boundary: a barrier enforced by something the agent's own grant does not include, and so a real control",
+      "anchor": "each of these is a **boundary** in the behaviour policy's terms, enforced by something the agent's own grant does not include, and so a real control.",
+      "section": "The bottom is mechanics, and vendors do it well",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "boundary",
+        "control",
+        "barrier"
+      ]
+    },
+    {
+      "id": "bl-evidence-1",
+      "kind": "evidence",
+      "text": "On 19 September the agent operating a Google Workspace mailbox measured its connector and found thirty tools",
+      "anchor": "When the agent operating a Google Workspace mailbox [measured its own connector](https://abp.sgit.ai/gmail/measured/index.html), on 19 September, it found thirty tools;",
+      "section": "The bottom is mechanics, and vendors do it well",
+      "supports": [
+        "bl-claim-10"
+      ],
+      "refs": [
+        "https://abp.sgit.ai/gmail/measured/index.html"
+      ],
+      "terms": [
+        "measured gmail",
+        "connector",
+        "google workspace"
+      ]
+    },
+    {
+      "id": "bl-data-point-1",
+      "kind": "data-point",
+      "text": "30 tools in the Gmail connector, measured 19 September",
+      "anchor": "on 19 September, it found thirty tools",
+      "section": "The bottom is mechanics, and vendors do it well",
+      "supports": [],
+      "refs": [
+        "https://abp.sgit.ai/gmail/measured/index.html"
+      ],
+      "terms": [
+        "measured gmail",
+        "connector",
+        "tool"
+      ]
+    },
+    {
+      "id": "bl-fact-2",
+      "kind": "fact",
+      "text": "On that account send_message ran with no prompt while trashing a message stopped for an approval",
+      "anchor": "on that account `send_message` ran with no prompt while trashing a message stopped for an approval.",
+      "section": "The bottom is mechanics, and vendors do it well",
+      "supports": [],
+      "refs": [
+        "https://abp.sgit.ai/gmail/measured/index.html"
+      ],
+      "terms": [
+        "send_message",
+        "approval",
+        "measured gmail"
+      ]
+    },
+    {
+      "id": "bl-claim-10",
+      "kind": "claim",
+      "text": "Mechanics are where a policy starts, and getting them right takes measurement, not reading the documentation",
+      "anchor": "The mechanics are where a policy starts, and getting them right takes measurement, not reading the documentation.",
+      "section": "The bottom is mechanics, and vendors do it well",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "measurement",
+        "mechanics"
+      ]
+    },
+    {
+      "id": "bl-source-3",
+      "kind": "source",
+      "text": "abp.sgit.ai/gmail/measured, the measured Gmail deployment",
+      "anchor": "[measured its own connector](https://abp.sgit.ai/gmail/measured/index.html)",
+      "section": "The bottom is mechanics, and vendors do it well",
+      "supports": [],
+      "refs": [
+        "https://abp.sgit.ai/gmail/measured/index.html"
+      ],
+      "terms": [
+        "measured gmail",
+        "abp.sgit.ai"
+      ]
+    },
+    {
+      "id": "bl-entity-3",
+      "kind": "entity",
+      "text": "Google Workspace",
+      "anchor": "When the agent operating a Google Workspace mailbox",
+      "section": "The bottom is mechanics, and vendors do it well",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "google workspace"
+      ]
+    },
+    {
+      "id": "bl-claim-11",
+      "kind": "claim",
+      "text": "One layer up, the rules stop being the same in every company",
+      "anchor": "Go one layer up and the rules stop being the same in every company.",
+      "section": "Above the mechanics is the business",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "layer",
+        "business logic"
+      ]
+    },
+    {
+      "id": "bl-definition-2",
+      "kind": "definition",
+      "text": "Function layer: how this firm does email",
+      "anchor": "**The function.** How this firm does email.",
+      "section": "Above the mechanics is the business",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "function layer",
+        "layer"
+      ]
+    },
+    {
+      "id": "bl-example-3",
+      "kind": "example",
+      "text": "Function rules: reply inside threads, new recipient needs a person, never quote a price, every sent mail copied to an uneditable log",
+      "anchor": "Reply inside existing threads; a new recipient needs a person. Never quote a price or a discount; pricing goes to sales.",
+      "section": "Above the mechanics is the business",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "function layer",
+        "price",
+        "new recipient"
+      ]
+    },
+    {
+      "id": "bl-example-4",
+      "kind": "example",
+      "text": "Every sent mail is copied to a log the agent cannot edit",
+      "anchor": "Every sent mail is copied to a log the agent cannot edit.",
+      "section": "Above the mechanics is the business",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "function layer",
+        "log"
+      ]
+    },
+    {
+      "id": "bl-definition-3",
+      "kind": "definition",
+      "text": "Process layer: the steps a piece of work goes through",
+      "anchor": "**The process.** The steps a piece of work goes through.",
+      "section": "Above the mechanics is the business",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "process layer",
+        "layer"
+      ]
+    },
+    {
+      "id": "bl-example-5",
+      "kind": "example",
+      "text": "Process rules: invoice only after finance approval in the ledger; no email tells a candidate a hiring outcome; complaints reach a named person within one working hour",
+      "anchor": "An invoice goes out only after finance has approved it in the ledger.",
+      "section": "Above the mechanics is the business",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "process layer",
+        "invoice",
+        "ledger"
+      ]
+    },
+    {
+      "id": "bl-data-point-2",
+      "kind": "data-point",
+      "text": "A complaint reaches a named person within 1 working hour",
+      "anchor": "A complaint reaches a named person within one working hour.",
+      "section": "Above the mechanics is the business",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "process layer",
+        "complaint"
+      ]
+    },
+    {
+      "id": "bl-definition-4",
+      "kind": "definition",
+      "text": "Relationship layer: who this customer is to us, right now",
+      "anchor": "**The relationship.** Who this customer is to us, right now.",
+      "section": "Above the mechanics is the business",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "relationship layer",
+        "layer"
+      ]
+    },
+    {
+      "id": "bl-example-6",
+      "kind": "example",
+      "text": "Relationship rules: during an open dispute nothing goes to the client except through legal; key accounts get a reviewed draft",
+      "anchor": "During an open dispute, nothing goes to that client except through legal.",
+      "section": "Above the mechanics is the business",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "relationship layer",
+        "dispute",
+        "key account"
+      ]
+    },
+    {
+      "id": "bl-definition-5",
+      "kind": "definition",
+      "text": "Organisation layer: what the company is for",
+      "anchor": "**The organisation.** What the company is for.",
+      "section": "Above the mechanics is the business",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "organisation layer",
+        "layer"
+      ]
+    },
+    {
+      "id": "bl-example-7",
+      "kind": "example",
+      "text": "Organisation rules: treat customers fairly, or in another company win back every customer who cancels",
+      "anchor": "Treat customers fairly: no pressure, no hidden terms. Or, in another company, win back every customer who cancels.",
+      "section": "Above the mechanics is the business",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "organisation layer",
+        "fairness"
+      ]
+    },
+    {
+      "id": "bl-claim-12",
+      "kind": "claim",
+      "text": "None of these is exotic; each is a sentence a manager would say out loud",
+      "anchor": "None of these is exotic. Each is a sentence a manager would say out loud.",
+      "section": "Above the mechanics is the business",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "business logic",
+        "manager"
+      ]
+    },
+    {
+      "id": "bl-claim-13",
+      "kind": "claim",
+      "text": "Each layer has a different owner: IT and security, head of operations, finance and HR and legal, account managers, the board",
+      "anchor": "each layer has a different owner: IT and security, the head of operations, finance and HR and legal, the account managers, the board.",
+      "section": "Above the mechanics is the business",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "owner",
+        "layer"
+      ]
+    },
+    {
+      "id": "bl-claim-14",
+      "kind": "claim",
+      "text": "A platform selling agent controls must add value to every customer and scale, so it builds what is the same for everybody",
+      "anchor": "It has to add value to every customer, and it has to scale, so it builds what is the same for everybody: roles, switches, secret stores, tool permissions, approval prompts.",
+      "section": "Why the vendors stop at the mechanics",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "vendor",
+        "scale",
+        "control"
+      ]
+    },
+    {
+      "id": "bl-claim-15",
+      "kind": "claim",
+      "text": "The upper layers differ per company, change every week, and are often not written where a product could read them",
+      "anchor": "But the layers above are different in every company, they change every week, and in many companies they are not written anywhere a product could read them.",
+      "section": "Why the vendors stop at the mechanics",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "business logic",
+        "vendor",
+        "layer"
+      ]
+    },
+    {
+      "id": "bl-claim-16",
+      "kind": "claim",
+      "text": "A vendor that models each customer's business becomes a consultancy; one that does not is left selling the bottom of the stack",
+      "anchor": "A vendor that tries to model each customer's business becomes a consultancy; one that does not is left selling the bottom of the stack.",
+      "section": "Why the vendors stop at the mechanics",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "vendor",
+        "consultancy"
+      ]
+    },
+    {
+      "id": "bl-claim-17",
+      "kind": "claim",
+      "text": "Not a criticism of vendors but the shape of the problem: the mechanical layer is a product, the business layers are the customer's to write",
+      "anchor": "The mechanical layer is a product. The business layers are the customer's, and the customer has to write them.",
+      "section": "Why the vendors stop at the mechanics",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "vendor",
+        "customer",
+        "mechanics"
+      ]
+    },
+    {
+      "id": "bl-claim-18",
+      "kind": "claim",
+      "text": "Companies never wrote business logic down because their software was the law",
+      "anchor": "Because they did not need to. Their software was the law.",
+      "section": "Software was the law",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "software was the law",
+        "business logic"
+      ]
+    },
+    {
+      "id": "bl-example-8",
+      "kind": "example",
+      "text": "A clerk could not send an unapproved invoice because the finance system had no button for it until approval was recorded",
+      "anchor": "A clerk could not send an unapproved invoice because the finance system had no button for it until the approval was recorded.",
+      "section": "Software was the law",
+      "supports": [
+        "bl-claim-18"
+      ],
+      "refs": [],
+      "terms": [
+        "invoice",
+        "finance system",
+        "software was the law"
+      ]
+    },
+    {
+      "id": "bl-example-9",
+      "kind": "example",
+      "text": "A support agent could not see payment details because their role did not include the screen",
+      "anchor": "A support agent could not see a customer's payment details because their role did not include the screen.",
+      "section": "Software was the law",
+      "supports": [
+        "bl-claim-18"
+      ],
+      "refs": [],
+      "terms": [
+        "rbac",
+        "role",
+        "privacy"
+      ]
+    },
+    {
+      "id": "bl-claim-19",
+      "kind": "claim",
+      "text": "Approval chains, RBAC, field-level permissions and workflow engines are business logic encoded in software, often more complex than prose",
+      "anchor": "Approval chains, role-based access control, field-level permissions, workflow engines: these are business logic, encoded in software, and often far more complex than anybody would choose to write in prose.",
+      "section": "Software was the law",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "rbac",
+        "workflow engine",
+        "business logic"
+      ]
+    },
+    {
+      "id": "bl-claim-20",
+      "kind": "claim",
+      "text": "Those systems are where privacy decisions and much of practical governance live",
+      "anchor": "They are where privacy decisions live, who can see what, who can do what, and much of what governance means in practice.",
+      "section": "Software was the law",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "privacy",
+        "governance"
+      ]
+    },
+    {
+      "id": "bl-claim-21",
+      "kind": "claim",
+      "text": "An agent works through APIs, not screens, and can call the endpoint the button would have called",
+      "anchor": "It can call the endpoint the button would have called, without the screen that hid the button.",
+      "section": "Software was the law",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "api",
+        "agent",
+        "software was the law"
+      ]
+    },
+    {
+      "id": "bl-claim-22",
+      "kind": "claim",
+      "text": "The rule the user interface enforced by omission is no longer enforced unless written down and enforced; the behaviour policy is where it is written",
+      "anchor": "The rule that the user interface enforced by omission is no longer enforced, unless somebody writes it down and something enforces it.",
+      "section": "Software was the law",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "enforcement by omission",
+        "behaviour policy"
+      ]
+    },
+    {
+      "id": "bl-method-1",
+      "kind": "method",
+      "text": "A fractal structure: behaviour policies inside behaviour policies, each refining the one below inside the room it allows",
+      "anchor": "The structure I have found that can hold this is a fractal one: behaviour policies inside behaviour policies, each layer refining the one below, inside the room the one below allows.",
+      "section": "Policies inside policies",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "fractal policy",
+        "layer",
+        "behaviour policy"
+      ]
+    },
+    {
+      "id": "bl-definition-6",
+      "kind": "definition",
+      "text": "Foundational controls: identity, secrets, platform switches, a few levels of privilege from administrator upwards",
+      "anchor": "At the bottom are the foundational controls: identity, secrets, what the platform switches on and off, a few levels of privilege from administrator upwards.",
+      "section": "Policies inside policies",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "foundational control",
+        "privilege",
+        "identity"
+      ]
+    },
+    {
+      "id": "bl-definition-7",
+      "kind": "definition",
+      "text": "Soft controls: those the agent enforces on itself, or that another agent checks",
+      "anchor": "Above them, the soft controls that the agent enforces on itself, or that another agent checks.",
+      "section": "Policies inside policies",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "soft control",
+        "layer"
+      ]
+    },
+    {
+      "id": "bl-claim-23",
+      "kind": "claim",
+      "text": "The top layer is the company's to define: treat customers fairly, or maximise revenue from every account",
+      "anchor": "That top layer is the company's to define. It might be to treat customers fairly. It might be to maximise revenue from every account.",
+      "section": "Policies inside policies",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "organisation layer",
+        "values"
+      ]
+    },
+    {
+      "id": "bl-claim-24",
+      "kind": "claim",
+      "text": "A behaviour policy describes; it does not judge",
+      "anchor": "A behaviour policy describes; [it does not judge](https://riskmandate.ai/abp.html).",
+      "section": "Policies inside policies",
+      "supports": [],
+      "refs": [
+        "https://riskmandate.ai/abp.html"
+      ],
+      "terms": [
+        "behaviour policy",
+        "agent behaviour policy"
+      ]
+    },
+    {
+      "id": "bl-claim-25",
+      "kind": "claim",
+      "text": "A written policy can be read, and a company whose top layer says it treats customers fairly, with layers beneath to show it, has something to show",
+      "anchor": "But a policy that is written down can be read, and a company whose top layer says it treats customers fairly, with the layers beneath to show it, has something to show that a company without one does not.",
+      "section": "Policies inside policies",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "fairness",
+        "transparency"
+      ]
+    },
+    {
+      "id": "bl-claim-26",
+      "kind": "claim",
+      "text": "Same grammar as the site's fractal semantic graphs: the same small set of rules at every level, from board principle to tool permission",
+      "anchor": "the same small set of rules at every level, so one reader and one set of tools work from the board's principle down to a single tool permission.",
+      "section": "Policies inside policies",
+      "supports": [],
+      "refs": [
+        "/articles/introducing-fractal-semantic-graphs.html"
+      ],
+      "terms": [
+        "fractal semantic graph",
+        "fractal policy"
+      ]
+    },
+    {
+      "id": "bl-source-4",
+      "kind": "source",
+      "text": "Earlier article: Introducing fractal semantic graphs",
+      "anchor": "[fractal semantic graphs](/articles/introducing-fractal-semantic-graphs.html)",
+      "section": "Policies inside policies",
+      "supports": [],
+      "refs": [
+        "/articles/introducing-fractal-semantic-graphs.html"
+      ],
+      "terms": [
+        "fractal semantic graph",
+        "article"
+      ]
+    },
+    {
+      "id": "bl-fact-3",
+      "kind": "fact",
+      "text": "The ABP vocabulary has three layers: shared facts owned by nobody, each party's own formulas, and declared bridges between vocabularies",
+      "anchor": "shared facts owned by nobody, each party's own formulas over those facts, and declared bridges between vocabularies.",
+      "section": "Policies inside policies",
+      "supports": [],
+      "refs": [
+        "https://abp.sgit.ai/model/graph/layers/index.html"
+      ],
+      "terms": [
+        "abp vocabulary",
+        "layer",
+        "agent behaviour policy"
+      ]
+    },
+    {
+      "id": "bl-source-5",
+      "kind": "source",
+      "text": "abp.sgit.ai/model/graph/layers, the ABP vocabulary layers page",
+      "anchor": "The ABP's vocabulary is [three layers](https://abp.sgit.ai/model/graph/layers/index.html):",
+      "section": "Policies inside policies",
+      "supports": [],
+      "refs": [
+        "https://abp.sgit.ai/model/graph/layers/index.html"
+      ],
+      "terms": [
+        "abp vocabulary",
+        "abp.sgit.ai"
+      ]
+    },
+    {
+      "id": "bl-fact-4",
+      "kind": "fact",
+      "text": "A customer extends the ABP by adding nodes in its own vault, never by asking for a change in ours",
+      "anchor": "A customer extends it by adding nodes in its own vault, never by asking for a change in ours.",
+      "section": "Policies inside policies",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "vault",
+        "abp vocabulary",
+        "customer"
+      ]
+    },
+    {
+      "id": "bl-artefact-2",
+      "kind": "artefact",
+      "text": "Figure policy-hope.webp: the worked example counted into control, accepted risk and hope",
+      "anchor": "!shot policy-hope.webp | images/ | The worked example, counted.",
+      "section": "How much of it is hope?",
+      "supports": [],
+      "refs": [
+        "images/policy-hope.webp"
+      ],
+      "terms": [
+        "figure",
+        "three states"
+      ]
+    },
+    {
+      "id": "bl-limitation-1",
+      "kind": "limitation",
+      "text": "The proportions in the hope figure are illustrative; the shape is the point",
+      "anchor": "The proportions are illustrative; the shape is the point.",
+      "section": "How much of it is hope?",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "illustrative",
+        "three states"
+      ]
+    },
+    {
+      "id": "bl-claim-27",
+      "kind": "claim",
+      "text": "Once rules are written in layers, how much of the agent's behaviour is enforced becomes answerable",
+      "anchor": "Once the rules are written in layers, a question becomes answerable that is usually only felt: how much of this agent's behaviour is actually enforced?",
+      "section": "How much of it is hope?",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "enforcement",
+        "layer"
+      ]
+    },
+    {
+      "id": "bl-definition-8",
+      "kind": "definition",
+      "text": "Four barrier kinds per rule: nothing, expectation, setting, boundary; only boundary is a control",
+      "anchor": "The behaviour policy already records, for every rule, which of four things stands in the way: nothing, an **expectation** (a rule in prose, enforced by nobody), a **setting** the agent's own account can flip, or a **boundary** enforced above it.",
+      "section": "How much of it is hope?",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "barrier",
+        "expectation",
+        "setting",
+        "boundary"
+      ]
+    },
+    {
+      "id": "bl-definition-9",
+      "kind": "definition",
+      "text": "Expectation: a rule in prose, enforced by nobody",
+      "anchor": "an **expectation** (a rule in prose, enforced by nobody)",
+      "section": "How much of it is hope?",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "expectation",
+        "barrier"
+      ]
+    },
+    {
+      "id": "bl-definition-10",
+      "kind": "definition",
+      "text": "Setting: a barrier the agent's own account can flip",
+      "anchor": "a **setting** the agent's own account can flip",
+      "section": "How much of it is hope?",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "setting",
+        "barrier"
+      ]
+    },
+    {
+      "id": "bl-method-2",
+      "kind": "method",
+      "text": "Add whether a named person accepted the risk with an expiry, and every rule lands in one of three states: control, accepted risk, or hope",
+      "anchor": "and every rule lands in one of three states: backed by a control, governed by an accepted risk, or resting on hope.",
+      "section": "How much of it is hope?",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "three states",
+        "accepted risk",
+        "hope"
+      ]
+    },
+    {
+      "id": "bl-definition-11",
+      "kind": "definition",
+      "text": "Accepted risk: a named person has accepted the risk of the rule not being enforced, with an expiry",
+      "anchor": "whether a named person has accepted the risk of the rule not being enforced, with an expiry",
+      "section": "How much of it is hope?",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "accepted risk",
+        "owner",
+        "expiry"
+      ]
+    },
+    {
+      "id": "bl-data-point-3",
+      "kind": "data-point",
+      "text": "Of 17 rules in the example: 5 backed by a control, 6 governed by accepted risk, 6 hope",
+      "anchor": "In the example, five of the seventeen rules are backed by a control, six are governed by an accepted risk, and six are hope.",
+      "section": "How much of it is hope?",
+      "supports": [
+        "bl-claim-28"
+      ],
+      "refs": [],
+      "terms": [
+        "three states",
+        "worked example",
+        "hope"
+      ]
+    },
+    {
+      "id": "bl-claim-28",
+      "kind": "claim",
+      "text": "The shape is the finding: platform layer all control, organisation layer all hope, and the more firm-specific a rule, the more it rests on behaviour and accepted risk",
+      "anchor": "In between, the more specific a rule is to this firm, the more it rests on the agent behaving and on somebody having [accepted that it might not](/articles/every-risk-is-already-accepted.html).",
+      "section": "How much of it is hope?",
+      "supports": [],
+      "refs": [
+        "/articles/every-risk-is-already-accepted.html"
+      ],
+      "terms": [
+        "three states",
+        "hope",
+        "accepted risk"
+      ]
+    },
+    {
+      "id": "bl-fact-5",
+      "kind": "fact",
+      "text": "In the example the platform layer is all control and the organisation layer is all hope",
+      "anchor": "The platform layer is all control. The organisation layer is all hope.",
+      "section": "How much of it is hope?",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "platform",
+        "organisation layer",
+        "three states"
+      ]
+    },
+    {
+      "id": "bl-source-6",
+      "kind": "source",
+      "text": "Earlier article: Every risk is already accepted",
+      "anchor": "[accepted that it might not](/articles/every-risk-is-already-accepted.html)",
+      "section": "How much of it is hope?",
+      "supports": [],
+      "refs": [
+        "/articles/every-risk-is-already-accepted.html"
+      ],
+      "terms": [
+        "accepted risk",
+        "article"
+      ]
+    },
+    {
+      "id": "bl-claim-29",
+      "kind": "claim",
+      "text": "Resting on hope is not a failure; most of a business has always run on people behaving as asked, but with an agent it can be counted",
+      "anchor": "That is not a failure; most of a business has always run on people behaving as asked.",
+      "section": "How much of it is hope?",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "hope",
+        "measurement"
+      ]
+    },
+    {
+      "id": "bl-artefact-3",
+      "kind": "artefact",
+      "text": "Figure policy-plug.webp: five rules from the example and the control that would move each",
+      "anchor": "!shot policy-plug.webp | images/ | Five rules from the example, and the control that would move each one.",
+      "section": "Where the vendors plug in",
+      "supports": [],
+      "refs": [
+        "images/policy-plug.webp"
+      ],
+      "terms": [
+        "figure",
+        "vendor",
+        "control"
+      ]
+    },
+    {
+      "id": "bl-claim-30",
+      "kind": "claim",
+      "text": "A vendor does not have to model the business; it has to enforce the parts of the written policy its product can reach",
+      "anchor": "A vendor does not have to model the customer's business. It has to enforce the parts of the customer's written policy that its product can reach.",
+      "section": "Where the vendors plug in",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "vendor",
+        "enforcement",
+        "integration"
+      ]
+    },
+    {
+      "id": "bl-example-10",
+      "kind": "example",
+      "text": "A send gateway holding mail to unseen addresses moves 'a new recipient needs a person' from accepted risk to control",
+      "anchor": "A send gateway that holds mail to an address the thread has not seen moves \"a new recipient needs a person\" from an accepted risk to a control.",
+      "section": "Where the vendors plug in",
+      "supports": [
+        "bl-claim-30"
+      ],
+      "refs": [],
+      "terms": [
+        "send gateway",
+        "new recipient",
+        "control"
+      ]
+    },
+    {
+      "id": "bl-example-11",
+      "kind": "example",
+      "text": "An outbound content check moves 'never quote a price' from hope to control",
+      "anchor": "An outbound content check moves \"never quote a price\" from hope to a control.",
+      "section": "Where the vendors plug in",
+      "supports": [
+        "bl-claim-30"
+      ],
+      "refs": [],
+      "terms": [
+        "content check",
+        "price",
+        "control"
+      ]
+    },
+    {
+      "id": "bl-example-12",
+      "kind": "example",
+      "text": "A finance system answering 'is this invoice approved?' to a gateway the agent cannot reach moves the invoice rule",
+      "anchor": "A finance system that answers \"is this invoice approved?\" to a gateway the agent cannot reach moves the invoice rule.",
+      "section": "Where the vendors plug in",
+      "supports": [
+        "bl-claim-30"
+      ],
+      "refs": [],
+      "terms": [
+        "finance system",
+        "invoice",
+        "control"
+      ]
+    },
+    {
+      "id": "bl-example-13",
+      "kind": "example",
+      "text": "A blocked-recipients list maintained by legal moves the dispute rule",
+      "anchor": "A blocked-recipients list that legal maintains moves the dispute rule.",
+      "section": "Where the vendors plug in",
+      "supports": [
+        "bl-claim-30"
+      ],
+      "refs": [],
+      "terms": [
+        "blocked recipients",
+        "dispute",
+        "control"
+      ]
+    },
+    {
+      "id": "bl-example-14",
+      "kind": "example",
+      "text": "The top principle has no single control, but sampling sent mail with a named reviewer turns hope into accepted risk",
+      "anchor": "The principle at the top has no single control, but sampling sent mail against it, with a named reviewer, turns hope into an accepted risk.",
+      "section": "Where the vendors plug in",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "sampling",
+        "accepted risk",
+        "organisation layer"
+      ]
+    },
+    {
+      "id": "bl-claim-31",
+      "kind": "claim",
+      "text": "Each control is a product somebody already sells; what changes is it enforces a rule at the layer the customer wrote it, and the policy can count the move",
+      "anchor": "What changes is that it now enforces a rule at the layer the customer wrote it, and the policy can count the move.",
+      "section": "Where the vendors plug in",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "vendor",
+        "control",
+        "measurement"
+      ]
+    },
+    {
+      "id": "bl-claim-32",
+      "kind": "claim",
+      "text": "A control attached to a written rule is worth more than one switched on in general, because the customer can see what it bought",
+      "anchor": "A control attached to a written rule is worth more than one switched on in general, because the customer can see what it bought.",
+      "section": "Where the vendors plug in",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "control",
+        "vendor",
+        "value"
+      ]
+    },
+    {
+      "id": "bl-hypothesis-1",
+      "kind": "hypothesis",
+      "text": "The behaviour policy is a good place for vendors to integrate rather than a threat: a rule to enforce, a number to move, several vendors each owning a row",
+      "anchor": "That is why I think the behaviour policy is a good place for vendors to integrate rather than a threat to them:",
+      "section": "Where the vendors plug in",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "integration",
+        "vendor",
+        "behaviour policy"
+      ]
+    },
+    {
+      "id": "bl-claim-33",
+      "kind": "claim",
+      "text": "Frameworks are starting to ask for this",
+      "anchor": "It is also why the frameworks are starting to ask for this.",
+      "section": "Where the vendors plug in",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "framework",
+        "governance"
+      ]
+    },
+    {
+      "id": "bl-evidence-2",
+      "kind": "evidence",
+      "text": "AI Baseline Control Framework RG.2 asks that for every autonomous AI system 'what it does is described'; AC.3 asks for a named owner",
+      "anchor": "asks, in RG.2, that for every AI system acting autonomously \"what it does is described\", and, in AC.3, that each one has a named owner.",
+      "section": "Where the vendors plug in",
+      "supports": [
+        "bl-claim-33"
+      ],
+      "refs": [
+        "/articles/ai-baseline-control-framework.html"
+      ],
+      "terms": [
+        "ai baseline control framework",
+        "rg.2",
+        "ac.3",
+        "owner"
+      ]
+    },
+    {
+      "id": "bl-entity-4",
+      "kind": "entity",
+      "text": "AI Baseline Control Framework",
+      "anchor": "The [AI Baseline Control Framework](/articles/ai-baseline-control-framework.html)",
+      "section": "Where the vendors plug in",
+      "supports": [],
+      "refs": [
+        "/articles/ai-baseline-control-framework.html"
+      ],
+      "terms": [
+        "ai baseline control framework",
+        "framework"
+      ]
+    },
+    {
+      "id": "bl-source-7",
+      "kind": "source",
+      "text": "Site article on the AI Baseline Control Framework",
+      "anchor": "[AI Baseline Control Framework](/articles/ai-baseline-control-framework.html)",
+      "section": "Where the vendors plug in",
+      "supports": [],
+      "refs": [
+        "/articles/ai-baseline-control-framework.html"
+      ],
+      "terms": [
+        "ai baseline control framework",
+        "article"
+      ]
+    },
+    {
+      "id": "bl-claim-34",
+      "kind": "claim",
+      "text": "The description RG.2 asks for is the layers above the mechanics; the owner AC.3 asks for is the person named on each layer",
+      "anchor": "The description RG.2 asks for is the layers above the mechanics. The owner AC.3 asks for is the person whose name goes on each layer.",
+      "section": "Where the vendors plug in",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "rg.2",
+        "ac.3",
+        "owner",
+        "layer"
+      ]
+    },
+    {
+      "id": "bl-claim-35",
+      "kind": "claim",
+      "text": "The upper layers look less like access control and more like a skill: instructions for how a function is done here",
+      "anchor": "Read the upper layers of the example again and they look less like access control and more like a skill: the instructions that tell an agent how a function is done here.",
+      "section": "It looks a lot like a skill",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "skill",
+        "layer"
+      ]
+    },
+    {
+      "id": "bl-claim-36",
+      "kind": "claim",
+      "text": "A skill file and a policy layer are written by the same people, about the same work, for the same agent",
+      "anchor": "A skill file and a behaviour policy layer are written by the same people, about the same work, for the same agent.",
+      "section": "It looks a lot like a skill",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "skill",
+        "behaviour policy"
+      ]
+    },
+    {
+      "id": "bl-claim-37",
+      "kind": "claim",
+      "text": "A skill says how; a policy layer says what is allowed, who owns the rule, and what stands in the way of breaking it",
+      "anchor": "A skill says how. A policy layer says what is allowed, who owns the rule, and what stands in the way of breaking it.",
+      "section": "It looks a lot like a skill",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "skill",
+        "behaviour policy",
+        "owner"
+      ]
+    },
+    {
+      "id": "bl-claim-38",
+      "kind": "claim",
+      "text": "Written together, skills and policy layers are the business codified for an agent, which lets it hand over real work and still know what it handed over",
+      "anchor": "Written together, they are the business codified for an agent: the functions, the processes, the relationships and the principles, with the controls and the acceptances attached.",
+      "section": "It looks a lot like a skill",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "business logic",
+        "skill",
+        "behaviour policy"
+      ]
+    },
+    {
+      "id": "bl-claim-39",
+      "kind": "claim",
+      "text": "It lets the business scale: knowledge in a few heads and unreadable software becomes something an agent can follow, a person review and a control enforce",
+      "anchor": "It is also what lets it scale: the knowledge that lived in a few people's heads, and in software nobody could read, becomes something an agent can follow, a person can review and a control can enforce.",
+      "section": "It looks a lot like a skill",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "scale",
+        "business logic"
+      ]
+    },
+    {
+      "id": "bl-limitation-2",
+      "kind": "limitation",
+      "text": "The example is fictional on purpose, so the shape is clear",
+      "anchor": "The example here is fictional on purpose, so the shape is clear.",
+      "section": "What comes next",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "illustrative",
+        "worked example"
+      ]
+    },
+    {
+      "id": "bl-question-2",
+      "kind": "question",
+      "text": "Next: take the measured Gmail deployment as the bottom two layers, write the upper layers for one real inbox, count the three states, publish as a vault with its read key",
+      "anchor": "write the function, process and relationship layers above it for one real inbox, count the three states, and publish it as a vault with its read key.",
+      "section": "What comes next",
+      "supports": [],
+      "refs": [
+        "https://abp.sgit.ai/gmail/measured/index.html"
+      ],
+      "terms": [
+        "measured gmail",
+        "three states",
+        "vault"
+      ]
+    },
+    {
+      "id": "bl-question-3",
+      "kind": "question",
+      "text": "Then repeat with a vendor's control in the path and publish the count before and after",
+      "anchor": "Then do it again with a vendor's control in the path, and publish the count before and after.",
+      "section": "What comes next",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "vendor",
+        "measurement",
+        "three states"
+      ]
+    },
+    {
+      "id": "bl-fact-6",
+      "kind": "fact",
+      "text": "Drafted from a voice note by Dinis Cruz by agent@riskmandate.ai (Claude Opus 5.5) in the sgit.ai site session on 7 October 2026",
+      "anchor": "by agent@riskmandate.ai (Claude Opus 5.5, claude-opus-5-5) in the sgit.ai site session, on 7 October 2026.",
+      "section": "credit",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "provenance",
+        "claude opus 5.5",
+        "voice note"
+      ]
+    },
+    {
+      "id": "bl-entity-5",
+      "kind": "entity",
+      "text": "Claude Opus 5.5 (claude-opus-5-5), the drafting agent",
+      "anchor": "Claude Opus 5.5, claude-opus-5-5",
+      "section": "credit",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "claude opus 5.5",
+        "agent"
+      ]
+    },
+    {
+      "id": "bl-limitation-3",
+      "kind": "limitation",
+      "text": "The firm, its rules and its counts are illustrative",
+      "anchor": "The firm, its rules and its counts are illustrative.",
+      "section": "credit",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "illustrative",
+        "worked example"
+      ]
+    },
+    {
+      "id": "bl-fact-7",
+      "kind": "fact",
+      "text": "The measured Gmail figures and the ABP's barrier kinds and layers are from abp.sgit.ai and riskmandate.ai as published that day",
+      "anchor": "The measured Gmail figures and the ABP's barrier kinds and layers are from abp.sgit.ai and riskmandate.ai as published that day.",
+      "section": "credit",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "provenance",
+        "abp.sgit.ai",
+        "riskmandate.ai"
+      ]
+    },
+    {
+      "id": "bl-limitation-4",
+      "kind": "limitation",
+      "text": "Product kinds in the third figure are categories, not recommendations, and no vendor was contacted",
+      "anchor": "The kinds of product named in the third figure are categories, not recommendations, and no vendor was contacted.",
+      "section": "credit",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "vendor",
+        "limitation"
+      ]
+    }
+  ],
+  "terms": {
+    "abp": [
+      "bl-entity-2"
+    ],
+    "abp vocabulary": [
+      "bl-fact-3",
+      "bl-source-5",
+      "bl-fact-4"
+    ],
+    "abp.sgit.ai": [
+      "bl-source-3",
+      "bl-source-5",
+      "bl-fact-7"
+    ],
+    "ac.3": [
+      "bl-evidence-2",
+      "bl-claim-34"
+    ],
+    "accepted risk": [
+      "bl-method-2",
+      "bl-definition-11",
+      "bl-claim-28",
+      "bl-source-6",
+      "bl-example-14"
+    ],
+    "account": [
+      "bl-example-1"
+    ],
+    "administrator": [
+      "bl-claim-9"
+    ],
+    "agent": [
+      "bl-claim-5",
+      "bl-claim-21",
+      "bl-entity-5"
+    ],
+    "agent behaviour policy": [
+      "bl-claim-6",
+      "bl-entity-2",
+      "bl-source-2",
+      "bl-claim-24",
+      "bl-fact-3"
+    ],
+    "ai baseline control framework": [
+      "bl-evidence-2",
+      "bl-entity-4",
+      "bl-source-7"
+    ],
+    "api": [
+      "bl-claim-21"
+    ],
+    "approval": [
+      "bl-fact-2"
+    ],
+    "article": [
+      "bl-source-1",
+      "bl-source-4",
+      "bl-source-6",
+      "bl-source-7"
+    ],
+    "author": [
+      "bl-entity-1"
+    ],
+    "barrier": [
+      "bl-artefact-1",
+      "bl-definition-1",
+      "bl-definition-8",
+      "bl-definition-9",
+      "bl-definition-10"
+    ],
+    "behaviour policy": [
+      "bl-claim-1",
+      "bl-claim-22",
+      "bl-method-1",
+      "bl-claim-24",
+      "bl-hypothesis-1",
+      "bl-claim-36",
+      "bl-claim-37",
+      "bl-claim-38"
+    ],
+    "blocked recipients": [
+      "bl-example-13"
+    ],
+    "boundary": [
+      "bl-definition-1",
+      "bl-definition-8"
+    ],
+    "business logic": [
+      "bl-claim-2",
+      "bl-claim-3",
+      "bl-claim-5",
+      "bl-claim-6",
+      "bl-claim-7",
+      "bl-claim-11",
+      "bl-claim-12",
+      "bl-claim-15",
+      "bl-claim-18",
+      "bl-claim-19",
+      "bl-claim-38",
+      "bl-claim-39"
+    ],
+    "claude opus 5.5": [
+      "bl-fact-6",
+      "bl-entity-5"
+    ],
+    "client": [
+      "bl-question-1"
+    ],
+    "complaint": [
+      "bl-data-point-2"
+    ],
+    "connector": [
+      "bl-evidence-1",
+      "bl-data-point-1"
+    ],
+    "consultancy": [
+      "bl-claim-16"
+    ],
+    "content check": [
+      "bl-example-11"
+    ],
+    "control": [
+      "bl-claim-8",
+      "bl-claim-9",
+      "bl-definition-1",
+      "bl-claim-14",
+      "bl-artefact-3",
+      "bl-example-10",
+      "bl-example-11",
+      "bl-example-12",
+      "bl-example-13",
+      "bl-claim-31",
+      "bl-claim-32"
+    ],
+    "customer": [
+      "bl-claim-17",
+      "bl-fact-4"
+    ],
+    "dinis cruz": [
+      "bl-entity-1"
+    ],
+    "dispute": [
+      "bl-question-1",
+      "bl-example-6",
+      "bl-example-13"
+    ],
+    "draft": [
+      "bl-example-1"
+    ],
+    "enforcement": [
+      "bl-claim-27",
+      "bl-claim-30"
+    ],
+    "enforcement by omission": [
+      "bl-claim-22"
+    ],
+    "expectation": [
+      "bl-definition-8",
+      "bl-definition-9"
+    ],
+    "expiry": [
+      "bl-definition-11"
+    ],
+    "fairness": [
+      "bl-example-7",
+      "bl-claim-25"
+    ],
+    "figure": [
+      "bl-artefact-1",
+      "bl-artefact-2",
+      "bl-artefact-3"
+    ],
+    "finance system": [
+      "bl-example-8",
+      "bl-example-12"
+    ],
+    "foundational control": [
+      "bl-definition-6"
+    ],
+    "fractal policy": [
+      "bl-method-1",
+      "bl-claim-26"
+    ],
+    "fractal semantic graph": [
+      "bl-claim-26",
+      "bl-source-4"
+    ],
+    "framework": [
+      "bl-claim-33",
+      "bl-entity-4"
+    ],
+    "function layer": [
+      "bl-definition-2",
+      "bl-example-3",
+      "bl-example-4"
+    ],
+    "google workspace": [
+      "bl-evidence-1",
+      "bl-entity-3"
+    ],
+    "governance": [
+      "bl-claim-20",
+      "bl-claim-33"
+    ],
+    "granularity": [
+      "bl-claim-1"
+    ],
+    "hope": [
+      "bl-method-2",
+      "bl-data-point-3",
+      "bl-claim-28",
+      "bl-claim-29"
+    ],
+    "identity": [
+      "bl-definition-6"
+    ],
+    "illustrative": [
+      "bl-limitation-1",
+      "bl-limitation-2",
+      "bl-limitation-3"
+    ],
+    "integration": [
+      "bl-claim-30",
+      "bl-hypothesis-1"
+    ],
+    "invoice": [
+      "bl-question-1",
+      "bl-example-5",
+      "bl-example-8",
+      "bl-example-12"
+    ],
+    "key account": [
+      "bl-example-6"
+    ],
+    "layer": [
+      "bl-claim-1",
+      "bl-claim-3",
+      "bl-claim-6",
+      "bl-claim-11",
+      "bl-definition-2",
+      "bl-definition-3",
+      "bl-definition-4",
+      "bl-definition-5",
+      "bl-claim-13",
+      "bl-claim-15",
+      "bl-method-1",
+      "bl-definition-7",
+      "bl-fact-3",
+      "bl-claim-27",
+      "bl-claim-34",
+      "bl-claim-35"
+    ],
+    "ledger": [
+      "bl-example-5"
+    ],
+    "licence": [
+      "bl-fact-1"
+    ],
+    "limitation": [
+      "bl-limitation-4"
+    ],
+    "log": [
+      "bl-example-4"
+    ],
+    "manager": [
+      "bl-claim-12"
+    ],
+    "measured gmail": [
+      "bl-evidence-1",
+      "bl-data-point-1",
+      "bl-fact-2",
+      "bl-source-3",
+      "bl-question-2"
+    ],
+    "measurement": [
+      "bl-claim-10",
+      "bl-claim-29",
+      "bl-claim-31",
+      "bl-question-3"
+    ],
+    "mechanical rule": [
+      "bl-example-1",
+      "bl-claim-4"
+    ],
+    "mechanics": [
+      "bl-claim-3",
+      "bl-example-2",
+      "bl-claim-10",
+      "bl-claim-17"
+    ],
+    "new recipient": [
+      "bl-example-3",
+      "bl-example-10"
+    ],
+    "organisation layer": [
+      "bl-definition-5",
+      "bl-example-7",
+      "bl-claim-23",
+      "bl-fact-5",
+      "bl-example-14"
+    ],
+    "owner": [
+      "bl-claim-13",
+      "bl-definition-11",
+      "bl-evidence-2",
+      "bl-claim-34",
+      "bl-claim-37"
+    ],
+    "platform": [
+      "bl-example-2",
+      "bl-claim-8",
+      "bl-fact-5"
+    ],
+    "policy stack": [
+      "bl-artefact-1"
+    ],
+    "price": [
+      "bl-example-3",
+      "bl-example-11"
+    ],
+    "privacy": [
+      "bl-example-9",
+      "bl-claim-20"
+    ],
+    "privilege": [
+      "bl-claim-9",
+      "bl-definition-6"
+    ],
+    "process layer": [
+      "bl-definition-3",
+      "bl-example-5",
+      "bl-data-point-2"
+    ],
+    "provenance": [
+      "bl-fact-6",
+      "bl-fact-7"
+    ],
+    "publication": [
+      "bl-fact-1"
+    ],
+    "rbac": [
+      "bl-example-9",
+      "bl-claim-19"
+    ],
+    "relationship layer": [
+      "bl-definition-4",
+      "bl-example-6"
+    ],
+    "rg.2": [
+      "bl-evidence-2",
+      "bl-claim-34"
+    ],
+    "riskmandate.ai": [
+      "bl-source-2",
+      "bl-fact-7"
+    ],
+    "role": [
+      "bl-example-9"
+    ],
+    "sampling": [
+      "bl-example-14"
+    ],
+    "scale": [
+      "bl-claim-2",
+      "bl-claim-14",
+      "bl-claim-39"
+    ],
+    "send gateway": [
+      "bl-example-10"
+    ],
+    "send_message": [
+      "bl-fact-2"
+    ],
+    "setting": [
+      "bl-definition-8",
+      "bl-definition-10"
+    ],
+    "six agents one inbox": [
+      "bl-claim-4",
+      "bl-source-1"
+    ],
+    "skill": [
+      "bl-claim-35",
+      "bl-claim-36",
+      "bl-claim-37",
+      "bl-claim-38"
+    ],
+    "soft control": [
+      "bl-definition-7"
+    ],
+    "software was the law": [
+      "bl-claim-18",
+      "bl-example-8",
+      "bl-claim-21"
+    ],
+    "three states": [
+      "bl-artefact-2",
+      "bl-limitation-1",
+      "bl-method-2",
+      "bl-data-point-3",
+      "bl-claim-28",
+      "bl-fact-5",
+      "bl-question-2",
+      "bl-question-3"
+    ],
+    "token": [
+      "bl-example-2"
+    ],
+    "tool": [
+      "bl-data-point-1"
+    ],
+    "transparency": [
+      "bl-claim-25"
+    ],
+    "trust": [
+      "bl-claim-7"
+    ],
+    "value": [
+      "bl-claim-32"
+    ],
+    "values": [
+      "bl-claim-23"
+    ],
+    "vault": [
+      "bl-fact-4",
+      "bl-question-2"
+    ],
+    "vendor": [
+      "bl-claim-2",
+      "bl-claim-7",
+      "bl-claim-8",
+      "bl-claim-14",
+      "bl-claim-15",
+      "bl-claim-16",
+      "bl-claim-17",
+      "bl-artefact-3",
+      "bl-claim-30",
+      "bl-claim-31",
+      "bl-claim-32",
+      "bl-hypothesis-1",
+      "bl-question-3",
+      "bl-limitation-4"
+    ],
+    "voice note": [
+      "bl-fact-6"
+    ],
+    "worked example": [
+      "bl-data-point-3",
+      "bl-limitation-2",
+      "bl-limitation-3"
+    ],
+    "workflow engine": [
+      "bl-claim-19"
+    ]
+  },
+  "flags": [
+    "Front matter overstates the body: the summary says a layered policy \"is the only way to describe agent behaviour at the granularity a business actually runs at\", while the body says only \"The structure I have found that can hold this is a fractal one\". \"Only way\" is unsupported in the article.",
+    "Owners do not match layers: \"each layer has a different owner: IT and security, the head of operations, finance and HR and legal, the account managers, the board.\" lists five owners against the four business layers just named (function, process, relationship, organisation); IT and security presumably owns the mechanics, but the sentence attaches it to \"these\".",
+    "The second mechanical layer is unclear: the caption says \"The bottom two layers are mechanics\", and the mechanics section describes only platform-enforced boundaries, but \"Policies inside policies\" names the second layer as \"soft controls that the agent enforces on itself, or that another agent checks\", which are not boundaries. The body never names the two bottom layers consistently.",
+    "Rule count not reconstructible from the prose: \"five of the seventeen rules are backed by a control, six are governed by an accepted risk, and six are hope.\" The rules stated in the text number about 14 (5 mechanical, 3 function, 3 process, 2 relationship, 1 organisation); the remainder presumably live only in the figure policy-hope.webp, which the catalogue cannot check.",
+    "No decision items: the article records no explicit choice with a reason by the author or agents, so kind `decision` is 0 (the drafting arrangement in the credit line is catalogued as a fact)."
+  ]
+}

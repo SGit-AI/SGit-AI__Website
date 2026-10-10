@@ -6,6 +6,23 @@
  "generated_by": "admin/build/build_pages.py",
  "entries": [
   {
+   "slug": "one-article-five-readers",
+   "kind": "article",
+   "kicker": "SGit Newsroom",
+   "date": "2026-10-10",
+   "author": "Dinis Cruz",
+   "title": "One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece",
+   "teaser": "Write the article first, then send five agent readers through it: a catalogue, an ontology and maps, the arc, two minutes, and a deck.",
+   "ideas": [
+    "Deep articles are hard to consume",
+    "The prose comes first",
+    "New to the set is not new to the site"
+   ],
+   "hero": "articles/images/fr-five.webp",
+   "url": "sgit.ai/articles/one-article-five-readers.html",
+   "out": "articles/banners/one-article-five-readers.jpg"
+  },
+  {
    "slug": "re-anchoring-agent-behaviour-policies",
    "kind": "article",
    "kicker": "SGit Newsroom",
@@ -1015,10 +1032,10 @@
     "Next: an issue picked for what you care about"
    ],
    "mosaic": [
+    "articles/cards/one-article-five-readers.webp",
     "articles/cards/re-anchoring-agent-behaviour-policies.webp",
     "articles/cards/the-ai-governance-stack-as-a-graph.webp",
-    "articles/cards/a-second-reader-the-agent-cannot-skip.webp",
-    "articles/cards/rfc-0001-public-key-cryptography-for-sgit.webp"
+    "articles/cards/a-second-reader-the-agent-cannot-skip.webp"
    ],
    "url": "sgit.ai/subscribe/",
    "out": "articles/banners/subscribe.jpg"

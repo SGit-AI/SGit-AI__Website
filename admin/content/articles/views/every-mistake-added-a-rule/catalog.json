@@ -1,0 +1,2482 @@
+{
+  "slug": "every-mistake-added-a-rule",
+  "title": "Every mistake added a rule: complexity, agents, and the way back to shipping",
+  "date": "2026-10-08",
+  "counts": {
+    "fact": 5,
+    "data-point": 8,
+    "claim": 39,
+    "evidence": 8,
+    "hypothesis": 2,
+    "question": 5,
+    "definition": 8,
+    "method": 21,
+    "decision": 7,
+    "limitation": 3,
+    "example": 9,
+    "source": 8,
+    "artefact": 6,
+    "entity": 8
+  },
+  "items": [
+    {
+      "id": "em-artefact-1",
+      "kind": "artefact",
+      "text": "Figure cx-loops.webp: two ways to answer an agent mistake, add a rule or ship a component",
+      "anchor": "!shot cx-loops.webp | images/ | Two ways to answer a mistake an agent makes.",
+      "section": "lead",
+      "supports": [],
+      "refs": [
+        "images/cx-loops.webp"
+      ],
+      "terms": [
+        "figure",
+        "rule loop"
+      ]
+    },
+    {
+      "id": "em-claim-1",
+      "kind": "claim",
+      "text": "Adding a rule grows the prompt, brings compaction sooner, and compaction decides which rules survive; shipping a component makes the mistake impossible so the rule can go",
+      "anchor": "Add a rule, and the prompt grows, the session compacts sooner, and compaction decides which rules survive.",
+      "section": "lead",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "rule loop",
+        "compaction",
+        "prompt"
+      ]
+    },
+    {
+      "id": "em-source-1",
+      "kind": "source",
+      "text": "Two messages from an unnamed friend about a verification run with agents in Cowork, with ChatGPT as reviewer",
+      "anchor": "A friend sent me two messages about a verification they are running with agents in Cowork, with ChatGPT as a reviewer.",
+      "section": "lead",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "friend",
+        "message",
+        "verification"
+      ]
+    },
+    {
+      "id": "em-source-2",
+      "kind": "source",
+      "text": "A voice memo recorded by the author after reading the messages; the article is drafted from messages and memo",
+      "anchor": "I recorded a voice memo after reading them, and this article is drafted from the messages and the memo.",
+      "section": "lead",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "voice memo"
+      ]
+    },
+    {
+      "id": "em-decision-1",
+      "kind": "decision",
+      "text": "The friend is not named and their project not described, because the patterns are the point; Cowork and ChatGPT are named because they are the products in use",
+      "anchor": "My friend is not named and their project is not described; the patterns are the point, and they apply to many people I talk to.",
+      "section": "lead",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "anonymity",
+        "friend"
+      ]
+    },
+    {
+      "id": "em-entity-1",
+      "kind": "entity",
+      "text": "Cowork, the product in which the friend's agents run",
+      "anchor": "Cowork and ChatGPT are named because they are the products in use.",
+      "section": "lead",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "cowork",
+        "product"
+      ]
+    },
+    {
+      "id": "em-entity-2",
+      "kind": "entity",
+      "text": "ChatGPT, used as reviewer in the friend's verification",
+      "anchor": "One agent writes, other agents verify, ChatGPT reviews.",
+      "section": "Two messages from somebody doing the right thing",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "chatgpt",
+        "product"
+      ]
+    },
+    {
+      "id": "em-example-1",
+      "kind": "example",
+      "text": "The session that drafted this article had its own context compacted earlier the same day and continued from a summary",
+      "anchor": "The session that drafted this article had its own context compacted earlier the same day and carried on from a summary",
+      "section": "lead",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "compaction",
+        "drafting session"
+      ]
+    },
+    {
+      "id": "em-claim-2",
+      "kind": "claim",
+      "text": "The code is fine; the process is the problem",
+      "anchor": "**The code is fine. The process is the problem.**",
+      "section": "In short",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "process",
+        "code"
+      ]
+    },
+    {
+      "id": "em-claim-3",
+      "kind": "claim",
+      "text": "In a Wardley map, complexity shows up as custom-built components where the world already has products and commodities; each fixing rule adds another",
+      "anchor": "In a Wardley map, complexity shows up as a blob of custom-built components sitting where the world already has products and commodities.",
+      "section": "In short",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "complexity",
+        "wardley map",
+        "custom-built blob"
+      ]
+    },
+    {
+      "id": "em-claim-4",
+      "kind": "claim",
+      "text": "Shipping is how complexity stays under control: small shipped components compound, large unshipped ones accumulate",
+      "anchor": "Small shipped components compound. Large unshipped ones accumulate.",
+      "section": "In short",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "shipping",
+        "compounding"
+      ]
+    },
+    {
+      "id": "em-claim-5",
+      "kind": "claim",
+      "text": "The urge to push through is the most expensive one; if you are not getting faster, complexity is winning",
+      "anchor": "The urge to push through is the most expensive one. If you are not getting faster, complexity is winning",
+      "section": "In short",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "slowing down",
+        "speed",
+        "complexity"
+      ]
+    },
+    {
+      "id": "em-example-2",
+      "kind": "example",
+      "text": "The friend's case: an independent verification of a tool before it is installed on a machine",
+      "anchor": "My friend is running an independent verification of a tool before it is installed on a machine.",
+      "section": "Two messages from somebody doing the right thing",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "verification",
+        "case"
+      ]
+    },
+    {
+      "id": "em-fact-1",
+      "kind": "fact",
+      "text": "The verification rules: no network, everything sandboxed, every claim resting on an output read in full, any deviation is a STOP",
+      "anchor": "The rules are strict: no network, everything sandboxed, every claim resting on an output read in full, and any deviation is a STOP.",
+      "section": "Two messages from somebody doing the right thing",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "rule",
+        "sandbox",
+        "stop"
+      ]
+    },
+    {
+      "id": "em-claim-6",
+      "kind": "claim",
+      "text": "The friend is doing what the author recommends: not trusting one model's account of its own work, and building the checks in",
+      "anchor": "not trusting one model's account of its own work, and building the checks in",
+      "section": "Two messages from somebody doing the right thing",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "multi-agent verification"
+      ]
+    },
+    {
+      "id": "em-fact-2",
+      "kind": "fact",
+      "text": "The results on the tool are good; the tests reproduce",
+      "anchor": "The results on the tool are good. The tests reproduce.",
+      "section": "Two messages from somebody doing the right thing",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "test",
+        "result"
+      ]
+    },
+    {
+      "id": "em-data-point-1",
+      "kind": "data-point",
+      "text": "812 concurrency attacks, 0 failures",
+      "anchor": "812 concurrency attacks produced no failures. What keeps failing is the process",
+      "section": "Two messages from somebody doing the right thing",
+      "supports": [
+        "em-claim-2"
+      ],
+      "refs": [],
+      "terms": [
+        "concurrency attack",
+        "race run"
+      ]
+    },
+    {
+      "id": "em-evidence-1",
+      "kind": "evidence",
+      "text": "Pattern 1, compaction: long sessions compact and the agent then skips mandatory steps or writes its report from the summary; this caused most failures",
+      "anchor": "Long sessions compact, and afterwards the agent skips mandatory steps or writes its report from the compaction summary. This caused most of the failures.",
+      "section": "Two messages from somebody doing the right thing",
+      "supports": [
+        "em-claim-2"
+      ],
+      "refs": [],
+      "terms": [
+        "compaction",
+        "failure pattern"
+      ]
+    },
+    {
+      "id": "em-evidence-2",
+      "kind": "evidence",
+      "text": "Pattern 2, lost outputs: on non-zero exit the harness does not save the output and truncates the middle",
+      "anchor": "When a command exits non-zero, the harness does not save its output to a file and truncates the middle.",
+      "section": "Two messages from somebody doing the right thing",
+      "supports": [
+        "em-claim-2"
+      ],
+      "refs": [],
+      "terms": [
+        "lost output",
+        "failure pattern",
+        "harness"
+      ]
+    },
+    {
+      "id": "em-example-3",
+      "kind": "example",
+      "text": "A whole race run was lost because a failing command's output was not saved",
+      "anchor": "A whole race run was lost that way.",
+      "section": "Two messages from somebody doing the right thing",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "lost output",
+        "race run"
+      ]
+    },
+    {
+      "id": "em-evidence-3",
+      "kind": "evidence",
+      "text": "Pattern 3, 100 KB prompts: asked for an exact copy of its prompt for recovery, the agent reproduced it from memory, incomplete or wrong",
+      "anchor": "Asked for an exact copy of its prompt, for recovery after compaction, the agent reproduced it from memory, incomplete or wrong.",
+      "section": "Two messages from somebody doing the right thing",
+      "supports": [
+        "em-claim-2"
+      ],
+      "refs": [],
+      "terms": [
+        "prompt",
+        "failure pattern",
+        "recitation"
+      ]
+    },
+    {
+      "id": "em-data-point-2",
+      "kind": "data-point",
+      "text": "Prompts of 100 KB",
+      "anchor": "**100 KB prompts.**",
+      "section": "Two messages from somebody doing the right thing",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "prompt",
+        "prompt size"
+      ]
+    },
+    {
+      "id": "em-example-4",
+      "kind": "example",
+      "text": "Once, the recited prompt tripped the platform's safety filter",
+      "anchor": "Once that tripped the platform's safety filter.",
+      "section": "Two messages from somebody doing the right thing",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "safety filter"
+      ]
+    },
+    {
+      "id": "em-evidence-4",
+      "kind": "evidence",
+      "text": "Pattern 4, scripts edited in place: afterwards there is no way to prove which bytes ran",
+      "anchor": "Afterwards there is no way to prove which bytes actually ran.",
+      "section": "Two messages from somebody doing the right thing",
+      "supports": [
+        "em-claim-2"
+      ],
+      "refs": [],
+      "terms": [
+        "script",
+        "provenance",
+        "failure pattern"
+      ]
+    },
+    {
+      "id": "em-evidence-5",
+      "kind": "evidence",
+      "text": "Pattern 5, the harness against the rules: the harness suggests cat, sed and heredocs, which their rules forbid",
+      "anchor": "The harness suggests `cat`, `sed` and heredocs, which their rules forbid.",
+      "section": "Two messages from somebody doing the right thing",
+      "supports": [
+        "em-claim-2"
+      ],
+      "refs": [],
+      "terms": [
+        "harness",
+        "failure pattern"
+      ]
+    },
+    {
+      "id": "em-evidence-6",
+      "kind": "evidence",
+      "text": "Pattern 6, too many rules, quoted from the friend: every mistake added a rule, and every new rule caused new mistakes",
+      "anchor": "In their words: \"Every mistake added a rule, and every new rule caused new mistakes.\"",
+      "section": "Two messages from somebody doing the right thing",
+      "supports": [
+        "em-claim-1"
+      ],
+      "refs": [],
+      "terms": [
+        "rule loop",
+        "failure pattern"
+      ]
+    },
+    {
+      "id": "em-decision-2",
+      "kind": "decision",
+      "text": "The friend has decided: nine small sessions instead of two large, a hashed reference folder instead of a huge prompt, outputs to file read in full, scripts versioned and hashed before each run, and a compacting session closes immediately",
+      "anchor": "They have already decided what to change: nine small sessions instead of two large ones, a reference folder with hashes instead of a huge prompt",
+      "section": "Two messages from somebody doing the right thing",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "session",
+        "reference folder",
+        "hash"
+      ]
+    },
+    {
+      "id": "em-data-point-3",
+      "kind": "data-point",
+      "text": "9 small sessions planned in place of 2 large ones",
+      "anchor": "nine small sessions instead of two large ones",
+      "section": "Two messages from somebody doing the right thing",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "session"
+      ]
+    },
+    {
+      "id": "em-question-1",
+      "kind": "question",
+      "text": "The friend's question: does this level of rigour make sense, or am I overdoing it?",
+      "anchor": "does this level of rigour make sense, or am I overdoing it?",
+      "section": "Two messages from somebody doing the right thing",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "rigour",
+        "over-engineering"
+      ]
+    },
+    {
+      "id": "em-claim-7",
+      "kind": "claim",
+      "text": "The friend's changes are right; the article adds why, so the next problem gets the same answer without a new rule",
+      "anchor": "Their changes are right. What I want to add is why they are right",
+      "section": "Two messages from somebody doing the right thing",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "complexity"
+      ]
+    },
+    {
+      "id": "em-definition-1",
+      "kind": "definition",
+      "text": "Wardley map: places each component by visibility to the user (top to bottom) and evolution (left to right: genesis, custom-built, product, commodity)",
+      "anchor": "places each component of a system by how visible it is to the user, top to bottom, and by how evolved it is, left to right: genesis, custom-built, product, commodity",
+      "section": "Complexity is a position on a map",
+      "supports": [],
+      "refs": [
+        "https://wardley-maps.sgit.ai/"
+      ],
+      "terms": [
+        "wardley map",
+        "evolution axis"
+      ]
+    },
+    {
+      "id": "em-claim-8",
+      "kind": "claim",
+      "text": "A healthy map has a thin custom layer where the value is, resting on products or commodities",
+      "anchor": "A healthy map has a thin custom layer where the value is, resting on parts that are products or commodities.",
+      "section": "Complexity is a position on a map",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "wardley map",
+        "custom layer"
+      ]
+    },
+    {
+      "id": "em-claim-9",
+      "kind": "claim",
+      "text": "Wardley maps keep the author's world sane: they predict roughly what will happen and explain why something happened",
+      "anchor": "I would go on record saying Wardley maps are what keep my world sane.",
+      "section": "Complexity is a position on a map",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "wardley map"
+      ]
+    },
+    {
+      "id": "em-claim-10",
+      "kind": "claim",
+      "text": "Failures are usually a mismatch on the evolution axis: commodity assumed when still custom, or custom rebuilt when already a commodity",
+      "anchor": "When I look back at a failure, it is usually a mismatch on the evolution axis",
+      "section": "Complexity is a position on a map",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "evolution axis",
+        "failure"
+      ]
+    },
+    {
+      "id": "em-limitation-1",
+      "kind": "limitation",
+      "text": "Every map on the site is a claim, not a finding, with its source below the figure so it can be argued with",
+      "anchor": "Like every map on this site it is a claim, not a finding, and its source is below the figure so it can be argued with.",
+      "section": "Complexity is a position on a map",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "wardley map",
+        "claim"
+      ]
+    },
+    {
+      "id": "em-artefact-2",
+      "kind": "artefact",
+      "text": "Map one (cx-map-now.webp): the verification as it runs, six failing things in a blob on the left, files, hashes and git unused at the far right",
+      "anchor": "!shot cx-map-now.webp | images/ | Map one: the verification as it runs.",
+      "section": "Complexity is a position on a map",
+      "supports": [],
+      "refs": [
+        "images/cx-map-now.webp"
+      ],
+      "terms": [
+        "map one",
+        "figure",
+        "custom-built blob"
+      ]
+    },
+    {
+      "id": "em-artefact-3",
+      "kind": "artefact",
+      "text": "Mermaid wardley-beta source for map one",
+      "anchor": "!source Map one, the Mermaid wardley-beta source | images/cx-map-now.webp",
+      "section": "Complexity is a position on a map",
+      "supports": [],
+      "refs": [
+        "images/cx-map-now.webp"
+      ],
+      "terms": [
+        "map one",
+        "mermaid",
+        "wardley-beta"
+      ]
+    },
+    {
+      "id": "em-claim-11",
+      "kind": "claim",
+      "text": "The problem is the blob between the agents and the commodities: recovery, output capture, proof of bytes, kilobytes of rules, long sessions, an all-firing STOP, each built by hand every session",
+      "anchor": "The problem is the blob between the agents and the commodities.",
+      "section": "Complexity is a position on a map",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "custom-built blob"
+      ]
+    },
+    {
+      "id": "em-fact-3",
+      "kind": "fact",
+      "text": "Files, hashes and version control have solved most of those problems for decades",
+      "anchor": "which have solved most of those problems for decades",
+      "section": "Complexity is a position on a map",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "file",
+        "hash",
+        "version control"
+      ]
+    },
+    {
+      "id": "em-definition-2",
+      "kind": "definition",
+      "text": "Complexity (on a map): not the number of components but custom-built components sitting where commodities already exist, each maintained by attention",
+      "anchor": "it is custom-built components sitting where commodities already exist, so that every one of them has to be maintained by attention",
+      "section": "Complexity is a position on a map",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "complexity",
+        "attention"
+      ]
+    },
+    {
+      "id": "em-entity-3",
+      "kind": "entity",
+      "text": "Mermaid's wardley-beta diagram, used to render the two maps",
+      "anchor": "The two maps were rendered with Mermaid's wardley-beta diagram from the sources shown",
+      "section": "colophon (after Where to start)",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "mermaid",
+        "wardley-beta"
+      ]
+    },
+    {
+      "id": "em-claim-12",
+      "kind": "claim",
+      "text": "The way out is not a better rule: make each piece of the blob a small component with one job, test it once, ship it, let it move right",
+      "anchor": "The way out is not a better rule.",
+      "section": "Move the pieces right",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "moving right",
+        "component"
+      ]
+    },
+    {
+      "id": "em-method-1",
+      "kind": "method",
+      "text": "Replace steps skipped after compaction with steps short enough to finish before compaction, reading and writing state in files",
+      "anchor": "Steps skipped after compaction | State held in the context, which compaction rewrites | Steps short enough to finish before compaction, reading their state from files and writing it back",
+      "section": "Move the pieces right",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "compaction",
+        "state",
+        "step"
+      ]
+    },
+    {
+      "id": "em-method-2",
+      "kind": "method",
+      "text": "Replace hand output capture with a run wrapper that writes stdout, stderr, exit code and timing to a file before anything reads it",
+      "anchor": "A run wrapper: every command goes through one small script that writes stdout, stderr, exit code and timing to a file before anything reads it",
+      "section": "Move the pieces right",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "run wrapper",
+        "lost output"
+      ]
+    },
+    {
+      "id": "em-method-3",
+      "kind": "method",
+      "text": "Replace 100 KB recited prompts (model used as storage) with a short policy and a hashed reference folder on disk, read never recited",
+      "anchor": "100 KB prompts recited from memory | The model used as storage | A short policy and a reference folder on disk, with hashes; the session reads them and never recites them",
+      "section": "Move the pieces right",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "prompt",
+        "reference folder",
+        "hash"
+      ]
+    },
+    {
+      "id": "em-method-4",
+      "kind": "method",
+      "text": "Replace provenance by trust with scripts committed and hashed before each run; the run record names the commit",
+      "anchor": "Scripts edited in place | Provenance by trust | Scripts committed and hashed before each run; the run record names the commit",
+      "section": "Move the pieces right",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "script",
+        "provenance",
+        "commit"
+      ]
+    },
+    {
+      "id": "em-method-5",
+      "kind": "method",
+      "text": "Where rules fight the environment, change the environment or accept harmless defaults; a rule that fights the tool loses",
+      "anchor": "Change the environment, or accept its defaults where they are harmless; a rule that fights the tool loses",
+      "section": "Move the pieces right",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "harness",
+        "environment"
+      ]
+    },
+    {
+      "id": "em-method-6",
+      "kind": "method",
+      "text": "Where policy is used as the control, keep rules only for incidents and replace each by structure as soon as one can be built",
+      "anchor": "Every mistake adds a rule | Policy used as the control | Rules only for incidents, and each rule replaced by structure as soon as one can be built",
+      "section": "Move the pieces right",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "rule",
+        "incident",
+        "structure"
+      ]
+    },
+    {
+      "id": "em-artefact-4",
+      "kind": "artefact",
+      "text": "Map two (cx-map-next.webp): the same verification with each piece made small and moving right; tests and report judgment stay custom",
+      "anchor": "!shot cx-map-next.webp | images/ | Map two: the same verification with each piece of process made small and drawn moving right.",
+      "section": "Move the pieces right",
+      "supports": [],
+      "refs": [
+        "images/cx-map-next.webp"
+      ],
+      "terms": [
+        "map two",
+        "figure"
+      ]
+    },
+    {
+      "id": "em-artefact-5",
+      "kind": "artefact",
+      "text": "Mermaid wardley-beta source for map two",
+      "anchor": "!source Map two, the Mermaid wardley-beta source | images/cx-map-next.webp",
+      "section": "Move the pieces right",
+      "supports": [],
+      "refs": [
+        "images/cx-map-next.webp"
+      ],
+      "terms": [
+        "map two",
+        "mermaid",
+        "wardley-beta"
+      ]
+    },
+    {
+      "id": "em-evidence-7",
+      "kind": "evidence",
+      "text": "nfrs.sgit.ai, reading down its failure column: what a machine enforces, holds; what attention enforces, drifts",
+      "anchor": "\"what a machine enforces, holds; what attention enforces, drifts.\"",
+      "section": "Move the pieces right",
+      "supports": [
+        "em-claim-13"
+      ],
+      "refs": [
+        "https://nfrs.sgit.ai/"
+      ],
+      "terms": [
+        "enforcement",
+        "attention",
+        "nfr"
+      ]
+    },
+    {
+      "id": "em-data-point-4",
+      "kind": "data-point",
+      "text": "coding.sgit.ai: 31 documented rules, and 4 structural guards as the working automated enforcement, each encoding an incident",
+      "anchor": "31 documented rules, and the working automated enforcement is four structural guards, each of which encodes an incident rather than a rule",
+      "section": "Move the pieces right",
+      "supports": [
+        "em-claim-13"
+      ],
+      "refs": [
+        "https://coding.sgit.ai/"
+      ],
+      "terms": [
+        "rule",
+        "structural guard",
+        "enforcement"
+      ]
+    },
+    {
+      "id": "em-fact-4",
+      "kind": "fact",
+      "text": "As nfrs.sgit.ai puts it, every guard encodes a rule that was violated at least once",
+      "anchor": "is that every guard encodes a rule that was violated at least once",
+      "section": "Move the pieces right",
+      "supports": [],
+      "refs": [
+        "https://nfrs.sgit.ai/"
+      ],
+      "terms": [
+        "structural guard",
+        "incident"
+      ]
+    },
+    {
+      "id": "em-claim-13",
+      "kind": "claim",
+      "text": "Rules from incidents, enforced by machines, stay few; rules from worry, enforced by attention, multiply",
+      "anchor": "Rules that come from incidents, enforced by machines, stay few. Rules that come from worry, enforced by attention, multiply.",
+      "section": "Move the pieces right",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "rule",
+        "enforcement",
+        "incident"
+      ]
+    },
+    {
+      "id": "em-source-3",
+      "kind": "source",
+      "text": "nfrs.sgit.ai, the estate's account of non-functional requirements, testing, CI, documentation and resilience",
+      "anchor": "[nfrs.sgit.ai](https://nfrs.sgit.ai/) is the estate's own account of testing, CI, documentation, resilience",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [
+        "https://nfrs.sgit.ai/"
+      ],
+      "terms": [
+        "nfr",
+        "source"
+      ]
+    },
+    {
+      "id": "em-source-4",
+      "kind": "source",
+      "text": "coding.sgit.ai, how the code is actually written, counted rather than claimed",
+      "anchor": "[coding.sgit.ai](https://coding.sgit.ai/) is how the code is actually written, counted rather than claimed",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [
+        "https://coding.sgit.ai/"
+      ],
+      "terms": [
+        "coding",
+        "source"
+      ]
+    },
+    {
+      "id": "em-method-7",
+      "kind": "method",
+      "text": "Principle 1: map your project and the complexity itself; get an LLM to teach mapping and draw a first version you argue with",
+      "anchor": "Draw the map of your own project, and draw one of the complexity itself.",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "wardley map",
+        "principle"
+      ]
+    },
+    {
+      "id": "em-claim-14",
+      "kind": "claim",
+      "text": "Custom components the world treats as commodity, and assumed-commodity components still custom, are where the next failure comes from",
+      "anchor": "Both are where the next failure will come from.",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "evolution axis",
+        "failure"
+      ]
+    },
+    {
+      "id": "em-source-5",
+      "kind": "source",
+      "text": "wardley-maps.sgit.ai, which lists forty doctrines",
+      "anchor": "lists forty doctrines, from *focus on user needs* and *use appropriate methods*",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [
+        "https://wardley-maps.sgit.ai/"
+      ],
+      "terms": [
+        "doctrine",
+        "source"
+      ]
+    },
+    {
+      "id": "em-data-point-5",
+      "kind": "data-point",
+      "text": "40 doctrines listed on wardley-maps.sgit.ai",
+      "anchor": "lists forty doctrines",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [
+        "https://wardley-maps.sgit.ai/"
+      ],
+      "terms": [
+        "doctrine"
+      ]
+    },
+    {
+      "id": "em-definition-3",
+      "kind": "definition",
+      "text": "FIRE doctrine: fast, inexpensive, restrained, elegant",
+      "anchor": "*think FIRE* (fast, inexpensive, restrained, elegant)",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "doctrine",
+        "fire"
+      ]
+    },
+    {
+      "id": "em-claim-15",
+      "kind": "claim",
+      "text": "Know your users and focus on user needs start with the person preparing the install, not with the process",
+      "anchor": "*Know your users* and *focus on user needs* start with the person preparing the install, not with the process.",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "doctrine",
+        "user need"
+      ]
+    },
+    {
+      "id": "em-entity-4",
+      "kind": "entity",
+      "text": "Simon Wardley, originator of the doctrine names and Wardley Mapping (CC BY-SA 4.0)",
+      "anchor": "The doctrine names are Simon Wardley's, as listed on wardley-maps.sgit.ai",
+      "section": "colophon (after Where to start)",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "simon wardley",
+        "wardley map"
+      ]
+    },
+    {
+      "id": "em-method-8",
+      "kind": "method",
+      "text": "Principle 2: commoditise small chunks continuously so they compound; a healthy workflow gets faster the more of it there is",
+      "anchor": "The only way I have found to make that true in practice is to commoditise small chunks continuously, so they compound.",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "compounding",
+        "commoditisation",
+        "principle"
+      ]
+    },
+    {
+      "id": "em-claim-16",
+      "kind": "claim",
+      "text": "Each self-contained component keeps its blast radius under control because it was shipped as a unit of its own",
+      "anchor": "Each is self-contained, and each keeps its blast radius under control, because it was shipped as a unit of its own",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "blast radius",
+        "shipping"
+      ]
+    },
+    {
+      "id": "em-artefact-6",
+      "kind": "artefact",
+      "text": "Figure cx-compound.webp: how the components compounded on this site, from sgit and vaults up to story vaults and the bridge simulation",
+      "anchor": "!shot cx-compound.webp | images/ | How the components compounded on this site, read from the bottom",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [
+        "images/cx-compound.webp"
+      ],
+      "terms": [
+        "figure",
+        "compounding"
+      ]
+    },
+    {
+      "id": "em-example-5",
+      "kind": "example",
+      "text": "The bridge simulation, published yesterday, was quick to build because almost nothing in it was new",
+      "anchor": "The bridge simulation I published yesterday is a good test of this.",
+      "section": "The principles I work by",
+      "supports": [
+        "em-method-8"
+      ],
+      "refs": [],
+      "terms": [
+        "bridge simulation",
+        "compounding"
+      ]
+    },
+    {
+      "id": "em-data-point-6",
+      "kind": "data-point",
+      "text": "Bridge simulation: a 126-file vault with an app, an API description, economics and 4 themes",
+      "anchor": "It is a 126-file vault with an app, an API description, economics and four themes",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "bridge simulation",
+        "vault"
+      ]
+    },
+    {
+      "id": "em-claim-17",
+      "kind": "claim",
+      "text": "The friend is doing too much at once, so nothing gets to become boring",
+      "anchor": "They are doing too much at once, so nothing gets to become boring.",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "over-engineering"
+      ]
+    },
+    {
+      "id": "em-definition-4",
+      "kind": "definition",
+      "text": "To ship: to make something usable by somebody else, an agent included",
+      "anchor": "To ship is to take something and make it usable by somebody else, and that somebody can be an agent",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "shipping"
+      ]
+    },
+    {
+      "id": "em-claim-18",
+      "kind": "claim",
+      "text": "Shipping is probably the single most important thing; without it you over-engineer, which LLMs make very easy",
+      "anchor": "If you do not ship, you over-engineer, and with LLMs it is very easy to over-engineer, because they can.",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "shipping",
+        "over-engineering",
+        "llm"
+      ]
+    },
+    {
+      "id": "em-claim-19",
+      "kind": "claim",
+      "text": "If you are not releasing something, you are probably not solving problems at the right altitude",
+      "anchor": "If you are not releasing something, you are probably not solving problems at the right altitude.",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "shipping",
+        "altitude"
+      ]
+    },
+    {
+      "id": "em-decision-3",
+      "kind": "decision",
+      "text": "A lot of what the author publishes is half-baked by design; every release teaches something, and then he stops",
+      "anchor": "That is why a lot of what I publish is half-baked, by design.",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "shipping",
+        "stopping"
+      ]
+    },
+    {
+      "id": "em-example-6",
+      "kind": "example",
+      "text": "The newsroom experiments were stopped once they had answered their question, before the story vault work",
+      "anchor": "I did a lot of newsroom experiments before the story vault work, and I stopped them when they had answered their question",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "newsroom",
+        "stopping"
+      ]
+    },
+    {
+      "id": "em-claim-20",
+      "kind": "claim",
+      "text": "Making it public removes complexity: you cannot hide an over-engineered thing in public",
+      "anchor": "You cannot hide an over-engineered thing in public, and you stop solving problems that do not need solving yet.",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "publishing",
+        "over-engineering"
+      ]
+    },
+    {
+      "id": "em-definition-5",
+      "kind": "definition",
+      "text": "Context window: what the model receives when it makes a call",
+      "anchor": "The context window is what the model receives when it makes a call.",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "context window"
+      ]
+    },
+    {
+      "id": "em-claim-21",
+      "kind": "claim",
+      "text": "With large contexts you lose control; when Claude or ChatGPT compacts you do not control what it keeps",
+      "anchor": "when Claude or ChatGPT compacts, you do not control how it compresses or what it keeps",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "compaction",
+        "context window"
+      ]
+    },
+    {
+      "id": "em-hypothesis-1",
+      "kind": "hypothesis",
+      "text": "The author sees very few hallucinations and thinks it is because briefs and sessions are tight, many and isolated",
+      "anchor": "I see very few hallucinations these days, and I think it is because my briefs are tight, my sessions are tight, and I have many of them, each isolated, each with one focus.",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "hallucination",
+        "session"
+      ]
+    },
+    {
+      "id": "em-data-point-7",
+      "kind": "data-point",
+      "text": "Agent team: one step per agent of up to 12 minutes",
+      "anchor": "[one step per agent of up to twelve minutes](/articles/the-agent-team-as-it-runs.html)",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [
+        "/articles/the-agent-team-as-it-runs.html"
+      ],
+      "terms": [
+        "agent team",
+        "step"
+      ]
+    },
+    {
+      "id": "em-method-9",
+      "kind": "method",
+      "text": "End long threads by asking the agent for a document of what was learned and decided, and start a new session from it",
+      "anchor": "I would end each one by asking it to write a document with everything we had learned, decided and figured out",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "debrief",
+        "session",
+        "compression"
+      ]
+    },
+    {
+      "id": "em-method-10",
+      "kind": "method",
+      "text": "Test: a new session in Claude or ChatGPT should be productive from the first prompt, with focused, compressed reference material read by you",
+      "anchor": "A good test: you should be able to open a new session, in Claude or in ChatGPT, and have it productive from the first prompt.",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "session",
+        "first prompt"
+      ]
+    },
+    {
+      "id": "em-claim-22",
+      "kind": "claim",
+      "text": "If a session needs 100 KB of rules to be productive, the rules are doing the job structure should do",
+      "anchor": "If a session needs 100 KB of rules to be productive, the rules are doing the job that structure should do.",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "prompt",
+        "structure",
+        "rule"
+      ]
+    },
+    {
+      "id": "em-claim-23",
+      "kind": "claim",
+      "text": "Every document an agent writes is a compression of what was learned, in a form the next agent can read; it is a graph",
+      "anchor": "every document an agent writes is a compression of what was learned, in a form the next agent can read",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "memory",
+        "file system",
+        "graph"
+      ]
+    },
+    {
+      "id": "em-entity-5",
+      "kind": "entity",
+      "text": "Email-FS, through which agents talk to each other",
+      "anchor": "Agents talk to each other through Email-FS",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "email-fs"
+      ]
+    },
+    {
+      "id": "em-entity-6",
+      "kind": "entity",
+      "text": "Issues-FS, where work is tracked",
+      "anchor": "work is tracked in [Issues-FS](https://issues-fs.sgit.ai/)",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [
+        "https://issues-fs.sgit.ai/"
+      ],
+      "terms": [
+        "issues-fs"
+      ]
+    },
+    {
+      "id": "em-decision-4",
+      "kind": "decision",
+      "text": "The author prefers version control (git or a vault) for memory, because it gives history and proves which prompt version a session read",
+      "anchor": "I prefer version control, git or a vault, because then the memory has a history, and you can prove which version of the prompt a session read",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "memory",
+        "version control",
+        "vault"
+      ]
+    },
+    {
+      "id": "em-method-11",
+      "kind": "method",
+      "text": "Principle 6: when complexity hits, slow down, go back to a first draft, break into small components and define them",
+      "anchor": "If you are being hit by complexity, you have a problem, and the answer is to slow down",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "slowing down",
+        "complexity",
+        "principle"
+      ]
+    },
+    {
+      "id": "em-claim-24",
+      "kind": "claim",
+      "text": "If compaction is hurting you, you are giving the model far too much context",
+      "anchor": "If compaction is hurting you, you are giving the model far too much context, and you need to bring it down.",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "compaction",
+        "context window"
+      ]
+    },
+    {
+      "id": "em-claim-25",
+      "kind": "claim",
+      "text": "Compromising now to go faster usually slows you down",
+      "anchor": "Compromising now to go faster usually slows you down.",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "speed",
+        "slowing down"
+      ]
+    },
+    {
+      "id": "em-claim-26",
+      "kind": "claim",
+      "text": "Secure and safe are not the same; sometimes ship something not fully hardened if its attack surface is controlled",
+      "anchor": "Sometimes it is right to ship something that is not fully hardened, as long as its attack surface is controlled",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "security",
+        "safety",
+        "attack surface"
+      ]
+    },
+    {
+      "id": "em-claim-27",
+      "kind": "claim",
+      "text": "Most companies ship software far less secure than users assume; the difference is whether they know their compromises",
+      "anchor": "In my experience most companies ship software that is far less secure than its users assume",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "security",
+        "compromise"
+      ]
+    },
+    {
+      "id": "em-method-12",
+      "kind": "method",
+      "text": "Ask: what are the assets, the threat, the attack vector, and what customers buy; write a one-page threat model, publish it, ask the community",
+      "anchor": "Write the threat model down, one page, publish it, and ask the community whether you are making the right compromises.",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "threat model",
+        "asset",
+        "attack vector"
+      ]
+    },
+    {
+      "id": "em-claim-28",
+      "kind": "claim",
+      "text": "On an isolated machine with no network and nothing of value, many attacks are not available and requirements drop",
+      "anchor": "If something runs on an isolated machine with no network and nothing of value on it, many attacks are simply not available",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "threat model",
+        "isolation"
+      ]
+    },
+    {
+      "id": "em-claim-29",
+      "kind": "claim",
+      "text": "A rule is a weak barrier; a record detects; a boundary prevents",
+      "anchor": "A rule is a weak barrier: it relies on the agent remembering and judging",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "barrier",
+        "rule",
+        "boundary"
+      ]
+    },
+    {
+      "id": "em-method-13",
+      "kind": "method",
+      "text": "When a rule fails, ask which stronger barrier can replace it, not how to word it more strongly",
+      "anchor": "When a rule fails, the question is not how to word it more strongly but which of the stronger barriers can replace it.",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "barrier",
+        "rule"
+      ]
+    },
+    {
+      "id": "em-evidence-8",
+      "kind": "evidence",
+      "text": "In the agent team's own grading, the policy text is graded weak",
+      "anchor": "[the agent team's own grading](/articles/the-agent-team-as-it-runs.html) the policy text is graded weak",
+      "section": "The principles I work by",
+      "supports": [
+        "em-claim-29"
+      ],
+      "refs": [
+        "/articles/the-agent-team-as-it-runs.html"
+      ],
+      "terms": [
+        "agent team",
+        "grading",
+        "barrier"
+      ]
+    },
+    {
+      "id": "em-data-point-8",
+      "kind": "data-point",
+      "text": "Bridge vault's gate runs 44 checks, many existing because something broke once",
+      "anchor": "runs 44 of them, and many exist because something broke once",
+      "section": "The principles I work by",
+      "supports": [
+        "em-claim-13"
+      ],
+      "refs": [
+        "/articles/the-bridge-followed-to-the-end.html"
+      ],
+      "terms": [
+        "gate",
+        "check",
+        "bridge simulation"
+      ]
+    },
+    {
+      "id": "em-example-7",
+      "kind": "example",
+      "text": "Green does not mean live: the story of one of the gate checks",
+      "anchor": "[Green does not mean live](/articles/green-does-not-mean-live.html) is the story of one of them.",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [
+        "/articles/green-does-not-mean-live.html"
+      ],
+      "terms": [
+        "gate",
+        "check"
+      ]
+    },
+    {
+      "id": "em-method-14",
+      "kind": "method",
+      "text": "Principle 9: run it in five environments, locally, air-gapped, Azure, GCP and AWS; each breaks a different assumption",
+      "anchor": "Running in five different environments is better: locally, air-gapped, and on Azure, GCP and AWS.",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "environment",
+        "principle"
+      ]
+    },
+    {
+      "id": "em-claim-30",
+      "kind": "claim",
+      "text": "Running in many environments shows where the bottlenecks are, most useful when complexity starts to hit",
+      "anchor": "It is the most useful thing to do when complexity starts to hit, because it shows you where the bottlenecks are.",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "environment",
+        "bottleneck"
+      ]
+    },
+    {
+      "id": "em-method-15",
+      "kind": "method",
+      "text": "Principle 10: reverse-engineer the five, seven or ten paths that evolve into a large design",
+      "anchor": "you need to reverse-engineer the five, seven or ten paths that evolve into them",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "path",
+        "destination",
+        "principle"
+      ]
+    },
+    {
+      "id": "em-example-8",
+      "kind": "example",
+      "text": "The forest picture: stages change the ground for the next; early species are gone when the big trees stand",
+      "anchor": "A forest is a useful picture: it grows through stages, each changing the ground for the next",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "forest",
+        "evolution"
+      ]
+    },
+    {
+      "id": "em-claim-31",
+      "kind": "claim",
+      "text": "If you have a choice and do not use what you built, it is not good enough yet; the author would build a solution not using the vaults",
+      "anchor": "That is brutal, but if you have a choice and you do not use what you built, it is not good enough yet.",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "open source",
+        "vault"
+      ]
+    },
+    {
+      "id": "em-method-16",
+      "kind": "method",
+      "text": "Principle 11: learn the engineering that already exists, CI, Kanban, patterns, history of what worked",
+      "anchor": "Continuous integration, Kanban boards, engineering patterns, the history of what worked",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "engineering practice",
+        "principle"
+      ]
+    },
+    {
+      "id": "em-definition-6",
+      "kind": "definition",
+      "text": "Iterative Flow Development: the estate's methodology, naming developer attention as the scarce resource",
+      "anchor": "the methodology we call Iterative Flow Development, which names developer attention as the scarce resource the whole process exists to protect",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "iterative flow development",
+        "attention"
+      ]
+    },
+    {
+      "id": "em-decision-5",
+      "kind": "decision",
+      "text": "Testing rule of no mocks and no patches, affordable because cheap typed objects make the real thing easy; type system and testing philosophy are one decision",
+      "anchor": "Its testing rule, no mocks and no patches, is affordable only because cheap typed objects make the real thing as easy to build as a stand-in",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [
+        "https://coding.sgit.ai/"
+      ],
+      "terms": [
+        "testing",
+        "type system",
+        "mock"
+      ]
+    },
+    {
+      "id": "em-source-6",
+      "kind": "source",
+      "text": "Who reads the code, a brief on what quality engineering each stage of evolution needs",
+      "anchor": "[Who reads the code](https://github.com/the-cyber-boardroom/SGraph-AI__App__Send/blob/dev/team/humans/dinis_cruz/briefs/03/21/v0.16.26__article__who-should-read-the-code.md)",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [
+        "https://github.com/the-cyber-boardroom/SGraph-AI__App__Send/blob/dev/team/humans/dinis_cruz/briefs/03/21/v0.16.26__article__who-should-read-the-code.md"
+      ],
+      "terms": [
+        "code review",
+        "source"
+      ]
+    },
+    {
+      "id": "em-source-7",
+      "kind": "source",
+      "text": "Related site articles: risk acceptance and footprint and blast radius",
+      "anchor": "The site's articles on [risk acceptance](/articles/every-risk-is-already-accepted.html) and [footprint and blast radius](/articles/footprint-and-blast-radius.html)",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [
+        "/articles/every-risk-is-already-accepted.html",
+        "/articles/footprint-and-blast-radius.html"
+      ],
+      "terms": [
+        "risk acceptance",
+        "blast radius",
+        "source"
+      ]
+    },
+    {
+      "id": "em-source-8",
+      "kind": "source",
+      "text": "Memory is not a spectator sport (site article)",
+      "anchor": "[memory is not a spectator sport](/articles/memory-is-not-a-spectator-sport.html)",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [
+        "/articles/memory-is-not-a-spectator-sport.html",
+        "/articles/what-sgit-is.html"
+      ],
+      "terms": [
+        "memory",
+        "source"
+      ]
+    },
+    {
+      "id": "em-question-2",
+      "kind": "question",
+      "text": "Do you let sessions compact, or design every step to finish before?",
+      "anchor": "**Do you let sessions compact, or design every step to finish before?**",
+      "section": "Answers to the questions",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "compaction",
+        "question"
+      ]
+    },
+    {
+      "id": "em-decision-6",
+      "kind": "decision",
+      "text": "The author designs steps to finish before compaction and keeps step state on disk",
+      "anchor": "I design steps to finish before compaction, and I keep the state of the step on disk so that compaction, if it happens, loses nothing that matters.",
+      "section": "Answers to the questions",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "compaction",
+        "state"
+      ]
+    },
+    {
+      "id": "em-claim-32",
+      "kind": "claim",
+      "text": "Closing a session that compacts is a good rule, because it is a boundary, not a request",
+      "anchor": "Closing a session that compacts is a good rule, because it is a boundary, not a request.",
+      "section": "Answers to the questions",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "boundary",
+        "compaction"
+      ]
+    },
+    {
+      "id": "em-method-17",
+      "kind": "method",
+      "text": "Do not ask an agent to recite its prompt: point it at the file and record the file's hash in the run",
+      "anchor": "And do not ask an agent to recite its prompt: point it at the file, and record the file's hash in the run.",
+      "section": "Answers to the questions",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "prompt",
+        "hash",
+        "recitation"
+      ]
+    },
+    {
+      "id": "em-question-3",
+      "kind": "question",
+      "text": "How does the post-session audit card work?",
+      "anchor": "**How does the post-session audit card work?**",
+      "section": "Answers to the questions",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "audit card",
+        "question"
+      ]
+    },
+    {
+      "id": "em-definition-7",
+      "kind": "definition",
+      "text": "Audit card: a script over the transcript, run after the step, counting tools, tokens, files and network calls and flagging anything outside policy",
+      "anchor": "It is a script over the transcript, run after the step.",
+      "section": "Answers to the questions",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "audit card",
+        "transcript"
+      ]
+    },
+    {
+      "id": "em-claim-33",
+      "kind": "claim",
+      "text": "The agent does not police itself on every command; the record is read afterwards by something not part of the work",
+      "anchor": "The point is that the agent does not police itself on every command, which costs attention and context",
+      "section": "Answers to the questions",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "audit card",
+        "attention"
+      ]
+    },
+    {
+      "id": "em-question-4",
+      "kind": "question",
+      "text": "When an agent makes a mistake of form, do you log it and continue?",
+      "anchor": "**When an agent makes a mistake of form, do you log it and continue?**",
+      "section": "Answers to the questions",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "stop",
+        "question"
+      ]
+    },
+    {
+      "id": "em-method-18",
+      "kind": "method",
+      "text": "Log mistakes of form and carry on; stop for harm, or for a boundary that broke",
+      "anchor": "Log mistakes of form and carry on; stop for harm, or for a boundary that broke.",
+      "section": "Answers to the questions",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "stop",
+        "harm",
+        "mistake of form"
+      ]
+    },
+    {
+      "id": "em-claim-34",
+      "kind": "claim",
+      "text": "If everything is a STOP, a STOP stops meaning anything",
+      "anchor": "If everything is a STOP, a STOP stops meaning anything",
+      "section": "Answers to the questions",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "stop"
+      ]
+    },
+    {
+      "id": "em-definition-8",
+      "kind": "definition",
+      "text": "In the agent team, a stop is a hold file only a person can release",
+      "anchor": "In the agent team, a stop is a hold file that only a person can release.",
+      "section": "Answers to the questions",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "stop",
+        "hold file",
+        "agent team"
+      ]
+    },
+    {
+      "id": "em-example-9",
+      "kind": "example",
+      "text": "An accidental calendar call, which failed and sent nothing, was logged by the agent against its own policy rather than held",
+      "anchor": "An accidental calendar call, which failed and sent nothing, was logged by the agent against its own policy rather than treated as a hold.",
+      "section": "Answers to the questions",
+      "supports": [
+        "em-method-18"
+      ],
+      "refs": [],
+      "terms": [
+        "calendar call",
+        "mistake of form"
+      ]
+    },
+    {
+      "id": "em-question-5",
+      "kind": "question",
+      "text": "Is this level of rigour overdoing it?",
+      "anchor": "**Is this level of rigour overdoing it?**",
+      "section": "Answers to the questions",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "rigour",
+        "question"
+      ]
+    },
+    {
+      "id": "em-claim-35",
+      "kind": "claim",
+      "text": "For the process, yes; for the intent, no; rigour should match the assets and blast radius",
+      "anchor": "For the process, yes. For the intent, no. The rigour should match the assets and the blast radius.",
+      "section": "Answers to the questions",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "rigour",
+        "blast radius"
+      ]
+    },
+    {
+      "id": "em-claim-36",
+      "kind": "claim",
+      "text": "The process has become a second product nobody asked for, costing more than the verification it serves",
+      "anchor": "The process around it has become a second product nobody asked for, and it is costing more than the verification it serves.",
+      "section": "Answers to the questions",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "process",
+        "rigour"
+      ]
+    },
+    {
+      "id": "em-claim-37",
+      "kind": "claim",
+      "text": "The lesson applies to companies too, including the author's own",
+      "anchor": "This applies to companies as much as to sessions, and I say it about my own.",
+      "section": "The same lesson, one level up",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "company",
+        "simplicity"
+      ]
+    },
+    {
+      "id": "em-hypothesis-2",
+      "kind": "hypothesis",
+      "text": "A mapped path from agent behaviour policies to a licence to operate to insurance, which the author thinks is strong",
+      "anchor": "We have mapped what I think is a strong path, from agent behaviour policies to a licence to operate to insurance.",
+      "section": "The same lesson, one level up",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "agent behaviour policy",
+        "licence to operate",
+        "insurance"
+      ]
+    },
+    {
+      "id": "em-decision-7",
+      "kind": "decision",
+      "text": "Way to market: break what they have into much simpler components to earn customers, because customers struggle with simpler things",
+      "anchor": "our way to market is to break what we have into much simpler components",
+      "section": "The same lesson, one level up",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "go to market",
+        "simplicity"
+      ]
+    },
+    {
+      "id": "em-claim-38",
+      "kind": "claim",
+      "text": "If it cannot work in the simple use cases, it will struggle in the complex ones",
+      "anchor": "if it cannot work in the simple use cases, it will struggle in the complex ones",
+      "section": "The same lesson, one level up",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "simplicity"
+      ]
+    },
+    {
+      "id": "em-claim-39",
+      "kind": "claim",
+      "text": "Funding can give a false sense of having a product, or of it being ready to scale",
+      "anchor": "Funding does not always help here; it can give you a false sense of having a product",
+      "section": "The same lesson, one level up",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "funding"
+      ]
+    },
+    {
+      "id": "em-entity-7",
+      "kind": "entity",
+      "text": "Agent Behaviour Policies, one of the compounded layers on the site",
+      "anchor": "fractal semantic graphs, Agent Behaviour Policies, the agent team",
+      "section": "The principles I work by",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "agent behaviour policy"
+      ]
+    },
+    {
+      "id": "em-method-19",
+      "kind": "method",
+      "text": "Where to start: draw the map, make the most expensive piece a small tool, cut the prompt to a page, outputs to file via wrapper, commit before run, split STOPs, publish a threat model, run elsewhere, delete rules",
+      "anchor": "**Pick the most expensive piece of the blob** and make it a small tool with one job.",
+      "section": "Where to start",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "starting point",
+        "method"
+      ]
+    },
+    {
+      "id": "em-method-20",
+      "kind": "method",
+      "text": "Delete a rule every time a component makes it unnecessary",
+      "anchor": "**Delete a rule** every time a component makes it unnecessary.",
+      "section": "Where to start",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "rule"
+      ]
+    },
+    {
+      "id": "em-method-21",
+      "kind": "method",
+      "text": "Split the STOPs: harm stops, form is logged",
+      "anchor": "**Split the STOPs**: harm stops, form is logged.",
+      "section": "Where to start",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "stop",
+        "harm"
+      ]
+    },
+    {
+      "id": "em-fact-5",
+      "kind": "fact",
+      "text": "Drafted by agent@riskmandate.ai (Claude Opus 5.5) in the sgit.ai site session on 8 October 2026; Dinis Cruz holds editorial responsibility",
+      "anchor": "by agent@riskmandate.ai (Claude Opus 5.5, claude-opus-5-5) in the sgit.ai site session, on 8 October 2026",
+      "section": "colophon (after Where to start)",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "authorship",
+        "provenance"
+      ]
+    },
+    {
+      "id": "em-entity-8",
+      "kind": "entity",
+      "text": "Dinis Cruz, author of the argument and person with editorial responsibility",
+      "anchor": "Drafted from two messages and a voice memo by Dinis Cruz, who is the author of the argument and the person with editorial responsibility",
+      "section": "colophon (after Where to start)",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "dinis cruz",
+        "authorship"
+      ]
+    },
+    {
+      "id": "em-limitation-2",
+      "kind": "limitation",
+      "text": "The messages are paraphrased and their author is not named; only one line is quoted from them",
+      "anchor": "The messages are paraphrased and their author is not named; the one line quoted from them is theirs.",
+      "section": "colophon (after Where to start)",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "paraphrase",
+        "provenance"
+      ]
+    },
+    {
+      "id": "em-limitation-3",
+      "kind": "limitation",
+      "text": "Every placement in the two maps is a claim",
+      "anchor": "every placement in them is a claim",
+      "section": "colophon (after Where to start)",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "wardley map",
+        "claim"
+      ]
+    }
+  ],
+  "terms": {
+    "agent behaviour policy": [
+      "em-hypothesis-2",
+      "em-entity-7"
+    ],
+    "agent team": [
+      "em-data-point-7",
+      "em-evidence-8",
+      "em-definition-8"
+    ],
+    "altitude": [
+      "em-claim-19"
+    ],
+    "anonymity": [
+      "em-decision-1"
+    ],
+    "asset": [
+      "em-method-12"
+    ],
+    "attack surface": [
+      "em-claim-26"
+    ],
+    "attack vector": [
+      "em-method-12"
+    ],
+    "attention": [
+      "em-definition-2",
+      "em-evidence-7",
+      "em-definition-6",
+      "em-claim-33"
+    ],
+    "audit card": [
+      "em-question-3",
+      "em-definition-7",
+      "em-claim-33"
+    ],
+    "authorship": [
+      "em-fact-5",
+      "em-entity-8"
+    ],
+    "barrier": [
+      "em-claim-29",
+      "em-method-13",
+      "em-evidence-8"
+    ],
+    "blast radius": [
+      "em-claim-16",
+      "em-source-7",
+      "em-claim-35"
+    ],
+    "bottleneck": [
+      "em-claim-30"
+    ],
+    "boundary": [
+      "em-claim-29",
+      "em-claim-32"
+    ],
+    "bridge simulation": [
+      "em-example-5",
+      "em-data-point-6",
+      "em-data-point-8"
+    ],
+    "calendar call": [
+      "em-example-9"
+    ],
+    "case": [
+      "em-example-2"
+    ],
+    "chatgpt": [
+      "em-entity-2"
+    ],
+    "check": [
+      "em-data-point-8",
+      "em-example-7"
+    ],
+    "claim": [
+      "em-limitation-1",
+      "em-limitation-3"
+    ],
+    "code": [
+      "em-claim-2"
+    ],
+    "code review": [
+      "em-source-6"
+    ],
+    "coding": [
+      "em-source-4"
+    ],
+    "commit": [
+      "em-method-4"
+    ],
+    "commoditisation": [
+      "em-method-8"
+    ],
+    "compaction": [
+      "em-claim-1",
+      "em-example-1",
+      "em-evidence-1",
+      "em-method-1",
+      "em-claim-21",
+      "em-claim-24",
+      "em-question-2",
+      "em-decision-6",
+      "em-claim-32"
+    ],
+    "company": [
+      "em-claim-37"
+    ],
+    "complexity": [
+      "em-claim-3",
+      "em-claim-5",
+      "em-claim-7",
+      "em-definition-2",
+      "em-method-11"
+    ],
+    "component": [
+      "em-claim-12"
+    ],
+    "compounding": [
+      "em-claim-4",
+      "em-method-8",
+      "em-artefact-6",
+      "em-example-5"
+    ],
+    "compression": [
+      "em-method-9"
+    ],
+    "compromise": [
+      "em-claim-27"
+    ],
+    "concurrency attack": [
+      "em-data-point-1"
+    ],
+    "context window": [
+      "em-definition-5",
+      "em-claim-21",
+      "em-claim-24"
+    ],
+    "cowork": [
+      "em-entity-1"
+    ],
+    "custom layer": [
+      "em-claim-8"
+    ],
+    "custom-built blob": [
+      "em-claim-3",
+      "em-artefact-2",
+      "em-claim-11"
+    ],
+    "debrief": [
+      "em-method-9"
+    ],
+    "destination": [
+      "em-method-15"
+    ],
+    "dinis cruz": [
+      "em-entity-8"
+    ],
+    "doctrine": [
+      "em-source-5",
+      "em-data-point-5",
+      "em-definition-3",
+      "em-claim-15"
+    ],
+    "drafting session": [
+      "em-example-1"
+    ],
+    "email-fs": [
+      "em-entity-5"
+    ],
+    "enforcement": [
+      "em-evidence-7",
+      "em-data-point-4",
+      "em-claim-13"
+    ],
+    "engineering practice": [
+      "em-method-16"
+    ],
+    "environment": [
+      "em-method-5",
+      "em-method-14",
+      "em-claim-30"
+    ],
+    "evolution": [
+      "em-example-8"
+    ],
+    "evolution axis": [
+      "em-definition-1",
+      "em-claim-10",
+      "em-claim-14"
+    ],
+    "failure": [
+      "em-claim-10",
+      "em-claim-14"
+    ],
+    "failure pattern": [
+      "em-evidence-1",
+      "em-evidence-2",
+      "em-evidence-3",
+      "em-evidence-4",
+      "em-evidence-5",
+      "em-evidence-6"
+    ],
+    "figure": [
+      "em-artefact-1",
+      "em-artefact-2",
+      "em-artefact-4",
+      "em-artefact-6"
+    ],
+    "file": [
+      "em-fact-3"
+    ],
+    "file system": [
+      "em-claim-23"
+    ],
+    "fire": [
+      "em-definition-3"
+    ],
+    "first prompt": [
+      "em-method-10"
+    ],
+    "forest": [
+      "em-example-8"
+    ],
+    "friend": [
+      "em-source-1",
+      "em-decision-1"
+    ],
+    "funding": [
+      "em-claim-39"
+    ],
+    "gate": [
+      "em-data-point-8",
+      "em-example-7"
+    ],
+    "go to market": [
+      "em-decision-7"
+    ],
+    "grading": [
+      "em-evidence-8"
+    ],
+    "graph": [
+      "em-claim-23"
+    ],
+    "hallucination": [
+      "em-hypothesis-1"
+    ],
+    "harm": [
+      "em-method-18",
+      "em-method-21"
+    ],
+    "harness": [
+      "em-evidence-2",
+      "em-evidence-5",
+      "em-method-5"
+    ],
+    "hash": [
+      "em-decision-2",
+      "em-fact-3",
+      "em-method-3",
+      "em-method-17"
+    ],
+    "hold file": [
+      "em-definition-8"
+    ],
+    "incident": [
+      "em-method-6",
+      "em-fact-4",
+      "em-claim-13"
+    ],
+    "insurance": [
+      "em-hypothesis-2"
+    ],
+    "isolation": [
+      "em-claim-28"
+    ],
+    "issues-fs": [
+      "em-entity-6"
+    ],
+    "iterative flow development": [
+      "em-definition-6"
+    ],
+    "licence to operate": [
+      "em-hypothesis-2"
+    ],
+    "llm": [
+      "em-claim-18"
+    ],
+    "lost output": [
+      "em-evidence-2",
+      "em-example-3",
+      "em-method-2"
+    ],
+    "map one": [
+      "em-artefact-2",
+      "em-artefact-3"
+    ],
+    "map two": [
+      "em-artefact-4",
+      "em-artefact-5"
+    ],
+    "memory": [
+      "em-claim-23",
+      "em-decision-4",
+      "em-source-8"
+    ],
+    "mermaid": [
+      "em-artefact-3",
+      "em-entity-3",
+      "em-artefact-5"
+    ],
+    "message": [
+      "em-source-1"
+    ],
+    "method": [
+      "em-method-19"
+    ],
+    "mistake of form": [
+      "em-method-18",
+      "em-example-9"
+    ],
+    "mock": [
+      "em-decision-5"
+    ],
+    "moving right": [
+      "em-claim-12"
+    ],
+    "multi-agent verification": [
+      "em-claim-6"
+    ],
+    "newsroom": [
+      "em-example-6"
+    ],
+    "nfr": [
+      "em-evidence-7",
+      "em-source-3"
+    ],
+    "open source": [
+      "em-claim-31"
+    ],
+    "over-engineering": [
+      "em-question-1",
+      "em-claim-17",
+      "em-claim-18",
+      "em-claim-20"
+    ],
+    "paraphrase": [
+      "em-limitation-2"
+    ],
+    "path": [
+      "em-method-15"
+    ],
+    "principle": [
+      "em-method-7",
+      "em-method-8",
+      "em-method-11",
+      "em-method-14",
+      "em-method-15",
+      "em-method-16"
+    ],
+    "process": [
+      "em-claim-2",
+      "em-claim-36"
+    ],
+    "product": [
+      "em-entity-1",
+      "em-entity-2"
+    ],
+    "prompt": [
+      "em-claim-1",
+      "em-evidence-3",
+      "em-data-point-2",
+      "em-method-3",
+      "em-claim-22",
+      "em-method-17"
+    ],
+    "prompt size": [
+      "em-data-point-2"
+    ],
+    "provenance": [
+      "em-evidence-4",
+      "em-method-4",
+      "em-fact-5",
+      "em-limitation-2"
+    ],
+    "publishing": [
+      "em-claim-20"
+    ],
+    "question": [
+      "em-question-2",
+      "em-question-3",
+      "em-question-4",
+      "em-question-5"
+    ],
+    "race run": [
+      "em-data-point-1",
+      "em-example-3"
+    ],
+    "recitation": [
+      "em-evidence-3",
+      "em-method-17"
+    ],
+    "reference folder": [
+      "em-decision-2",
+      "em-method-3"
+    ],
+    "result": [
+      "em-fact-2"
+    ],
+    "rigour": [
+      "em-question-1",
+      "em-question-5",
+      "em-claim-35",
+      "em-claim-36"
+    ],
+    "risk acceptance": [
+      "em-source-7"
+    ],
+    "rule": [
+      "em-fact-1",
+      "em-method-6",
+      "em-data-point-4",
+      "em-claim-13",
+      "em-claim-22",
+      "em-claim-29",
+      "em-method-13",
+      "em-method-20"
+    ],
+    "rule loop": [
+      "em-artefact-1",
+      "em-claim-1",
+      "em-evidence-6"
+    ],
+    "run wrapper": [
+      "em-method-2"
+    ],
+    "safety": [
+      "em-claim-26"
+    ],
+    "safety filter": [
+      "em-example-4"
+    ],
+    "sandbox": [
+      "em-fact-1"
+    ],
+    "script": [
+      "em-evidence-4",
+      "em-method-4"
+    ],
+    "security": [
+      "em-claim-26",
+      "em-claim-27"
+    ],
+    "session": [
+      "em-decision-2",
+      "em-data-point-3",
+      "em-hypothesis-1",
+      "em-method-9",
+      "em-method-10"
+    ],
+    "shipping": [
+      "em-claim-4",
+      "em-claim-16",
+      "em-definition-4",
+      "em-claim-18",
+      "em-claim-19",
+      "em-decision-3"
+    ],
+    "simon wardley": [
+      "em-entity-4"
+    ],
+    "simplicity": [
+      "em-claim-37",
+      "em-decision-7",
+      "em-claim-38"
+    ],
+    "slowing down": [
+      "em-claim-5",
+      "em-method-11",
+      "em-claim-25"
+    ],
+    "source": [
+      "em-source-3",
+      "em-source-4",
+      "em-source-5",
+      "em-source-6",
+      "em-source-7",
+      "em-source-8"
+    ],
+    "speed": [
+      "em-claim-5",
+      "em-claim-25"
+    ],
+    "starting point": [
+      "em-method-19"
+    ],
+    "state": [
+      "em-method-1",
+      "em-decision-6"
+    ],
+    "step": [
+      "em-method-1",
+      "em-data-point-7"
+    ],
+    "stop": [
+      "em-fact-1",
+      "em-question-4",
+      "em-method-18",
+      "em-claim-34",
+      "em-definition-8",
+      "em-method-21"
+    ],
+    "stopping": [
+      "em-decision-3",
+      "em-example-6"
+    ],
+    "structural guard": [
+      "em-data-point-4",
+      "em-fact-4"
+    ],
+    "structure": [
+      "em-method-6",
+      "em-claim-22"
+    ],
+    "test": [
+      "em-fact-2"
+    ],
+    "testing": [
+      "em-decision-5"
+    ],
+    "threat model": [
+      "em-method-12",
+      "em-claim-28"
+    ],
+    "transcript": [
+      "em-definition-7"
+    ],
+    "type system": [
+      "em-decision-5"
+    ],
+    "user need": [
+      "em-claim-15"
+    ],
+    "vault": [
+      "em-data-point-6",
+      "em-decision-4",
+      "em-claim-31"
+    ],
+    "verification": [
+      "em-source-1",
+      "em-example-2"
+    ],
+    "version control": [
+      "em-fact-3",
+      "em-decision-4"
+    ],
+    "voice memo": [
+      "em-source-2"
+    ],
+    "wardley map": [
+      "em-claim-3",
+      "em-definition-1",
+      "em-claim-8",
+      "em-claim-9",
+      "em-limitation-1",
+      "em-method-7",
+      "em-entity-4",
+      "em-limitation-3"
+    ],
+    "wardley-beta": [
+      "em-artefact-3",
+      "em-entity-3",
+      "em-artefact-5"
+    ]
+  },
+  "flags": [
+    "Count mismatch: the friend 'asked two questions' (anchor: \"And they asked two questions, the second of which is the one I want to answer properly\"), but 'Answers to the questions' answers four (compaction, audit card, mistakes of form, rigour). The first of the two is never stated.",
+    "Quote count: the colophon says 'the one line quoted from them is theirs' (anchor: \"the one line quoted from them is theirs\"), yet the friend's question \"does this level of rigour make sense, or am I overdoing it?\" is also presented as their words (unquoted, introduced with a colon).",
+    "Six versus six: map one's caption says 'The six things that keep failing sit in a blob on the left', but the six blob components (100 KB rules, recovery after compaction, long sessions, output capture, proof of bytes, STOP on every deviation) are not the six listed patterns: the map adds 'STOP on every deviation' and 'Long sessions' and omits 'The harness against the rules'. Likewise map two adds an audit card and harm-only stops that the replacement table does not list.",
+    "Map two source: \"Scripts committed and hashed before they run\" has no incoming edge (only an edge to \"Files, hashes, git\"), so it is not connected to the agents or report, unlike the other moved components and unlike its map one counterpart \"Proof of which bytes ran\".",
+    "Relative date: \"The bridge simulation I published yesterday is a good test of this.\" depends on the publication date (2026-10-08); a reader of the catalogue cannot resolve 'yesterday' without it.",
+    "Unsupported in-article: '40 doctrines' (\"lists forty doctrines\"), '31 documented rules ... four structural guards' and '44 of them' are cited from other sites/articles with no figure or quotation shown here; checkable only at the linked sources."
+  ]
+}

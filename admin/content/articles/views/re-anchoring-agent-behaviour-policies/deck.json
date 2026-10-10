@@ -1,0 +1,133 @@
+{
+  "slug": "re-anchoring-agent-behaviour-policies",
+  "title": "Re-anchoring",
+  "palette": "slate",
+  "slides": [
+    {
+      "layout": "cover",
+      "kicker": "Agents and long sessions",
+      "headline": "Re-anchoring: keep an agent's rules alive",
+      "sub": "A rule given only in conversation can vanish when a session is summarised. Keep it in a file that comes back."
+    },
+    {
+      "layout": "number",
+      "value": "1.7%",
+      "label": "of the context kept, on average, per summary",
+      "sub": "Eighteen automatic summaries in a month, in the session that runs this site. Nothing said what was kept."
+    },
+    {
+      "layout": "statement",
+      "headline": "A conversation-only rule must win every summary",
+      "sub": "It often will. When it does not, nothing tells you."
+    },
+    {
+      "layout": "diagram",
+      "headline": "The rules come back from disk",
+      "nodes": [
+        "Session is summarised",
+        "SessionStart hook fires",
+        "Policy file printed back",
+        "Rules restored, not remembered"
+      ],
+      "edges": [
+        [
+          "Session is summarised",
+          "SessionStart hook fires",
+          "after compaction"
+        ],
+        [
+          "SessionStart hook fires",
+          "Policy file printed back",
+          ""
+        ],
+        [
+          "Policy file printed back",
+          "Rules restored, not remembered",
+          "verbatim"
+        ]
+      ],
+      "sub": "It keeps rules in view; it does not enforce them."
+    },
+    {
+      "layout": "list",
+      "headline": "Three ways a rule fails, three fixes",
+      "items": [
+        "Forgets it: re-anchoring",
+        "Cannot see the violation: a second reader",
+        "Argues an exception: a gate"
+      ]
+    },
+    {
+      "layout": "steps",
+      "headline": "One policy file, three jobs",
+      "steps": [
+        "Memory: printed back after every summary",
+        "Rulebook for an independent checker",
+        "Enforcement list: each rule's barrier"
+      ]
+    },
+    {
+      "layout": "statement",
+      "headline": "Add a canary that shows the policy was read",
+      "sub": "A short report, computed from the transcript, ends every few answers. Like the brown M&M test: if it is missing, check everything."
+    },
+    {
+      "layout": "quote",
+      "quote": "A policy row with a number next to it is a different thing from a policy row on its own.",
+      "who": "On measuring a rule in the report"
+    },
+    {
+      "layout": "end",
+      "headline": "Keep the rules in a file that comes back",
+      "sub": "Then watch for the report that shows it did. The recipe changes with every release.",
+      "url": "https://sgit.ai/articles/re-anchoring-agent-behaviour-policies.html"
+    }
+  ],
+  "image_prompts": [
+    {
+      "slide": 1,
+      "template": "executive",
+      "prompt": "Clean editorial infographic, cream background #faf9f5, slate accents, simple flat icons, no photographs. A portrait cover slide for a deck about agents and long sessions. In the centre, a small flat boat icon labelled with a rule sheet sail, held in place by a slate anchor whose chain runs down to a file icon on the sea floor, so the rules stay put while waves of conversation roll past. A small uppercase kicker reads 'Agents and long sessions'. The serif headline reads 'Re-anchoring: keep an agent's rules alive'. Beneath, one short line explains that a rule given only in conversation can vanish when a session is summarised, and that it should be kept in a file that comes back. Thin slate bar along the top, generous cream space, no people, no product logos, no numbers on the cover. Calm, precise, editorial."
+    },
+    {
+      "slide": 2,
+      "template": "stats",
+      "prompt": "Clean editorial infographic, cream background #faf9f5, slate accents, simple flat icons, no photographs. A portrait statistics slide built around one large slate serif figure, '1.7%', with the label 'of the context kept, on average, per summary' beneath. Below, a simple visual: a tall column of stacked conversation pages on the left, and a single thin slice on the right, joined by a funnel, to show how little of a long context survives each summary. A row of eighteen small summary card icons runs along the bottom, one per automatic summary in a month. A short caption says that these were eighteen automatic summaries in the session that runs the site, and that nothing said what was kept. No other figures, no charts with axes, no logos."
+    },
+    {
+      "slide": 3,
+      "template": "executive",
+      "prompt": "Clean editorial infographic, cream background #faf9f5, slate accents, simple flat icons, no photographs. A portrait statement slide. The serif headline reads 'A conversation-only rule must win every summary'. Below, a simple illustration of a single rule card passing through a series of narrowing doorways, each labelled with a small summary icon; at most doorways the card squeezes through, but at one the card is missing and the doorway shows only an empty outline, with no alarm or signal beside it. A short line reads 'It often will. When it does not, nothing tells you.' Sparse composition, dark grey text, slate used for the doorways and the top bar, no numbers."
+    },
+    {
+      "slide": 4,
+      "template": "process",
+      "prompt": "Clean editorial infographic, cream background #faf9f5, slate accents, simple flat icons, no photographs. A portrait flow diagram titled 'The rules come back from disk'. Four rounded white boxes with slate outlines stacked top to bottom, joined by downward slate arrows. Top: a long conversation being folded into a short card, 'Session is summarised'. Arrow labelled 'after compaction'. Next: a small hook icon with a lightning mark, 'SessionStart hook fires'. Next: a file icon on a disk printing a page, 'Policy file printed back'. Arrow labelled 'verbatim'. Bottom: a context window showing the rule sheet back in place, 'Rules restored, not remembered'. A short footnote reads that it keeps rules in view but does not enforce them. Legible labels, generous spacing, nothing beyond these four steps."
+    },
+    {
+      "slide": 5,
+      "template": "comparison",
+      "prompt": "Clean editorial infographic, cream background #faf9f5, slate accents, simple flat icons, no photographs. A portrait list slide titled 'Three ways a rule fails, three fixes'. Three horizontal cards stacked vertically, each split into a failure on the left and its fix on the right, joined by a small slate arrow. Card one: a thought bubble with a fading rule, 'Forgets it', leading to an anchor and file icon, 're-anchoring'. Card two: an agent with a blindfold over its own draft, 'Cannot see the violation', leading to a second figure with a magnifying glass, 'a second reader'. Card three: an agent arguing with a speech bubble, 'Argues an exception', leading to a closed gate, 'a gate'. Balanced, legible, no extra text or numbers."
+    },
+    {
+      "slide": 6,
+      "template": "process",
+      "prompt": "Clean editorial infographic, cream background #faf9f5, slate accents, simple flat icons, no photographs. A portrait steps slide titled 'One policy file, three jobs'. A single file icon at the top, labelled as the behaviour policy, has three slate lines running down to three numbered cards. Card one: a memory icon with a circular arrow, 'Memory: printed back after every summary'. Card two: a checker figure reading a numbered rule list, 'Rulebook for an independent checker'. Card three: a table with a barrier symbol in each row, 'Enforcement list: each rule's barrier'. Orderly, readable at phone size, slate number discs, no extra steps and no figures beyond the step order."
+    },
+    {
+      "slide": 7,
+      "template": "executive",
+      "prompt": "Clean editorial infographic, cream background #faf9f5, slate accents, simple flat icons, no photographs. A portrait statement slide. The serif headline reads 'Add a canary that shows the policy was read'. Below, a simple flat bowl of round sweets with the darker ones removed, placed beside a phone screen showing an answer that ends with a small status report card of a few short lines. A dotted slate line links the two, suggesting the same idea: a small, expected detail that proves the whole set of instructions was read. A short line explains that a short report, computed from the transcript, ends every few answers, and that, like the brown M&M test, if it is missing you check everything. No brand logos, no band imagery, no numbers."
+    },
+    {
+      "slide": 8,
+      "template": "executive",
+      "prompt": "Clean editorial infographic, cream background #faf9f5, slate accents, simple flat icons, no photographs. A portrait quote slide. A large slate opening quotation mark sits at the upper left. The quotation, in a large italic serif, reads: 'A policy row with a number next to it is a different thing from a policy row on its own.' Beneath it, a small visual gloss of two table rows: one row with a rule and an empty cell, and one row with the same rule and a counter in the cell beside it, read from a transcript icon. A small uppercase attribution reads 'On measuring a rule in the report'. Nothing added to the quotation, generous cream space, dark grey type."
+    },
+    {
+      "slide": 9,
+      "template": "executive",
+      "prompt": "Clean editorial infographic, cream background #faf9f5, slate accents, simple flat icons, no photographs. A closing slide with a solid slate panel and white text. The serif headline reads 'Keep the rules in a file that comes back'. Beneath it, a short line says to watch for the report that shows it did, and that the recipe changes with every release. A simple white line drawing shows a file icon with a circular return arrow, a small report card beside it, and a stack of version tags suggesting that the recipe changes with each release. At the bottom, in a rounded translucent box, the address sgit.ai/articles/re-anchoring-agent-behaviour-policies.html invites readers to the full article. Uncluttered, no logos, no figures beyond the address."
+    }
+  ]
+}
