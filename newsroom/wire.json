@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-10",
-  "site_version": "v0.7.21",
+  "site_version": "v0.7.22",
   "about": "https://sgit.ai/newsroom/index.html",
   "front": {
     "edition": "2026-10-08",
@@ -72,6 +72,38 @@
     }
   ],
   "articles": [
+    {
+      "slug": "re-anchoring-agent-behaviour-policies",
+      "title": "Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not",
+      "date": "2026-10-10",
+      "updated": "",
+      "author": "Dinis Cruz",
+      "url": "https://sgit.ai/articles/re-anchoring-agent-behaviour-policies.html",
+      "markdown": "https://sgit.ai/articles/re-anchoring-agent-behaviour-policies.md",
+      "card": "https://sgit.ai/articles/cards/re-anchoring-agent-behaviour-policies.webp",
+      "graph": "https://sgit.ai/articles/graphs/re-anchoring-agent-behaviour-policies.json",
+      "teaser": "Summaries keep under 2% of a long session. Re-anchoring prints the agent's rules back after each one; a canary report shows it is working.",
+      "summary": "Instructions given only in conversation can be lost when a long session is summarised. The session that runs this site has been summarised eighteen times in a month, each time keeping under 2% of what it replaced. Re-anchoring is the answer: keep the agent's rules in a behaviour policy file and have the harness print it back after every summary, so the rules are restored rather than remembered. And because you cannot see what a summary drops, add a canary: a short status report, computed from the transcript, that ends every few answers. If it stops appearing, something in the policy has not been read. Both are running in this session now. This is how they work, what each piece is for, and why the best way to do it today is a recipe that someone has to keep up to date.",
+      "topics": [
+        "agents-and-policy",
+        "site-and-engineering"
+      ],
+      "tags": [
+        "agents",
+        "claude-code",
+        "hooks",
+        "agent-behaviour-policy",
+        "compaction",
+        "context",
+        "re-anchoring",
+        "guardrails",
+        "governance",
+        "article"
+      ],
+      "placement": [],
+      "linkedin": null,
+      "notes": []
+    },
     {
       "slug": "the-ai-governance-stack-as-a-graph",
       "title": "The AI governance stack, as a graph: an answer to Hari Kota, built",

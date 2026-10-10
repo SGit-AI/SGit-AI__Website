@@ -2,7 +2,7 @@
 
 > Jan van Dijke's AI Baseline Control Framework v1.0, twenty AI governance controls published under CC BY-SA 4.0, converted from its CSV export into a semantic graph with an ontology, a SKOS taxonomy, JSON-LD and Turtle, eighty hyperlinked documents, a SQLite database that runs in the browser, and a join to the EU AI Act's own text in the Regulation Graph vault. A fractal graph view, a crosswalk, SQL and triple-pattern consoles. Published as a vault with its read key, under the same licence.
 
-*Source: <https://sgit.ai/demos/vaults/aibcf-graph/index.html> · site v0.7.21 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/aibcf-graph/index.html> · site v0.7.22 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

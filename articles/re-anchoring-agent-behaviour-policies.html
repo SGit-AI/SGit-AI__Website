@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not, sgit.ai</title>
+<meta name="description" content="Instructions given only in conversation can be lost when a long session is summarised. The session that runs this site has been summarised eighteen times in a month, each time keeping under 2% of what it replaced. Re-anchoring is the answer: keep the agent's rules in a behaviour policy file and have the harness print it back after every summary, so the rules are restored rather than remembered. And because you cannot see what a summary drops, add a canary: a short status report, computed from the transcript, that ends every few answers. If it stops appearing, something in the policy has not been read. Both are running in this session now. This is how they work, what each piece is for, and why the best way to do it today is a recipe that someone has to keep up to date.">
+<link rel="canonical" href="https://sgit.ai/articles/re-anchoring-agent-behaviour-policies.html">
+<link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/articles/re-anchoring-agent-behaviour-policies.html">
+<meta property="og:title" content="Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not, sgit.ai">
+<meta property="og:description" content="Instructions given only in conversation can be lost when a long session is summarised. The session that runs this site has been summarised eighteen times in a month, each time keeping under 2% of what it replaced. Re-anchoring is the answer: keep the agent's rules in a behaviour policy file and have the harness print it back after every summary, so the rules are restored rather than remembered. And because you cannot see what a summary drops, add a canary: a short status report, computed from the transcript, that ends every few answers. If it stops appearing, something in the policy has not been read. Both are running in this session now. This is how they work, what each piece is for, and why the best way to do it today is a recipe that someone has to keep up to date.">
+<meta property="og:image" content="https://sgit.ai/og/re-anchoring-agent-behaviour-policies.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not, sgit.ai">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgit.ai/og/re-anchoring-agent-behaviour-policies.jpg">
+<link rel="alternate" type="text/markdown" href="re-anchoring-agent-behaviour-policies.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not, sgit.ai", "headline": "Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not, sgit.ai", "description": "Instructions given only in conversation can be lost when a long session is summarised. The session that runs this site has been summarised eighteen times in a month, each time keeping under 2% of what it replaced. Re-anchoring is the answer: keep the agent's rules in a behaviour policy file and have the harness print it back after every summary, so the rules are restored rather than remembered. And because you cannot see what a summary drops, add a canary: a short status report, computed from the transcript, that ends every few answers. If it stops appearing, something in the policy has not been read. Both are running in this session now. This is how they work, what each piece is for, and why the best way to do it today is a recipe that someone has to keep up to date.", "url": "https://sgit.ai/articles/re-anchoring-agent-behaviour-policies.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}, "author": {"@type": "Person", "name": "Dinis Cruz", "url": "https://sgit.ai/about/index.html"}, "license": "https://creativecommons.org/licenses/by/4.0/"}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.7.22</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+ <div class="ni ni-has">
+ <a class="nl here" href="../articles/index.html">Newsroom<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl here" href="../articles/index.html">Front page</a>
+ <a class="sl" href="../articles/newsletter/index.html">Newsletter</a>
+ <a class="sl" href="../articles/index.html#all">Every article</a>
+ <a class="sl" href="../articles/collections/index.html">Collections</a>
+ <a class="sl" href="../articles/desk/index.html">From the desk</a>
+ <a class="sl" href="../articles/graphs.html">As graphs</a>
+ <a class="sl" href="../newsroom/index.html">How it runs</a>
+ <a class="sl" href="../subscribe/index.html">Subscribe</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../investors/index.html">Investors</a>
+ <a class="sl" href="../startups/index.html">Startups</a>
+ <a class="sl" href="../startups/business-plans.html">Business plans</a>
+ <a class="sl" href="../about/index.html">About the author</a>
+ <a class="sl" href="../partnerships/index.html">Partnerships</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../docs/index.html">Documentation</a>
+ <a class="sl" href="../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl" href="../docs/guidance/repositories.html">Every repository</a>
+ <a class="sl" href="../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../api/index.html">HTTP API</a>
+ <a class="sl" href="../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../deploy/index.html">Deploy</a>
+ <a class="sl" href="../skills/index.html">Skills</a>
+ <a class="sl" href="../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../demos/index.html">Demos</a>
+ <a class="sl" href="../demos/fractal-graphs/index.html">Fractal graphs</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../agents/index.html">Agents</a></div>
+ <div class="ni ni-has">
+ <a class="nl" href="../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../compare/index.html">Comparisons</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
+ <a class="sl" href="../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../lessons/index.html">Lessons learned</a>
+ <a class="sl" href="../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../team/index.html">How the site is run</a>
+ <a class="sl" href="../team/index.html#roles">Roles</a>
+ <a class="sl" href="../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../team/board.html">The board</a>
+ <a class="sl" href="../updates/index.html">Updates</a>
+ <a class="sl" href="../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../network/index.html">All sites</a>
+ <a class="sl" href="../network/nhi.html">nhi</a>
+ <a class="sl" href="../network/pki.html">pki</a>
+ <a class="sl" href="../network/graphs.html">graphs</a>
+ <a class="sl" href="../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.7.22 &middot; 10 Oct 2026</span></a></div>
+<main class="doc">
+ <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Articles</a> / Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not</p>
+ <h1>Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not</h1>
+ <p class="small dim">By <a href="../about/index.html" rel="author">Dinis Cruz</a> &middot; 2026-10-10 &middot; <a href="../admin/versions.html">v0.7.22</a> &middot; <span class="chip">agents</span><span class="chip">claude-code</span><span class="chip">hooks</span><span class="chip">agent-behaviour-policy</span><span class="chip">compaction</span><span class="chip">context</span><span class="chip">re-anchoring</span><span class="chip">guardrails</span><span class="chip">governance</span><span class="chip">article</span></p>
+ <p class="abstract"><em><b>Abstract:</b> Instructions given only in conversation can be lost when a long session is summarised. The session that runs this site has been summarised eighteen times in a month, each time keeping under 2% of what it replaced. Re-anchoring is the answer: keep the agent's rules in a behaviour policy file and have the harness print it back after every summary, so the rules are restored rather than remembered. And because you cannot see what a summary drops, add a canary: a short status report, computed from the transcript, that ends every few answers. If it stops appearing, something in the policy has not been read. Both are running in this session now. This is how they work, what each piece is for, and why the best way to do it today is a recipe that someone has to keep up to date.</em></p>
+<p>Claude Code's documentation says it plainly: "If an instruction disappeared after compaction, it was given only in conversation, lives in a nested CLAUDE.md that hasn't reloaded yet, or is a path-scoped rule that hasn't matched a file since" (<a href="https://code.claude.com/docs/en/memory">memory</a>). Anthropic's own permission classifier has the same weakness, in its own words: a boundary "can be lost if context compaction removes the message that stated it" (<a href="https://code.claude.com/docs/en/permission-modes">permission modes</a>).</p>
+<p>That sentence is the most important one I have read this week about running agents, because it explains a failure I had just watched happen. On 9 October two emails drafted by one of my agents went out in my voice, against a rule that had been written down four times; one of the reasons was that the rule fell out of the agent's context when the conversation was summarised. I wrote about the fix for that email, <a href="../articles/a-second-reader-the-agent-cannot-skip.html">a second reader the agent cannot skip</a>. This article is about the general problem underneath it, and a technique for it that I have started calling <b>re-anchoring</b>.</p>
+<figure class="shot" data-shot="ra-compactions.webp" data-dir="images/" data-alt="What summarisation does to a long session: every compaction in the session that runs this site, read from its own transcript. Each turned about 785,000 tokens into 9,000 to 19,000. All eighteen were automatic."><figcaption>What summarisation does to a long session: every compaction in the session that runs this site, read from its own transcript. Each turned about 785,000 tokens into 9,000 to 19,000. All eighteen were automatic.</figcaption></figure>
+<h2>In short</h2>
+<ul>
+<li><b>Summaries are frequent, heavy and invisible.</b> This session has been summarised eighteen times in a month. Each time about 98% of the context was replaced by a summary written by the model, and nothing told me what was kept.</li>
+<li><b>A rule held only in conversation has to win every summary.</b> It often will. When it does not, nothing tells you.</li>
+<li><b>Re-anchoring takes the rule out of that contest.</b> The rules live in a file, an Agent Behaviour Policy, and a hook prints the file back into the context after every summary, verbatim. The rules are restored, not remembered.</li>
+<li><b>Re-anchoring fixes forgetting, not the other two failures.</b> An agent that has its rules in view can still miss its own violation or argue itself into an exception. Those need a second reader and a gate.</li>
+<li><b>A canary makes the invisible visible.</b> A short report, computed from the transcript, ends every few answers. If it stops appearing, the person notices before anything important goes wrong: the brown M&amp;M.</li>
+<li><b>The best recipe changes with every release.</b> The hooks this depends on arrived or changed in the last few months. Keeping the recipe current for each rule, on each platform, at each version, is work someone has to do continuously.</li>
+</ul>
+<h2>What summarisation does to a session</h2>
+<p>Long agent sessions do not keep everything. When the context fills, the harness writes a summary of the conversation so far and continues from the summary. In Claude Code this is compaction, and it can be manual or automatic.</p>
+<p>The transcript of this session records every one. Between 9 September and 9 October there were eighteen compactions, all automatic. Each started from about 780,000 to 800,000 tokens of context and replaced it with 9,000 to 19,000: on average <b>1.7% kept</b>. In total, 17.8 million tokens of conversation have been summarised away. Each summary took between 1.2 and 3.4 minutes to write.</p>
+<p>None of that is a criticism. A summary is what makes a month-long session possible at all, and this site would not exist in its current form without it. But it changes what a rule given in conversation is. Every time a summary is written, the rule has to be judged important enough to keep, in words the summariser chooses. Often that works. You are not told when it does not.</p>
+<p>The documentation is precise about what does survive: "Project-root CLAUDE.md survives compaction: after <code>/compact</code>, Claude re-reads it from disk and re-injects it into the session" (<a href="https://code.claude.com/docs/en/memory">memory</a>). Skills that were invoked are re-injected too, but "capped at 5,000 tokens per skill and 25,000 tokens total; oldest dropped first", and context that hooks added earlier is "summarized with the rest of the conversation" (<a href="https://code.claude.com/docs/en/context-window#what-survives-compaction">context window</a>). So there is already a pattern in the platform: what comes back from disk survives; what lived only in the conversation competes.</p>
+<h2>Three ways a rule fails</h2>
+<p>A rule held by the agent it governs can fail in three different ways, and they need different fixes:</p>
+<figure class="shot" data-shot="ra-failures.webp" data-dir="images/" data-alt="Three ways a rule fails. Re-anchoring fixes forgetting. A second reader fixes the violation the author cannot see. A gate fixes the exception the agent argues itself into."><figcaption>Three ways a rule fails. Re-anchoring fixes forgetting. A second reader fixes the violation the author cannot see. A gate fixes the exception the agent argues itself into.</figcaption></figure>
+<p>Re-anchoring is the first and cheapest of the three, and the others depend on it: a checker that reads the rules, and a gate that enforces them, are only as good as the rules they are given. In the vocabulary of the <a href="https://abp.sgit.ai/">Agent Behaviour Policy</a>, re-anchoring does not change a rule's barrier. An expectation stays "a rule in prose, enforced by nobody". What changes is that the expectation is reliably in view, which is the precondition for everything else.</p>
+<h2>Re-anchoring: the rules come back from disk</h2>
+<p>Claude Code has four documented places to do it (<a href="https://code.claude.com/docs/en/hooks">hooks</a>):</p>
+<div class="tablewrap"><table>
+<tr><th>Hook</th><th>When it fires</th><th>What it can do for the policy</th></tr>
+<tr><td><code>SessionStart</code>, matcher <code>compact</code></td><td>after every compaction, automatic or manual</td><td>print the whole policy back: "Claude Code adds a SessionStart hook's plain-text stdout to Claude's context"</td></tr>
+<tr><td><code>UserPromptSubmit</code></td><td>before each prompt is processed, including turns the harness starts itself</td><td>add a short anchor every turn, or the full policy every Nth turn, as <code>additionalContext</code></td></tr>
+<tr><td><code>PreCompact</code></td><td>before compaction</td><td>log that it is about to happen, or block it</td></tr>
+<tr><td><code>Stop</code></td><td>when the agent is about to end its turn</td><td>check that something the policy requires actually happened, and if not, send the agent back once</td></tr>
+</table></div>
+<p>The first is the heart of it. A hook with the <code>compact</code> matcher fires "after compaction", and whatever it prints goes back into the context. Point it at the policy file and the policy is back, verbatim, the moment the summary is done. This is the configuration running in this session:</p>
+<pre class="shell">
+{
+  "hooks": {
+    "SessionStart": [
+      { "matcher": "compact",
+        "hooks": [ { "type": "command", "command": "python3 ~/.claude/abp/abp.py reanchor" } ] } ],
+    "UserPromptSubmit": [
+      { "hooks": [ { "type": "command", "command": "python3 ~/.claude/abp/abp.py prompt" } ] } ],
+    "Stop": [
+      { "hooks": [ { "type": "command", "command": "python3 ~/.claude/abp/abp.py stop" } ] } ]
+  }
+}
+</pre>
+<p>The <code>reanchor</code> step prints a one-line header, "ABP re-anchored after compaction: v0.1 #a0d6d2. The rules below still apply, whatever the summary says", then the policy, and logs that it ran. The <code>prompt</code> step adds one line to every prompt, naming the policy, its version and its hash, so even a turn that starts from a thin summary knows the policy exists and where it lives.</p>
+<p>The cheapest version needs no hooks at all: a line in the project-root CLAUDE.md that says "read the behaviour policy in this file before acting", since that file is re-read from disk after compaction. And the bluntest version needs no configuration: the person types "read your instructions again". Both work. The point of the hooks is that neither depends on someone remembering.</p>
+<h2>One file, three jobs</h2>
+<p>This is where the Agent Behaviour Policy stops being a document and becomes infrastructure. The same file does three jobs:</p>
+<ol>
+<li><b>Memory.</b> It is what the re-anchoring hook prints back. The rules survive because they live on disk, not in the conversation.</li>
+<li><b>The checker's rulebook.</b> It is what an independent checker reads. The draft guard's numbered rule file, written by the inbox agent, is already an ABP fragment under another name.</li>
+<li><b>The enforcement list.</b> Every row carries its barrier, so the file says which rules are still expectations, and therefore which need a second reader or a gate next.</li>
+</ol>
+<p>A policy can also shape memory directly. A row can say "keep decisions in <code>decisions.md</code>" or "write the sources file before drafting", which moves the important parts of a session out of the conversation, where they are summarised, and into files, where they are not. That is still an expectation, but a checkable one: a hook can see whether the file was written.</p>
+<h2>The canary: a report that ends every few answers</h2>
+<p>Re-anchoring has a weakness of its own: you cannot see it working. A hook that silently stopped firing, a settings file that was not loaded, a policy file that was moved, all look exactly like a session where everything is fine. So the second half of the technique is a canary.</p>
+<p>The idea is old. Van Halen's touring contract had a clause, in the middle of pages of technical requirements, asking for a bowl of M&amp;M's with the brown ones removed. It was not vanity. As <a href="https://www.snopes.com/fact-check/brown-out/">Snopes</a> and <a href="https://www.npr.org/sections/therecord/2012/02/14/146880432/the-truth-about-van-halen-and-those-brown-m-ms">NPR</a> both report, it was a quick way to tell whether the venue had read the whole contract, including the parts about weight and power that kept the crew safe. Brown M&amp;M's in the bowl meant: check everything else.</p>
+<p>The agent version is a short status report at the end of every few answers. Here is how it looks on a phone, in this session, on its first day:</p>
+<figure class="shot" data-shot="ra-phone.webp" data-dir="images/" data-alt="The report as it arrived on a phone, at the end of an answer in this session: the policy version and hash, re-anchors against compactions, cost, tokens, web requests, tool calls, and a measured rule."><figcaption>The report as it arrived on a phone, at the end of an answer in this session: the policy version and hash, re-anchors against compactions, cost, tokens, web requests, tool calls, and a measured rule.</figcaption></figure>
+<p>Three design choices make it more than decoration:</p>
+<ul>
+<li><b>The model does not write the numbers.</b> The <code>UserPromptSubmit</code> hook computes the report from the session transcript and the harness's own cost record, and hands it to the agent with the instruction to paste it. A report the model wrote from memory would be one more thing to verify.</li>
+<li><b>The harness checks it was shown.</b> When a report was due, the <code>Stop</code> hook reads the end of the answer. If the report is missing it sends the agent back, once, with the block to add; if it is still missing, it lets the turn end and logs the miss. That one rule, show the report, moves from expectation to setting.</li>
+<li><b>The person is part of the loop.</b> After a few days the report is expected. When it does not arrive, the question is "where is my report?", and the answers are two commands: <code>/abp-status</code> shows it now, and <code>/abp-reload</code> makes the agent read the policy again and say its version and hash.</li>
+</ul>
+<figure class="shot" data-shot="ra-loop.webp" data-dir="images/" data-alt="Re-anchoring and the canary: one policy file, three hooks, two commands, and a person who notices when the report is missing."><figcaption>Re-anchoring and the canary: one policy file, three hooks, two commands, and a person who notices when the report is missing.</figcaption></figure>
+<details class="src"><summary>Re-anchoring and the canary, Mermaid source</summary><div class="src-bar"><button type="button" class="src-copy" data-copy="flowchart LR
+  ABP[(&quot;ABP.md on disk&lt;br/&gt;versioned, hashed&lt;br/&gt;the session&#x27;s rules&quot;)]
+  subgraph H[&quot;Hooks the harness runs&quot;]
+    direction TB
+    SS[&quot;SessionStart, matcher compact&lt;br/&gt;after every summary:&lt;br/&gt;print the whole ABP back&quot;]
+    UP[&quot;UserPromptSubmit&lt;br/&gt;every prompt: a one-line anchor&lt;br/&gt;every Nth: the status report,&lt;br/&gt;numbers already computed&quot;]
+    ST[&quot;Stop&lt;br/&gt;was a report due?&lt;br/&gt;is it in the answer?&lt;br/&gt;if not, ask once, then log&quot;]
+  end
+  CTX[&quot;The agent&#x27;s context&lt;br/&gt;rules restored, not remembered&quot;]
+  ANS[&quot;The answer&lt;br/&gt;ends with the report&quot;]
+  U[&quot;The person&lt;br/&gt;expects the report&lt;br/&gt;notices when it is missing&quot;]
+  CMD[&quot;/abp-status&lt;br/&gt;/abp-reload&quot;]
+  TR[(&quot;Transcript and the&lt;br/&gt;harness cost record&quot;)]
+  ABP --&gt; SS --&gt; CTX
+  ABP --&gt; UP --&gt; CTX
+  TR --&gt; UP
+  CTX --&gt; ANS --&gt; ST
+  ST -- &quot;missing&quot; --&gt; CTX
+  ANS --&gt; U
+  U -- &quot;where is my report?&quot; --&gt; CMD --&gt; CTX"><span class="cp">copy</span></button><a href="images/ra-loop.webp">rendered image</a></div><pre class="shell">flowchart LR
+  ABP[("ABP.md on disk&lt;br/&gt;versioned, hashed&lt;br/&gt;the session's rules")]
+  subgraph H["Hooks the harness runs"]
+    direction TB
+    SS["SessionStart, matcher compact&lt;br/&gt;after every summary:&lt;br/&gt;print the whole ABP back"]
+    UP["UserPromptSubmit&lt;br/&gt;every prompt: a one-line anchor&lt;br/&gt;every Nth: the status report,&lt;br/&gt;numbers already computed"]
+    ST["Stop&lt;br/&gt;was a report due?&lt;br/&gt;is it in the answer?&lt;br/&gt;if not, ask once, then log"]
+  end
+  CTX["The agent's context&lt;br/&gt;rules restored, not remembered"]
+  ANS["The answer&lt;br/&gt;ends with the report"]
+  U["The person&lt;br/&gt;expects the report&lt;br/&gt;notices when it is missing"]
+  CMD["/abp-status&lt;br/&gt;/abp-reload"]
+  TR[("Transcript and the&lt;br/&gt;harness cost record")]
+  ABP --&gt; SS --&gt; CTX
+  ABP --&gt; UP --&gt; CTX
+  TR --&gt; UP
+  CTX --&gt; ANS --&gt; ST
+  ST -- "missing" --&gt; CTX
+  ANS --&gt; U
+  U -- "where is my report?" --&gt; CMD --&gt; CTX</pre></details>
+<p>Each line in the report earns its place:</p>
+<div class="tablewrap"><table>
+<tr><th>Line</th><th>What it tells you</th><th>What a surprise would mean</th></tr>
+<tr><td>policy</td><td>the version and hash in force, and how many rules</td><td>the file changed, or a different one is loaded</td></tr>
+<tr><td>anchor</td><td>re-anchors against compactions since the policy started</td><td>fewer re-anchors than compactions: the hook did not fire</td></tr>
+<tr><td>cost</td><td>the session's cost, and the change since the last report</td><td>a long silent task, or a loop</td></tr>
+<tr><td>tokens</td><td>output and cached tokens</td><td>how much context work the session is doing</td></tr>
+<tr><td>web</td><td>searches and fetches</td><td>research happening that you did not ask for, or did not see</td></tr>
+<tr><td>tools</td><td>tool calls and background agents</td><td>the shape of the work since the last report</td></tr>
+<tr><td>commits</td><td>commits since the policy started, and how many were not preceded by a leak scan</td><td>a rule measured, not asserted: that number should be zero</td></tr>
+</table></div>
+<p>The last line is the one I like most. Rule 2 of this session's policy is "leak scan before every commit". The report does not ask the agent whether it complied; it reads the transcript and counts commits that were not preceded by a scan. A policy row with a number next to it is a different thing from a policy row on its own.</p>
+<p>There is also a branded version, rendered as an image on request, for when the report is shown to someone else:</p>
+<figure class="shot" data-shot="ra-card.webp" data-dir="images/" data-alt="The same report as a card, rendered on request. The footer tells the reader what to do if it stops appearing."><figcaption>The same report as a card, rendered on request. The footer tells the reader what to do if it stops appearing.</figcaption></figure>
+<h2>Living with it</h2>
+<p>The first observations, honestly, after one evening:</p>
+<ul>
+<li><b>The hooks loaded mid-session.</b> They were added to a user settings file while the session was running, and the next prompt arrived carrying the policy's one-line anchor. The documentation says edits to hooks in settings files are "normally picked up automatically by the file watcher", and that is what happened here.</li>
+<li><b>The first report rendered on a phone at 41 characters wide</b> without wrapping.</li>
+<li><b>The re-anchor after a compaction has not been observed yet.</b> There has been no compaction since the hooks were installed. When there is, the <code>anchor</code> line will show it, and this article will be updated with what happened.</li>
+<li><b>The cost line can lag.</b> It comes from the harness's cost record, which is written periodically rather than after every call.</li>
+</ul>
+<p>We are going to live with it for a while: how often to show it (every three answers today), which lines people actually read, and what else belongs there. That is the point of running it in the session that writes about it.</p>
+<h2>The recipe changes with the platform</h2>
+<p>Everything above depends on features that are recent. Mods, the event system the draft guard used, arrived in Claude Code v2.1.287. <code>onFailure: "block"</code>, which makes a settings hook fail closed, arrived in v2.1.295. Prompt hooks changed how they deny in v2.1.210. The <code>compact</code> matcher is what makes re-anchoring a five-line hook rather than a workaround. Six months ago the best way to re-anchor a policy was different, and six months from now it will be different again; on another platform it is different today.</p>
+<p>So a behaviour policy row is not only a rule and its barrier. It is a rule, its barrier, and the current recipe for keeping it: on this platform, at this version, use these hooks, placed here, and expect this barrier. That table goes out of date with every release, and keeping it current, testing it, and noting what each recipe costs is real, continuous work. Some recipes carry costs of their own: a recipe that uses mods means running code the agent wrote, unsandboxed, with your permissions, which is itself a row in the policy. That is why this session's report runs on settings hooks rather than a mod.</p>
+<p>That maintained, version-aware library of recipes is what I think people will pay for: not the policy, which they can write, but the current best way to make each row hold, curated for the tools they actually use.</p>
+<h2>What it does not do</h2>
+<ul>
+<li><b>Re-anchoring does not enforce anything.</b> It keeps rules in view. A rule in view is still an expectation.</li>
+<li><b>The canary is a setting, not a boundary.</b> It lives in a settings file the session could edit. It tells you the policy is being read; it cannot stop an agent that decides to ignore it.</li>
+<li><b>A report can be pasted without the rules being followed.</b> It shows that the hooks fired and the policy was loaded, and it measures what can be measured from the transcript. For the rest you need a reader or a gate.</li>
+<li><b>The summaries stay a black box.</b> Re-anchoring does not show what a summary kept. It makes what matters independent of it.</li>
+</ul>
+<h2>Build your own</h2>
+<ol>
+<li><b>Write the rules down as an ABP file</b>, short enough to re-read (a few hundred words), each rule with its barrier.</li>
+<li><b>Re-anchor after every compaction</b> with a <code>SessionStart</code> hook on the <code>compact</code> matcher that prints the file, and a one-line anchor on every prompt.</li>
+<li><b>Add a canary</b>: a short report every few answers, computed from the transcript, with a <code>Stop</code> hook that checks it was shown.</li>
+<li><b>Give the person two commands</b>: show the status, and reload the policy.</li>
+<li><b>Measure one rule</b> in the report, so the canary is also evidence.</li>
+<li><b>Move the rules that matter most</b> from expectation to a reader or a gate, using the file as the list.</li>
+</ol>
+<hr>
+<p><em>Written from a conversation between Dinis Cruz and agent@riskmandate.ai (Claude Opus 5.5, claude-opus-5-5) in the sgit.ai site session, which built and installed the re-anchoring hooks and the status report described here, on 9 and 10 October 2026, and runs under them. Compaction figures are from this session's own transcript. Claude Code behaviour is quoted from its documentation as read on 9 October 2026.</em></p>
+<section class="athreads" id="threads">
+ <h2>Threads</h2>
+ <p class="athreads-meta"><span class="tchip">Agents &amp; policy</span><span class="tchip">Site &amp; engineering</span> <a href="graphs.html#re-anchoring-agent-behaviour-policies">This article as a graph &rarr;</a></p>
+ <div class="athreads-cols"><div><h3>Builds on</h3><ul><li><a href="a-second-reader-the-agent-cannot-skip.html">A second reader the agent cannot skip: how two wrong emails became a gate on every draft</a> <span class="dim">Two emails went out in my voice despite a written rule. The fix: a hook that makes a second model approve every draft, failing closed.</span></li></ul></div></div>
+ <p class="small dim"><a href="index.html">All articles</a> &middot; <a href="graphs.html">All graphs</a></p>
+</section>
+<aside class="lkit" aria-label="For LinkedIn"><b>Posting this article on LinkedIn?</b> The cover is <a href="../articles/banners/re-anchoring-agent-behaviour-policies.jpg" download>re-anchoring-agent-behaviour-policies.jpg</a> (1920&times;1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.</aside>
+ <p class="subteaser"><b>Want the next issue by email.</b> One issue a week or so: what was published, what it adds up to, and what is worth your time. <a class="cta2" href="../subscribe/index.html">Subscribe to the SGit Newsroom &rarr;</a></p>
+ <p class="small dim" style="margin-top:2rem"><a href="index.html">&larr; All articles</a></p>
+</main>
+<script>
+(function () {
+ fetch('../assets/shots.js?v=v0.7.22')
+ .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+ .then(function (t) { (0, eval)(t); })
+ .catch(function (e) { console.error('[shots] component failed to load:', e); });
+}());
+</script>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.7.22</a> · <a href="../admin/index.html">engineering</a> · <a href="re-anchoring-agent-behaviour-policies.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../docs/surfaces.html">Three surfaces</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../docs/vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
+    <a href="../use-cases/index.html">Use cases</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../docs/briefs/index.html">Cross-team briefs</a>
+    <a href="../articles/index.html#subscribe">Subscribe to new articles</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../llms-full.txt">llms-full.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.7.22';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+var mine=V.slice(3),last=0;
+function fresh(){if(location.hostname!=='sgit.ai'||Date.now()-last<60000)return;last=Date.now();
+fetch('/version.txt?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.text():''}).then(function(t){t=(t||'').trim();if(!/^v[0-9]+[.][0-9]+[.][0-9]+$/.test(t)||t===mine)return;
+var k='sgit.fresh:'+location.pathname;try{if(sessionStorage.getItem(k)===t)return;sessionStorage.setItem(k,t)}catch(e){}
+var u=new URL(location.href);u.searchParams.set('v',t);location.replace(u.href)}).catch(function(){})}
+try{var u=new URL(location.href);if(u.searchParams.get('v')===mine){u.searchParams.delete('v');history.replaceState(history.state,'',u.pathname+u.search+u.hash)}}catch(e){}
+fresh();addEventListener('pageshow',function(e){if(e.persisted){last=0;fresh()}});document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')fresh()});
+})();
+</script>
+</body>
+</html>

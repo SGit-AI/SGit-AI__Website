@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.21'
+SITE_VERSION = 'v0.7.22'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.21', '2026-10-10', 'this release',
+    ('v0.7.22', '2026-10-10', 'this release',
+     "RE-ANCHORING. Instructions given only in conversation can be lost when a session is summarised; this site's session was summarised eighteen times in a month, keeping about 1.7% each time (an infographic from its own transcript). Re-anchoring keeps the rules in an ABP file and prints it back after every summary (SessionStart, matcher compact); a canary status report, computed from the transcript and checked by a Stop hook, ends every few answers, the brown M&M. Both are running in this session. Three ways a rule fails, one file with three jobs, a measured rule, recipes that age with the platform. Two infographics, a diagram with its Mermaid source, the report on a phone and as a card, graph JSON.",),
+    ('v0.7.21', '2026-10-10', 'git 2592327f',
      "AGENT DESK, WHERE IT COMES FROM. The article A Mac of the agent's own, the Agent Desk vault page and the business plans list no longer say the plan was written after companies replied to the earlier research; it now simply follows that research.",),
     ('v0.7.20', '2026-10-09', 'git c5dd0c88',
      "A SECOND READER THE AGENT CANNOT SKIP. On 9 October two emails drafted by the inbox agent went out in the founder's voice although a written rule forbade it. The agent's own fix, read against the Claude Code documentation and the research: a hook on the draft tool, code checks first, then a fresh model call with only the rules, the sources and the draft, failing closed and logging every verdict. What the first run caught; six kinds of independence; why placement decides the barrier (a session mod or a plugin is a setting, only managed placement is final); three public ways to build it; maker-checker, two-person rule, AI control, LLM-judge bias, Dual LLM, CaMeL, Rule of Two. Three diagrams with Mermaid sources, an independence infographic, the hot-reload prompt, graph JSON.",),

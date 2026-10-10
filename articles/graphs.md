@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.21 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.22 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,13 +14,41 @@ Every article here has a semantic graph beside it: the ideas it rests on, the cl
 
 The graphs are data first and pictures second. Take them as JSON: [all articles in one file](graphs.json), with the topics, the teasers and the links between articles resolved, or one file per article at `articles/graphs/<slug>.json` (for example [this one](graphs/footprint-and-blast-radius.json)). The pages on this site are rendered from the same files at build time; nothing here is hand-written HTML.
 
-55 of 55 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
+56 of 56 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
 
 ## How the articles connect
 
 *[diagram]*
 
-55 articles, 234 links between them (376 mentions in all). 46 articles cite an earlier one; 6 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (19 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+56 articles, 235 links between them (377 mentions in all). 47 articles cite an earlier one; 6 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (19 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+
+## [Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not](re-anchoring-agent-behaviour-policies.md)
+
+2026-10-10 · Agents & policySite & engineering
+
+Instructions given only in conversation can be lost when a long session is summarised, and this site's own session was summarised eighteen times in a month, keeping about 1.7% each time; re-anchoring keeps the agent's rules in an Agent Behaviour Policy file and has a SessionStart hook on the compact matcher print it back after every summary, so rules are restored rather than remembered, while a canary status report computed from the transcript, checked by a Stop hook and expected by the person, shows the policy is still being read; the same file serves as memory, checker rulebook and enforcement list, and the best recipe for each rule changes with every platform release, which is the work worth curating.
+
+*[diagram]*
+**concept**claim**method**artefact**example
+
+**10 nodes, 9 edges**
+
+- **Instructions lost at compaction** (claim) The platform's own documentation says conversation-only instructions can disappear after a summary.
+- **Eighteen summaries, 1.7% kept** (example) This session's transcript: about 785,000 tokens replaced by 9,000 to 19,000, each time automatic.
+- **Three ways a rule fails** (concept) It forgets, it does not see, it argues; each needs a different fix.
+- **Re-anchoring** (method) A SessionStart hook on the compact matcher prints the ABP back after every summary.
+- **One file, three jobs** (concept) The ABP is memory, the checker's rulebook and the list of rules still needing a gate.
+- **The canary report** (method) A short report every few answers, computed from the transcript and checked by a Stop hook.
+- **The brown M&M** (example) A small clause that shows whether the whole contract was read.
+- **A rule measured** (artefact) Commits not preceded by a leak scan, counted from the transcript.
+- **Recipes that age** (claim) The best way to keep each rule changes with every platform release; keeping it current is the work.
+- **A second reader and a gate** (method) What fixes the failures re-anchoring cannot.
+
+> The rules are restored, not remembered. What re-anchoring changes.
+
+> A policy row with a number next to it is a different thing from a policy row on its own. Why the canary measures a rule.
+
+builds on [A second reader the agent cannot skip: how two wrong emails became a gate on every draft](#a-second-reader-the-agent-cannot-skip).
 
 ## [The AI governance stack, as a graph: an answer to Hari Kota, built](the-ai-governance-stack-as-a-graph.md)
 
@@ -79,7 +107,7 @@ A rule held by the agent it governs is an expectation that can be forgotten, mis
 
 > A rule kept by the agent it governs is hope. The general weakness the guard answers.
 
-builds on [Hope or enforcement: one customer service agent, three designs, and who keeps each promise](#hope-or-enforcement), [Every mistake added a rule: complexity, agents, and the way back to shipping](#every-mistake-added-a-rule).
+builds on [Hope or enforcement: one customer service agent, three designs, and who keeps each promise](#hope-or-enforcement), [Every mistake added a rule: complexity, agents, and the way back to shipping](#every-mistake-added-a-rule); continued by [Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not](#re-anchoring-agent-behaviour-policies).
 
 ## [RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer](rfc-0001-public-key-cryptography-for-sgit.md)
 
