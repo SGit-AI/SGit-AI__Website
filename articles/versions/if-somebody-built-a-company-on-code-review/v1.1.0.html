@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en" data-root="../../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>If somebody built a company on code review: what changed in v1.1.0, sgit.ai</title>
+<meta name="description" content="The changes to the article "If somebody built a company on code review" in v1.1.0, paragraph by paragraph.">
+<link rel="canonical" href="https://sgit.ai/articles/versions/if-somebody-built-a-company-on-code-review/v1.1.0.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/articles/versions/if-somebody-built-a-company-on-code-review/v1.1.0.html">
+<meta property="og:title" content="If somebody built a company on code review: what changed in v1.1.0, sgit.ai">
+<meta property="og:description" content="The changes to the article "If somebody built a company on code review" in v1.1.0, paragraph by paragraph.">
+<meta property="og:image" content="https://sgit.ai/og/default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="If somebody built a company on code review: what changed in v1.1.0, sgit.ai">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgit.ai/og/default.jpg">
+<link rel="alternate" type="text/markdown" href="v1.1.0.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "If somebody built a company on code review: what changed in v1.1.0, sgit.ai", "headline": "If somebody built a company on code review: what changed in v1.1.0, sgit.ai", "description": "The changes to the article \"If somebody built a company on code review\" in v1.1.0, paragraph by paragraph.", "url": "https://sgit.ai/articles/versions/if-somebody-built-a-company-on-code-review/v1.1.0.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../../../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../../../admin/versions.html" title="Site release history">v0.7.28</a>
+  <sg-meter class="meter-nav" view="balance"></sg-meter>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+ <div class="ni ni-has">
+ <a class="nl here" href="../../../articles/index.html">Newsroom<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl here" href="../../../articles/index.html">Front page</a>
+ <a class="sl" href="../../../articles/newsletter/index.html">Newsletter</a>
+ <a class="sl" href="../../../articles/index.html#all">Every article</a>
+ <a class="sl" href="../../../articles/collections/index.html">Collections</a>
+ <a class="sl" href="../../../articles/desk/index.html">From the desk</a>
+ <a class="sl" href="../../../articles/graphs.html">As graphs</a>
+ <a class="sl" href="../../../newsroom/index.html">How it runs</a>
+ <a class="sl" href="../../../subscribe/index.html">Subscribe</a>
+ <a class="sl" href="../../../account/index.html">Your reading account</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../../../investors/index.html">Investors</a>
+ <a class="sl" href="../../../startups/index.html">Startups</a>
+ <a class="sl" href="../../../startups/business-plans.html">Business plans</a>
+ <a class="sl" href="../../../about/index.html">About the author</a>
+ <a class="sl" href="../../../partnerships/index.html">Partnerships</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../../docs/index.html">Documentation</a>
+ <a class="sl" href="../../../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl" href="../../../docs/guidance/repositories.html">Every repository</a>
+ <a class="sl" href="../../../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../../../api/index.html">HTTP API</a>
+ <a class="sl" href="../../../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../../../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../../../deploy/index.html">Deploy</a>
+ <a class="sl" href="../../../meter/index.html">SG Meter</a>
+ <a class="sl" href="../../../skills/index.html">Skills</a>
+ <a class="sl" href="../../../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../../../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../../../demos/index.html">Demos</a>
+ <a class="sl" href="../../../demos/fractal-graphs/index.html">Fractal graphs</a>
+ <a class="sl" href="../../../demos/fractal-graphs/performance.html">Performance & cost</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../../../agents/index.html">Agents</a></div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../../compare/index.html">Comparisons</a>
+ <a class="sl" href="../../../demos/fractal-graphs/performance.html">Performance & cost</a>
+ <a class="sl" href="../../../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../../../lessons/index.html">Lessons learned</a>
+ <a class="sl" href="../../../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../../team/index.html">How the site is run</a>
+ <a class="sl" href="../../../team/index.html#roles">Roles</a>
+ <a class="sl" href="../../../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../../../team/board.html">The board</a>
+ <a class="sl" href="../../../updates/index.html">Updates</a>
+ <a class="sl" href="../../../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../../network/index.html">All sites</a>
+ <a class="sl" href="../../../network/nhi.html">nhi</a>
+ <a class="sl" href="../../../network/pki.html">pki</a>
+ <a class="sl" href="../../../network/graphs.html">graphs</a>
+ <a class="sl" href="../../../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../../../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<div class="llmschip"><a href="../../../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.7.28 &middot; 10 Oct 2026</span></a></div>
+<main class="doc diff">
+ <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../../index.html">Articles</a> / <a href="../../if-somebody-built-a-company-on-code-review.html">If somebody built a company on code review</a> / <a href="../if-somebody-built-a-company-on-code-review.html">Versions</a> / v1.1.0</p>
+ <h1>If somebody built a company on code review: what changed in v1.1.0</h1>
+ <p class="lead">From v1.0.0 (2026-10-05, <code>4fab15075</code>) to v1.1.0 (2026-10-05, <code>4d6a7b929</code>), paragraph by paragraph.</p>
+ <p class="small dim">0 paragraphs added, 0 removed, 16 changed in place, 100 unchanged. About 0 words added and 0 removed. Insertions are marked like <ins>this</ins>, deletions like <del>this</del>; unchanged runs are folded to one line; figures appear as their file names.</p>
+ <style>.diff ins{background:#e6f4ea;color:#1a5c36;text-decoration:none;padding:0 2px}.diff del{background:#fde8e6;color:#8a1c12;text-decoration:line-through;padding:0 2px}.diff .diff-same{color:#8a8780;font-size:.85em;border-left:3px solid #e3e0d8;padding-left:.7em;margin:1.2em 0}.diff .added{border-left:3px solid #1a7f5a;padding-left:.7em}.diff .removed{border-left:3px solid #b42318;padding-left:.7em;color:#6b6863;text-decoration:line-through}.diff .changed{border-left:3px solid #b45309;padding-left:.7em}.diff .diff-fig{font-style:italic;color:#6b6863}.diff .diff-li{margin:.3em 0 .3em 1em}</style>
+ <p class="small"><a href="../if-somebody-built-a-company-on-code-review.html">all versions</a> &middot; <a href="v1.2.0.html">v1.2.0 &rarr;</a></p>
+ <p class="diff-same">1 unchanged paragraph</p>
+ <p class="changed">Summary: The code review article drew a careful reply from a reader, seven questions long, and a voice memo from me answering them. This is the written answer, framed the way the memo framed it: if somebody were building a company on code review, this is how I would do it. The questions were good ones. Could the graph be built from the user stories before the code exists, and the two ends married? Where were the commands and modules layers in the example? Are hand-written stories too high level, and should they be rules and examples instead? Is "a refactor leaves the class shapes still" wrong when an architecture migration keeps only the client interface? Where do deploys and infrastructure go? How do you stop the cost spiking when a repository is onboarded? What is the blast radius compared to, and how long should the report be? The answers turn on one distinction the first article did not make clearly enough. What is fractal in a fractal semantic graph is the grammar: nodes, edges, an ontology, a taxonomy and a way to the next altitude. Which layers exist, what they are called and where they stop is decided by each company, its culture, its languages and its stack, and a product that standardises them away loses the thing it was meant to review. From there: a projected graph built top down from stories, rules and examples, a derived graph built bottom up from the syntax tree, and the review as the join; a refactor as relative to the layer you hold still; the deploy as a <del>rung;</del><ins>layer;</ins> who reads the code at each stage of evolution, after Wardley; reshaping a change rather than reviewing it as it arrived; a budget per altitude and the five whys as the loop that makes the next review cheaper; and open source as the only business model that fits, because the layers are the customer's and the loop has to run where the code is.</p>
+ <p class="changed">!shot cr2-fractal-or-not.webp | images/ | What is fractal and what is not. The constant across every codebase is the grammar: nodes, edges, an ontology, a taxonomy and a way to zoom in and out. Which layers exist, what they are called, which languages fill the bottom <del>rungs</del><ins>layers</ins> and what the business counts as a change that matters are decided by the company you are in. The first article's seven altitudes were one Python repository's layers, not the layers.</p>
+ <p class="diff-same">7 unchanged paragraphs, under In short</p>
+ <p class="changed diff-li">&bull; <b>The deploy is a <del>rung.</b></del><ins>layer.**</ins> Infrastructure, pipelines and environments are graphs with their own vocabulary, and a change's blast radius runs through them to what is running where. The non-functional requirements live at that altitude and above it, and they are reviewed the same way: by what the change can reach.</p>
+ <p class="diff-same">3 unchanged paragraphs</p>
+ <p class="changed diff-li">&bull; <b>Compare the blast radius to the intent, and report one line per <del>rung</del><ins>layer</ins> that moved.</b> Not to the old code. To the projected graph, the commit message, the documentation engineers already write, and the stories. Progress on a big feature is the count of projected nodes that now have a derived match, which is how small increments are measured before they move any needle.</p>
+ <p class="diff-same">3 unchanged paragraphs, under The grammar is fractal, the layers are yours</p>
+ <p class="changed">Notice what is in that list and what is not. The grammar is in it: nodes with a type and a name, edges with a verb and a named inverse, an ontology that says what the types and verbs mean at this altitude, a taxonomy that says how the nodes group, and the move in and out. The layers are not in it. Which layers exist, what they are called, which languages fill the bottom <del>rungs</del><ins>layers</ins> and what counts as a change that matters are not properties of the graph. They are properties of the company you are in.</p>
+ <p class="changed">That is the answer to the reader's first instinct and to mine. The first article drew seven altitudes for one Python repository: stories, commands, packages, classes, methods and calls, syntax, and the machine below. Those were that repository's layers. A team of three with a Flask app and a bank with four hundred services in six languages do not have the same layers, and should not be made to. One calls them epics and stories, another calls them services and bounded contexts, a third has infrastructure as a layer that the first two do not have at all. The programming languages decide the bottom <del>rungs,</del><ins>layers,</ins> and the languages people speak decide the top ones. The culture names them. The objectives decide which <del>rung</del><ins>layer</ins> counts.</p>
+ <p class="diff-same">3 unchanged paragraphs, under Build the graph from the top, before the code exists</p>
+ <p class="changed">Yes, and this is how I would run a project from the start. The order I use for anything I build now is: brief, then plan, then architecture, then a review of the architecture, then a simulation of it with synthetic users, and the code last, when the shape has survived everything that can be thrown at it without code. Each of those steps produces a graph in the same grammar. The brief names objectives. The plan names stories, and each story names its rules and the examples that make the rules concrete. The architecture names features, flows, the commands and surfaces the stories will touch, and the components they will need, sketched as far down as design can honestly see and no further. Below that the projection stops, and it should say so, because everything under the lowest honest <del>rung</del><ins>layer</ins> is wishful thinking until a parser can read it.</p>
+ <p class="diff-same">9 unchanged paragraphs, under The layers the example had and the text did not walk</p>
+ <p class="changed">The commit in the vault changed seven methods in two classes, which live in two modules, the command-line vault module and the automatic transport module, in two packages, the command-line package and the network package. Climbing the call graph from the changed methods reached nine of the seventy-two commands and six of the eleven stories. The delta figure shows every one of those <del>rungs</del><ins>layers</ins> in red, including the commands and the modules. The text took the two ends, methods and stories, because the shape of a fix is clearest there, and left the middle <del>rungs</del><ins>layers</ins> to the picture.</p>
+ <p class="changed">That is a writing fault and the vault is unchanged by it, but it also hides a point that a product would need. The middle <del>rungs</del><ins>layers</ins> are where the review's audience changes. Methods are read by the author and whoever owns the file. Modules and packages are read by whoever owns the architecture, because that is the <del>rung</del><ins>layer</ins> where a change can cross a boundary it should not. Commands and surfaces are read by whoever owns the users, because that is where behaviour becomes visible. A review that visits every <del>rung</del><ins>layer</ins> is also a review that routes each <del>rung</del><ins>layer</ins> to the person who can judge it, and the middle <del>rungs</del><ins>layers</ins> are the ones with the fewest readers today, which is one reason architecture drifts.</p>
+ <p class="diff-same">3 unchanged paragraphs, under Stories as rules and examples</p>
+ <p class="changed">In the graph that is the top <del>rung</del><ins>layer</ins> done properly. A story is a node whose children are rules, each rule a node whose children are examples, and each example a node with an edge to the test that exercises it or the recorded run that passed it. "Hand-written" then stops being a weakness, because what is written by hand is the smallest unit that can be checked. The question cards are the "derived, not projected" and "projected, not derived" findings before the code exists: things the conversation could not settle, held in the graph as questions rather than lost in a meeting.</p>
+ <p class="diff-same">10 unchanged paragraphs, under A refactor is relative to a layer, Down to the deploy</p>
+ <p class="changed">They are <del>rungs.</del><ins>layers.</ins> A deployment pipeline, the environments it deploys to, the services running in each, the configuration they read and the secrets they hold are a graph with its own vocabulary, and the vocabulary changes at that altitude as sharply as it does between types and syntax. The nodes are things like a pipeline stage, an environment, a running service, a bucket, a role; the verbs are things like deploys-to, reads-from, assumes, exposes. A change's blast radius does not stop at the command that can reach it. It continues through the deploy graph to what is running where, and a change to a configuration file with no code in it can have a blast radius wider than any method.</p>
+ <p class="changed">The non-functional requirements live at that altitude and above it. Performance, availability, cost, security posture and recoverability are properties of the deployed system, not of the code alone, and the sibling site <a href="https://nfrs.sgit.ai/">nfrs.sgit.ai</a> is this site's attempt to hold its own non-functional requirements as measured claims rather than restated ones. The rule there is "LINK THE MEASUREMENT, NEVER RESTATE IT. GENERATE OR DATE EVERY NUMBER." A review that reads a change at the deploy <del>rung</del><ins>layer</ins> asks which measured claims it can reach, and the Cartographer role in the Send team puts the standard for that <del>rung</del><ins>layer</ins> in one sentence: "If a dependency, data flow, or security boundary exists but is not visible on a map, the Cartographer has failed."</p>
+ <p class="diff-same">10 unchanged paragraphs, under Who reads the code, Review is not saying no</p>
+ <p class="changed">With the graph a change can be split by reach, and each part gets the review it deserves. The part that provably reaches no behaviour, documentation, generated code, formatting, a rename whose every caller moved with it, is merged by a deterministic check, with no model in line and no human. Most of the volume lives here. The part that reaches behaviour through paths that have tests, or inside a layer whose contract is held still, gets the checks run and a model's one-line summary of what moved against what was intended, and a person glances. The part that reaches a mission-critical path, a story customers depend on, or a layer with no test holding it gets people, the right people, with the right context: the architect for the component <del>rung,</del><ins>layer,</ins> the product owner for the story, the author for the method stream.</p>
+ <p class="diff-same">4 unchanged paragraphs, under Replicate reality first</p>
+ <p class="changed">The order of operations I would build the company on is to replicate reality before having an opinion about it. Derive from the code what a parser can derive, deterministically, with no model in line, so that every node has a file and a line and every number is checkable. This is the rule I set out in July 2025 for every model-driven solution, "use LLMs to figure out the solution, then use code to execute the solution thereafter", and in a graph the rules that matter are plain to execute. The 2025 piece on semantic knowledge graphs for source code analysis gave the example: "we check that every endpoint function node has an edge to an Auth check node; the ones that don't are instantly known." Let a model propose what a parser cannot see, the story a command serves, the intent behind a module, the edge a dynamic dispatch hides, and mark every proposal as proposed. Then confront the graph with the three things that can correct it: users, who confirm whether a story holds; experts, who each read the <del>rung</del><ins>layer</ins> they know; and tests, mapped from imports and confirmed by execution. Every correction is a commit to the graph files. Only then is the conversation about the code a conversation about facts, and the memo put it as "replicate reality first, then have a fact-based conversation".</p>
+ <p class="diff-same">13 unchanged paragraphs, under Constraints keep it in control, the five whys make it cheaper, What to compare the blast radius to, and how long the report should be</p>
+ <p class="changed">The report is one line per <del>rung</del><ins>layer</ins> that moved, saying whether the move matches the intent, and nothing for the <del>rungs</del><ins>layers</ins> that did not. A tidy-a-method refactor reports two lines: methods moved, syntax moved, and the class shapes held as claimed. A fix reports the <del>rungs</del><ins>layers</ins> it climbed to the story that now holds, and whether a test was added. A change that reached a <del>rung</del><ins>layer</ins> its description did not mention reports that <del>rung</del><ins>layer</ins> in a different colour. The intent is kept not by writing more but by having the projected graph to compare against, so that "matches the intent" is a computed statement rather than a reviewer's paraphrase.</p>
+ <p class="diff-same">8 unchanged paragraphs, under The company, What the first article got wrong, and what this one leaves open</p>
+ <p class="changed">What is open. The projected graph has not been built for a real project from a brief forward; this site's own briefs and reality files are the nearest thing and they are reconciled by hand. Rules and examples as the top <del>rung,</del><ins>layer,</ins> matched to tests by execution, is on the vault's list and has moved up it. The deploy <del>rung</del><ins>layer</ins> has not been derived for any repository here. And the thing the first article ended on is still true: the review itself, the thing that sits on a change and shows it at every altitude, does not exist yet. What exists is a vault with the layers, a reader's seven questions, and this answer to them.</p>
+ <p class="diff-same">26 unchanged paragraphs, under Threads woven here, Sources</p>
+ <p class="small" style="margin-top:2rem"><a href="../if-somebody-built-a-company-on-code-review.html">all versions</a> &middot; <a href="v1.2.0.html">v1.2.0 &rarr;</a></p>
+</main>
+<sg-meter view="page" kind="page" date="" topics="" title="If somebody built a company on code review: what changed in v1.1.0, sgit.ai" quiet></sg-meter>
+<script type="application/json" id="sg-meter-config">{"storageKey": "sgit.meter.v1", "start": 500, "newDays": 7, "symbol": "£", "prices": {"article_new": 10, "article": 5, "issue": 3, "note": 2, "collection": 2, "page": 1, "free": 0}, "depth": true, "minDepth": 0.1, "topup": {"amount": 500, "link": ""}, "packs": [{"id": "p2", "price": 200, "bonus": 0}, {"id": "p5", "price": 500, "bonus": 0}, {"id": "p10", "price": 1000, "bonus": 100}, {"id": "p20", "price": 2000, "bonus": 300}], "links": {"account": "account/index.html", "topup": "account/top-up.html"}, "picks": {"feed": "articles/graphs.json", "base": "articles/"}}</script>
+<script>
+import('../../../assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.js?v=v0.7.28')
+ .catch(function (e) { console.error('[sg-meter] component failed to load:', e); });
+</script>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../../../admin/versions.html">v0.7.28</a> · <a href="../../../admin/index.html">engineering</a> · <a href="v1.1.0.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../../../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../../../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../../../docs/surfaces.html">Three surfaces</a>
+    <a href="../../../docs/installation.html">Installation</a>
+    <a href="../../../docs/quickstart.html">Quickstart</a>
+    <a href="../../../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../../../docs/agents.html">Working with AI agents</a>
+    <a href="../../../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../../../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../../../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../../../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../../../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../../../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../../../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../../../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../../../docs/vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../../../security/index.html">Security</a>
+    <a href="../../../why/index.html">Why does this exist?</a>
+    <a href="../../../use-cases/index.html">Use cases</a>
+    <a href="../../../case-studies/index.html">Case studies</a>
+    <a href="../../../skills/index.html">Skills for AI agents</a>
+    <a href="../../../docs/briefs/index.html">Cross-team briefs</a>
+    <a href="../../../articles/index.html#subscribe">Subscribe to new articles</a>
+    <a href="../../../llms.txt">llms.txt</a>
+    <a href="../../../llms-full.txt">llms-full.txt</a>
+    <a href="../../../admin/index.html">Admin &amp; engineering</a>
+    <a href="../../../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.7.28';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+var mine=V.slice(3),last=0;
+function fresh(){if(location.hostname!=='sgit.ai'||Date.now()-last<60000)return;last=Date.now();
+fetch('/version.txt?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.text():''}).then(function(t){t=(t||'').trim();if(!/^v[0-9]+[.][0-9]+[.][0-9]+$/.test(t)||t===mine)return;
+var k='sgit.fresh:'+location.pathname;try{if(sessionStorage.getItem(k)===t)return;sessionStorage.setItem(k,t)}catch(e){}
+var u=new URL(location.href);u.searchParams.set('v',t);location.replace(u.href)}).catch(function(){})}
+try{var u=new URL(location.href);if(u.searchParams.get('v')===mine){u.searchParams.delete('v');history.replaceState(history.state,'',u.pathname+u.search+u.hash)}}catch(e){}
+fresh();addEventListener('pageshow',function(e){if(e.persisted){last=0;fresh()}});document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')fresh()});
+})();
+</script>
+</body>
+</html>

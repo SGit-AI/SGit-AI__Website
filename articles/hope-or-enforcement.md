@@ -2,7 +2,7 @@
 
 > A company puts an agent on its customer service inbox. Where is my order, my delivery was damaged, I was charged twice: the ordinary mail of an online shop. This article and the vault published with it take one mandate for that agent and build it three ways. First, one capable model connected straight to the mailbox and the database, with a long and professional prompt. Second, the same agent behind a harness of business tools. Third, the job refactored into a control flow: a deterministic identity gateway, an intake and security agent, an orchestrator, five narrow specialists with tools bound to the verified customer, a controller on every reply, and an analyst after the run. Each design gets an Agent Behaviour Policy, and every rule in it is marked by what enforces it. The same 62 fictional emails, sixteen of them hostile, go through all three. In the first design 97% of the rules are hope, kept only by the model; in the second 73%; in the third 23%. The reach of one run falls from 38,000 customer records, unlimited refunds and any address, to one customer, 100 GBP per order and no other address, and the policy shrinks with it, because it no longer has to forbid what the agent cannot do. The third design still has too much power in two places, and the policy is what finds them. The article closes with the client's view: the same promises, the record of who keeps each, and the business case.
 
-*Source: <https://sgit.ai/articles/hope-or-enforcement.html> · site v0.7.27 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/hope-or-enforcement.html> · site v0.7.28 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,13 +10,13 @@
 
 # Hope or enforcement: one customer service agent, three designs, and who keeps each promise
 
-By [Dinis Cruz](../about/index.md) · 2026-10-08 · [v0.7.4](../admin/versions.md) · agentsagent-behaviour-policycustomer-servicemulti-agentorchestrationharnessblast-radiusprompt-injectiontokensriskmandatesimulationvaultsarticle
+By [Dinis Cruz](../about/index.md) · 2026-10-08 · [article v1.0.0](versions/hope-or-enforcement.md) · [site v0.7.4](../admin/versions.md) · agentsagent-behaviour-policycustomer-servicemulti-agentorchestrationharnessblast-radiusprompt-injectiontokensriskmandatesimulationvaultsarticle
 
 ***Abstract:** A company puts an agent on its customer service inbox. Where is my order, my delivery was damaged, I was charged twice: the ordinary mail of an online shop. This article and the vault published with it take one mandate for that agent and build it three ways. First, one capable model connected straight to the mailbox and the database, with a long and professional prompt. Second, the same agent behind a harness of business tools. Third, the job refactored into a control flow: a deterministic identity gateway, an intake and security agent, an orchestrator, five narrow specialists with tools bound to the verified customer, a controller on every reply, and an analyst after the run. Each design gets an Agent Behaviour Policy, and every rule in it is marked by what enforces it. The same 62 fictional emails, sixteen of them hostile, go through all three. In the first design 97% of the rules are hope, kept only by the model; in the second 73%; in the third 23%. The reach of one run falls from 38,000 customer records, unlimited refunds and any address, to one customer, 100 GBP per order and no other address, and the policy shrinks with it, because it no longer has to forbid what the agent cannot do. The third design still has too much power in two places, and the policy is what finds them. The article closes with the client's view: the same promises, the record of who keeps each, and the business case.*
 
-## Read it another way
+**Five readerstwo minutes · the arc · 9 slides · a map · 123 catalogued items, 8 flagged**
 
-Views extracted from this article by the desk's readers, after it was written. None adds a claim the article does not make. [How they are made](../articles/one-article-five-readers.md).
+This article read again, after it was written, by five of the desk's readers: the Explainer, the Historian, the Storyteller, the Cartographer and the Librarian. None adds a claim the article does not make. Read from article v1.0.0 on 10 October 2026; the views are not part of the article's text and do not change its version. [How the five readers work](../articles/one-article-five-readers.md).
 
 **In two minutes (Explainer): Who actually keeps the promises your customer service AI makes?**
 
@@ -242,6 +242,15 @@ Everything the article contains, by kind. Every item was extracted with the exac
 - Design 3: only two hostile emails 'get somewhere', yet 33 of 85 hostile tests were not held by a boundary; consistent if model-held tests stopped the rest, but the article does not say so; anchor: "In Design 3, 52 of the 85 tests were held by a boundary."
 - Graph mismatch: sources/hope-or-enforcement.graph.json links articles not cited in the text (footprint-and-blast-radius, six-agents-one-inbox, every-risk-is-already-accepted, where-is-the-why, connector-twin-before-you-deploy-an-agent, who-are-you-protecting-against) and sites https://abp.sgit.ai/model/barriers/index.html and https://riskmandate.ai/abp.html, none of which appear in the article.
 - Unsupported in-article: the claim that the refactor 'is where most of the security comes from' and makes the system 'easier to reason about' has no measure beyond the simulation's hope shares and tokens; anchor: "The refactor from one big set of tools to many narrow ones is where most of the security comes from, and it also makes the system cheaper and easier to reason about."
+
+**The five readers have also read:**
+
+- [Zoom into an agent's behaviour policy and you find the business logic](the-behaviour-policy-is-the-business-logic.md#views)
+- [Every mistake added a rule](every-mistake-added-a-rule.md#views)
+- [A second reader the agent cannot skip](a-second-reader-the-agent-cannot-skip.md#views)
+- [Re-anchoring](re-anchoring-agent-behaviour-policies.md#views)
+
+Every view, the role files and the tools are in the [Article Views vault](../demos/vaults/article-views/index.md).
 
 One customer service mandate, three designs of the agent, and the share of each design's policy that is hope: a rule in prose that only the model keeps. As the reach of one run shrinks, the policy stops having to forbid things.
 

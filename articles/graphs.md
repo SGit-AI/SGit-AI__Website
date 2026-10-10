@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.27 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.28 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -139,6 +139,32 @@ Long, evidence-rich articles are hard to consume, and the answer is not shorter 
 
 builds on [Liquid content needs water: liquefy the journalist's notebook, not the finished product](#liquid-content-needs-water), [Zoom into an agent's behaviour policy and you find the business logic](#the-behaviour-policy-is-the-business-logic), [Every mistake added a rule: complexity, agents, and the way back to shipping](#every-mistake-added-a-rule), [Hope or enforcement: one customer service agent, three designs, and who keeps each promise](#hope-or-enforcement), [A second reader the agent cannot skip: how two wrong emails became a gate on every draft](#a-second-reader-the-agent-cannot-skip), [Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not](#re-anchoring-agent-behaviour-policies), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted).
 
+## [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](a-meter-in-the-browser.md)
+
+2026-10-10 · Startups & strategyNews & evidence
+
+A reading meter that lives only in the browser, a few pence a page from five pounds of starting credit with a simulated top-up and no blocking, tests whether people would pay a little for reading when what they get back is a site that personalises itself from a history nobody else holds; escaping the meter is easy, but escaping it also discards the history, which is the point of the experiment.
+
+*[diagram]*
+**claim**method**artefact**example**question
+
+**8 nodes, 7 edges**
+
+- **A meter in the browser** (artefact) Every page priced in pence, debited from £5.00 of credit kept in localStorage; one debit per page per visit.
+- **Never block a page** (method) Out of credit, the page is shown and the read recorded as unpaid, with an offer to top up.
+- **Every step but the payment** (method) Packs, a cart, a review, a confirm and a receipt; credit added at once, nothing charged.
+- **The history is the product** (claim) The ledger of what was read, with topics, is enough to pick unread articles for the reader.
+- **The meter can be escaped; the personalisation cannot be copied** (claim) A private window starts again at £5.00 and with no history.
+- **Would people pay for a site that knows them?** (question) The experiment the meter puts in front of a reader.
+- **The pt.newsroom wallet** (example) One cent a page, a self-refilling five-euro wallet, a ledger page: the first version.
+- **402 Payment Required** (example) Reserved in the web's protocol in 1997 for micropayments, still unused.
+
+> The meter can be escaped; the personalisation cannot be copied. The trade the experiment puts in front of a reader.
+
+> The history never leaves the machine it was made on. Personalisation without an account, a cookie banner or a server.
+
+builds on [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it), [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [The bridge, followed to the end: what one local story is worth when it is kept as a graph](#the-bridge-followed-to-the-end); continued by [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [Open source is not free: who pays to keep the long tail working?](#open-source-is-not-free).
+
 ## [Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not](re-anchoring-agent-behaviour-policies.md)
 
 2026-10-10 · Agents & policySite & engineering
@@ -166,32 +192,6 @@ Instructions given only in conversation can be lost when a long session is summa
 > A policy row with a number next to it is a different thing from a policy row on its own. Why the canary measures a rule.
 
 builds on [A second reader the agent cannot skip: how two wrong emails became a gate on every draft](#a-second-reader-the-agent-cannot-skip); continued by [One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece](#one-article-five-readers).
-
-## [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](a-meter-in-the-browser.md)
-
-2026-10-10 · Startups & strategyNews & evidence
-
-A reading meter that lives only in the browser, a few pence a page from five pounds of starting credit with a simulated top-up and no blocking, tests whether people would pay a little for reading when what they get back is a site that personalises itself from a history nobody else holds; escaping the meter is easy, but escaping it also discards the history, which is the point of the experiment.
-
-*[diagram]*
-**claim**method**artefact**example**question
-
-**8 nodes, 7 edges**
-
-- **A meter in the browser** (artefact) Every page priced in pence, debited from £5.00 of credit kept in localStorage; one debit per page per visit.
-- **Never block a page** (method) Out of credit, the page is shown and the read recorded as unpaid, with an offer to top up.
-- **Every step but the payment** (method) Packs, a cart, a review, a confirm and a receipt; credit added at once, nothing charged.
-- **The history is the product** (claim) The ledger of what was read, with topics, is enough to pick unread articles for the reader.
-- **The meter can be escaped; the personalisation cannot be copied** (claim) A private window starts again at £5.00 and with no history.
-- **Would people pay for a site that knows them?** (question) The experiment the meter puts in front of a reader.
-- **The pt.newsroom wallet** (example) One cent a page, a self-refilling five-euro wallet, a ledger page: the first version.
-- **402 Payment Required** (example) Reserved in the web's protocol in 1997 for micropayments, still unused.
-
-> The meter can be escaped; the personalisation cannot be copied. The trade the experiment puts in front of a reader.
-
-> The history never leaves the machine it was made on. Personalisation without an account, a cookie banner or a server.
-
-builds on [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it), [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [The bridge, followed to the end: what one local story is worth when it is kept as a graph](#the-bridge-followed-to-the-end); continued by [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [Open source is not free: who pays to keep the long tail working?](#open-source-is-not-free).
 
 ## [The AI governance stack, as a graph: an answer to Hari Kota, built](the-ai-governance-stack-as-a-graph.md)
 

@@ -2,7 +2,7 @@
 
 > The first rules anybody writes for an agent are mechanical. Do not send, only draft. Do not delete. Use your own account. Vendors are good at those, and should be. Zoom in on any real agent's behaviour policy, though, and within a few layers you are writing how this company does email, which steps an invoice goes through, who a client is to it this week, and what the company is for. That is business logic, and many organisations have never written it down, because their software was the law. This article walks one fictional firm's email agent through six layers, from the platform to the board, records what stands in the way of each rule, counts how much of the policy is backed by a control, how much by an accepted risk and how much by hope, and shows where a vendor's existing control plugs in. The argument is that a behaviour policy built in layers, each refining the one below and each with its own owner, is the only way to describe agent behaviour at the granularity a business actually runs at, that vendors cannot and should not try to model it for each customer, and that writing it down is what lets the business scale.
 
-*Source: <https://sgit.ai/articles/the-behaviour-policy-is-the-business-logic.html> · site v0.7.27 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/the-behaviour-policy-is-the-business-logic.html> · site v0.7.28 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,13 +10,13 @@
 
 # Zoom into an agent's behaviour policy and you find the business logic
 
-By [Dinis Cruz](../about/index.md) · 2026-10-07 · [v0.6.91](../admin/versions.md) · agentsagent-behaviour-policybusiness-logicfractal-semantic-graphscontrolsrisk-acceptancerbacskillsintegrationsarticle
+By [Dinis Cruz](../about/index.md) · 2026-10-07 · [article v1.0.1, 2 versions](versions/the-behaviour-policy-is-the-business-logic.md) · [site v0.6.91](../admin/versions.md) · agentsagent-behaviour-policybusiness-logicfractal-semantic-graphscontrolsrisk-acceptancerbacskillsintegrationsarticle
 
 ***Abstract:** The first rules anybody writes for an agent are mechanical. Do not send, only draft. Do not delete. Use your own account. Vendors are good at those, and should be. Zoom in on any real agent's behaviour policy, though, and within a few layers you are writing how this company does email, which steps an invoice goes through, who a client is to it this week, and what the company is for. That is business logic, and many organisations have never written it down, because their software was the law. This article walks one fictional firm's email agent through six layers, from the platform to the board, records what stands in the way of each rule, counts how much of the policy is backed by a control, how much by an accepted risk and how much by hope, and shows where a vendor's existing control plugs in. The argument is that a behaviour policy built in layers, each refining the one below and each with its own owner, is the only way to describe agent behaviour at the granularity a business actually runs at, that vendors cannot and should not try to model it for each customer, and that writing it down is what lets the business scale.*
 
-## Read it another way
+**Five readerstwo minutes · the arc · 9 slides · a map · 101 catalogued items, 5 flagged**
 
-Views extracted from this article by the desk's readers, after it was written. None adds a claim the article does not make. [How they are made](../articles/one-article-five-readers.md).
+This article read again, after it was written, by five of the desk's readers: the Explainer, the Historian, the Storyteller, the Cartographer and the Librarian. None adds a claim the article does not make. Read from article v1.0.0 on 10 October 2026; the views are not part of the article's text and do not change its version. [How the five readers work](../articles/one-article-five-readers.md).
 
 **In two minutes (Explainer): Rules for an AI assistant soon become rules for your business**
 
@@ -218,6 +218,15 @@ Everything the article contains, by kind. Every item was extracted with the exac
 - The second mechanical layer is unclear: the caption says "The bottom two layers are mechanics", and the mechanics section describes only platform-enforced boundaries, but "Policies inside policies" names the second layer as "soft controls that the agent enforces on itself, or that another agent checks", which are not boundaries. The body never names the two bottom layers consistently.
 - Rule count not reconstructible from the prose: "five of the seventeen rules are backed by a control, six are governed by an accepted risk, and six are hope." The rules stated in the text number about 14 (5 mechanical, 3 function, 3 process, 2 relationship, 1 organisation); the remainder presumably live only in the figure policy-hope.webp, which the catalogue cannot check.
 - No decision items: the article records no explicit choice with a reason by the author or agents, so kind `decision` is 0 (the drafting arrangement in the credit line is catalogued as a fact).
+
+**The five readers have also read:**
+
+- [Every mistake added a rule](every-mistake-added-a-rule.md#views)
+- [Hope or enforcement](hope-or-enforcement.md#views)
+- [A second reader the agent cannot skip](a-second-reader-the-agent-cannot-skip.md#views)
+- [Re-anchoring](re-anchoring-agent-behaviour-policies.md#views)
+
+Every view, the role files and the tools are in the [Article Views vault](../demos/vaults/article-views/index.md).
 
 One fictional firm's email agent, layer by layer, with the barrier that stands in the way of each rule. The bottom two layers are mechanics; the four above them are the firm's business.
 

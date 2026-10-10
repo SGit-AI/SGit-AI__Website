@@ -27,7 +27,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.7.27</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.7.28</a>
   <sg-meter class="meter-nav" view="balance"></sg-meter>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
@@ -119,11 +119,11 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.7.27 &middot; 10 Oct 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.7.28 &middot; 10 Oct 2026</span></a></div>
 <main class="doc">
  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Articles</a> / A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies</p>
  <h1>A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies</h1>
- <p class="small dim">By <a href="../about/index.html" rel="author">Dinis Cruz</a> &middot; 2026-10-09 &middot; <a href="../admin/versions.html">v0.7.16</a> &middot; <span class="chip">agents</span><span class="chip">agent-desktops</span><span class="chip">macos</span><span class="chip">business-plan</span><span class="chip">agent-behaviour-policy</span><span class="chip">licensing</span><span class="chip">vaults</span><span class="chip">pki</span><span class="chip">sgit</span><span class="chip">wardley-maps</span><span class="chip">isolation</span><span class="chip">cowork</span><span class="chip">computer-use</span><span class="chip">article</span></p>
+ <p class="small dim">By <a href="../about/index.html" rel="author">Dinis Cruz</a> &middot; 2026-10-09 &middot; <a href="versions/a-mac-of-the-agents-own.html" title="Every published version of this article, and what changed">article v1.2.0, 3 versions</a> &middot; <a href="../admin/versions.html" title="The site release it was published in">site v0.7.16</a> &middot; <span class="chip">agents</span><span class="chip">agent-desktops</span><span class="chip">macos</span><span class="chip">business-plan</span><span class="chip">agent-behaviour-policy</span><span class="chip">licensing</span><span class="chip">vaults</span><span class="chip">pki</span><span class="chip">sgit</span><span class="chip">wardley-maps</span><span class="chip">isolation</span><span class="chip">cowork</span><span class="chip">computer-use</span><span class="chip">article</span></p>
  <p class="abstract"><em><b>Abstract:</b> Our agents already have dedicated resources with a small blast radius: their own mailbox, their own code-host account, their own Claude account. The next one is a desktop of their own, and it should be a Mac, because that is where most agent desktop apps arrive first. This is a business plan for somebody else to build, following our earlier research on renting an agent a desktop. It started as a pool of Macs rented by the minute, and Apple's licence rules that out: a leased Mac must be held for at least 24 hours, for developer services, by one customer, and virtual copies may not be time-shared. So the plan is the shapes that are allowed: a dedicated Mac per customer, run for them, with a per-minute meter on top and a clean desktop per run built from encrypted vaults; developer agents on leased Macs; software for the Mac mini you keep; and a request to Apple for terms. The reason to want any of it is in the three behaviour policies: the same customer service agent on your own Mac, on a dedicated Mac and on a hardened one, where the excess nothing bounds falls from 23 rows to 11 to 3.</em></p>
 <figure class="shot" data-shot="app-desktops.webp" data-dir="../demos/vaults/agent-desk/images/" data-alt="The same customer service agent on three desktops, in the published behaviour-policy grammar: on your own Mac, on a dedicated remote Mac, and on a hardened one. What changes is not the agent; it is what the desktop holds and what stands in the way." data-href="../demos/vaults/agent-desk/index.html" data-href-label="Open the vault page" data-href-target="_self"><figcaption>The same customer service agent on three desktops, in the published behaviour-policy grammar: on your own Mac, on a dedicated remote Mac, and on a hardened one. What changes is not the agent; it is what the desktop holds and what stands in the way. <b>Click the image to open the vault page &#8599;</b></figcaption></figure>
 <div class="note"><b>Where this comes from.</b> It follows <a href="../articles/an-agent-desktop-by-the-minute.html">A locked-down desktop for an agent, by the minute, is still hard to rent</a>, and it is written, like the other <a href="../startups/business-plans.html">business plans on this site</a>, so that anybody could build it. It names no provider. The whole plan, with the numbers, the policies and a calculator, is in <a href="../demos/vaults/agent-desk/index.html">the Agent Desk vault</a>.</div>
@@ -394,7 +394,7 @@
 </main>
 <script>
 (function () {
- fetch('../assets/shots.js?v=v0.7.27')
+ fetch('../assets/shots.js?v=v0.7.28')
  .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
  .then(function (t) { (0, eval)(t); })
  .catch(function (e) { console.error('[shots] component failed to load:', e); });
@@ -402,7 +402,7 @@
 </script>
 <script type="application/json" id="sg-meter-config">{"storageKey": "sgit.meter.v1", "start": 500, "newDays": 7, "symbol": "£", "prices": {"article_new": 10, "article": 5, "issue": 3, "note": 2, "collection": 2, "page": 1, "free": 0}, "depth": true, "minDepth": 0.1, "topup": {"amount": 500, "link": ""}, "packs": [{"id": "p2", "price": 200, "bonus": 0}, {"id": "p5", "price": 500, "bonus": 0}, {"id": "p10", "price": 1000, "bonus": 100}, {"id": "p20", "price": 2000, "bonus": 300}], "links": {"account": "account/index.html", "topup": "account/top-up.html"}, "picks": {"feed": "articles/graphs.json", "base": "articles/"}}</script>
 <script>
-import('../assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.js?v=v0.7.27')
+import('../assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.js?v=v0.7.28')
  .catch(function (e) { console.error('[sg-meter] component failed to load:', e); });
 </script>
 
@@ -411,7 +411,7 @@ import('../assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.js?v=v0.7.27')
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.7.27</a> · <a href="../admin/index.html">engineering</a> · <a href="a-mac-of-the-agents-own.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.7.28</a> · <a href="../admin/index.html">engineering</a> · <a href="a-mac-of-the-agents-own.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -454,7 +454,7 @@ import('../assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.js?v=v0.7.27')
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.7.27';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.7.28';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

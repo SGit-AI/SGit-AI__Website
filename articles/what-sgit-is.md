@@ -2,7 +2,7 @@
 
 > An introduction to sgit and sgit.ai, what an encrypted vault is, why version control had to be rebuilt to get one, and what nineteen published vaults look like when the server storing them cannot read a byte.
 
-*Source: <https://sgit.ai/articles/what-sgit-is.html> · site v0.7.27 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/what-sgit-is.html> · site v0.7.28 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 # Git for things you cannot put on GitHub
 
-2026-08-25 · [v0.2.42](../admin/versions.md) · introzero-knowledgevaultsagents
+2026-08-25 · [article v1.4.2, 7 versions](versions/what-sgit-is.md) · [site v0.2.42](../admin/versions.md) · introzero-knowledgevaultsagents
 
 ***Abstract:** An introduction to sgit and sgit.ai, what an encrypted vault is, why version control had to be rebuilt to get one, and what nineteen published vaults look like when the server storing them cannot read a byte.*
 

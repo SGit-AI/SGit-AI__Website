@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en" data-root="../../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Custom UIs are not the exception: what changed in v1.6.0, sgit.ai</title>
+<meta name="description" content="The changes to the article "Custom UIs are not the exception" in v1.6.0, paragraph by paragraph.">
+<link rel="canonical" href="https://sgit.ai/articles/versions/custom-uis-are-not-the-exception/v1.6.0.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/articles/versions/custom-uis-are-not-the-exception/v1.6.0.html">
+<meta property="og:title" content="Custom UIs are not the exception: what changed in v1.6.0, sgit.ai">
+<meta property="og:description" content="The changes to the article "Custom UIs are not the exception" in v1.6.0, paragraph by paragraph.">
+<meta property="og:image" content="https://sgit.ai/og/default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Custom UIs are not the exception: what changed in v1.6.0, sgit.ai">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgit.ai/og/default.jpg">
+<link rel="alternate" type="text/markdown" href="v1.6.0.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Custom UIs are not the exception: what changed in v1.6.0, sgit.ai", "headline": "Custom UIs are not the exception: what changed in v1.6.0, sgit.ai", "description": "The changes to the article \"Custom UIs are not the exception\" in v1.6.0, paragraph by paragraph.", "url": "https://sgit.ai/articles/versions/custom-uis-are-not-the-exception/v1.6.0.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../../../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../../../admin/versions.html" title="Site release history">v0.7.28</a>
+  <sg-meter class="meter-nav" view="balance"></sg-meter>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+ <div class="ni ni-has">
+ <a class="nl here" href="../../../articles/index.html">Newsroom<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl here" href="../../../articles/index.html">Front page</a>
+ <a class="sl" href="../../../articles/newsletter/index.html">Newsletter</a>
+ <a class="sl" href="../../../articles/index.html#all">Every article</a>
+ <a class="sl" href="../../../articles/collections/index.html">Collections</a>
+ <a class="sl" href="../../../articles/desk/index.html">From the desk</a>
+ <a class="sl" href="../../../articles/graphs.html">As graphs</a>
+ <a class="sl" href="../../../newsroom/index.html">How it runs</a>
+ <a class="sl" href="../../../subscribe/index.html">Subscribe</a>
+ <a class="sl" href="../../../account/index.html">Your reading account</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../../../investors/index.html">Investors</a>
+ <a class="sl" href="../../../startups/index.html">Startups</a>
+ <a class="sl" href="../../../startups/business-plans.html">Business plans</a>
+ <a class="sl" href="../../../about/index.html">About the author</a>
+ <a class="sl" href="../../../partnerships/index.html">Partnerships</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../../docs/index.html">Documentation</a>
+ <a class="sl" href="../../../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl" href="../../../docs/guidance/repositories.html">Every repository</a>
+ <a class="sl" href="../../../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../../../api/index.html">HTTP API</a>
+ <a class="sl" href="../../../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../../../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../../../deploy/index.html">Deploy</a>
+ <a class="sl" href="../../../meter/index.html">SG Meter</a>
+ <a class="sl" href="../../../skills/index.html">Skills</a>
+ <a class="sl" href="../../../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../../../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../../../demos/index.html">Demos</a>
+ <a class="sl" href="../../../demos/fractal-graphs/index.html">Fractal graphs</a>
+ <a class="sl" href="../../../demos/fractal-graphs/performance.html">Performance & cost</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../../../agents/index.html">Agents</a></div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../../compare/index.html">Comparisons</a>
+ <a class="sl" href="../../../demos/fractal-graphs/performance.html">Performance & cost</a>
+ <a class="sl" href="../../../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../../../lessons/index.html">Lessons learned</a>
+ <a class="sl" href="../../../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../../team/index.html">How the site is run</a>
+ <a class="sl" href="../../../team/index.html#roles">Roles</a>
+ <a class="sl" href="../../../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../../../team/board.html">The board</a>
+ <a class="sl" href="../../../updates/index.html">Updates</a>
+ <a class="sl" href="../../../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../../network/index.html">All sites</a>
+ <a class="sl" href="../../../network/nhi.html">nhi</a>
+ <a class="sl" href="../../../network/pki.html">pki</a>
+ <a class="sl" href="../../../network/graphs.html">graphs</a>
+ <a class="sl" href="../../../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../../../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<div class="llmschip"><a href="../../../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.7.28 &middot; 10 Oct 2026</span></a></div>
+<main class="doc diff">
+ <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../../index.html">Articles</a> / <a href="../../custom-uis-are-not-the-exception.html">Custom UIs are not the exception</a> / <a href="../custom-uis-are-not-the-exception.html">Versions</a> / v1.6.0</p>
+ <h1>Custom UIs are not the exception: what changed in v1.6.0</h1>
+ <p class="lead">From v1.5.0 (2026-10-02, <code>75111d24c</code>) to v1.6.0 (2026-10-02, <code>3ee0be547</code>), paragraph by paragraph.</p>
+ <p class="small dim">0 paragraphs added, 0 removed, 8 changed in place, 86 unchanged. About 14 words added and 258 removed. Insertions are marked like <ins>this</ins>, deletions like <del>this</del>; unchanged runs are folded to one line; figures appear as their file names.</p>
+ <style>.diff ins{background:#e6f4ea;color:#1a5c36;text-decoration:none;padding:0 2px}.diff del{background:#fde8e6;color:#8a1c12;text-decoration:line-through;padding:0 2px}.diff .diff-same{color:#8a8780;font-size:.85em;border-left:3px solid #e3e0d8;padding-left:.7em;margin:1.2em 0}.diff .added{border-left:3px solid #1a7f5a;padding-left:.7em}.diff .removed{border-left:3px solid #b42318;padding-left:.7em;color:#6b6863;text-decoration:line-through}.diff .changed{border-left:3px solid #b45309;padding-left:.7em}.diff .diff-fig{font-style:italic;color:#6b6863}.diff .diff-li{margin:.3em 0 .3em 1em}</style>
+ <p class="small"><a href="v1.5.0.html">&larr; v1.5.0</a> &middot; <a href="../custom-uis-are-not-the-exception.html">all versions</a> &middot; <a href="v1.6.1.html">v1.6.1 &rarr;</a></p>
+ <p class="diff-same">1 unchanged paragraph</p>
+ <p class="changed">Summary: <del>The</del><ins>Following</ins> <del>hardest part of working with many people and many agents</del><ins>up</ins> is <del>not</del><ins>harder than</ins> doing the work, <del>it is following up:</del><ins>because</ins> every person has a different <del>context,</del><ins>context</ins> and the thread you <del>both</del><ins>share</ins> <del>hold</del><ins>hides</ins> <del>carries</del><ins>its</ins> <del>actions,</del><ins>own</ins> <del>questions, statements and decisions the thread does not show.</del><ins>structure.</ins> This article weaves <del>together what this site has built over </del>the <del>past</del><ins>site's</ins> <del>months, fractal semantic graphs, six agents on one inbox, append lanes and Email-FS, vault apps, the story vault, the connector twin, the business plans,</del><ins>threads</ins> into one argument. Every message <del>deserves</del><ins>has</ins> a graph, <del>at</del><ins>with</ins> <del>the</del><ins>altitudes</ins> <del>altitude of the contact, the company, the conversation, the message and</del><ins>from</ins> the block <del>inside</del><ins>to</ins> <del>it.</del><ins>the contact.</ins> Email is a medium, so <del>the design brief for </del>a message is<ins> designed for</ins> the recipient's moment, not the sender's <del>thread, and the thread itself, by now, is pointless.</del><ins>thread.</ins> A custom interface per <del>message, thread, topic</del><ins>message</ins> or <del>question</del><ins>moment</ins> is not an exception; it is how interfaces now get made, <del>the way Wardley maps say everything gets made: you are always either building a new one or recycling one that exists, and </del>each one <del>you build commoditises a thing so that next time you just send it. It starts with</del><ins>commoditising</ins> the <del>user:</del><ins>next.</ins> <del>not one interface but many, one per moment, each shaped for how the person wants to work right now. The worked example is a page an agent built in an afternoon that lists the PDFs still owed and gives a place to drop them, through a vault's append lane, so the to-do and the place to act are one page; and that afternoon was one item in an eight-day stream in which ten</del><ins>Ten</ins> agents and one human built <del>a working way of doing outreach, with </del>more than a dozen <del>interfaces. It compounds, because each interface teaches the agent how its user wants to work, and because automation creates more work than any inbox can hold, so the interface becomes the prioritisation. It is the beginning </del>of <del>what email becomes: the transport stays, and above it the message is a node</del><ins>them</ins> in <del>a</del><ins>eight</ins> <del>graph, shaped for each reader's moment, one word or the whole map, improved in a loop by the human and the agents.</del><ins>days.</ins> The future of email is sender-served structure, read by the recipient's agent, with the inbox as one view of the graph. And <del>it has to be governed, because </del>an interface is an agent <del>surface</del><ins>surface,</ins> <del>too.</del><ins>so it gets a policy.</ins></p>
+ <p class="diff-same">25 unchanged paragraphs, under In short, The follow-up problem, Every message has a graph…</p>
+ <p class="changed">!shot custom-ui-abp-explainer.webp | images/ | An Agent Behaviour Policy in one picture, as it goes out in a first email: what the agent can do, what you asked it to do, the gap between them, what actually stops the rest, and who accepts the gap until when. No data in it; it is the explanation, shaped for the recipient's minute.<ins> | medium</ins></p>
+ <p class="diff-same">1 unchanged paragraph, under It starts with the user</p>
+ <p class="changed">!shot custom-ui-many-ux.webp | images/ | One user, many interfaces, each shaped for the moment: Now cards on a phone between meetings, a voice prompt behind an encrypted link on a walk, boards at a desk, a contact page, a drop zone, Gmail drafts the human sends, a chat with an agent, and the email itself. Some threads are agentic, some deterministic, some information, some for thinking. The map starts at the user and works down to the components.<ins> | narrow</ins></p>
+ <p class="diff-same">14 unchanged paragraphs, under Custom interfaces are not the exception, The page that is both the to-do and the place to act</p>
+ <p class="changed">!shot custom-ui-now-and-drop.webp | images/ | Two of the interfaces, as mock-ups with placeholder names. Left: the Now card on a phone, computed from the vaults, blockers first, at most two actions, one tap to decide. Right: the sibling of the PDF drop page in the RiskMandate workspace, a list of what is owed that is also the drop zone; each drop goes down the append lane, an agent files it, the row disappears. The user never asks "what do I owe?" in chat. The page answers before the question, and the answer is also the button.<ins> | narrow</ins></p>
+ <p class="diff-same">2 unchanged paragraphs, under Eight days, not one afternoon</p>
+ <p class="changed">!shot custom-ui-eight-days.webp | images/ | The workflow as it happened, 25 September to 2 October 2026. Every column is a day; each line is something that now exists and is in use: an agent, a vault, an interface release, a workflow. The counts at the bottom are from the vaults' commit history. The PDF drop page is one item in this stream.<ins> | narrow</ins></p>
+ <p class="diff-same">9 unchanged paragraphs, under Why it compounds, This is the beginning of what email becomes</p>
+ <p class="changed">!shot custom-ui-many-shapes.webp | images/ | One message, many shapes. The message is a node in a graph; each reader gets the shape their moment needs: one word, a card with two actions, a familiar email, a three-minute voice prompt, a board, or the whole graph. The shape adapts to urgency, focus, language and culture, the relationship, and whether the reader is a person or an agent reading for one. Placeholder names.<ins> | narrow</ins></p>
+ <p class="diff-same">4 unchanged paragraphs</p>
+ <p class="changed">!shot custom-ui-the-loop.webp | images/ | Every tap teaches the next interface. A moment gets a shape; the shape gets a decision; the decision is written to the vault as a record; the record shapes the next version. Interfaces mature at different speeds: the drop zone is new and still changing, the Now card is reshaped often, the who-is-waiting board has settled, and the email is a commodity you just send. Positions indicative.<ins> | narrow</ins></p>
+ <p class="diff-same">8 unchanged paragraphs, under The future of email, Who builds them</p>
+ <p class="changed">!shot custom-ui-agents-map.webp | images/ | Ten agents and one human, each with a scoped role, as of 2 October 2026. Most share the same reach, one account and many tools, and differ in mandate. Each writes only its own folders and talks to the others in files. Six already have a written Agent Behaviour Policy. Names generalised; no keys, contacts or message content shown.<ins> | narrow</ins></p>
+ <p class="diff-same">22 unchanged paragraphs, under An interface is an agent surface, so it gets a policy, What this looks like from here, Threads woven here</p>
+ <p class="small" style="margin-top:2rem"><a href="v1.5.0.html">&larr; v1.5.0</a> &middot; <a href="../custom-uis-are-not-the-exception.html">all versions</a> &middot; <a href="v1.6.1.html">v1.6.1 &rarr;</a></p>
+</main>
+<sg-meter view="page" kind="page" date="" topics="" title="Custom UIs are not the exception: what changed in v1.6.0, sgit.ai" quiet></sg-meter>
+<script type="application/json" id="sg-meter-config">{"storageKey": "sgit.meter.v1", "start": 500, "newDays": 7, "symbol": "£", "prices": {"article_new": 10, "article": 5, "issue": 3, "note": 2, "collection": 2, "page": 1, "free": 0}, "depth": true, "minDepth": 0.1, "topup": {"amount": 500, "link": ""}, "packs": [{"id": "p2", "price": 200, "bonus": 0}, {"id": "p5", "price": 500, "bonus": 0}, {"id": "p10", "price": 1000, "bonus": 100}, {"id": "p20", "price": 2000, "bonus": 300}], "links": {"account": "account/index.html", "topup": "account/top-up.html"}, "picks": {"feed": "articles/graphs.json", "base": "articles/"}}</script>
+<script>
+import('../../../assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.js?v=v0.7.28')
+ .catch(function (e) { console.error('[sg-meter] component failed to load:', e); });
+</script>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../../../admin/versions.html">v0.7.28</a> · <a href="../../../admin/index.html">engineering</a> · <a href="v1.6.0.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../../../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../../../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../../../docs/surfaces.html">Three surfaces</a>
+    <a href="../../../docs/installation.html">Installation</a>
+    <a href="../../../docs/quickstart.html">Quickstart</a>
+    <a href="../../../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../../../docs/agents.html">Working with AI agents</a>
+    <a href="../../../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../../../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../../../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../../../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../../../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../../../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../../../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../../../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../../../docs/vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../../../security/index.html">Security</a>
+    <a href="../../../why/index.html">Why does this exist?</a>
+    <a href="../../../use-cases/index.html">Use cases</a>
+    <a href="../../../case-studies/index.html">Case studies</a>
+    <a href="../../../skills/index.html">Skills for AI agents</a>
+    <a href="../../../docs/briefs/index.html">Cross-team briefs</a>
+    <a href="../../../articles/index.html#subscribe">Subscribe to new articles</a>
+    <a href="../../../llms.txt">llms.txt</a>
+    <a href="../../../llms-full.txt">llms-full.txt</a>
+    <a href="../../../admin/index.html">Admin &amp; engineering</a>
+    <a href="../../../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.7.28';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+var mine=V.slice(3),last=0;
+function fresh(){if(location.hostname!=='sgit.ai'||Date.now()-last<60000)return;last=Date.now();
+fetch('/version.txt?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.text():''}).then(function(t){t=(t||'').trim();if(!/^v[0-9]+[.][0-9]+[.][0-9]+$/.test(t)||t===mine)return;
+var k='sgit.fresh:'+location.pathname;try{if(sessionStorage.getItem(k)===t)return;sessionStorage.setItem(k,t)}catch(e){}
+var u=new URL(location.href);u.searchParams.set('v',t);location.replace(u.href)}).catch(function(){})}
+try{var u=new URL(location.href);if(u.searchParams.get('v')===mine){u.searchParams.delete('v');history.replaceState(history.state,'',u.pathname+u.search+u.hash)}}catch(e){}
+fresh();addEventListener('pageshow',function(e){if(e.persisted){last=0;fresh()}});document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')fresh()});
+})();
+</script>
+</body>
+</html>
