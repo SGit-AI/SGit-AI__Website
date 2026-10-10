@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.23'
+SITE_VERSION = 'v0.7.24'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,20 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.23', '2026-10-10', 'this release',
+    ('v0.7.24', '2026-10-10', 'this release',
+     "A READING METER IN THE BROWSER. Every page now has a price and a meter that debits it from £5.00 of starting "
+     "credit, all of it in the reader's localStorage: no account, no server, no card, nothing sent. Prices come from one "
+     "METER table in the build, injected into every page with what the page is (article, issue, note, collection, page, "
+     "free) and, for an article, its date and topics: a new article (seven days) 5p, older 3p, issue, note or collection "
+     "2p, any other page 1p, homepage, subscribe and account free. assets/meter.js charges once per page per browser "
+     "session, never blocks (out of credit, the read is recorded as unpaid and a bar offers a top-up), shows a badge "
+     "with the balance, and keeps a history that personalises the site: a Picked for you band on the front page and on "
+     "the account page, unread articles from the reader's most-read topics, computed in the browser from "
+     "articles/graphs.json. New pages: account/ (balance, history, topics, receipts, pause, export, start again, price "
+     "table) and account/top-up.html (packs, cart, review, confirm, receipt: every step but the payment). Rules carried "
+     "over from pt.newsroom.sgit.ai's wallet. Tested end to end in a browser: debits by kind and age, the free revisit, "
+     "the picks, the cart and receipt, the unpaid read. The article: a meter in the browser.",),
+    ('v0.7.23', '2026-10-10', 'git ed8f0cd7',
      "ONE MAC, MANY AGENTS; NO NAMES; FULLER COLLAGES. A Mac of the agent's own gains a section on queueing many agents on one Mac: six scenarios against the licence clauses (purpose and who is using macOS decide it, not the queue), the case worth a lawyer's hour, and the narrow ask for Apple's written terms. Threat-sized security: the eight fictional startups are described by what they do instead of named, in the vault (v0.1.2, gate and tests passing, audited from a fresh read-key clone), its screenshots, the article and the ladder figure, which loses its ceiling column. Newsletter collages: three pictures become one large beside two stacked, two pictures hug their content, so screenshots are no longer letterboxed.",),
     ('v0.7.22', '2026-10-10', 'git 0335818e',
      "RE-ANCHORING. Instructions given only in conversation can be lost when a session is summarised; this site's session was summarised eighteen times in a month, keeping about 1.7% each time (an infographic from its own transcript). Re-anchoring keeps the rules in an ABP file and prints it back after every summary (SessionStart, matcher compact); a canary status report, computed from the transcript and checked by a Stop hook, ends every few answers, the brown M&M. Both are running in this session. Three ways a rule fails, one file with three jobs, a measured rule, recipes that age with the platform. Two infographics, a diagram with its Mermaid source, the report on a phone and as a card, graph JSON.",),
@@ -3781,6 +3794,7 @@ NAV = [
         ('graphs', 'As graphs', 'articles/graphs.html'),
         ('newsroom', 'How it runs', 'newsroom/index.html'),
         ('subscribe', 'Subscribe', 'subscribe/index.html'),
+        ('account', 'Your reading account', 'account/index.html'),
     ]),
     ('why', 'Why', 'why/index.html', [
         ('why', 'Why sgit exists', 'why/index.html'),
@@ -4038,6 +4052,42 @@ def expand_trails(path, body):
     return re.sub(r'<!-- trail:([a-z0-9-]+) -->', render, body)
 
 
+# ============================================================ the reading meter
+# One set of rules, used three ways: injected into every page for assets/meter.js to charge by,
+# printed as the price table on the account page, and described in the article about it.
+# Pence. A new article is one published in the last `new_days` days, judged in the reader's
+# browser from the article's date, so prices age without a rebuild.
+METER = {
+    'currency': 'GBP', 'start': 500, 'new_days': 7,
+    'prices': {'article_new': 5, 'article': 3, 'issue': 2, 'note': 2, 'collection': 2, 'page': 1, 'free': 0},
+    'packs': [{'id': 'p2', 'price': 200, 'bonus': 0}, {'id': 'p5', 'price': 500, 'bonus': 0},
+              {'id': 'p10', 'price': 1000, 'bonus': 100}, {'id': 'p20', 'price': 2000, 'bonus': 300}],
+}
+METER_LABEL = [('article_new', 'An article published in the last seven days'), ('article', 'An older article'),
+               ('issue', 'A newsletter issue'), ('note', 'A desk note'), ('collection', 'A collection'),
+               ('page', 'Any other page: docs, vaults, the network, the newsroom'),
+               ('free', 'The homepage, the subscribe page and your account')]
+METER_FREE = ('index.html', 'account/', 'subscribe/')
+
+
+def meter_kind(path):
+    """(kind, date, topics) for the meter: what this page is, for pricing and for the history
+    the personalisation reads."""
+    if path == 'index.html' or path.startswith(METER_FREE[1:]):
+        return 'free', '', []
+    m = re.match(r'^articles/([a-z0-9-]+)\.html$', path)
+    if m and m.group(1) in BY_SLUG:
+        a = BY_SLUG[m.group(1)]
+        return 'article', a['date'], art_topics(a)
+    if path.startswith('articles/newsletter/') and not path.endswith('index.html'):
+        return 'issue', '', []
+    if path.startswith('articles/desk/') and not path.endswith('index.html'):
+        return 'note', '', []
+    if path.startswith('articles/collections/') and not path.endswith('index.html'):
+        return 'collection', '', []
+    return 'page', '', []
+
+
 def page(path, title, desc, here, body):
     # Root prefix by DEPTH, not by "is nested at all", pages now nest three deep
     # (demos/vaults/<slug>/index.html) and a single '../' silently pointed the nav,
@@ -4112,6 +4162,16 @@ def page(path, title, desc, here, body):
                  ' .then(function (t) { (0, eval)(t); })\n'
                  " .catch(function (e) { console.error('[subscribe] component failed to load:', e); });\n"
                  '}());\n</script>')
+    # The reading meter (assets/meter.js): every page says what it is, the build's METER rules
+    # say what that costs, and the component debits a balance kept in the reader's browser.
+    if 'id="sgit-meter"' not in body:
+        kind, date, topics = meter_kind(path)
+        body += (f'\n<div id="sgit-meter" hidden data-kind="{kind}" data-date="{date}" data-topics="{" ".join(topics)}" '
+                 f'data-title="{_esc(title)}"></div>\n<script>\nwindow.SGIT_METER = {json.dumps(METER)};\n'
+                 f"fetch('{p}assets/meter.js?v={SITE_VERSION}')\n"
+                 ' .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })\n'
+                 ' .then(function (t) { (0, eval)(t); })\n'
+                 " .catch(function (e) { console.error('[meter] component failed to load:', e); });\n</script>")
     card = og_card(path)
     html = f"""<!doctype html>
 <html lang="en" data-root="{p}">
@@ -4556,6 +4616,7 @@ LLMS_SECTIONS = [
     ('updates', 'Updates (dated posts: what changed, one entry per story)'),
     ('articles', 'Articles (longer pieces that argue across pages, with the evidence linked)'),
     ('collections', 'Collections (articles read together, each set with an introduction saying what it shows that no single article does)'),
+    ('account', 'Your reading account (a simulated reading meter kept in the browser: prices, balance, history, top-ups and the personalisation they buy)'),
     ('subscribe', 'Subscribe (the one page with the newsletter sign-up form; the address is encrypted in the browser)'),
     ('newsletter', 'The newsletter (the regular SGit Newsroom issue: what was published and what it adds up to, also posted on LinkedIn)'),
     ('desk', 'From the desk (short pieces written from the articles: nuggets, threads across articles, the week in one page)'),
@@ -6313,7 +6374,7 @@ def articles_subnav(cur, root):
              ('all', 'Every article', 'articles/index.html#all'),
              ('collections', 'Collections', 'articles/collections/index.html'),
              ('desk', 'From the desk', 'articles/desk/index.html'), ('graphs', 'As graphs', 'articles/graphs.html'),
-             ('newsroom', 'How it runs', 'newsroom/index.html'), ('subscribe', 'Subscribe', 'subscribe/index.html')]
+             ('newsroom', 'How it runs', 'newsroom/index.html'), ('subscribe', 'Subscribe', 'subscribe/index.html'), ('account', 'Your account', 'account/index.html')]
     return ('<nav class="fsub" aria-label="SGit Newsroom">' + ''.join(
         f'<a href="{root}{h}"{_CUR if k == cur else ""}>{l}</a>' for k, l, h in items) + '</nav>')
 
@@ -6347,6 +6408,7 @@ def articles_index_body():
         out.append(f'<p class="fnote"><span class="fkick">From the editor</span> {_esc(fr["note"])} '
                    f'<a href="../newsroom/log.html">The desk log &rarr;</a></p>')
     out.append('<div class="ftop">' + (_lead_block(lead, root) if lead else '') + _latest_rail(10, root) + '</div>')
+    out.append('<section class="fband" id="meter-foryou" hidden></section>')
     if fr['highlights']:
         out.append('<section class="fband"><h2 class="fsect">Highlights</h2><div class="fhighs">'
                    + ''.join(_high_card(h, root) for h in fr['highlights']) + '</div></section>')
@@ -6886,6 +6948,40 @@ def issue_body(i):
             + '\n <p class="small dim" style="margin-top:2rem"><a href="' + root + 'articles/newsletter/index.html">&larr; All issues</a></p>\n</main>\n')
 
 
+METER_NOTE = ('<div class="note"><b>A simulation, and it says so first.</b> This meter charges nothing, takes no card and '
+              'sends nothing anywhere. The balance, the history and the receipts live in this browser\'s storage. A new browser, a '
+              'private window or clearing site data starts again with &pound;5.00, and with no history, so with no personalisation. '
+              'It never blocks a page: out of credit, you can still read, and the read is noted as unpaid.</div>')
+
+
+def account_body():
+    rows = ''.join(f'<tr><td>{lab}</td><td>{METER["prices"][k]}p</td></tr>' if METER['prices'][k] else f'<tr><td>{lab}</td><td>free</td></tr>'
+                   for k, lab in METER_LABEL)
+    return ('<main class="doc">\n <p class="crumb"><a href="../index.html">Home</a> / <a href="../articles/index.html">SGit Newsroom</a> / Your account</p>\n'
+            ' <p class="eyebrow">SGit Newsroom &middot; reading account</p>\n <h1>Your reading account</h1>\n'
+            ' <p class="lead">Every page on sgit.ai has a price of a few pence. You started with &pound;5.00 of credit, and each page '
+            'you open is debited from it, once per visit. What you read is also what personalises the site for you: the more you '
+            'read, the better the picks below and on the front page.</p>\n'
+            + METER_NOTE +
+            '\n <div id="meter-account"><noscript><p>The reading account needs JavaScript: it lives in your browser and nowhere else.</p></noscript></div>\n'
+            f' <h2 id="prices">What things cost</h2>\n <div class="tablewrap"><table><tr><th>Page</th><th>Price</th></tr>{rows}</table></div>\n'
+            ' <p class="small dim">One debit per page per browser session: going back to a page you have opened this visit costs nothing. '
+            'Reading the markdown twin of a page, or the newsroom wire, is not metered.</p>\n'
+            ' <h2 id="why">Why a meter that charges nothing</h2>\n'
+            ' <p>To find out whether paying for reading, a penny at a time, is something people would do if it bought them something '
+            'back: a site that knows what they read and picks for them, without an account, a cookie banner or anybody else holding '
+            'the history. The case is made in <a href="../articles/a-meter-in-the-browser.html">a meter in the browser</a>.</p>\n</main>')
+
+
+def topup_body():
+    return ('<main class="doc">\n <p class="crumb"><a href="../index.html">Home</a> / <a href="../articles/index.html">SGit Newsroom</a> / '
+            '<a href="index.html">Your account</a> / Top up</p>\n'
+            ' <p class="eyebrow">SGit Newsroom &middot; reading account</p>\n <h1>Top up</h1>\n'
+            ' <p class="lead">Every step of buying credit except the payment: pick a pack, adjust the cart, review, confirm, get a '
+            'receipt. The credit lands in your balance straight away.</p>\n' + METER_NOTE +
+            '\n <div id="meter-topup"><noscript><p>Top-ups need JavaScript: the balance lives in your browser.</p></noscript></div>\n</main>')
+
+
 def subscribe_body():
     root = '../'
     latest = NEWS.issues[0] if NEWS.issues else None
@@ -6936,6 +7032,12 @@ def newsroom_pages():
         out.append((f'newsroom/roles/{r["slug"]}.html', f'{r["title"]}, a newsroom role on sgit.ai', r['mission'], 'newsroom', newsroom_role_body(r)))
     for c in NEWS.collections:
         out.append((f'articles/collections/{c["id"]}.html', f'{c["title"]}, a collection, sgit.ai', c['dek'], 'collections', collection_body(c)))
+    out.append(('account/index.html', 'Your reading account, sgit.ai',
+                'A reading meter kept in your browser: every page costs a few pence from £5.00 of starting credit, and what you read '
+                'personalises the site. A simulation: nothing is charged and nothing leaves the browser.', 'account', account_body()))
+    out.append(('account/top-up.html', 'Top up your reading account, sgit.ai',
+                'Buy reading credit through a cart and a checkout with every step except the payment. Simulated: nothing is charged.',
+                'account', topup_body()))
     out.append(('subscribe/index.html', 'Subscribe to the SGit Newsroom newsletter, sgit.ai',
                 'Get the next issue of the SGit Newsroom by email: what was published, what it adds up to, and what is '
                 'worth your time, about once a week. Your address is encrypted in your browser.', 'subscribe', subscribe_body()))

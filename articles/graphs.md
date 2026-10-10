@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.23 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.24 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,13 +14,13 @@ Every article here has a semantic graph beside it: the ideas it rests on, the cl
 
 The graphs are data first and pictures second. Take them as JSON: [all articles in one file](graphs.json), with the topics, the teasers and the links between articles resolved, or one file per article at `articles/graphs/<slug>.json` (for example [this one](graphs/footprint-and-blast-radius.json)). The pages on this site are rendered from the same files at build time; nothing here is hand-written HTML.
 
-56 of 56 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
+57 of 57 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
 
 ## How the articles connect
 
 *[diagram]*
 
-56 articles, 235 links between them (377 mentions in all). 47 articles cite an earlier one; 6 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (19 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+57 articles, 240 links between them (383 mentions in all). 48 articles cite an earlier one; 6 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (19 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
 
 ## [Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not](re-anchoring-agent-behaviour-policies.md)
 
@@ -49,6 +49,32 @@ Instructions given only in conversation can be lost when a long session is summa
 > A policy row with a number next to it is a different thing from a policy row on its own. Why the canary measures a rule.
 
 builds on [A second reader the agent cannot skip: how two wrong emails became a gate on every draft](#a-second-reader-the-agent-cannot-skip).
+
+## [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](a-meter-in-the-browser.md)
+
+2026-10-10 · Startups & strategyNews & evidence
+
+A reading meter that lives only in the browser, a few pence a page from five pounds of starting credit with a simulated top-up and no blocking, tests whether people would pay a little for reading when what they get back is a site that personalises itself from a history nobody else holds; escaping the meter is easy, but escaping it also discards the history, which is the point of the experiment.
+
+*[diagram]*
+**claim**method**artefact**example**question
+
+**8 nodes, 7 edges**
+
+- **A meter in the browser** (artefact) Every page priced in pence, debited from £5.00 of credit kept in localStorage; one debit per page per visit.
+- **Never block a page** (method) Out of credit, the page is shown and the read recorded as unpaid, with an offer to top up.
+- **Every step but the payment** (method) Packs, a cart, a review, a confirm and a receipt; credit added at once, nothing charged.
+- **The history is the product** (claim) The ledger of what was read, with topics, is enough to pick unread articles for the reader.
+- **The meter can be escaped; the personalisation cannot be copied** (claim) A private window starts again at £5.00 and with no history.
+- **Would people pay for a site that knows them?** (question) The experiment the meter puts in front of a reader.
+- **The pt.newsroom wallet** (example) One cent a page, a self-refilling five-euro wallet, a ledger page: the first version.
+- **402 Payment Required** (example) Reserved in the web's protocol in 1997 for micropayments, still unused.
+
+> The meter can be escaped; the personalisation cannot be copied. The trade the experiment puts in front of a reader.
+
+> The history never leaves the machine it was made on. Personalisation without an account, a cookie banner or a server.
+
+builds on [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it), [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [The bridge, followed to the end: what one local story is worth when it is kept as a graph](#the-bridge-followed-to-the-end).
 
 ## [The AI governance stack, as a graph: an answer to Hari Kota, built](the-ai-governance-stack-as-a-graph.md)
 
@@ -505,7 +531,7 @@ Played out as a simulation on a story vault, one local bridge closure shows the 
 
 > As agents start planning school runs, deliveries and site visits for people, the cheapest thing they can buy is an accurate, maintained, accountable source. Why agents should pay for local journalism.
 
-builds on [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](#story-vault-meets-reader-skills); continued by [The waiting room knew first: a live local story, and the gap where local information used to be](#the-waiting-room-knew-first), [Every mistake added a rule: complexity, agents, and the way back to shipping](#every-mistake-added-a-rule), [Liquid content needs water: liquefy the journalist's notebook, not the finished product](#liquid-content-needs-water), [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](#story-vault-meets-reader-skills).
+builds on [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](#story-vault-meets-reader-skills); continued by [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser), [The waiting room knew first: a live local story, and the gap where local information used to be](#the-waiting-room-knew-first), [Every mistake added a rule: complexity, agents, and the way back to shipping](#every-mistake-added-a-rule), [Liquid content needs water: liquefy the journalist's notebook, not the finished product](#liquid-content-needs-water), [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](#story-vault-meets-reader-skills).
 
 ## [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](story-vault-meets-reader-skills.md)
 
@@ -1161,7 +1187,7 @@ A price is a statement of what you think the thing is worth, and giving it away 
 
 > None of that is zero, and all of it is paid by them. The part that is easy to leave out: the offer costs the other side attention and schedule, and that cost is what the programme measures.
 
-builds on [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it); continued by [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it).
+builds on [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it); continued by [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it).
 
 ## [Footprint and blast radius: what the agent actually did, and what it would have cost](footprint-and-blast-radius.md)
 
@@ -1296,7 +1322,7 @@ The reader has been the product since 1833 and the money has always flowed to wh
 
 > The fix is to stop charging for the road and start charging for the cargo. The four eras end here: the money followed whoever owned distribution, so the proposal is to sell the evidence itself.
 
-builds on [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs); continued by [Liquid content needs water: liquefy the journalist's notebook, not the finished product](#liquid-content-needs-water), [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](#story-vault-meets-reader-skills), [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download).
+builds on [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs); continued by [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser), [Liquid content needs water: liquefy the journalist's notebook, not the finished product](#liquid-content-needs-water), [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](#story-vault-meets-reader-skills), [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download).
 
 ## [Six agents, one inbox: what a real multi-agent setup taught me about access policies](six-agents-one-inbox.md)
 
@@ -1364,7 +1390,7 @@ The fetches that answer engines make are a token cost to the fetcher as well as 
 
 > It is not new money. It is money being spent today, by the answer engines, on reading the web the hard way. Why a rebate on waste is the easiest money in the negotiation to agree to.
 
-builds on [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs); continued by [Liquid content needs water: liquefy the journalist's notebook, not the finished product](#liquid-content-needs-water), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here).
+builds on [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs); continued by [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser), [Liquid content needs water: liquefy the journalist's notebook, not the finished product](#liquid-content-needs-water), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here).
 
 ## [A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down](supply-chain-of-vaults.md)
 
@@ -1530,7 +1556,7 @@ A startup operating model in three pillars: be profitable, make investors come t
 
 > The worst possible time to raise money is before you are profitable, before you have the product, before you understand the fit. Pillar two stated plainly, and the reason profitability comes first.
 
-builds on [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away); continued by [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review), [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away), [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall).
+builds on [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away); continued by [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser), [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review), [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away), [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall).
 
 ## [The SaaS apocalypse will be decided by inertia, not by AI](saas-apocalypse-decided-by-inertia-not-by-ai.md)
 

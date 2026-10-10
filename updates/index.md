@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens) one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.7.23 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.7.24 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,8 +12,9 @@ What changed on sgit and on this site, as it happens, one entry per story rather
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
 
-**70 entries, newest first**
+**71 entries, newest first**
 
+- 2026-10-10[Every page now has a price, and a meter that keeps it in your browser](#a-reading-meter)
 - 2026-10-07[The articles get a newsroom: publish by adding a file, placement by one editor](#the-newsroom)
 - 2026-10-07[The SGit Newsroom, and a newsletter instead of an email per article](#sgit-newsroom-newsletter)
 - 2026-10-07[sgit-ai 0.18.0: scoped and shallow clones, a pull that keeps your work, and a clone twice as fast](#sgit-ai-0-18-0)
@@ -84,6 +85,20 @@ Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the 
 - 2026-08-17[Three walkthroughs, read back as documents](#three-walkthroughs-read-back-as-documents)
 - 2026-08-17[Printing stopped costing every reader](#printing-stopped-costing-every-reader)
 - 2026-08-17[Green does not mean live](#green-does-not-mean-live)
+
+## 2026-10-10
+
+### [Every page now has a price, and a meter that keeps it in your browser](#a-reading-meter) [v0.7.24](../admin/versions.md)
+
+newsroommicropaymentspersonalisationlocal-first
+
+**sgit.ai now meters reading.** Every page costs a few pence from £5.00 of credit every new reader starts with, shown in a badge in the bottom-left corner. It is a simulation: nothing is charged, no card is asked for, and nothing leaves your browser.
+
+- **[Your reading account](../account/index.md)**: the balance, the history, the receipts, the price table, and a pause button.
+- **[Top up](../account/top-up.md)**: a cart and a checkout with every step except the payment.
+- **Picked for you**: the history the meter keeps is what personalises the front page and your account, unread articles from the topics you read most, worked out in your browser.
+- **Out of credit**, nothing is blocked: the read is noted as unpaid and a top-up is offered.
+- **The why** is in [a meter in the browser](../articles/a-meter-in-the-browser.md): the meter can be escaped with a private window; the personalisation cannot be copied.
 
 ## 2026-10-07
 

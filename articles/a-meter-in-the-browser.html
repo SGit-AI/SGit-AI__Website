@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A meter in the browser: a penny a page, a history you keep, and a site that picks for you, sgit.ai</title>
+<meta name="description" content="Every page on sgit.ai now has a price, a few pence, and a meter in the corner of the screen that debits it from five pounds of starting credit. There is a reading account with a history, a price table, a top-up page with a cart and a checkout that has every step except the payment, and an out-of-credit state that never blocks a page. All of it lives in the reader's browser and nowhere else: no account, no server, no card, nothing sent. Open a private window and the meter starts again at five pounds, which looks like a way to read for free, except that it also starts again with no history, and the history is what the site uses to pick articles for you. That is the trade this experiment puts in front of a reader: pay a little, keep the record of what you read on your own machine, and get a site that knows you back. Whether people would make that trade is the question worth testing, and a meter that charges nothing is the cheapest way to start.">
+<link rel="canonical" href="https://sgit.ai/articles/a-meter-in-the-browser.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/articles/a-meter-in-the-browser.html">
+<meta property="og:title" content="A meter in the browser: a penny a page, a history you keep, and a site that picks for you, sgit.ai">
+<meta property="og:description" content="Every page on sgit.ai now has a price, a few pence, and a meter in the corner of the screen that debits it from five pounds of starting credit. There is a reading account with a history, a price table, a top-up page with a cart and a checkout that has every step except the payment, and an out-of-credit state that never blocks a page. All of it lives in the reader's browser and nowhere else: no account, no server, no card, nothing sent. Open a private window and the meter starts again at five pounds, which looks like a way to read for free, except that it also starts again with no history, and the history is what the site uses to pick articles for you. That is the trade this experiment puts in front of a reader: pay a little, keep the record of what you read on your own machine, and get a site that knows you back. Whether people would make that trade is the question worth testing, and a meter that charges nothing is the cheapest way to start.">
+<meta property="og:image" content="https://sgit.ai/og/a-meter-in-the-browser.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A meter in the browser: a penny a page, a history you keep, and a site that picks for you, sgit.ai">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgit.ai/og/a-meter-in-the-browser.jpg">
+<link rel="alternate" type="text/markdown" href="a-meter-in-the-browser.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "A meter in the browser: a penny a page, a history you keep, and a site that picks for you, sgit.ai", "headline": "A meter in the browser: a penny a page, a history you keep, and a site that picks for you, sgit.ai", "description": "Every page on sgit.ai now has a price, a few pence, and a meter in the corner of the screen that debits it from five pounds of starting credit. There is a reading account with a history, a price table, a top-up page with a cart and a checkout that has every step except the payment, and an out-of-credit state that never blocks a page. All of it lives in the reader's browser and nowhere else: no account, no server, no card, nothing sent. Open a private window and the meter starts again at five pounds, which looks like a way to read for free, except that it also starts again with no history, and the history is what the site uses to pick articles for you. That is the trade this experiment puts in front of a reader: pay a little, keep the record of what you read on your own machine, and get a site that knows you back. Whether people would make that trade is the question worth testing, and a meter that charges nothing is the cheapest way to start.", "url": "https://sgit.ai/articles/a-meter-in-the-browser.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}, "author": {"@type": "Person", "name": "Dinis Cruz", "url": "https://sgit.ai/about/index.html"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.7.24</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+ <div class="ni ni-has">
+ <a class="nl here" href="../articles/index.html">Newsroom<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl here" href="../articles/index.html">Front page</a>
+ <a class="sl" href="../articles/newsletter/index.html">Newsletter</a>
+ <a class="sl" href="../articles/index.html#all">Every article</a>
+ <a class="sl" href="../articles/collections/index.html">Collections</a>
+ <a class="sl" href="../articles/desk/index.html">From the desk</a>
+ <a class="sl" href="../articles/graphs.html">As graphs</a>
+ <a class="sl" href="../newsroom/index.html">How it runs</a>
+ <a class="sl" href="../subscribe/index.html">Subscribe</a>
+ <a class="sl" href="../account/index.html">Your reading account</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../investors/index.html">Investors</a>
+ <a class="sl" href="../startups/index.html">Startups</a>
+ <a class="sl" href="../startups/business-plans.html">Business plans</a>
+ <a class="sl" href="../about/index.html">About the author</a>
+ <a class="sl" href="../partnerships/index.html">Partnerships</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../docs/index.html">Documentation</a>
+ <a class="sl" href="../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl" href="../docs/guidance/repositories.html">Every repository</a>
+ <a class="sl" href="../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../api/index.html">HTTP API</a>
+ <a class="sl" href="../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../deploy/index.html">Deploy</a>
+ <a class="sl" href="../skills/index.html">Skills</a>
+ <a class="sl" href="../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../demos/index.html">Demos</a>
+ <a class="sl" href="../demos/fractal-graphs/index.html">Fractal graphs</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../agents/index.html">Agents</a></div>
+ <div class="ni ni-has">
+ <a class="nl" href="../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../compare/index.html">Comparisons</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
+ <a class="sl" href="../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../lessons/index.html">Lessons learned</a>
+ <a class="sl" href="../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../team/index.html">How the site is run</a>
+ <a class="sl" href="../team/index.html#roles">Roles</a>
+ <a class="sl" href="../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../team/board.html">The board</a>
+ <a class="sl" href="../updates/index.html">Updates</a>
+ <a class="sl" href="../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../network/index.html">All sites</a>
+ <a class="sl" href="../network/nhi.html">nhi</a>
+ <a class="sl" href="../network/pki.html">pki</a>
+ <a class="sl" href="../network/graphs.html">graphs</a>
+ <a class="sl" href="../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.7.24 &middot; 10 Oct 2026</span></a></div>
+<main class="doc">
+ <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Articles</a> / A meter in the browser: a penny a page, a history you keep, and a site that picks for you</p>
+ <h1>A meter in the browser: a penny a page, a history you keep, and a site that picks for you</h1>
+ <p class="small dim">By <a href="../about/index.html" rel="author">Dinis Cruz</a> &middot; 2026-10-10 &middot; <span class="chip">newsroom</span><span class="chip">micropayments</span><span class="chip">personalisation</span><span class="chip">local-first</span><span class="chip">privacy</span><span class="chip">pricing</span><span class="chip">early-access</span><span class="chip">article</span></p>
+ <p class="abstract"><em><b>Abstract:</b> Every page on sgit.ai now has a price, a few pence, and a meter in the corner of the screen that debits it from five pounds of starting credit. There is a reading account with a history, a price table, a top-up page with a cart and a checkout that has every step except the payment, and an out-of-credit state that never blocks a page. All of it lives in the reader's browser and nowhere else: no account, no server, no card, nothing sent. Open a private window and the meter starts again at five pounds, which looks like a way to read for free, except that it also starts again with no history, and the history is what the site uses to pick articles for you. That is the trade this experiment puts in front of a reader: pay a little, keep the record of what you read on your own machine, and get a site that knows you back. Whether people would make that trade is the question worth testing, and a meter that charges nothing is the cheapest way to start.</em></p>
+<figure class="shot" data-shot="mt-account.webp" data-dir="images/" data-alt="The reading account, as it looks after ten pages: the balance, what was spent, the articles picked for this reader from what they read, and what they paid to read, by topic. All of it is computed in the browser from a history kept in the browser."><figcaption>The reading account, as it looks after ten pages: the balance, what was spent, the articles picked for this reader from what they read, and what they paid to read, by topic. All of it is computed in the browser from a history kept in the browser.</figcaption></figure>
+<div class="note"><b>You are paying for this page.</b> If you opened it in the first week, it cost you 5p of the £5.00 every new reader starts with; the badge in the bottom-left corner says so. Nothing is charged, no card is involved, and nothing leaves your browser. <a href="../account/index.html">Your account</a> shows the balance, the history and what it bought you.</div>
+<h2>What it does</h2>
+<ul>
+<li><b>Every page has a price.</b> An article published in the last seven days costs 5p, an older one 3p, a newsletter issue, a desk note or a collection 2p, any other page 1p. The homepage, the subscribe page and your own account are free. The full table is on <a href="../account/index.html#prices">the account page</a>.</li>
+<li><b>You start with £5.00</b> of credit, and each page you open is debited once per visit. Going back to a page you opened in the same browser session costs nothing.</li>
+<li><b>A badge in the corner</b> shows your balance and what this page cost, and links to your account.</li>
+<li><b>Out of credit, nothing is blocked.</b> The page is shown, the read is recorded as unpaid, and a bar offers a top-up.</li>
+<li><b>Topping up</b> has every step of a real shop except the payment: four packs, a cart you can adjust, a review step, a confirm button and a receipt. The credit lands at once.</li>
+<li><b>Your account</b> has the history, the receipts, a pause button, an export of everything as JSON, and a button to start again.</li>
+</ul>
+<figure class="shot" data-shot="mt-pill.webp" data-dir="images/" data-alt="An article as a reader sees it: the badge in the bottom-left corner shows the balance and what this page cost. It links to the account."><figcaption>An article as a reader sees it: the badge in the bottom-left corner shows the balance and what this page cost. It links to the account.</figcaption></figure>
+<h2>The history is the product</h2>
+<p>The balance is the obvious part. The less obvious part is the list of what you read, with the topics each article belongs to, which the meter keeps because a ledger has to. That list is enough to personalise the site. Your account picks unread articles from the topics you have read most, and so does the front page, in a band called <em>Picked for you</em> that only appears once there is a history to pick from.</p>
+<figure class="shot" data-shot="mt-foryou.webp" data-dir="images/" data-alt="The front page after a handful of reads: a Picked for you band, filled from this browser&#x27;s history and nowhere else."><figcaption>The front page after a handful of reads: a Picked for you band, filled from this browser's history and nowhere else.</figcaption></figure>
+<p>None of this needs an account, a cookie banner or a server. The articles and their topics are already published as one file, <code>articles/graphs.json</code>, the data behind <a href="../articles/graphs.html">the articles as graphs</a>, and the browser does the arithmetic. The history never leaves the machine it was made on.</p>
+<p>Which means there is an obvious way to cheat. Open a private window, or a different browser, and the meter starts again at £5.00. You can read for free forever. What you cannot do is take your history with you, so you start again with no picks, a front page that knows nothing about you, and an account with nothing in it. <b>The meter can be escaped; the personalisation cannot be copied.</b> That is the experiment: does a site that knows what you read, without anybody else knowing, make a few pence a page feel like a fair price? Or do people open the private window?</p>
+<h2>Why a meter that charges nothing</h2>
+<p>Because it is the cheapest honest way to ask the question. <a href="../articles/the-question-is-whether-they-miss-it.html">The question is whether they miss it</a> argues for shipping something usable, giving it away, and watching whether anybody notices when it goes. <a href="../articles/price-it-then-give-it-away.html">Price it, then give it away</a> adds the step before: define the product, put a price on it, and offer it free to people who know you, because the price is a statement of what you think it is worth. A meter that shows the price on every page, and charges nothing, is that step made visible. The reader sees what a page would cost, what they have spent, and what it bought them, without anybody's money moving.</p>
+<p>The idea is old. <a href="../articles/how-news-got-here.html">How news got here</a> tells the story of a payment code reserved in the web's own protocol in 1997, 402 Payment Required, still waiting for a payment system to use it. This meter does not answer how a penny should move. It asks something that comes before it: whether the interesting part is the payment at all, or what the reader gets back for the record of having paid.</p>
+<h2>Where it came from</h2>
+<p>The first version of this was on <a href="https://pt.newsroom.sgit.ai/carteira/">pt.newsroom.sgit.ai</a>, the Portuguese newsroom: one cent a page, a five-euro wallet that refills itself when it empties, and a ledger with a page of its own. Its rules were right and are kept here: say first that it is a demonstration, never block a page, charge once per page per visit so the back button is not a purchase, and let the page work if the browser refuses to store anything.</p>
+<p>This version adds three things. Prices that depend on what a page is and how new it is, set in one place in the site's build so the published table and the meter cannot disagree. A top-up you choose, through a cart, instead of a refill that happens to you. And the personalisation, which is the reason to keep a history at all.</p>
+<figure class="shot" data-shot="mt-review.webp" data-dir="images/" data-alt="Topping up: two packs in the cart, and the review step where a card form or a wallet button would go. None is shown and nothing is charged."><figcaption>Topping up: two packs in the cart, and the review step where a card form or a wallet button would go. None is shown and nothing is charged.</figcaption></figure>
+<h2>What it does not do, yet</h2>
+<ul>
+<li><b>It holds no money.</b> Anybody can edit their own balance in the browser's developer tools. For a demonstration that is fine; for real money the balance needs a server, or receipts signed by one.</li>
+<li><b>It does not follow you between devices.</b> The history stays where it was made. A version that syncs could keep the ledger in an encrypted vault that only the reader holds the key to, which is the kind of thing this site is built on; that is a proposal, not something built.</li>
+<li><b>It does not meter agents.</b> Reading a page's markdown twin, or the newsroom's <a href="../newsroom/index.html#agents">wire</a>, costs nothing. The other side of that question is in <a href="../articles/token-bill-nobody-is-sending.html">the token bill nobody is sending</a>.</li>
+<li><b>It charges the same for every reader.</b> The obvious next prices are not per page but per question: a query over the reporting behind a story, the kind of thing <a href="../articles/the-bridge-followed-to-the-end.html">the bridge, followed to the end</a> imagines readers and agents paying for in small amounts.</li>
+</ul>
+<figure class="shot" data-shot="mt-empty.webp" data-dir="images/" data-alt="Out of credit: the page is still shown, the read is noted as unpaid, and the bar offers a top-up."><figcaption>Out of credit: the page is still shown, the read is noted as unpaid, and the bar offers a top-up.</figcaption></figure>
+<h2>Try it</h2>
+<p>Your meter has been running since you arrived. <a href="../account/index.html">Your account</a> shows what it has recorded; <a href="../account/top-up.html">top up</a> to walk through the cart; and open this page in a private window to see what starting again costs you.</p>
+<hr>
+<p><em>Drafted from a voice note by Dinis Cruz, who is the author of the idea and has editorial responsibility, by a Claude Code session working as the sgit.ai newsroom, on 10 October 2026. The meter is <code>assets/meter.js</code>; its prices are <code>METER</code> in <code>admin/build/build_pages.py</code>; the screenshots were taken from this site with the meter running.</em></p>
+<section class="athreads" id="threads">
+ <h2>Threads</h2>
+ <p class="athreads-meta"><span class="tchip">Startups &amp; strategy</span><span class="tchip">News &amp; evidence</span> <a href="graphs.html#a-meter-in-the-browser">This article as a graph &rarr;</a></p>
+ <div class="athreads-cols"><div><h3>Builds on</h3><ul><li><a href="the-question-is-whether-they-miss-it.html">For a startup, the most important question is whether they miss it</a> <span class="dim">Ship something usable, give it away briefly, take it away and see whether anybody misses it; charge at a profit before you talk to investors.</span></li><li><a href="price-it-then-give-it-away.html">Price it, then give it away: the early access programme as the next step after "do they miss it"</a> <span class="dim">Define the product, price it, deliver it at a cost that grows a step at a time, then offer it free to people who know you and measure what it costs them.</span></li><li><a href="how-news-got-here.html">The reader was always the product: a corrected history of how news got into this mess</a> <span class="dim">News has sold the reader to advertisers since 1833; the web took the monopoly, the platforms made the reader measurable, and AI took the traffic.</span></li><li><a href="token-bill-nobody-is-sending.html">Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read</a> <span class="dim">AI answer engines pay to read the web as HTML; a publisher who serves markdown, dates, hashes and a typed graph saves them tokens and should get a share.</span></li><li><a href="the-bridge-followed-to-the-end.html">The bridge, followed to the end: what one local story is worth when it is kept as a graph</a> <span class="dim">A bridge closure simulated on a story vault: newsworthy on 5 days, needed on 57, used by three readers, four buyers and an agent, and paid back to its sources.</span></li></ul></div></div>
+ <p class="small dim"><a href="index.html">All articles</a> &middot; <a href="graphs.html">All graphs</a></p>
+</section>
+<aside class="lkit" aria-label="For LinkedIn"><b>Posting this article on LinkedIn?</b> The cover is <a href="../articles/banners/a-meter-in-the-browser.jpg" download>a-meter-in-the-browser.jpg</a> (1920&times;1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.</aside>
+ <p class="subteaser"><b>Want the next issue by email.</b> One issue a week or so: what was published, what it adds up to, and what is worth your time. <a class="cta2" href="../subscribe/index.html">Subscribe to the SGit Newsroom &rarr;</a></p>
+ <p class="small dim" style="margin-top:2rem"><a href="index.html">&larr; All articles</a></p>
+</main>
+<script>
+(function () {
+ fetch('../assets/shots.js?v=v0.7.24')
+ .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+ .then(function (t) { (0, eval)(t); })
+ .catch(function (e) { console.error('[shots] component failed to load:', e); });
+}());
+</script>
+<div id="sgit-meter" hidden data-kind="article" data-date="2026-10-10" data-topics="startups-and-strategy news-and-evidence" data-title="A meter in the browser: a penny a page, a history you keep, and a site that picks for you, sgit.ai"></div>
+<script>
+window.SGIT_METER = {"currency": "GBP", "start": 500, "new_days": 7, "prices": {"article_new": 5, "article": 3, "issue": 2, "note": 2, "collection": 2, "page": 1, "free": 0}, "packs": [{"id": "p2", "price": 200, "bonus": 0}, {"id": "p5", "price": 500, "bonus": 0}, {"id": "p10", "price": 1000, "bonus": 100}, {"id": "p20", "price": 2000, "bonus": 300}]};
+fetch('../assets/meter.js?v=v0.7.24')
+ .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+ .then(function (t) { (0, eval)(t); })
+ .catch(function (e) { console.error('[meter] component failed to load:', e); });
+</script>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.7.24</a> · <a href="../admin/index.html">engineering</a> · <a href="a-meter-in-the-browser.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../docs/surfaces.html">Three surfaces</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../docs/vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
+    <a href="../use-cases/index.html">Use cases</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../docs/briefs/index.html">Cross-team briefs</a>
+    <a href="../articles/index.html#subscribe">Subscribe to new articles</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../llms-full.txt">llms-full.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.7.24';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+var mine=V.slice(3),last=0;
+function fresh(){if(location.hostname!=='sgit.ai'||Date.now()-last<60000)return;last=Date.now();
+fetch('/version.txt?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.text():''}).then(function(t){t=(t||'').trim();if(!/^v[0-9]+[.][0-9]+[.][0-9]+$/.test(t)||t===mine)return;
+var k='sgit.fresh:'+location.pathname;try{if(sessionStorage.getItem(k)===t)return;sessionStorage.setItem(k,t)}catch(e){}
+var u=new URL(location.href);u.searchParams.set('v',t);location.replace(u.href)}).catch(function(){})}
+try{var u=new URL(location.href);if(u.searchParams.get('v')===mine){u.searchParams.delete('v');history.replaceState(history.state,'',u.pathname+u.search+u.hash)}}catch(e){}
+fresh();addEventListener('pageshow',function(e){if(e.persisted){last=0;fresh()}});document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')fresh()});
+})();
+</script>
+</body>
+</html>

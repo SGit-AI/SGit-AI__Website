@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-10",
-  "site_version": "v0.7.23",
+  "site_version": "v0.7.24",
   "about": "https://sgit.ai/newsroom/index.html",
   "front": {
     "edition": "2026-10-08",
@@ -98,6 +98,36 @@
         "re-anchoring",
         "guardrails",
         "governance",
+        "article"
+      ],
+      "placement": [],
+      "linkedin": null,
+      "notes": []
+    },
+    {
+      "slug": "a-meter-in-the-browser",
+      "title": "A meter in the browser: a penny a page, a history you keep, and a site that picks for you",
+      "date": "2026-10-10",
+      "updated": "",
+      "author": "Dinis Cruz",
+      "url": "https://sgit.ai/articles/a-meter-in-the-browser.html",
+      "markdown": "https://sgit.ai/articles/a-meter-in-the-browser.md",
+      "card": "https://sgit.ai/articles/cards/a-meter-in-the-browser.webp",
+      "graph": "https://sgit.ai/articles/graphs/a-meter-in-the-browser.json",
+      "teaser": "Every page now costs a few pence from £5 of credit kept in your browser, and the reading history it keeps is what personalises the site.",
+      "summary": "Every page on sgit.ai now has a price, a few pence, and a meter in the corner of the screen that debits it from five pounds of starting credit. There is a reading account with a history, a price table, a top-up page with a cart and a checkout that has every step except the payment, and an out-of-credit state that never blocks a page. All of it lives in the reader's browser and nowhere else: no account, no server, no card, nothing sent. Open a private window and the meter starts again at five pounds, which looks like a way to read for free, except that it also starts again with no history, and the history is what the site uses to pick articles for you. That is the trade this experiment puts in front of a reader: pay a little, keep the record of what you read on your own machine, and get a site that knows you back. Whether people would make that trade is the question worth testing, and a meter that charges nothing is the cheapest way to start.",
+      "topics": [
+        "startups-and-strategy",
+        "news-and-evidence"
+      ],
+      "tags": [
+        "newsroom",
+        "micropayments",
+        "personalisation",
+        "local-first",
+        "privacy",
+        "pricing",
+        "early-access",
         "article"
       ],
       "placement": [],
