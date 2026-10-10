@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.34'
+SITE_VERSION = 'v0.7.35'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,15 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.34', '2026-10-10', 'this release',
+    ('v0.7.35', '2026-10-10', 'this release',
+     "THE KEY HANDOVER PROMPT, IN FULL. Where the vault keys live gains 'The prompt, in full': the two parts given to a "
+     "Claude session that holds a vault key to send to the registry. First the reason (a vault key is address, "
+     "credential and encryption key with no reset; transcripts are durable and two keys were already rotated because "
+     "they were displayed; verify the fingerprint sha256:20b7bb9dbac7df90 from the published PEM; the token is "
+     "write-only; and the agent may refuse and hand the key over another way), then the instruction. The inbox vault id "
+     "and append token are shown as placeholders, because each sender gets its own token and a published one would let "
+     "anyone write to the registry's inbox. Send a vault key links to it.",),
+    ('v0.7.34', '2026-10-10', 'git 9a2093cb',
      "THE READER CARD: RATE IT, AND THE RATING SETS THE PRICE. The line at the foot of every article becomes a card "
      "headed 'Your reading account', linked to how paying for reading works here, with the balance beside it. It shows "
      "what the page has cost, how much was read and the price to the end; the article is in the active persona's "

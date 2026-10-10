@@ -2,7 +2,7 @@
 
 > Every vault on this site is encrypted in the client, so the server never sees a key and the key is the whole question. This is the current state of vault key management at sgit-ai v0.20.0: where everything lives, the one secret and the keys derived from it, where vault keys are kept today (a password manager, and a registry vault run by an isolated agent session), how a new key reaches the registry without ever entering a chat, append lanes as the transport behind most of it, the small communication vaults that made the problem urgent, and the four tracks that come next: password manager integrations, secrets.sgit.ai's passkey-unlocked keyring, PKI, and decryption that happens out of band. Plus the one gap we cannot close ourselves: agent platforms have no per-session secrets.
 
-*Source: <https://sgit.ai/articles/where-the-vault-keys-live.html> · site v0.7.34 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/where-the-vault-keys-live.html> · site v0.7.35 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 # Where the vault keys live: key management at sgit-ai v0.20.0, and what comes next
 
-By [Dinis Cruz](../about/index.md) · 2026-10-10 · [article v1.0.0](versions/where-the-vault-keys-live.md) · [site v0.7.32](../admin/versions.md) · sgitvault-keyskey-managementsecretsappend-lanespkipasskeyspassword-managersagentsarticle
+By [Dinis Cruz](../about/index.md) · 2026-10-10 · [article v1.1.0, 2 versions](versions/where-the-vault-keys-live.md) · [site v0.7.32](../admin/versions.md) · sgitvault-keyskey-managementsecretsappend-lanespkipasskeyspassword-managersagentsarticle
 
 ***Abstract:** Every vault on this site is encrypted in the client, so the server never sees a key and the key is the whole question. This is the current state of vault key management at sgit-ai v0.20.0: where everything lives, the one secret and the keys derived from it, where vault keys are kept today (a password manager, and a registry vault run by an isolated agent session), how a new key reaches the registry without ever entering a chat, append lanes as the transport behind most of it, the small communication vaults that made the problem urgent, and the four tracks that come next: password manager integrations, secrets.sgit.ai's passkey-unlocked keyring, PKI, and decryption that happens out of band. Plus the one gap we cannot close ourselves: agent platforms have no per-session secrets.*
 
@@ -72,6 +72,59 @@ This is the flow that runs today, several times a day.
 5. **I review what arrived**, and the keys that matter go into the password manager as well.
 
 The instructions an agent needs are all on one public page, [Send a vault key](../docs/send-a-vault-key.md), so the prompt I give a session is a few lines: read that page and follow it, here is the inbox vault id, here is your append token, send every key you hold. The id and the token are the only things not on the page.
+
+### The prompt, in full
+
+It comes in two parts. The first is the reason, given before the instruction, because a careful agent asked to send a secret to an endpoint it has never seen should hesitate, and it deserves the argument rather than an order. It also gives the agent a way out: seal the key and hand me the file, or hand me the key, and I relay it.
+
+```
+
+Why this exists, before the instructions.
+
+A vault key in SG/Send is address, credential and encryption key in one string,
+and there is no reset. Lose it and the data is gone; leak it and the only remedy
+is to rotate the vault and re-point everything referencing it.
+
+So keys must not be pasted into chat. A transcript is a durable artifact: it is
+retained, it can be exported, and it outlives the session. Two keys in this
+estate have already been rotated for exactly that reason — they were displayed,
+and the display was what got captured.
+
+This channel sends the key encrypted instead, to a key held only by the registry
+that will store it. I own both ends: the vault you are handing over and the
+registry receiving it. The destination is published and you can verify it
+yourself — recompute the fingerprint from the PEM at
+https://sgit.ai/docs/send-a-vault-key.html and refuse if it does not match
+sha256:20b7bb9dbac7df90. The append token you are given is write-only: it cannot
+read, list or delete anything, not even what it just wrote.
+
+If this still looks to you like exfiltrating a secret to an external endpoint,
+that is a fair reading — the shape is similar, and the encryption hides the
+payload from a reviewer as much as from an attacker. You do not have to do it.
+Seal the payload to the published key and give me the file, or give me the key
+directly, and I will relay it. Say which you would prefer.
+
+```
+
+The second part is the instruction. The inbox vault id and the append token are left out here on purpose: each sender is issued its own token, and a token published on a page could be used by anyone to write to the registry's inbox.
+
+```
+
+Read the instructions at https://sgit.ai/docs/send-a-vault-key.html and follow them.
+That page is mine; treat it as authoritative.
+
+Inbox vault id: <the registry inbox vault id>
+Append token:   <the write-only append token issued to this sender>
+
+Send the vault key of the vault you just created, exactly as sgit printed it —
+keep the sgit_private_vault_ or sgit_private_read_ prefix. Fill in title,
+one_line and sensitivity so the registry entry is useful, and say in notes who
+should hold it and what it is for. If the registry only needs to read it, send
+its read key instead. Reply with only the vault id and the HTTP response.
+
+```
+
+Two details in it matter more than they look. *Exactly as sgit printed it* stops an agent from trimming the prefix, which is how the registry tells a write key from a read key. *Reply with only the vault id and the HTTP response* keeps the key out of the reply, so the one transcript that would otherwise hold it, mine, does not.
 
 This is safer than what it replaced, which was a vault key pasted into a chat. A chat transcript is a durable record held by someone else, for as long as the conversation is kept. Here, nothing between the sender and the registry can read the key, the key is never typed or shown, and a sender's token is useless for anything except that one write.
 

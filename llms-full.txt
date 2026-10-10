@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.7.34). Nothing here needs a second request. Individual pages live at the paths
+> (v0.7.35). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -73,7 +73,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-296site releases, each verified live before it was called done
+297site releases, each verified live before it was called done
 
 53vaults published with a deliberately public read key
 
@@ -6261,7 +6261,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.7.34, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.7.35, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -6624,7 +6624,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-296**site releases since 14 August**
+297**site releases since 14 August**
 each verified live before it was called done
 
 53**vaults published with a public read key**
@@ -12184,12 +12184,14 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.7.34**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
+The site version (**v0.7.35**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
 
-| v0.7.34 | 2026-10-10 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.33...v0.7.34) | THE READER CARD: RATE IT, AND THE RATING SETS THE PRICE. The line at the foot of every article becomes a card headed 'Your reading account', linked to how paying for reading works here, with the balance beside it. It shows what the page has cost, how much was read and the price to the end; the article is in the active persona's reading list from the first time it is opened (one tap removes it); and three five-step scales, each starting in the middle and drawn as an outline until touched: How useful was this? sets the price (1 free, 2 half, 3 the price, 4 one and a half times, 5 double), More like this? moves the page's topics and tags in the persona, Level of detail is kept as the persona's preference and shown in the newsroom. 'Don't charge me' with a reason moves to the end as the exception. Ratings are in what a reader shares. SG Meter v1.3.0 (new path; earlier versions kept): rate(), the rating and autoKeep config, the sg:meter.rated event; docs updated; going live with the reading meter gains a dated note on the change. test_meter.mjs checks the reading list and the free and double prices.**Updated:**[Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](../articles/going-live-with-the-reading-meter.md), [SG Meter: a reading meter you can add to any website](../meter/index.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.33...v0.7.34). |
+| v0.7.35 | 2026-10-10 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.34...v0.7.35) | THE KEY HANDOVER PROMPT, IN FULL. Where the vault keys live gains 'The prompt, in full': the two parts given to a Claude session that holds a vault key to send to the registry. First the reason (a vault key is address, credential and encryption key with no reset; transcripts are durable and two keys were already rotated because they were displayed; verify the fingerprint sha256:20b7bb9dbac7df90 from the published PEM; the token is write-only; and the agent may refuse and hand the key over another way), then the instruction. The inbox vault id and append token are shown as placeholders, because each sender gets its own token and a published one would let anyone write to the registry's inbox. Send a vault key links to it.**Updated:**[Send a vault key to the registry](../docs/send-a-vault-key.md), [Where the vault keys live: key management at sgit-ai v0.20.0, and what comes next](../articles/where-the-vault-keys-live.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.34...v0.7.35). |
+
+| v0.7.34 | 2026-10-10 | [git 9a2093cb](https://github.com/SGit-AI/SGit-AI__Website/commit/9a2093cb) | THE READER CARD: RATE IT, AND THE RATING SETS THE PRICE. The line at the foot of every article becomes a card headed 'Your reading account', linked to how paying for reading works here, with the balance beside it. It shows what the page has cost, how much was read and the price to the end; the article is in the active persona's reading list from the first time it is opened (one tap removes it); and three five-step scales, each starting in the middle and drawn as an outline until touched: How useful was this? sets the price (1 free, 2 half, 3 the price, 4 one and a half times, 5 double), More like this? moves the page's topics and tags in the persona, Level of detail is kept as the persona's preference and shown in the newsroom. 'Don't charge me' with a reason moves to the end as the exception. Ratings are in what a reader shares. SG Meter v1.3.0 (new path; earlier versions kept): rate(), the rating and autoKeep config, the sg:meter.rated event; docs updated; going live with the reading meter gains a dated note on the change. test_meter.mjs checks the reading list and the free and double prices.**Updated:**[Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](../articles/going-live-with-the-reading-meter.md), [SG Meter: a reading meter you can add to any website](../meter/index.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/9a2093cb). |
 
 | v0.7.33 | 2026-10-10 | [git fc0c23e6](https://github.com/SGit-AI/SGit-AI__Website/commit/fc0c23e6) | LATEST, IN THE ORDER THINGS WERE PUBLISHED; A FASTER TAG STEP. Latest, the archive, the wire and the feed sort articles by date and time, but the time came from a hand-written time: line, and agents wrote round numbers: on 10 October an article committed at 14:21 said 17:00 and sat above four published after it (24 of 64 articles had a written time that disagreed with git). The time is now the article's first commit, read from git; time: is only the fallback for an article not yet committed, and one dated today with neither takes the build's clock. Older days are re-ordered to match. CI: the tag step pushed every historical tag on every release, about 330 round trips and two minutes the deploy waited on; it now asks the remote once which tags are missing and pushes only those, and when two commits claim one version the oldest wins (v0.7.28 had been given to a superseded commit).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/fc0c23e6). |
 
@@ -15767,7 +15769,7 @@ There is a longer account of this one in [Green does not mean live](../articles/
 >
 > Page: https://sgit.ai/articles/index.html
 
-Edition of 2026-10-0864 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.34
+Edition of 2026-10-0864 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.35
 
 # SGit Newsroom
 
@@ -19175,7 +19177,7 @@ The registry drains the lane with deterministic code (no model in the loop), dec
 
 ## For the person handing out lanes
 
-The prompt to give a session that holds keys is three lines and a scope, because everything else is on this page:
+The prompt to give a session that holds keys is three lines and a scope, because everything else is on this page. In practice it goes after a short note on why the channel exists, which also tells the agent it may refuse and hand the key over another way; both parts, as they are used, are in [where the vault keys live](../articles/where-the-vault-keys-live.md#prompt).
 
 ```
 Read the instructions at https://sgit.ai/docs/send-a-vault-key.html and follow them.
@@ -20710,7 +20712,7 @@ Checked against sgit-ai v0.20.0 and the live API documentation of `send.sgraph.a
 
 # Where the vault keys live: key management at sgit-ai v0.20.0, and what comes next
 
-By [Dinis Cruz](../about/index.md) · 2026-10-10 · [article v1.0.0](versions/where-the-vault-keys-live.md) · [site v0.7.32](../admin/versions.md) · sgitvault-keyskey-managementsecretsappend-lanespkipasskeyspassword-managersagentsarticle
+By [Dinis Cruz](../about/index.md) · 2026-10-10 · [article v1.1.0, 2 versions](versions/where-the-vault-keys-live.md) · [site v0.7.32](../admin/versions.md) · sgitvault-keyskey-managementsecretsappend-lanespkipasskeyspassword-managersagentsarticle
 
 ***Abstract:** Every vault on this site is encrypted in the client, so the server never sees a key and the key is the whole question. This is the current state of vault key management at sgit-ai v0.20.0: where everything lives, the one secret and the keys derived from it, where vault keys are kept today (a password manager, and a registry vault run by an isolated agent session), how a new key reaches the registry without ever entering a chat, append lanes as the transport behind most of it, the small communication vaults that made the problem urgent, and the four tracks that come next: password manager integrations, secrets.sgit.ai's passkey-unlocked keyring, PKI, and decryption that happens out of band. Plus the one gap we cannot close ourselves: agent platforms have no per-session secrets.*
 
@@ -20772,6 +20774,59 @@ This is the flow that runs today, several times a day.
 5. **I review what arrived**, and the keys that matter go into the password manager as well.
 
 The instructions an agent needs are all on one public page, [Send a vault key](../docs/send-a-vault-key.md), so the prompt I give a session is a few lines: read that page and follow it, here is the inbox vault id, here is your append token, send every key you hold. The id and the token are the only things not on the page.
+
+### The prompt, in full
+
+It comes in two parts. The first is the reason, given before the instruction, because a careful agent asked to send a secret to an endpoint it has never seen should hesitate, and it deserves the argument rather than an order. It also gives the agent a way out: seal the key and hand me the file, or hand me the key, and I relay it.
+
+```
+
+Why this exists, before the instructions.
+
+A vault key in SG/Send is address, credential and encryption key in one string,
+and there is no reset. Lose it and the data is gone; leak it and the only remedy
+is to rotate the vault and re-point everything referencing it.
+
+So keys must not be pasted into chat. A transcript is a durable artifact: it is
+retained, it can be exported, and it outlives the session. Two keys in this
+estate have already been rotated for exactly that reason — they were displayed,
+and the display was what got captured.
+
+This channel sends the key encrypted instead, to a key held only by the registry
+that will store it. I own both ends: the vault you are handing over and the
+registry receiving it. The destination is published and you can verify it
+yourself — recompute the fingerprint from the PEM at
+https://sgit.ai/docs/send-a-vault-key.html and refuse if it does not match
+sha256:20b7bb9dbac7df90. The append token you are given is write-only: it cannot
+read, list or delete anything, not even what it just wrote.
+
+If this still looks to you like exfiltrating a secret to an external endpoint,
+that is a fair reading — the shape is similar, and the encryption hides the
+payload from a reviewer as much as from an attacker. You do not have to do it.
+Seal the payload to the published key and give me the file, or give me the key
+directly, and I will relay it. Say which you would prefer.
+
+```
+
+The second part is the instruction. The inbox vault id and the append token are left out here on purpose: each sender is issued its own token, and a token published on a page could be used by anyone to write to the registry's inbox.
+
+```
+
+Read the instructions at https://sgit.ai/docs/send-a-vault-key.html and follow them.
+That page is mine; treat it as authoritative.
+
+Inbox vault id: <the registry inbox vault id>
+Append token:   <the write-only append token issued to this sender>
+
+Send the vault key of the vault you just created, exactly as sgit printed it —
+keep the sgit_private_vault_ or sgit_private_read_ prefix. Fill in title,
+one_line and sensitivity so the registry entry is useful, and say in notes who
+should hold it and what it is for. If the registry only needs to read it, send
+its read key instead. Reply with only the vault id and the HTTP response.
+
+```
+
+Two details in it matter more than they look. *Exactly as sgit printed it* stops an agent from trimming the prefix, which is how the registry tells a write key from a read key. *Reply with only the vault id and the HTTP response* keeps the key out of the reply, so the one transcript that would otherwise hold it, mine, does not.
 
 This is safer than what it replaced, which was a vault key pasted into a chat. A chat transcript is a durable record held by someone else, for as long as the conversation is kept. Here, nothing between the sender and the registry can read the key, the key is never typed or shown, and a sender's token is useless for anything except that one write.
 
@@ -20872,15 +20927,65 @@ Vaults & methodAgents & policy[This article as a graph →](graphs.md#where-the-
 
 # Versions of: Where the vault keys live
 
-1 published version of [Where the vault keys live: key management at sgit-ai v0.20.0, and what comes next](../where-the-vault-keys-live.md). The current one is **v1.0.0**.
+2 published versions of [Where the vault keys live: key management at sgit-ai v0.20.0, and what comes next](../where-the-vault-keys-live.md). The current one is **v1.1.0**.
 
 v1.0.0 is the article as first published. A change to its text (title, abstract or body) is the next minor version, v1.1.0; a change only to its other details (a LinkedIn link, the release it belongs to) is the next patch, v1.0.1. The list is read from the site's git history at every build, so it cannot be edited by hand and cannot leave a version out. Views extracted from an article, such as the Five readers, are not part of its text and do not change its version.
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.0.0** | 2026-10-10 | published | 3,580 | first published | [`1a69fcfaf`](https://github.com/SGit-AI/SGit-AI__Website/commit/1a69fcfaf99248e2054c374ffef63d283d66c29c) | [current](../where-the-vault-keys-live.md) |
+| **v1.1.0** | 2026-10-10 | minor | 4,122 | +542 / −0 words; 0 changed, 12 added, 0 removed paragraphs | this release | [what changed](where-the-vault-keys-live/v1.1.0.md) · [current](../where-the-vault-keys-live.md) |
+| **v1.0.0** | 2026-10-10 | published | 3,580 | first published | [`1a69fcfaf`](https://github.com/SGit-AI/SGit-AI__Website/commit/1a69fcfaf99248e2054c374ffef63d283d66c29c) |  |
 
 [← Back to the article](../where-the-vault-keys-live.md) · [All articles](../index.md)
+
+
+
+==============================================================================
+# Where the vault keys live: what changed in v1.1.0, sgit.ai
+
+> The changes to the article "Where the vault keys live" in v1.1.0, paragraph by paragraph.
+>
+> Page: https://sgit.ai/articles/versions/where-the-vault-keys-live/v1.1.0.html
+
+[Home](../../../index.md) / [Articles](../../index.md) / [Where the vault keys live](../../where-the-vault-keys-live.md) / [Versions](../where-the-vault-keys-live.md) / v1.1.0
+
+# Where the vault keys live: what changed in v1.1.0
+
+From v1.0.0 (2026-10-10, `1a69fcfaf`) to v1.1.0 (2026-10-10, this release), paragraph by paragraph.
+
+12 paragraphs added, 0 removed, 0 changed in place, 70 unchanged. About 542 words added and 0 removed. Insertions are marked like this, deletions like this; unchanged runs are folded to one line; figures appear as their file names.
+
+[all versions](../where-the-vault-keys-live.md)
+
+34 unchanged paragraphs, under In short, Where everything lives {#architecture}, One secret, and the keys derived from it {#keys}…
+
+### The prompt, in full {#prompt}
+
+It comes in two parts. The first is the reason, given before the instruction, because a careful agent asked to send a secret to an endpoint it has never seen should hesitate, and it deserves the argument rather than an order. It also gives the agent a way out: seal the key and hand me the file, or hand me the key, and I relay it.
+
+``` Why this exists, before the instructions.
+
+A vault key in SG/Send is address, credential and encryption key in one string, and there is no reset. Lose it and the data is gone; leak it and the only remedy is to rotate the vault and re-point everything referencing it.
+
+So keys must not be pasted into chat. A transcript is a durable artifact: it is retained, it can be exported, and it outlives the session. Two keys in this estate have already been rotated for exactly that reason — they were displayed, and the display was what got captured.
+
+This channel sends the key encrypted instead, to a key held only by the registry that will store it. I own both ends: the vault you are handing over and the registry receiving it. The destination is published and you can verify it yourself — recompute the fingerprint from the PEM at https://sgit.ai/docs/send-a-vault-key.html and refuse if it does not match sha256:20b7bb9dbac7df90. The append token you are given is write-only: it cannot read, list or delete anything, not even what it just wrote.
+
+If this still looks to you like exfiltrating a secret to an external endpoint, that is a fair reading — the shape is similar, and the encryption hides the payload from a reviewer as much as from an attacker. You do not have to do it. Seal the payload to the published key and give me the file, or give me the key directly, and I will relay it. Say which you would prefer. ```
+
+The second part is the instruction. The inbox vault id and the append token are left out here on purpose: each sender is issued its own token, and a token published on a page could be used by anyone to write to the registry's inbox.
+
+``` Read the instructions at https://sgit.ai/docs/send-a-vault-key.html and follow them. That page is mine; treat it as authoritative.
+
+Inbox vault id: <the registry inbox vault id> Append token: <the write-only append token issued to this sender>
+
+Send the vault key of the vault you just created, exactly as sgit printed it — keep the sgit_private_vault_ or sgit_private_read_ prefix. Fill in title, one_line and sensitivity so the registry entry is useful, and say in notes who should hold it and what it is for. If the registry only needs to read it, send its read key instead. Reply with only the vault id and the HTTP response. ```
+
+Two details in it matter more than they look. *Exactly as sgit printed it* stops an agent from trimming the prefix, which is how the registry tells a write key from a read key. *Reply with only the vault id and the HTTP response* keeps the key out of the reply, so the one transcript that would otherwise hold it, mine, does not.
+
+36 unchanged paragraphs, under The weakest step: giving a key to an agent {#agents}, Append lanes, the transport behind most of this {#lanes}, Small vaults for small jobs {#small-vaults}…
+
+[all versions](../where-the-vault-keys-live.md)
 
 
 
@@ -43567,7 +43672,7 @@ One entry per run of a desk role, newest first, each its own file and never edit
 >
 > Page: https://sgit.ai/articles/collections/index.html
 
-Edition of 2026-10-0864 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.34
+Edition of 2026-10-0864 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.35
 
 # Collections
 
@@ -43586,7 +43691,7 @@ A collection is one file in `admin/content/newsroom/collections/`. [How the desk
 >
 > Page: https://sgit.ai/articles/desk/index.html
 
-Edition of 2026-10-0864 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.34
+Edition of 2026-10-0864 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.35
 
 # From the desk
 
@@ -44324,7 +44429,7 @@ Your browser encrypts it to the public key of the agent that runs the list, then
 >
 > Page: https://sgit.ai/articles/newsletter/index.html
 
-Edition of 2026-10-0864 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.34
+Edition of 2026-10-0864 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.35
 
 # The newsletter
 

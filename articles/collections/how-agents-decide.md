@@ -2,7 +2,7 @@
 
 > What a real decision needs, who enforces each rule, and why an agent that can go anywhere has no reason to stop: six articles on deciding, for people and agents alike.
 
-*Source: <https://sgit.ai/articles/collections/how-agents-decide.html> · site v0.7.34 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/collections/how-agents-decide.html> · site v0.7.35 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

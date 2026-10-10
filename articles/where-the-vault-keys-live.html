@@ -27,7 +27,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.7.34</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.7.35</a>
   <sg-meter class="meter-nav" view="balance"></sg-meter>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
@@ -121,11 +121,11 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.7.34 &middot; 10 Oct 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.7.35 &middot; 10 Oct 2026</span></a></div>
 <main class="doc">
  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Articles</a> / Where the vault keys live: key management at sgit-ai v0.20.0, and what comes next</p>
  <h1>Where the vault keys live: key management at sgit-ai v0.20.0, and what comes next</h1>
- <p class="small dim">By <a href="../about/index.html" rel="author">Dinis Cruz</a> &middot; 2026-10-10 &middot; <a href="versions/where-the-vault-keys-live.html" title="Every published version of this article, and what changed">article v1.0.0</a> &middot; <a href="../admin/versions.html" title="The site release it was published in">site v0.7.32</a> &middot; <span class="chip">sgit</span><span class="chip">vault-keys</span><span class="chip">key-management</span><span class="chip">secrets</span><span class="chip">append-lanes</span><span class="chip">pki</span><span class="chip">passkeys</span><span class="chip">password-managers</span><span class="chip">agents</span><span class="chip">article</span></p>
+ <p class="small dim">By <a href="../about/index.html" rel="author">Dinis Cruz</a> &middot; 2026-10-10 &middot; <a href="versions/where-the-vault-keys-live.html" title="Every published version of this article, and what changed">article v1.1.0, 2 versions</a> &middot; <a href="../admin/versions.html" title="The site release it was published in">site v0.7.32</a> &middot; <span class="chip">sgit</span><span class="chip">vault-keys</span><span class="chip">key-management</span><span class="chip">secrets</span><span class="chip">append-lanes</span><span class="chip">pki</span><span class="chip">passkeys</span><span class="chip">password-managers</span><span class="chip">agents</span><span class="chip">article</span></p>
  <p class="abstract"><em><b>Abstract:</b> Every vault on this site is encrypted in the client, so the server never sees a key and the key is the whole question. This is the current state of vault key management at sgit-ai v0.20.0: where everything lives, the one secret and the keys derived from it, where vault keys are kept today (a password manager, and a registry vault run by an isolated agent session), how a new key reaches the registry without ever entering a chat, append lanes as the transport behind most of it, the small communication vaults that made the problem urgent, and the four tracks that come next: password manager integrations, secrets.sgit.ai's passkey-unlocked keyring, PKI, and decryption that happens out of band. Plus the one gap we cannot close ourselves: agent platforms have no per-session secrets.</em></p>
 <p>This site has a gap, and a reader found it this week. The docs say a great deal about what a vault key can do and almost nothing about where mine are kept. That is worth fixing for its own sake, and it is also a good example of how this project solves problems: as they arrive. For a long time I had a handful of vaults and kept their keys by hand. Now my agents create vaults all the time, several a day, and keeping track of the keys has become a real problem. So this is the current state, at sgit-ai v0.20.0: how it works today, where it is weak, and what I am building next.</p>
 <figure class="shot" data-shot="km-architecture.webp" data-dir="images/" data-alt="Where everything lives. Encryption and decryption happen in the client; the edge, the API and the bucket only ever handle ciphertext and hashes of capability keys."><figcaption>Where everything lives. Encryption and decryption happen in the client; the edge, the API and the bucket only ever handle ciphertext and hashes of capability keys.</figcaption></figure>
@@ -169,6 +169,49 @@
 <li><b>I review what arrived</b>, and the keys that matter go into the password manager as well.</li>
 </ol>
 <p>The instructions an agent needs are all on one public page, <a href="../docs/send-a-vault-key.html">Send a vault key</a>, so the prompt I give a session is a few lines: read that page and follow it, here is the inbox vault id, here is your append token, send every key you hold. The id and the token are the only things not on the page.</p>
+<h3 id="prompt">The prompt, in full</h3>
+<p>It comes in two parts. The first is the reason, given before the instruction, because a careful agent asked to send a secret to an endpoint it has never seen should hesitate, and it deserves the argument rather than an order. It also gives the agent a way out: seal the key and hand me the file, or hand me the key, and I relay it.</p>
+<pre class="shell">
+Why this exists, before the instructions.
+
+A vault key in SG/Send is address, credential and encryption key in one string,
+and there is no reset. Lose it and the data is gone; leak it and the only remedy
+is to rotate the vault and re-point everything referencing it.
+
+So keys must not be pasted into chat. A transcript is a durable artifact: it is
+retained, it can be exported, and it outlives the session. Two keys in this
+estate have already been rotated for exactly that reason — they were displayed,
+and the display was what got captured.
+
+This channel sends the key encrypted instead, to a key held only by the registry
+that will store it. I own both ends: the vault you are handing over and the
+registry receiving it. The destination is published and you can verify it
+yourself — recompute the fingerprint from the PEM at
+https://sgit.ai/docs/send-a-vault-key.html and refuse if it does not match
+sha256:20b7bb9dbac7df90. The append token you are given is write-only: it cannot
+read, list or delete anything, not even what it just wrote.
+
+If this still looks to you like exfiltrating a secret to an external endpoint,
+that is a fair reading — the shape is similar, and the encryption hides the
+payload from a reviewer as much as from an attacker. You do not have to do it.
+Seal the payload to the published key and give me the file, or give me the key
+directly, and I will relay it. Say which you would prefer.
+</pre>
+<p>The second part is the instruction. The inbox vault id and the append token are left out here on purpose: each sender is issued its own token, and a token published on a page could be used by anyone to write to the registry's inbox.</p>
+<pre class="shell">
+Read the instructions at https://sgit.ai/docs/send-a-vault-key.html and follow them.
+That page is mine; treat it as authoritative.
+
+Inbox vault id: &lt;the registry inbox vault id&gt;
+Append token:   &lt;the write-only append token issued to this sender&gt;
+
+Send the vault key of the vault you just created, exactly as sgit printed it —
+keep the sgit_private_vault_ or sgit_private_read_ prefix. Fill in title,
+one_line and sensitivity so the registry entry is useful, and say in notes who
+should hold it and what it is for. If the registry only needs to read it, send
+its read key instead. Reply with only the vault id and the HTTP response.
+</pre>
+<p>Two details in it matter more than they look. <em>Exactly as sgit printed it</em> stops an agent from trimming the prefix, which is how the registry tells a write key from a read key. <em>Reply with only the vault id and the HTTP response</em> keeps the key out of the reply, so the one transcript that would otherwise hold it, mine, does not.</p>
 <p>This is safer than what it replaced, which was a vault key pasted into a chat. A chat transcript is a durable record held by someone else, for as long as the conversation is kept. Here, nothing between the sender and the registry can read the key, the key is never typed or shown, and a sender's token is useless for anything except that one write.</p>
 <p>From the registry, a key goes one of three ways. It is <b>published as a read key</b>, derived and checked with <code>check_credential.py</code> before it reaches a page like the ones on this site. It is <b>sent to a person</b>, a client or a collaborator, through their own password manager or a lane of their own. Or it is <b>given to another agent</b>, and that is the step that is still not straightforward.</p>
 <h2 id="agents">The weakest step: giving a key to an agent</h2>
@@ -222,7 +265,7 @@
 </main>
 <script>
 (function () {
- fetch('../assets/shots.js?v=v0.7.34')
+ fetch('../assets/shots.js?v=v0.7.35')
  .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
  .then(function (t) { (0, eval)(t); })
  .catch(function (e) { console.error('[shots] component failed to load:', e); });
@@ -230,7 +273,7 @@
 </script>
 <script type="application/json" id="sg-meter-config">{"storageKey": "sgit.meter.v1", "start": 500, "newDays": 7, "symbol": "£", "prices": {"article_new": 10, "article": 5, "issue": 3, "note": 2, "collection": 2, "page": 1, "free": 0}, "depth": true, "minDepth": 0.1, "topup": {"amount": 500, "link": ""}, "packs": [{"id": "p2", "price": 200, "bonus": 0}, {"id": "p5", "price": 500, "bonus": 0}, {"id": "p10", "price": 1000, "bonus": 100}, {"id": "p20", "price": 2000, "bonus": 300}], "links": {"account": "account/index.html", "topup": "account/top-up.html", "how": "articles/going-live-with-the-reading-meter.html"}, "rating": {"price": [0, 0.5, 1, 1.5, 2], "more": [-3, -1, 0, 3, 6]}, "autoKeep": true, "picks": {"feed": "articles/graphs.json", "base": "articles/"}, "links2": {"newsroom": "account/newsroom.html", "personas": "account/personas.html", "share": "account/share.html"}, "share": {"contact": ".well-known/sgit-subscribe.json", "form": "reading-share", "site": "sgit.ai", "max": 300}, "personas": {"presets": [{"id": "founder", "label": "The founder", "name": "Morgan", "theme": "#b45309", "blurb": "Building a company: what to build, what to charge, what to secure and when to stop. Strategy, pricing and the questions investors ask.", "topics": {"startups-and-strategy": 3, "agents-and-policy": 1}, "articles": ["the-question-is-whether-they-miss-it", "price-it-then-give-it-away", "saas-apocalypse-decided-by-inertia-not-by-ai", "who-are-you-protecting-against", "knowing-when-to-stop", "open-source-is-not-free", "going-live-with-the-reading-meter"]}, {"id": "journalist", "label": "The journalist", "name": "Rowan", "theme": "#1d4ed8", "blurb": "Where news came from and where it could go: story vaults, liquid content, local evidence, and what publishers are owed by the machines that read them.", "topics": {"news-and-evidence": 3, "graphs-and-knowledge": 1}, "articles": ["how-news-got-here", "future-of-news-story-vault-not-paywall", "liquid-content-needs-water", "the-bridge-followed-to-the-end", "story-vault-meets-reader-skills", "the-waiting-room-knew-first", "token-bill-nobody-is-sending"]}, {"id": "security", "label": "The security lead", "name": "Sam", "theme": "#b91c1c", "blurb": "Agents as insiders: who you are protecting against, blast radius, identity, incidents and the controls that hold when a model does not.", "topics": {"agents-and-policy": 3, "vaults-and-method": 1}, "articles": ["who-are-you-protecting-against", "ultimate-insider-three-collisions", "footprint-and-blast-radius", "six-agents-one-inbox", "the-investigation-github-owes-its-customers", "why-my-agents-do-not-run-on-my-laptop", "the-identity-we-wanted-to-give-the-agents", "where-is-the-why"]}, {"id": "builder", "label": "The AI builder", "name": "Kai", "theme": "#0f766e", "blurb": "Making agents work day to day: Claude Code sessions, hooks, memory, behaviour policies, and the engineering lessons each mistake left behind.", "topics": {"agents-and-policy": 2, "site-and-engineering": 2, "vaults-and-method": 1}, "articles": ["how-i-work-with-claude", "a-second-reader-the-agent-cannot-skip", "re-anchoring-agent-behaviour-policies", "every-mistake-added-a-rule", "memory-is-not-a-spectator-sport", "encrypted-memory-for-isolated-agents", "hope-or-enforcement"]}, {"id": "board", "label": "The board member", "name": "Jordan", "theme": "#6d28d9", "blurb": "How AI is changing the business and how to govern it: business models, due diligence, risk acceptance, accountability and the governance frameworks.", "topics": {"graphs-and-knowledge": 2, "startups-and-strategy": 2, "agents-and-policy": 1}, "articles": ["saas-apocalypse-decided-by-inertia-not-by-ai", "send-an-agent-not-a-spreadsheet", "every-risk-is-already-accepted", "agency-is-not-a-yes", "the-ai-governance-stack-as-a-graph", "ai-baseline-control-framework", "what-sgit-is"]}], "names": {"agents-and-policy": "The Policy Architect", "vaults-and-method": "The Vault Keeper", "news-and-evidence": "The Fact Finder", "startups-and-strategy": "The Strategist", "graphs-and-knowledge": "The Cartographer", "site-and-engineering": "The Builder"}}}</script>
 <script>
-import('../assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter.js?v=v0.7.34')
+import('../assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter.js?v=v0.7.35')
  .catch(function (e) { console.error('[sg-meter] component failed to load:', e); });
 </script>
 
@@ -239,7 +282,7 @@ import('../assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter.js?v=v0.7.34')
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.7.34</a> · <a href="../admin/index.html">engineering</a> · <a href="where-the-vault-keys-live.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.7.35</a> · <a href="../admin/index.html">engineering</a> · <a href="where-the-vault-keys-live.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -282,7 +325,7 @@ import('../assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter.js?v=v0.7.34')
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.7.34';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.7.35';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

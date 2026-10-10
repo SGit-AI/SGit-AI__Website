@@ -70,6 +70,55 @@ This is the flow that runs today, several times a day.
 
 The instructions an agent needs are all on one public page, [Send a vault key](/docs/send-a-vault-key.html), so the prompt I give a session is a few lines: read that page and follow it, here is the inbox vault id, here is your append token, send every key you hold. The id and the token are the only things not on the page.
 
+### The prompt, in full {#prompt}
+
+It comes in two parts. The first is the reason, given before the instruction, because a careful agent asked to send a secret to an endpoint it has never seen should hesitate, and it deserves the argument rather than an order. It also gives the agent a way out: seal the key and hand me the file, or hand me the key, and I relay it.
+
+```
+Why this exists, before the instructions.
+
+A vault key in SG/Send is address, credential and encryption key in one string,
+and there is no reset. Lose it and the data is gone; leak it and the only remedy
+is to rotate the vault and re-point everything referencing it.
+
+So keys must not be pasted into chat. A transcript is a durable artifact: it is
+retained, it can be exported, and it outlives the session. Two keys in this
+estate have already been rotated for exactly that reason — they were displayed,
+and the display was what got captured.
+
+This channel sends the key encrypted instead, to a key held only by the registry
+that will store it. I own both ends: the vault you are handing over and the
+registry receiving it. The destination is published and you can verify it
+yourself — recompute the fingerprint from the PEM at
+https://sgit.ai/docs/send-a-vault-key.html and refuse if it does not match
+sha256:20b7bb9dbac7df90. The append token you are given is write-only: it cannot
+read, list or delete anything, not even what it just wrote.
+
+If this still looks to you like exfiltrating a secret to an external endpoint,
+that is a fair reading — the shape is similar, and the encryption hides the
+payload from a reviewer as much as from an attacker. You do not have to do it.
+Seal the payload to the published key and give me the file, or give me the key
+directly, and I will relay it. Say which you would prefer.
+```
+
+The second part is the instruction. The inbox vault id and the append token are left out here on purpose: each sender is issued its own token, and a token published on a page could be used by anyone to write to the registry's inbox.
+
+```
+Read the instructions at https://sgit.ai/docs/send-a-vault-key.html and follow them.
+That page is mine; treat it as authoritative.
+
+Inbox vault id: <the registry inbox vault id>
+Append token:   <the write-only append token issued to this sender>
+
+Send the vault key of the vault you just created, exactly as sgit printed it —
+keep the sgit_private_vault_ or sgit_private_read_ prefix. Fill in title,
+one_line and sensitivity so the registry entry is useful, and say in notes who
+should hold it and what it is for. If the registry only needs to read it, send
+its read key instead. Reply with only the vault id and the HTTP response.
+```
+
+Two details in it matter more than they look. *Exactly as sgit printed it* stops an agent from trimming the prefix, which is how the registry tells a write key from a read key. *Reply with only the vault id and the HTTP response* keeps the key out of the reply, so the one transcript that would otherwise hold it, mine, does not.
+
 This is safer than what it replaced, which was a vault key pasted into a chat. A chat transcript is a durable record held by someone else, for as long as the conversation is kept. Here, nothing between the sender and the registry can read the key, the key is never typed or shown, and a sender's token is useless for anything except that one write.
 
 From the registry, a key goes one of three ways. It is **published as a read key**, derived and checked with `check_credential.py` before it reaches a page like the ones on this site. It is **sent to a person**, a client or a collaborator, through their own password manager or a lane of their own. Or it is **given to another agent**, and that is the step that is still not straightforward.

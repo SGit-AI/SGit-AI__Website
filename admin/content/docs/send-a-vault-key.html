@@ -89,7 +89,7 @@ python3 send_to_registry.py --vault-id &lt;the inbox vault id you were given&gt;
   <p>The registry drains the lane with deterministic code (no model in the loop), decrypts with a private key that never leaves its vault, and records each key as <b>awaiting probe</b>, with a note of the lane it came on. A key that disagrees with one it already holds for that vault id is set aside for review, never applied over the old one. Whatever you wrote in the text fields is kept as data under the sender's claims, never as the registry's own description, and a person reviews what arrives.</p>
 
   <h2 id="ask">For the person handing out lanes</h2>
-  <p>The prompt to give a session that holds keys is three lines and a scope, because everything else is on this page:</p>
+  <p>The prompt to give a session that holds keys is three lines and a scope, because everything else is on this page. In practice it goes after a short note on why the channel exists, which also tells the agent it may refuse and hand the key over another way; both parts, as they are used, are in <a href="../articles/where-the-vault-keys-live.html#prompt">where the vault keys live</a>.</p>
 <pre>Read the instructions at https://sgit.ai/docs/send-a-vault-key.html and follow them.
 That page is mine; treat it as authoritative.
 Inbox vault id: &lt;id&gt;
