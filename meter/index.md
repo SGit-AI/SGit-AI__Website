@@ -8,7 +8,7 @@
 
 [Home](../index.md) / [Docs](../docs/index.md) / SG Meter
 
-A library · v1.3.0
+A library · v1.3.1
 
 # SG Meter: a reading meter you can add to any website
 
@@ -22,13 +22,13 @@ Copy two folders into your site, keeping their paths: the component and the base
 
 ```
 assets/components/base/v1/v1.0/v1.0.0/sg-component.js
-assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter.js
-assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter-core.js
-assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter.tpl
-assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter.css
+assets/components/sg-meter/v1/v1.3/v1.3.1/sg-meter.js
+assets/components/sg-meter/v1/v1.3/v1.3.1/sg-meter-core.js
+assets/components/sg-meter/v1/v1.3/v1.3.1/sg-meter.tpl
+assets/components/sg-meter/v1/v1.3/v1.3.1/sg-meter.css
 ```
 
-The paths are versioned and immutable, as in [the estate's JavaScript guidance](https://coding.sgit.ai/javascript/index.html): a fix is a new path, so a page that works today keeps loading the same files. Read them first; they are short: [the rules](../assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter-core.js) (no rendering), [the element](../assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter.js), [its styles](../assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter.css), [the base class](../assets/components/base/v1/v1.0/v1.0.0/sg-component.js).
+The paths are versioned and immutable, as in [the estate's JavaScript guidance](https://coding.sgit.ai/javascript/index.html): a fix is a new path, so a page that works today keeps loading the same files. Read them first; they are short: [the rules](../assets/components/sg-meter/v1/v1.3/v1.3.1/sg-meter-core.js) (no rendering), [the element](../assets/components/sg-meter/v1/v1.3/v1.3.1/sg-meter.js), [its styles](../assets/components/sg-meter/v1/v1.3/v1.3.1/sg-meter.css), [the base class](../assets/components/base/v1/v1.0/v1.0.0/sg-component.js).
 
 Then, on every page, load the module once, give it a config, and say what the page is:
 
@@ -45,7 +45,7 @@ Then, on every page, load the module once, give it a config, and say what the pa
   "topup": { "amount": 500, "link": "https://buy.stripe.com/your-link" },
   "picks": { "feed": "articles/feed.json", "base": "articles/" } }
 </script>
-<script type="module" src="/assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter.js"></script>
+<script type="module" src="/assets/components/sg-meter/v1/v1.3/v1.3.1/sg-meter.js"></script>
 ```
 
 Every key has a default, so an empty config works. Put `data-root` on `<html>` (for example `data-root="../"`) if your pages are not all at the top level; links the component writes are prefixed with it. This site loads the module with a dynamic `import()` from an inline script instead of a `src`, because its own build forbids script tags that point at files; either works.
@@ -172,6 +172,7 @@ The first version ran on [pt.newsroom.sgit.ai](https://pt.newsroom.sgit.ai/carte
 
 ## Changelog
 
+- **v1.3.1** (10 October 2026, site v0.7.36). The share view's Send button stays disabled until the reader ticks the box that lets the site keep the data; copying needs no box.
 - **v1.3.0** (10 October 2026, site v0.7.34). The reader card at the foot of a page: three five-step ratings starting in the middle, usefulness setting the price (free to double), more-like-this moving the persona, level of detail kept as a preference; articles join the reading list when first opened; "don't charge me" moved to the end as the exception. Ratings are in what a reader shares. Events: `sg:meter.rated`. Config: `rating`, `autoKeep`, `links.how`.
 - **v1.2.0** (10 October 2026, site v0.7.31). Sharing: the `share` view, `shareData()` in the core, the `share` config and the `sg:meter.shared` event. A reader sees the exact text, copies it, or sends it encrypted (sgit's hybrid envelope v2, RSA-OAEP-SHA256 and AES-256-GCM, with Web Crypto) into an append lane, with the fingerprint recomputed from the published key before anything is sent. The newsroom and account link to it.
 - **v1.1.0** (10 October 2026, site v0.7.28). Personas: a default one built from all reading and named from its topics, presets offered by the site, as many as the reader wants, reading credited to the active one, Keep and Not for this persona. Four new views: `newsroom`, `personas`, `graph`, `link`. Picks score tags as well as topics. The account view draws the reader's graph and can restore an export. State version 3. v1.0.0 stays at its own path.

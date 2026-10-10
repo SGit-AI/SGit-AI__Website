@@ -4204,7 +4204,7 @@ def meter_kind(path):
     return 'page', '', []
 
 
-METER_JS = 'assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter.js'
+METER_JS = 'assets/components/sg-meter/v1/v1.3/v1.3.1/sg-meter.js'
 
 # Five personas a reader can start from (SG Meter v1.1), each a handful of topics and articles
 # chosen from what this site has actually published. A persona is a way to manage focus: the

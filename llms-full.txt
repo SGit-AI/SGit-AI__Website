@@ -12189,7 +12189,7 @@ The site version (**v0.7.35**, shown in the nav of every page) increments on eve
 | Version | Date | Commit | Changes |
 |---|---|---|---|
 
-| v0.7.35 | 2026-10-10 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.34...v0.7.35) | THE KEY HANDOVER PROMPT, IN FULL. Where the vault keys live gains 'The prompt, in full': the two parts given to a Claude session that holds a vault key to send to the registry. First the reason (a vault key is address, credential and encryption key with no reset; transcripts are durable and two keys were already rotated because they were displayed; verify the fingerprint sha256:20b7bb9dbac7df90 from the published PEM; the token is write-only; and the agent may refuse and hand the key over another way), then the instruction. The inbox vault id and append token are shown as placeholders, because each sender gets its own token and a published one would let anyone write to the registry's inbox. Send a vault key links to it.**Updated:**[Send a vault key to the registry](../docs/send-a-vault-key.md), [Where the vault keys live: key management at sgit-ai v0.20.0, and what comes next](../articles/where-the-vault-keys-live.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.34...v0.7.35). |
+| v0.7.35 | 2026-10-10 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.34...v0.7.35) | THE KEY HANDOVER PROMPT, IN FULL. Where the vault keys live gains 'The prompt, in full': the two parts given to a Claude session that holds a vault key to send to the registry. First the reason (a vault key is address, credential and encryption key with no reset; transcripts are durable and two keys were already rotated because they were displayed; verify the fingerprint sha256:20b7bb9dbac7df90 from the published PEM; the token is write-only; and the agent may refuse and hand the key over another way), then the instruction. The inbox vault id and append token are shown as placeholders, because each sender gets its own token and a published one would let anyone write to the registry's inbox. Send a vault key links to it.**Updated:**[SG Meter: a reading meter you can add to any website](../meter/index.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.34...v0.7.35). |
 
 | v0.7.34 | 2026-10-10 | [git 9a2093cb](https://github.com/SGit-AI/SGit-AI__Website/commit/9a2093cb) | THE READER CARD: RATE IT, AND THE RATING SETS THE PRICE. The line at the foot of every article becomes a card headed 'Your reading account', linked to how paying for reading works here, with the balance beside it. It shows what the page has cost, how much was read and the price to the end; the article is in the active persona's reading list from the first time it is opened (one tap removes it); and three five-step scales, each starting in the middle and drawn as an outline until touched: How useful was this? sets the price (1 free, 2 half, 3 the price, 4 one and a half times, 5 double), More like this? moves the page's topics and tags in the persona, Level of detail is kept as the persona's preference and shown in the newsroom. 'Don't charge me' with a reason moves to the end as the exception. Ratings are in what a reader shares. SG Meter v1.3.0 (new path; earlier versions kept): rate(), the rating and autoKeep config, the sg:meter.rated event; docs updated; going live with the reading meter gains a dated note on the change. test_meter.mjs checks the reading list and the free and double prices.**Updated:**[Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](../articles/going-live-with-the-reading-meter.md), [SG Meter: a reading meter you can add to any website](../meter/index.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/9a2093cb). |
 
@@ -20418,7 +20418,7 @@ From `admin/build/catalogue_derive.py po5i477i <read key hex>`, read-only, no to
 
 [Home](../index.md) / [Docs](../docs/index.md) / SG Meter
 
-A library · v1.3.0
+A library · v1.3.1
 
 # SG Meter: a reading meter you can add to any website
 
@@ -20432,13 +20432,13 @@ Copy two folders into your site, keeping their paths: the component and the base
 
 ```
 assets/components/base/v1/v1.0/v1.0.0/sg-component.js
-assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter.js
-assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter-core.js
-assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter.tpl
-assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter.css
+assets/components/sg-meter/v1/v1.3/v1.3.1/sg-meter.js
+assets/components/sg-meter/v1/v1.3/v1.3.1/sg-meter-core.js
+assets/components/sg-meter/v1/v1.3/v1.3.1/sg-meter.tpl
+assets/components/sg-meter/v1/v1.3/v1.3.1/sg-meter.css
 ```
 
-The paths are versioned and immutable, as in [the estate's JavaScript guidance](https://coding.sgit.ai/javascript/index.html): a fix is a new path, so a page that works today keeps loading the same files. Read them first; they are short: [the rules](../assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter-core.js) (no rendering), [the element](../assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter.js), [its styles](../assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter.css), [the base class](../assets/components/base/v1/v1.0/v1.0.0/sg-component.js).
+The paths are versioned and immutable, as in [the estate's JavaScript guidance](https://coding.sgit.ai/javascript/index.html): a fix is a new path, so a page that works today keeps loading the same files. Read them first; they are short: [the rules](../assets/components/sg-meter/v1/v1.3/v1.3.1/sg-meter-core.js) (no rendering), [the element](../assets/components/sg-meter/v1/v1.3/v1.3.1/sg-meter.js), [its styles](../assets/components/sg-meter/v1/v1.3/v1.3.1/sg-meter.css), [the base class](../assets/components/base/v1/v1.0/v1.0.0/sg-component.js).
 
 Then, on every page, load the module once, give it a config, and say what the page is:
 
@@ -20455,7 +20455,7 @@ Then, on every page, load the module once, give it a config, and say what the pa
   "topup": { "amount": 500, "link": "https://buy.stripe.com/your-link" },
   "picks": { "feed": "articles/feed.json", "base": "articles/" } }
 </script>
-<script type="module" src="/assets/components/sg-meter/v1/v1.3/v1.3.0/sg-meter.js"></script>
+<script type="module" src="/assets/components/sg-meter/v1/v1.3/v1.3.1/sg-meter.js"></script>
 ```
 
 Every key has a default, so an empty config works. Put `data-root` on `<html>` (for example `data-root="../"`) if your pages are not all at the top level; links the component writes are prefixed with it. This site loads the module with a dynamic `import()` from an inline script instead of a `src`, because its own build forbids script tags that point at files; either works.
@@ -20582,6 +20582,7 @@ The first version ran on [pt.newsroom.sgit.ai](https://pt.newsroom.sgit.ai/carte
 
 ## Changelog
 
+- **v1.3.1** (10 October 2026, site v0.7.36). The share view's Send button stays disabled until the reader ticks the box that lets the site keep the data; copying needs no box.
 - **v1.3.0** (10 October 2026, site v0.7.34). The reader card at the foot of a page: three five-step ratings starting in the middle, usefulness setting the price (free to double), more-like-this moving the persona, level of detail kept as a preference; articles join the reading list when first opened; "don't charge me" moved to the end as the exception. Ratings are in what a reader shares. Events: `sg:meter.rated`. Config: `rating`, `autoKeep`, `links.how`.
 - **v1.2.0** (10 October 2026, site v0.7.31). Sharing: the `share` view, `shareData()` in the core, the `share` config and the `sg:meter.shared` event. A reader sees the exact text, copies it, or sends it encrypted (sgit's hybrid envelope v2, RSA-OAEP-SHA256 and AES-256-GCM, with Web Crypto) into an append lane, with the fingerprint recomputed from the published key before anything is sent. The newsroom and account link to it.
 - **v1.1.0** (10 October 2026, site v0.7.28). Personas: a default one built from all reading and named from its topics, presets offered by the site, as many as the reader wants, reading credited to the active one, Keep and Not for this persona. Four new views: `newsroom`, `personas`, `graph`, `link`. Picks score tags as well as topics. The account view draws the reader's graph and can restore an export. State version 3. v1.0.0 stays at its own path.
