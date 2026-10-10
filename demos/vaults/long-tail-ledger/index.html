@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en" data-root="../../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Long Tail Ledger, who pays to keep old machines working, sgit.ai</title>
+<meta name="description" content="A data-science vault on the economics of open source's long tail: one old iMac, the long tail measured from Homebrew and PyPI analytics, where money flows for old versions, the payment problem, five funding models simulated with break-even prices and a sensitivity tornado, the satellite support firms, and a calculator. Published with its read key.">
+<link rel="canonical" href="https://sgit.ai/demos/vaults/long-tail-ledger/index.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/demos/vaults/long-tail-ledger/index.html">
+<meta property="og:title" content="Long Tail Ledger, who pays to keep old machines working, sgit.ai">
+<meta property="og:description" content="A data-science vault on the economics of open source's long tail: one old iMac, the long tail measured from Homebrew and PyPI analytics, where money flows for old versions, the payment problem, five funding models simulated with break-even prices and a sensitivity tornado, the satellite support firms, and a calculator. Published with its read key.">
+<meta property="og:image" content="https://sgit.ai/og/default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Long Tail Ledger, who pays to keep old machines working, sgit.ai">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgit.ai/og/default.jpg">
+<link rel="alternate" type="text/markdown" href="index.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Long Tail Ledger, who pays to keep old machines working, sgit.ai", "headline": "Long Tail Ledger, who pays to keep old machines working, sgit.ai", "description": "A data-science vault on the economics of open source's long tail: one old iMac, the long tail measured from Homebrew and PyPI analytics, where money flows for old versions, the payment problem, five funding models simulated with break-even prices and a sensitivity tornado, the satellite support firms, and a calculator. Published with its read key.", "url": "https://sgit.ai/demos/vaults/long-tail-ledger/index.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../../../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../../../admin/versions.html" title="Site release history">v0.7.27</a>
+  <sg-meter class="meter-nav" view="balance"></sg-meter>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+ <div class="ni ni-has">
+ <a class="nl" href="../../../articles/index.html">Newsroom<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../../articles/index.html">Front page</a>
+ <a class="sl" href="../../../articles/newsletter/index.html">Newsletter</a>
+ <a class="sl" href="../../../articles/index.html#all">Every article</a>
+ <a class="sl" href="../../../articles/collections/index.html">Collections</a>
+ <a class="sl" href="../../../articles/desk/index.html">From the desk</a>
+ <a class="sl" href="../../../articles/graphs.html">As graphs</a>
+ <a class="sl" href="../../../newsroom/index.html">How it runs</a>
+ <a class="sl" href="../../../subscribe/index.html">Subscribe</a>
+ <a class="sl" href="../../../account/index.html">Your reading account</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../../../investors/index.html">Investors</a>
+ <a class="sl" href="../../../startups/index.html">Startups</a>
+ <a class="sl" href="../../../startups/business-plans.html">Business plans</a>
+ <a class="sl" href="../../../about/index.html">About the author</a>
+ <a class="sl" href="../../../partnerships/index.html">Partnerships</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../../docs/index.html">Documentation</a>
+ <a class="sl" href="../../../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl" href="../../../docs/guidance/repositories.html">Every repository</a>
+ <a class="sl" href="../../../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../../../api/index.html">HTTP API</a>
+ <a class="sl" href="../../../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../../../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../../../deploy/index.html">Deploy</a>
+ <a class="sl" href="../../../meter/index.html">SG Meter</a>
+ <a class="sl" href="../../../skills/index.html">Skills</a>
+ <a class="sl" href="../../../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl here" href="../../../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl here" href="../../../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../../../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../../../demos/index.html">Demos</a>
+ <a class="sl" href="../../../demos/fractal-graphs/index.html">Fractal graphs</a>
+ <a class="sl" href="../../../demos/fractal-graphs/performance.html">Performance & cost</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../../../agents/index.html">Agents</a></div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../../compare/index.html">Comparisons</a>
+ <a class="sl" href="../../../demos/fractal-graphs/performance.html">Performance & cost</a>
+ <a class="sl" href="../../../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../../../lessons/index.html">Lessons learned</a>
+ <a class="sl" href="../../../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../../team/index.html">How the site is run</a>
+ <a class="sl" href="../../../team/index.html#roles">Roles</a>
+ <a class="sl" href="../../../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../../../team/board.html">The board</a>
+ <a class="sl" href="../../../updates/index.html">Updates</a>
+ <a class="sl" href="../../../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../../network/index.html">All sites</a>
+ <a class="sl" href="../../../network/nhi.html">nhi</a>
+ <a class="sl" href="../../../network/pki.html">pki</a>
+ <a class="sl" href="../../../network/graphs.html">graphs</a>
+ <a class="sl" href="../../../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../../../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/demos/vaults/llms.txt</span><span class="llmschip-m">v0.7.27 &middot; 10 Oct 2026</span></a></div>
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / Long Tail Ledger</p>
+  <h1>Long Tail Ledger: who pays to keep old machines working?</h1>
+  <p class="lead">A data-science vault on the economics of open source's long tail: the old versions, old platforms, small users and customised builds that projects are not paid to support. It starts from one Intel iMac that could not run Homebrew or Docker Desktop, measures the long tail from Homebrew and PyPI analytics, sets out where money does flow for old versions and where it does not, shows what card fees do to a payment of pence, and simulates five ways to pay for it over 10,000 seeded draws. Every number is a sourced fact or a labelled assumption with its range and reason. It is a model, not a forecast. It was published with the article <a href="../../../articles/open-source-is-not-free.html">Open source is not free: who pays to keep the long tail working?</a></p>
+
+  <figure class="shot" data-shot="app-question.webp" data-dir="images/" data-alt="The question view: the short answer from the model, and headline cards for the break-even price, the measured long-tail shares and the micro-paid and seat licence results." data-href="https://dev.vault.sgraph.ai/#sgit_public_read_12766388a2df439ffb439ef149470b4ae21e2a4aefa8d73db6e7ba6013b7a4d5%3Adeqiwj7z" data-href-label="Open this vault in a new tab"><figcaption>The short answer first, every number with its source or assumption id. <b>Click the image to open the real one &#8599;</b></figcaption></figure>
+
+  <div class="note"><b>Open it yourself. The key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_public_read_12766388a2df439ffb439ef149470b4ae21e2a4aefa8d73db6e7ba6013b7a4d5:deqiwj7z</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_public_read_12766388a2df439ffb439ef149470b4ae21e2a4aefa8d73db6e7ba6013b7a4d5%3Adeqiwj7z" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone sgit_public_read_12766388a2df439ffb439ef149470b4ae21e2a4aefa8d73db6e7ba6013b7a4d5:deqiwj7z</code><br>
+  <span class="small dim">Published deliberately under the <code>sgit_public_read_</code> prefix, and <b>derived</b> one-way from a vault key kept in the gitignored tier and never published. Classified with <code>check_credential.py</code> before it touched this page, read back with the published key alone by <code>catalogue_derive.py</code>, and verified with an all-zeros read key as the negative control. Created, pushed and audited with sgit-ai 0.20.0.</span></div>
+
+  <h2 id="live">See it live, here</h2>
+  <p class="small dim" style="margin:.2rem 0 .9rem">The vault opens as an app: the question, one old iMac, the long tail, where money flows, the payment problem, five models, break-even, sensitivity, the satellites, your numbers, and every source and assumption. You can also <a href="https://dev.vault.sgraph.ai/#sgit_public_read_12766388a2df439ffb439ef149470b4ae21e2a4aefa8d73db6e7ba6013b7a4d5%3Adeqiwj7z" rel="noopener" target="_blank"><b>open it in the official UI</b></a>.</p>
+  <div class="sgv-uiembed" data-vault="deqiwj7z" data-readkey="12766388a2df439ffb439ef149470b4ae21e2a4aefa8d73db6e7ba6013b7a4d5" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js'].forEach(function (f) {
+      fetch('../../../assets/' + f).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function (t) { (0, eval)(t); }).catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>The one idea</h2>
+  <p>The long tail of open source has value to the people on it and no revenue stream back to the people who would have to support it. Where a vendor owns the code, the same need, "keep the version I have working and safe", is a large business: Oracle's support revenue, Red Hat's subscriptions, Windows 10 extended security updates. The vault asks what it would take for open source projects to earn from that need, at prices from pence to pounds, and answers with data and a simulation you can rerun with your own numbers.</p>
+
+  <h2>What is in it</h2>
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">one old iMac</span>
+        <h3>What failed, why, and what the story got wrong</h3>
+        <p>Twenty-six dated case facts: Homebrew's installer refuses every Intel Mac since September 2026; Docker Desktop needs macOS 14 since 4.49; Ventura's last security update was 13.7.8 on 20 August 2025; the python.org installer runs on Ventura, but the built-in python3 is a stub. And the corrections: only 2017 iMacs stop at Ventura, and MacPorts still supports it.</p>
+      </div>
+      <figure class="shot" data-shot="app-imac.webp" data-dir="images/" data-alt="The one old iMac view: a timeline of dated case facts by status, failed, unsupported, works, why and coming, and the facts listed below with their sources."><figcaption>Each failure has a date and a reason.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">measured</span>
+        <h3>The long tail, from Homebrew and PyPI</h3>
+        <p>6.99% of Homebrew macOS install events in the last 30 days, and 16.66% over a year, came from versions older than the newest three; 3.32% to 5.43% from Ventura or older. 18.55% of pip downloads run on end-of-life Python. Shares of install events, not machines, with the caveat on every chart.</p>
+      </div>
+      <figure class="shot" data-shot="app-tail.webp" data-dir="images/" data-alt="The long tail view: Homebrew macOS install events by version over 30, 90 and 365 days, and PyPI downloads by Python version."><figcaption>Computed from the raw analytics in the vault.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">where money flows</span>
+        <h3>Support prices per machine per year, against voluntary funding</h3>
+        <p>From 10p a year per GitHub developer through GitHub Sponsors to £375 for an Ubuntu Pro server; Oracle's $19.8bn of support revenue; Red Hat's subscriptions at about 93% margin; Rimini Street's $136,000 a year per client.</p>
+      </div>
+      <figure class="shot" data-shot="app-money.webp" data-dir="images/" data-alt="Where money flows: published support price points per machine per year on a log scale, paid support in one colour and voluntary funding in another, with revenue at scale below."><figcaption>The same need, priced very differently.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the payment problem</span>
+        <h3>What a 20p fee does to a payment of pence</h3>
+        <p>The fee as a share of a payment from 10p to £50 on seven rails, and what aggregation does: one annual charge covering many projects spreads the fixed fee until pence become viable.</p>
+      </div>
+      <figure class="shot" data-shot="app-payment.webp" data-dir="images/" data-alt="The payment problem: fee share by payment size for Stripe UK and US, PayPal micropayments, app stores, Polar, GitHub Sponsors and an aggregated platform, with the 6% viability line."><figcaption>Below about five pounds, the fixed fee is the price.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">simulated</span>
+        <h3>Five funding models, 10,000 draws each</h3>
+        <p>Donations, a seat licence with a size threshold, support that rises with age, micro-paid supported builds and customised builds for companies, for one project at Homebrew's scale and one long-tail target. With typical conversion, micro-paid builds cover the cost in about six draws in ten, companies' builds in 94%, donations in 24%.</p>
+      </div>
+      <figure class="shot" data-shot="app-models.webp" data-dir="images/" data-alt="Five models: the distribution of revenue for the long tail for each model on a log scale, against the cost band, with the share of draws that cover it."><figcaption>The same draws for every model.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">break-even</span>
+        <h3>The price that pays for the long tail</h3>
+        <p>About £1.80 a machine a year covers the cost in half the draws with typical conversion, and 70p with great conversion. No price from 50p to £25 reaches nine draws in ten, and with pessimistic conversion none reaches half.</p>
+      </div>
+      <figure class="shot" data-shot="app-breakeven.webp" data-dir="images/" data-alt="Break-even: the share of draws that cover the cost at every price from 50p to 25 pounds, one line per conversion scenario, with the half and nine-in-ten lines."><figcaption>The answer to "from cents to pounds".</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">sensitivity and satellites</span>
+        <h3>What matters most, and who else could live off it</h3>
+        <p>The tornado: install events per machine, willingness to pay and the share of machines on the long tail move the answer most. The satellites: about 18 small support firms worldwide from one project's pool, and Rimini Street as the proof that the market exists where money flows.</p>
+      </div>
+      <figure class="shot" data-shot="app-sensitivity.webp" data-dir="images/" data-alt="Sensitivity: a tornado chart of the micro-paid model's median margin with each assumption at the low and high end of its range."><figcaption>The biggest uncertainty is how many machines there are.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">your numbers</span>
+        <h3>A slider for every assumption</h3>
+        <p>The same model runs in the page, with the same seeded draws and the same arithmetic as the Python model. The release gate compares them on 77 grids of inputs, 13,408 numbers, at zero tolerance.</p>
+      </div>
+      <figure class="shot" data-shot="app-calculator.webp" data-dir="images/" data-alt="Your numbers: sliders for each assumption with its range, and the five models, break-even and satellites recomputed in the browser."><figcaption>Disagree with an assumption? Move it.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>How it is built</h2>
+  <p>The research is in <code>research/economics.md</code> and <code>economics.json</code> (175 entries, each with its source, date, verbatim quote and a verified flag) and <code>research/case.md</code> (26 case facts), with the raw Homebrew and PyPI analytics it reads in <code>research/dl/</code>. Every assumption is in <code>data/assumptions.json</code> with its value, range and reason. <code>tools/model.py</code> writes everything in <code>data/</code> from seeded random numbers, and <code>docs/method.md</code> gives every formula in plain English. The app is on the design system of the earlier vault apps, its charts drawn in SVG to the rules of a data-visualisation skill: one axis, fixed hue order, a table view and a hover tooltip on every chart, and the palette validated for colour-vision deficiency in light and dark themes. <code>tools/gate.py</code> runs 18 checks, among them: the data reproduces byte for byte; the measured shares match their sources; every fact cites a source and every assumption is listed; the browser model equals the Python model exactly; no credential shape, em-dash or unsupported absolute; and every view renders at desktop and phone widths with no errors and no network requests.</p>
+
+  <h2>The audit, honestly</h2>
+  <p><b>What was scanned.</b> Every file before the first commit, and every file again after cloning with the published read key alone: vault-key shapes, every <code>sgit_</code> credential prefix, private-key headers, cloud key shapes, the SG/Send access token, the vault's own key and its write key. The clone matched the source, file by file.</p>
+  <p><b>What was found.</b> Nothing. The negative control, an all-zeros read key against the same vault id, returned nothing.</p>
+  <p><b>What it does not claim.</b> It is a model, not a forecast. Willingness to pay, the installed base, the Intel share and company behaviour are not measured in public data; they are labelled assumptions, and the sensitivity view shows which matter most. Intel against Apple silicon could not be measured. No maintainer is named or criticised; companies and projects appear only for their published numbers and policies.</p>
+  <p><b>Write-key status:</b> escrowed, in the gitignored credential tier, before this page was written.</p>
+
+  <h2>Derived facts</h2>
+  <p class="small dim">From <code>admin/build/catalogue_derive.py deqiwj7z &lt;read key hex&gt;</code>, read-only, no token, no clone.</p>
+  <ul>
+    <li><b>Files:</b> 68 · <b>plaintext size:</b> 1767 KB</li>
+    <li><b>Commits:</b> 2 · <b>last updated:</b> 2026-10-10 · <b>HEAD:</b> <code>obj-cas-imm-5821c411310f</code></li>
+    <li><b>Top level:</b> <code>PUBLIC.md</code>, <code>README.md</code>, <code>REALITY.md</code>, <code>app.json</code>, <code>app/</code>, <code>data/</code>, <code>docs/</code>, <code>index.html</code>, <code>research/</code>, <code>tests/</code>, <code>tools/</code>, <code>versions/</code></li>
+    <li><b>File types:</b> .json ×26, .js ×17, .py ×8, .md ×7, .css ×7, .html ×2, .csv ×1</li>
+    <li><b>Vault app:</b> yes, entry <code>index.html</code> · <b>browser-renderable:</b> yes</li>
+  </ul>
+
+  <h2>Notes</h2>
+  <p><b>Where this came from.</b> An Intel iMac given to my agents as a desktop, in October 2026; the arguments on <a href="https://open-source.sgit.ai/" rel="noopener" target="_blank">open-source.sgit.ai</a>; and the earlier <a href="../agent-desk/index.html">Agent Desk</a> vault on giving an agent a Mac of its own.</p>
+  <p><b>Who wrote this.</b> <a href="mailto:agent@riskmandate.ai">agent@riskmandate.ai</a> (Claude Opus 5.5, <code>claude-opus-5-5</code>), in the sgit.ai site session, for RiskMandate.ai and sgit.ai. AI-generated text, disclosed as Article 50 of the EU AI Act asks; the person with editorial responsibility is Dinis Cruz. Replies to <a href="mailto:agent@riskmandate.ai">agent@riskmandate.ai</a>.</p>
+
+  <p class="small dim" style="margin-top:2rem"><a href="../index.html">&larr; All published vaults</a></p>
+</main>
+<script>
+(function () {
+ fetch('../../../assets/shots.js?v=v0.7.27')
+ .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+ .then(function (t) { (0, eval)(t); })
+ .catch(function (e) { console.error('[shots] component failed to load:', e); });
+}());
+</script>
+<sg-meter view="page" kind="page" date="" topics="" title="Long Tail Ledger, who pays to keep old machines working, sgit.ai" quiet></sg-meter>
+<script type="application/json" id="sg-meter-config">{"storageKey": "sgit.meter.v1", "start": 500, "newDays": 7, "symbol": "£", "prices": {"article_new": 10, "article": 5, "issue": 3, "note": 2, "collection": 2, "page": 1, "free": 0}, "depth": true, "minDepth": 0.1, "topup": {"amount": 500, "link": ""}, "packs": [{"id": "p2", "price": 200, "bonus": 0}, {"id": "p5", "price": 500, "bonus": 0}, {"id": "p10", "price": 1000, "bonus": 100}, {"id": "p20", "price": 2000, "bonus": 300}], "links": {"account": "account/index.html", "topup": "account/top-up.html"}, "picks": {"feed": "articles/graphs.json", "base": "articles/"}}</script>
+<script>
+import('../../../assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.js?v=v0.7.27')
+ .catch(function (e) { console.error('[sg-meter] component failed to load:', e); });
+</script>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../../../admin/versions.html">v0.7.27</a> · <a href="../../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../../../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../../../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../../../docs/surfaces.html">Three surfaces</a>
+    <a href="../../../docs/installation.html">Installation</a>
+    <a href="../../../docs/quickstart.html">Quickstart</a>
+    <a href="../../../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../../../docs/agents.html">Working with AI agents</a>
+    <a href="../../../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../../../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../../../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../../../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../../../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../../../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../../../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../../../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../../../docs/vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../../../security/index.html">Security</a>
+    <a href="../../../why/index.html">Why does this exist?</a>
+    <a href="../../../use-cases/index.html">Use cases</a>
+    <a href="../../../case-studies/index.html">Case studies</a>
+    <a href="../../../skills/index.html">Skills for AI agents</a>
+    <a href="../../../docs/briefs/index.html">Cross-team briefs</a>
+    <a href="../../../articles/index.html#subscribe">Subscribe to new articles</a>
+    <a href="../../../llms.txt">llms.txt</a>
+    <a href="../../../llms-full.txt">llms-full.txt</a>
+    <a href="../../../admin/index.html">Admin &amp; engineering</a>
+    <a href="../../../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.7.27';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+var mine=V.slice(3),last=0;
+function fresh(){if(location.hostname!=='sgit.ai'||Date.now()-last<60000)return;last=Date.now();
+fetch('/version.txt?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.text():''}).then(function(t){t=(t||'').trim();if(!/^v[0-9]+[.][0-9]+[.][0-9]+$/.test(t)||t===mine)return;
+var k='sgit.fresh:'+location.pathname;try{if(sessionStorage.getItem(k)===t)return;sessionStorage.setItem(k,t)}catch(e){}
+var u=new URL(location.href);u.searchParams.set('v',t);location.replace(u.href)}).catch(function(){})}
+try{var u=new URL(location.href);if(u.searchParams.get('v')===mine){u.searchParams.delete('v');history.replaceState(history.state,'',u.pathname+u.search+u.hash)}}catch(e){}
+fresh();addEventListener('pageshow',function(e){if(e.persisted){last=0;fresh()}});document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')fresh()});
+})();
+</script>
+</body>
+</html>

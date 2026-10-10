@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.24'
+SITE_VERSION = 'v0.7.27'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,8 +29,52 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.24', '2026-10-10', 'this release',
+    ('v0.7.27', '2026-10-10', 'this release',
      "ONE ARTICLE, FIVE READERS. The articles are deep and hard to consume, so they are now read again after they are written by five agents with defined roles: a Librarian that catalogues every fact, claim, number, question and source with its verbatim sentence, a Cartographer and Ontologist that builds concepts and verbs at article, topic and site altitude and draws the maps, a Historian that says what the article added and where it sits, an Explainer that says it in two minutes, and a Storyteller that tells it as a deck. Run on the five behaviour-policy articles of 7 to 10 October: 662 items, 32 problems flagged in published text, 45 concepts, 78 edges, nine maps, five decks of nine slides, and one new concept in the newest article. Those five articles now open with Read it another way (two minutes, the arc, the deck with a PDF, the map, the catalogue with its flags), in the page and its markdown twin. A new vault, Article Views (chtgtd9e, read key published), holds the role files, every output, the renderers, the checks and an app; and the article that tells the story.",),
+    ('v0.7.26', '2026-10-10', 'git bf3701ab',
+     "THE READING METER GOES LIVE, AND BECOMES A LIBRARY. A page is now charged for the share of it the reader scrolled "
+     "through (price times deepest point, rounded to 5%, never less than a tenth), once per page per session, topped up "
+     "as they read further. The balance may go below zero forever: no bar, no block, no ask, only a small balance in the "
+     "top bar that turns a warmer colour below zero. At the foot of an article, 'Not worth it? Don't charge me' refunds "
+     "the page with one of four reasons, kept in the reader's history ('not relevant' counts against that page's topics "
+     "in the picks). Prices raised to 10p a new article and 5p an older one, read to the end. Topping up becomes one £5 "
+     "Stripe Payment Link returning to account/topped-up.html, which adds the credit once per session id and, "
+     "deliberately and documented, cannot verify the payment; until the link is set in METER, the simulated cart "
+     "remains. The meter is rebuilt as SG Meter v1.0.0 (assets/components/sg-meter/v1/v1.0/v1.0.0/), an ES-module web "
+     "component on the estate's SgComponent base, markup and styles in sibling files, page data set only as text, events "
+     "sg:meter.charged/declined/toppedup/reset/changed, six views (balance, page, account, topup, topped-up, picks); "
+     "assets/meter.js is removed and the reader's v1 balance and history carry over under the same storage key. New "
+     "docs section /meter/ (install, views, rules, config, events, storage schema, theming, Stripe setup, changelog) "
+     "and /meter/security.html (nine known gaps, all accepted, with what each costs the site and the reader). Two "
+     "articles: going live with the reading meter (the plan, the Guardian's counter and tiers, the subscription "
+     "commitment, Stripe's fees on £5, the honesty-box evidence, five hypotheses with thresholds and a review date "
+     "eight weeks after the link goes live) and who will game the reading meter (eight kinds of reader sized from "
+     "published figures, agents as a lift between them, nine ways to cheat or leak, and the risks that will actually "
+     "happen). Tested in Chromium: depth charging, refund on decline, no recharge on reload, negative balance, top-up "
+     "once per id, storage blocked, no console errors, no overflow at 390px; on a phone the balance takes the version's "
+     "place in the top bar.",),
+    ('v0.7.25', '2026-10-10', 'git 4037ed3d',
+     "OPEN SOURCE IS NOT FREE. A new article on the economics of open source's long tail, from one Intel iMac that "
+     "could not run Homebrew or Docker Desktop: the case checked against the vendors' own pages (only 2017 iMacs stop "
+     "at Ventura; Homebrew's installer refuses Intel Macs; Ventura unpatched since August 2025), the long tail measured "
+     "from Homebrew and PyPI analytics, where money flows for old versions and where it does not, what a 20p card fee "
+     "does to a payment of pence, and five funding models simulated over 10,000 seeded draws, with break-even prices, a "
+     "sensitivity tornado and the satellite support firms. Eight figures from the new Long Tail Ledger vault (deqiwj7z), "
+     "published with its read key: 175 sourced facts, 36 labelled assumptions, the model in Python and the same model "
+     "in the browser behind a calculator, gated to agree exactly."),
+    ('v0.7.24', '2026-10-10', 'git 9fffe410',
+     "A READING METER IN THE BROWSER. Every page now has a price and a meter that debits it from £5.00 of starting "
+     "credit, all of it in the reader's localStorage: no account, no server, no card, nothing sent. Prices come from one "
+     "METER table in the build, injected into every page with what the page is (article, issue, note, collection, page, "
+     "free) and, for an article, its date and topics: a new article (seven days) 5p, older 3p, issue, note or collection "
+     "2p, any other page 1p, homepage, subscribe and account free. assets/meter.js charges once per page per browser "
+     "session, never blocks (out of credit, the read is recorded as unpaid and a bar offers a top-up), shows a badge "
+     "with the balance, and keeps a history that personalises the site: a Picked for you band on the front page and on "
+     "the account page, unread articles from the reader's most-read topics, computed in the browser from "
+     "articles/graphs.json. New pages: account/ (balance, history, topics, receipts, pause, export, start again, price "
+     "table) and account/top-up.html (packs, cart, review, confirm, receipt: every step but the payment). Rules carried "
+     "over from pt.newsroom.sgit.ai's wallet. Tested end to end in a browser: debits by kind and age, the free revisit, "
+     "the picks, the cart and receipt, the unpaid read. The article: a meter in the browser.",),
     ('v0.7.23', '2026-10-10', 'git ed8f0cd7',
      "ONE MAC, MANY AGENTS; NO NAMES; FULLER COLLAGES. A Mac of the agent's own gains a section on queueing many agents on one Mac: six scenarios against the licence clauses (purpose and who is using macOS decide it, not the queue), the case worth a lawyer's hour, and the narrow ask for Apple's written terms. Threat-sized security: the eight fictional startups are described by what they do instead of named, in the vault (v0.1.2, gate and tests passing, audited from a fresh read-key clone), its screenshots, the article and the ladder figure, which loses its ceiling column. Newsletter collages: three pictures become one large beside two stacked, two pictures hug their content, so screenshots are no longer letterboxed.",),
     ('v0.7.22', '2026-10-10', 'git 0335818e',
@@ -3783,6 +3827,7 @@ NAV = [
         ('graphs', 'As graphs', 'articles/graphs.html'),
         ('newsroom', 'How it runs', 'newsroom/index.html'),
         ('subscribe', 'Subscribe', 'subscribe/index.html'),
+        ('account', 'Your reading account', 'account/index.html'),
     ]),
     ('why', 'Why', 'why/index.html', [
         ('why', 'Why sgit exists', 'why/index.html'),
@@ -3801,6 +3846,7 @@ NAV = [
         ('docs', 'Credentials', 'docs/credentials.html'),
         ('vault', 'SG/Vault', 'docs/vault/index.html'),
         ('deploy', 'Deploy', 'deploy/index.html'),
+        ('meter', 'SG Meter', 'meter/index.html'),
         ('skills', 'Skills', 'skills/index.html'),
         ('briefs', 'Briefs', 'docs/briefs/index.html'),
     ]),
@@ -3856,6 +3902,7 @@ def nav(p, here):
   <a class="brand" href="{p}index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
   <a class="ver" href="{p}admin/versions.html" title="Site release history">{SITE_VERSION}</a>
+  <sg-meter class="meter-nav" view="balance"></sg-meter>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
 {chr(10).join(items)}
@@ -4040,6 +4087,62 @@ def expand_trails(path, body):
     return re.sub(r'<!-- trail:([a-z0-9-]+) -->', render, body)
 
 
+# ============================================================ the reading meter
+# One set of rules, used three ways: injected into every page for assets/meter.js to charge by,
+# printed as the price table on the account page, and described in the article about it.
+# Pence. A new article is one published in the last `new_days` days, judged in the reader's
+# browser from the article's date, so prices age without a rebuild.
+METER = {
+    'currency': 'GBP', 'start': 500, 'new_days': 7,
+    # v0.7.26: the go-live hypothesis. A page is charged for the share of it the reader scrolled
+    # through, so these are the prices of a page read to the end. Credit may go negative.
+    'prices': {'article_new': 10, 'article': 5, 'issue': 3, 'note': 2, 'collection': 2, 'page': 1, 'free': 0},
+    # A Stripe Payment Link whose confirmation redirects to
+    # https://sgit.ai/account/topped-up.html?session_id={CHECKOUT_SESSION_ID}. Empty: the simulated cart.
+    'topup': {'amount': 500, 'link': ''},
+    'packs': [{'id': 'p2', 'price': 200, 'bonus': 0}, {'id': 'p5', 'price': 500, 'bonus': 0},
+              {'id': 'p10', 'price': 1000, 'bonus': 100}, {'id': 'p20', 'price': 2000, 'bonus': 300}],
+}
+METER_LABEL = [('article_new', 'An article published in the last seven days'), ('article', 'An older article'),
+               ('issue', 'A newsletter issue'), ('note', 'A desk note'), ('collection', 'A collection'),
+               ('page', 'Any other page: docs, vaults, the network, the newsroom'),
+               ('free', 'The homepage, the subscribe page and your account')]
+METER_FREE = ('index.html', 'account/', 'subscribe/')
+
+
+def meter_kind(path):
+    """(kind, date, topics) for the meter: what this page is, for pricing and for the history
+    the personalisation reads."""
+    if path == 'index.html' or path.startswith(METER_FREE[1:]):
+        return 'free', '', []
+    m = re.match(r'^articles/([a-z0-9-]+)\.html$', path)
+    if m and m.group(1) in BY_SLUG:
+        a = BY_SLUG[m.group(1)]
+        return 'article', a['date'], art_topics(a)
+    if path.startswith('articles/newsletter/') and not path.endswith('index.html'):
+        return 'issue', '', []
+    if path.startswith('articles/desk/') and not path.endswith('index.html'):
+        return 'note', '', []
+    if path.startswith('articles/collections/') and not path.endswith('index.html'):
+        return 'collection', '', []
+    return 'page', '', []
+
+
+METER_JS = 'assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.js'
+
+
+def meter_config():
+    """The METER rules in the shape the component reads (see /meter/ for every key). The storage
+    key is the one v0.7.24 used, so a reader's balance and history carry over."""
+    return json.dumps({
+        'storageKey': 'sgit.meter.v1', 'start': METER['start'], 'newDays': METER['new_days'], 'symbol': '£',
+        'prices': METER['prices'], 'depth': True, 'minDepth': 0.1,
+        'topup': METER['topup'], 'packs': METER['packs'],
+        'links': {'account': 'account/index.html', 'topup': 'account/top-up.html'},
+        'picks': {'feed': 'articles/graphs.json', 'base': 'articles/'},
+    }, ensure_ascii=False).replace('</', '<\\/')
+
+
 def page(path, title, desc, here, body):
     # Root prefix by DEPTH, not by "is nested at all", pages now nest three deep
     # (demos/vaults/<slug>/index.html) and a single '../' silently pointed the nav,
@@ -4114,6 +4217,25 @@ def page(path, title, desc, here, body):
                  ' .then(function (t) { (0, eval)(t); })\n'
                  " .catch(function (e) { console.error('[subscribe] component failed to load:', e); });\n"
                  '}());\n</script>')
+    # The reading meter (assets/components/sg-meter, documented at /meter/): every page says
+    # what it is in a <sg-meter view="page">, the build's METER rules go in as the component's
+    # config, and the component debits a balance kept in the reader's browser by how far down the
+    # page they read. On an article the line is shown at the foot of the body; elsewhere it is quiet.
+    if '<sg-meter view="page"' not in body:
+        kind, date, topics = meter_kind(path)
+        quiet = '' if kind in ('article', 'issue', 'note') else ' quiet'
+        tag = (f'<sg-meter view="page" kind="{kind}" date="{date}" topics="{" ".join(topics)}" '
+               f'title="{_esc(title)}"{quiet}></sg-meter>')
+        # at the end of the text: before an article's threads, else at the foot of the main column
+        at = '<section class="athreads"' if '<section class="athreads"' in body else '</main>'
+        if not quiet and at in body:
+            i = body.rindex(at)
+            body = body[:i] + tag + '\n' + body[i:]
+        else:
+            body += '\n' + tag
+    body += ('\n<script type="application/json" id="sg-meter-config">' + meter_config() + '</script>\n<script>\n'
+             f"import('{p}{METER_JS}?v={SITE_VERSION}')\n"
+             " .catch(function (e) { console.error('[sg-meter] component failed to load:', e); });\n</script>")
     card = og_card(path)
     html = f"""<!doctype html>
 <html lang="en" data-root="{p}">
@@ -4558,6 +4680,8 @@ LLMS_SECTIONS = [
     ('updates', 'Updates (dated posts: what changed, one entry per story)'),
     ('articles', 'Articles (longer pieces that argue across pages, with the evidence linked)'),
     ('collections', 'Collections (articles read together, each set with an introduction saying what it shows that no single article does)'),
+    ('account', 'Your reading account (a reading meter kept in the browser: prices charged by scroll depth, balance that may go negative, history, top-ups and the personalisation they buy)'),
+    ('meter', 'SG Meter (the reading meter as a library any website can add: install, views, config, events, storage, theming, Stripe, security model)'),
     ('subscribe', 'Subscribe (the one page with the newsletter sign-up form; the address is encrypted in the browser)'),
     ('newsletter', 'The newsletter (the regular SGit Newsroom issue: what was published and what it adds up to, also posted on LinkedIn)'),
     ('desk', 'From the desk (short pieces written from the articles: nuggets, threads across articles, the week in one page)'),
@@ -6419,7 +6543,7 @@ def articles_subnav(cur, root):
              ('all', 'Every article', 'articles/index.html#all'),
              ('collections', 'Collections', 'articles/collections/index.html'),
              ('desk', 'From the desk', 'articles/desk/index.html'), ('graphs', 'As graphs', 'articles/graphs.html'),
-             ('newsroom', 'How it runs', 'newsroom/index.html'), ('subscribe', 'Subscribe', 'subscribe/index.html')]
+             ('newsroom', 'How it runs', 'newsroom/index.html'), ('subscribe', 'Subscribe', 'subscribe/index.html'), ('account', 'Your account', 'account/index.html')]
     return ('<nav class="fsub" aria-label="SGit Newsroom">' + ''.join(
         f'<a href="{root}{h}"{_CUR if k == cur else ""}>{l}</a>' for k, l, h in items) + '</nav>')
 
@@ -6453,6 +6577,7 @@ def articles_index_body():
         out.append(f'<p class="fnote"><span class="fkick">From the editor</span> {_esc(fr["note"])} '
                    f'<a href="../newsroom/log.html">The desk log &rarr;</a></p>')
     out.append('<div class="ftop">' + (_lead_block(lead, root) if lead else '') + _latest_rail(10, root) + '</div>')
+    out.append('<sg-meter class="fband" view="picks" count="4" hidden></sg-meter>')
     if fr['highlights']:
         out.append('<section class="fband"><h2 class="fsect">Highlights</h2><div class="fhighs">'
                    + ''.join(_high_card(h, root) for h in fr['highlights']) + '</div></section>')
@@ -6992,6 +7117,58 @@ def issue_body(i):
             + '\n <p class="small dim" style="margin-top:2rem"><a href="' + root + 'articles/newsletter/index.html">&larr; All issues</a></p>\n</main>\n')
 
 
+METER_NOTE = ('<div class="note"><b>Kept in this browser, and only here.</b> The balance, the history and the receipts are in this '
+              'browser\'s storage; nothing is sent anywhere and there is no account. A new browser, a private window or clearing site '
+              'data starts again with &pound;5.00 and no history, so with no personalisation. It never blocks a page and it never nags: '
+              'credit can go below zero, the balance says so in the top bar, and that is all. '
+              '<a href="../meter/index.html">How the meter works</a>, and <a href="../articles/going-live-with-the-reading-meter.html">why '
+              'we run it this way</a>.</div>')
+
+
+def account_body():
+    rows = ''.join(f'<tr><td>{lab}</td><td>{METER["prices"][k]}p</td></tr>' if METER['prices'][k] else f'<tr><td>{lab}</td><td>free</td></tr>'
+                   for k, lab in METER_LABEL)
+    return ('<main class="doc">\n <p class="crumb"><a href="../index.html">Home</a> / <a href="../articles/index.html">SGit Newsroom</a> / Your account</p>\n'
+            ' <p class="eyebrow">SGit Newsroom &middot; reading account</p>\n <h1>Your reading account</h1>\n'
+            ' <p class="lead">Every page on sgit.ai has a price of a few pence, and you pay for the share of it you read: scroll a '
+            'tenth of the way down and you pay a tenth. You started with &pound;5.00 of credit. If a page was not worth it, say so at '
+            'its foot and it is not charged. What you read is also what personalises the site: the more you read, the better the '
+            'picks below and on the front page.</p>\n'
+            + METER_NOTE +
+            '\n <sg-meter view="account"><noscript><p>The reading account needs JavaScript: it lives in your browser and nowhere else.</p></noscript></sg-meter>\n'
+            f' <h2 id="prices">What things cost, read to the end</h2>\n <div class="tablewrap"><table><tr><th>Page</th><th>Price</th></tr>{rows}</table></div>\n'
+            ' <p class="small dim">The price of a page read to the end; you pay that times the share you scrolled through, never less '
+            'than a tenth. One charge per page per browser session: reading further later tops the same charge up, and going back costs '
+            'nothing more. Reading the markdown twin of a page, or the newsroom wire, is not metered.</p>\n'
+            ' <h2 id="why">Why it works like this</h2>\n'
+            ' <p>To find out whether people pay for reading, a few pence at a time, when nothing forces them to and what they get back is '
+            'a site that knows what they read and picks for them, with no account and nobody else holding the history. The plan, the '
+            'numbers we expect and the date we check them are in <a href="../articles/going-live-with-the-reading-meter.html">going live '
+            'with the reading meter</a>; who could cheat it, and why that is allowed, is in '
+            '<a href="../articles/who-will-game-the-reading-meter.html">who will game the reading meter</a>.</p>\n</main>')
+
+
+def topup_body():
+    return ('<main class="doc">\n <p class="crumb"><a href="../index.html">Home</a> / <a href="../articles/index.html">SGit Newsroom</a> / '
+            '<a href="index.html">Your account</a> / Top up</p>\n'
+            ' <p class="eyebrow">SGit Newsroom &middot; reading account</p>\n <h1>Top up</h1>\n'
+            ' <p class="lead">&pound;5 of reading, paid on Stripe\'s page. You come back to a page that adds the credit to the balance in '
+            'this browser. No account, and no subscription: it is one payment, and nothing renews.</p>\n' + METER_NOTE +
+            '\n <sg-meter view="topup"><noscript><p>Top-ups need JavaScript: the balance lives in your browser.</p></noscript></sg-meter>\n'
+            ' <p class="small dim">The page you come back to cannot check the payment (this site has no server to check it with), so it '
+            'adds the credit once for each payment reference it is given. That is a known gap and it is written down, with why it is '
+            'accepted, in <a href="../articles/who-will-game-the-reading-meter.html">who will game the reading meter</a>.</p>\n</main>')
+
+
+def toppedup_body():
+    return ('<main class="doc">\n <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Your account</a> / Topped up</p>\n'
+            ' <p class="eyebrow">SGit Newsroom &middot; reading account</p>\n <h1>Topped up</h1>\n'
+            ' <sg-meter view="topped-up"><noscript><p>Adding the credit needs JavaScript: the balance lives in your browser.</p></noscript></sg-meter>\n'
+            ' <p class="small dim">This is the page the payment returns to. It adds the top-up to the balance kept in this browser, once '
+            'per payment reference, and it does not, and cannot, verify the payment. <a href="../meter/security.html">Why that is '
+            'accepted</a>.</p>\n</main>')
+
+
 def subscribe_body():
     root = '../'
     latest = NEWS.issues[0] if NEWS.issues else None
@@ -7042,6 +7219,14 @@ def newsroom_pages():
         out.append((f'newsroom/roles/{r["slug"]}.html', f'{r["title"]}, a newsroom role on sgit.ai', r['mission'], 'newsroom', newsroom_role_body(r)))
     for c in NEWS.collections:
         out.append((f'articles/collections/{c["id"]}.html', f'{c["title"]}, a collection, sgit.ai', c['dek'], 'collections', collection_body(c)))
+    out.append(('account/index.html', 'Your reading account, sgit.ai',
+                'A reading meter kept in your browser: every page costs a few pence, charged by how much of it you read, from £5.00 of '
+                'starting credit. Credit can go negative and nothing is blocked; what you read personalises the site.', 'account', account_body()))
+    out.append(('account/top-up.html', 'Top up your reading account, sgit.ai',
+                'Add £5 of reading credit to the balance kept in your browser: one payment on Stripe, no account, nothing renews.',
+                'account', topup_body()))
+    out.append(('account/topped-up.html', 'Topped up, sgit.ai',
+                'The page a top-up returns to: it adds the credit to the balance kept in your browser.', 'account', toppedup_body()))
     out.append(('subscribe/index.html', 'Subscribe to the SGit Newsroom newsletter, sgit.ai',
                 'Get the next issue of the SGit Newsroom by email: what was published, what it adds up to, and what is '
                 'worth your time, about once a week. Your address is encrypted in your browser.', 'subscribe', subscribe_body()))

@@ -1,0 +1,34 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="../docs/index.html">Docs</a> / <a href="index.html">SG Meter</a> / Security model</p>
+  <p class="eyebrow">SG Meter &middot; security model</p>
+  <h1>SG Meter's security model: what a reader can do to it, and why that is allowed</h1>
+  <p class="lead">Everything the meter knows is in the reader's browser, so the reader controls it completely. This page lists what that lets them do, what it costs the site, and what it costs them. The short version: every way of cheating changes a number only the cheater can see, and costs the site a payment it was never going to get.</p>
+
+  <h2 id="asset">What is being protected, and from whom</h2>
+  <p>Not money. The meter never blocks a page, so there is nothing behind it to steal: a reader who never pays reads exactly what a reader who pays reads. What it protects is narrower: the reader's own history (what they read, what they declined and why) from other people, and the site's honesty about what it records. The first question of <a href="../articles/who-are-you-protecting-against.html">who are you protecting against</a> applies, and the answer here is "a reader's flatmate, and our own mistakes", not "a determined attacker", because a determined attacker gains nothing. Who might try anyway, and how many of them there are, is in <a href="../articles/who-will-game-the-reading-meter.html">who will game the reading meter</a>.</p>
+
+  <h2 id="known">Known gaps, all accepted</h2>
+  <div class="tablewrap"><table>
+    <tr><th>#</th><th>What a reader can do</th><th>Effort</th><th>What it costs the site</th><th>What it costs the reader</th></tr>
+    <tr><td>1</td><td>Edit their balance in the browser's developer tools (Application &rarr; Local Storage)</td><td>A minute, for someone who knows devtools exist</td><td>Nothing it would otherwise have had</td><td>Nothing</td></tr>
+    <tr><td>2</td><td>Open a private window or another browser and start again at &pound;5.00</td><td>One keystroke</td><td>Nothing</td><td>Their history and picks, which stay behind</td></tr>
+    <tr><td id="return">3</td><td>Open the topped-up page with any <code>session_id</code> and get &pound;5 of credit, once per id</td><td>Read this page, type a URL</td><td>Nothing: no money moves, and the credit is only on their screen</td><td>Nothing</td></tr>
+    <tr><td>4</td><td>Replay the same topped-up URL</td><td>none</td><td>Blocked: each id is credited once per browser (but a new id is trivial, see 3)</td><td>none</td></tr>
+    <tr><td>5</td><td>Clear site data to wipe a negative balance</td><td>Two clicks</td><td>Nothing; there was never a debt</td><td>Their history</td></tr>
+    <tr><td>6</td><td>Read as an agent: fetch the markdown twin or the newsroom wire</td><td>None; it is the intended route for agents</td><td>Unmetered by design, for now</td><td>none</td></tr>
+    <tr><td>7</td><td>Someone else on a shared computer opens the account page and sees what was read and declined</td><td>Sit down at it</td><td>none</td><td>Privacy. Mitigations: "Start again" clears it; a private window keeps nothing</td></tr>
+    <tr><td>8</td><td>A script injected into the site (XSS) reads the history</td><td>Needs a hole in the site first</td><td>Reputation</td><td>Privacy. Mitigations: the meter sets page data only as text; the only third-party code on this origin is the in-browser Python on <a href="../try/index.html">the try page</a>, loaded from a pinned version, so that page shares the same storage and the same trust</td></tr>
+    <tr><td>9</td><td>Card testing, fraud or chargebacks against the Stripe link</td><td>Ordinary payment fraud</td><td>Fees and disputes, held by Stripe's own controls (Radar)</td><td>none</td></tr>
+  </table></div>
+
+  <h2 id="why">Why the topped-up page is unprotected</h2>
+  <p>Because protecting it would need a server, and the one thing a server would protect is a number on a reader's own screen that unlocks nothing. Stripe's recommended way to know a payment happened is a webhook from Stripe to a server you run, and the honest alternative to building one is to say plainly that the return page trusts its URL. So it does, and here it is said. What we did do is keep the default route the real one: every top-up button goes to the payment page, the return URL is not linked as a way to get credit, and the page adds nothing when opened without a reference.</p>
+
+  <h2 id="what-would-change">What would change this</h2>
+  <ul>
+    <li><b>If the balance unlocked something</b> (a page, a download, a reply from an agent), it would have to be held by a server or a signed receipt, and gaps 1, 3 and 5 would stop being acceptable.</li>
+    <li><b>If the history synced between devices</b>, it would be kept in an encrypted vault whose key only the reader holds, so the site would still not be able to read it.</li>
+    <li><b>If cheating showed up in the one place we can see</b> (the Stripe dashboard: payments, amounts, repeat payers), we would know the honesty box was not working, and the hypotheses in <a href="../articles/going-live-with-the-reading-meter.html">going live with the reading meter</a> say in advance what number would mean that.</li>
+  </ul>
+  <p class="small dim"><a href="index.html">&larr; SG Meter</a></p>
+</main>

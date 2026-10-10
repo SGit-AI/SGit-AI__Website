@@ -1263,3 +1263,9 @@ details.vkind ul{margin:.3rem 0 .6rem;font-size:.86rem}
 details.vkind li{margin:.18rem 0}
 details.vflags summary{color:var(--warm)}
 @media print{details.aview .aview-b{display:block}.vdeck{flex-wrap:wrap}}
+/* ---------- the reading meter: <sg-meter> hosts (v0.7.26; the component styles itself in its shadow root) ---------- */
+sg-meter{display:block}
+sg-meter.meter-nav{display:inline-block;min-width:3.4rem}
+/* on a phone the balance takes the version's place in the top bar; the version is still in the footer */
+@media (max-width:520px){nav.site a.ver{display:none}}
+sg-meter.fband{margin-top:0}

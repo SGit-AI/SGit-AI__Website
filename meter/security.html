@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SG Meter security model, sgit.ai</title>
+<meta name="description" content="What a reader can do to a meter kept in their own browser (edit the balance, start again, credit themselves through the unprotected return page), what each costs the site and the reader, and why every gap is accepted.">
+<link rel="canonical" href="https://sgit.ai/meter/security.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/meter/security.html">
+<meta property="og:title" content="SG Meter security model, sgit.ai">
+<meta property="og:description" content="What a reader can do to a meter kept in their own browser (edit the balance, start again, credit themselves through the unprotected return page), what each costs the site and the reader, and why every gap is accepted.">
+<meta property="og:image" content="https://sgit.ai/og/default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SG Meter security model, sgit.ai">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgit.ai/og/default.jpg">
+<link rel="alternate" type="text/markdown" href="security.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "SG Meter security model, sgit.ai", "headline": "SG Meter security model, sgit.ai", "description": "What a reader can do to a meter kept in their own browser (edit the balance, start again, credit themselves through the unprotected return page), what each costs the site and the reader, and why every gap is accepted.", "url": "https://sgit.ai/meter/security.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.7.27</a>
+  <sg-meter class="meter-nav" view="balance"></sg-meter>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+ <div class="ni ni-has">
+ <a class="nl" href="../articles/index.html">Newsroom<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../articles/index.html">Front page</a>
+ <a class="sl" href="../articles/newsletter/index.html">Newsletter</a>
+ <a class="sl" href="../articles/index.html#all">Every article</a>
+ <a class="sl" href="../articles/collections/index.html">Collections</a>
+ <a class="sl" href="../articles/desk/index.html">From the desk</a>
+ <a class="sl" href="../articles/graphs.html">As graphs</a>
+ <a class="sl" href="../newsroom/index.html">How it runs</a>
+ <a class="sl" href="../subscribe/index.html">Subscribe</a>
+ <a class="sl" href="../account/index.html">Your reading account</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../investors/index.html">Investors</a>
+ <a class="sl" href="../startups/index.html">Startups</a>
+ <a class="sl" href="../startups/business-plans.html">Business plans</a>
+ <a class="sl" href="../about/index.html">About the author</a>
+ <a class="sl" href="../partnerships/index.html">Partnerships</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl here" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../docs/index.html">Documentation</a>
+ <a class="sl" href="../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl" href="../docs/guidance/repositories.html">Every repository</a>
+ <a class="sl" href="../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../api/index.html">HTTP API</a>
+ <a class="sl" href="../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../deploy/index.html">Deploy</a>
+ <a class="sl here" href="../meter/index.html">SG Meter</a>
+ <a class="sl" href="../skills/index.html">Skills</a>
+ <a class="sl" href="../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../demos/index.html">Demos</a>
+ <a class="sl" href="../demos/fractal-graphs/index.html">Fractal graphs</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../agents/index.html">Agents</a></div>
+ <div class="ni ni-has">
+ <a class="nl" href="../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../compare/index.html">Comparisons</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
+ <a class="sl" href="../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../lessons/index.html">Lessons learned</a>
+ <a class="sl" href="../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../team/index.html">How the site is run</a>
+ <a class="sl" href="../team/index.html#roles">Roles</a>
+ <a class="sl" href="../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../team/board.html">The board</a>
+ <a class="sl" href="../updates/index.html">Updates</a>
+ <a class="sl" href="../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../network/index.html">All sites</a>
+ <a class="sl" href="../network/nhi.html">nhi</a>
+ <a class="sl" href="../network/pki.html">pki</a>
+ <a class="sl" href="../network/graphs.html">graphs</a>
+ <a class="sl" href="../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.7.27 &middot; 10 Oct 2026</span></a></div>
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="../docs/index.html">Docs</a> / <a href="index.html">SG Meter</a> / Security model</p>
+  <p class="eyebrow">SG Meter &middot; security model</p>
+  <h1>SG Meter's security model: what a reader can do to it, and why that is allowed</h1>
+  <p class="lead">Everything the meter knows is in the reader's browser, so the reader controls it completely. This page lists what that lets them do, what it costs the site, and what it costs them. The short version: every way of cheating changes a number only the cheater can see, and costs the site a payment it was never going to get.</p>
+
+  <h2 id="asset">What is being protected, and from whom</h2>
+  <p>Not money. The meter never blocks a page, so there is nothing behind it to steal: a reader who never pays reads exactly what a reader who pays reads. What it protects is narrower: the reader's own history (what they read, what they declined and why) from other people, and the site's honesty about what it records. The first question of <a href="../articles/who-are-you-protecting-against.html">who are you protecting against</a> applies, and the answer here is "a reader's flatmate, and our own mistakes", not "a determined attacker", because a determined attacker gains nothing. Who might try anyway, and how many of them there are, is in <a href="../articles/who-will-game-the-reading-meter.html">who will game the reading meter</a>.</p>
+
+  <h2 id="known">Known gaps, all accepted</h2>
+  <div class="tablewrap"><table>
+    <tr><th>#</th><th>What a reader can do</th><th>Effort</th><th>What it costs the site</th><th>What it costs the reader</th></tr>
+    <tr><td>1</td><td>Edit their balance in the browser's developer tools (Application &rarr; Local Storage)</td><td>A minute, for someone who knows devtools exist</td><td>Nothing it would otherwise have had</td><td>Nothing</td></tr>
+    <tr><td>2</td><td>Open a private window or another browser and start again at &pound;5.00</td><td>One keystroke</td><td>Nothing</td><td>Their history and picks, which stay behind</td></tr>
+    <tr><td id="return">3</td><td>Open the topped-up page with any <code>session_id</code> and get &pound;5 of credit, once per id</td><td>Read this page, type a URL</td><td>Nothing: no money moves, and the credit is only on their screen</td><td>Nothing</td></tr>
+    <tr><td>4</td><td>Replay the same topped-up URL</td><td>none</td><td>Blocked: each id is credited once per browser (but a new id is trivial, see 3)</td><td>none</td></tr>
+    <tr><td>5</td><td>Clear site data to wipe a negative balance</td><td>Two clicks</td><td>Nothing; there was never a debt</td><td>Their history</td></tr>
+    <tr><td>6</td><td>Read as an agent: fetch the markdown twin or the newsroom wire</td><td>None; it is the intended route for agents</td><td>Unmetered by design, for now</td><td>none</td></tr>
+    <tr><td>7</td><td>Someone else on a shared computer opens the account page and sees what was read and declined</td><td>Sit down at it</td><td>none</td><td>Privacy. Mitigations: "Start again" clears it; a private window keeps nothing</td></tr>
+    <tr><td>8</td><td>A script injected into the site (XSS) reads the history</td><td>Needs a hole in the site first</td><td>Reputation</td><td>Privacy. Mitigations: the meter sets page data only as text; the only third-party code on this origin is the in-browser Python on <a href="../try/index.html">the try page</a>, loaded from a pinned version, so that page shares the same storage and the same trust</td></tr>
+    <tr><td>9</td><td>Card testing, fraud or chargebacks against the Stripe link</td><td>Ordinary payment fraud</td><td>Fees and disputes, held by Stripe's own controls (Radar)</td><td>none</td></tr>
+  </table></div>
+
+  <h2 id="why">Why the topped-up page is unprotected</h2>
+  <p>Because protecting it would need a server, and the one thing a server would protect is a number on a reader's own screen that unlocks nothing. Stripe's recommended way to know a payment happened is a webhook from Stripe to a server you run, and the honest alternative to building one is to say plainly that the return page trusts its URL. So it does, and here it is said. What we did do is keep the default route the real one: every top-up button goes to the payment page, the return URL is not linked as a way to get credit, and the page adds nothing when opened without a reference.</p>
+
+  <h2 id="what-would-change">What would change this</h2>
+  <ul>
+    <li><b>If the balance unlocked something</b> (a page, a download, a reply from an agent), it would have to be held by a server or a signed receipt, and gaps 1, 3 and 5 would stop being acceptable.</li>
+    <li><b>If the history synced between devices</b>, it would be kept in an encrypted vault whose key only the reader holds, so the site would still not be able to read it.</li>
+    <li><b>If cheating showed up in the one place we can see</b> (the Stripe dashboard: payments, amounts, repeat payers), we would know the honesty box was not working, and the hypotheses in <a href="../articles/going-live-with-the-reading-meter.html">going live with the reading meter</a> say in advance what number would mean that.</li>
+  </ul>
+  <p class="small dim"><a href="index.html">&larr; SG Meter</a></p>
+</main>
+<sg-meter view="page" kind="page" date="" topics="" title="SG Meter security model, sgit.ai" quiet></sg-meter>
+<script type="application/json" id="sg-meter-config">{"storageKey": "sgit.meter.v1", "start": 500, "newDays": 7, "symbol": "£", "prices": {"article_new": 10, "article": 5, "issue": 3, "note": 2, "collection": 2, "page": 1, "free": 0}, "depth": true, "minDepth": 0.1, "topup": {"amount": 500, "link": ""}, "packs": [{"id": "p2", "price": 200, "bonus": 0}, {"id": "p5", "price": 500, "bonus": 0}, {"id": "p10", "price": 1000, "bonus": 100}, {"id": "p20", "price": 2000, "bonus": 300}], "links": {"account": "account/index.html", "topup": "account/top-up.html"}, "picks": {"feed": "articles/graphs.json", "base": "articles/"}}</script>
+<script>
+import('../assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.js?v=v0.7.27')
+ .catch(function (e) { console.error('[sg-meter] component failed to load:', e); });
+</script>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.7.27</a> · <a href="../admin/index.html">engineering</a> · <a href="security.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../docs/surfaces.html">Three surfaces</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../docs/vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
+    <a href="../use-cases/index.html">Use cases</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../docs/briefs/index.html">Cross-team briefs</a>
+    <a href="../articles/index.html#subscribe">Subscribe to new articles</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../llms-full.txt">llms-full.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.7.27';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+var mine=V.slice(3),last=0;
+function fresh(){if(location.hostname!=='sgit.ai'||Date.now()-last<60000)return;last=Date.now();
+fetch('/version.txt?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.text():''}).then(function(t){t=(t||'').trim();if(!/^v[0-9]+[.][0-9]+[.][0-9]+$/.test(t)||t===mine)return;
+var k='sgit.fresh:'+location.pathname;try{if(sessionStorage.getItem(k)===t)return;sessionStorage.setItem(k,t)}catch(e){}
+var u=new URL(location.href);u.searchParams.set('v',t);location.replace(u.href)}).catch(function(){})}
+try{var u=new URL(location.href);if(u.searchParams.get('v')===mine){u.searchParams.delete('v');history.replaceState(history.state,'',u.pathname+u.search+u.hash)}}catch(e){}
+fresh();addEventListener('pageshow',function(e){if(e.persisted){last=0;fresh()}});document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')fresh()});
+})();
+</script>
+</body>
+</html>

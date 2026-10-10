@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-10",
-  "site_version": "v0.7.24",
+  "site_version": "v0.7.27",
   "schema": "https://sgit.ai/articles/graphs.html",
   "topics": [
     {
@@ -54,6 +54,552 @@
     "produces"
   ],
   "articles": [
+    {
+      "slug": "who-will-game-the-reading-meter",
+      "title": "Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen",
+      "date": "2026-10-10",
+      "updated": "",
+      "url": "https://sgit.ai/articles/who-will-game-the-reading-meter.html",
+      "markdown": "https://sgit.ai/articles/who-will-game-the-reading-meter.md",
+      "card": "https://sgit.ai/articles/cards/who-will-game-the-reading-meter.webp",
+      "teaser": "Eight kinds of reader, none of them attackers, nine ways to cheat a browser meter, and the quieter risks that will actually happen.",
+      "topics": [
+        "startups-and-strategy",
+        "agents-and-policy"
+      ],
+      "tags": [
+        "security",
+        "threat-modelling",
+        "micropayments",
+        "local-first",
+        "privacy",
+        "usability",
+        "users",
+        "agents",
+        "article"
+      ],
+      "links_out": [
+        "who-are-you-protecting-against",
+        "going-live-with-the-reading-meter",
+        "token-bill-nobody-is-sending"
+      ],
+      "links_in": [
+        "going-live-with-the-reading-meter"
+      ],
+      "graph": {
+        "slug": "who-will-game-the-reading-meter",
+        "teaser": "Eight kinds of reader, none of them attackers, nine ways to cheat a browser meter, and the quieter risks that will actually happen.",
+        "topics": [
+          "startups-and-strategy",
+          "agents-and-policy"
+        ],
+        "core_idea": "A reading meter kept entirely in the browser can be cheated by anyone, but the people who could cheat are readers, not attackers; sized on a ladder from invisible engineers (about 0.6% of internet users are developers) to people who cannot use a computer (26% of OECD adults), with agents moving between steps, the cheating costs the site nothing it would have had, while the risks that will actually happen are confusion, a shared computer exposing history and card fraud, so the design is aimed at the readers who will pay and at not frightening the rest.",
+        "nodes": [
+          {
+            "id": "protecting",
+            "label": "Who are you protecting against, one level down",
+            "kind": "concept",
+            "summary": "Kinds of reader instead of tiers of attacker; none malicious."
+          },
+          {
+            "id": "ladder",
+            "label": "Eight kinds of reader",
+            "kind": "concept",
+            "summary": "Invisible, agents, power users, instruction followers, pragmatic payers, little understanding, mixed, struggling."
+          },
+          {
+            "id": "agents",
+            "label": "Agents change level in a single request",
+            "kind": "claim",
+            "summary": "Outside the meter by design; reading the markdown twin is not metered."
+          },
+          {
+            "id": "nine",
+            "label": "Nine ways to cheat or leak",
+            "kind": "artefact",
+            "summary": "Devtools, private window, forged return page, replay, clearing data, agents, shared computer, injected script, card fraud."
+          },
+          {
+            "id": "free-cheat",
+            "label": "Cheating costs nothing that reaches the site",
+            "kind": "claim",
+            "summary": "It changes a number only the cheater sees and removes a payment that was never coming."
+          },
+          {
+            "id": "real-risks",
+            "label": "The risks that will actually happen",
+            "kind": "claim",
+            "summary": "Confusion at the bottom of the ladder, shared-computer history, card fraud on the payment link."
+          },
+          {
+            "id": "aim",
+            "label": "Aim at the readers who will pay",
+            "kind": "method",
+            "summary": "Do not build for step 1 at the expense of steps 5 to 8."
+          },
+          {
+            "id": "oecd",
+            "label": "26% of adults cannot use a computer",
+            "kind": "example",
+            "summary": "OECD Survey of Adult Skills via Nielsen Norman Group: only 5% at the most skilled level."
+          },
+          {
+            "id": "devs",
+            "label": "Developers are about 0.6% of internet users",
+            "kind": "example",
+            "summary": "36.5 million professional developers against about 6.0 billion internet users."
+          }
+        ],
+        "edges": [
+          {
+            "from": "protecting",
+            "to": "ladder",
+            "rel": "extends"
+          },
+          {
+            "from": "devs",
+            "to": "ladder",
+            "rel": "example-of"
+          },
+          {
+            "from": "oecd",
+            "to": "ladder",
+            "rel": "example-of"
+          },
+          {
+            "from": "agents",
+            "to": "ladder",
+            "rel": "extends"
+          },
+          {
+            "from": "ladder",
+            "to": "nine",
+            "rel": "leads-to"
+          },
+          {
+            "from": "nine",
+            "to": "free-cheat",
+            "rel": "leads-to"
+          },
+          {
+            "from": "free-cheat",
+            "to": "real-risks",
+            "rel": "contrasts"
+          },
+          {
+            "from": "real-risks",
+            "to": "aim",
+            "rel": "leads-to"
+          }
+        ],
+        "links": {
+          "articles": [
+            "who-are-you-protecting-against",
+            "going-live-with-the-reading-meter",
+            "a-meter-in-the-browser",
+            "token-bill-nobody-is-sending"
+          ],
+          "pages": [
+            "/meter/security.html",
+            "/account/index.html"
+          ],
+          "sites": [
+            "https://www.nngroup.com/articles/computer-skill-levels/",
+            "https://metrics.torproject.org/"
+          ]
+        },
+        "quotes": [
+          {
+            "text": "An agent is not a step; it is a lift.",
+            "why": "Agents move between levels of sophistication in a single request."
+          },
+          {
+            "text": "The struggling reader is protected by the meter asking nothing of them.",
+            "why": "Why the usability work is aimed at the bottom of the ladder."
+          },
+          {
+            "text": "No button leads to the free one.",
+            "why": "The unprotected return page is documented, but the payment is the default route."
+          }
+        ]
+      }
+    },
+    {
+      "slug": "going-live-with-the-reading-meter",
+      "title": "Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks",
+      "date": "2026-10-10",
+      "updated": "",
+      "url": "https://sgit.ai/articles/going-live-with-the-reading-meter.html",
+      "markdown": "https://sgit.ai/articles/going-live-with-the-reading-meter.md",
+      "card": "https://sgit.ai/articles/cards/going-live-with-the-reading-meter.webp",
+      "teaser": "Pay for the share of a page you read, go below zero with no nagging, top up £5 on Stripe: the plan, and the numbers we check in eight weeks.",
+      "topics": [
+        "startups-and-strategy",
+        "news-and-evidence"
+      ],
+      "tags": [
+        "newsroom",
+        "micropayments",
+        "pricing",
+        "personalisation",
+        "local-first",
+        "business-case",
+        "hypotheses",
+        "stripe",
+        "article"
+      ],
+      "links_out": [
+        "a-meter-in-the-browser",
+        "the-question-is-whether-they-miss-it",
+        "how-news-got-here",
+        "price-it-then-give-it-away",
+        "who-will-game-the-reading-meter"
+      ],
+      "links_in": [
+        "who-will-game-the-reading-meter",
+        "a-meter-in-the-browser"
+      ],
+      "graph": {
+        "slug": "going-live-with-the-reading-meter",
+        "teaser": "Pay for the share of a page you read, go below zero with no nagging, top up £5 on Stripe: the plan, and the numbers we check in eight weeks.",
+        "topics": [
+          "startups-and-strategy",
+          "news-and-evidence"
+        ],
+        "core_idea": "The reading meter goes live as an honesty box rather than a paywall: pages are charged by scroll depth, the balance may go below zero forever, there is no ask and no banner, readers can decline to pay with a reason, and topping up is one £5 Stripe payment credited by an unverified return page; the business case is evidence, not revenue, and five hypotheses with thresholds and a review date are written down before the first payment.",
+        "nodes": [
+          {
+            "id": "depth",
+            "label": "Pay for the share you read",
+            "kind": "method",
+            "summary": "A page costs its price times the deepest point scrolled to, never less than a tenth."
+          },
+          {
+            "id": "negative",
+            "label": "Below zero, forever, without shame",
+            "kind": "method",
+            "summary": "Nothing blocked, nothing shown but a small balance in the top bar."
+          },
+          {
+            "id": "decline",
+            "label": "Not worth it? Don't charge me",
+            "kind": "method",
+            "summary": "Refund with a reason, kept locally as a signal for the picks."
+          },
+          {
+            "id": "guardian",
+            "label": "The Guardian's counter and ask",
+            "kind": "example",
+            "summary": "Weekly article counts in localStorage used to ask for support; £4, £12 and £27 a month, £107m digital reader revenue."
+          },
+          {
+            "id": "subscription",
+            "label": "The subscription commitment",
+            "kind": "concept",
+            "summary": "£4 a month is £48 a year, decided before the reading happens."
+          },
+          {
+            "id": "honesty-box",
+            "label": "An honesty box, not a paywall",
+            "kind": "claim",
+            "summary": "Bagels about 87 to 95% paid; Radiohead 38%; pay-what-you-want raises take-up and lowers the average."
+          },
+          {
+            "id": "stripe",
+            "label": "One £5 Stripe payment",
+            "kind": "artefact",
+            "summary": "1.5% + 20p on a standard UK card, about 5.5%; the return page credits without verifying."
+          },
+          {
+            "id": "evidence",
+            "label": "The business case is evidence",
+            "kind": "claim",
+            "summary": "A payment is the only signal on the site curiosity cannot produce."
+          },
+          {
+            "id": "anchors",
+            "label": "Five hypotheses and a review date",
+            "kind": "question",
+            "summary": "First payment in 14 days, 10 payers, 3 repeat payers, no disputes, below zero is normal; review eight weeks after the link goes live."
+          },
+          {
+            "id": "library",
+            "label": "SG Meter, a library",
+            "kind": "artefact",
+            "summary": "One web component any site can add, with config, events, storage and a security model."
+          }
+        ],
+        "edges": [
+          {
+            "from": "guardian",
+            "to": "negative",
+            "rel": "contrasts"
+          },
+          {
+            "from": "subscription",
+            "to": "depth",
+            "rel": "contrasts"
+          },
+          {
+            "from": "honesty-box",
+            "to": "negative",
+            "rel": "depends-on"
+          },
+          {
+            "from": "depth",
+            "to": "decline",
+            "rel": "leads-to"
+          },
+          {
+            "from": "decline",
+            "to": "evidence",
+            "rel": "produces"
+          },
+          {
+            "from": "stripe",
+            "to": "evidence",
+            "rel": "produces"
+          },
+          {
+            "from": "evidence",
+            "to": "anchors",
+            "rel": "leads-to"
+          },
+          {
+            "from": "depth",
+            "to": "library",
+            "rel": "produces"
+          }
+        ],
+        "links": {
+          "articles": [
+            "a-meter-in-the-browser",
+            "who-will-game-the-reading-meter",
+            "the-question-is-whether-they-miss-it",
+            "price-it-then-give-it-away",
+            "how-news-got-here"
+          ],
+          "pages": [
+            "/meter/index.html",
+            "/meter/security.html",
+            "/account/index.html",
+            "/account/top-up.html"
+          ],
+          "sites": [
+            "https://github.com/guardian/support-dotcom-components",
+            "https://stripe.com/gb/pricing"
+          ]
+        },
+        "quotes": [
+          {
+            "text": "And going below zero is not a failure state.",
+            "why": "The design choice that separates this meter from a paywall or an ask."
+          },
+          {
+            "text": "A payment is the only signal on this site that cannot be produced by curiosity.",
+            "why": "The business case in one line."
+          },
+          {
+            "text": "The one outcome that would be a failure of the method is not looking.",
+            "why": "Why the hypotheses are written down before the results."
+          }
+        ]
+      }
+    },
+    {
+      "slug": "open-source-is-not-free",
+      "title": "Open source is not free: who pays to keep the long tail working?",
+      "date": "2026-10-10",
+      "updated": "",
+      "url": "https://sgit.ai/articles/open-source-is-not-free.html",
+      "markdown": "https://sgit.ai/articles/open-source-is-not-free.md",
+      "card": "https://sgit.ai/articles/cards/open-source-is-not-free.webp",
+      "teaser": "An old iMac, the long tail of old versions that projects are not paid to support, measured from public data, and five ways to pay for it, simulated.",
+      "topics": [
+        "startups-and-strategy",
+        "vaults-and-method"
+      ],
+      "tags": [
+        "open-source",
+        "economics",
+        "funding",
+        "long-tail",
+        "support",
+        "micropayments",
+        "simulation",
+        "data-science",
+        "homebrew",
+        "docker",
+        "macos",
+        "article"
+      ],
+      "links_out": [
+        "a-meter-in-the-browser"
+      ],
+      "links_in": [],
+      "graph": {
+        "slug": "open-source-is-not-free",
+        "teaser": "An old iMac, the long tail of old versions that projects are not paid to support, measured from public data, and five ways to pay for it, simulated.",
+        "topics": [
+          "startups-and-strategy",
+          "vaults-and-method"
+        ],
+        "core_idea": "Open source is not free: somebody pays, at least in time. The long tail of old versions and old machines is measurable (6.99% of Homebrew macOS install events in 30 days, 16.66% in a year, are on versions older than the newest three) and projects drop it because it has no revenue stream, while vendors such as Oracle and Red Hat turn the same need into large, high-margin support businesses. Pence payments only work aggregated, because a 20p card fee dominates below about five pounds. Simulated over 10,000 draws for one project at Homebrew's scale, micro-paid supported builds cover the long-tail cost in half the draws at about 1.80 pounds a machine a year with typical conversion but never in nine in ten, donations in about a quarter, and customised builds for companies in 94%: the reliable money is companies paying for a build below their own cost of keeping the tool working, sold as value, not as a donation or a weaker free tier.",
+        "nodes": [
+          {
+            "id": "imac",
+            "label": "One old iMac",
+            "kind": "example",
+            "summary": "Intel iMac on Ventura: Chrome and Claude work; Homebrew and Docker Desktop do not; Python by hand."
+          },
+          {
+            "id": "not-free",
+            "label": "Open source is not free",
+            "kind": "claim",
+            "summary": "Somebody pays, at least in time; the long tail has no revenue stream back to the maintainers."
+          },
+          {
+            "id": "tail",
+            "label": "The long tail, measured",
+            "kind": "artefact",
+            "summary": "Homebrew: 6.99% (30 days) to 16.66% (365 days) of macOS install events on versions older than the newest three; PyPI: 18.55% of pip on end-of-life Python."
+          },
+          {
+            "id": "money",
+            "label": "Where money flows",
+            "kind": "concept",
+            "summary": "Oracle support $19.8bn, Red Hat subscriptions at about 93% margin, Windows 10 ESU, Ubuntu Pro, against about 0.09% of open source's value invested."
+          },
+          {
+            "id": "charge",
+            "label": "Charging has costs",
+            "kind": "concept",
+            "summary": "Docker's seat licence and the switch to alternatives, relicensing forks, dual licensing, gamed per-install rewards."
+          },
+          {
+            "id": "pence",
+            "label": "The pence problem",
+            "kind": "claim",
+            "summary": "A 20p card fee is 41.5% of 50p; pence payments need aggregation."
+          },
+          {
+            "id": "models",
+            "label": "Five models, simulated",
+            "kind": "method",
+            "summary": "Donations, seat licence, support rising with age, micro-paid builds, customised builds for companies; 10,000 seeded draws."
+          },
+          {
+            "id": "break-even",
+            "label": "Break-even near two pounds",
+            "kind": "artefact",
+            "summary": "About 1.80 pounds a machine a year covers the cost in half the draws with typical conversion; no price reaches nine in ten."
+          },
+          {
+            "id": "companies",
+            "label": "Customised builds for companies",
+            "kind": "method",
+            "summary": "Priced below the internal cost of keeping the tool working; covers the cost in 94% of draws."
+          },
+          {
+            "id": "satellites",
+            "label": "The satellites",
+            "kind": "concept",
+            "summary": "About 18 small support firms worldwide per project's pool; Rimini Street as the existence proof."
+          },
+          {
+            "id": "vault",
+            "label": "Long Tail Ledger vault",
+            "kind": "artefact",
+            "summary": "175 sourced facts, 36 labelled assumptions, the model in Python and in the browser, gated to agree exactly."
+          }
+        ],
+        "edges": [
+          {
+            "from": "imac",
+            "to": "not-free",
+            "rel": "example-of"
+          },
+          {
+            "from": "tail",
+            "to": "not-free",
+            "rel": "example-of"
+          },
+          {
+            "from": "money",
+            "to": "not-free",
+            "rel": "example-of"
+          },
+          {
+            "from": "charge",
+            "to": "money",
+            "rel": "contrasts"
+          },
+          {
+            "from": "pence",
+            "to": "models",
+            "rel": "leads-to"
+          },
+          {
+            "from": "models",
+            "to": "break-even",
+            "rel": "produces"
+          },
+          {
+            "from": "models",
+            "to": "companies",
+            "rel": "produces"
+          },
+          {
+            "from": "companies",
+            "to": "satellites",
+            "rel": "leads-to"
+          },
+          {
+            "from": "vault",
+            "to": "models",
+            "rel": "produces"
+          },
+          {
+            "from": "break-even",
+            "to": "not-free",
+            "rel": "answers"
+          }
+        ],
+        "links": {
+          "articles": [
+            "a-mac-of-the-agents-own",
+            "why-my-agents-do-not-run-on-my-laptop",
+            "a-meter-in-the-browser"
+          ],
+          "pages": [
+            "demos/vaults/long-tail-ledger/index.html"
+          ],
+          "sites": [
+            "https://open-source.sgit.ai/funding/index.html",
+            "https://open-source.sgit.ai/views/villagers.html",
+            "https://open-source.sgit.ai/views/open-core.html",
+            "https://diniscruz.ai/2025/04/02/the-future-of-news-monetization__embracing-micro-and-nano-payments.html",
+            "https://diniscruz.ai/2025/07/04/usage-based-billable-entities-aligning-saas-pricing-with-customer-usage.html",
+            "https://diniscruz.ai/2025/06/07/genai-legacy-code-refactoring-business-plan.html",
+            "https://docs.brew.sh/Support-Tiers"
+          ]
+        },
+        "quotes": [
+          {
+            "text": "Open source is not free. Somebody is paying for it, even if what they pay with is only their time.",
+            "why": "The thesis."
+          },
+          {
+            "text": "Pence from individuals can make the long tail roughly self-funding. They cannot make it safe to depend on.",
+            "why": "What the break-even view shows."
+          },
+          {
+            "text": "The question was never whether somebody pays. It is whether the people who get the value have an easy way to pay for it.",
+            "why": "The conclusion."
+          }
+        ]
+      }
+    },
     {
       "slug": "one-article-five-readers",
       "title": "One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece",
@@ -488,6 +1034,164 @@
           {
             "text": "Brown M&M's in the bowl meant: check everything else.",
             "why": "The canary, in one line."
+          }
+        ]
+      }
+    },
+    {
+      "slug": "a-meter-in-the-browser",
+      "title": "A meter in the browser: a penny a page, a history you keep, and a site that picks for you",
+      "date": "2026-10-10",
+      "updated": "",
+      "url": "https://sgit.ai/articles/a-meter-in-the-browser.html",
+      "markdown": "https://sgit.ai/articles/a-meter-in-the-browser.md",
+      "card": "https://sgit.ai/articles/cards/a-meter-in-the-browser.webp",
+      "teaser": "Every page now costs a few pence from £5 of credit kept in your browser, and the reading history it keeps is what personalises the site.",
+      "topics": [
+        "startups-and-strategy",
+        "news-and-evidence"
+      ],
+      "tags": [
+        "newsroom",
+        "micropayments",
+        "personalisation",
+        "local-first",
+        "privacy",
+        "pricing",
+        "early-access",
+        "article"
+      ],
+      "links_out": [
+        "going-live-with-the-reading-meter",
+        "the-question-is-whether-they-miss-it",
+        "price-it-then-give-it-away",
+        "how-news-got-here",
+        "token-bill-nobody-is-sending",
+        "the-bridge-followed-to-the-end"
+      ],
+      "links_in": [
+        "going-live-with-the-reading-meter",
+        "open-source-is-not-free"
+      ],
+      "graph": {
+        "slug": "a-meter-in-the-browser",
+        "teaser": "Every page now costs a few pence from £5 of credit kept in your browser, and the reading history it keeps is what personalises the site.",
+        "topics": [
+          "startups-and-strategy",
+          "news-and-evidence"
+        ],
+        "core_idea": "A reading meter that lives only in the browser, a few pence a page from five pounds of starting credit with a simulated top-up and no blocking, tests whether people would pay a little for reading when what they get back is a site that personalises itself from a history nobody else holds; escaping the meter is easy, but escaping it also discards the history, which is the point of the experiment.",
+        "nodes": [
+          {
+            "id": "meter",
+            "label": "A meter in the browser",
+            "kind": "artefact",
+            "summary": "Every page priced in pence, debited from £5.00 of credit kept in localStorage; one debit per page per visit."
+          },
+          {
+            "id": "never-block",
+            "label": "Never block a page",
+            "kind": "method",
+            "summary": "Out of credit, the page is shown and the read recorded as unpaid, with an offer to top up."
+          },
+          {
+            "id": "topup",
+            "label": "Every step but the payment",
+            "kind": "method",
+            "summary": "Packs, a cart, a review, a confirm and a receipt; credit added at once, nothing charged."
+          },
+          {
+            "id": "history",
+            "label": "The history is the product",
+            "kind": "claim",
+            "summary": "The ledger of what was read, with topics, is enough to pick unread articles for the reader."
+          },
+          {
+            "id": "escape",
+            "label": "The meter can be escaped; the personalisation cannot be copied",
+            "kind": "claim",
+            "summary": "A private window starts again at £5.00 and with no history."
+          },
+          {
+            "id": "question",
+            "label": "Would people pay for a site that knows them?",
+            "kind": "question",
+            "summary": "The experiment the meter puts in front of a reader."
+          },
+          {
+            "id": "pt-wallet",
+            "label": "The pt.newsroom wallet",
+            "kind": "example",
+            "summary": "One cent a page, a self-refilling five-euro wallet, a ledger page: the first version."
+          },
+          {
+            "id": "402",
+            "label": "402 Payment Required",
+            "kind": "example",
+            "summary": "Reserved in the web's protocol in 1997 for micropayments, still unused."
+          }
+        ],
+        "edges": [
+          {
+            "from": "pt-wallet",
+            "to": "meter",
+            "rel": "leads-to"
+          },
+          {
+            "from": "meter",
+            "to": "never-block",
+            "rel": "depends-on"
+          },
+          {
+            "from": "meter",
+            "to": "topup",
+            "rel": "produces"
+          },
+          {
+            "from": "meter",
+            "to": "history",
+            "rel": "produces"
+          },
+          {
+            "from": "history",
+            "to": "escape",
+            "rel": "leads-to"
+          },
+          {
+            "from": "escape",
+            "to": "question",
+            "rel": "leads-to"
+          },
+          {
+            "from": "402",
+            "to": "meter",
+            "rel": "compared-with"
+          }
+        ],
+        "links": {
+          "articles": [
+            "the-question-is-whether-they-miss-it",
+            "price-it-then-give-it-away",
+            "how-news-got-here",
+            "token-bill-nobody-is-sending",
+            "the-bridge-followed-to-the-end"
+          ],
+          "pages": [
+            "/account/index.html",
+            "/account/top-up.html"
+          ],
+          "sites": [
+            "https://pt.newsroom.sgit.ai/carteira/"
+          ]
+        },
+        "quotes": [
+          {
+            "text": "The meter can be escaped; the personalisation cannot be copied.",
+            "why": "The trade the experiment puts in front of a reader."
+          },
+          {
+            "text": "The history never leaves the machine it was made on.",
+            "why": "Personalisation without an account, a cookie banner or a server."
           }
         ]
       }
@@ -2858,6 +3562,7 @@
         "every-risk-is-already-accepted"
       ],
       "links_in": [
+        "who-will-game-the-reading-meter",
         "encrypted-memory-for-isolated-agents",
         "knowing-when-to-stop"
       ],
@@ -3612,6 +4317,7 @@
         "story-vault-meets-reader-skills"
       ],
       "links_in": [
+        "a-meter-in-the-browser",
         "the-waiting-room-knew-first",
         "every-mistake-added-a-rule",
         "liquid-content-needs-water",
@@ -8834,6 +9540,8 @@
         "the-question-is-whether-they-miss-it"
       ],
       "links_in": [
+        "going-live-with-the-reading-meter",
+        "a-meter-in-the-browser",
         "memory-is-not-a-spectator-sport",
         "the-question-is-whether-they-miss-it"
       ],
@@ -9954,6 +10662,8 @@
         "introducing-fractal-semantic-graphs"
       ],
       "links_in": [
+        "going-live-with-the-reading-meter",
+        "a-meter-in-the-browser",
         "liquid-content-needs-water",
         "story-vault-meets-reader-skills",
         "the-deck-i-could-not-download"
@@ -10489,6 +11199,8 @@
         "introducing-fractal-semantic-graphs"
       ],
       "links_in": [
+        "who-will-game-the-reading-meter",
+        "a-meter-in-the-browser",
         "liquid-content-needs-water",
         "memory-is-not-a-spectator-sport",
         "custom-uis-are-not-the-exception",
@@ -11851,6 +12563,8 @@
         "price-it-then-give-it-away"
       ],
       "links_in": [
+        "going-live-with-the-reading-meter",
+        "a-meter-in-the-browser",
         "if-somebody-built-a-company-on-code-review",
         "price-it-then-give-it-away",
         "future-of-news-story-vault-not-paywall"

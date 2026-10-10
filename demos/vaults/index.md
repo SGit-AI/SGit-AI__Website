@@ -1,8 +1,8 @@
 # Published vaults, sgit.ai
 
-> Fifty-one vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it.
+> Fifty-two vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it.
 
-*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.7.24 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.7.27 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,12 +14,14 @@ Open any of these in your browser right now. Every read key here was published o
 
 **Nine are semantic graphs**, each in its own ontology, from a regulation down to a compute instance. · [The ladder, walked →](../fractal-graphs/index.md) · [What reading one costs →](../fractal-graphs/performance.md)
 
-**51 published vaults**: 16 reference, 13 briefing, 8 analysis, 5 application, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
+**52 published vaults**: 17 reference, 13 briefing, 8 analysis, 5 application, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
 
 | # | Vault | What it is | Category | Files | Size | Published |
 |---|---|---|---|---|---|---|
 
-| 51 | [Article Views](article-views/index.md)`chtgtd9e` | Five articles read again by five agents with roles: 662 items catalogued with their verbatim sentences and 32 flags, an ontology at article, topic and site altitude with nine maps, each article's place in the arc, two-minute versions and nine-slide decks, with the role files, renderers, checks and an app | Reference | 143 | 9608 KB | 2026-10-10 |
+| 52 | [Article Views](article-views/index.md)`chtgtd9e` | Five articles read again by five agents with roles: 662 items catalogued with their verbatim sentences and 32 flags, an ontology at article, topic and site altitude with nine maps, each article's place in the arc, two-minute versions and nine-slide decks, with the role files, renderers, checks and an app | Reference | 143 | 9608 KB | 2026-10-10 |
+
+| 51 | [Long Tail Ledger](long-tail-ledger/index.md)`deqiwj7z` | The economics of open source's long tail, measured and simulated: one Intel iMac that could not run Homebrew or Docker Desktop, the long tail sized from Homebrew and PyPI analytics, where money flows for old versions, what card fees do to a payment of pence, five funding models over 10,000 seeded draws, break-even prices, a sensitivity tornado, the satellite support firms, and a calculator that runs the same model in the browser | Reference | 68 | 1767 KB | 2026-10-10 |
 
 | 50 | [AI Governance Graph](ai-governance-graph/index.md)`1wp3xpf4` | Hari Kota's ten-layer AI governance stack as a fractal semantic graph: the table kept exactly as posted (46 examples, every cell a node), the ten edges the table already contains, 119 sourced cross-layer edges of ours, each example zoomed into its instrument and provisions, and Hari's three gaps and do-this-today test run as queries on a fictional shop | Reference | 79 | 3006 KB | 2026-10-09 |
 

@@ -2,7 +2,7 @@
 
 > The service an author would have chosen instead of the one that sells a reader a subscription for a single download and pays the author nothing: every author's decks in a vault the host cannot read, access decided by keys the author holds, decryption in the browser, seven roles no single company holds, pay once or nothing with 85% to the author on a ledger they can recompute, and provenance as the product. Published as a vault with a working mock, ten plan documents, a right-of-access letter and a register of its own risks, with its read key.
 
-*Source: <https://sgit.ai/demos/vaults/deck-vault/index.html> · site v0.7.24 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/deck-vault/index.html> · site v0.7.27 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

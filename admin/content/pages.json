@@ -1108,9 +1108,27 @@
     "desc": "Hari Kota's ten-layer AI governance stack, kept exactly as posted, turned into a fractal semantic graph: the edges the table already contains, sourced edges between the layers, each example zoomed into the instrument and provisions it names, and the three gaps and the do-this-today test run as queries on a fictional shop. Published with its read key."
   },
   {
+    "path": "demos/vaults/long-tail-ledger/index.html",
+    "section": "vaults",
+    "title": "Long Tail Ledger, who pays to keep old machines working, sgit.ai",
+    "desc": "A data-science vault on the economics of open source's long tail: one old iMac, the long tail measured from Homebrew and PyPI analytics, where money flows for old versions, the payment problem, five funding models simulated with break-even prices and a sensitivity tornado, the satellite support firms, and a calculator. Published with its read key."
+  },
+  {
     "path": "demos/vaults/article-views/index.html",
     "section": "vaults",
     "title": "Article Views, five readers of one article, sgit.ai",
     "desc": "Five articles read again after they were written by five agents with roles: a Librarian's catalogue of every item with its sentence, a Cartographer's ontology at three altitudes and nine maps, a Historian's arc, an Explainer's two minutes and a Storyteller's decks. Published with its read key."
+  },
+  {
+    "path": "meter/index.html",
+    "section": "meter",
+    "title": "SG Meter: a reading meter you can add to any website, sgit.ai",
+    "desc": "One web component that charges readers a few pence a page from a balance kept in their own browser, by how far down the page they read; never blocks, allows a negative balance, lets a reader decline with a reason. Install, views, config, events, storage, theming, Stripe."
+  },
+  {
+    "path": "meter/security.html",
+    "section": "meter",
+    "title": "SG Meter security model, sgit.ai",
+    "desc": "What a reader can do to a meter kept in their own browser (edit the balance, start again, credit themselves through the unprotected return page), what each costs the site and the reader, and why every gap is accepted."
   }
 ]

@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-10",
-  "site_version": "v0.7.24",
+  "site_version": "v0.7.27",
   "about": "https://sgit.ai/newsroom/index.html",
   "front": {
     "edition": "2026-10-08",
@@ -73,6 +73,102 @@
   ],
   "articles": [
     {
+      "slug": "who-will-game-the-reading-meter",
+      "title": "Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen",
+      "date": "2026-10-10",
+      "updated": "",
+      "author": "Dinis Cruz",
+      "url": "https://sgit.ai/articles/who-will-game-the-reading-meter.html",
+      "markdown": "https://sgit.ai/articles/who-will-game-the-reading-meter.md",
+      "card": "https://sgit.ai/articles/cards/who-will-game-the-reading-meter.webp",
+      "graph": "https://sgit.ai/articles/graphs/who-will-game-the-reading-meter.json",
+      "teaser": "Eight kinds of reader, none of them attackers, nine ways to cheat a browser meter, and the quieter risks that will actually happen.",
+      "summary": "The reading meter on sgit.ai keeps everything in the reader's browser, so anyone can cheat it: edit the balance, open a private window, or credit themselves £5 by opening the page a payment returns to with a made-up reference. This piece goes one level below \"who are you protecting against\". None of the people here are attackers. They are readers, from engineers who are invisible by habit to people who can barely click, with agents moving between the levels in seconds. For each kind we estimate how many there are, from published figures, what they could do to the meter and whether they will. The answer is that cheating will happen, rarely, and costs nothing that reaches the site, while the risks that will actually happen are quieter: a shared computer showing someone's reading history, a reader confused by a number, and ordinary card fraud on the payment link. Security and usability are aimed at the readers who will pay, not at the ones who never would.",
+      "topics": [
+        "startups-and-strategy",
+        "agents-and-policy"
+      ],
+      "tags": [
+        "security",
+        "threat-modelling",
+        "micropayments",
+        "local-first",
+        "privacy",
+        "usability",
+        "users",
+        "agents",
+        "article"
+      ],
+      "placement": [],
+      "linkedin": null,
+      "notes": []
+    },
+    {
+      "slug": "going-live-with-the-reading-meter",
+      "title": "Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks",
+      "date": "2026-10-10",
+      "updated": "",
+      "author": "Dinis Cruz",
+      "url": "https://sgit.ai/articles/going-live-with-the-reading-meter.html",
+      "markdown": "https://sgit.ai/articles/going-live-with-the-reading-meter.md",
+      "card": "https://sgit.ai/articles/cards/going-live-with-the-reading-meter.webp",
+      "graph": "https://sgit.ai/articles/graphs/going-live-with-the-reading-meter.json",
+      "teaser": "Pay for the share of a page you read, go below zero with no nagging, top up £5 on Stripe: the plan, and the numbers we check in eight weeks.",
+      "summary": "The reading meter on sgit.ai stops being a demonstration. A page now costs what you read of it: scroll a tenth of the way down a new article and you pay a tenth of 10p. Your balance can go below zero and stay there; nothing is blocked and nothing nags, there is only a small balance in the top bar. If a page was not worth it you can say so, with a reason, and it is not charged. Topping up is one £5 payment on Stripe, with no account and nothing that renews, and the page you come back to adds the credit without being able to check it, on purpose. The meter is also packaged as a library any website can add. This article is the plan and the reasoning, written down before the results: the business case, what we expect, the numbers that would prove us wrong, and the date we look.",
+      "topics": [
+        "startups-and-strategy",
+        "news-and-evidence"
+      ],
+      "tags": [
+        "newsroom",
+        "micropayments",
+        "pricing",
+        "personalisation",
+        "local-first",
+        "business-case",
+        "hypotheses",
+        "stripe",
+        "article"
+      ],
+      "placement": [],
+      "linkedin": null,
+      "notes": []
+    },
+    {
+      "slug": "open-source-is-not-free",
+      "title": "Open source is not free: who pays to keep the long tail working?",
+      "date": "2026-10-10",
+      "updated": "",
+      "author": "Dinis Cruz",
+      "url": "https://sgit.ai/articles/open-source-is-not-free.html",
+      "markdown": "https://sgit.ai/articles/open-source-is-not-free.md",
+      "card": "https://sgit.ai/articles/cards/open-source-is-not-free.webp",
+      "graph": "https://sgit.ai/articles/graphs/open-source-is-not-free.json",
+      "teaser": "An old iMac, the long tail of old versions that projects are not paid to support, measured from public data, and five ways to pay for it, simulated.",
+      "summary": "An old Intel iMac, clean-installed for my agents, could not run Homebrew or Docker Desktop, and needed Python by hand. Each project that dropped it did so because supporting old machines costs money and the people on the long tail have no easy way to pay for it. This article measures that long tail from Homebrew and PyPI analytics, sets out where money does flow for old versions (Oracle, Red Hat, Windows ESU, Rimini Street) and where it does not (open source receives about 0.09% of its estimated value), shows why pence payments only work aggregated, and simulates five ways to pay for it. About £1.80 a machine a year from individuals covers one project's long-tail cost in half the draws; customised builds for companies cover it in 94%. Open source is not free; the question is whether the people who get the value have an easy way to pay for it.",
+      "topics": [
+        "startups-and-strategy",
+        "vaults-and-method"
+      ],
+      "tags": [
+        "open-source",
+        "economics",
+        "funding",
+        "long-tail",
+        "support",
+        "micropayments",
+        "simulation",
+        "data-science",
+        "homebrew",
+        "docker",
+        "macos",
+        "article"
+      ],
+      "placement": [],
+      "linkedin": null,
+      "notes": []
+    },
+    {
       "slug": "one-article-five-readers",
       "title": "One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece",
       "date": "2026-10-10",
@@ -131,6 +227,36 @@
         "re-anchoring",
         "guardrails",
         "governance",
+        "article"
+      ],
+      "placement": [],
+      "linkedin": null,
+      "notes": []
+    },
+    {
+      "slug": "a-meter-in-the-browser",
+      "title": "A meter in the browser: a penny a page, a history you keep, and a site that picks for you",
+      "date": "2026-10-10",
+      "updated": "",
+      "author": "Dinis Cruz",
+      "url": "https://sgit.ai/articles/a-meter-in-the-browser.html",
+      "markdown": "https://sgit.ai/articles/a-meter-in-the-browser.md",
+      "card": "https://sgit.ai/articles/cards/a-meter-in-the-browser.webp",
+      "graph": "https://sgit.ai/articles/graphs/a-meter-in-the-browser.json",
+      "teaser": "Every page now costs a few pence from £5 of credit kept in your browser, and the reading history it keeps is what personalises the site.",
+      "summary": "Every page on sgit.ai now has a price, a few pence, and a meter in the corner of the screen that debits it from five pounds of starting credit. There is a reading account with a history, a price table, a top-up page with a cart and a checkout that has every step except the payment, and an out-of-credit state that never blocks a page. All of it lives in the reader's browser and nowhere else: no account, no server, no card, nothing sent. Open a private window and the meter starts again at five pounds, which looks like a way to read for free, except that it also starts again with no history, and the history is what the site uses to pick articles for you. That is the trade this experiment puts in front of a reader: pay a little, keep the record of what you read on your own machine, and get a site that knows you back. Whether people would make that trade is the question worth testing, and a meter that charges nothing is the cheapest way to start.",
+      "topics": [
+        "startups-and-strategy",
+        "news-and-evidence"
+      ],
+      "tags": [
+        "newsroom",
+        "micropayments",
+        "personalisation",
+        "local-first",
+        "privacy",
+        "pricing",
+        "early-access",
         "article"
       ],
       "placement": [],
