@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.37'
+SITE_VERSION = 'v0.7.38'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,18 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.37', '2026-10-10', 'this release',
+    ('v0.7.38', '2026-10-10', 'this release',
+     "A LINK TO A PERSONA: THE BRIEF, AS AN ARTICLE. Send a CISO to the newsroom as a CISO, not as nobody. Personas move "
+     "out of the site's code into an encrypted vault kept by the newsroom's agents and opened in the browser with a "
+     "published read key, so a persona is added or updated with a vault commit, not a site release. Three kinds of link: "
+     "a page of its own for the few everyone uses (/persona/ciso/), a URL fragment for any number more (/persona/#dpo, "
+     "never sent to a server, RFC 3986 section 3.5), and a private persona in a vault of its own for one person. The "
+     "reader can follow the persona as it is kept up to date, make it their own (a fork), or remove it. A persona keeper "
+     "role on the desk, the vault layout and persona schema, consent (public personas are roles; personas about people "
+     "stay private), risks, and a six-step build plan for newsroom.sgit.ai. Prior art checked against its sources: "
+     "Netflix profiles (August 2013, five per account), Bluesky starter packs (June 2024, 150 people and three feeds), "
+     "Mastodon follow packs, Apple News and Brave News on personalisation on the device.",),
+    ('v0.7.37', '2026-10-10', 'git 4e1d2346',
      "THE NEWSROOM MOVES TO NEWSROOM.SGIT.AI: THE BRIEF. A new brief in docs/briefs for the session working on "
      "newsroom.sgit.ai: what moves (65 articles with their graphs, versions and views, the front page, the desk, the "
      "newsletter, subscribe, the reader account and SG Meter), where each piece is in the source (functions of "

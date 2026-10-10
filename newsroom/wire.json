@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-10",
-  "site_version": "v0.7.37",
+  "site_version": "v0.7.38",
   "about": "https://sgit.ai/newsroom/index.html",
   "front": {
     "edition": "2026-10-08",
@@ -72,6 +72,38 @@
     }
   ],
   "articles": [
+    {
+      "slug": "a-link-to-a-persona",
+      "title": "A link to a persona: send people to the newsroom as someone, not as nobody",
+      "date": "2026-10-10",
+      "updated": "",
+      "author": "Dinis Cruz",
+      "url": "https://sgit.ai/articles/a-link-to-a-persona.html",
+      "markdown": "https://sgit.ai/articles/a-link-to-a-persona.md",
+      "card": "https://sgit.ai/articles/cards/a-link-to-a-persona.webp",
+      "graph": "https://sgit.ai/articles/graphs/a-link-to-a-persona.json",
+      "teaser": "Send a CISO to the newsroom as a CISO: personas kept in a vault by the newsroom's agents, opened from a link, followed or forked.",
+      "summary": "When I send someone to the newsroom today, they land on a front page made for nobody. I would rather send a CISO to the newsroom as a CISO, a data protection officer as a DPO, a developer as a developer, and one particular person as a persona made for them. This is the brief for doing that with nothing but a link. Personas move out of the site's code into an encrypted vault, opened in the reader's browser with a published read key, so a persona can be added or updated by the newsroom's agents without a single change to the site. A few personas get a page of their own, /persona/ciso/; any number more are reached through the part of the link after the #, which browsers never send to a server; and a persona for one person can live in a vault of its own, readable only by whoever has the link. The reader can follow the persona as it is kept up to date, or fork it and make it theirs. It draws on what Netflix, Bluesky, Mastodon, Apple News and Brave News learned about profiles, starter packs and personalisation on the device, and it stays entirely client side.",
+      "topics": [
+        "startups-and-strategy",
+        "vaults-and-method"
+      ],
+      "tags": [
+        "newsroom",
+        "personas",
+        "personalisation",
+        "vaults",
+        "local-first",
+        "privacy",
+        "onboarding",
+        "agents",
+        "brief",
+        "article"
+      ],
+      "placement": [],
+      "linkedin": null,
+      "notes": []
+    },
     {
       "slug": "pay-after-you-read",
       "title": "Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time",

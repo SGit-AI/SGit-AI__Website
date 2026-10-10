@@ -2,7 +2,7 @@
 
 > Seven observable dimensions, options, context, depth, time, incentives, escalation and authority, turned into seven levels from rubber stamp to delegator, where the weakest dimension caps the decision; fourteen cases scored by the same rule, an assessment you can run on your own decision points, the review as a QA loop, and the EU AI Act's oversight requirements mapped to it. Published with its read key.
 
-*Source: <https://sgit.ai/demos/vaults/agency-scale/index.html> · site v0.7.37 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/agency-scale/index.html> · site v0.7.38 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.37 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.38 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,13 +14,41 @@ Every article here has a semantic graph beside it: the ideas it rests on, the cl
 
 The graphs are data first and pictures second. Take them as JSON: [all articles in one file](graphs.json), with the topics, the teasers and the links between articles resolved, or one file per article at `articles/graphs/<slug>.json` (for example [this one](graphs/footprint-and-blast-radius.json)). The pages on this site are rendered from the same files at build time; nothing here is hand-written HTML.
 
-65 of 65 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
+66 of 66 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
 
 ## How the articles connect
 
 *[diagram]*
 
-65 articles, 277 links between them (426 mentions in all). 56 articles cite an earlier one; 9 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (20 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+66 articles, 278 links between them (429 mentions in all). 57 articles cite an earlier one; 9 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (20 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+
+## [A link to a persona: send people to the newsroom as someone, not as nobody](a-link-to-a-persona.md)
+
+2026-10-10 · Startups & strategyVaults & method
+
+A link should land a reader as someone rather than as nobody: personas move from the site's code into an encrypted vault kept by the newsroom's agents and opened in the browser with a published read key, reached through a page of their own, a URL fragment that never reaches a server, or a private vault for one person, and the reader can follow the persona as it is updated or fork it as their own, all client side.
+
+*[diagram]*
+**concept**claim**method**artefact**example**question
+
+**10 nodes, 9 edges**
+
+- **Landing as nobody** (question) A link to the front page lands a reader on a page made for nobody in particular.
+- **Personas in a vault** (artefact) Encrypted, versioned, opened in the browser with a published read key; updated without touching the site.
+- **Three kinds of link** (method) A page of its own, a fragment for any number more, a private vault for one person.
+- **The fragment never reaches a server** (concept) RFC 3986: the fragment is dereferenced solely by the user agent.
+- **Follow or fork** (method) Track the persona as it is kept up to date, or copy it and make it your own.
+- **The persona keeper** (method) A newsroom role that updates personas on every article and issue, each change a vault commit.
+- **Bluesky starter packs** (example) A link that sets up a newcomer: up to 150 people and three feeds, June 2024.
+- **Netflix profiles** (example) Up to five profiles per account from August 2013.
+- **Personas about people stay private** (claim) A public persona describes a role; a persona about a person goes in a vault sent only to them.
+- **All client side** (claim) Static pages, ciphertext on the vault host, everything else in the browser.
+
+> The better move is for the person who sends the link to choose it Why a link should name a persona.
+
+> a persona is a reading list with a history, and you either track the upstream or branch from it. Follow and fork, from git.
+
+builds on [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](#pay-to-keep-your-persona).
 
 ## [Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time](pay-after-you-read.md)
 
@@ -134,7 +162,7 @@ Paying for content because you have to, feel you should, or think it right works
 
 > A persona is a way to manage focus. Why one reader wants several personas.
 
-builds on [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](#who-will-game-the-reading-meter), [Git for things you cannot put on GitHub](#what-sgit-is), [One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece](#one-article-five-readers); continued by [Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time](#pay-after-you-read), [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter).
+builds on [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](#who-will-game-the-reading-meter), [Git for things you cannot put on GitHub](#what-sgit-is), [One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece](#one-article-five-readers); continued by [A link to a persona: send people to the newsroom as someone, not as nobody](#a-link-to-a-persona), [Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time](#pay-after-you-read), [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter).
 
 ## [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](who-will-game-the-reading-meter.md)
 
