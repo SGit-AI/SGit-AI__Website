@@ -2,7 +2,7 @@
 
 > Every published version of the article "A link to a persona", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/a-link-to-a-persona.html> · site v0.7.38 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/a-link-to-a-persona.html> · site v0.7.39 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,7 +16,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.0.0** | 2026-10-10 | published | 2,727 | first published | this release | [current](../a-link-to-a-persona.md) |
+| **v1.0.0** | 2026-10-10 | published | 2,727 | first published | [`3f07af130`](https://github.com/SGit-AI/SGit-AI__Website/commit/3f07af1308243d44b961b84199a3fa1066974e3b) | [current](../a-link-to-a-persona.md) |
 
 [← Back to the article](../a-link-to-a-persona.md) · [All articles](../index.md)
 

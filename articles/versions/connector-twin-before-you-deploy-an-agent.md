@@ -2,7 +2,7 @@
 
 > Every published version of the article "Before you give an agent a connector, give the connector a twin", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/connector-twin-before-you-deploy-an-agent.html> · site v0.7.38 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/connector-twin-before-you-deploy-an-agent.html> · site v0.7.39 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -17,7 +17,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
 | **v1.1.1** | 2026-10-07 | patch | 3,426 | front matter only (the text is unchanged) | [`d86d0b70a`](https://github.com/SGit-AI/SGit-AI__Website/commit/d86d0b70abbe2879a585ed04c090b63f3584ca4e) | [what changed](connector-twin-before-you-deploy-an-agent/v1.1.1.md) · [current](../connector-twin-before-you-deploy-an-agent.md) |
-| **v1.1.0** | 2026-09-28 | minor | 3,426 | +0 / −0 words; 0 changed, 0 added, 0 removed paragraphs | [`6a06cb06a`](https://github.com/SGit-AI/SGit-AI__Website/commit/6a06cb06a6b44a05e15bc5e643474002b69006e4) | [what changed](connector-twin-before-you-deploy-an-agent/v1.1.0.md) |
+| **v1.1.0** | 2026-09-28 | minor | 3,426 | +41 / −0 words; 0 changed, 1 added, 0 removed paragraphs | [`6a06cb06a`](https://github.com/SGit-AI/SGit-AI__Website/commit/6a06cb06a6b44a05e15bc5e643474002b69006e4) | [what changed](connector-twin-before-you-deploy-an-agent/v1.1.0.md) |
 | **v1.0.0** | 2026-09-24 | published | 3,385 | first published | [`ae3f8714d`](https://github.com/SGit-AI/SGit-AI__Website/commit/ae3f8714d166a3988ed2d2b04674ee13e29ad4cc) |  |
 
 [← Back to the article](../connector-twin-before-you-deploy-an-agent.md) · [All articles](../index.md)

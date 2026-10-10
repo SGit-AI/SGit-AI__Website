@@ -2,7 +2,7 @@
 
 > Every published version of the article "A chat box on a site with no server, the plan, and the trade it makes", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/chat-on-a-static-site.html> · site v0.7.38 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/chat-on-a-static-site.html> · site v0.7.39 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -18,8 +18,8 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 |---|---|---|---|---|---|---|
 | **v1.2.2** | 2026-10-07 | patch | 1,174 | front matter only (the text is unchanged) | [`d86d0b70a`](https://github.com/SGit-AI/SGit-AI__Website/commit/d86d0b70abbe2879a585ed04c090b63f3584ca4e) | [what changed](chat-on-a-static-site/v1.2.2.md) · [current](../chat-on-a-static-site.md) |
 | **v1.2.1** | 2026-09-28 | patch | 1,174 | front matter only (the text is unchanged) | [`6a06cb06a`](https://github.com/SGit-AI/SGit-AI__Website/commit/6a06cb06a6b44a05e15bc5e643474002b69006e4) | [what changed](chat-on-a-static-site/v1.2.1.md) |
-| **v1.2.0** | 2026-09-20 | minor | 1,174 | +0 / −0 words; 0 changed, 0 added, 0 removed paragraphs | [`8b46d2853`](https://github.com/SGit-AI/SGit-AI__Website/commit/8b46d28539aedc4588291e71599e2d5650febaa6) | [what changed](chat-on-a-static-site/v1.2.0.md) |
-| **v1.1.0** | 2026-09-08 | minor | 1,193 | +0 / −0 words; 0 changed, 0 added, 0 removed paragraphs | [`79c5ae92b`](https://github.com/SGit-AI/SGit-AI__Website/commit/79c5ae92be4c24cf84a362a852665e9df6a4a208) | [what changed](chat-on-a-static-site/v1.1.0.md) |
+| **v1.2.0** | 2026-09-20 | minor | 1,174 | +0 / −20 words; 15 changed, 0 added, 0 removed paragraphs | [`8b46d2853`](https://github.com/SGit-AI/SGit-AI__Website/commit/8b46d28539aedc4588291e71599e2d5650febaa6) | [what changed](chat-on-a-static-site/v1.2.0.md) |
+| **v1.1.0** | 2026-09-08 | minor | 1,193 | +149 / −0 words; 1 changed, 2 added, 0 removed paragraphs | [`79c5ae92b`](https://github.com/SGit-AI/SGit-AI__Website/commit/79c5ae92be4c24cf84a362a852665e9df6a4a208) | [what changed](chat-on-a-static-site/v1.1.0.md) |
 | **v1.0.0** | 2026-08-27 | published | 1,044 | first published | [`cc5c6db74`](https://github.com/SGit-AI/SGit-AI__Website/commit/cc5c6db74842660b5ac4f15eff396f7d844b38a9) |  |
 
 [← Back to the article](../chat-on-a-static-site.md) · [All articles](../index.md)

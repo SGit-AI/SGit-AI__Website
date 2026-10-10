@@ -2,7 +2,7 @@
 
 > Every published version of the article "Fractal Semantic Graphs", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/introducing-fractal-semantic-graphs.html> · site v0.7.38 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/introducing-fractal-semantic-graphs.html> · site v0.7.39 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -17,7 +17,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
 | **v1.1.1** | 2026-10-07 | patch | 2,843 | front matter only (the text is unchanged) | [`d86d0b70a`](https://github.com/SGit-AI/SGit-AI__Website/commit/d86d0b70abbe2879a585ed04c090b63f3584ca4e) | [what changed](introducing-fractal-semantic-graphs/v1.1.1.md) · [current](../introducing-fractal-semantic-graphs.md) |
-| **v1.1.0** | 2026-10-05 | minor | 2,843 | +2,858 / −0 words; 0 changed, 71 added, 0 removed paragraphs | [`4d6a7b929`](https://github.com/SGit-AI/SGit-AI__Website/commit/4d6a7b929fb221b9f26d559cd3122091bcbd7f62) | [what changed](introducing-fractal-semantic-graphs/v1.1.0.md) |
+| **v1.1.0** | 2026-10-05 | minor | 2,843 | +0 / −0 words; 7 changed, 0 added, 0 removed paragraphs | [`4d6a7b929`](https://github.com/SGit-AI/SGit-AI__Website/commit/4d6a7b929fb221b9f26d559cd3122091bcbd7f62) | [what changed](introducing-fractal-semantic-graphs/v1.1.0.md) |
 | **v1.0.3** | 2026-09-28 | patch | 2,843 | front matter only (the text is unchanged) | [`6a06cb06a`](https://github.com/SGit-AI/SGit-AI__Website/commit/6a06cb06a6b44a05e15bc5e643474002b69006e4) | [what changed](introducing-fractal-semantic-graphs/v1.0.3.md) |
 | **v1.0.2** | 2026-09-22 | patch | 2,843 | front matter only (the text is unchanged) | [`b4213542e`](https://github.com/SGit-AI/SGit-AI__Website/commit/b4213542e9fdac0cf16d8c6131457d9edf68906a) | [what changed](introducing-fractal-semantic-graphs/v1.0.2.md) |
 | **v1.0.1** | 2026-09-22 | patch | 2,843 | front matter only (the text is unchanged) | [`49aa94072`](https://github.com/SGit-AI/SGit-AI__Website/commit/49aa940725752b3b2a8218c0c19d23e941ab67a8) | [what changed](introducing-fractal-semantic-graphs/v1.0.1.md) |

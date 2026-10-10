@@ -2,7 +2,7 @@
 
 > For the agent working on newsroom.sgit.ai: what moves from sgit.ai (65 articles and their graphs, the desk, the newsletter, the reader account and SG Meter), where each piece is in the source, the URL plan, five phases with acceptance checks, moving reader data between origins, what not to break, and the decisions that are Dinis Cruz's.
 
-*Source: <https://sgit.ai/docs/briefs/newsroom-move-to-newsroom-sgit-ai.html> · site v0.7.38 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/briefs/newsroom-move-to-newsroom-sgit-ai.html> · site v0.7.39 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

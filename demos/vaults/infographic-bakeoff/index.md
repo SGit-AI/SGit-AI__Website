@@ -2,7 +2,7 @@
 
 > Every image model on OpenRouter on 10 October 2026, given the same briefs from one article, from 18 words to the whole article, plus an edit, a component, a brand slide and a deck. Five rounds, 101 images judged blind, $10.44, and guidance on which model for which job. Published with its read key.
 
-*Source: <https://sgit.ai/demos/vaults/infographic-bakeoff/index.html> · site v0.7.38 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/infographic-bakeoff/index.html> · site v0.7.39 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

@@ -22,6 +22,7 @@ This article does two things. It introduces what was built, because a lot was ad
 - **You pay after you see the value.** You read; the meter charges for the share you read; then you say how useful it was, and that sets the price, from free to double.
 - **Your reading is yours.** It lives in your browser, builds personas and a newsroom for each of them, and reaches us only if you send it, encrypted.
 - **The end state was not planned.** Each feature came from using the one before. Designed up front, it would have been a bigger, slower and probably over-engineered project.
+- **It is the ILC zigzag at work.** Every layer underneath, from sgit in March to the newsrooms in September, matured until it was invisible, and so the next could be built on it.
 - **It was fast because of what was already there**: the build and its gates, versioned components, git as the history, vaults, append lanes and sealed envelopes, and sessions that release on their own.
 - **Every decision started with the reader.** Not "money left on the table", but value for money: the reader should always feel the price was fair.
 - **What is missing is traffic.** If you run a site with readers and little revenue from them, let's test it together.
@@ -104,6 +105,26 @@ There is a direct line between something working, trying it out, and improving i
 The Wardley map makes the same point. Every new component sits at the genesis end, on the left, and every one of them is built on components further right that were already there and already boring: browser storage, git, Stripe, the build, vaults, append lanes, the sealed envelope. The afternoon was cheap because the right-hand side of the map was already built.
 
 !shot pv-wardley-anim.webp | images/ | The afternoon as a Wardley map, one release at a time: what already existed, then each feature as it was added and what it was built on, ending with what comes next. Times are UTC, from the commits.
+
+## The zigzag: innovate, leverage, commoditise {#ilc}
+
+!shot pv-zigzag-anim.webp | images/ | The same story at a larger scale, built up one layer at a time: each layer matured until it was invisible, and that is what made the next one possible.
+
+The map of the afternoon shows one day. The same pattern runs through the whole project, and Simon Wardley has a name for it: ILC, innovate, leverage, commoditise. You "take an existing product that is relatively well defined and commonplace and turn it into an industrialised utility", then "encourage and enable other companies to innovate by building on top of your utility", and "you then repeat this virtuous circle" ([Wardley, 2016](https://blog.gardeviance.org/2016/08/the-play-and-decision-to-act.html)). His map of it has a platform growing on the right as each component is industrialised, with new things being built on the left.
+
+Drawn for this project, it is a zigzag. Here, a thing is commoditised when it becomes invisible: when the layer above can use it without thinking about it.
+
+1. **sgit**, encrypted vaults from a command line. The first release was on 4 March 2026, as sg-send-cli 0.3.0, and after 88 releases it is sgit-ai 0.20.0. Once it just worked, vaults could hold more than files.
+2. **Vaults that open as apps**: HTML in a vault, a read key in the browser. The first on this site was published on 16 August; there are 53 now. Once that was routine, a vault could be an experiment of its own.
+3. **Claude sessions with a repository and a vault**, which is the layer we did not build. Agents with no other access, using a vault as their memory and their shared drive. When that became ordinary, building a website became a conversation.
+4. **Websites built and released by agents**: sgit.ai from v0.1.1 on 11 August to v0.7.39 today, with gates on every release. Once a release was routine, a site could be a product of its own.
+5. **Newsrooms**: sgit.newsroom and pt.newsroom, where the one-cent wallet appeared by 27 September. Once the newsroom worked, it could carry an experiment in paying.
+6. **SG Meter**, the reading meter, from v1.0 at 12:09 to v1.3 at 15:49 on 10 October.
+7. **At the top, the reader**: read on demand, pay for use and for value. From the reader's side it already just works: open a page, read it, choose what it was worth. Every layer under it is invisible to them, which is the point.
+
+The speed of the afternoon is the zigzag at work. Every time I tried something and it was solid, it became something to stand on: this is working, now do this, now do that. Each step was small because the steps under it had stopped needing attention.
+
+!shot pv-zigzag.webp | images/ | The whole zigzag. Solid arrows are a thing maturing, until it is invisible; dashed arrows are what its maturity made possible, one layer up.
 
 ## Why it could go this fast {#fast}
 

@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.38 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.39 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -1550,6 +1550,39 @@ Agents are the insider threat that never scaled before, the infrastructure was d
 
 builds on [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs); continued by [Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not](#riskmandate-ten-questions), [Where is the why? A permission prompt asked me to decide, and kept the reason](#where-is-the-why), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered](#the-investigation-github-owes-its-customers), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception).
 
+## [The reader was always the product: a corrected history of how news got into this mess](how-news-got-here.md)
+
+2026-09-29 · News & evidence
+
+The reader has been the product since 1833 and the money has always flowed to whoever owned the road, so the fix is to stop charging for the road and charge for the cargo: the story as a graph with every claim tied to hashed evidence.
+
+*[diagram]*
+**concept**claim**method**artefact**example
+
+**15 nodes, 18 edges**
+
+- **The reader was always the product** (claim) The reader stopped being the customer in 1833 and became the audience sold to the advertiser, and by 2005 advertising was 82% of American newspaper revenue.
+- **Penny press** (example) The New York Sun of September 1833 sold on the street for a cent and was paid for by advertising while other papers relied on high-priced subscriptions.
+- **Unregulated toll bridge** (concept) A monopoly city newspaper was the only way for a local advertiser to reach local households, and its margins of 20 to 30 per cent paid for the reporting.
+- **Classifieds collapse** (example) Classifieds were about 40% of revenue and fell from $19.6 billion in 2000 to about $6 billion in 2009 once Craigslist let people list a sofa for free.
+- **The measurable reader** (concept) Cookies in 1996 and AdSense in 2003 let the reader be followed from page to page, and by 2017 Google and Meta took 54.7% of American digital advertising.
+- **Publisher as tenant** (claim) Publishers depended on traffic from companies that could switch it off, and Facebook referrals to news sites fell 58% in six years.
+- **Novelty beats truth** (claim) False news on Twitter was 70% more likely to be retweeted than true news, spread by humans not bots, and Facebook weighted an anger reaction at five times a like.
+- **Provenance is labour** (claim) Following a claim to its source is hours of a person's time, and newsrooms that lost 57% of their jobs cut those hours first because they did not move the click.
+- **AI removes the traffic** (claim) Search traffic to publishers fell a third in the year to November 2025 while the crawlers that replaced it fetch tens of thousands of pages per reader they send back.
+- **Back to selling to readers, by rent** (claim) Circulation revenue overtook advertising in 2021, but what is sold is the subscription, unlimited access priced for the reader who forgets to cancel.
+- **402 Payment Required** (artefact) HTTP/1.1 reserved a status code in 1997 for digital cash or micropayment systems, and it is still reserved for future use with no browser having implemented it.
+- **Mental transaction costs** (concept) Szabo and Shirky argued that deciding whether an article is worth two cents costs more than two cents, an argument that does not apply to an agent with a wallet.
+- **Advertising as the default** (claim) The banner ad, the cookie, the pop-up and AdSense were small decisions that together made advertising the default model to support online content.
+- **People pay when paying is easy** (claim) A million iTunes songs sold in the first week in 2003 and Substack passed five million paid subscriptions in 2025, in an industry that insisted people never would.
+- **Charge for the cargo, not the road** (method) Sell the story as a graph, every claim walked to frozen and hashed evidence, in pence and on demand, with the money walking back to whoever made the fact.
+
+> The reader stopped being the customer in 1833. The reader became the audience that was sold to the customer, and the cover price became a way of proving the audience existed. The most important of the four corrections: the web did not make the reader the product, the penny press did.
+
+> The fix is to stop charging for the road and start charging for the cargo. The four eras end here: the money followed whoever owned distribution, so the proposal is to sell the evidence itself.
+
+builds on [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs); continued by [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser), [Liquid content needs water: liquefy the journalist's notebook, not the finished product](#liquid-content-needs-water), [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](#story-vault-meets-reader-skills), [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download).
+
 ## [Six agents, one inbox: what a real multi-agent setup taught me about access policies](six-agents-one-inbox.md)
 
 2026-09-29 · Agents & policy
@@ -1583,39 +1616,6 @@ Write an agent's access policy as a table with a column for how each rule is enf
 > The only way to know what a connector can do is to try. The attachment finding showed a policy written from documentation was wrong.
 
 builds on [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox); continued by [A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies](#a-mac-of-the-agents-own), [Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not](#riskmandate-ten-questions), [Zoom into an agent's behaviour policy and you find the business logic](#the-behaviour-policy-is-the-business-logic), [An open AI governance framework, and what its licence let us build](#ai-baseline-control-framework), [Where is the why? A permission prompt asked me to decide, and kept the reason](#where-is-the-why), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](#send-an-agent-not-a-spreadsheet), [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions).
-
-## [The reader was always the product: a corrected history of how news got into this mess](how-news-got-here.md)
-
-2026-09-29 · News & evidence
-
-The reader has been the product since 1833 and the money has always flowed to whoever owned the road, so the fix is to stop charging for the road and charge for the cargo: the story as a graph with every claim tied to hashed evidence.
-
-*[diagram]*
-**concept**claim**method**artefact**example
-
-**15 nodes, 18 edges**
-
-- **The reader was always the product** (claim) The reader stopped being the customer in 1833 and became the audience sold to the advertiser, and by 2005 advertising was 82% of American newspaper revenue.
-- **Penny press** (example) The New York Sun of September 1833 sold on the street for a cent and was paid for by advertising while other papers relied on high-priced subscriptions.
-- **Unregulated toll bridge** (concept) A monopoly city newspaper was the only way for a local advertiser to reach local households, and its margins of 20 to 30 per cent paid for the reporting.
-- **Classifieds collapse** (example) Classifieds were about 40% of revenue and fell from $19.6 billion in 2000 to about $6 billion in 2009 once Craigslist let people list a sofa for free.
-- **The measurable reader** (concept) Cookies in 1996 and AdSense in 2003 let the reader be followed from page to page, and by 2017 Google and Meta took 54.7% of American digital advertising.
-- **Publisher as tenant** (claim) Publishers depended on traffic from companies that could switch it off, and Facebook referrals to news sites fell 58% in six years.
-- **Novelty beats truth** (claim) False news on Twitter was 70% more likely to be retweeted than true news, spread by humans not bots, and Facebook weighted an anger reaction at five times a like.
-- **Provenance is labour** (claim) Following a claim to its source is hours of a person's time, and newsrooms that lost 57% of their jobs cut those hours first because they did not move the click.
-- **AI removes the traffic** (claim) Search traffic to publishers fell a third in the year to November 2025 while the crawlers that replaced it fetch tens of thousands of pages per reader they send back.
-- **Back to selling to readers, by rent** (claim) Circulation revenue overtook advertising in 2021, but what is sold is the subscription, unlimited access priced for the reader who forgets to cancel.
-- **402 Payment Required** (artefact) HTTP/1.1 reserved a status code in 1997 for digital cash or micropayment systems, and it is still reserved for future use with no browser having implemented it.
-- **Mental transaction costs** (concept) Szabo and Shirky argued that deciding whether an article is worth two cents costs more than two cents, an argument that does not apply to an agent with a wallet.
-- **Advertising as the default** (claim) The banner ad, the cookie, the pop-up and AdSense were small decisions that together made advertising the default model to support online content.
-- **People pay when paying is easy** (claim) A million iTunes songs sold in the first week in 2003 and Substack passed five million paid subscriptions in 2025, in an industry that insisted people never would.
-- **Charge for the cargo, not the road** (method) Sell the story as a graph, every claim walked to frozen and hashed evidence, in pence and on demand, with the money walking back to whoever made the fact.
-
-> The reader stopped being the customer in 1833. The reader became the audience that was sold to the customer, and the cover price became a way of proving the audience existed. The most important of the four corrections: the web did not make the reader the product, the penny press did.
-
-> The fix is to stop charging for the road and start charging for the cargo. The four eras end here: the money followed whoever owned distribution, so the proposal is to sell the evidence itself.
-
-builds on [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs); continued by [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser), [Liquid content needs water: liquefy the journalist's notebook, not the finished product](#liquid-content-needs-water), [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](#story-vault-meets-reader-skills), [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download).
 
 ## [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](token-bill-nobody-is-sending.md)
 

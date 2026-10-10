@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.38'
+SITE_VERSION = 'v0.7.39'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,15 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.38', '2026-10-10', 'this release',
+    ('v0.7.39', '2026-10-10', 'this release',
+     "THE ZIGZAG. Pay after you read gains 'The zigzag: innovate, leverage, commoditise': Simon Wardley's ILC drawn for "
+     "this project, from sgit's first release on 4 March 2026 (sg-send-cli 0.3.0, 88 sgit-ai releases to 0.20.0) through "
+     "vaults that open as apps (first published 16 August, 53 now), Claude sessions with a repository and a vault, websites "
+     "built and released by agents (sgit.ai v0.1.1 on 11 August), the newsrooms and the one-cent wallet (by 27 September) "
+     "and SG Meter (10 October), to the reader at the top, for whom it just works. Each layer matured until it was "
+     "invisible, which is what made the next possible. Two figures: the zigzag, and an animation that builds it one layer "
+     "at a time."),
+    ('v0.7.38', '2026-10-10', 'git 3f07af13',
      "A LINK TO A PERSONA: THE BRIEF, AS AN ARTICLE. Send a CISO to the newsroom as a CISO, not as nobody. Personas move "
      "out of the site's code into an encrypted vault kept by the newsroom's agents and opened in the browser with a "
      "published read key, so a persona is added or updated with a vault commit, not a site release. Three kinds of link: "

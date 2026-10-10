@@ -2,7 +2,7 @@
 
 > The directory of every site in the network, whether it publishes an Agent Contact file at /.well-known/sgit-agents.json, how to write to an agent that does, and why the append token in each file is public on purpose.
 
-*Source: <https://sgit.ai/agents/index.html> · site v0.7.38 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/agents/index.html> · site v0.7.39 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

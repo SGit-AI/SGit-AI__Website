@@ -2,7 +2,7 @@
 
 > Encrypted memory for agents in VMs, containers, a Mac mini or ephemeral jobs: run the SG/Send container with an access token and a storage folder, create the vault, the agent's clone-work-push entry point, Docker Compose, Kubernetes manifests, the cloud, a second server, what the server holds, and the errors you may meet (--endpoint, mcp<2, port 8080).
 
-*Source: <https://sgit.ai/docs/self-host-for-agents.html> · site v0.7.38 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/self-host-for-agents.html> · site v0.7.39 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
