@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.20'
+SITE_VERSION = 'v0.7.21'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.20', '2026-10-09', 'this release',
+    ('v0.7.21', '2026-10-10', 'this release',
+     "AGENT DESK, WHERE IT COMES FROM. The article A Mac of the agent's own, the Agent Desk vault page and the business plans list no longer say the plan was written after companies replied to the earlier research; it now simply follows that research.",),
+    ('v0.7.20', '2026-10-09', 'git c5dd0c88',
      "A SECOND READER THE AGENT CANNOT SKIP. On 9 October two emails drafted by the inbox agent went out in the founder's voice although a written rule forbade it. The agent's own fix, read against the Claude Code documentation and the research: a hook on the draft tool, code checks first, then a fresh model call with only the rules, the sources and the draft, failing closed and logging every verdict. What the first run caught; six kinds of independence; why placement decides the barrier (a session mod or a plugin is a setting, only managed placement is final); three public ways to build it; maker-checker, two-person rule, AI control, LLM-judge bias, Dual LLM, CaMeL, Rule of Two. Three diagrams with Mermaid sources, an independence infographic, the hot-reload prompt, graph JSON.",),
     ('v0.7.19', '2026-10-09', 'git 8df16cd1',
      "HARI'S POST, LINKED. The AI governance stack article and the AI Governance Graph vault page now link Hari Kota's LinkedIn post, The Full AI Governance Stack; the vault moves to v0.1.1 with the post as the source of every node in Hari's words, and its derived facts are refreshed.",),
@@ -38,7 +40,7 @@ VERSION_LOG = [
     ('v0.7.17', '2026-10-09', 'git 75eb72fc',
      "RFC 0001: PUBLIC-KEY CRYPTOGRAPHY FOR SGIT. The site's first Request for Comments, from the sgit CLI agent's design session: nothing is built. Today a read-key holder who can write to the store can author history clients accept; turning the read key into a public key does not fix it, two key pairs do. A writer signature on today's vaults first; native PKI vault mode (readers cannot write, hosts cannot forge, write-only depositors); sealed files, an age v1 inner envelope to named people, with the private key in a file, an ssh key, hardware or a remote service. A landscape of thirty key services and tools, checked from their own documentation: RSA-OAEP-256 is the format the remote services share, approval of each decryption is rare, and three best fits each for a small team, a company that wants every decryption approved, and open source only. Fourteen questions, comments by issue or email. Three diagrams with Mermaid sources, graph JSON. Headings can now carry an {#anchor}.",),
     ('v0.7.16', '2026-10-09', 'git 1677e2ef',
-     "A MAC OF THE AGENT'S OWN. A new business plan vault, Agent Desk (5ej8boc8, read key published, the first created and audited with sgit-ai 0.20.0), and its article, from a voice memo after two companies replied to our research on renting an agent a desktop. Agents already have their own mailbox, code-host account and Claude account; the next resource is a desktop, and it should be a Mac. Apple's macOS licence, quoted from versions 15, 26 and 27, rules out a pool of Macs rented by the minute, so the plan is the shapes it allows: your Mac run for you, a dedicated Mac with a per-minute meter, developer agents, software for your own Mac, and asking Apple for terms. A clean desktop per run, built from vaults by a short bootstrap whose key steps were tested, keys by PKI, erased at the end. Three Agent Behaviour Policies for the same customer service agent: unbounded excess 23, 11 and 3 rows. A calculator, a Wardley map, three diagrams with Mermaid sources. No provider named. Vault page, business plans list, graph JSON.",),
+     "A MAC OF THE AGENT'S OWN. A new business plan vault, Agent Desk (5ej8boc8, read key published, the first created and audited with sgit-ai 0.20.0), and its article, from a voice memo, following our research on renting an agent a desktop. Agents already have their own mailbox, code-host account and Claude account; the next resource is a desktop, and it should be a Mac. Apple's macOS licence, quoted from versions 15, 26 and 27, rules out a pool of Macs rented by the minute, so the plan is the shapes it allows: your Mac run for you, a dedicated Mac with a per-minute meter, developer agents, software for your own Mac, and asking Apple for terms. A clean desktop per run, built from vaults by a short bootstrap whose key steps were tested, keys by PKI, erased at the end. Three Agent Behaviour Policies for the same customer service agent: unbounded excess 23, 11 and 3 rows. A calculator, a Wardley map, three diagrams with Mermaid sources. No provider named. Vault page, business plans list, graph JSON.",),
     ('v0.7.15', '2026-10-09', 'git a98a1c20',
      "THE NEWSLETTER AS A BEST-OF ITS PICTURES. Two desk directives: !figure takes one image from an article or a "
      "vault by its path from the repository root, and !collage composes two to six of them into one 1920x1080 picture "

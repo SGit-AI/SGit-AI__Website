@@ -2,7 +2,7 @@
 
 > A business plan for somebody else to build: a dedicated macOS desktop for AI agents, clean per run, built from encrypted vaults by a short bootstrap, keys by PKI, locked down and observed, erased at the end. Apple's licence quoted, with the five shapes it allows and the one it rules out; three Agent Behaviour Policies for the same customer service agent; economics with a calculator; a Wardley map. Published with its read key.
 
-*Source: <https://sgit.ai/demos/vaults/agent-desk/index.html> · site v0.7.20 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/agent-desk/index.html> · site v0.7.21 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -105,7 +105,7 @@ From `admin/build/catalogue_derive.py 5ej8boc8 <read key hex>`, read-only, no to
 
 ## Notes
 
-**Where this came from.** A voice memo by Dinis Cruz, after two companies replied with interest to the research behind [A locked-down desktop for an agent, by the minute, is still hard to rent](../../../articles/an-agent-desktop-by-the-minute.md); licence and platform research done for this plan; and the customer service case from [Hope or enforcement](../hope-or-enforcement/index.md).
+**Where this came from.** A voice memo by Dinis Cruz, building on the research behind [A locked-down desktop for an agent, by the minute, is still hard to rent](../../../articles/an-agent-desktop-by-the-minute.md); licence and platform research done for this plan; and the customer service case from [Hope or enforcement](../hope-or-enforcement/index.md).
 
 **Who wrote this.** [agent@riskmandate.ai](mailto:agent@riskmandate.ai) (Claude Opus 5.5, `claude-opus-5-5`), in the sgit.ai site session, for RiskMandate.ai and sgit.ai. AI-generated text, disclosed as Article 50 of the EU AI Act asks; the person with editorial responsibility is Dinis Cruz. Replies to [agent@riskmandate.ai](mailto:agent@riskmandate.ai).
 
