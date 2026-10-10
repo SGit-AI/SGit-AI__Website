@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.36'
+SITE_VERSION = 'v0.7.37'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,16 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.36', '2026-10-10', 'this release',
+    ('v0.7.37', '2026-10-10', 'this release',
+     "THE NEWSROOM MOVES TO NEWSROOM.SGIT.AI: THE BRIEF. A new brief in docs/briefs for the session working on "
+     "newsroom.sgit.ai: what moves (65 articles with their graphs, versions and views, the front page, the desk, the "
+     "newsletter, subscribe, the reader account and SG Meter), where each piece is in the source (functions of "
+     "build_pages.py, content.py, newsroom.py, desk.py), the same paths on the new site and the one collision (its "
+     "/newsroom/ design page moves to /design/newsroom.html), five phases with acceptance checks, reader data moved "
+     "between origins through a URL fragment that never reaches a server, what not to break, the decisions that are "
+     "Dinis's, and the open items. With a 1.6 MB bundle (239 source and content files; 485 images listed by URL). Also "
+     "ships SG Meter v1.3.1: Send on the share page stays disabled until the consent box is ticked.",),
+    ('v0.7.36', '2026-10-10', 'git 75b94297',
      "PAY AFTER YOU READ. A new article introducing everything the reading meter gained on 10 October, as one working "
      "model: a price for every page paid by the share read, a balance that goes below zero without blocking, the reader "
      "card whose usefulness rating sets the price (free to double), personas and a newsroom for each, the reading account, "

@@ -1,9 +1,9 @@
 # Using sgit, sgit.ai
 
-> The CLI and the model behind it, installation, quickstart, the two-branch model, messaging between vaults, and what sgit does not do. Generated at build time (v0.7.36).
+> The CLI and the model behind it, installation, quickstart, the two-branch model, messaging between vaults, and what sgit does not do. Generated at build time (v0.7.37).
 > The whole-site map is /llms.txt; every page here also exists as `.md`.
 
-## Pages (47)
+## Pages (48)
 - [Documentation](/docs/index.md): sgit documentation: quickstart, concepts, guides for humans and AI agents, and the honest limitations page.
 - [What is sgit](/docs/what-is-sgit.md): sgit is git for encrypted vaults: how it works, what makes it different from git, and the ecosystem around it.
 - [Installation](/docs/installation.md): Install sgit with pip, verify with sgit doctor, upgrade with sgit update. Python 3.11+, two runtime dependencies.
@@ -51,3 +51,4 @@
 - [Send a vault key to the registry](/docs/send-a-vault-key.md): For an agent that holds SG/Send vault keys and was given this page, an inbox vault id and an append token: the rules (never display a key, never improvise a route), the vault-key-handover/v1 payload, the registry's public key and endpoint, a sender script that pins the key's fingerprint, what to do afterwards and on a 404. The id and the token are never published.
 - [Agent Contact v0.1: signed](/docs/agent-contact.md): The protocol every site in the sgit.ai network is adopting: each site agent gets a comms vault whose append lane is its inbox, publishes its public encryption and signing keys and the lane's append token in a contact file at /.well-known/sgit-agents.json, and reads only messages that are encrypted to it, signed by the sender, and from a domain on its allow list. The draft as approved for rollout on 29 September 2026, the review that preceded approval, the owner's decision to treat abuse of the public lane as a canary, and the two JSON schemas.
 - [Vault key management](/docs/key-management.md): The reference for sgit-ai v0.20.0: each kind of credential and where it belongs, how a key travels without entering a chat, giving a key to an agent when platforms have no per-session secrets, rotation with rekey and move, and the local alias store.
+- [Moving the SGit Newsroom to newsroom.sgit.ai](/docs/briefs/newsroom-move-to-newsroom-sgit-ai.md): For the agent working on newsroom.sgit.ai: what moves from sgit.ai (65 articles and their graphs, the desk, the newsletter, the reader account and SG Meter), where each piece is in the source, the URL plan, five phases with acceptance checks, moving reader data between origins, what not to break, and the decisions that are Dinis Cruz's.

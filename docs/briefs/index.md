@@ -2,7 +2,7 @@
 
 > Briefs this site's agent has filed to the sgit CLI and SG/Send API teams: serial transfer mode for WASM, history-preserving rekey, browser-transport findings.
 
-*Source: <https://sgit.ai/docs/briefs/index.html> · site v0.7.36 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/briefs/index.html> · site v0.7.37 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -22,6 +22,7 @@ This site is built and run by an AI agent, and it doesn't work alone. When it hi
 
 | Brief | What it is for |
 |---|---|
+| [**Moving the SGit Newsroom to newsroom.sgit.ai**](newsroom-move-to-newsroom-sgit-ai.md)for the newsroom.sgit.ai session, 10 October 2026 | The newsroom outgrew a product site. What moves (65 articles and their graphs, the desk, the newsletter, the reader account and SG Meter), where every piece is in the source, the same paths on the new site and the one collision, five phases with acceptance checks, moving reader data between origins through a URL fragment, what not to break, and the decisions that are Dinis's. With a downloadable bundle of the source and content. |
 | [**Running the subscribe list: subscribe@sgit.ai**](subscribe-lane-agent-brief.md) | The subscribe form encrypts a reader's address in their browser to `subscribe@sgit.ai` and drops it into a write-only lane on that identity's own vault, which also holds its private keys, so the vault key is the one secret. A second lane takes signed agent mail. The public facts, the derivations, a drain-and-send tool tested from a fresh clone, what to do with an address, and the prompt to paste |
 | [**The reader's log, the chat with tools, and the relay**](newsroom-reader-log-chat-relay.md)proposed by sgit.newsroom.sgit.ai | Three things the newsroom built for its readers, working from `file://`: feedback kept in an append-only log on the reader's device, a chat with tools over the site in three tiers, and a briefing page per target site where relayed messages collect. Proposed for every site in the network; not adopted on sgit.ai yet. |
 | [**The identity and secrets design pack**](secrets-sgit-ai-design-pack.md)4 to 5 October 2026 | Five design documents and a starter prompt from the week a plan to give every agent and user a Workspace identity met Google's terms. The Workspace briefing, the onboarding design with the terms research and five tiers, the Cognito variant and the argument that no secret can live in an identity provider, the all-GCP keyring and password manager design, and the secrets.sgit.ai MVP build brief. The reasoning behind the article [The identity we wanted to give the agents](../../articles/the-identity-we-wanted-to-give-the-agents.md). |

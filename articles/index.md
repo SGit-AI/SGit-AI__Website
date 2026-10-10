@@ -2,11 +2,11 @@
 
 > Longer pieces that make an argument across several pages: what a thing means, why it is shaped that way, and what it cost to find out. Each links to the pages that own its facts rather than restating them.
 
-*Source: <https://sgit.ai/articles/index.html> · site v0.7.36 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/index.html> · site v0.7.37 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
-Edition of 2026-10-0865 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.36
+Edition of 2026-10-0865 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.37
 
 # SGit Newsroom
 

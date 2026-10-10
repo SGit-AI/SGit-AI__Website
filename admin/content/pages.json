@@ -1142,5 +1142,11 @@
     "section": "docs",
     "title": "Vault key management, where each key lives and how it travels, sgit.ai",
     "desc": "The reference for sgit-ai v0.20.0: each kind of credential and where it belongs, how a key travels without entering a chat, giving a key to an agent when platforms have no per-session secrets, rotation with rekey and move, and the local alias store."
+  },
+  {
+    "path": "docs/briefs/newsroom-move-to-newsroom-sgit-ai.html",
+    "section": "briefs",
+    "title": "Moving the SGit Newsroom to newsroom.sgit.ai, migration brief",
+    "desc": "For the agent working on newsroom.sgit.ai: what moves from sgit.ai (65 articles and their graphs, the desk, the newsletter, the reader account and SG Meter), where each piece is in the source, the URL plan, five phases with acceptance checks, moving reader data between origins, what not to break, and the decisions that are Dinis Cruz's."
   }
 ]

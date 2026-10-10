@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en" data-root="../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Moving the SGit Newsroom to newsroom.sgit.ai, migration brief</title>
+<meta name="description" content="For the agent working on newsroom.sgit.ai: what moves from sgit.ai (65 articles and their graphs, the desk, the newsletter, the reader account and SG Meter), where each piece is in the source, the URL plan, five phases with acceptance checks, moving reader data between origins, what not to break, and the decisions that are Dinis Cruz's.">
+<link rel="canonical" href="https://sgit.ai/docs/briefs/newsroom-move-to-newsroom-sgit-ai.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/docs/briefs/newsroom-move-to-newsroom-sgit-ai.html">
+<meta property="og:title" content="Moving the SGit Newsroom to newsroom.sgit.ai, migration brief">
+<meta property="og:description" content="For the agent working on newsroom.sgit.ai: what moves from sgit.ai (65 articles and their graphs, the desk, the newsletter, the reader account and SG Meter), where each piece is in the source, the URL plan, five phases with acceptance checks, moving reader data between origins, what not to break, and the decisions that are Dinis Cruz's.">
+<meta property="og:image" content="https://sgit.ai/og/default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Moving the SGit Newsroom to newsroom.sgit.ai, migration brief">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgit.ai/og/default.jpg">
+<link rel="alternate" type="text/markdown" href="newsroom-move-to-newsroom-sgit-ai.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Moving the SGit Newsroom to newsroom.sgit.ai, migration brief", "headline": "Moving the SGit Newsroom to newsroom.sgit.ai, migration brief", "description": "For the agent working on newsroom.sgit.ai: what moves from sgit.ai (65 articles and their graphs, the desk, the newsletter, the reader account and SG Meter), where each piece is in the source, the URL plan, five phases with acceptance checks, moving reader data between origins, what not to break, and the decisions that are Dinis Cruz's.", "url": "https://sgit.ai/docs/briefs/newsroom-move-to-newsroom-sgit-ai.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.7.37</a>
+  <sg-meter class="meter-nav" view="balance"></sg-meter>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+ <div class="ni ni-has">
+ <a class="nl" href="../../articles/index.html">Newsroom<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../articles/index.html">Front page</a>
+ <a class="sl" href="../../articles/newsletter/index.html">Newsletter</a>
+ <a class="sl" href="../../articles/index.html#all">Every article</a>
+ <a class="sl" href="../../articles/collections/index.html">Collections</a>
+ <a class="sl" href="../../articles/desk/index.html">From the desk</a>
+ <a class="sl" href="../../articles/graphs.html">As graphs</a>
+ <a class="sl" href="../../newsroom/index.html">How it runs</a>
+ <a class="sl" href="../../subscribe/index.html">Subscribe</a>
+ <a class="sl" href="../../account/newsroom.html">Your newsroom</a>
+ <a class="sl" href="../../account/share.html">A newsroom designed for you</a>
+ <a class="sl" href="../../account/index.html">Your reading account</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../../investors/index.html">Investors</a>
+ <a class="sl" href="../../startups/index.html">Startups</a>
+ <a class="sl" href="../../startups/business-plans.html">Business plans</a>
+ <a class="sl" href="../../about/index.html">About the author</a>
+ <a class="sl" href="../../partnerships/index.html">Partnerships</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl here" href="../../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../docs/index.html">Documentation</a>
+ <a class="sl" href="../../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl" href="../../docs/guidance/repositories.html">Every repository</a>
+ <a class="sl" href="../../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../../api/index.html">HTTP API</a>
+ <a class="sl" href="../../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../../deploy/index.html">Deploy</a>
+ <a class="sl" href="../../meter/index.html">SG Meter</a>
+ <a class="sl" href="../../skills/index.html">Skills</a>
+ <a class="sl here" href="../../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../../demos/index.html">Demos</a>
+ <a class="sl" href="../../demos/fractal-graphs/index.html">Fractal graphs</a>
+ <a class="sl" href="../../demos/fractal-graphs/performance.html">Performance & cost</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../../agents/index.html">Agents</a></div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../compare/index.html">Comparisons</a>
+ <a class="sl" href="../../demos/fractal-graphs/performance.html">Performance & cost</a>
+ <a class="sl" href="../../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../../lessons/index.html">Lessons learned</a>
+ <a class="sl" href="../../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../team/index.html">How the site is run</a>
+ <a class="sl" href="../../team/index.html#roles">Roles</a>
+ <a class="sl" href="../../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../../team/board.html">The board</a>
+ <a class="sl" href="../../updates/index.html">Updates</a>
+ <a class="sl" href="../../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../network/index.html">All sites</a>
+ <a class="sl" href="../../network/nhi.html">nhi</a>
+ <a class="sl" href="../../network/pki.html">pki</a>
+ <a class="sl" href="../../network/graphs.html">graphs</a>
+ <a class="sl" href="../../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/docs/llms.txt</span><span class="llmschip-m">v0.7.37 &middot; 10 Oct 2026</span></a></div>
+<main class="doc">
+  <p class="crumb"><a href="../../index.html">Home</a> / <a href="../index.html">Docs</a> / <a href="index.html">Briefs</a> / Moving the newsroom</p>
+  <p class="eyebrow">Brief &middot; for the newsroom.sgit.ai session &middot; 10 October 2026</p>
+  <h1>Moving the SGit Newsroom from sgit.ai to newsroom.sgit.ai (migration brief)</h1>
+  <p class="lead">The SGit Newsroom grew up inside sgit.ai: 65 articles since 17 August, 47 of them in the first ten days of October, plus the desk that places them, a newsletter, and a reader account with a meter, personas and a way to send us one's reading. It has outgrown a product site. It moves to newsroom.sgit.ai, which until now has argued for exactly this kind of newsroom without running one. This brief is for the agent working in the newsroom.sgit.ai repository: what exists, where every piece of it is, what to build on your side, the order to do it in, and what not to break.</p>
+
+  <div class="note"><b>Decided by Dinis Cruz, 10 October 2026.</b> The newsroom moves to newsroom.sgit.ai. The site there today becomes the reference for the design it argued. sgit.ai keeps its copies for links and reference for a while, drops them from its top navigation, and decommissions them later. Everything stays client side: no server, no database, reader data only in the reader's browser.</div>
+
+  <h2 id="start">Start here</h2>
+  <ol>
+    <li><b>Download the bundle:</b> <a href="files/newsroom-move-bundle.zip">newsroom-move-bundle.zip</a> (source, content, components and this brief as markdown; images listed by URL, not included). Every file in it is also public on sgit.ai at the same path, for example <code>https://sgit.ai/admin/build/newsroom.py</code>, so you can always fetch the current version instead.</li>
+    <li><b>Read your own repository first</b> and write down what it does today: its generator, its gates, its navigation, its <code>/newsroom/</code> page. Change nothing in phase 0.</li>
+    <li><b>Follow the phases below in order</b>, and stop at the end of each for Dinis to look. Each phase has its acceptance checks.</li>
+    <li><b>Ask before</b> anything in <a href="#decisions">decisions</a>. Those are his.</li>
+  </ol>
+
+  <h2 id="what">What is moving</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Part</th><th>On sgit.ai today</th><th>Source</th></tr>
+    <tr><td>Articles (65)</td><td><a href="../../articles/index.html">/articles/</a>, one page per article, each with a markdown twin, a card, an Open Graph image, often a LinkedIn banner, and the "threads" (what it builds on, what builds on it)</td><td><code>admin/content/articles/*.md</code></td></tr>
+    <tr><td>A graph per article</td><td>core idea, typed nodes and edges, links, quotes checked word for word against the article at build; all of them in <a href="../../articles/graphs.json">/articles/graphs.json</a> and drawn on <a href="../../articles/graphs.html">/articles/graphs.html</a></td><td><code>admin/content/articles/graphs/*.json</code></td></tr>
+    <tr><td>Article versions</td><td>every article's history and diffs, from git</td><td><code>admin/build/article_versions.py</code>, <code>article_diff.py</code>, <code>article_versions.json</code></td></tr>
+    <tr><td>Read it another way</td><td>the five readers (librarian, cartographer, historian, explainer, storyteller) for some articles</td><td><code>admin/content/articles/views/&lt;slug&gt;/</code></td></tr>
+    <tr><td>The front page</td><td><a href="../../articles/index.html">/articles/index.html</a>: lead, latest, highlights, desk notes, collections, every article with topic filter and search; placement from one file</td><td><code>admin/content/newsroom/front.json</code></td></tr>
+    <tr><td>The newsroom, backstage</td><td><a href="../../newsroom/index.html">/newsroom/</a>: six roles with behaviour policies, publishing guide, board, run log, pitches, desk health</td><td><code>admin/content/newsroom/{roles,board,log,pitches}</code>, <code>admin/build/newsroom.py</code>, <code>desk.py</code>, <code>policy_check.py</code></td></tr>
+    <tr><td>Desk notes (4), collections (5)</td><td>/articles/desk/, /articles/collections/</td><td><code>admin/content/newsroom/{notes,collections}</code></td></tr>
+    <tr><td>Newsletter (2 issues)</td><td>/articles/newsletter/, also published on LinkedIn as "Deterministic GenAI"; each issue has a LinkedIn kit and banner</td><td><code>admin/content/newsroom/newsletter/*.md</code></td></tr>
+    <tr><td>Subscribe</td><td>/subscribe/: the address is encrypted in the browser and dropped into a write-only append lane</td><td><code>assets/subscribe.js</code>, <code>.well-known/sgit-subscribe.json</code></td></tr>
+    <tr><td>The reader account</td><td>/account/: the reading meter (pay by depth, below zero allowed, usefulness sets the price), history, graph, personas, the newsroom of your own, share your reading, top-up and the Stripe return page</td><td>SG Meter v1.3.1, <code>assets/components/sg-meter/v1/v1.3/v1.3.1/</code> and the base class at <code>assets/components/base/v1/v1.0/v1.0.0/</code></td></tr>
+    <tr><td>SG Meter, the library</td><td><a href="../../meter/index.html">/meter/</a> and <a href="../../meter/security.html">/meter/security.html</a></td><td><code>admin/content/meter/*.html</code></td></tr>
+    <tr><td>Feeds for people and agents</td><td><a href="../../articles/feed.xml">/articles/feed.xml</a>, <a href="../../newsroom/wire.json">/newsroom/wire.json</a>, graphs.json, the markdown twins, the llms.txt sections</td><td>generated by the build</td></tr>
+  </table></div>
+  <p class="small dim">What does not move: the product documentation, the published vaults and their pages, the API and CLI docs, the case studies, the network pages and the site's own admin. Articles about sgit itself (for example <a href="../../articles/what-sgit-is.html">what sgit is</a>) move with the rest, and sgit.ai links to them.</p>
+
+  <h2 id="engine">How it is built today</h2>
+  <p>One Python generator, <a href="../../admin/build/build_pages.py">admin/build/build_pages.py</a> (about 7,700 lines), builds the whole of sgit.ai from <code>admin/content/</code>; <a href="../../admin/build/validate.js">validate.js</a> gates it (links, orphans, the authoring contract, house style); <a href="../../admin/build/release.sh">release.sh</a> builds, validates, commits as <code>site vX.Y.Z: …</code>, pushes to the deploy branch and waits until the live site serves the new version. The newsroom parts are entangled with the rest, so expect to extract rather than copy. The pieces, by function (line numbers as of v0.7.36):</p>
+  <div class="tablewrap"><table>
+    <tr><th>Concern</th><th>Where</th></tr>
+    <tr><td>Loading articles (front matter, <code>!shot</code>, <code>!source</code>, <code>!trail</code>, graphs, quote checks)</td><td><code>content.py</code> (<code>Content_Loader</code>); <code>ARTICLES</code>, <code>BY_SLUG</code>, <code>ARTICLE_OUT/IN</code> near line 5393</td></tr>
+    <tr><td>The editorial layer: roles, front, pitches, board, log, notes, collections, issues, findings</td><td><code>newsroom.py</code> (<code>Newsroom</code>); <code>desk.py</code>; <code>policy_check.py</code></td></tr>
+    <tr><td>Article page</td><td><code>article_body</code>, <code>article_threads_block</code>, <code>article_desk_block</code>, <code>article_views_block</code>, <code>linkedin_kit</code></td></tr>
+    <tr><td>Front page and indexes</td><td><code>articles_index_body</code>, <code>_masthead</code>, <code>_lead_block</code>, <code>_latest_rail</code>, <code>_high_card</code>, <code>articles_filter_bar</code>, <code>collections_index_body</code>, <code>desk_index_body</code></td></tr>
+    <tr><td>Backstage pages</td><td><code>newsroom_index_body</code>, <code>newsroom_role_body</code>, <code>newsroom_policies_body</code>, <code>newsroom_publish_body</code>, <code>newsroom_board_body</code>, <code>newsroom_log_body</code>, <code>newsroom_pages</code></td></tr>
+    <tr><td>Graphs</td><td><code>graph_svg</code>, <code>articles_map_svg</code>, <code>articles_graphs_body</code>; graphs.json is written alongside</td></tr>
+    <tr><td>Newsletter</td><td><code>newsletter_index_body</code>, <code>issue_body</code>, <code>subscribe_body</code>, <code>subscribe_block</code></td></tr>
+    <tr><td>Banners and cards</td><td><code>write_banner_manifest</code>, then <code>make_banners.mjs</code> (Playwright); <code>make_og_cards.mjs</code> (needs sharp)</td></tr>
+    <tr><td>Reader account and meter</td><td><code>METER</code>, <code>PERSONAS</code>, <code>PERSONA_NAMES</code>, <code>meter_kind</code>, <code>meter_config</code>, the injection in <code>page()</code>; <code>account_body</code>, <code>yours_body</code>, <code>personas_body</code>, <code>share_body</code>, <code>topup_body</code>, <code>toppedup_body</code></td></tr>
+    <tr><td>Feeds</td><td><code>write_wire</code>, <code>write_articles_feed</code>, the llms writers</td></tr>
+    <tr><td>Tests</td><td><code>admin/build/test_meter.mjs</code> (28 checks in Chromium against the built site, no mocks)</td></tr>
+  </table></div>
+
+  <h2 id="urls">Where things go on newsroom.sgit.ai</h2>
+  <p><b>Keep every path the same.</b> The articles have been linked from LinkedIn articles and newsletter issues; if <code>sgit.ai/articles/x.html</code> becomes <code>newsroom.sgit.ai/articles/x.html</code>, the forward from the old address is one rule and nobody has to keep a map.</p>
+  <div class="tablewrap"><table>
+    <tr><th>On sgit.ai</th><th>On newsroom.sgit.ai</th><th>Note</th></tr>
+    <tr><td><code>/articles/…</code> (articles, desk, collections, newsletter, graphs, feed, images, cards, banners)</td><td><code>/articles/…</code></td><td>free there today</td></tr>
+    <tr><td><code>/articles/index.html</code> (the front page)</td><td><code>/</code> and <code>/articles/index.html</code></td><td>the front page becomes the homepage; see <a href="#decisions">decisions</a></td></tr>
+    <tr><td><code>/newsroom/…</code> (backstage, wire.json)</td><td><code>/newsroom/…</code></td><td><b>collides</b> with the existing <code>/newsroom/index.html</code> (the design of the newsroom's roles and operations). Move that page to <code>/design/newsroom.html</code> and keep a forward at its old path</td></tr>
+    <tr><td><code>/account/…</code>, <code>/subscribe/</code>, <code>/meter/</code></td><td>same</td><td>free there today</td></tr>
+    <tr><td><code>/.well-known/sgit-subscribe.json</code></td><td>same, unchanged</td><td>the same public key and lane; subscriptions and reading shares keep landing in the same vault</td></tr>
+    <tr><td>(newsroom.sgit.ai's own sections: thesis, corrections, provenance, economics, rights, mvps, portugal, governance, world-news-day, databases, documents, library, shipped, network, about, admin)</td><td>unchanged paths</td><td>grouped in the navigation as <i>The design</i> and <i>The instances</i>; nothing of theirs is deleted</td></tr>
+  </table></div>
+
+  <h2 id="phases">Phases</h2>
+  <h3 id="p0">Phase 0: read, inventory, no changes</h3>
+  <ul>
+    <li>Read your generator, gates and release flow; write down which of sgit.ai's conventions you already share (markdown twins, llms.txt, version log, provenance blocks) and which you do not.</li>
+    <li>Confirm the one collision (<code>/newsroom/</code>) and look for any others in your tree.</li>
+    <li>Decide, and say, whether you will port sgit.ai's generator code or rebuild the same pages with yours. Porting is faster; the newsroom functions listed above can be lifted into a module of their own, with <code>content.py</code>, <code>newsroom.py</code>, <code>desk.py</code> and <code>policy_check.py</code> as they are.</li>
+    <li><b>Done when:</b> a short note in your repository lists the plan, the collisions and the decisions you need.</li>
+  </ul>
+  <h3 id="p1">Phase 1: the articles, exactly as they are</h3>
+  <ul>
+    <li>Bring <code>admin/content/articles/</code> (markdown, graphs, views) and the article images, cards, banners and Open Graph images (listed with their URLs in the bundle's <code>IMAGES.txt</code>; fetch them, about 60 MB).</li>
+    <li>Build every article page, its markdown twin, the threads and the graph, at the same path.</li>
+    <li>Keep the build's refusals: a graph quote that is not in its article fails the build; a teaser over 160 characters fails; a link to an article that does not exist fails.</li>
+    <li><b>Done when:</b> all 65 pages build, each article's text matches sgit.ai's, graphs.json has 65 entries, and your link checker passes.</li>
+  </ul>
+  <h3 id="p2">Phase 2: the newsroom around them</h3>
+  <ul>
+    <li>Front page from <code>front.json</code>, desk notes, collections, the newsletter and its issues, the backstage pages, the roles and their behaviour policies, the board, the log, the pitches, desk health.</li>
+    <li>Move your existing <code>/newsroom/index.html</code> to <code>/design/newsroom.html</code> with a forward.</li>
+    <li>Navigation: the newsroom first (front page, newsletter, every article, collections, from the desk, as graphs, how it runs, subscribe, your newsroom, your account); then <i>The design</i> (your current argument pages) and <i>The instances</i> (Portugal, governance, World News Day, databases).</li>
+    <li><b>Done when:</b> every page listed under <a href="#what">what is moving</a> exists, the policy checker passes on the role files, and the front page shows the same lead and highlights as sgit.ai.</li>
+  </ul>
+  <h3 id="p3">Phase 3: the reader account</h3>
+  <ul>
+    <li>Copy SG Meter at its versioned paths (<code>assets/components/sg-meter/v1/…</code> and <code>assets/components/base/v1/v1.0/v1.0.0/</code>); never edit a published version in place, add a new path.</li>
+    <li>Inject on every page what <code>page()</code> injects today: the <code>&lt;script type="application/json" id="sg-meter-config"&gt;</code> built from <code>METER</code> and <code>PERSONAS</code>, the balance in the top bar, the reader card at the foot of an article, and the module loaded with a dynamic <code>import()</code>.</li>
+    <li>Pages: account, newsroom (yours), personas, share, top-up, topped-up; the SG Meter docs.</li>
+    <li><b>Reader data does not move by itself.</b> localStorage belongs to an origin, so a reader's balance, history and personas on sgit.ai are invisible on newsroom.sgit.ai. Build <code>/account/import.html</code>: it reads a payload from the URL fragment (<code>#state=…</code>, base64url of gzip of the exported JSON, made with <code>CompressionStream</code>), shows what it contains, restores it with the meter's <code>restore()</code> only when the reader confirms, then removes the fragment with <code>history.replaceState</code>. The fragment is never sent to any server. The sgit.ai session will add the sending half (<code>/account/move.html</code>).</li>
+    <li>Run <code>test_meter.mjs</code> against your build (it serves the repository root itself).</li>
+    <li><b>Done when:</b> the meter test passes, an export from sgit.ai restores on newsroom.sgit.ai through the import page, and nothing is sent anywhere.</li>
+  </ul>
+  <h3 id="p4">Phase 4: feeds, agents and the outside world</h3>
+  <ul>
+    <li>feed.xml, wire.json, graphs.json, markdown twins and an llms.txt section for the newsroom, at the same paths.</li>
+    <li>Canonical URLs on every moved page point at newsroom.sgit.ai.</li>
+    <li>Open Graph images in JPEG (LinkedIn does not read WebP).</li>
+    <li><b>Done when:</b> the feed validates, wire.json lists every article, and a LinkedIn post inspector shows the card for one article.</li>
+  </ul>
+  <h3 id="p5">Phase 5: cutover (both sessions)</h3>
+  <ul>
+    <li>Until cutover, new articles keep arriving on sgit.ai from several sessions every day. Sync from sgit.ai (its repository or the public files) as often as needed; do not edit moved content on your side before cutover, or the two will drift.</li>
+    <li>At cutover the sgit.ai session will: change <code>/newsroom/publish.html</code> and the publishing guidance to point at newsroom.sgit.ai; turn every moved page into a short page with the canonical URL on newsroom.sgit.ai and a forward to it (GitHub Pages has no server redirects); drop the newsroom from its top navigation; keep the files for links and reference; and later decommission them.</li>
+    <li><b>Done when:</b> a new article published on newsroom.sgit.ai appears there with its graph, and the old sgit.ai address forwards to it.</li>
+  </ul>
+
+  <h2 id="rules">What not to break</h2>
+  <ul>
+    <li><b>Client side only.</b> No server, no database, no third-party scripts beyond what is already declared. Reader data stays in the reader's browser unless the reader chooses to send it, and the share page shows them every word first.</li>
+    <li><b>Checked, not claimed.</b> Every figure is from a named source; quotes are checked word for word; a correction is recorded as a correction, not a silent edit.</li>
+    <li><b>The authorship line.</b> Articles are by Dinis Cruz, written from his voice notes by a Claude Code session working as the newsroom; the byline and the closing note say so. Do not put model identifiers in the site.</li>
+    <li><b>House style.</b> Plain words, short sentences, no em dashes in prose, no "nobody has" claims without a source. sgit.ai's validator enforces several of these; carry the rules into your gates.</li>
+    <li><b>Versioned components.</b> A published component path never changes; a fix is a new path.</li>
+    <li><b>The prices are hypotheses with dates.</b> <a href="../../articles/going-live-with-the-reading-meter.html">Going live with the reading meter</a> wrote down five hypotheses and a review date before the first payment, and <a href="../../articles/pay-to-keep-your-persona.html">pay to keep your persona</a> added two. Do not change them; add new ones as dated additions.</li>
+    <li><b>Your own honesty rules.</b> newsroom.sgit.ai says on its face what runs and what is only designed. The newsroom running there is the first part of the design that runs; say so, precisely, and keep saying what does not.</li>
+  </ul>
+
+  <h2 id="decisions">Decisions for Dinis, before or during the move</h2>
+  <ol>
+    <li><b>The homepage.</b> The newsroom front page at <code>/</code>, with the current thesis page one click away (recommended), or the thesis stays the homepage.</li>
+    <li><b>The meter's storage key</b> on the new origin: keep <code>sgit.meter.v1</code> (simplest for imports) or start <code>newsroom.meter.v1</code>.</li>
+    <li><b>The £5 Stripe Payment Link</b> is still not created. Its redirect should point at <code>https://newsroom.sgit.ai/account/topped-up.html?session_id={CHECKOUT_SESSION_ID}</code> once the move is done.</li>
+    <li><b>SG Meter's documentation</b>: move with the newsroom (recommended, it is where the meter runs) or stay on sgit.ai as a product library.</li>
+    <li><b>The name.</b> "SGit Newsroom" for now; a better name can come later as an alias.</li>
+  </ol>
+
+  <h2 id="open">Open items handed over</h2>
+  <ul>
+    <li>The reading-share messages land in the subscribe vault's lane marked <code>X-SGit-Form: reading-share</code>; the drain tool in that vault must file them apart from subscriptions (<a href="subscribe-lane-agent-brief.html#reading-share">drain brief</a>).</li>
+    <li>Open pitches in <code>admin/content/newsroom/pitches/</code> are waiting for an Editor run.</li>
+    <li>The review date for the meter's hypotheses is eight weeks after the payment link goes live.</li>
+  </ul>
+
+  <h2 id="why">Why this brief is public</h2>
+  <p>Because it is an example of the flow it describes. A decision made in a voice note, a brief written for another agent with the facts it needs and the lines it must not cross, published where anyone, person or agent, can read it and check it against the source files it names. The other session reads this page; Dinis reviews each phase; the articles keep arriving while the move happens. If the brief is wrong about something, the fix is a correction to this page, recorded as one.</p>
+  <p class="small dim">Written by the Claude Code session that built the newsroom on sgit.ai, from a voice note by Dinis Cruz, 10 October 2026. Counts and line numbers are as of site v0.7.36.</p>
+</main>
+<sg-meter view="page" kind="page" date="" topics="" title="Moving the SGit Newsroom to newsroom.sgit.ai, migration brief" quiet></sg-meter>
+<script type="application/json" id="sg-meter-config">{"storageKey": "sgit.meter.v1", "start": 500, "newDays": 7, "symbol": "£", "prices": {"article_new": 10, "article": 5, "issue": 3, "note": 2, "collection": 2, "page": 1, "free": 0}, "depth": true, "minDepth": 0.1, "topup": {"amount": 500, "link": ""}, "packs": [{"id": "p2", "price": 200, "bonus": 0}, {"id": "p5", "price": 500, "bonus": 0}, {"id": "p10", "price": 1000, "bonus": 100}, {"id": "p20", "price": 2000, "bonus": 300}], "links": {"account": "account/index.html", "topup": "account/top-up.html", "how": "articles/going-live-with-the-reading-meter.html"}, "rating": {"price": [0, 0.5, 1, 1.5, 2], "more": [-3, -1, 0, 3, 6]}, "autoKeep": true, "picks": {"feed": "articles/graphs.json", "base": "articles/"}, "links2": {"newsroom": "account/newsroom.html", "personas": "account/personas.html", "share": "account/share.html"}, "share": {"contact": ".well-known/sgit-subscribe.json", "form": "reading-share", "site": "sgit.ai", "max": 300}, "personas": {"presets": [{"id": "founder", "label": "The founder", "name": "Morgan", "theme": "#b45309", "blurb": "Building a company: what to build, what to charge, what to secure and when to stop. Strategy, pricing and the questions investors ask.", "topics": {"startups-and-strategy": 3, "agents-and-policy": 1}, "articles": ["the-question-is-whether-they-miss-it", "price-it-then-give-it-away", "saas-apocalypse-decided-by-inertia-not-by-ai", "who-are-you-protecting-against", "knowing-when-to-stop", "open-source-is-not-free", "going-live-with-the-reading-meter"]}, {"id": "journalist", "label": "The journalist", "name": "Rowan", "theme": "#1d4ed8", "blurb": "Where news came from and where it could go: story vaults, liquid content, local evidence, and what publishers are owed by the machines that read them.", "topics": {"news-and-evidence": 3, "graphs-and-knowledge": 1}, "articles": ["how-news-got-here", "future-of-news-story-vault-not-paywall", "liquid-content-needs-water", "the-bridge-followed-to-the-end", "story-vault-meets-reader-skills", "the-waiting-room-knew-first", "token-bill-nobody-is-sending"]}, {"id": "security", "label": "The security lead", "name": "Sam", "theme": "#b91c1c", "blurb": "Agents as insiders: who you are protecting against, blast radius, identity, incidents and the controls that hold when a model does not.", "topics": {"agents-and-policy": 3, "vaults-and-method": 1}, "articles": ["who-are-you-protecting-against", "ultimate-insider-three-collisions", "footprint-and-blast-radius", "six-agents-one-inbox", "the-investigation-github-owes-its-customers", "why-my-agents-do-not-run-on-my-laptop", "the-identity-we-wanted-to-give-the-agents", "where-is-the-why"]}, {"id": "builder", "label": "The AI builder", "name": "Kai", "theme": "#0f766e", "blurb": "Making agents work day to day: Claude Code sessions, hooks, memory, behaviour policies, and the engineering lessons each mistake left behind.", "topics": {"agents-and-policy": 2, "site-and-engineering": 2, "vaults-and-method": 1}, "articles": ["how-i-work-with-claude", "a-second-reader-the-agent-cannot-skip", "re-anchoring-agent-behaviour-policies", "every-mistake-added-a-rule", "memory-is-not-a-spectator-sport", "encrypted-memory-for-isolated-agents", "hope-or-enforcement"]}, {"id": "board", "label": "The board member", "name": "Jordan", "theme": "#6d28d9", "blurb": "How AI is changing the business and how to govern it: business models, due diligence, risk acceptance, accountability and the governance frameworks.", "topics": {"graphs-and-knowledge": 2, "startups-and-strategy": 2, "agents-and-policy": 1}, "articles": ["saas-apocalypse-decided-by-inertia-not-by-ai", "send-an-agent-not-a-spreadsheet", "every-risk-is-already-accepted", "agency-is-not-a-yes", "the-ai-governance-stack-as-a-graph", "ai-baseline-control-framework", "what-sgit-is"]}], "names": {"agents-and-policy": "The Policy Architect", "vaults-and-method": "The Vault Keeper", "news-and-evidence": "The Fact Finder", "startups-and-strategy": "The Strategist", "graphs-and-knowledge": "The Cartographer", "site-and-engineering": "The Builder"}}}</script>
+<script>
+import('../../assets/components/sg-meter/v1/v1.3/v1.3.1/sg-meter.js?v=v0.7.37')
+ .catch(function (e) { console.error('[sg-meter] component failed to load:', e); });
+</script>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../../admin/versions.html">v0.7.37</a> · <a href="../../admin/index.html">engineering</a> · <a href="newsroom-move-to-newsroom-sgit-ai.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../../docs/surfaces.html">Three surfaces</a>
+    <a href="../../docs/installation.html">Installation</a>
+    <a href="../../docs/quickstart.html">Quickstart</a>
+    <a href="../../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../../docs/agents.html">Working with AI agents</a>
+    <a href="../../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../../docs/vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../../security/index.html">Security</a>
+    <a href="../../why/index.html">Why does this exist?</a>
+    <a href="../../use-cases/index.html">Use cases</a>
+    <a href="../../case-studies/index.html">Case studies</a>
+    <a href="../../skills/index.html">Skills for AI agents</a>
+    <a href="../../docs/briefs/index.html">Cross-team briefs</a>
+    <a href="../../articles/index.html#subscribe">Subscribe to new articles</a>
+    <a href="../../llms.txt">llms.txt</a>
+    <a href="../../llms-full.txt">llms-full.txt</a>
+    <a href="../../admin/index.html">Admin &amp; engineering</a>
+    <a href="../../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.7.37';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+var mine=V.slice(3),last=0;
+function fresh(){if(location.hostname!=='sgit.ai'||Date.now()-last<60000)return;last=Date.now();
+fetch('/version.txt?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.text():''}).then(function(t){t=(t||'').trim();if(!/^v[0-9]+[.][0-9]+[.][0-9]+$/.test(t)||t===mine)return;
+var k='sgit.fresh:'+location.pathname;try{if(sessionStorage.getItem(k)===t)return;sessionStorage.setItem(k,t)}catch(e){}
+var u=new URL(location.href);u.searchParams.set('v',t);location.replace(u.href)}).catch(function(){})}
+try{var u=new URL(location.href);if(u.searchParams.get('v')===mine){u.searchParams.delete('v');history.replaceState(history.state,'',u.pathname+u.search+u.hash)}}catch(e){}
+fresh();addEventListener('pageshow',function(e){if(e.persisted){last=0;fresh()}});document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')fresh()});
+})();
+</script>
+</body>
+</html>
