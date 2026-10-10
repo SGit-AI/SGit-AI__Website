@@ -71,8 +71,11 @@ jobs:
 
           # Backfill: every release commit carries its version in the subject
           # ("site vR.M.N: ..."). Tag any that are missing — idempotent, so this
-          # is a no-op on every run after the first.
-          git log --format='%H;%s' | while IFS=';' read -r h s; do
+          # is a no-op on every run after the first. Oldest first: when two commits
+          # claim the same version (a release renumbered after a merge), the first
+          # to claim it is the one that shipped. Newest first tagged the later,
+          # superseded commit as v0.7.28 on 10 October.
+          git log --reverse --format='%H;%s' | while IFS=';' read -r h s; do
             v=$(printf '%s' "$s" | grep -oP '^site v\K[0-9]+\.[0-9]+\.[0-9]+(?=:)' || true)
             if [ -n "$v" ] && ! git rev-parse -q --verify "refs/tags/v$v" >/dev/null; then
               git tag "v$v" "$h"
@@ -139,10 +142,18 @@ jobs:
           # to it — so releases predating a workflow change are rejected. Push
           # what is accepted, report what is not; a single
           # `git push origin --tags` from any workflows-scoped human credential
-          # completes the set, after which this loop is a chain of no-ops.
+          # completes the set.
+          #
+          # Only tags the remote does not already have are pushed. Until v0.7.33
+          # this loop pushed every tag, one round trip each: with ~330 releases it
+          # took two minutes on every release push (the deploy waits on this job)
+          # and grew with each release, although all but one or two were already
+          # on the remote. One ls-remote now answers which are missing.
+          REMOTE_TAGS=$(git ls-remote --tags --refs origin 'v*' | sed 's#.*refs/tags/##' | sort)
+          MISSING=$(git tag --list 'v*' | sort | comm -23 - <(printf '%s\n' "$REMOTE_TAGS") | grep -vx "$TAG" || true)
+          echo "backfill: $(printf '%s' "$MISSING" | grep -c . || true) tag(s) missing on the remote"
           MISSED=0
-          for t in $(git tag --list 'v*'); do
-            [ "$t" = "$TAG" ] && continue
+          for t in $MISSING; do
             if git push origin "refs/tags/$t" >/dev/null 2>&1; then
               echo "backfill ok: $t"
             else
