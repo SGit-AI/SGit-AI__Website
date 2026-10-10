@@ -46,8 +46,8 @@ Edition of **2026-10-08**. Third edition. A day of articles on how agents decide
 
 Computed at every build from the files: placements that point at nothing, articles published since the edition, open pitches, articles without a graph or a card. The same list is what `python3 admin/build/desk.py` prints for the Editor.
 
-- To do`front.json` 11 article(s) published since the 2026-10-08 edition: who-will-game-the-reading-meter, going-live-with-the-reading-meter, open-source-is-not-free, a-meter-in-the-browser, re-anchoring-agent-behaviour-policies, the-ai-governance-stack-as-a-graph
-- To do`newsletter/` a newsletter issue is due: 11 articles since issue 2 (2026-10-08)
+- To do`front.json` 12 article(s) published since the 2026-10-08 edition: pay-to-keep-your-persona, who-will-game-the-reading-meter, going-live-with-the-reading-meter, open-source-is-not-free, a-meter-in-the-browser, re-anchoring-agent-behaviour-policies
+- To do`newsletter/` a newsletter issue is due: 12 articles since issue 2 (2026-10-08)
 - To do`newsroom/pitches/2026-10-10__going-live-with-the-reading-meter.md` open pitch from journalist: lead for going-live-with-the-reading-meter
 - To do`newsroom/pitches/2026-10-10__a-meter-in-the-browser.md` open pitch from journalist: lead for a-meter-in-the-browser
 - Note`newsroom/newsletter/002-2026-10-08.md` issue 2 has no linkedin: URL yet; add it once it is posted

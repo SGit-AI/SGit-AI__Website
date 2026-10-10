@@ -14,13 +14,40 @@ Every article here has a semantic graph beside it: the ideas it rests on, the cl
 
 The graphs are data first and pictures second. Take them as JSON: [all articles in one file](graphs.json), with the topics, the teasers and the links between articles resolved, or one file per article at `articles/graphs/<slug>.json` (for example [this one](graphs/footprint-and-blast-radius.json)). The pages on this site are rendered from the same files at build time; nothing here is hand-written HTML.
 
-60 of 60 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
+61 of 61 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
 
 ## How the articles connect
 
 *[diagram]*
 
-60 articles, 250 links between them (395 mentions in all). 51 articles cite an earlier one; 8 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (19 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+61 articles, 253 links between them (399 mentions in all). 52 articles cite an earlier one; 8 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (19 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+
+## [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](pay-to-keep-your-persona.md)
+
+2026-10-10 · Startups & strategyNews & evidence
+
+Paying for content because you have to, feel you should, or think it right works to a degree but does not scale and makes readers feel the wrong thing; what readers would pay for is what helps them, time, context, focus and good decisions, carried by a persona built from their reading, named, drawn as a graph, curated, and multiplied for focus, and the paid product is that persona following them between devices and agents with the privacy intact.
+
+*[diagram]*
+**concept**claim**artefact**example**question
+
+**9 nodes, 8 edges**
+
+- **Paying because you have to, or feel you should** (concept) Paywall, the ask, the donation: they work to a degree and do not scale.
+- **£12 to avoid the supporter messages** (example) The Guardian's middle tier sells, among other things, the end of the ask.
+- **8 million donors, $10.58 on average** (example) Wikimedia's 2023-24 fundraising: what asking everybody reaches.
+- **Pay for time, context, focus and good decisions** (claim) What a reader is actually buying.
+- **The persona** (artefact) Built from reading, named from its topics, drawn as a graph, curated with Keep and Not for this persona.
+- **Personas are focus** (claim) Users of personalisation want several personas, one per kind of reading.
+- **Five starting personas** (artefact) Founder, journalist, security lead, AI builder, board member, built from what the site publishes.
+- **Two devices, two strangers** (question) Not a cheat to worry about but a bad experience that worsens as the persona improves.
+- **A persona that follows you** (claim) To phone, laptop and agent, in a vault only the reader can open: the thing worth paying for.
+
+> The reader should pay because paying helps them. The value proposition in one line.
+
+> A persona is a way to manage focus. Why one reader wants several personas.
+
+builds on [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](#who-will-game-the-reading-meter), [Git for things you cannot put on GitHub](#what-sgit-is).
 
 ## [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](who-will-game-the-reading-meter.md)
 
@@ -47,7 +74,7 @@ A reading meter kept entirely in the browser can be cheated by anyone, but the p
 
 > The struggling reader is protected by the meter asking nothing of them. Why the usability work is aimed at the bottom of the ladder.
 
-builds on [Who are you protecting against? Draw the security line where the attacker is, not above it](#who-are-you-protecting-against), [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending); continued by [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter).
+builds on [Who are you protecting against? Draw the security line where the attacker is, not above it](#who-are-you-protecting-against), [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending); continued by [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](#pay-to-keep-your-persona), [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter).
 
 ## [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](going-live-with-the-reading-meter.md)
 
@@ -75,7 +102,7 @@ The reading meter goes live as an honesty box rather than a paywall: pages are c
 
 > A payment is the only signal on this site that cannot be produced by curiosity. The business case in one line.
 
-builds on [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser), [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away), [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](#who-will-game-the-reading-meter); continued by [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](#who-will-game-the-reading-meter), [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser).
+builds on [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser), [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away), [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](#who-will-game-the-reading-meter); continued by [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](#pay-to-keep-your-persona), [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](#who-will-game-the-reading-meter), [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser).
 
 ## [Open source is not free: who pays to keep the long tail working?](open-source-is-not-free.md)
 
@@ -1860,7 +1887,7 @@ sgit gives the files people say they cannot put on GitHub the history, branches 
 
 > We would rather be checkable than impressive. The house style that the live vaults, the version log and the NOT BUILT pages all follow.
 
-continued by [Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not](#riskmandate-ten-questions), [Every mistake added a rule: complexity, agents, and the way back to shipping](#every-mistake-added-a-rule), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [Twenty sites in fifteen days, and what that did to the writing](#nineteen-sites).
+continued by [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](#pay-to-keep-your-persona), [Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not](#riskmandate-ten-questions), [Every mistake added a rule: complexity, agents, and the way back to shipping](#every-mistake-added-a-rule), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [Twenty sites in fifteen days, and what that did to the writing](#nineteen-sites).
 
 ## [Seven vaults, one method](seven-vaults-one-method.md)
 

@@ -50,7 +50,7 @@ every one audited first; findings on the page
 27**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-132**articles and release notes**
+133**articles and release notes**
 all with a markdown twin and an RSS feed
 
 17**cross-team briefs, in the open**

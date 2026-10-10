@@ -25,17 +25,17 @@ SGit Newsroom
 
 ## Start with an argument, not a menu
 
-The articles carry most of what this site believes, with the figures, the data and the links to check it. Sixty so far; the newsroom picks where to start.
+The articles carry most of what this site believes, with the figures, the data and the links to check it. Sixty-one so far; the newsroom picks where to start.
 
 [Built three ways2026-10-08Agents & policy**Hope or enforcement: one customer service agent, three designs, and who keeps each promise**One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.**Why it leads.** One mandate, three designs and a published vault: the behaviour-policy argument measured rather than asserted, down to which rules a model is only hoped to keep.Read it →](articles/hope-or-enforcement.md)
 
 ### Also new
 
-1. 2026-10-10[Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the…](articles/who-will-game-the-reading-meter.md)
-2. 2026-10-10[Going live with the reading meter](articles/going-live-with-the-reading-meter.md)
-3. 2026-10-10[Open source is not free](articles/open-source-is-not-free.md)
-4. 2026-10-10[A meter in the browser](articles/a-meter-in-the-browser.md)
-5. 2026-10-10[Re-anchoring](articles/re-anchoring-agent-behaviour-policies.md)
+1. 2026-10-10[Pay to keep your persona](articles/pay-to-keep-your-persona.md)
+2. 2026-10-10[Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the…](articles/who-will-game-the-reading-meter.md)
+3. 2026-10-10[Going live with the reading meter](articles/going-live-with-the-reading-meter.md)
+4. 2026-10-10[Open source is not free](articles/open-source-is-not-free.md)
+5. 2026-10-10[A meter in the browser](articles/a-meter-in-the-browser.md)
 [Thread2026-10-08Historian**Range is the feature, so the stop has to be designed**Four articles from one day, written for different reasons, end on the same line: an agent's range is what makes it useful, and it is also why the decision to stop cannot be left to the agent.](articles/desk/range-is-the-feature-so-the-stop-is-designed.md)
 
 [A scale for deciding2026-10-08**Agency is not a yes**Seven dimensions, seven levels, and the line below which a decider carries liability rather than agency. Its own vault holds the scale.](articles/agency-is-not-a-yes.md)[Live, local2026-10-08**The waiting room knew first**A hospital IT outage nobody could check from home, kept as evidence in a vault while it was still happening.](articles/the-waiting-room-knew-first.md)[Complexity2026-10-08**Every mistake added a rule**When every agent mistake adds a rule, the rules become the problem. Mapped, with the way back to shipping.](articles/every-mistake-added-a-rule.md)

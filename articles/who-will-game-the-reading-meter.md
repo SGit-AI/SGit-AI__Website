@@ -112,6 +112,7 @@ Startups & strategyAgents & policy[This article as a graph →](graphs.md#who-wi
 
 ### Continued by
 
+- [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](pay-to-keep-your-persona.md) Readers should pay because it helps them: a persona with a name and a graph, several for focus, and one that follows you between devices.
 - [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](going-live-with-the-reading-meter.md) Pay for the share of a page you read, go below zero with no nagging, top up £5 on Stripe: the plan, and the numbers we check in eight weeks.
 
 [All articles](index.md) · [All graphs](graphs.md)
