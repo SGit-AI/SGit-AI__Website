@@ -2,7 +2,7 @@
 
 > Every published version of the article "Every risk is already accepted. The only question is by whom, and for how long.", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/every-risk-is-already-accepted.html> · site v0.7.35 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/every-risk-is-already-accepted.html> · site v0.7.36 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -17,7 +17,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
 | **v1.1.1** | 2026-10-07 | patch | 3,746 | front matter only (the text is unchanged) | [`d86d0b70a`](https://github.com/SGit-AI/SGit-AI__Website/commit/d86d0b70abbe2879a585ed04c090b63f3584ca4e) | [what changed](every-risk-is-already-accepted/v1.1.1.md) · [current](../every-risk-is-already-accepted.md) |
-| **v1.1.0** | 2026-09-28 | minor | 3,746 | +0 / −0 words; 0 changed, 0 added, 0 removed paragraphs | [`6a06cb06a`](https://github.com/SGit-AI/SGit-AI__Website/commit/6a06cb06a6b44a05e15bc5e643474002b69006e4) | [what changed](every-risk-is-already-accepted/v1.1.0.md) |
+| **v1.1.0** | 2026-09-28 | minor | 3,746 | +41 / −0 words; 0 changed, 1 added, 0 removed paragraphs | [`6a06cb06a`](https://github.com/SGit-AI/SGit-AI__Website/commit/6a06cb06a6b44a05e15bc5e643474002b69006e4) | [what changed](every-risk-is-already-accepted/v1.1.0.md) |
 | **v1.0.0** | 2026-09-24 | published | 3,705 | first published | [`138dbe4e7`](https://github.com/SGit-AI/SGit-AI__Website/commit/138dbe4e76efee087cb7d2ad10cf7821ccda1ba1) |  |
 
 [← Back to the article](../every-risk-is-already-accepted.md) · [All articles](../index.md)

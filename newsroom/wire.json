@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-10",
-  "site_version": "v0.7.35",
+  "site_version": "v0.7.36",
   "about": "https://sgit.ai/newsroom/index.html",
   "front": {
     "edition": "2026-10-08",
@@ -72,6 +72,38 @@
     }
   ],
   "articles": [
+    {
+      "slug": "pay-after-you-read",
+      "title": "Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time",
+      "date": "2026-10-10",
+      "updated": "",
+      "author": "Dinis Cruz",
+      "url": "https://sgit.ai/articles/pay-after-you-read.html",
+      "markdown": "https://sgit.ai/articles/pay-after-you-read.md",
+      "card": "https://sgit.ai/articles/cards/pay-after-you-read.webp",
+      "graph": "https://sgit.ai/articles/graphs/pay-after-you-read.json",
+      "teaser": "Seven releases in one afternoon turned the reading meter into a working model: pay after you read, and the rating sets the price.",
+      "summary": "On 10 October the reading meter on sgit.ai went, in seven releases between 12:09 and 15:49, from an experiment to a working pay-on-demand publication. A reader pays pence for the share of a page they actually read, from a balance that can go below zero without ever blocking them; after reading, they say how useful it was, and that sets the price, from free to double; their reading builds personas and a newsroom of their own, kept in their browser; and they can send it to us, encrypted, for a front page designed for them. Once a Stripe link is set, the only question left is whether people pay. This article introduces each feature, shows how each one grew out of the last, with a Wardley map that adds them one at a time, explains why paying after you see the value is the right way round, and why every decision started from one rule: do not rip off the reader. It ends with an offer to sites with traffic that would like to test it.",
+      "topics": [
+        "news-and-evidence",
+        "startups-and-strategy"
+      ],
+      "tags": [
+        "newsroom",
+        "reading-meter",
+        "micropayments",
+        "pricing",
+        "personalisation",
+        "personas",
+        "wardley-maps",
+        "innovation",
+        "agents",
+        "article"
+      ],
+      "placement": [],
+      "linkedin": null,
+      "notes": []
+    },
     {
       "slug": "where-the-vault-keys-live",
       "title": "Where the vault keys live: key management at sgit-ai v0.20.0, and what comes next",
@@ -1762,6 +1794,37 @@
       "notes": []
     },
     {
+      "slug": "how-news-got-here",
+      "title": "The reader was always the product: a corrected history of how news got into this mess",
+      "date": "2026-09-29",
+      "updated": "",
+      "author": "Dinis Cruz",
+      "url": "https://sgit.ai/articles/how-news-got-here.html",
+      "markdown": "https://sgit.ai/articles/how-news-got-here.md",
+      "card": "https://sgit.ai/articles/cards/how-news-got-here.webp",
+      "graph": "https://sgit.ai/articles/graphs/how-news-got-here.json",
+      "teaser": "News has sold the reader to advertisers since 1833; the web took the monopoly, the platforms made the reader measurable, and AI took the traffic.",
+      "summary": "This started as a voice memo setting out my understanding of how the publishing and news industry got to where it is, in four eras, print, web, platforms and AI, and an instruction to check it and correct it. The research corrected it in four places, and the corrections are the article. The reader did not become the product when the web arrived; the reader has been the product since the penny press of 1833, and by 2005 advertising was 82% of American newspaper revenue. What the web took was not the business model but the monopoly underneath it, the local toll bridge that let a paper charge what it liked and fund reporting with margins of 20 to 30 per cent; classifieds alone fell from $19.6 billion to about $6 billion in nine years. The platforms then made the reader a measurable product and the publisher a tenant: Google and Meta took over half of American digital advertising by 2017, Facebook referrals fell 58% in six years, false news travelled 70% further than true, and newspaper newsrooms lost 57% of their staff. AI removed the traffic itself, and the industry's answer has been to go back to selling to readers, by subscription, so that circulation revenue now exceeds advertising for the first time in living memory. The road not taken was there from the start, a payment code reserved in the web's own protocol in 1997 and never used, and the evidence that people pay when paying is easy, from a million songs in a week in 2003 to five million paid newsletter subscriptions in 2025, is what the story vault work on this site is built on.",
+      "topics": [
+        "news-and-evidence"
+      ],
+      "tags": [
+        "news",
+        "publishing",
+        "history",
+        "advertising",
+        "provenance",
+        "micropayments",
+        "economics",
+        "article"
+      ],
+      "placement": [
+        "collection:local-news-kept-as-evidence"
+      ],
+      "linkedin": null,
+      "notes": []
+    },
+    {
       "slug": "six-agents-one-inbox",
       "title": "Six agents, one inbox: what a real multi-agent setup taught me about access policies",
       "date": "2026-09-29",
@@ -1794,37 +1857,6 @@
       "notes": [
         "create-anywhere-edit-your-own"
       ]
-    },
-    {
-      "slug": "how-news-got-here",
-      "title": "The reader was always the product: a corrected history of how news got into this mess",
-      "date": "2026-09-29",
-      "updated": "",
-      "author": "Dinis Cruz",
-      "url": "https://sgit.ai/articles/how-news-got-here.html",
-      "markdown": "https://sgit.ai/articles/how-news-got-here.md",
-      "card": "https://sgit.ai/articles/cards/how-news-got-here.webp",
-      "graph": "https://sgit.ai/articles/graphs/how-news-got-here.json",
-      "teaser": "News has sold the reader to advertisers since 1833; the web took the monopoly, the platforms made the reader measurable, and AI took the traffic.",
-      "summary": "This started as a voice memo setting out my understanding of how the publishing and news industry got to where it is, in four eras, print, web, platforms and AI, and an instruction to check it and correct it. The research corrected it in four places, and the corrections are the article. The reader did not become the product when the web arrived; the reader has been the product since the penny press of 1833, and by 2005 advertising was 82% of American newspaper revenue. What the web took was not the business model but the monopoly underneath it, the local toll bridge that let a paper charge what it liked and fund reporting with margins of 20 to 30 per cent; classifieds alone fell from $19.6 billion to about $6 billion in nine years. The platforms then made the reader a measurable product and the publisher a tenant: Google and Meta took over half of American digital advertising by 2017, Facebook referrals fell 58% in six years, false news travelled 70% further than true, and newspaper newsrooms lost 57% of their staff. AI removed the traffic itself, and the industry's answer has been to go back to selling to readers, by subscription, so that circulation revenue now exceeds advertising for the first time in living memory. The road not taken was there from the start, a payment code reserved in the web's own protocol in 1997 and never used, and the evidence that people pay when paying is easy, from a million songs in a week in 2003 to five million paid newsletter subscriptions in 2025, is what the story vault work on this site is built on.",
-      "topics": [
-        "news-and-evidence"
-      ],
-      "tags": [
-        "news",
-        "publishing",
-        "history",
-        "advertising",
-        "provenance",
-        "micropayments",
-        "economics",
-        "article"
-      ],
-      "placement": [
-        "collection:local-news-kept-as-evidence"
-      ],
-      "linkedin": null,
-      "notes": []
     },
     {
       "slug": "token-bill-nobody-is-sending",

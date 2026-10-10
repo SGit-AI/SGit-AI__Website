@@ -2,7 +2,7 @@
 
 > Every published version of the article "A supply chain of vaults", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/supply-chain-of-vaults.html> · site v0.7.35 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/supply-chain-of-vaults.html> · site v0.7.36 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -17,8 +17,8 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
 | **v1.2.1** | 2026-10-07 | patch | 5,030 | front matter only (the text is unchanged) | [`d86d0b70a`](https://github.com/SGit-AI/SGit-AI__Website/commit/d86d0b70abbe2879a585ed04c090b63f3584ca4e) | [what changed](supply-chain-of-vaults/v1.2.1.md) · [current](../supply-chain-of-vaults.md) |
-| **v1.2.0** | 2026-09-28 | minor | 5,030 | +0 / −0 words; 0 changed, 0 added, 0 removed paragraphs | [`bcb99f919`](https://github.com/SGit-AI/SGit-AI__Website/commit/bcb99f919fba6fa02de979ccfa2fddcccfb6e83e) | [what changed](supply-chain-of-vaults/v1.2.0.md) |
-| **v1.1.0** | 2026-09-27 | minor | 4,945 | +0 / −0 words; 0 changed, 0 added, 0 removed paragraphs | [`4030f39f7`](https://github.com/SGit-AI/SGit-AI__Website/commit/4030f39f7239ffc5e8c1ce81a2f3e77768a9aa57) | [what changed](supply-chain-of-vaults/v1.1.0.md) |
+| **v1.2.0** | 2026-09-28 | minor | 5,030 | +306 / −221 words; 1 changed, 4 added, 2 removed paragraphs | [`bcb99f919`](https://github.com/SGit-AI/SGit-AI__Website/commit/bcb99f919fba6fa02de979ccfa2fddcccfb6e83e) | [what changed](supply-chain-of-vaults/v1.2.0.md) |
+| **v1.1.0** | 2026-09-27 | minor | 4,945 | +563 / −205 words; 2 changed, 3 added, 1 removed paragraphs | [`4030f39f7`](https://github.com/SGit-AI/SGit-AI__Website/commit/4030f39f7239ffc5e8c1ce81a2f3e77768a9aa57) | [what changed](supply-chain-of-vaults/v1.1.0.md) |
 | **v1.0.0** | 2026-09-27 | published | 4,587 | first published | [`e783118b3`](https://github.com/SGit-AI/SGit-AI__Website/commit/e783118b31dfa81953715b7fcb1d7f44f7686508) |  |
 
 [← Back to the article](../supply-chain-of-vaults.md) · [All articles](../index.md)

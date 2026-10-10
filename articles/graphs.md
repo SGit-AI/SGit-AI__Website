@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.35 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.36 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,13 +14,41 @@ Every article here has a semantic graph beside it: the ideas it rests on, the cl
 
 The graphs are data first and pictures second. Take them as JSON: [all articles in one file](graphs.json), with the topics, the teasers and the links between articles resolved, or one file per article at `articles/graphs/<slug>.json` (for example [this one](graphs/footprint-and-blast-radius.json)). The pages on this site are rendered from the same files at build time; nothing here is hand-written HTML.
 
-64 of 64 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
+65 of 65 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
 
 ## How the articles connect
 
 *[diagram]*
 
-64 articles, 271 links between them (419 mentions in all). 55 articles cite an earlier one; 9 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (20 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+65 articles, 277 links between them (426 mentions in all). 56 articles cite an earlier one; 9 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (20 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+
+## [Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time](pay-after-you-read.md)
+
+2026-10-10 · News & evidenceStartups & strategy
+
+On 10 October the reading meter became a working pay-on-demand publication in seven releases in 3 hours 40 minutes: pay for the share read from a balance that can go below zero, rate usefulness after reading to set the price from free to double, personas and newsrooms kept in the reader's browser, and consented, encrypted sharing for a designed front page. Paying after the value inverts Leanpub's pay-before model and is supported, with caveats, by pay-what-you-want evidence; Blendle's refunds show ratings measure quality. Each feature grew from using the last, which a Wardley map shows: new components on the left, built on commodities already there. It was fast because of non-functional work done before. Every decision started from not ripping off the reader. What is missing is traffic.
+
+*[diagram]*
+**claim**method**example
+
+**10 nodes, 9 edges**
+
+- **Pay by depth, below zero** (method) A price per page charged for the share read, from a balance that never blocks.
+- **Usefulness sets the price** (method) Rate after reading, 1 free to 5 double; more like this moves the persona.
+- **Personas and newsrooms** (method) Built from reading, kept in the browser, a front page for each.
+- **Share your reading** (method) Shown word for word, copied or sent encrypted with consent, for a designed front page.
+- **Pay after the value** (claim) Leanpub prices before reading; here the reader decides after.
+- **Pay what you want evidence** (example) Gneezy 2010, Kim, Natter and Spann 2009, Riener and Traxler 2012; Blendle refunds up to 50% for gossip.
+- **Do not rip off the reader** (claim) Value for money over money left on the table.
+- **One release at a time** (claim) Each feature came from using the last; the end state was not designed.
+- **The more we have, the faster we go** (claim) Gates, versioned components, tests, git and reused lanes made it fast.
+- **Test it on a site with traffic** (claim) SG Meter is ready for others; what is missing is readers.
+
+> The only question left is whether people will pay for it. What changed on 10 October.
+
+> If you saw the value, pay; if you saw more value, pay more; if you did not, do not. The reader card in one line.
+
+builds on [Open source is not free: who pays to keep the long tail working?](#open-source-is-not-free), [Every mistake added a rule: complexity, agents, and the way back to shipping](#every-mistake-added-a-rule), [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser), [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](#who-will-game-the-reading-meter), [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](#pay-to-keep-your-persona).
 
 ## [Where the vault keys live: key management at sgit-ai v0.20.0, and what comes next](where-the-vault-keys-live.md)
 
@@ -106,7 +134,7 @@ Paying for content because you have to, feel you should, or think it right works
 
 > A persona is a way to manage focus. Why one reader wants several personas.
 
-builds on [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](#who-will-game-the-reading-meter), [Git for things you cannot put on GitHub](#what-sgit-is), [One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece](#one-article-five-readers); continued by [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter).
+builds on [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](#who-will-game-the-reading-meter), [Git for things you cannot put on GitHub](#what-sgit-is), [One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece](#one-article-five-readers); continued by [Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time](#pay-after-you-read), [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter).
 
 ## [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](who-will-game-the-reading-meter.md)
 
@@ -133,7 +161,7 @@ A reading meter kept entirely in the browser can be cheated by anyone, but the p
 
 > The struggling reader is protected by the meter asking nothing of them. Why the usability work is aimed at the bottom of the ladder.
 
-builds on [Who are you protecting against? Draw the security line where the attacker is, not above it](#who-are-you-protecting-against), [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending); continued by [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](#pay-to-keep-your-persona), [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter).
+builds on [Who are you protecting against? Draw the security line where the attacker is, not above it](#who-are-you-protecting-against), [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending); continued by [Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time](#pay-after-you-read), [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](#pay-to-keep-your-persona), [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter).
 
 ## [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](going-live-with-the-reading-meter.md)
 
@@ -161,7 +189,7 @@ The reading meter goes live as an honesty box rather than a paywall: pages are c
 
 > A payment is the only signal on this site that cannot be produced by curiosity. The business case in one line.
 
-builds on [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser), [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](#pay-to-keep-your-persona), [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away), [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](#who-will-game-the-reading-meter); continued by [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](#pay-to-keep-your-persona), [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](#who-will-game-the-reading-meter), [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser).
+builds on [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser), [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](#pay-to-keep-your-persona), [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away), [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](#who-will-game-the-reading-meter); continued by [Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time](#pay-after-you-read), [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](#pay-to-keep-your-persona), [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](#who-will-game-the-reading-meter), [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser).
 
 ## [Open source is not free: who pays to keep the long tail working?](open-source-is-not-free.md)
 
@@ -190,7 +218,7 @@ Open source is not free: somebody pays, at least in time. The long tail of old v
 
 > Pence from individuals can make the long tail roughly self-funding. They cannot make it safe to depend on. What the break-even view shows.
 
-builds on [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser).
+builds on [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser); continued by [Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time](#pay-after-you-read).
 
 ## [One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece](one-article-five-readers.md)
 
@@ -249,7 +277,7 @@ A reading meter that lives only in the browser, a few pence a page from five pou
 
 > The history never leaves the machine it was made on. Personalisation without an account, a cookie banner or a server.
 
-builds on [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it), [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [The bridge, followed to the end: what one local story is worth when it is kept as a graph](#the-bridge-followed-to-the-end); continued by [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [Open source is not free: who pays to keep the long tail working?](#open-source-is-not-free).
+builds on [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it), [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [The bridge, followed to the end: what one local story is worth when it is kept as a graph](#the-bridge-followed-to-the-end); continued by [Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time](#pay-after-you-read), [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [Open source is not free: who pays to keep the long tail working?](#open-source-is-not-free).
 
 ## [Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not](re-anchoring-agent-behaviour-policies.md)
 
@@ -672,7 +700,7 @@ Founders who now work as engineers with agents often meet complexity not in thei
 
 > If you are not releasing something, you are probably not solving problems at the right altitude. Shipping as the check on over-engineering.
 
-builds on [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Git for things you cannot put on GitHub](#what-sgit-is), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The bridge, followed to the end: what one local story is worth when it is kept as a graph](#the-bridge-followed-to-the-end), [Green does not mean live](#green-does-not-mean-live); continued by [One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece](#one-article-five-readers), [A second reader the agent cannot skip: how two wrong emails became a gate on every draft](#a-second-reader-the-agent-cannot-skip), [Knowing when to stop: what experience gives people, and what we have to design into agents](#knowing-when-to-stop).
+builds on [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Git for things you cannot put on GitHub](#what-sgit-is), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The bridge, followed to the end: what one local story is worth when it is kept as a graph](#the-bridge-followed-to-the-end), [Green does not mean live](#green-does-not-mean-live); continued by [Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time](#pay-after-you-read), [One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece](#one-article-five-readers), [A second reader the agent cannot skip: how two wrong emails became a gate on every draft](#a-second-reader-the-agent-cannot-skip), [Knowing when to stop: what experience gives people, and what we have to design into agents](#knowing-when-to-stop).
 
 ## [Liquid content needs water: liquefy the journalist's notebook, not the finished product](liquid-content-needs-water.md)
 
@@ -1494,6 +1522,39 @@ Agents are the insider threat that never scaled before, the infrastructure was d
 
 builds on [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs); continued by [Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not](#riskmandate-ten-questions), [Where is the why? A permission prompt asked me to decide, and kept the reason](#where-is-the-why), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered](#the-investigation-github-owes-its-customers), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception).
 
+## [The reader was always the product: a corrected history of how news got into this mess](how-news-got-here.md)
+
+2026-09-29 · News & evidence
+
+The reader has been the product since 1833 and the money has always flowed to whoever owned the road, so the fix is to stop charging for the road and charge for the cargo: the story as a graph with every claim tied to hashed evidence.
+
+*[diagram]*
+**concept**claim**method**artefact**example
+
+**15 nodes, 18 edges**
+
+- **The reader was always the product** (claim) The reader stopped being the customer in 1833 and became the audience sold to the advertiser, and by 2005 advertising was 82% of American newspaper revenue.
+- **Penny press** (example) The New York Sun of September 1833 sold on the street for a cent and was paid for by advertising while other papers relied on high-priced subscriptions.
+- **Unregulated toll bridge** (concept) A monopoly city newspaper was the only way for a local advertiser to reach local households, and its margins of 20 to 30 per cent paid for the reporting.
+- **Classifieds collapse** (example) Classifieds were about 40% of revenue and fell from $19.6 billion in 2000 to about $6 billion in 2009 once Craigslist let people list a sofa for free.
+- **The measurable reader** (concept) Cookies in 1996 and AdSense in 2003 let the reader be followed from page to page, and by 2017 Google and Meta took 54.7% of American digital advertising.
+- **Publisher as tenant** (claim) Publishers depended on traffic from companies that could switch it off, and Facebook referrals to news sites fell 58% in six years.
+- **Novelty beats truth** (claim) False news on Twitter was 70% more likely to be retweeted than true news, spread by humans not bots, and Facebook weighted an anger reaction at five times a like.
+- **Provenance is labour** (claim) Following a claim to its source is hours of a person's time, and newsrooms that lost 57% of their jobs cut those hours first because they did not move the click.
+- **AI removes the traffic** (claim) Search traffic to publishers fell a third in the year to November 2025 while the crawlers that replaced it fetch tens of thousands of pages per reader they send back.
+- **Back to selling to readers, by rent** (claim) Circulation revenue overtook advertising in 2021, but what is sold is the subscription, unlimited access priced for the reader who forgets to cancel.
+- **402 Payment Required** (artefact) HTTP/1.1 reserved a status code in 1997 for digital cash or micropayment systems, and it is still reserved for future use with no browser having implemented it.
+- **Mental transaction costs** (concept) Szabo and Shirky argued that deciding whether an article is worth two cents costs more than two cents, an argument that does not apply to an agent with a wallet.
+- **Advertising as the default** (claim) The banner ad, the cookie, the pop-up and AdSense were small decisions that together made advertising the default model to support online content.
+- **People pay when paying is easy** (claim) A million iTunes songs sold in the first week in 2003 and Substack passed five million paid subscriptions in 2025, in an industry that insisted people never would.
+- **Charge for the cargo, not the road** (method) Sell the story as a graph, every claim walked to frozen and hashed evidence, in pence and on demand, with the money walking back to whoever made the fact.
+
+> The reader stopped being the customer in 1833. The reader became the audience that was sold to the customer, and the cover price became a way of proving the audience existed. The most important of the four corrections: the web did not make the reader the product, the penny press did.
+
+> The fix is to stop charging for the road and start charging for the cargo. The four eras end here: the money followed whoever owned distribution, so the proposal is to sell the evidence itself.
+
+builds on [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs); continued by [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser), [Liquid content needs water: liquefy the journalist's notebook, not the finished product](#liquid-content-needs-water), [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](#story-vault-meets-reader-skills), [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download).
+
 ## [Six agents, one inbox: what a real multi-agent setup taught me about access policies](six-agents-one-inbox.md)
 
 2026-09-29 · Agents & policy
@@ -1527,39 +1588,6 @@ Write an agent's access policy as a table with a column for how each rule is enf
 > The only way to know what a connector can do is to try. The attachment finding showed a policy written from documentation was wrong.
 
 builds on [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox); continued by [A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies](#a-mac-of-the-agents-own), [Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not](#riskmandate-ten-questions), [Zoom into an agent's behaviour policy and you find the business logic](#the-behaviour-policy-is-the-business-logic), [An open AI governance framework, and what its licence let us build](#ai-baseline-control-framework), [Where is the why? A permission prompt asked me to decide, and kept the reason](#where-is-the-why), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](#send-an-agent-not-a-spreadsheet), [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions).
-
-## [The reader was always the product: a corrected history of how news got into this mess](how-news-got-here.md)
-
-2026-09-29 · News & evidence
-
-The reader has been the product since 1833 and the money has always flowed to whoever owned the road, so the fix is to stop charging for the road and charge for the cargo: the story as a graph with every claim tied to hashed evidence.
-
-*[diagram]*
-**concept**claim**method**artefact**example
-
-**15 nodes, 18 edges**
-
-- **The reader was always the product** (claim) The reader stopped being the customer in 1833 and became the audience sold to the advertiser, and by 2005 advertising was 82% of American newspaper revenue.
-- **Penny press** (example) The New York Sun of September 1833 sold on the street for a cent and was paid for by advertising while other papers relied on high-priced subscriptions.
-- **Unregulated toll bridge** (concept) A monopoly city newspaper was the only way for a local advertiser to reach local households, and its margins of 20 to 30 per cent paid for the reporting.
-- **Classifieds collapse** (example) Classifieds were about 40% of revenue and fell from $19.6 billion in 2000 to about $6 billion in 2009 once Craigslist let people list a sofa for free.
-- **The measurable reader** (concept) Cookies in 1996 and AdSense in 2003 let the reader be followed from page to page, and by 2017 Google and Meta took 54.7% of American digital advertising.
-- **Publisher as tenant** (claim) Publishers depended on traffic from companies that could switch it off, and Facebook referrals to news sites fell 58% in six years.
-- **Novelty beats truth** (claim) False news on Twitter was 70% more likely to be retweeted than true news, spread by humans not bots, and Facebook weighted an anger reaction at five times a like.
-- **Provenance is labour** (claim) Following a claim to its source is hours of a person's time, and newsrooms that lost 57% of their jobs cut those hours first because they did not move the click.
-- **AI removes the traffic** (claim) Search traffic to publishers fell a third in the year to November 2025 while the crawlers that replaced it fetch tens of thousands of pages per reader they send back.
-- **Back to selling to readers, by rent** (claim) Circulation revenue overtook advertising in 2021, but what is sold is the subscription, unlimited access priced for the reader who forgets to cancel.
-- **402 Payment Required** (artefact) HTTP/1.1 reserved a status code in 1997 for digital cash or micropayment systems, and it is still reserved for future use with no browser having implemented it.
-- **Mental transaction costs** (concept) Szabo and Shirky argued that deciding whether an article is worth two cents costs more than two cents, an argument that does not apply to an agent with a wallet.
-- **Advertising as the default** (claim) The banner ad, the cookie, the pop-up and AdSense were small decisions that together made advertising the default model to support online content.
-- **People pay when paying is easy** (claim) A million iTunes songs sold in the first week in 2003 and Substack passed five million paid subscriptions in 2025, in an industry that insisted people never would.
-- **Charge for the cargo, not the road** (method) Sell the story as a graph, every claim walked to frozen and hashed evidence, in pence and on demand, with the money walking back to whoever made the fact.
-
-> The reader stopped being the customer in 1833. The reader became the audience that was sold to the customer, and the cover price became a way of proving the audience existed. The most important of the four corrections: the web did not make the reader the product, the penny press did.
-
-> The fix is to stop charging for the road and start charging for the cargo. The four eras end here: the money followed whoever owned distribution, so the proposal is to sell the evidence itself.
-
-builds on [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs); continued by [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser), [Liquid content needs water: liquefy the journalist's notebook, not the finished product](#liquid-content-needs-water), [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](#story-vault-meets-reader-skills), [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download).
 
 ## [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](token-bill-nobody-is-sending.md)
 

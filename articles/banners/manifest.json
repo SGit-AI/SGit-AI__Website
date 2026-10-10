@@ -6,6 +6,23 @@
  "generated_by": "admin/build/build_pages.py",
  "entries": [
   {
+   "slug": "pay-after-you-read",
+   "kind": "article",
+   "kicker": "SGit Newsroom",
+   "date": "2026-10-10",
+   "author": "Dinis Cruz",
+   "title": "Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time",
+   "teaser": "Seven releases in one afternoon turned the reading meter into a working model: pay after you read, and the rating sets the price.",
+   "ideas": [
+    "Pay after the value",
+    "Do not rip off the reader",
+    "One release at a time"
+   ],
+   "hero": "articles/images/pv-wardley-today.webp",
+   "url": "sgit.ai/articles/pay-after-you-read.html",
+   "out": "articles/banners/pay-after-you-read.jpg"
+  },
+  {
    "slug": "where-the-vault-keys-live",
    "kind": "article",
    "kicker": "SGit Newsroom",
@@ -805,23 +822,6 @@
    "out": "articles/banners/ultimate-insider-three-collisions.jpg"
   },
   {
-   "slug": "six-agents-one-inbox",
-   "kind": "article",
-   "kicker": "SGit Newsroom",
-   "date": "2026-09-29",
-   "author": "Dinis Cruz",
-   "title": "Six agents, one inbox: what a real multi-agent setup taught me about access policies",
-   "teaser": "An access policy for an agent is only as real as its worst row: every rule in a real six-agent setup, graded by how it is enforced today.",
-   "ideas": [
-    "The worst row",
-    "The account is the blast radius",
-    "The documentation disagrees with itself"
-   ],
-   "hero": "articles/images/six-agents-matrix.webp",
-   "url": "sgit.ai/articles/six-agents-one-inbox.html",
-   "out": "articles/banners/six-agents-one-inbox.jpg"
-  },
-  {
    "slug": "how-news-got-here",
    "kind": "article",
    "kicker": "SGit Newsroom",
@@ -837,6 +837,23 @@
    "hero": "articles/images/news-four-eras.webp",
    "url": "sgit.ai/articles/how-news-got-here.html",
    "out": "articles/banners/how-news-got-here.jpg"
+  },
+  {
+   "slug": "six-agents-one-inbox",
+   "kind": "article",
+   "kicker": "SGit Newsroom",
+   "date": "2026-09-29",
+   "author": "Dinis Cruz",
+   "title": "Six agents, one inbox: what a real multi-agent setup taught me about access policies",
+   "teaser": "An access policy for an agent is only as real as its worst row: every rule in a real six-agent setup, graded by how it is enforced today.",
+   "ideas": [
+    "The worst row",
+    "The account is the blast radius",
+    "The documentation disagrees with itself"
+   ],
+   "hero": "articles/images/six-agents-matrix.webp",
+   "url": "sgit.ai/articles/six-agents-one-inbox.html",
+   "out": "articles/banners/six-agents-one-inbox.jpg"
   },
   {
    "slug": "token-bill-nobody-is-sending",
@@ -1151,10 +1168,10 @@
     "Next: an issue picked for what you care about"
    ],
    "mosaic": [
+    "articles/cards/pay-after-you-read.webp",
     "articles/cards/where-the-vault-keys-live.webp",
     "articles/cards/the-infographic-bake-off.webp",
-    "articles/cards/pay-to-keep-your-persona.webp",
-    "articles/cards/who-will-game-the-reading-meter.webp"
+    "articles/cards/pay-to-keep-your-persona.webp"
    ],
    "url": "sgit.ai/subscribe/",
    "out": "articles/banners/subscribe.jpg"
