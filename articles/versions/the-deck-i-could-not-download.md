@@ -2,7 +2,7 @@
 
 > Every published version of the article "The deck I could not download", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/the-deck-i-could-not-download.html> · site v0.7.35 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/the-deck-i-could-not-download.html> · site v0.7.36 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

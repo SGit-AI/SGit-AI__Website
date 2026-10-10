@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.35'
+SITE_VERSION = 'v0.7.36'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,18 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.35', '2026-10-10', 'this release',
+    ('v0.7.36', '2026-10-10', 'this release',
+     "PAY AFTER YOU READ. A new article introducing everything the reading meter gained on 10 October, as one working "
+     "model: a price for every page paid by the share read, a balance that goes below zero without blocking, the reader "
+     "card whose usefulness rating sets the price (free to double), personas and a newsroom for each, the reading account, "
+     "sending your reading encrypted for a designed front page, article versions and a £5 Stripe top-up. It sets paying "
+     "after the value against Leanpub's pay-before model, with the evidence on pay what you want (Gneezy and others, Kim, "
+     "Natter and Spann, Riener and Traxler) and Blendle's refunds; the user-first decisions behind each feature; how it "
+     "grew one release at a time from pt.newsroom.sgit.ai's wallet, as an animated Wardley map; why it could go this fast "
+     "(gates, versioned components, a browser test, git, reused lanes, parallel sessions); an honest list of what is still "
+     "missing; and an offer to sites with traffic to test it. Eight figures: the animated map, the final map, the "
+     "afternoon's timeline from git, the decisions, and four screenshots from a fresh browser."),
+    ('v0.7.35', '2026-10-10', 'git d2c00d23',
      "THE KEY HANDOVER PROMPT, IN FULL. Where the vault keys live gains 'The prompt, in full': the two parts given to a "
      "Claude session that holds a vault key to send to the registry. First the reason (a vault key is address, "
      "credential and encryption key with no reset; transcripts are durable and two keys were already rotated because "

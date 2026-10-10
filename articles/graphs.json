@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-10",
-  "site_version": "v0.7.35",
+  "site_version": "v0.7.36",
   "schema": "https://sgit.ai/articles/graphs.html",
   "topics": [
     {
@@ -54,6 +54,196 @@
     "produces"
   ],
   "articles": [
+    {
+      "slug": "pay-after-you-read",
+      "title": "Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time",
+      "date": "2026-10-10",
+      "updated": "",
+      "url": "https://sgit.ai/articles/pay-after-you-read.html",
+      "markdown": "https://sgit.ai/articles/pay-after-you-read.md",
+      "card": "https://sgit.ai/articles/cards/pay-after-you-read.webp",
+      "teaser": "Seven releases in one afternoon turned the reading meter into a working model: pay after you read, and the rating sets the price.",
+      "topics": [
+        "news-and-evidence",
+        "startups-and-strategy"
+      ],
+      "tags": [
+        "newsroom",
+        "reading-meter",
+        "micropayments",
+        "pricing",
+        "personalisation",
+        "personas",
+        "wardley-maps",
+        "innovation",
+        "agents",
+        "article"
+      ],
+      "links_out": [
+        "open-source-is-not-free",
+        "every-mistake-added-a-rule",
+        "going-live-with-the-reading-meter",
+        "a-meter-in-the-browser",
+        "who-will-game-the-reading-meter",
+        "pay-to-keep-your-persona"
+      ],
+      "links_in": [],
+      "graph": {
+        "slug": "pay-after-you-read",
+        "teaser": "Seven releases in one afternoon turned the reading meter into a working model: pay after you read, and the rating sets the price.",
+        "topics": [
+          "news-and-evidence",
+          "startups-and-strategy"
+        ],
+        "core_idea": "On 10 October the reading meter became a working pay-on-demand publication in seven releases in 3 hours 40 minutes: pay for the share read from a balance that can go below zero, rate usefulness after reading to set the price from free to double, personas and newsrooms kept in the reader's browser, and consented, encrypted sharing for a designed front page. Paying after the value inverts Leanpub's pay-before model and is supported, with caveats, by pay-what-you-want evidence; Blendle's refunds show ratings measure quality. Each feature grew from using the last, which a Wardley map shows: new components on the left, built on commodities already there. It was fast because of non-functional work done before. Every decision started from not ripping off the reader. What is missing is traffic.",
+        "nodes": [
+          {
+            "id": "meter",
+            "label": "Pay by depth, below zero",
+            "kind": "method",
+            "summary": "A price per page charged for the share read, from a balance that never blocks."
+          },
+          {
+            "id": "card",
+            "label": "Usefulness sets the price",
+            "kind": "method",
+            "summary": "Rate after reading, 1 free to 5 double; more like this moves the persona."
+          },
+          {
+            "id": "personas",
+            "label": "Personas and newsrooms",
+            "kind": "method",
+            "summary": "Built from reading, kept in the browser, a front page for each."
+          },
+          {
+            "id": "share",
+            "label": "Share your reading",
+            "kind": "method",
+            "summary": "Shown word for word, copied or sent encrypted with consent, for a designed front page."
+          },
+          {
+            "id": "after",
+            "label": "Pay after the value",
+            "kind": "claim",
+            "summary": "Leanpub prices before reading; here the reader decides after."
+          },
+          {
+            "id": "evidence",
+            "label": "Pay what you want evidence",
+            "kind": "example",
+            "summary": "Gneezy 2010, Kim, Natter and Spann 2009, Riener and Traxler 2012; Blendle refunds up to 50% for gossip."
+          },
+          {
+            "id": "reader-first",
+            "label": "Do not rip off the reader",
+            "kind": "claim",
+            "summary": "Value for money over money left on the table."
+          },
+          {
+            "id": "iteration",
+            "label": "One release at a time",
+            "kind": "claim",
+            "summary": "Each feature came from using the last; the end state was not designed."
+          },
+          {
+            "id": "fast",
+            "label": "The more we have, the faster we go",
+            "kind": "claim",
+            "summary": "Gates, versioned components, tests, git and reused lanes made it fast."
+          },
+          {
+            "id": "offer",
+            "label": "Test it on a site with traffic",
+            "kind": "claim",
+            "summary": "SG Meter is ready for others; what is missing is readers."
+          }
+        ],
+        "edges": [
+          {
+            "from": "meter",
+            "to": "card",
+            "rel": "leads-to"
+          },
+          {
+            "from": "meter",
+            "to": "personas",
+            "rel": "leads-to"
+          },
+          {
+            "from": "personas",
+            "to": "share",
+            "rel": "leads-to"
+          },
+          {
+            "from": "card",
+            "to": "after",
+            "rel": "example-of"
+          },
+          {
+            "from": "evidence",
+            "to": "after",
+            "rel": "example-of"
+          },
+          {
+            "from": "reader-first",
+            "to": "card",
+            "rel": "produces"
+          },
+          {
+            "from": "iteration",
+            "to": "card",
+            "rel": "produces"
+          },
+          {
+            "from": "fast",
+            "to": "iteration",
+            "rel": "depends-on"
+          },
+          {
+            "from": "offer",
+            "to": "fast",
+            "rel": "depends-on"
+          }
+        ],
+        "links": {
+          "articles": [
+            "a-meter-in-the-browser",
+            "going-live-with-the-reading-meter",
+            "who-will-game-the-reading-meter",
+            "pay-to-keep-your-persona",
+            "every-mistake-added-a-rule",
+            "open-source-is-not-free"
+          ],
+          "pages": [
+            "meter/index.html",
+            "meter/security.html",
+            "account/share.html",
+            "account/newsroom.html"
+          ],
+          "sites": [
+            "https://pt.newsroom.sgit.ai/carteira/index.html",
+            "https://leanpub.com/refunds",
+            "https://pubmed.ncbi.nlm.nih.gov/20647467/",
+            "https://techcrunch.com/2016/03/23/blendle-us-launch/",
+            "https://reutersinstitute.politics.ox.ac.uk/digital-news-report/2026/dnr-executive-summary"
+          ]
+        },
+        "quotes": [
+          {
+            "text": "The only question left is whether people will pay for it.",
+            "why": "What changed on 10 October."
+          },
+          {
+            "text": "If you saw the value, pay; if you saw more value, pay more; if you did not, do not.",
+            "why": "The reader card in one line."
+          },
+          {
+            "text": "The afternoon was cheap because the right-hand side of the map was already built.",
+            "why": "Why it went fast."
+          }
+        ]
+      }
+    },
     {
       "slug": "where-the-vault-keys-live",
       "title": "Where the vault keys live: key management at sgit-ai v0.20.0, and what comes next",
@@ -491,6 +681,7 @@
         "one-article-five-readers"
       ],
       "links_in": [
+        "pay-after-you-read",
         "going-live-with-the-reading-meter"
       ],
       "graph": {
@@ -663,6 +854,7 @@
         "token-bill-nobody-is-sending"
       ],
       "links_in": [
+        "pay-after-you-read",
         "pay-to-keep-your-persona",
         "going-live-with-the-reading-meter"
       ],
@@ -837,6 +1029,7 @@
         "who-will-game-the-reading-meter"
       ],
       "links_in": [
+        "pay-after-you-read",
         "pay-to-keep-your-persona",
         "who-will-game-the-reading-meter",
         "a-meter-in-the-browser"
@@ -1018,7 +1211,9 @@
       "links_out": [
         "a-meter-in-the-browser"
       ],
-      "links_in": [],
+      "links_in": [
+        "pay-after-you-read"
+      ],
       "graph": {
         "slug": "open-source-is-not-free",
         "teaser": "An old iMac, the long tail of old versions that projects are not paid to support, measured from public data, and five ways to pay for it, simulated.",
@@ -1477,6 +1672,7 @@
         "the-bridge-followed-to-the-end"
       ],
       "links_in": [
+        "pay-after-you-read",
         "going-live-with-the-reading-meter",
         "open-source-is-not-free"
       ],
@@ -4395,6 +4591,7 @@
         "green-does-not-mean-live"
       ],
       "links_in": [
+        "pay-after-you-read",
         "one-article-five-readers",
         "a-second-reader-the-agent-cannot-skip",
         "knowing-when-to-stop"
