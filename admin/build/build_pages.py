@@ -6042,8 +6042,105 @@ def subscribe_block(pre='', compact=False):
             f'articles and the desk notes; agents can read <a href="{pre}newsroom/wire.json">the wire</a>.</p></aside>')
 
 
+# ---- other ways to read an article. Written once as prose with its evidence, an article can
+# carry views extracted from it by the desk's readers (admin/content/newsroom/roles/): the
+# Explainer's two minutes, the Historian's place in the arc, the Storyteller's deck, the
+# Cartographer's map and the Librarian's catalogue. Each lives in
+# admin/content/articles/views/<slug>/ and every one is optional; an article without the folder
+# renders exactly as before. Rendered as <details>, so it works without JavaScript and prints.
+VIEWS_DIR = os.path.join(ADMIN, 'content', 'articles', 'views')
+VIEW_KIND_LABELS = [('claim', 'Claims'), ('evidence', 'Evidence'), ('data-point', 'Data points'),
+                    ('fact', 'Facts'), ('hypothesis', 'Hypotheses'), ('question', 'Open questions'),
+                    ('definition', 'Definitions'), ('method', 'Methods'), ('decision', 'Decisions'),
+                    ('limitation', 'Limitations'), ('example', 'Examples'), ('source', 'Sources'),
+                    ('artefact', 'Artefacts'), ('entity', 'Names')]
+
+
+def article_views(slug):
+    d = os.path.join(VIEWS_DIR, slug)
+    if not os.path.isdir(d):
+        return None
+    def read(name):
+        p = os.path.join(d, name)
+        return open(p).read() if os.path.exists(p) else None
+    v = {'explainer': read('explainer.md'), 'historian': read('historian.md')}
+    for k in ('catalog', 'deck', 'meta'):
+        t = read(k + '.json')
+        v[k] = json.loads(t) if t else None
+    return v
+
+
+def article_views_block(a):
+    v = article_views(a['slug'])
+    if not v:
+        return ''
+    where = f'articles/views/{a["slug"]}'
+    meta = v.get('meta') or {}
+    def md_view(md):
+        # drop the view's own H1: the summary line already names it
+        body = '\n'.join(l for l in md.splitlines() if not l.startswith('# '))
+        return LOADER.md_to_html(body, depth=1, where=where)
+    def first_h1(md, fallback):
+        return next((l[2:].strip() for l in md.splitlines() if l.startswith('# ')), fallback)
+    parts = []
+    if v['explainer']:
+        parts.append(('two-minutes', 'In two minutes', 'Explainer', first_h1(v['explainer'], ''),
+                      md_view(v['explainer']), True))
+    if v['historian']:
+        parts.append(('arc', 'In the arc', 'Historian', 'What it added, and where it sits',
+                      md_view(v['historian']), False))
+    if v['deck']:
+        dk = v['deck']
+        n = len(dk['slides'])
+        figs = ''.join(
+            f'<figure class="shot" data-shot="slide-{i:02d}.webp" data-dir="views/{a["slug"]}/" '
+            f'data-alt="Slide {i} of {n}"><figcaption>{i} / {n}</figcaption></figure>'
+            for i in range(1, n + 1))
+        pdf = (f' <a href="views/{a["slug"]}/{a["slug"]}.pdf">Download the deck as a PDF</a> (one page '
+               f'per slide, ready for a LinkedIn document post).' if meta.get('pdf') else '')
+        parts.append(('pictures', 'In pictures', 'Storyteller', f'{n} slides',
+                      f'<div class="vdeck">{figs}</div><p class="small dim">Swipe or scroll sideways.{pdf}</p>',
+                      False))
+    if meta.get('map'):
+        parts.append(('map', 'On the map', 'Cartographer', meta.get('map_caption', 'The argument as a map'),
+                      f'<figure class="shot" data-shot="map.webp" data-dir="views/{a["slug"]}/" '
+                      f'data-alt="{_esc(meta.get("map_caption", ""))}"><figcaption>{_esc(meta.get("map_caption", ""))}'
+                      f'</figcaption></figure>', False))
+    if v['catalog']:
+        cat = v['catalog']
+        items = cat.get('items', [])
+        groups = []
+        for kind, label in VIEW_KIND_LABELS:
+            its = [i for i in items if i.get('kind') == kind]
+            if not its:
+                continue
+            lis = ''.join(f'<li>{_esc(i["text"])} <span class="dim">({_esc(i.get("section", ""))})</span></li>'
+                          for i in its)
+            groups.append(f'<details class="vkind"><summary>{label}: <span class="vn">{len(its)}</span></summary><ul>{lis}</ul></details>')
+        flags = cat.get('flags') or []
+        flag_html = (f'<details class="vkind vflags"><summary>Flagged for the author: <span class="vn">{len(flags)}</span></summary>'
+                     '<ul>' + ''.join(f'<li>{_esc(f)}</li>' for f in flags) + '</ul></details>') if flags else ''
+        parts.append(('catalogue', 'The catalogue', 'Librarian',
+                      f'{len(items)} items, each anchored to a sentence of the article',
+                      '<p class="small dim">Everything the article contains, by kind. Every item was extracted '
+                      'with the exact sentence it came from, and a script checked each one against the article.</p>'
+                      + ''.join(groups) + flag_html, False))
+    if not parts:
+        return ''
+    how = meta.get('about', '/articles/one-article-five-readers.html')
+    out = ['\n<section class="aviews" id="views">\n <h2>Read it another way</h2>\n'
+           f' <p class="small dim">Views extracted from this article by the desk\'s readers, after it was written. '
+           f'None adds a claim the article does not make. <a href="{LOADER._link_href(how, 1, where)}">How they are made</a>.</p>\n']
+    for vid, title, role, sub, body, open_ in parts:
+        out.append(f' <details class="aview" id="view-{vid}"{" open" if open_ else ""}><summary>'
+                   f'<span class="aview-t">{title}</span><span class="aview-r"><span class="sr"> (</span>{role}<span class="sr">): </span></span>'
+                   f'<span class="aview-s">{_esc(sub)}</span></summary>\n  <div class="aview-b">{body}</div>\n </details>\n')
+    out.append('</section>\n')
+    return ''.join(out)
+
+
 def article_body(a):
-    ver = (f' &middot; <a href="../admin/versions.html">{a["version"]}</a>' if a['version'] else '')
+    ver =(f' &middot; <a href="../admin/versions.html">{a["version"]}</a>' if a['version'] else '')
     # The byline is the first thing after the title, because an article written in the
     # first person without a name on it is a provenance failure on a site about provenance.
     # author_url is either absolute (external profile) or site-root relative (a page here,
@@ -6064,6 +6161,7 @@ def article_body(a):
                if a.get('linkedin') else '')
             + (f' &middot; {_chips(a["tags"])}' if a['tags'] else '') + '</p>\n'
             f' <p class="abstract"><em><b>Abstract:</b> {a["summary"]}</em></p>\n'
+            + article_views_block(a)
             + LOADER.md_to_html(a['body'], depth=1, where=a['where'])
             + article_threads_block(a)
             + article_desk_block(a)
