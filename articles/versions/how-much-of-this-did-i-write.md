@@ -2,7 +2,7 @@
 
 > Every published version of the article "How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/how-much-of-this-did-i-write.html> · site v0.7.29 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/how-much-of-this-did-i-write.html> · site v0.7.30 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

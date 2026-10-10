@@ -2,7 +2,7 @@
 
 > Every published version of the article "Git for things you cannot put on GitHub", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/what-sgit-is.html> · site v0.7.29 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/what-sgit-is.html> · site v0.7.30 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

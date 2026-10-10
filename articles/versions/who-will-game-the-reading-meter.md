@@ -2,7 +2,7 @@
 
 > Every published version of the article "Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/who-will-game-the-reading-meter.html> · site v0.7.29 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/who-will-game-the-reading-meter.html> · site v0.7.30 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,7 +16,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.1.0** | 2026-10-10 | minor | 2,510 | +2 / −0 words; 1 changed, 0 added, 0 removed paragraphs | this release | [what changed](who-will-game-the-reading-meter/v1.1.0.md) · [current](../who-will-game-the-reading-meter.md) |
+| **v1.1.0** | 2026-10-10 | minor | 2,510 | +2 / −0 words; 1 changed, 0 added, 0 removed paragraphs | [`2d49ab1d8`](https://github.com/SGit-AI/SGit-AI__Website/commit/2d49ab1d821953fa15819daef046707bda169fef) | [what changed](who-will-game-the-reading-meter/v1.1.0.md) · [current](../who-will-game-the-reading-meter.md) |
 | **v1.0.0** | 2026-10-10 | published | 2,508 | first published | [`bf3701ab9`](https://github.com/SGit-AI/SGit-AI__Website/commit/bf3701ab9130757c5f1c1f27946bf7c31e6e8f1f) |  |
 
 [← Back to the article](../who-will-game-the-reading-meter.md) · [All articles](../index.md)

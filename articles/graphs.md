@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.29 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.30 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,13 +14,13 @@ Every article here has a semantic graph beside it: the ideas it rests on, the cl
 
 The graphs are data first and pictures second. Take them as JSON: [all articles in one file](graphs.json), with the topics, the teasers and the links between articles resolved, or one file per article at `articles/graphs/<slug>.json` (for example [this one](graphs/footprint-and-blast-radius.json)). The pages on this site are rendered from the same files at build time; nothing here is hand-written HTML.
 
-62 of 62 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
+63 of 63 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
 
 ## How the articles connect
 
 *[diagram]*
 
-62 articles, 265 links between them (413 mentions in all). 53 articles cite an earlier one; 9 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (20 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+63 articles, 267 links between them (415 mentions in all). 54 articles cite an earlier one; 9 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (20 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
 
 ## [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](pay-to-keep-your-persona.md)
 
@@ -75,6 +75,38 @@ A reading meter kept entirely in the browser can be cheated by anyone, but the p
 > The struggling reader is protected by the meter asking nothing of them. Why the usability work is aimed at the bottom of the ladder.
 
 builds on [Who are you protecting against? Draw the security line where the attacker is, not above it](#who-are-you-protecting-against), [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending); continued by [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](#pay-to-keep-your-persona), [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter).
+
+## [The infographic bake-off: which image model for which job, judged blind on 10 October 2026](the-infographic-bake-off.md)
+
+2026-10-10 · Site & engineeringNews & evidence
+
+To make infographics part of the newsroom's workflow, every image-output model on OpenRouter on 10 October 2026 was given the same briefs from one article, from 18 words to 2,800, plus an edit, a component, a brand slide and a deck, over five rounds with blind judging and recorded costs; the answer is to choose the model by the job, not the budget: Nano Banana 2.1 for concept slides, charts and decks, Gemini 3 Pro Image when speed matters, GPT-5.4 Image 2 for documents, edits, components and brand slides, with prompt rules learned from the faults and a style reference for every deck.
+
+*[diagram]*
+**concept**claim**method**artefact**example**question
+
+**14 nodes, 16 edges**
+
+- **Which model for which job** (question) Infographics are moving into the newsroom's daily workflow; the choice of model needs evidence.
+- **Every image model on OpenRouter** (concept) Eight models, the auto-router and a code-drawn control; none free.
+- **Eleven briefs from one article** (method) From an 18-word stat card to the whole article, plus edit, component, brand and deck.
+- **Blind judging** (method) A Designer agent fact-checked and scored every image under a random id; OCR as an independent check.
+- **Every cent recorded** (artefact) OpenRouter's usage cost per generation: $10.44 for 101 images.
+- **Cost per usable image** (concept) Half the spend bought images the judge would not use; price per image flatters failure.
+- **Give it the document** (claim) GPT-5.4 Image 2 scored 9 on the document and the whole article; the older GPT-5 Image got worse.
+- **An edit is a redraw** (example) Only GPT-5.4 Image 2 made three changes without breaking anything.
+- **The cheap model's limit** (claim) Nano Banana 2.1 had no usable image where every character was specified.
+- **Slide 1 as a style reference** (method) Attaching slide 1 raised every model's deck consistency from 1 or 2 to 4 or 5 of 5.
+- **Three models, three tiers** (claim) Nano Banana 2.1, Gemini 3 Pro Image, GPT-5.4 Image 2.
+- **Guidance and prompt rules** (artefact) Which model for which job, and rules such as never name the platform and say No other text.
+- **The bake-off vault** (artefact) Every brief, image, score, reason and cost, as an app.
+- **The answer has a date** (question) Models and prices change; the bake-off is built to be run again.
+
+> Give it the document, not a description of the picture. The finding that matches how ChatGPT is best used, and where it applies.
+
+> Choose the model by the job, not by the budget. The conclusion, in the article's own words.
+
+builds on [Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not](#re-anchoring-agent-behaviour-policies), [One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece](#one-article-five-readers).
 
 ## [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](going-live-with-the-reading-meter.md)
 
@@ -164,7 +196,7 @@ Long, evidence-rich articles are hard to consume, and the answer is not shorter 
 
 > a topic ontology tells you what is new to the topic; only a site ontology tells you what is new. The finding that sets the next step.
 
-builds on [Liquid content needs water: liquefy the journalist's notebook, not the finished product](#liquid-content-needs-water), [Zoom into an agent's behaviour policy and you find the business logic](#the-behaviour-policy-is-the-business-logic), [Every mistake added a rule: complexity, agents, and the way back to shipping](#every-mistake-added-a-rule), [Hope or enforcement: one customer service agent, three designs, and who keeps each promise](#hope-or-enforcement), [A second reader the agent cannot skip: how two wrong emails became a gate on every draft](#a-second-reader-the-agent-cannot-skip), [Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not](#re-anchoring-agent-behaviour-policies), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted); continued by [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](#pay-to-keep-your-persona).
+builds on [Liquid content needs water: liquefy the journalist's notebook, not the finished product](#liquid-content-needs-water), [Zoom into an agent's behaviour policy and you find the business logic](#the-behaviour-policy-is-the-business-logic), [Every mistake added a rule: complexity, agents, and the way back to shipping](#every-mistake-added-a-rule), [Hope or enforcement: one customer service agent, three designs, and who keeps each promise](#hope-or-enforcement), [A second reader the agent cannot skip: how two wrong emails became a gate on every draft](#a-second-reader-the-agent-cannot-skip), [Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not](#re-anchoring-agent-behaviour-policies), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted); continued by [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](#pay-to-keep-your-persona), [The infographic bake-off: which image model for which job, judged blind on 10 October 2026](#the-infographic-bake-off).
 
 ## [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](a-meter-in-the-browser.md)
 
@@ -218,7 +250,7 @@ Instructions given only in conversation can be lost when a long session is summa
 
 > A policy row with a number next to it is a different thing from a policy row on its own. Why the canary measures a rule.
 
-builds on [A second reader the agent cannot skip: how two wrong emails became a gate on every draft](#a-second-reader-the-agent-cannot-skip); continued by [One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece](#one-article-five-readers).
+builds on [A second reader the agent cannot skip: how two wrong emails became a gate on every draft](#a-second-reader-the-agent-cannot-skip); continued by [The infographic bake-off: which image model for which job, judged blind on 10 October 2026](#the-infographic-bake-off), [One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece](#one-article-five-readers).
 
 ## [The AI governance stack, as a graph: an answer to Hari Kota, built](the-ai-governance-stack-as-a-graph.md)
 
