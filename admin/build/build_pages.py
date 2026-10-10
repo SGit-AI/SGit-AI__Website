@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.39'
+SITE_VERSION = 'v0.7.40'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,15 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.39', '2026-10-10', 'this release',
+    ('v0.7.40', '2026-10-10', 'this release',
+     "HOW TO RUN SYNTHETIC USERS, AND FIVE ON NEWSROOM.SGIT.AI. A how-to article from three studies (store.sgit.ai, "
+     "riskmandate.ai and a new one): five to ten invented users of about five types, each a profile record, with an "
+     "expected journey written first, driving a real browser one screenshot at a time, interviewed and asked for a "
+     "rating, findings ordered by cost and checked before publishing; Claude Sonnet plays each user; the study lives in "
+     "a GitHub repository or a vault shared by a link; what went wrong, and a template. New vault #54, synthetic users on "
+     "newsroom.sgit.ai (bg1opz3c): five readers, 62 steps, 51 questions, 31 findings, six blocking, two labelled as "
+     "helper artefacts, and a measured bug: 51 of 527 figures missing after the move. Three figures."),
+    ('v0.7.39', '2026-10-10', 'git dfd5d236',
      "THE ZIGZAG. Pay after you read gains 'The zigzag: innovate, leverage, commoditise': Simon Wardley's ILC drawn for "
      "this project, from sgit's first release on 4 March 2026 (sg-send-cli 0.3.0, 88 sgit-ai releases to 0.20.0) through "
      "vaults that open as apps (first published 16 August, 53 now), Claude sessions with a repository and a vault, websites "

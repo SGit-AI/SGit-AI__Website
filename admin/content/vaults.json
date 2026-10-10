@@ -664,5 +664,19 @@
     "size": "8818 KB",
     "published": "2026-10-10",
     "n": 53
+  },
+  {
+    "slug": "newsroom-synthetic-users",
+    "name": "Synthetic users · newsroom.sgit.ai",
+    "vault_id": "bg1opz3c",
+    "category": "Analysis",
+    "what": "The method of #27 and #28 pointed at newsroom.sgit.ai: five invented readers drove a browser one screenshot at a time, 62 steps, 51 questions, 31 findings, six blocking, and a measured bug: 51 of 527 figures missing after the move",
+    "files": 83,
+    "bytes": 12278784,
+    "size": "11991 KB",
+    "published": "2026-10-10",
+    "n": 54,
+    "job": "Test a site with users who do not exist",
+    "why": "Each finding was checked against the browser's own record before publishing: two were the helper's doing and are labelled, one was measured against the site's files."
   }
 ]

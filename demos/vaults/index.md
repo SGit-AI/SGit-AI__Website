@@ -1,8 +1,8 @@
 # Published vaults, sgit.ai
 
-> Fifty-three vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it.
+> Fifty-four vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it.
 
-*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.7.39 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.7.40 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,10 +14,12 @@ Open any of these in your browser right now. Every read key here was published o
 
 **Nine are semantic graphs**, each in its own ontology, from a regulation down to a compute instance. · [The ladder, walked →](../fractal-graphs/index.md) · [What reading one costs →](../fractal-graphs/performance.md)
 
-**53 published vaults**: 18 reference, 13 briefing, 8 analysis, 5 application, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
+**54 published vaults**: 18 reference, 13 briefing, 9 analysis, 5 application, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
 
 | # | Vault | What it is | Category | Files | Size | Published |
 |---|---|---|---|---|---|---|
+
+| 54 | [Synthetic users · newsroom.sgit.ai](newsroom-synthetic-users/index.md)`bg1opz3c` | The method of #27 and #28 pointed at newsroom.sgit.ai: five invented readers drove a browser one screenshot at a time, 62 steps, 51 questions, 31 findings, six blocking, and a measured bug: 51 of 527 figures missing after the move | Analysis | 83 | 11991 KB | 2026-10-10 |
 
 | 53 | [Infographic bake-off](infographic-bakeoff/index.md)`po5i477i` | Every image model on OpenRouter on 10 October 2026, given the same eleven briefs from one article in five rounds: 101 images judged blind by a Designer agent, every cost recorded, an Accountant's ledger and projections, a Data Scientist's analysis, and guidance on which model for which job, with the runner, OCR scorer and an app | Reference | 378 | 8818 KB | 2026-10-10 |
 

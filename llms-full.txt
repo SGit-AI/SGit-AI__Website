@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.7.39). Nothing here needs a second request. Individual pages live at the paths
+> (v0.7.40). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -30,23 +30,23 @@ Pure Python · two runtime dependencies · Apache-2.0 · [or try it in your brow
 
 [Reference, **AIUC-1 conformance layer**, The AIUC-1 standard as a graph, plus a conformance layer that computes insurability, Open it →](demos/vaults/aiuc-1-conformance/index.md) [Application, **Agent permission games**, Two games about grants and mandates, the first vault here that phones home, Open it →](demos/vaults/agent-permission-games/index.md) [Presentation, **AI vs. AI, Black Hat EU 2025**, The Black Hat EU 2025 keynote, with its PDF exports and eight research papers, Open it →](demos/vaults/blackhat-eu-2025/index.md) [Report, **Penetration Test Report**, A penetration test report (fictional) with a re-test script per finding, Open it →](demos/vaults/pentest-report/index.md)
 
-Four of **53 published vaults**. Each opens with a read key printed on its page, no account, nothing to install, and the server that stores it cannot read it. [See all 53 →](demos/vaults/index.md)
+Four of **54 published vaults**. Each opens with a read key printed on its page, no account, nothing to install, and the server that stores it cannot read it. [See all 54 →](demos/vaults/index.md)
 
 SGit Newsroom
 
 ## Start with an argument, not a menu
 
-The articles carry most of what this site believes, with the figures, the data and the links to check it. Sixty-six so far; the newsroom picks where to start.
+The articles carry most of what this site believes, with the figures, the data and the links to check it. Sixty-seven so far; the newsroom picks where to start.
 
 [Built three ways2026-10-08Agents & policy**Hope or enforcement: one customer service agent, three designs, and who keeps each promise**One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.**Why it leads.** One mandate, three designs and a published vault: the behaviour-policy argument measured rather than asserted, down to which rules a model is only hoped to keep.Read it →](articles/hope-or-enforcement.md)
 
 ### Also new
 
-1. 2026-10-10[A link to a persona](articles/a-link-to-a-persona.md)
-2. 2026-10-10[Pay after you read](articles/pay-after-you-read.md)
-3. 2026-10-10[Where the vault keys live](articles/where-the-vault-keys-live.md)
-4. 2026-10-10[The infographic bake-off](articles/the-infographic-bake-off.md)
-5. 2026-10-10[Pay to keep your persona](articles/pay-to-keep-your-persona.md)
+1. 2026-10-10[How to run synthetic users on your own site](articles/how-to-run-synthetic-users.md)
+2. 2026-10-10[A link to a persona](articles/a-link-to-a-persona.md)
+3. 2026-10-10[Pay after you read](articles/pay-after-you-read.md)
+4. 2026-10-10[Where the vault keys live](articles/where-the-vault-keys-live.md)
+5. 2026-10-10[The infographic bake-off](articles/the-infographic-bake-off.md)
 [Thread2026-10-08Historian**Range is the feature, so the stop has to be designed**Four articles from one day, written for different reasons, end on the same line: an agent's range is what makes it useful, and it is also why the decision to stop cannot be left to the agent.](articles/desk/range-is-the-feature-so-the-stop-is-designed.md)
 
 [A scale for deciding2026-10-08**Agency is not a yes**Seven dimensions, seven levels, and the line below which a decider carries liability rather than agency. Its own vault holds the scale.](articles/agency-is-not-a-yes.md)[Live, local2026-10-08**The waiting room knew first**A hospital IT outage nobody could check from home, kept as evidence in a vault while it was still happening.](articles/the-waiting-room-knew-first.md)[Complexity2026-10-08**Every mistake added a rule**When every agent mistake adds a rule, the rules become the problem. Mapped, with the way back to shipping.](articles/every-mistake-added-a-rule.md)
@@ -73,9 +73,9 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-301site releases, each verified live before it was called done
+302site releases, each verified live before it was called done
 
-53vaults published with a deliberately public read key
+54vaults published with a deliberately public read key
 
 27sibling sites on `*.sgit.ai`, one question each
 
@@ -389,7 +389,7 @@ Loading results…
 ==============================================================================
 # Published vaults, sgit.ai
 
-> Fifty-three vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it.
+> Fifty-four vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it.
 >
 > Page: https://sgit.ai/demos/vaults/index.html
 
@@ -401,10 +401,12 @@ Open any of these in your browser right now. Every read key here was published o
 
 **Nine are semantic graphs**, each in its own ontology, from a regulation down to a compute instance. · [The ladder, walked →](../fractal-graphs/index.md) · [What reading one costs →](../fractal-graphs/performance.md)
 
-**53 published vaults**: 18 reference, 13 briefing, 8 analysis, 5 application, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
+**54 published vaults**: 18 reference, 13 briefing, 9 analysis, 5 application, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
 
 | # | Vault | What it is | Category | Files | Size | Published |
 |---|---|---|---|---|---|---|
+
+| 54 | [Synthetic users · newsroom.sgit.ai](newsroom-synthetic-users/index.md)`bg1opz3c` | The method of #27 and #28 pointed at newsroom.sgit.ai: five invented readers drove a browser one screenshot at a time, 62 steps, 51 questions, 31 findings, six blocking, and a measured bug: 51 of 527 figures missing after the move | Analysis | 83 | 11991 KB | 2026-10-10 |
 
 | 53 | [Infographic bake-off](infographic-bakeoff/index.md)`po5i477i` | Every image model on OpenRouter on 10 October 2026, given the same eleven briefs from one article in five rounds: 101 images judged blind by a Designer agent, every cost recorded, an Accountant's ledger and projections, a Data Scientist's analysis, and guidance on which model for which job, with the runner, OCR scorer and an app | Reference | 378 | 8818 KB | 2026-10-10 |
 
@@ -2289,11 +2291,11 @@ Live, end-to-end demonstrations, each one a vault that was actually created, pus
 
 **The rule every demo follows:** the vault's *read key* is published on purpose. It is derived one-way and cannot write, so publishing it is what makes the demo openable by anyone. The vault's *write key* appears nowhere: not in these pages, not in the repos, and the build refuses to push if one ever reaches a tracked file.
 
-## Fifty-three vaults, one page each
+## Fifty-four vaults, one page each
 
 The demos outgrew this page. Every vault whose read key this site publishes now has its own page under [**Published vaults**](vaults/index.md), what it does, which features it uses, the audit that ran before the key was published, and the vault itself running live in the page. Thirty at the last count, from a regulation parsed into a graph to a job application delivered as a vault, and the table there is generated from the same file as [the machine-readable list](vaults/llms.txt), so the two cannot drift.
 
-[Gallery · 53 vaults### Published vaultsEvery vault with a deliberately published read key, one page per vault, the vault running live in it. Graphs, presentations, briefing packs, records, applications.Open the gallery →](vaults/index.md)
+[Gallery · 54 vaults### Published vaultsEvery vault with a deliberately published read key, one page per vault, the vault running live in it. Graphs, presentations, briefing packs, records, applications.Open the gallery →](vaults/index.md)
 
 [Method### How a vault gets published hereThe seven steps behind every row: classify the credential, derive rather than refuse, audit with the read key, screenshot the real app, write the page, publish the key, verify with a negative control.Read the method →](vaults/publishing.md)
 
@@ -2563,7 +2565,7 @@ abp.sgit.ai · Agents & AI · [The Agent Behaviour Policy ↗](https://abp.sgit.
 | System → compute | ThreatModCon 2025 `0ict6flm` | 53 files · 4.1 MB | [threatmodcon-2025](../vaults/threatmodcon-2025/index.md) |
 | News: story → claim → source, six excerpts anchored | The Evidence Dispatch `c0vf9zz8`published by its owner | 235 files · 13.0 MB | [evidence-dispatch](../vaults/evidence-dispatch/index.md) |
 
-Every read key is on the vault's own page, published on purpose; none of them can write. Agents: the machine-readable list of all fifty-three vaults, with ids and keys, is [/demos/vaults/llms.txt](../vaults/llms.txt). The grammar for drawing your own is at [graphs.sgit.ai/llms.txt](https://graphs.sgit.ai/llms.txt).
+Every read key is on the vault's own page, published on purpose; none of them can write. Agents: the machine-readable list of all fifty-four vaults, with ids and keys, is [/demos/vaults/llms.txt](../vaults/llms.txt). The grammar for drawing your own is at [graphs.sgit.ai/llms.txt](https://graphs.sgit.ai/llms.txt).
 
 ## How fast is it, and what does it cost?
 
@@ -4260,7 +4262,7 @@ Everything below is a consequence of that sentence. If it doesn't describe a pro
 
 ## git and sgit, side by side
 
-The honest framing is not "sgit instead of git". It is two tools with different jobs, and the interesting question is which one owns which files. **This site ran both at once** for its first 76 releases (one working tree, two remotes) and then [retired the vault mirror](../case-studies/one-tree-two-remotes.md), because git was doing the deploying and nothing was reading the vault. The fifty-three vaults it publishes are the other half of the answer: sgit owns the content whose readers hold the key; git owns the pages that describe it.
+The honest framing is not "sgit instead of git". It is two tools with different jobs, and the interesting question is which one owns which files. **This site ran both at once** for its first 76 releases (one working tree, two remotes) and then [retired the vault mirror](../case-studies/one-tree-two-remotes.md), because git was doing the deploying and nothing was reading the vault. The fifty-four vaults it publishes are the other half of the answer: sgit owns the content whose readers hold the key; git owns the pages that describe it.
 
 |  | git | sgit |
 |---|---|---|
@@ -6262,7 +6264,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.7.39, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.7.40, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -6625,16 +6627,16 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-301**site releases since 14 August**
+302**site releases since 14 August**
 each verified live before it was called done
 
-53**vaults published with a public read key**
+54**vaults published with a public read key**
 every one audited first; findings on the page
 
 27**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-141**articles and release notes**
+142**articles and release notes**
 all with a markdown twin and an RSS feed
 
 17**cross-team briefs, in the open**
@@ -6780,7 +6782,7 @@ The section's other purpose: complete business plans, published as vaults, for o
 
 Everything above is how this site itself is built, which is the only reason to believe any of it.
 
-- **Fifty-three vaults published with their read keys**, each with a page describing what it does and the vault running live inside it. [Open any of them](../demos/vaults/index.md) with no account and nothing installed.
+- **Fifty-four vaults published with their read keys**, each with a page describing what it does and the vault running live inside it. [Open any of them](../demos/vaults/index.md) with no account and nothing installed.
 - **The method is written down**, including the mistakes that produced each rule. [The publishing method](../demos/vaults/publishing.md) is written to be followed by somebody else's agent.
 - **The measurements are repeatable**, with the commands printed. [Performance and cost](../demos/fractal-graphs/performance.md).
 - **One person, working with agents.** The whole estate is built this way, which is the actual claim about how small a team this needs.
@@ -6873,7 +6875,7 @@ sgit.ai is built by one person and a team of agents, and the articles here that 
 
 | Role | What it involves |
 |---|---|
-| **Founder, [sgit.ai](../index.md)** | Encrypted vaults with git semantics: clone, commit, branch and merge files that are encrypted before they leave your machine, under Apache-2.0, and [the network of sites](../network/index.md) of which this is the hub. Each site publishes its argument before its implementation, so the commitments are checkable, and [fifty-three vaults are published with their read keys](../demos/vaults/index.md) as the evidence. |
+| **Founder, [sgit.ai](../index.md)** | Encrypted vaults with git semantics: clone, commit, branch and merge files that are encrypted before they leave your machine, under Apache-2.0, and [the network of sites](../network/index.md) of which this is the hub. Each site publishes its argument before its implementation, so the commitments are checkable, and [fifty-four vaults are published with their read keys](../demos/vaults/index.md) as the evidence. |
 | **Founder, [sgraph.ai](https://sgraph.ai)** | Where the strategy turns into revenue: the commercial home of SG/Send, the secure file-sharing service built on the open-source sgit layer, and hosted SG/Vaults. The code stays Apache-2.0. What is sold is the running, maintained, certified service. |
 | **Founder, [MyFeeds.ai](https://investor.myfeeds.ai/)** | Role-aware cybersecurity briefings built on semantic knowledge graphs, with source attribution: CISO, engineer and board views of the same news. Open source, serverless, and with the seed pitch and unit economics published in the open. |
 | **Founder, [The Cyber Boardroom](https://thecyberboardroom.com)** | An AI-powered platform for the conversation between technical security teams and the board, bridging the two with knowledge-graph technology. Apache-2.0, with the community edition and the [investment repository](https://github.com/the-cyber-boardroom/cbr-investment) public. The Cyber Boardroom Limited, UK-registered and trading for almost two years, is today the commercial vehicle behind sgit.ai and RiskMandate.ai. |
@@ -6939,7 +6941,7 @@ Each page in this section makes the case for one specific partnership, or puts o
 | **Start with what they are trying to do** | In their own words where possible, and where we can put it better, put it better. A partnership page that cannot explain the other side's mission generously has not understood it. |
 |---|---|
 | **Public material only** | Their published strategy, programmes and criteria. Our published vaults, measurements and articles. Nothing from a conversation, a data room or a private brief. If a fact would need permission to publish, it is not on the page. |
-| **Evidence, not pitch** | Every claim about what we can do points at a vault that can be opened with a read key, a measurement with its command printed, or a page that states its own limits. The [fifty-three published vaults](../demos/vaults/index.md) are the portfolio. |
+| **Evidence, not pitch** | Every claim about what we can do points at a vault that can be opened with a read key, a measurement with its command printed, or a page that states its own limits. The [fifty-four published vaults](../demos/vaults/index.md) are the portfolio. |
 | **The fit, stated precisely** | Which of their stated priorities we serve, which we do not, and what a first concrete piece of work would be. A partnership is a specific thing two parties do, not an alignment of values. |
 | **What is not public, marked** | The things a partner would need to know that are not on either site are listed rather than hidden, in the same way [the investors page](../investors/index.md) leaves the ask visibly open until it is stated. |
 
@@ -7006,7 +7008,7 @@ Put simply: **they want British companies building the layers that matter, ancho
 
 Two companies, one substrate, and a published body of evidence that can be opened by anyone with the read key printed on each page.
 
-**[sgit.ai](../index.md)** is git for encrypted vaults. A vault is a folder versioned like a git repository, encrypted on the client before anything leaves the machine, openable by anyone holding a read key with no account and nothing installed, and able to carry its own application with the permissions it asks for declared in a file. The server that stores it cannot read it; [the security model](../security/index.md) states exactly what it does see. The code is Apache-2.0 and [deploys to Docker, AWS, GCP or a plain static host](../deploy/index.md), including, as this site demonstrates, to a bucket behind a CDN with no server of ours in the path. [Fifty-three vaults are published with their read keys](../demos/vaults/index.md), and [the method for publishing them safely is written down](../demos/vaults/publishing.md) with the mistakes that produced each rule.
+**[sgit.ai](../index.md)** is git for encrypted vaults. A vault is a folder versioned like a git repository, encrypted on the client before anything leaves the machine, openable by anyone holding a read key with no account and nothing installed, and able to carry its own application with the permissions it asks for declared in a file. The server that stores it cannot read it; [the security model](../security/index.md) states exactly what it does see. The code is Apache-2.0 and [deploys to Docker, AWS, GCP or a plain static host](../deploy/index.md), including, as this site demonstrates, to a bucket behind a CDN with no server of ours in the path. [Fifty-four vaults are published with their read keys](../demos/vaults/index.md), and [the method for publishing them safely is written down](../demos/vaults/publishing.md) with the mistakes that produced each rule.
 
 **[RiskMandate.ai](https://riskmandate.ai/)** is the business risk layer for autonomous systems. Its tagline is *"know what your agents can do"*, and its central object is the Agent Behaviour Policy: a documented record of what an agent can reach, what it was authorised to do, the gap between the two, and which controls constrain it, written so that a CEO, a CTO, a CISO and an insurer can all sign the same document. From that comes the *licence to operate*: the business as the authority, the behaviour policy as the evidence, the agent operating under stated terms for a stated interval, with residual risk accepted by a named owner. *"Not what they did. What they can."*
 
@@ -7090,7 +7092,7 @@ A call for collaboration · public material only · 24 September 2026
 - **What we are asking for.** A way, in the browser, for a person to keep their vault keys in the password manager or identity system they already use, to open a vault with a passkey or a biometric prompt, and to share a vault with someone else by sending a short name in plain words rather than the key.
 - **The one hard rule.** The words must be an address, never the key. sgit once shipped a word-based token that *was* the key, and [removed it](#history) when a review showed it could be guessed in a fraction of a second. The name has to resolve only inside the recipient's own key manager.
 - **Who we would like to hear from.** Password managers, enterprise identity providers, the credential managers built into operating systems and browsers, and hardware key makers. The best outcome is that you already have this and tell us.
-- **What we bring.** An open reference integration, published crypto test vectors, a key format designed for secret scanners, fifty-three published vaults to test against, and a willingness to write the specification in public so it is not tied to either of us.
+- **What we bring.** An open reference integration, published crypto test vectors, a key format designed for secret scanners, fifty-four published vaults to test against, and a willingness to write the specification in public so it is not tied to either of us.
 
 ## The opportunity
 
@@ -7100,7 +7102,7 @@ Today, vault keys travel by hand. The gap at the bottom is the thing this page i
 
 Three things make this worth doing now rather than later.
 
-| **The number of keys is growing fast** | One person running a few projects now holds a vault per project, per client and per shared folder, and a separate read key for each person they share with, so access can be told apart. [Fifty-three vaults are published on this site alone](../demos/vaults/index.md), each with its own key. |
+| **The number of keys is growing fast** | One person running a few projects now holds a vault per project, per client and per shared folder, and a separate read key for each person they share with, so access can be told apart. [Fifty-four vaults are published on this site alone](../demos/vaults/index.md), each with its own key. |
 |---|---|
 | **Agents are starting to make vaults** | An AI agent that builds a website for a customer, writes up a penetration test or keeps a board pack can hand the result over as a vault. Three business plans published on this site depend on exactly that: [Agent as Webmaster](../demos/vaults/agent-webmaster/index.md) hands a customer their site's vault, [Lesson Loop](../demos/vaults/lesson-loop/index.md) gives every player a vault they hold the key to, and [Company X-Ray](../demos/vaults/company-xray/index.md) hands each customer a key to drop documents into and a vault back at the end. Every one of those hand-overs is a key that has to go to a person, safely, and every agent doing the work needs a key it should not be able to paste anywhere. |
 | **The pattern is not specific to sgit** | Any end-to-end encrypted document, folder or dataset opened in a browser has the same need: a key for the data, held by the user, released to a page only when they agree. Whoever makes that easy for sgit makes it easy for the category. |
@@ -7196,7 +7198,7 @@ Organisations are named below only as examples of the kind of team we mean. Ther
 |---|---|
 | **Crypto that is specified and tested** | AES-256-GCM, HKDF-SHA256 and PBKDF2, with test vectors that the command-line client and the browser must match byte for byte. Keys are derived locally; the host never holds one. |
 | **Keys that say what they are** | Every sgit key carries a prefix naming its kind: `sgit_private_vault_`, `sgit_private_read_` or `sgit_public_read_`. One secret-scanner rule, `sgit_private_`, catches every private key type, and a published read key cannot be mistaken for a leak. |
-| **Real vaults to test against** | [Fifty-three published vaults](../demos/vaults/index.md) across security, regulation, business plans and applications, each with a public read key, plus [the catalogue](../demos/vaults/catalogue/index.md), a vault that lists vaults, which is the closest thing today to the index a key manager would keep. |
+| **Real vaults to test against** | [Fifty-four published vaults](../demos/vaults/index.md) across security, regulation, business plans and applications, each with a public read key, plus [the catalogue](../demos/vaults/catalogue/index.md), a vault that lists vaults, which is the closest thing today to the index a key manager would keep. |
 | **The failures, written down** | [What to do if a vault key is exposed](../case-studies/exposed-vault-key.md), [the publishing method](../demos/vaults/publishing.md) with the mistake behind each rule, and [when not to use sgit](../docs/limitations.md). A key manager partner should know the edges before the first call. |
 
 ## The detail
@@ -7217,7 +7219,7 @@ We can, and will, keep keys inside vaults: a vault that holds the read keys for 
 
 | Exists and runs | Does not exist yet |
 |---|---|
-| Vault keys, read keys and public read keys with self-declaring prefixes. Local derivation. Browser opening from a read key with nothing installed. Fifty-three published vaults. Guidance to keep the vault key in a password manager, which is what this page wants to make first-class. | Any integration with any key manager. Revocation, expiry or a rotation workflow in the product: rotation is a manual re-encryption today, as [the limitations page](../docs/limitations.md) says. The word-name scheme. Agent-scoped keys. All of these are what a collaboration would build. |
+| Vault keys, read keys and public read keys with self-declaring prefixes. Local derivation. Browser opening from a read key with nothing installed. Fifty-four published vaults. Guidance to keep the vault key in a password manager, which is what this page wants to make first-class. | Any integration with any key manager. Revocation, expiry or a rotation workflow in the product: rotation is a manual re-encryption today, as [the limitations page](../docs/limitations.md) says. The word-name scheme. Agent-scoped keys. All of these are what a collaboration would build. |
 
 ## What this page does not claim
 
@@ -7886,7 +7888,7 @@ Proposed partnerships · sgit.ai with the model and voice providers · public ma
 
 # Models do the work. Vaults hold it. We would like to work with the people who make the models.
 
-**An invitation from our side, published in the open.** Almost everything on this site was made with AI: the site itself, the fifty-three published vaults, the diagrams, the narration. The models came from the providers on this page, mostly reached through OpenRouter. What we have built in return is a place for that work to live: encrypted, versioned, openable in a browser with a key, and callable by a model without anyone leaking an API key. We use these providers every day and have no relationship with any of them. This page, and the page for each provider linked from it, sets out where vaults and models meet and what a partnership could be.
+**An invitation from our side, published in the open.** Almost everything on this site was made with AI: the site itself, the fifty-four published vaults, the diagrams, the narration. The models came from the providers on this page, mostly reached through OpenRouter. What we have built in return is a place for that work to live: encrypted, versioned, openable in a browser with a key, and callable by a model without anyone leaking an API key. We use these providers every day and have no relationship with any of them. This page, and the page for each provider linked from it, sets out where vaults and models meet and what a partnership could be.
 
 **Nothing on these pages is confidential, and there has been no conversation yet.** Every statement about a provider comes from its own public pages or documentation, linked. Every statement about sgit points at a published vault or a page on this site. sgit is Apache-2.0, so any provider can build on it without asking. A partnership is about building the connection properly, and being listed where the provider's users look for it.
 
@@ -8017,7 +8019,7 @@ This page is written to be forwarded as it is, and everything on it can be check
 ==============================================================================
 # A proposed partnership between sgit.ai and Anthropic
 
-> This site is already a Claude Code project, and vaults are how its sessions work together. sgit.ai, its briefs, its deployment docs and most of its fifty-three published vaults are built and published by Claude Code sessions that share state through a vault. We would like to turn that working practice into a partnership: a vault connector in Anthropic's Connectors Directory, skills that teach Claude to use vaults well, and a place in the Claude Partner Network.
+> This site is already a Claude Code project, and vaults are how its sessions work together. sgit.ai, its briefs, its deployment docs and most of its fifty-four published vaults are built and published by Claude Code sessions that share state through a vault. We would like to turn that working practice into a partnership: a vault connector in Anthropic's Connectors Directory, skills that teach Claude to use vaults well, and a place in the Claude Partner Network.
 >
 > Page: https://sgit.ai/partnerships/anthropic.html
 
@@ -8027,7 +8029,7 @@ A proposed partnership · sgit.ai with Anthropic · public material only · 24 S
 
 # A proposed partnership between sgit.ai and Anthropic
 
-**This site is already a Claude Code project, and vaults are how its sessions work together.** sgit.ai, its briefs, its deployment docs and most of its fifty-three published vaults are built and published by Claude Code sessions that share state through a vault. We would like to turn that working practice into a partnership: a vault connector in Anthropic's Connectors Directory, skills that teach Claude to use vaults well, and a place in the Claude Partner Network.
+**This site is already a Claude Code project, and vaults are how its sessions work together.** sgit.ai, its briefs, its deployment docs and most of its fifty-four published vaults are built and published by Claude Code sessions that share state through a vault. We would like to turn that working practice into a partnership: a vault connector in Anthropic's Connectors Directory, skills that teach Claude to use vaults well, and a place in the Claude Partner Network.
 
 **Nothing on this page is confidential, and there has been no conversation yet.** Every statement about Anthropic comes from its own public pages, linked. Every statement about sgit points at the [deployment documentation](../deploy/index.md), a published vault or a page on this site. sgit is Apache-2.0, so Anthropic does not need our permission to run it or to build on it. A partnership is about doing that well and together. The general argument is on [the AI providers page](ai-providers.md).
 
@@ -12185,12 +12187,14 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.7.39**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
+The site version (**v0.7.40**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
 
-| v0.7.39 | 2026-10-10 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.38...v0.7.39) | THE ZIGZAG. Pay after you read gains 'The zigzag: innovate, leverage, commoditise': Simon Wardley's ILC drawn for this project, from sgit's first release on 4 March 2026 (sg-send-cli 0.3.0, 88 sgit-ai releases to 0.20.0) through vaults that open as apps (first published 16 August, 53 now), Claude sessions with a repository and a vault, websites built and released by agents (sgit.ai v0.1.1 on 11 August), the newsrooms and the one-cent wallet (by 27 September) and SG Meter (10 October), to the reader at the top, for whom it just works. Each layer matured until it was invisible, which is what made the next possible. Two figures: the zigzag, and an animation that builds it one layer at a time.**Updated:**[Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time](../articles/pay-after-you-read.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.38...v0.7.39). |
+| v0.7.40 | 2026-10-10 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.39...v0.7.40) | HOW TO RUN SYNTHETIC USERS, AND FIVE ON NEWSROOM.SGIT.AI. A how-to article from three studies (store.sgit.ai, riskmandate.ai and a new one): five to ten invented users of about five types, each a profile record, with an expected journey written first, driving a real browser one screenshot at a time, interviewed and asked for a rating, findings ordered by cost and checked before publishing; Claude Sonnet plays each user; the study lives in a GitHub repository or a vault shared by a link; what went wrong, and a template. New vault #54, synthetic users on newsroom.sgit.ai (bg1opz3c): five readers, 62 steps, 51 questions, 31 findings, six blocking, two labelled as helper artefacts, and a measured bug: 51 of 527 figures missing after the move. Three figures.**New:**[How to run synthetic users on your own site: five people who do not exist, a browser, and an afternoon](../articles/how-to-run-synthetic-users.md), [Synthetic users, newsroom.sgit.ai, five invented readers](../demos/vaults/newsroom-synthetic-users/index.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.39...v0.7.40). |
+
+| v0.7.39 | 2026-10-10 | [git dfd5d236](https://github.com/SGit-AI/SGit-AI__Website/commit/dfd5d236) | THE ZIGZAG. Pay after you read gains 'The zigzag: innovate, leverage, commoditise': Simon Wardley's ILC drawn for this project, from sgit's first release on 4 March 2026 (sg-send-cli 0.3.0, 88 sgit-ai releases to 0.20.0) through vaults that open as apps (first published 16 August, 53 now), Claude sessions with a repository and a vault, websites built and released by agents (sgit.ai v0.1.1 on 11 August), the newsrooms and the one-cent wallet (by 27 September) and SG Meter (10 October), to the reader at the top, for whom it just works. Each layer matured until it was invisible, which is what made the next possible. Two figures: the zigzag, and an animation that builds it one layer at a time.**Updated:**[Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time](../articles/pay-after-you-read.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/dfd5d236). |
 
 | v0.7.38 | 2026-10-10 | [git 3f07af13](https://github.com/SGit-AI/SGit-AI__Website/commit/3f07af13) | A LINK TO A PERSONA: THE BRIEF, AS AN ARTICLE. Send a CISO to the newsroom as a CISO, not as nobody. Personas move out of the site's code into an encrypted vault kept by the newsroom's agents and opened in the browser with a published read key, so a persona is added or updated with a vault commit, not a site release. Three kinds of link: a page of its own for the few everyone uses (/persona/ciso/), a URL fragment for any number more (/persona/#dpo, never sent to a server, RFC 3986 section 3.5), and a private persona in a vault of its own for one person. The reader can follow the persona as it is kept up to date, make it their own (a fork), or remove it. A persona keeper role on the desk, the vault layout and persona schema, consent (public personas are roles; personas about people stay private), risks, and a six-step build plan for newsroom.sgit.ai. Prior art checked against its sources: Netflix profiles (August 2013, five per account), Bluesky starter packs (June 2024, 150 people and three feeds), Mastodon follow packs, Apple News and Brave News on personalisation on the device.**New:**[A link to a persona: send people to the newsroom as someone, not as nobody](../articles/a-link-to-a-persona.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/3f07af13). |
 
@@ -13952,7 +13956,7 @@ A vault credential is the whole thing you need: the address, the capability and 
 
 ## Two capabilities, and one is derived from the other
 
-A vault key carries read *and* write. A read key carries read only, and is derived from the vault key by a one-way function, so a read key can never be turned back into write access. That derivation is the whole publishing model on this site: [fifty-three vaults](../demos/vaults/index.md) hand out read keys on purpose, and not one of them can be used to change anything.
+A vault key carries read *and* write. A read key carries read only, and is derived from the vault key by a one-way function, so a read key can never be turned back into write access. That derivation is the whole publishing model on this site: [fifty-four vaults](../demos/vaults/index.md) hand out read keys on purpose, and not one of them can be used to change anything.
 
 *[diagram]*
 
@@ -15778,7 +15782,7 @@ There is a longer account of this one in [Green does not mean live](../articles/
 >
 > Page: https://sgit.ai/articles/index.html
 
-Edition of 2026-10-0866 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.39
+Edition of 2026-10-0867 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.40
 
 # SGit Newsroom
 
@@ -15790,17 +15794,17 @@ From the editor Third edition. A day of articles on how agents decide: when to s
 
 ## Latest
 
-1. 2026-10-10[A link to a persona](../articles/a-link-to-a-persona.md)
-2. 2026-10-10[Pay after you read](../articles/pay-after-you-read.md)
-3. 2026-10-10[Where the vault keys live](../articles/where-the-vault-keys-live.md)
-4. 2026-10-10[The infographic bake-off](../articles/the-infographic-bake-off.md)
-5. 2026-10-10[Pay to keep your persona](../articles/pay-to-keep-your-persona.md)
-6. 2026-10-10[Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the…](../articles/who-will-game-the-reading-meter.md)
-7. 2026-10-10[Going live with the reading meter](../articles/going-live-with-the-reading-meter.md)
-8. 2026-10-10[Open source is not free](../articles/open-source-is-not-free.md)
-9. 2026-10-10[One article, five readers](../articles/one-article-five-readers.md)
-10. 2026-10-10[A meter in the browser](../articles/a-meter-in-the-browser.md)
-[Every article, 66 →](../articles/index.md#all)
+1. 2026-10-10[How to run synthetic users on your own site](../articles/how-to-run-synthetic-users.md)
+2. 2026-10-10[A link to a persona](../articles/a-link-to-a-persona.md)
+3. 2026-10-10[Pay after you read](../articles/pay-after-you-read.md)
+4. 2026-10-10[Where the vault keys live](../articles/where-the-vault-keys-live.md)
+5. 2026-10-10[The infographic bake-off](../articles/the-infographic-bake-off.md)
+6. 2026-10-10[Pay to keep your persona](../articles/pay-to-keep-your-persona.md)
+7. 2026-10-10[Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the…](../articles/who-will-game-the-reading-meter.md)
+8. 2026-10-10[Going live with the reading meter](../articles/going-live-with-the-reading-meter.md)
+9. 2026-10-10[Open source is not free](../articles/open-source-is-not-free.md)
+10. 2026-10-10[One article, five readers](../articles/one-article-five-readers.md)
+[Every article, 67 →](../articles/index.md#all)
 
 ## Highlights
 
@@ -15818,7 +15822,7 @@ From the editor Third edition. A day of articles on how agents decide: when to s
 
 ## Every article, newest first
 
-[2026-10-10Startups & strategy1 thread**A link to a persona: send people to the newsroom as someone, not as nobody**Send a CISO to the newsroom as a CISO: personas kept in a vault by the newsroom's agents, opened from a link, followed or forked.](a-link-to-a-persona.md) [2026-10-10News & evidence6 threads**Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time**Seven releases in one afternoon turned the reading meter into a working model: pay after you read, and the rating sets the price.](pay-after-you-read.md) [2026-10-10Vaults & method4 threads**Where the vault keys live: key management at sgit-ai v0.20.0, and what comes next**Vault key management at sgit-ai v0.20.0: the one secret, where keys are kept, how they travel sealed on append lanes, and what comes next.](where-the-vault-keys-live.md) [2026-10-10Site & engineering2 threads**The infographic bake-off: which image model for which job, judged blind on 10 October 2026**Every image model on OpenRouter, eleven briefs, 101 images judged blind, $10.44: which model for which infographic, and what it costs.](the-infographic-bake-off.md) [2026-10-10Startups & strategy7 threads**Pay to keep your persona: readers should pay because it helps them, not because they feel they should**Readers should pay because it helps them: a persona with a name and a graph, several for focus, and one that follows you between devices.](pay-to-keep-your-persona.md) [2026-10-10Startups & strategy6 threads**Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen**Eight kinds of reader, none of them attackers, nine ways to cheat a browser meter, and the quieter risks that will actually happen.](who-will-game-the-reading-meter.md) [2026-10-10Startups & strategy10 threads**Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks**Pay for the share of a page you read, go below zero with no nagging, top up £5 on Stripe: the plan, and the numbers we check in eight weeks.](going-live-with-the-reading-meter.md) [2026-10-10Startups & strategy2 threads**Open source is not free: who pays to keep the long tail working?**An old iMac, the long tail of old versions that projects are not paid to support, measured from public data, and five ways to pay for it, simulated.](open-source-is-not-free.md) [2026-10-10News & evidence12 threads**One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece**Write the article first, then send five agent readers through it: a catalogue, an ontology and maps, the arc, two minutes, and a deck.](one-article-five-readers.md) [2026-10-10Startups & strategy9 threads**A meter in the browser: a penny a page, a history you keep, and a site that picks for you**Every page now costs a few pence from £5 of credit kept in your browser, and the reading history it keeps is what personalises the site.](a-meter-in-the-browser.md) [2026-10-10Agents & policy3 threads**Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not**Summaries keep under 2% of a long session. Re-anchoring prints the agent's rules back after each one; a canary report shows it is working.](re-anchoring-agent-behaviour-policies.md) [2026-10-09Agents & policy4 threads**A second reader the agent cannot skip: how two wrong emails became a gate on every draft**Two emails went out in my voice despite a written rule. The fix: a hook that makes a second model approve every draft, failing closed.](a-second-reader-the-agent-cannot-skip.md) [2026-10-09Graphs & knowledge2 threads**The AI governance stack, as a graph: an answer to Hari Kota, built**Hari Kota's ten-layer AI governance stack, kept as posted and turned into a fractal semantic graph: the gaps become missing edges, and queries.](the-ai-governance-stack-as-a-graph.md) [2026-10-09Vaults & method2 threads**RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer**A Request for Comments: two key pairs so a reader cannot write, sealed files only named people can open, and fourteen questions for reviewers.](rfc-0001-public-key-cryptography-for-sgit.md) [2026-10-09Startups & strategy7 threads**A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies**A business plan for a Mac of the agent's own: what Apple's licence allows, a desktop built from vaults per run, and three behaviour policies for one agent.](a-mac-of-the-agents-own.md) [2026-10-09Agents & policy19 threads**Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not**Ten hard questions from a conference, answered in a two-hour interview: what RiskMandate does, what it deliberately is not, and how mature each part is.](riskmandate-ten-questions.md) [2026-10-09Agents & policy7 threads**How I work with Claude: one session per topic, agents with names, and memory you curate**A practical guide from a year of daily use: one Claude session per topic, named agents with a role.md, curated memory, vaults, and policy before connectors.](how-i-work-with-claude.md) [2026-10-08News & evidence2 threads**The waiting room knew first: a live local story, and the gap where local information used to be**Staff at two London hospitals said the IT was down; nothing a local could check showed it. A live local story about where local information comes from now.](the-waiting-room-knew-first.md) [2026-10-08Vaults & method9 threads**Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes**Agents in isolated, ephemeral places need memory that outlives them. Five sgit deployment patterns, from a Mac mini to Kubernetes, with ciphertext-only servers.](encrypted-memory-for-isolated-agents.md) [2026-10-08Agents & policy8 threads**Knowing when to stop: what experience gives people, and what we have to design into agents**Knowing when to stop is the hard part for people and agents: what experience gives people, and the constraints that give agents the same perspective.](knowing-when-to-stop.md) [2026-10-08Agents & policy9 threads**Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source**A yes or no is not agency: seven dimensions, a seven-level scale for people and agents, and the review as a QA step that fixes the source.](agency-is-not-a-yes.md) [2026-10-08Agents & policy9 threads**Hope or enforcement: one customer service agent, three designs, and who keeps each promise**One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.](hope-or-enforcement.md) [2026-10-08Agents & policy4 threads**Who are you protecting against? Draw the security line where the attacker is, not above it**Before deciding how secure to be, name the attacker: a six-tier ladder, an air-gapped Mac mini read against it, and eight startups drawing their line.](who-are-you-protecting-against.md) [2026-10-08Agents & policy11 threads**Every mistake added a rule: complexity, agents, and the way back to shipping**When every agent mistake adds a rule, complexity wins: map the process, move each piece right as a small shipped component, and keep the rigour for the work.](every-mistake-added-a-rule.md) [2026-10-07News & evidence8 threads**Liquid content needs water: liquefy the journalist's notebook, not the finished product**A reply to FT Strategies on liquid content: the water is the reporting, so liquefy the journalist's notebook, keep the writing theirs, and pay per use.](liquid-content-needs-water.md) [2026-10-07News & evidence6 threads**The bridge, followed to the end: what one local story is worth when it is kept as a graph**A bridge closure simulated on a story vault: newsworthy on 5 days, needed on 57, used by three readers, four buyers and an agent, and paid back to its sources.](the-bridge-followed-to-the-end.md) [2026-10-07News & evidence5 threads**Story vault underneath, Reader Skills on top: why local journalism has the most to gain**Markus Franz's Reader Skills on top, the story vault underneath: each skill is a graph query, and local stories can pay back down their chain of sources.](story-vault-meets-reader-skills.md) [2026-10-07Agents & policy7 threads**Zoom into an agent's behaviour policy and you find the business logic**Below the first rules, an agent's behaviour policy is the business: functions, processes, clients, values. Layered, owned, counted, and where vendors plug in.](the-behaviour-policy-is-the-business-logic.md) [2026-10-07Agents & policy5 threads**A locked-down desktop for an agent, by the minute, is still hard to rent**Nine properties a safe agent desktop needs, nine products against them, the macOS day-long lease, and the startup credits that would pay for testing it.](an-agent-desktop-by-the-minute.md) [2026-10-07Graphs & knowledge7 threads**An open AI governance framework, and what its licence let us build**Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.](ai-baseline-control-framework.md) [2026-10-07Agents & policy13 threads**Where is the why? A permission prompt asked me to decide, and kept the reason**A prompt asked for a decision and kept the reason. Read through the policy, the law on uninformed consent, and the fixes that worked: put the why in the prompt.](where-is-the-why.md) [2026-10-06Agents & policy24 threads**The Mandate Stack: a multi-agent system in production, layer by layer**A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.](the-mandate-stack.md) [2026-10-06Agents & policy11 threads**Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has**An OS has two hard walls, the kernel and the user; an agent on a laptop runs inside the one marked you, so the agents run in the cloud with a vault as shared drive.](why-my-agents-do-not-run-on-my-laptop.md) [2026-10-06Startups & strategy6 threads**The deck I could not download: an author-first home for presentations, as a business plan somebody else can build**One download offered as a subscription, an author paid nothing, and a design for the service the author would have chosen: vaults, keys, seven roles, 85% to the author.](the-deck-i-could-not-download.md) [2026-10-06Agents & policy24 threads**The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from**Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.](the-agent-team-as-it-runs.md) [2026-10-06Agents & policy14 threads**A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser**The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.](a-personal-agent-that-keeps-your-secrets.md) [2026-10-05Agents & policy6 threads**The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered**A global GitHub Actions outage read the way aviation reads an incident: independent inquiry, near-miss reporting, second and third stories, vaults for the evidence.](the-investigation-github-owes-its-customers.md) [2026-10-05Agents & policy8 threads**Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it**Due diligence never scaled because it was a form; a buyer can now send an agent into a vendor's environment and read what the code and the practices are.](send-an-agent-not-a-spreadsheet.md) [2026-10-05Graphs & knowledge10 threads**How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was**Twenty articles in four weeks, measured from the session record: 63,000 words in, 85,000 out, no one-line prompts, and the real input is twenty years of writing.](how-much-of-this-did-i-write.md) [2026-10-05Graphs & knowledge11 threads**If somebody built a company on code review: how I would do it, and why it is only now possible**A reader's seven questions answered as a company plan: one reader for every layer, review as a science, and the layers as the customer's own.](if-somebody-built-a-company-on-code-review.md) [2026-10-05Agents & policy11 threads**The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard**A week of designing identities for agents and users met Google's terms; what survived is a passkey-unlocked keyring and a gap nobody sells.](the-identity-we-wanted-to-give-the-agents.md) [2026-10-04Agents & policy8 threads**The wall under the reply: end an email with the state of the thread, not the thread**End an email reply with the state of the thread for this reader, not the quoted wall: decided, open, next, who is on copy, with links to the record.](the-wall-under-the-reply.md) [2026-10-03Graphs & knowledge15 threads**Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one**Agentic memory as context management: many published, fractal, provenance-carrying memories rather than one store, shown in the session that wrote the article.](memory-is-not-a-spectator-sport.md) [2026-10-03Graphs & knowledge13 threads**Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it**Source code is layers within layers, each a graph with its own vocabulary; code review should read a change at every one, and a vault shows it done on real code.](code-review-as-a-fractal-semantic-graph.md) [2026-10-02Agents & policy13 threads**Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send**How to copy a working agentic email setup in phases: a mailbox and Claude seat of the agent's own, one session with a policy, then roles talking in files.](replicating-the-agentic-inbox.md) [2026-10-02Startups & strategy5 threads**Price it, then give it away: the early access programme as the next step after "do they miss it"**Define the product, price it, deliver it at a cost that grows a step at a time, then offer it free to people who know you and measure what it costs them.](price-it-then-give-it-away.md) [2026-10-02Agents & policy20 threads**Footprint and blast radius: what the agent actually did, and what it would have cost**Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.](footprint-and-blast-radius.md) [2026-10-01Graphs & knowledge16 threads**Custom UIs are not the exception: the inbox in 2026, where every message has its own universe**Every message has a graph, so it can be shaped for the reader's moment; a custom interface per moment is now how interfaces get made, and each gets a policy.](custom-uis-are-not-the-exception.md) [2026-09-30Agents & policy15 threads**The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up**Agents, the infrastructure meant to contain them, and risk management run on spreadsheets are arriving at once, and together they are one scenario.](ultimate-insider-three-collisions.md) [2026-09-29News & evidence8 threads**The reader was always the product: a corrected history of how news got into this mess**News has sold the reader to advertisers since 1833; the web took the monopoly, the platforms made the reader measurable, and AI took the traffic.](how-news-got-here.md) [2026-09-29Agents & policy20 threads**Six agents, one inbox: what a real multi-agent setup taught me about access policies**An access policy for an agent is only as real as its worst row: every rule in a real six-agent setup, graded by how it is enforced today.](six-agents-one-inbox.md) [2026-09-28News & evidence8 threads**Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read**AI answer engines pay to read the web as HTML; a publisher who serves markdown, dates, hashes and a typed graph saves them tokens and should get a share.](token-bill-nobody-is-sending.md) [2026-09-27Vaults & method5 threads**A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down**The food chain is a data problem: one encrypted vault per party, joined by append lanes and a typed graph, could cut the waste that keeps prices high.](supply-chain-of-vaults.md) [2026-09-24Agents & policy16 threads**Every risk is already accepted. The only question is by whom, and for how long.**A risk exists the moment the exposure does, so somebody is already carrying it; the only questions worth asking are who has accepted it and until when.](every-risk-is-already-accepted.md) [2026-09-24Agents & policy12 threads**Before you give an agent a connector, give the connector a twin**An agent with a Gmail or Calendar connector can do things the platform cannot undo; a journal of every call, replayed, shows what it did and what can go back.](connector-twin-before-you-deploy-an-agent.md) [2026-09-22News & evidence7 threads**The future of news is the story vault, not the paywall**A story is a graph of claims and evidence and the article is one projection of it; keep the graph in a vault and sell what the article was made from.](future-of-news-story-vault-not-paywall.md) [2026-09-21Startups & strategy6 threads**For a startup, the most important question is whether they miss it**Ship something usable, give it away briefly, take it away and see whether anybody misses it; charge at a profit before you talk to investors.](the-question-is-whether-they-miss-it.md) [2026-09-21Startups & strategy3 threads**The SaaS apocalypse will be decided by inertia, not by AI**Incumbents and newcomers have the same AI; what separates them is how much past success each has to protect, so inertia decides which SaaS companies survive.](saas-apocalypse-decided-by-inertia-not-by-ai.md) [2026-09-20Graphs & knowledge20 threads**Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema**A fractal semantic graph has no privileged level and no single schema: each world keeps its own vocabulary and connects to others through named edges.](introducing-fractal-semantic-graphs.md) [2026-09-07Site & engineering1 thread**The proof moved up, the homepage after the rebuild, next to the before pictures**The rebuilt homepage puts four real vaults under one sentence, picks six by the job they do, and computes its numbers at build time from the site's own data.](proof-moved-up.md) [2026-09-07Site & engineering1 thread**The proof is two clicks behind the claim, what the homepage gets wrong, and the fix**The homepage leads with encryption, which cannot be seen, while twenty-five vaults a stranger can open in one click sit two clicks away in a table.](proof-behind-the-claim.md) [2026-08-27Site & engineering1 thread**A chat box on a site with no server, the plan, and the trade it makes**sgit.ai has no server, so its directory chat runs a local matcher by default, takes your own key as an opt-in, and leaves the vault bridge unbuilt.](chat-on-a-static-site.md) [2026-08-26Site & engineering2 threads**Twenty sites in fifteen days, and what that did to the writing**One site became twenty repositories in fifteen days because each argument needed its own version history, and the index now starts from a question.](nineteen-sites.md) [2026-08-25Vaults & method6 threads**Git for things you cannot put on GitHub**sgit is git for files you cannot put on GitHub: encrypted before they leave your machine, versioned like git, stored where the server cannot read a byte.](what-sgit-is.md) [2026-08-19Vaults & method2 threads**Seven vaults, one method**Publishing seven encrypted vaults in a fortnight produced a method, and every rule in it exists because something went wrong first.](seven-vaults-one-method.md) [2026-08-17Site & engineering2 threads**Green does not mean live**Two releases passed every check and never reached the site because the checks stopped at the git remote; a release now ends by asking the live site its version.](green-does-not-mean-live.md)
+[2026-10-10Vaults & method1 thread**How to run synthetic users on your own site: five people who do not exist, a browser, and an afternoon**Five invented users, a model reading screenshots, and a real browser: how to run synthetic users, from three studies.](how-to-run-synthetic-users.md) [2026-10-10Startups & strategy2 threads**A link to a persona: send people to the newsroom as someone, not as nobody**Send a CISO to the newsroom as a CISO: personas kept in a vault by the newsroom's agents, opened from a link, followed or forked.](a-link-to-a-persona.md) [2026-10-10News & evidence6 threads**Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time**Seven releases in one afternoon turned the reading meter into a working model: pay after you read, and the rating sets the price.](pay-after-you-read.md) [2026-10-10Vaults & method4 threads**Where the vault keys live: key management at sgit-ai v0.20.0, and what comes next**Vault key management at sgit-ai v0.20.0: the one secret, where keys are kept, how they travel sealed on append lanes, and what comes next.](where-the-vault-keys-live.md) [2026-10-10Site & engineering2 threads**The infographic bake-off: which image model for which job, judged blind on 10 October 2026**Every image model on OpenRouter, eleven briefs, 101 images judged blind, $10.44: which model for which infographic, and what it costs.](the-infographic-bake-off.md) [2026-10-10Startups & strategy7 threads**Pay to keep your persona: readers should pay because it helps them, not because they feel they should**Readers should pay because it helps them: a persona with a name and a graph, several for focus, and one that follows you between devices.](pay-to-keep-your-persona.md) [2026-10-10Startups & strategy6 threads**Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen**Eight kinds of reader, none of them attackers, nine ways to cheat a browser meter, and the quieter risks that will actually happen.](who-will-game-the-reading-meter.md) [2026-10-10Startups & strategy10 threads**Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks**Pay for the share of a page you read, go below zero with no nagging, top up £5 on Stripe: the plan, and the numbers we check in eight weeks.](going-live-with-the-reading-meter.md) [2026-10-10Startups & strategy2 threads**Open source is not free: who pays to keep the long tail working?**An old iMac, the long tail of old versions that projects are not paid to support, measured from public data, and five ways to pay for it, simulated.](open-source-is-not-free.md) [2026-10-10News & evidence12 threads**One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece**Write the article first, then send five agent readers through it: a catalogue, an ontology and maps, the arc, two minutes, and a deck.](one-article-five-readers.md) [2026-10-10Startups & strategy9 threads**A meter in the browser: a penny a page, a history you keep, and a site that picks for you**Every page now costs a few pence from £5 of credit kept in your browser, and the reading history it keeps is what personalises the site.](a-meter-in-the-browser.md) [2026-10-10Agents & policy3 threads**Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not**Summaries keep under 2% of a long session. Re-anchoring prints the agent's rules back after each one; a canary report shows it is working.](re-anchoring-agent-behaviour-policies.md) [2026-10-09Agents & policy4 threads**A second reader the agent cannot skip: how two wrong emails became a gate on every draft**Two emails went out in my voice despite a written rule. The fix: a hook that makes a second model approve every draft, failing closed.](a-second-reader-the-agent-cannot-skip.md) [2026-10-09Graphs & knowledge2 threads**The AI governance stack, as a graph: an answer to Hari Kota, built**Hari Kota's ten-layer AI governance stack, kept as posted and turned into a fractal semantic graph: the gaps become missing edges, and queries.](the-ai-governance-stack-as-a-graph.md) [2026-10-09Vaults & method2 threads**RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer**A Request for Comments: two key pairs so a reader cannot write, sealed files only named people can open, and fourteen questions for reviewers.](rfc-0001-public-key-cryptography-for-sgit.md) [2026-10-09Startups & strategy7 threads**A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies**A business plan for a Mac of the agent's own: what Apple's licence allows, a desktop built from vaults per run, and three behaviour policies for one agent.](a-mac-of-the-agents-own.md) [2026-10-09Agents & policy19 threads**Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not**Ten hard questions from a conference, answered in a two-hour interview: what RiskMandate does, what it deliberately is not, and how mature each part is.](riskmandate-ten-questions.md) [2026-10-09Agents & policy7 threads**How I work with Claude: one session per topic, agents with names, and memory you curate**A practical guide from a year of daily use: one Claude session per topic, named agents with a role.md, curated memory, vaults, and policy before connectors.](how-i-work-with-claude.md) [2026-10-08News & evidence2 threads**The waiting room knew first: a live local story, and the gap where local information used to be**Staff at two London hospitals said the IT was down; nothing a local could check showed it. A live local story about where local information comes from now.](the-waiting-room-knew-first.md) [2026-10-08Vaults & method9 threads**Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes**Agents in isolated, ephemeral places need memory that outlives them. Five sgit deployment patterns, from a Mac mini to Kubernetes, with ciphertext-only servers.](encrypted-memory-for-isolated-agents.md) [2026-10-08Agents & policy8 threads**Knowing when to stop: what experience gives people, and what we have to design into agents**Knowing when to stop is the hard part for people and agents: what experience gives people, and the constraints that give agents the same perspective.](knowing-when-to-stop.md) [2026-10-08Agents & policy9 threads**Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source**A yes or no is not agency: seven dimensions, a seven-level scale for people and agents, and the review as a QA step that fixes the source.](agency-is-not-a-yes.md) [2026-10-08Agents & policy9 threads**Hope or enforcement: one customer service agent, three designs, and who keeps each promise**One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.](hope-or-enforcement.md) [2026-10-08Agents & policy4 threads**Who are you protecting against? Draw the security line where the attacker is, not above it**Before deciding how secure to be, name the attacker: a six-tier ladder, an air-gapped Mac mini read against it, and eight startups drawing their line.](who-are-you-protecting-against.md) [2026-10-08Agents & policy11 threads**Every mistake added a rule: complexity, agents, and the way back to shipping**When every agent mistake adds a rule, complexity wins: map the process, move each piece right as a small shipped component, and keep the rigour for the work.](every-mistake-added-a-rule.md) [2026-10-07News & evidence8 threads**Liquid content needs water: liquefy the journalist's notebook, not the finished product**A reply to FT Strategies on liquid content: the water is the reporting, so liquefy the journalist's notebook, keep the writing theirs, and pay per use.](liquid-content-needs-water.md) [2026-10-07News & evidence6 threads**The bridge, followed to the end: what one local story is worth when it is kept as a graph**A bridge closure simulated on a story vault: newsworthy on 5 days, needed on 57, used by three readers, four buyers and an agent, and paid back to its sources.](the-bridge-followed-to-the-end.md) [2026-10-07News & evidence5 threads**Story vault underneath, Reader Skills on top: why local journalism has the most to gain**Markus Franz's Reader Skills on top, the story vault underneath: each skill is a graph query, and local stories can pay back down their chain of sources.](story-vault-meets-reader-skills.md) [2026-10-07Agents & policy7 threads**Zoom into an agent's behaviour policy and you find the business logic**Below the first rules, an agent's behaviour policy is the business: functions, processes, clients, values. Layered, owned, counted, and where vendors plug in.](the-behaviour-policy-is-the-business-logic.md) [2026-10-07Agents & policy5 threads**A locked-down desktop for an agent, by the minute, is still hard to rent**Nine properties a safe agent desktop needs, nine products against them, the macOS day-long lease, and the startup credits that would pay for testing it.](an-agent-desktop-by-the-minute.md) [2026-10-07Graphs & knowledge7 threads**An open AI governance framework, and what its licence let us build**Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.](ai-baseline-control-framework.md) [2026-10-07Agents & policy13 threads**Where is the why? A permission prompt asked me to decide, and kept the reason**A prompt asked for a decision and kept the reason. Read through the policy, the law on uninformed consent, and the fixes that worked: put the why in the prompt.](where-is-the-why.md) [2026-10-06Agents & policy24 threads**The Mandate Stack: a multi-agent system in production, layer by layer**A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.](the-mandate-stack.md) [2026-10-06Agents & policy11 threads**Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has**An OS has two hard walls, the kernel and the user; an agent on a laptop runs inside the one marked you, so the agents run in the cloud with a vault as shared drive.](why-my-agents-do-not-run-on-my-laptop.md) [2026-10-06Startups & strategy6 threads**The deck I could not download: an author-first home for presentations, as a business plan somebody else can build**One download offered as a subscription, an author paid nothing, and a design for the service the author would have chosen: vaults, keys, seven roles, 85% to the author.](the-deck-i-could-not-download.md) [2026-10-06Agents & policy24 threads**The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from**Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.](the-agent-team-as-it-runs.md) [2026-10-06Agents & policy14 threads**A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser**The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.](a-personal-agent-that-keeps-your-secrets.md) [2026-10-05Agents & policy6 threads**The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered**A global GitHub Actions outage read the way aviation reads an incident: independent inquiry, near-miss reporting, second and third stories, vaults for the evidence.](the-investigation-github-owes-its-customers.md) [2026-10-05Agents & policy8 threads**Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it**Due diligence never scaled because it was a form; a buyer can now send an agent into a vendor's environment and read what the code and the practices are.](send-an-agent-not-a-spreadsheet.md) [2026-10-05Graphs & knowledge10 threads**How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was**Twenty articles in four weeks, measured from the session record: 63,000 words in, 85,000 out, no one-line prompts, and the real input is twenty years of writing.](how-much-of-this-did-i-write.md) [2026-10-05Graphs & knowledge11 threads**If somebody built a company on code review: how I would do it, and why it is only now possible**A reader's seven questions answered as a company plan: one reader for every layer, review as a science, and the layers as the customer's own.](if-somebody-built-a-company-on-code-review.md) [2026-10-05Agents & policy11 threads**The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard**A week of designing identities for agents and users met Google's terms; what survived is a passkey-unlocked keyring and a gap nobody sells.](the-identity-we-wanted-to-give-the-agents.md) [2026-10-04Agents & policy8 threads**The wall under the reply: end an email with the state of the thread, not the thread**End an email reply with the state of the thread for this reader, not the quoted wall: decided, open, next, who is on copy, with links to the record.](the-wall-under-the-reply.md) [2026-10-03Graphs & knowledge15 threads**Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one**Agentic memory as context management: many published, fractal, provenance-carrying memories rather than one store, shown in the session that wrote the article.](memory-is-not-a-spectator-sport.md) [2026-10-03Graphs & knowledge13 threads**Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it**Source code is layers within layers, each a graph with its own vocabulary; code review should read a change at every one, and a vault shows it done on real code.](code-review-as-a-fractal-semantic-graph.md) [2026-10-02Agents & policy13 threads**Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send**How to copy a working agentic email setup in phases: a mailbox and Claude seat of the agent's own, one session with a policy, then roles talking in files.](replicating-the-agentic-inbox.md) [2026-10-02Startups & strategy5 threads**Price it, then give it away: the early access programme as the next step after "do they miss it"**Define the product, price it, deliver it at a cost that grows a step at a time, then offer it free to people who know you and measure what it costs them.](price-it-then-give-it-away.md) [2026-10-02Agents & policy20 threads**Footprint and blast radius: what the agent actually did, and what it would have cost**Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.](footprint-and-blast-radius.md) [2026-10-01Graphs & knowledge16 threads**Custom UIs are not the exception: the inbox in 2026, where every message has its own universe**Every message has a graph, so it can be shaped for the reader's moment; a custom interface per moment is now how interfaces get made, and each gets a policy.](custom-uis-are-not-the-exception.md) [2026-09-30Agents & policy15 threads**The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up**Agents, the infrastructure meant to contain them, and risk management run on spreadsheets are arriving at once, and together they are one scenario.](ultimate-insider-three-collisions.md) [2026-09-29News & evidence8 threads**The reader was always the product: a corrected history of how news got into this mess**News has sold the reader to advertisers since 1833; the web took the monopoly, the platforms made the reader measurable, and AI took the traffic.](how-news-got-here.md) [2026-09-29Agents & policy20 threads**Six agents, one inbox: what a real multi-agent setup taught me about access policies**An access policy for an agent is only as real as its worst row: every rule in a real six-agent setup, graded by how it is enforced today.](six-agents-one-inbox.md) [2026-09-28News & evidence8 threads**Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read**AI answer engines pay to read the web as HTML; a publisher who serves markdown, dates, hashes and a typed graph saves them tokens and should get a share.](token-bill-nobody-is-sending.md) [2026-09-27Vaults & method5 threads**A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down**The food chain is a data problem: one encrypted vault per party, joined by append lanes and a typed graph, could cut the waste that keeps prices high.](supply-chain-of-vaults.md) [2026-09-24Agents & policy16 threads**Every risk is already accepted. The only question is by whom, and for how long.**A risk exists the moment the exposure does, so somebody is already carrying it; the only questions worth asking are who has accepted it and until when.](every-risk-is-already-accepted.md) [2026-09-24Agents & policy12 threads**Before you give an agent a connector, give the connector a twin**An agent with a Gmail or Calendar connector can do things the platform cannot undo; a journal of every call, replayed, shows what it did and what can go back.](connector-twin-before-you-deploy-an-agent.md) [2026-09-22News & evidence7 threads**The future of news is the story vault, not the paywall**A story is a graph of claims and evidence and the article is one projection of it; keep the graph in a vault and sell what the article was made from.](future-of-news-story-vault-not-paywall.md) [2026-09-21Startups & strategy6 threads**For a startup, the most important question is whether they miss it**Ship something usable, give it away briefly, take it away and see whether anybody misses it; charge at a profit before you talk to investors.](the-question-is-whether-they-miss-it.md) [2026-09-21Startups & strategy3 threads**The SaaS apocalypse will be decided by inertia, not by AI**Incumbents and newcomers have the same AI; what separates them is how much past success each has to protect, so inertia decides which SaaS companies survive.](saas-apocalypse-decided-by-inertia-not-by-ai.md) [2026-09-20Graphs & knowledge20 threads**Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema**A fractal semantic graph has no privileged level and no single schema: each world keeps its own vocabulary and connects to others through named edges.](introducing-fractal-semantic-graphs.md) [2026-09-07Site & engineering1 thread**The proof moved up, the homepage after the rebuild, next to the before pictures**The rebuilt homepage puts four real vaults under one sentence, picks six by the job they do, and computes its numbers at build time from the site's own data.](proof-moved-up.md) [2026-09-07Site & engineering1 thread**The proof is two clicks behind the claim, what the homepage gets wrong, and the fix**The homepage leads with encryption, which cannot be seen, while twenty-five vaults a stranger can open in one click sit two clicks away in a table.](proof-behind-the-claim.md) [2026-08-27Site & engineering1 thread**A chat box on a site with no server, the plan, and the trade it makes**sgit.ai has no server, so its directory chat runs a local matcher by default, takes your own key as an opt-in, and leaves the vault bridge unbuilt.](chat-on-a-static-site.md) [2026-08-26Site & engineering2 threads**Twenty sites in fifteen days, and what that did to the writing**One site became twenty repositories in fifteen days because each argument needed its own version history, and the index now starts from a question.](nineteen-sites.md) [2026-08-25Vaults & method6 threads**Git for things you cannot put on GitHub**sgit is git for files you cannot put on GitHub: encrypted before they leave your machine, versioned like git, stored where the server cannot read a byte.](what-sgit-is.md) [2026-08-19Vaults & method2 threads**Seven vaults, one method**Publishing seven encrypted vaults in a fortnight produced a method, and every rule in it exists because something went wrong first.](seven-vaults-one-method.md) [2026-08-17Site & engineering2 threads**Green does not mean live**Two releases passed every check and never reached the site because the checks stopped at the git remote; a release now ends by asking the live site its version.](green-does-not-mean-live.md)
 
 Nothing matches. Clear the search or pick another topic.
 
@@ -15826,7 +15830,8 @@ Nothing matches. Clear the search or pick another topic.
 
 Read from the links the articles make to each other. [The same thing drawn as a map](graphs.md#map), and every article as its own graph.
 
-- [**A link to a persona**](a-link-to-a-persona.md) builds on [Pay to keep your persona](pay-to-keep-your-persona.md).
+- [**How to run synthetic users on your own site**](how-to-run-synthetic-users.md) builds on [A link to a persona](a-link-to-a-persona.md).
+- [**A link to a persona**](a-link-to-a-persona.md) builds on [Pay to keep your persona](pay-to-keep-your-persona.md); continued by [How to run synthetic users on your own site](how-to-run-synthetic-users.md).
 - [**Pay after you read**](pay-after-you-read.md) builds on [Open source is not free](open-source-is-not-free.md), [Every mistake added a rule](every-mistake-added-a-rule.md), [Going live with the reading meter](going-live-with-the-reading-meter.md), [A meter in the browser](a-meter-in-the-browser.md), [Who will game the reading meter? Eight kinds of…](who-will-game-the-reading-meter.md), [Pay to keep your persona](pay-to-keep-your-persona.md).
 - [**Where the vault keys live**](where-the-vault-keys-live.md) builds on [RFC 0001](rfc-0001-public-key-cryptography-for-sgit.md), [The identity we wanted to give the agents](the-identity-we-wanted-to-give-the-agents.md), [Encrypted memory for agents that run somewhere else](encrypted-memory-for-isolated-agents.md), [A personal agent that keeps your secrets](a-personal-agent-that-keeps-your-secrets.md).
 - [**The infographic bake-off**](the-infographic-bake-off.md) builds on [Re-anchoring](re-anchoring-agent-behaviour-policies.md), [One article, five readers](one-article-five-readers.md).
@@ -19844,7 +19849,7 @@ The site is the identity, the keys are pinned, the messages are signed. The oper
 2. **Bind the editor to the projection.** Every published projection from a newsroom vault carries a binding of its editor of record over its hash. The Article 50 exemption becomes provable from the vault with a read key. First candidates: The Evidence Dispatch and pt.newsroom.sgit.ai.
 3. **Bind the operator to the contact file.** The operator of every site agent is bound to the file that publishes its keys, and rotations carry the binding forward, so the network's agents have machine identity from the domain and human identity from the person.
 
-What we bring: evidence vaults with read keys and no host that can read them; the story graph and the agent behaviour policy as records made at the time with versions pinned; append lanes and signed messaging between agents, running since September; fifty-three published vaults and two newsrooms to bind against today. What Authentitas brings: a verified natural person from a chipped passport or national eID; a binding at the moment of creation; independence; and a held identity for the pseudonymous contributor, disclosed by due process.
+What we bring: evidence vaults with read keys and no host that can read them; the story graph and the agent behaviour policy as records made at the time with versions pinned; append lanes and signed messaging between agents, running since September; fifty-four published vaults and two newsrooms to bind against today. What Authentitas brings: a verified natural person from a chipped passport or national eID; a binding at the moment of creation; independence; and a held identity for the pseudonymous contributor, disclosed by due process.
 
 Three integrations, each small. Three of the four clauses already run.
 
@@ -20865,6 +20870,377 @@ Written by the Claude Code session that built the newsroom on sgit.ai, from a vo
 
 
 ==============================================================================
+# Synthetic users, newsroom.sgit.ai, five invented readers, sgit.ai
+
+> Five invented readers drove a browser through newsroom.sgit.ai one screenshot at a time, were interviewed and rated it: 62 steps, 51 questions, 31 findings, six blocking, two labelled as helper artefacts, and a measured bug of 51 missing figures. Published with its read key.
+>
+> Page: https://sgit.ai/demos/vaults/newsroom-synthetic-users/index.html
+
+[Home](../../../index.md) / [Vaults](../index.md) / Synthetic users · newsroom.sgit.ai
+
+# Synthetic users, third run: five people who do not exist, reading newsroom.sgit.ai
+
+Five invented readers each drove a browser through [newsroom.sgit.ai](https://newsroom.sgit.ai/) one screenshot at a time, on 10 October 2026, said what they saw, thought, asked and did at every step, and were interviewed and asked for a rating at the end. **62 steps, 51 questions the site did not answer, 56 places somebody got lost, and 31 findings, six of them blocking.** Four of the five left; the researcher kept reading. It is the same method as [the store study](../synthetic-users/index.md) and [the Risk Mandate study](../synthetic-users-riskmandate/index.md), and it was published with the how-to article [How to run synthetic users on your own site](../../../articles/how-to-run-synthetic-users.md).
+
+Five readers, five outcomes, and the disclosure above the fold.
+
+**Open it yourself. The key is the whole credential.**
+ Read key: `sgit_public_read_12a24c3e7c90295577788971088c70e42b747fe274d2b543cee8b263909f7f36:bg1opz3c`
+ In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_public_read_12a24c3e7c90295577788971088c70e42b747fe274d2b543cee8b263909f7f36%3Abg1opz3c) · From the CLI: `sgit clone sgit_public_read_12a24c3e7c90295577788971088c70e42b747fe274d2b543cee8b263909f7f36:bg1opz3c`
+Published deliberately under the `sgit_public_read_` prefix, and **derived** one-way from a vault key kept in the gitignored tier and never published. Classified with `check_credential.py` before it touched this page, read back with the published key alone by `catalogue_derive.py`, and verified with an all-zeros read key as the negative control. Created, pushed and audited with sgit-ai 0.20.0.
+
+**Everybody in it is invented, and the vault says so first.** The personas, their names and every word attributed to them were written by a language model (Claude Sonnet, one agent per persona) reading screenshots. **It is not user research**, and no sentence in it is evidence about a real person. What *is* evidence is what the browser produced: the screenshots, the addresses, the scroll positions, the step order and the page-error counts, captured by driving Chromium against newsroom.sgit.ai v0.6.1, served from a local copy of the deployed files verified byte-identical to the live site by sha256. Every other request was refused, so nothing reached the live site and nothing could be submitted.
+
+## See it live, here
+
+The vault opens as an app: a rail of five readers, and behind each the run, the interview, who they are, what we expected and what they found. You can also [**open it in the official UI**](https://dev.vault.sgraph.ai/#sgit_public_read_12a24c3e7c90295577788971088c70e42b747fe274d2b543cee8b263909f7f36%3Abg1opz3c).
+
+## The five readers
+
+| Persona (invented) | Arrives with | Outcome | Steps | Questions | Confusions | Viewport | Rating |
+|---|---|---|---|---|---|---|---|
+| **Hannah Okafor**: head of digital at a regional daily | Could my paper use this, and what would it take? | left | 14 | 11 | 12 | 1440×900 | 2/5 |
+| **Leo Marchetti**: junior analyst, reads news on the train | Is this worth my eight minutes, and is it going to ask me for money? | left | 13 | 9 | 12 | **390×844** | 2/5 |
+| **Ruth Adeyemi**: independent writer, about 40,000 readers a month | Could I put this on my site this weekend, and would my readers pay? | left | 10 | 10 | 10 | 1366×768 | 3/5 |
+| **Dr Samir Haddad**: media researcher, studies trust in news | Who writes this, how do I know what is true, and what are they not telling me? | **kept reading** | 14 | 12 | 12 | 1680×1050 | 3/5 |
+| **Margaret Lindqvist**: retired teacher, reads local news daily | Will this cost me money, and can I trust what it says? | left | 11 | 9 | 10 | **820×1180** | 2/5 |
+
+Zero page errors on all five runs. The ratings average 2.4 out of 5. Every number above is counted from the run records in the vault.
+
+The first money she sees is a £5.00 chip with no label. Her first question is whether it is something she owes.
+
+## What it found
+
+Findings are ordered by what they cost, each with the page and the step, so anyone can go and check. The six blocking ones:
+
+1. **No way to contact anyone about a pilot.** The article invites sites with traffic to test the meter; the Replicate page ends with no named person, email or form. (Editor)
+2. **Nothing shows real money moving.** No count of payments, readers or revenue, so a buyer cannot tell a demo from a running business. (Editor)
+3. **The install steps assume a developer.** Five file paths, ES modules and relative paths, with no download and no word about hosted platforms. (Writer)
+4. **No paragraph a writer could give her readers** about what the meter does and why it will not block them. (Writer)
+5. **How the writer gets paid is not clear**, when balances live in the reader's browser and can go below zero. (Writer)
+6. **The top-up page says it is simulated while asking for money.** She could not tell whether real money would move. (Local reader)
+
+Among the 19 worth fixing: the first screen on a phone does not say what the site is or that the £5 is free credit; "credit can go below zero" reads as a debt; the balance drops by a penny on opening a page with no notice there; "How the meter works" leads to developer documentation; the byline names one human while the AI authorship is in the footer; three version numbers appear for one site; and the Replicate page has no balance chip.
+
+Grouped by severity, tagged by cost, attributed to the run that found it.
+
+## The bug it found, measured
+
+The researcher hit "screenshot unavailable (app-email-m60.webp)" in the lead article, where the evidence should have been. That was checked against the site's files after the run, and it is not alone: **51 of the 527 figure references in the newsroom's articles point at vault images under `/demos/vaults/*/images/` that the move from sgit.ai did not copy**, so 10 articles show the same gap. The same image returns 200 on sgit.ai and 404 on newsroom.sgit.ai (checked 10 October 2026).
+
+The researcher's step 12, exactly as the browser showed it.
+
+## Checked after the run, and what was not the site
+
+Two findings were caused by the helper that drove the browser, not by the site, and they are kept and labelled rather than deleted: the editor's page "jumping backwards" while scrolling, and the commuter's taps opening the wrong article. The helper reopens the page on every step and restores the scroll position before the images have loaded, when the page is shorter (13,562 pixels against 15,728 once loaded), so the position and the link under the finger were not where the screenshot showed them. A person scrolling an open page would not see this, although layout shift while images load is worth checking on a phone.
+
+The same ten questions for every reader, so the answers read down a column as well as across a run.
+
+## How it is built
+
+`data/personas.json` holds the five readers and why they were chosen; `data/journeys.json` the path each was expected to take, written before any run; `data/protocol.json` the observe, think, act loop, the driver and the interview; `data/checks.json` what was checked after the runs. Each run is `runs/<date>-<persona>-01/`: `run.json` as the persona wrote it, one PNG per step, and `_capture.json`, the browser's own record of every action, address, scroll position, page height, page error and refused request. `tools/step.mjs` is the 58-line Playwright helper (one action per call, one screenshot after it) and `tools/bundle.py` rebuilds the app's data. The app is the one from the store study, adapted.
+
+The protocol is in the vault, so the next run can be compared with this one.
+
+## The audit, honestly
+
+**What was scanned.** Every file before the first commit, and every file again after cloning with the published read key alone: vault-key shapes, every `sgit_` credential prefix, private-key headers, the SG/Send access token, and the vault's own key, passphrase and write key. The clone matched the source, file by file.
+
+**What was found.** Nothing. The negative control, an all-zeros read key against the same vault id, produced nothing.
+
+**What changed after the first push.** Version 0.1.1 adapted the protocol file to the newsroom: the store study's discount-code rule, given to the agents as written, is kept as a labelled note because it never applied; the record fields and the driver are described as built; and two answers that guessed a pronoun for the site's author were reworded.
+
+**What it does not claim.** It is not user research. Five invented readers are a structured reading of the site from five points of view, good for finding where a page loses someone and poor at saying how many real people it would lose.
+
+**Write-key status:** escrowed, in the gitignored credential tier, before this page was written.
+
+## Derived facts
+
+From `admin/build/catalogue_derive.py bg1opz3c <read key hex>`, read-only, no token, no clone.
+
+- **Files:** 83 · **plaintext size:** 11991 KB
+- **Commits:** 3 · **last updated:** 2026-10-10 · **HEAD:** `obj-cas-imm-31bd2d3ef28c`
+- **Top level:** `FINDINGS.md`, `README.md`, `app.json`, `data/`, `index.html`, `runs/`, `tools/`
+- **File types:** .png ×62, .json ×16, .md ×2, .html ×1, .py ×1, .mjs ×1
+- **Vault app:** yes, entry `index.html` · **browser-renderable:** yes
+
+## Notes
+
+**The site it reads.** [newsroom.sgit.ai](https://newsroom.sgit.ai/), the newsroom moved from sgit.ai in October, with the reading meter described in [Pay after you read](../../../articles/pay-after-you-read.md).
+
+**Who wrote this.** [agent@riskmandate.ai](mailto:agent@riskmandate.ai) (Claude Opus 5.5, `claude-opus-5-5`), in the sgit.ai site session, for RiskMandate.ai and sgit.ai. AI-generated text, disclosed as Article 50 of the EU AI Act asks; the person with editorial responsibility is Dinis Cruz. Replies to [agent@riskmandate.ai](mailto:agent@riskmandate.ai).
+
+[← All published vaults](../index.md)
+
+
+
+==============================================================================
+# How to run synthetic users on your own site: five people who do not exist, a browser, and an afternoon, sgit.ai
+
+> A how-to, from three studies we have published: store.sgit.ai in September, riskmandate.ai the day after, and newsroom.sgit.ai on 10 October, run for this article. Five to ten invented users of about five types, each with a profile, a question they arrive with and an expected journey, drive a real browser one screenshot at a time, saying what they see, think, ask and do; then they are interviewed and rate the experience, and their findings are ordered by what they cost. Claude Sonnet is good enough to play each user; the study can live in a GitHub repository or in an encrypted vault shared by a link. On the newsroom, five readers took 62 steps, asked 51 questions the site did not answer and produced 31 findings, six blocking; four of them left. Two findings turned out to be caused by our own tooling, and one turned out to be a real bug: 51 of 527 figures missing after the move. This article sets out each step with examples and screenshots, what went wrong, and a template to start from.
+>
+> Page: https://sgit.ai/articles/how-to-run-synthetic-users.html
+
+[Home](../index.md) / [Articles](index.md) / How to run synthetic users on your own site: five people who do not exist, a browser, and an afternoon
+
+# How to run synthetic users on your own site: five people who do not exist, a browser, and an afternoon
+
+By [Dinis Cruz](../about/index.md) · 2026-10-10 · [article v1.0.0](versions/how-to-run-synthetic-users.md) · [site v0.7.40](../admin/versions.md) · synthetic-usersuxtestingpersonasagentsclaudeplaywrightvaultsnewsroomhow-toarticle
+
+***Abstract:** A how-to, from three studies we have published: store.sgit.ai in September, riskmandate.ai the day after, and newsroom.sgit.ai on 10 October, run for this article. Five to ten invented users of about five types, each with a profile, a question they arrive with and an expected journey, drive a real browser one screenshot at a time, saying what they see, think, ask and do; then they are interviewed and rate the experience, and their findings are ordered by what they cost. Claude Sonnet is good enough to play each user; the study can live in a GitHub repository or in an encrypted vault shared by a link. On the newsroom, five readers took 62 steps, asked 51 questions the site did not answer and produced 31 findings, six blocking; four of them left. Two findings turned out to be caused by our own tooling, and one turned out to be a real bug: 51 of 527 figures missing after the move. This article sets out each step with examples and screenshots, what went wrong, and a template to start from.*
+
+We have a lot of websites now, and most of them were built by agents in days, not months. What none of them has had is a steady supply of people telling us where they got lost. Synthetic users are the cheapest way I have found to get a first version of that: invented people, played by a model, driving a real browser through the site one screenshot at a time, and then telling you what they made of it.
+
+We have done this three times, and each time it found something that mattered. In September, five invented buyers walked through [store.sgit.ai](../demos/vaults/synthetic-users/index.md). The day after, the same method pointed at [riskmandate.ai](../demos/vaults/synthetic-users-riskmandate/index.md) caught two JavaScript errors that had shipped and that every test had passed over. And for this article, five invented readers went through our newly launched [newsroom.sgit.ai](https://newsroom.sgit.ai/), and four of them left. This is the how-to: the pieces you need, the steps, examples and screenshots from all three, and the mistakes we made so you do not have to.
+
+The newsroom study as it opens: five invented readers on the left, each with an outcome, the counts across all of them at the top, and the disclosure that everybody in it is invented before you can scroll past it.
+
+## In short
+
+- **A synthetic user is a record, not a character.** A situation, a question they arrive with, what they know and do not know, what they decide on, what makes them leave, their patience and their screen size.
+- **Give the agent the screenshot, not the page's code.** An agent that reads the code finds every link every time, and so finds no confusion, which is the only thing worth running this for.
+- **Claude Sonnet is good enough to play each user.** We ran one Sonnet agent per persona, in parallel. Opus wrote the personas and the helper, and checked the findings.
+- **Keep it in a GitHub repository or a vault.** A public repository is the easiest to share; a vault is encrypted, opens as an app and is shared by a link.
+- **Five to ten users, about five types.** Who the site is for, who it has to convince, a sceptic who will never buy, someone on a phone, someone anxious about money.
+- **Write the expected journey first.** The difference between what you expected and what happened is often the finding.
+- **Interview them at the end, and ask for a rating.** The same questions for everyone, so answers can be compared.
+- **Order findings by what they cost**, and **check every surprising one** before you publish. On the newsroom, two were caused by our own helper, and one was a real bug we then measured.
+- **It is not user research.** Say so above the fold. What is evidence is what the browser captured.
+
+## What you need
+
+Three pieces, and none of them is exotic.
+
+**A model to play each user.** Claude Sonnet is good enough. Reading a screenshot, staying in character, saying what is on screen and choosing one action is well within what it does, and it is quicker and cheaper than Opus for a job you will run five or ten times in parallel. On the newsroom, each of the five readers was a separate Sonnet agent with its own browser profile, all five running at once. Opus is worth it for the parts that need judgement about evidence: writing the personas and journeys, building the helper, and checking whether a finding is about the site or about the tooling. Opus works for the users too, if you have it; we have not seen Sonnet's runs fall short in a way that Opus would have fixed.
+
+**A browser the model can drive one step at a time.** The model needs a screenshot in and one action out: click here, scroll, go back, leave. We use a small [Playwright](https://playwright.dev/) helper with Chromium, 58 lines, which takes one action per call, takes a screenshot at the persona's own window size, and writes the browser's own record of what happened: the address, the scroll position, the page height, any page errors, and any request it refused. It is in the newsroom vault as `tools/step.mjs`.
+
+**Somewhere to keep the study**, because a study you cannot open again cannot be compared with the next one. Two options work:
+
+|  | A GitHub repository | An sgit vault |
+|---|---|---|
+| **Sharing** | Public is the easiest: anyone can read it, link to a line, and open an issue. Private needs a seat for each reader | A link with a read key; the reader needs no account |
+| **What the server sees** | Everything | Nothing: content is encrypted before it leaves your machine |
+| **How it opens** | As files, or as a GitHub Pages site if you build one | As an app: the vault's `index.html` runs in the browser |
+| **Where it fits** | Public sites, open findings, a team that already lives in GitHub | A site that is not public yet, findings you want to share with some people only, or work from Claude Code or Cowork that you hand over by a link |
+
+All three of our studies are vaults, so each one opens as the same small app: a rail of users, and behind each one the run, the interview, who they are, what we expected and what they found. If your site is public and the findings are not sensitive, a public repository is just as good, and probably easier for the people who will fix things.
+
+## The method, step by step
+
+The eight steps, with what we used for each on the newsroom. The first three are written before anything runs.
+
+### 1. Choose who: five to ten users, about five types
+
+Pick for who the site is for and who it has to convince, not for a demographic spread. Five is enough to see patterns; ten is useful when you have two of each type and want to see whether a finding holds between them.
+
+For the store, the five were buyers with different authority: a staff engineer paying on her own card, a technical co-founder for whom £500 is his call alone, a fund partner, a COO who signs up to £10,000, and a security engineer who reads vendor sites for sport and is never the buyer. For the newsroom, they were the people the newsroom has to win:
+
+- **An editor** at a regional daily, whose board wants a second revenue line, arriving at the article about the reading meter.
+- **A commuter** who never pays for news, on a phone, with eight minutes.
+- **An independent writer** with about 40,000 readers a month, who could install the meter on her own site.
+- **A media researcher** who studies trust in news and is sceptical of AI-written journalism.
+- **A retired teacher** on a tablet, sent by her grandson for a local story, who worries about being charged.
+
+Two habits have paid off every time. **Include somebody who will never buy.** The sceptic reads the site adversarially, and finds the claims that do not hold. **Put at least one on a phone.** In the store study, the person carrying the largest decision a single person makes alone on that site did the whole thing on a phone, and produced the most questions and the most confusion of anyone.
+
+### 2. Write each profile
+
+The profile is what the agent checks itself against at every step: would she know that? would she leave now? So it is a record with fields, not a paragraph of colour.
+
+One of the newsroom profiles, field by field. The two fields shaded amber, what they do not know and what makes them leave, are the ones that make a run honest.
+
+The fields that matter most are the negative ones. **What they do not know** stops the agent using knowledge the person would not have: our retired teacher does not know what credit, a balance or a top-up mean here, so when the site shows "£5.00" in the corner, she has to work it out like anybody else. **What makes them leave** gives the run an honest ending, and leaving is often the most useful ending of all.
+
+Every person is invented. Do not model real people or composites of them, and do not use protected traits as stand-ins for behaviour. A profile describes a situation and a question, so that anybody can argue with it.
+
+### 3. Write the expected journey, before any run
+
+For each user, write what you expect them to do: a hypothesis, the path, and what to watch for. For the editor, we expected her to read the article, open the meter's documentation, check the security page, look for who to contact, and try the rating card at the foot of the article. We were watching for whether she found who to talk to.
+
+She did not. That is the first blocking finding of the study, and it is visible as a difference between two files, `journeys.json` and her run, rather than only as a sentence in a report. Writing the journey first also stops you from deciding afterwards that whatever happened was what you expected.
+
+### 4. Drive a browser, one screenshot at a time
+
+This is the run, and the method is in one rule: **the agent gets the screenshot, the same thing a person would have, and not the page's code.** Then it loops:
+
+1. **Observe**: a screenshot at the persona's own window size.
+2. **Say what you see**, at the level of detail this persona would take in. A skimmer sees three things; a slow reader sees the caveat under the price.
+3. **Think**: what they are weighing, and what they are suspicious of. This is worth more than the click path.
+4. **Record a question**, if the page raised one and did not answer it. These are the output.
+5. **Record confusion**, if there was any. A run with no confusion anywhere is a run that was not done properly.
+6. **Act**: one action, with the reason in the persona's terms, not the site's.
+7. **Loop**, until they get what they came for, leave, or run out of patience.
+Step 1 of the retired teacher's run. The screenshot is the citation for everything she says next to it: a pound sign at the very top before she has read a thing, and her question, whether it is something she has been charged, given, or must pay.
+
+A few rules keep the runs honest. Stay in the persona. Never use knowledge they would not have: if they have not opened a page, they do not know what is on it. Do not fix the site in the narration; "it should say X" belongs in the interview. Every claim of confusion must point at something on the screenshot. We capped each run at 14 actions; three of the five readers left before the cap, and two reached it.
+
+The screenshot also catches what a person on a small screen meets first. On the commuter's phone, the first screen of the newsroom is the masthead, eight menu links and an editor's note about agents; nothing says what the site is about, or that the £5.00 next to the name is free credit.
+
+The commuter's first screen, 390 by 844, exactly as the browser showed it. He read the £5.00 as a price.
+
+**Run against a copy of your site, if you can.** For the newsroom, the helper answered every request to newsroom.sgit.ai from a local copy of the site's deployed files, which we had first checked were byte-identical to the live site by sha256, and refused every other request and every request that was not a read. Nothing reached the live site, nothing could be submitted, and the run can be repeated against exactly the same bytes. The store study did the same. It also matters for safety, and I come back to that below.
+
+### 5. Interview them, and ask for a rating
+
+When the run ends, however it ends, each user answers the same ten questions:
+
+1. In one sentence, what is this site?
+2. Was any of it for you? Which part?
+3. Did you believe it? What made you believe it, or not?
+4. Where did you have to guess?
+5. What did you still not know at the end?
+6. Was the price right for what you got?
+7. Would you pay, or pay more? If not, what would have to change?
+8. One change. What is it?
+9. Would you send this to somebody else? Who?
+10. Rate the experience from 1 to 5, and say why in one sentence.
+
+The same questions for everyone means the answers can be read down a column as well as across a run. Down the "one change" column for the newsroom, the commuter and the retired teacher both asked for one plain line at the top, saying what the site is and what the money means. The editor asked for "a named contact and an indicative pilot price where the abstract makes its offer". The researcher asked to "put the agent involvement on the byline of every article, where a reader meets the name".
+
+The retired teacher's interview. "I half believed it": the reassurance landed, and then the line saying the cart was simulated made her wonder how carefully it is all run.
+
+The ratings were 2, 2, 3, 3 and 2. The interview is also where the honesty of a site shows up. In the Risk Mandate study, one of the buyers said of the site's admissions: "Nobody oversells and then volunteers that." On the newsroom, the editor trusted "the honesty" and doubted "the engineering", because the balance showed £4.97 in the top bar and £4.49 on the reader card on the same screen.
+
+### 6. Order the findings by what they cost
+
+Each run ends with three to six findings, each with the page, the step, and what it costs: **blocks a pilot**, **costs a payment**, **costs trust**, **loses a reader**, or **minor**. Ordering by cost, not by who found it, is what turns five stories into a list someone can work through. Each finding points at a page and a step, so anybody can open the screenshot and check.
+
+Everything they found on the newsroom, grouped by severity, each tagged with what it costs, the page, and the run that found it.
+
+The newsroom produced 31 findings: six blocking, 19 worth fixing, four minor, and two that turned out not to be about the site at all. The blocking ones were all about the step after reading: no contact for a pilot, nothing showing real money moving, install steps that assume a developer, no paragraph a writer could give her readers, no clear way the writer gets paid, and a top-up page that says it is simulated while asking for money. Most of them can be fixed with a few words in the right place; one needs a decision about how payments are shown.
+
+### 7. Check before you publish
+
+This is the step that separates a study you can stand behind from a pile of plausible paragraphs. Re-check every surprising finding against the browser's own record and the site's files, label what your tooling caused, and measure what you can.
+
+On the newsroom, two findings did not survive. The editor reported the article page "jumping backwards" while she scrolled, and the commuter reported that tapping a headline opened a different article. Both looked like real bugs, and both were ours: the helper reopened the page on every step and restored the scroll position before the images had loaded, when the page was shorter (13,562 pixels against 15,728 once loaded), so the position, and the link under the finger, were not where the screenshot showed them. They are kept in the vault, labelled as helper artefacts, rather than deleted, because a findings list that silently loses items cannot be compared with the next one.
+
+One finding got bigger. The researcher hit "screenshot unavailable" where the evidence should have been, in the lead article. We checked the site's files: **51 of the 527 figure references in the newsroom's articles point at vault images that the move from sgit.ai did not copy**, so 10 articles show the same gap. The same image returns 200 on sgit.ai and 404 on newsroom.sgit.ai.
+
+The researcher's step 12 on newsroom.sgit.ai: "screenshot unavailable (app-email-m60.webp)", and below it a dark box with only the image's description in it.
+
+That pattern has held on every site. The findings that pay for the whole exercise tend to be the ones the method finds because it drives a real browser, not because the persona is clever: on Risk Mandate, a JavaScript error on every page visited, which had shipped and which every existing test had passed over because the HTML still rendered; on the newsroom, figures that went missing in a move. Neither is a matter of opinion.
+
+The three studies side by side, counted from the run records in each vault.
+
+### 8. Publish, fix, and run again
+
+Publish the study with the protocol inside it, so the next run follows the same loop and can be compared with this one. Say above the fold that everybody in it is invented, and separate what the model wrote from what the browser captured. Then fix things, and run the same five again. The second run is where the value compounds: a finding that disappears is a fix that worked, and a new one is something the fix broke.
+
+The store study already did part of this: four findings were fixed in the store release that followed, and they are kept in the list, marked fixed. One fix was better than the finding asked for: a persona wanted a number for how long something takes, and the page now says the time has never been measured for a paying buyer, which is the more honest answer and the harder one to write.
+
+## What went wrong, so you can skip it
+
+The newsroom study took a little over two hours from the first persona starting to the vault being published, and most of that time went on our own mistakes.
+
+**The helper reloaded the page on every step**, which meant the reading meter charged again each time. The fix was to carry the browser tab's session over between steps, as a tab that stays open would.
+
+**Scrolling stuck** at one position. The fix was to scroll by an amount from wherever the page is, as a person does. After both fixes, all five runs were done again from the start, and those are the runs in the vault.
+
+**The scroll position was restored before the images loaded**, which caused the two helper artefacts. The better design is a browser that stays open for the whole run, so each action happens on the page the persona is actually looking at. That is the first change for the next run.
+
+**The protocol copied from the store study carried leftovers**, such as a rule about a discount code, which never applied to a newsroom. The agents ignored it, but it is a reminder that the protocol is part of the study: adapt it to each site, and keep the changes in the vault.
+
+**A safety check stopped the first runs, and it was right to.** Claude Code's automatic permission mode blocked the persona agents when they tried to drive the live site through a browser. We did not try to get around it. Instead, we served the verified local copy, so no request could leave the machine, and asked Dinis, who approved one narrow rule allowing exactly that helper and nothing else. If you run synthetic users with agents, expect the same, and treat it as a reason to run against a copy: it is safer, and it makes the run repeatable.
+
+## A template to start from
+
+This is the shape of the prompt each persona agent was given on the newsroom, shortened. The full version, with the protocol and the record format, is in the vault.
+
+```
+
+You are playing ONE synthetic user on <site>, for a published study.
+The person is invented; stay in character, but never claim to be a real person.
+
+PERSONA (invented): <the profile record>
+THE PROTOCOL: <observe, say what you see, think, question, confusion, act, loop>
+RULES: stay in the persona; never use knowledge they would not have;
+leaving is a valid ending; do not fix the site in the narration;
+every confusion points at something on the screenshot.
+
+HOW YOU DRIVE THE BROWSER: only this helper, one action per call:
+  node step.mjs <run dir> start <url> <width> <height> [mobile]
+  then one of: goto <path> | click <x> <y> | clicktext "<text>" | scroll <px> | back | look
+After every call, open the screenshot and decide the next action ONLY from what
+is visible in it. Do not read the page's HTML, DOM or markdown.
+
+Run until the persona leaves, runs out of patience, or gets what they came for,
+at most 14 actions. Then write run.json with: the steps (saw, thought, question,
+confusion, action, why), the interview (the ten questions), a rating from 1 to 5,
+and 3 to 6 findings with the page, the step and what each one costs.
+
+```
+
+And the files, as they sit in the newsroom vault:
+
+```
+
+data/personas.json    the users, and why these ones
+data/journeys.json    what each was expected to do, written before any run
+data/protocol.json    the loop, the rules, the interview, the record format
+data/checks.json      what was checked after the runs: artefacts, and measured findings
+runs/<run>/run.json   the run as the persona wrote it
+runs/<run>/NN.png     what they were looking at, step by step
+runs/<run>/_capture.json   the browser's own record of every step
+tools/step.mjs        the browser helper
+tools/bundle.py       rebuilds the app's data
+index.html, app.json  the app the vault opens as
+
+```
+
+## What is next
+
+We have many sites to run this on, and the plan is simple: every site gets five users before it is called done, and the same five again after the fixes. The newsroom findings go to the session that runs newsroom.sgit.ai, starting with the 51 missing figures and the one plain line at the top. Personas can also be shared between sites: the staff engineer from the store study walked Risk Mandate too, which is what turns two separate studies into a comparison, and the [persona in a vault](../articles/a-link-to-a-persona.md) idea would let the same synthetic users follow us from site to site.
+
+If you would like five synthetic users on your own site, or want to compare notes on how you do this, write to [agent@riskmandate.ai](mailto:agent@riskmandate.ai).
+
+## Where this comes from
+
+A voice memo from Dinis Cruz, and the three published studies, each opened with its read key: [synthetic users on store.sgit.ai](../demos/vaults/synthetic-users/index.md) (vault g2hei4u6, 15 September 2026), [synthetic users on riskmandate.ai](../demos/vaults/synthetic-users-riskmandate/index.md) (vault o3q6zhtr, 16 September 2026) and [synthetic users on newsroom.sgit.ai](../demos/vaults/newsroom-synthetic-users/index.md) (vault bg1opz3c, 10 October 2026), run for this article. Every number is counted from the run records in those vaults. The newsroom runs drove Chromium against newsroom.sgit.ai v0.6.1, served from a local copy of its deployed files, on 10 October 2026. The persona agents were Claude Sonnet; this article and the study were put together by Claude Opus in the sgit.ai site session.
+
+## Threads
+
+Vaults & methodSite & engineering[This article as a graph →](graphs.md#how-to-run-synthetic-users)
+
+### Builds on
+
+- [A link to a persona: send people to the newsroom as someone, not as nobody](a-link-to-a-persona.md) Send a CISO to the newsroom as a CISO: personas kept in a vault by the newsroom's agents, opened from a link, followed or forked.
+
+[All articles](index.md) · [All graphs](graphs.md)
+
+**Posting this article on LinkedIn?** The cover is [how-to-run-synthetic-users.jpg](../articles/banners/how-to-run-synthetic-users.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
+
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
+
+[← All articles](index.md)
+
+
+
+==============================================================================
+# Versions of How to run synthetic users on your own site, sgit.ai
+
+> Every published version of the article "How to run synthetic users on your own site", with the date, the words and what changed.
+>
+> Page: https://sgit.ai/articles/versions/how-to-run-synthetic-users.html
+
+[Home](../../index.md) / [Articles](../index.md) / [How to run synthetic users on your own site](../how-to-run-synthetic-users.md) / Versions
+
+# Versions of: How to run synthetic users on your own site
+
+1 published version of [How to run synthetic users on your own site: five people who do not exist, a browser, and an afternoon](../how-to-run-synthetic-users.md). The current one is **v1.0.0**.
+
+v1.0.0 is the article as first published. A change to its text (title, abstract or body) is the next minor version, v1.1.0; a change only to its other details (a LinkedIn link, the release it belongs to) is the next patch, v1.0.1. The list is read from the site's git history at every build, so it cannot be edited by hand and cannot leave a version out. Views extracted from an article, such as the Five readers, are not part of its text and do not change its version.
+
+| Version | Date | Kind | Words | Change from the version before | Commit |  |
+|---|---|---|---|---|---|---|
+| **v1.0.0** | 2026-10-10 | published | 4,149 | first published | this release | [current](../how-to-run-synthetic-users.md) |
+
+[← Back to the article](../how-to-run-synthetic-users.md) · [All articles](../index.md)
+
+
+
+==============================================================================
 # A link to a persona: send people to the newsroom as someone, not as nobody, sgit.ai
 
 > When I send someone to the newsroom today, they land on a front page made for nobody. I would rather send a CISO to the newsroom as a CISO, a data protection officer as a DPO, a developer as a developer, and one particular person as a persona made for them. This is the brief for doing that with nothing but a link. Personas move out of the site's code into an encrypted vault, opened in the reader's browser with a published read key, so a persona can be added or updated by the newsroom's agents without a single change to the site. A few personas get a page of their own, /persona/ciso/; any number more are reached through the part of the link after the #, which browsers never send to a server; and a persona for one person can live in a vault of its own, readable only by whoever has the link. The reader can follow the persona as it is kept up to date, or fork it and make it theirs. It draws on what Netflix, Bluesky, Mastodon, Apple News and Brave News learned about profiles, starter packs and personalisation on the device, and it stays entirely client side.
@@ -20992,6 +21368,10 @@ Startups & strategyVaults & method[This article as a graph →](graphs.md#a-link
 ### Builds on
 
 - [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](pay-to-keep-your-persona.md) Readers should pay because it helps them: a persona with a name and a graph, several for focus, and one that follows you between devices.
+
+### Continued by
+
+- [How to run synthetic users on your own site: five people who do not exist, a browser, and an afternoon](how-to-run-synthetic-users.md) Five invented users, a model reading screenshots, and a real browser: how to run synthetic users, from three studies.
 
 [All articles](index.md) · [All graphs](graphs.md)
 
@@ -21235,7 +21615,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.1.0** | 2026-10-10 | minor | 4,213 | +518 / −0 words; 0 changed, 8 added, 0 removed paragraphs | this release | [what changed](pay-after-you-read/v1.1.0.md) · [current](../pay-after-you-read.md) |
+| **v1.1.0** | 2026-10-10 | minor | 4,213 | +518 / −0 words; 0 changed, 8 added, 0 removed paragraphs | [`dfd5d236c`](https://github.com/SGit-AI/SGit-AI__Website/commit/dfd5d236cdcd933bf998f28a88aa26054995effd) | [what changed](pay-after-you-read/v1.1.0.md) · [current](../pay-after-you-read.md) |
 | **v1.0.0** | 2026-10-10 | published | 3,695 | first published | [`75b94297e`](https://github.com/SGit-AI/SGit-AI__Website/commit/75b94297e00dbf96643208184fab2ab61871b607) |  |
 
 [← Back to the article](../pay-after-you-read.md) · [All articles](../index.md)
@@ -21253,7 +21633,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 
 # Pay after you read: what changed in v1.1.0
 
-From v1.0.0 (2026-10-10, `75b94297e`) to v1.1.0 (2026-10-10, this release), paragraph by paragraph.
+From v1.0.0 (2026-10-10, `75b94297e`) to v1.1.0 (2026-10-10, `dfd5d236c`), paragraph by paragraph.
 
 8 paragraphs added, 0 removed, 0 changed in place, 76 unchanged. About 518 words added and 0 removed. Insertions are marked like this, deletions like this; unchanged runs are folded to one line; figures appear as their file names.
 
@@ -42018,13 +42398,42 @@ Every article here has a semantic graph beside it: the ideas it rests on, the cl
 
 The graphs are data first and pictures second. Take them as JSON: [all articles in one file](graphs.json), with the topics, the teasers and the links between articles resolved, or one file per article at `articles/graphs/<slug>.json` (for example [this one](graphs/footprint-and-blast-radius.json)). The pages on this site are rendered from the same files at build time; nothing here is hand-written HTML.
 
-66 of 66 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
+67 of 67 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
 
 ## How the articles connect
 
 *[diagram]*
 
-66 articles, 278 links between them (429 mentions in all). 57 articles cite an earlier one; 9 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (20 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+67 articles, 279 links between them (430 mentions in all). 58 articles cite an earlier one; 9 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (20 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+
+## [How to run synthetic users on your own site: five people who do not exist, a browser, and an afternoon](how-to-run-synthetic-users.md)
+
+2026-10-10 · Vaults & methodSite & engineering
+
+Synthetic users are invented people, each a record with a situation, a question, what they know and do not, what they decide on and what makes them leave, played by a model that drives a real browser one screenshot at a time instead of reading the page's code, so it can get lost as a person would. Claude Sonnet is good enough to play each user; the study lives in a GitHub repository or a vault shared by a link. Choose five to ten users of about five types, write profiles and expected journeys first, run the observe-think-act loop, interview and rate, order findings by cost, check every surprising finding against the browser's record, publish and run again. On newsroom.sgit.ai five readers produced 31 findings, six blocking; two were caused by the helper, and one became a measured bug: 51 of 527 figures missing.
+
+*[diagram]*
+**concept**claim**method**artefact**example
+
+**11 nodes, 10 edges**
+
+- **Screenshot, not the code** (method) An agent reading the code finds every link and therefore no confusion.
+- **A profile is a record** (concept) Situation, question, knows, does not know, decides on, walks away if, patience, screen.
+- **Expected journey first** (method) Written before the run, so a surprise shows as a difference.
+- **Sonnet plays each user** (claim) Good enough to read a screenshot and stay in character; Opus for checking evidence.
+- **Repository or vault** (concept) Public GitHub is easiest to share; a vault is encrypted, opens as an app, shared by a link.
+- **Interview and rating** (method) The same ten questions for everyone; a rating from 1 to 5.
+- **Findings ordered by cost** (method) Blocks a pilot, costs a payment, costs trust, loses a reader, minor.
+- **Check before publishing** (method) Two newsroom findings were the helper's doing and are labelled, not deleted.
+- **51 of 527 figures missing** (example) The researcher's broken image, measured across the newsroom after the move.
+- **Run against a verified copy** (method) Byte-identical local files: nothing reaches the live site, and the run repeats.
+- **Three studies** (artefact) store.sgit.ai, riskmandate.ai and newsroom.sgit.ai, each in a vault.
+
+> An agent that reads the code finds every link every time, and so finds no confusion, which is the only thing worth running this for. The method in one sentence.
+
+> A findings list that silently loses items cannot be compared with the next one. Why artefacts are labelled, not deleted.
+
+builds on [A link to a persona: send people to the newsroom as someone, not as nobody](#a-link-to-a-persona).
 
 ## [A link to a persona: send people to the newsroom as someone, not as nobody](a-link-to-a-persona.md)
 
@@ -42052,7 +42461,7 @@ A link should land a reader as someone rather than as nobody: personas move from
 
 > a persona is a reading list with a history, and you either track the upstream or branch from it. Follow and fork, from git.
 
-builds on [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](#pay-to-keep-your-persona).
+builds on [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](#pay-to-keep-your-persona); continued by [How to run synthetic users on your own site: five people who do not exist, a browser, and an afternoon](#how-to-run-synthetic-users).
 
 ## [Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time](pay-after-you-read.md)
 
@@ -44154,8 +44563,8 @@ Edition of **2026-10-08**. Third edition. A day of articles on how agents decide
 
 Computed at every build from the files: placements that point at nothing, articles published since the edition, open pitches, articles without a graph or a card. The same list is what `python3 admin/build/desk.py` prints for the Editor.
 
-- To do`front.json` 17 article(s) published since the 2026-10-08 edition: a-link-to-a-persona, pay-after-you-read, where-the-vault-keys-live, the-infographic-bake-off, pay-to-keep-your-persona, who-will-game-the-reading-meter
-- To do`newsletter/` a newsletter issue is due: 17 articles since issue 2 (2026-10-08)
+- To do`front.json` 18 article(s) published since the 2026-10-08 edition: how-to-run-synthetic-users, a-link-to-a-persona, pay-after-you-read, where-the-vault-keys-live, the-infographic-bake-off, pay-to-keep-your-persona
+- To do`newsletter/` a newsletter issue is due: 18 articles since issue 2 (2026-10-08)
 - To do`newsroom/pitches/2026-10-10__pay-to-keep-your-persona.md` open pitch from journalist: highlight for pay-to-keep-your-persona
 - To do`newsroom/pitches/2026-10-10__one-article-five-readers.md` open pitch from agent@riskmandate.ai: lead for one-article-five-readers
 - To do`newsroom/pitches/2026-10-10__going-live-with-the-reading-meter.md` open pitch from journalist: lead for going-live-with-the-reading-meter
@@ -44430,7 +44839,7 @@ One entry per run of a desk role, newest first, each its own file and never edit
 >
 > Page: https://sgit.ai/articles/collections/index.html
 
-Edition of 2026-10-0866 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.39
+Edition of 2026-10-0867 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.40
 
 # Collections
 
@@ -44449,7 +44858,7 @@ A collection is one file in `admin/content/newsroom/collections/`. [How the desk
 >
 > Page: https://sgit.ai/articles/desk/index.html
 
-Edition of 2026-10-0866 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.39
+Edition of 2026-10-0867 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.40
 
 # From the desk
 
@@ -45187,7 +45596,7 @@ Your browser encrypts it to the public key of the agent that runs the list, then
 >
 > Page: https://sgit.ai/articles/newsletter/index.html
 
-Edition of 2026-10-0866 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.39
+Edition of 2026-10-0867 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.40
 
 # The newsletter
 
@@ -45213,7 +45622,7 @@ What it takes to let agents do real work for a business, from four sides: a team
 
 **Get the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../../subscribe/index.md)
 
-Next issue: due now (17 articles since issue 2 (2026-10-08)). Issues are written by the [Journalist](../../newsroom/roles/journalist.md) from the articles' own data; every quote is checked against its article when the site is built.
+Next issue: due now (18 articles since issue 2 (2026-10-08)). Issues are written by the [Journalist](../../newsroom/roles/journalist.md) from the articles' own data; every quote is checked against its article when the site is built.
 
 
 
