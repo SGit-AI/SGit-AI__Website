@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.29'
+SITE_VERSION = 'v0.7.30'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.29', '2026-10-10', 'this release',
+    ('v0.7.30', '2026-10-10', 'this release',
+     "THE INFOGRAPHIC BAKE-OFF. Every image-output model on OpenRouter on 10 October 2026, its auto-router and a code-drawn control, given eleven briefs from the Re-anchoring article over five rounds (an 18-word stat card to the whole article, a 14-number chart, an edit, a UI component, a brand slide, a three-slide deck with and without a style reference, and the bake-off's own conclusion). 101 images judged blind by Designer agents, OCR as a check, $10.44 recorded by OpenRouter, an Accountant and a Data Scientist on the numbers. Recommended: Nano Banana 2.1 (concept slides, charts, decks), Gemini 3 Pro Image (when speed matters), GPT-5.4 Image 2 (documents, edits, components, brand). A new vault, Infographic bake-off (po5i477i, read key published), holds every brief, image, score, reason and cost as an app, with the guidance; and the article, with six figures.",),
+    ('v0.7.29', '2026-10-10', 'git ab006b20',
      "ARTICLES HAVE VERSIONS, AND FIVE READERS FOLDS AWAY. Every article now carries its own version beside the site release it was published in: v1.0.0 is the article as first published, a change to its text is the next minor version, a change only to its other details the next patch. The history is read from git at every build (renames followed, cached for shallow clones), so nobody keeps the numbers and publishing is still adding one file. Each article has a versions page (61 articles, 195 versions), and every version after the first has a page showing what changed, paragraph by paragraph, with a word-level diff. The diff renderer moved into admin/build/article_versions.py and article_diff.py now uses it (output unchanged). Version pages quote earlier text verbatim and are exempt from the em-dash and retired-word style rules, not from the leak checks. Read it another way becomes Five readers: one closed line under the abstract saying what is inside, the five readers closed within it, the article version the views were read from, and links to the other articles the readers have read and to the Article Views vault.",),
     ('v0.7.28', '2026-10-10', 'git 55aee85d',
      "PERSONAS, AND A NEWSROOM OF YOUR OWN. SG Meter v1.1.0 (new immutable path assets/components/sg-meter/v1/v1.1/v1.1.0/; "

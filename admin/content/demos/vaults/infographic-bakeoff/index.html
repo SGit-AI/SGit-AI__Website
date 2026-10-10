@@ -1,0 +1,87 @@
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / Infographic bake-off</p>
+  <h1>Infographic bake-off: every image model on OpenRouter, judged blind, 10 October 2026</h1>
+  <p class="lead">Which image model should the newsroom use for an infographic, for which job, and at what cost? Every image-output model on OpenRouter on the day, its auto-router and our own code-drawn renderer as a control were given the same briefs from one article: an 18-word stat card, a concept slide, a diagram with exact labels, a chart with fourteen numbers, a 240-word document, the whole 2,800-word article, an edit of their own image, a UI component, a brand slide, a three-slide deck, and finally the conclusion of the bake-off itself. Five rounds, models cut after each. 101 images, every one judged blind by a Designer agent, every cent recorded by OpenRouter: <b>$10.44</b>. It was published with the article <a href="../../../articles/the-infographic-bake-off.html">The infographic bake-off</a>.</p>
+
+  <figure class="shot" data-shot="app-overview.webp" data-dir="images/" data-alt="The app's overview: the numbers of the run and the analysis."><figcaption>101 images, five rounds, blind scores, every cost.</figcaption></figure>
+
+  <div class="note"><b>Open it yourself. The key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_public_read_89ef38c8db580a5c858ae1889859f30792b2a16fdf370d58a8cd8e58000cc6be:po5i477i</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_public_read_89ef38c8db580a5c858ae1889859f30792b2a16fdf370d58a8cd8e58000cc6be%3Apo5i477i" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone sgit_public_read_89ef38c8db580a5c858ae1889859f30792b2a16fdf370d58a8cd8e58000cc6be:po5i477i</code><br>
+  <span class="small dim">Published deliberately under the <code>sgit_public_read_</code> prefix, and <b>derived</b> one-way from a vault key kept in the gitignored tier and never published. Classified with <code>check_credential.py</code> before it touched this page, cloned back with the published key alone and compared with the source file by file, and checked with an all-zeros read key as the negative control. Created, pushed and audited with sgit-ai 0.20.0. The OpenRouter key the run used was read from a file outside the vault and appears nowhere in it.</span></div>
+
+  <h2 id="live">See it live, here</h2>
+  <p class="small dim" style="margin:.2rem 0 .9rem">The vault opens as an app: the overview, each round with every image, its cost, time, fact check and the judge's reason, a page per model, the guidance, the ledger of every generation, and the method and roles. You can also <a href="https://dev.vault.sgraph.ai/#sgit_public_read_89ef38c8db580a5c858ae1889859f30792b2a16fdf370d58a8cd8e58000cc6be%3Apo5i477i" rel="noopener" target="_blank"><b>open it in the official UI</b></a>.</p>
+  <div class="sgv-uiembed" data-vault="po5i477i" data-readkey="89ef38c8db580a5c858ae1889859f30792b2a16fdf370d58a8cd8e58000cc6be" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js'].forEach(function (f) {
+      fetch('../../../assets/' + f).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function (t) { (0, eval)(t); }).catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>The one idea</h2>
+  <p>Choose the model by the job, not by the budget. A cheap model at four cents an image makes concept slides, charts and consistent decks as well as models four times its price, and fails every brief where each character is specified. The most expensive model is the only one that turns a whole document into a correct infographic and the only one that edits an image without breaking something else. The middle one is the fast all-rounder.</p>
+
+  <h2>What is in it</h2>
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">rounds</span>
+        <h3>Every image, side by side, with its cost and the judge's reason</h3>
+        <p>For each brief, every model's image with its recorded cost, seconds and size; the Designer's fact check of the required text, OCR recall as an independent check, anything invented; the overall score; and one line on why. Click any image for full size.</p>
+      </div>
+      <figure class="shot" data-shot="app-round.webp" data-dir="images/" data-alt="Round 2, the data chart: six models and the control, each with cost, time, fact check, OCR and the judge's reason."><figcaption>Fourteen exact numbers: five of six models got all of them.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">directing it</span>
+        <h3>Edits, components and brand rules</h3>
+        <p>Round 3 asked each model to change three things in its own diagram and nothing else, to draw a UI component with seven exact rows, and to follow house brand rules. Only GPT-5.4 Image 2 made the edit without breaking anything; the cheap model had no usable image in the round.</p>
+      </div>
+      <figure class="shot" data-shot="app-edit.webp" data-dir="images/" data-alt="Round 3, the edit: four models' versions of their own diagram after three requested changes."><figcaption>An edit is a redraw for most models.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">guidance</span>
+        <h3>Which model for which job, and how to write the brief</h3>
+        <p>For ten kinds of job: the model to use, the fallback, what to avoid, the cost and time, and the evidence. Twelve prompt rules learned from the faults (never name the platform, say "No other text", forbid invented numbers, attach slide 1 to every later slide of a deck), and how to call the models through OpenRouter.</p>
+      </div>
+      <figure class="shot" data-shot="app-guidance.webp" data-dir="images/" data-alt="The guidance: a table of jobs with the model to use, fallback, avoid, cost and evidence."><figcaption>The deliverable, for any agent that makes infographics.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">ledger</span>
+        <h3>Every generation, every cent</h3>
+        <p>One row per image: round, brief, model, OpenRouter's recorded cost, seconds, size, fact check, OCR recall, overall and usable scores. The Accountant's notes add cost per usable image, what drives cost, the cost of an edit and monthly projections.</p>
+      </div>
+      <figure class="shot" data-shot="app-ledger.webp" data-dir="images/" data-alt="The ledger: one row per generation with cost, seconds, size and scores."><figcaption>$10.44, of which half paid for images nobody would use.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>How it is built</h2>
+  <p>The briefs are in <code>scenarios.json</code>, built from the Re-anchoring article and its Five readers views (<code>source/</code>). <code>tools/run.py</code> calls OpenRouter's chat completions with image output, in parallel, and records each generation's cost, tokens, seconds, size and id; <code>tools/ocr_score.py</code> reads every image with tesseract in four segmentation modes and checks the required strings; Designer agents judged copies with random ids, never seeing the model; <code>tools/ledger.py</code> unblinds and totals; the Accountant and the Data Scientist, each an agent with a role file in <code>roles/</code>, wrote <code>analysis/</code>. The images are kept as full-size WebP in <code>img/</code>; the original PNGs are not in the vault.</p>
+
+  <h2>The audit, honestly</h2>
+  <p><b>What was scanned.</b> Every file before the first commit, for credential shapes (vault keys, every <code>sgit_</code> credential prefix, private-key headers, the SG/Send access token) and for the OpenRouter key and its prefix; and again after cloning with the published read key alone. The clone matched the source, file by file.</p>
+  <p><b>What was found.</b> Nothing. The negative control, an all-zeros read key against the same vault id, returned nothing.</p>
+  <p><b>What it does not claim.</b> Most cells hold one or two images, and repeats of one brief moved scores by up to two points, so a one-point difference between two models is noise; the tiers are not. The judge is one kind of agent with one rubric. Prices and models are OpenRouter's on 10 October 2026 and will change. Nothing here is a statement about any vendor beyond what these images show.</p>
+  <p><b>Write-key status:</b> escrowed, in the gitignored credential tier, before this page was written.</p>
+
+  <h2>Derived facts</h2>
+  <p class="small dim">From <code>admin/build/catalogue_derive.py po5i477i &lt;read key hex&gt;</code>, read-only, no token, no clone.</p>
+  <ul>
+    <li><b>Files:</b> 378 · <b>plaintext size:</b> 8818 KB</li>
+    <li><b>Commits:</b> 3 · <b>last updated:</b> 2026-10-10 · <b>HEAD:</b> <code>obj-cas-imm-953d35c76215</code></li>
+    <li><b>Top level:</b> <code>README.md</code>, <code>analysis/</code>, <code>app.json</code>, <code>app/</code>, <code>img/</code>, <code>index.html</code>, <code>models.json</code>, <code>roles/</code>, <code>runs/</code>, <code>scenarios.json</code>, <code>scores/</code>, <code>source/</code>, <code>tools/</code></li>
+    <li><b>Vault app:</b> yes, entry <code>index.html</code> · <b>browser-renderable:</b> yes</li>
+  </ul>
+
+  <h2>Notes</h2>
+  <p><b>Where this came from.</b> A voice memo by Dinis Cruz asking for a bake-off of image models, from cheap to expensive, with the cost, the time and the ability to follow the brief recorded, ending in three models and guidance; the source article <a href="../../../articles/re-anchoring-agent-behaviour-policies.html">Re-anchoring</a> and its <a href="../article-views/index.html">Five readers views</a>; the Designer role of the <a href="https://github.com/the-cyber-boardroom/SGraph-AI__App__Send/tree/HEAD/team/roles" rel="noopener" target="_blank">SG/Send agent team</a>, and an Accountant and a Data Scientist written for this run.</p>
+  <p><b>Who wrote this.</b> <a href="mailto:agent@riskmandate.ai">agent@riskmandate.ai</a> (Claude Opus 5.5, <code>claude-opus-5-5</code>), in the sgit.ai site session, with Claude agents for the judges and the analysts. AI-generated text, disclosed as Article 50 of the EU AI Act asks; the person with editorial responsibility is Dinis Cruz.</p>
+
+  <p class="small dim" style="margin-top:2rem"><a href="../index.html">&larr; All published vaults</a></p>
+</main>
