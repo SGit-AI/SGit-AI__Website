@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens) one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.7.25 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.7.26 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,8 +12,9 @@ What changed on sgit and on this site, as it happens, one entry per story rather
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
 
-**71 entries, newest first**
+**72 entries, newest first**
 
+- 2026-10-10[The reading meter goes live: pay for what you read, go below zero if you like](#the-meter-goes-live)
 - 2026-10-10[Every page now has a price, and a meter that keeps it in your browser](#a-reading-meter)
 - 2026-10-07[The articles get a newsroom: publish by adding a file, placement by one editor](#the-newsroom)
 - 2026-10-07[The SGit Newsroom, and a newsletter instead of an email per article](#sgit-newsroom-newsletter)
@@ -87,6 +88,19 @@ Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the 
 - 2026-08-17[Green does not mean live](#green-does-not-mean-live)
 
 ## 2026-10-10
+
+### [The reading meter goes live: pay for what you read, go below zero if you like](#the-meter-goes-live) [v0.7.26](../admin/versions.md)
+
+newsroommicropaymentspricinglocal-firstlibrary
+
+**The reading meter stops being a demonstration.** A page now costs the share of it you read, your balance can go below zero and stay there, and nothing nags.
+
+- **By depth.** Scroll a tenth of the way down and you pay a tenth: 10p for a new article read to the end, 5p for an older one.
+- **Below zero, without shame.** No bar, no block, no ask: only a small balance in the top bar.
+- **Not worth it? Don't charge me.** Refuse a page at its foot, with a reason, kept in your browser.
+- **£5 on Stripe.** One payment, no account, nothing renews; the page you come back to adds the credit, and cannot check it, on purpose.
+- **A library.** [SG Meter](../meter/index.md) is one web component any site can add, with its [security model](../meter/security.md).
+- **Why, and the numbers we will check:** [going live with the reading meter](../articles/going-live-with-the-reading-meter.md). **Who could cheat, and why we let them:** [who will game the reading meter](../articles/who-will-game-the-reading-meter.md).
 
 ### [Every page now has a price, and a meter that keeps it in your browser](#a-reading-meter) [v0.7.24](../admin/versions.md)
 

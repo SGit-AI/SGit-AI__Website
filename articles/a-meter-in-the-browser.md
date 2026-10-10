@@ -2,7 +2,7 @@
 
 > Every page on sgit.ai now has a price, a few pence, and a meter in the corner of the screen that debits it from five pounds of starting credit. There is a reading account with a history, a price table, a top-up page with a cart and a checkout that has every step except the payment, and an out-of-credit state that never blocks a page. All of it lives in the reader's browser and nowhere else: no account, no server, no card, nothing sent. Open a private window and the meter starts again at five pounds, which looks like a way to read for free, except that it also starts again with no history, and the history is what the site uses to pick articles for you. That is the trade this experiment puts in front of a reader: pay a little, keep the record of what you read on your own machine, and get a site that knows you back. Whether people would make that trade is the question worth testing, and a meter that charges nothing is the cheapest way to start.
 
-*Source: <https://sgit.ai/articles/a-meter-in-the-browser.html> · site v0.7.25 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/a-meter-in-the-browser.html> · site v0.7.26 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,7 +16,7 @@ By [Dinis Cruz](../about/index.md) · 2026-10-10 · newsroommicropaymentspersona
 
 The reading account, as it looks after ten pages: the balance, what was spent, the articles picked for this reader from what they read, and what they paid to read, by topic. All of it is computed in the browser from a history kept in the browser.
 
-**You are paying for this page.** If you opened it in the first week, it cost you 5p of the £5.00 every new reader starts with; the badge in the bottom-left corner says so. Nothing is charged, no card is involved, and nothing leaves your browser. [Your account](../account/index.md) shows the balance, the history and what it bought you.
+**Updated the same day, v0.7.26: this describes the first version.** The meter has since gone live: it charges by how much of a page you read, your balance can go below zero with nothing blocked and no bar, you can decline to pay for a page with a reason, the badge is now a small balance in the top bar, and topping up is a £5 Stripe payment. Prices rose to 10p and 5p for articles. The plan and the reasoning are in [going live with the reading meter](../articles/going-live-with-the-reading-meter.md); the library is [SG Meter](../meter/index.md). What follows is kept as it was written.
 
 ## What it does
 
@@ -72,6 +72,7 @@ Startups & strategyNews & evidence[This article as a graph →](graphs.md#a-mete
 
 ### Builds on
 
+- [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](going-live-with-the-reading-meter.md) Pay for the share of a page you read, go below zero with no nagging, top up £5 on Stripe: the plan, and the numbers we check in eight weeks.
 - [For a startup, the most important question is whether they miss it](the-question-is-whether-they-miss-it.md) Ship something usable, give it away briefly, take it away and see whether anybody misses it; charge at a profit before you talk to investors.
 - [Price it, then give it away: the early access programme as the next step after "do they miss it"](price-it-then-give-it-away.md) Define the product, price it, deliver it at a cost that grows a step at a time, then offer it free to people who know you and measure what it costs them.
 - [The reader was always the product: a corrected history of how news got into this mess](how-news-got-here.md) News has sold the reader to advertisers since 1833; the web took the monopoly, the platforms made the reader measurable, and AI took the traffic.
@@ -80,6 +81,7 @@ Startups & strategyNews & evidence[This article as a graph →](graphs.md#a-mete
 
 ### Continued by
 
+- [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](going-live-with-the-reading-meter.md) Pay for the share of a page you read, go below zero with no nagging, top up £5 on Stripe: the plan, and the numbers we check in eight weeks.
 - [Open source is not free: who pays to keep the long tail working?](open-source-is-not-free.md) An old iMac, the long tail of old versions that projects are not paid to support, measured from public data, and five ways to pay for it, simulated.
 
 [All articles](index.md) · [All graphs](graphs.md)

@@ -2,7 +2,7 @@
 
 > A six-tier ladder of attackers, from your own mistakes to states, built on NIST SP 800-30, the NCSC's commodity, targeted and elevated threats, and MITRE ATT&CK; eight fictional startups each with assets, an attack tree with a technique on every branch, and the line it should draw; an air-gapped, nothing-installed Mac mini compared with an isolated one, tier by tier; and five questions to draw your own line. Published with its read key.
 
-*Source: <https://sgit.ai/demos/vaults/threat-sized-security/index.html> · site v0.7.25 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/threat-sized-security/index.html> · site v0.7.26 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

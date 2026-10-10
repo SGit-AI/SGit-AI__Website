@@ -26,7 +26,8 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.7.25</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.7.26</a>
+  <sg-meter class="meter-nav" view="balance"></sg-meter>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
  <div class="ni ni-has">
@@ -65,6 +66,7 @@
  <a class="sl" href="../docs/credentials.html">Credentials</a>
  <a class="sl" href="../docs/vault/index.html">SG/Vault</a>
  <a class="sl" href="../deploy/index.html">Deploy</a>
+ <a class="sl" href="../meter/index.html">SG Meter</a>
  <a class="sl" href="../skills/index.html">Skills</a>
  <a class="sl" href="../docs/briefs/index.html">Briefs</a>
  </div>
@@ -116,14 +118,14 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.7.25 &middot; 10 Oct 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.7.26 &middot; 10 Oct 2026</span></a></div>
 <main class="doc">
  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Articles</a> / A meter in the browser: a penny a page, a history you keep, and a site that picks for you</p>
  <h1>A meter in the browser: a penny a page, a history you keep, and a site that picks for you</h1>
  <p class="small dim">By <a href="../about/index.html" rel="author">Dinis Cruz</a> &middot; 2026-10-10 &middot; <span class="chip">newsroom</span><span class="chip">micropayments</span><span class="chip">personalisation</span><span class="chip">local-first</span><span class="chip">privacy</span><span class="chip">pricing</span><span class="chip">early-access</span><span class="chip">article</span></p>
  <p class="abstract"><em><b>Abstract:</b> Every page on sgit.ai now has a price, a few pence, and a meter in the corner of the screen that debits it from five pounds of starting credit. There is a reading account with a history, a price table, a top-up page with a cart and a checkout that has every step except the payment, and an out-of-credit state that never blocks a page. All of it lives in the reader's browser and nowhere else: no account, no server, no card, nothing sent. Open a private window and the meter starts again at five pounds, which looks like a way to read for free, except that it also starts again with no history, and the history is what the site uses to pick articles for you. That is the trade this experiment puts in front of a reader: pay a little, keep the record of what you read on your own machine, and get a site that knows you back. Whether people would make that trade is the question worth testing, and a meter that charges nothing is the cheapest way to start.</em></p>
 <figure class="shot" data-shot="mt-account.webp" data-dir="images/" data-alt="The reading account, as it looks after ten pages: the balance, what was spent, the articles picked for this reader from what they read, and what they paid to read, by topic. All of it is computed in the browser from a history kept in the browser."><figcaption>The reading account, as it looks after ten pages: the balance, what was spent, the articles picked for this reader from what they read, and what they paid to read, by topic. All of it is computed in the browser from a history kept in the browser.</figcaption></figure>
-<div class="note"><b>You are paying for this page.</b> If you opened it in the first week, it cost you 5p of the £5.00 every new reader starts with; the badge in the bottom-left corner says so. Nothing is charged, no card is involved, and nothing leaves your browser. <a href="../account/index.html">Your account</a> shows the balance, the history and what it bought you.</div>
+<div class="note"><b>Updated the same day, v0.7.26: this describes the first version.</b> The meter has since gone live: it charges by how much of a page you read, your balance can go below zero with nothing blocked and no bar, you can decline to pay for a page with a reason, the badge is now a small balance in the top bar, and topping up is a £5 Stripe payment. Prices rose to 10p and 5p for articles. The plan and the reasoning are in <a href="../articles/going-live-with-the-reading-meter.html">going live with the reading meter</a>; the library is <a href="../meter/index.html">SG Meter</a>. What follows is kept as it was written.</div>
 <h2>What it does</h2>
 <ul>
 <li><b>Every page has a price.</b> An article published in the last seven days costs 5p, an older one 3p, a newsletter issue, a desk note or a collection 2p, any other page 1p. The homepage, the subscribe page and your own account are free. The full table is on <a href="../account/index.html#prices">the account page</a>.</li>
@@ -158,10 +160,11 @@
 <p>Your meter has been running since you arrived. <a href="../account/index.html">Your account</a> shows what it has recorded; <a href="../account/top-up.html">top up</a> to walk through the cart; and open this page in a private window to see what starting again costs you.</p>
 <hr>
 <p><em>Drafted from a voice note by Dinis Cruz, who is the author of the idea and has editorial responsibility, by a Claude Code session working as the sgit.ai newsroom, on 10 October 2026. The meter is <code>assets/meter.js</code>; its prices are <code>METER</code> in <code>admin/build/build_pages.py</code>; the screenshots were taken from this site with the meter running.</em></p>
+<sg-meter view="page" kind="article" date="2026-10-10" topics="startups-and-strategy news-and-evidence" title="A meter in the browser: a penny a page, a history you keep, and a site that picks for you, sgit.ai"></sg-meter>
 <section class="athreads" id="threads">
  <h2>Threads</h2>
  <p class="athreads-meta"><span class="tchip">Startups &amp; strategy</span><span class="tchip">News &amp; evidence</span> <a href="graphs.html#a-meter-in-the-browser">This article as a graph &rarr;</a></p>
- <div class="athreads-cols"><div><h3>Builds on</h3><ul><li><a href="the-question-is-whether-they-miss-it.html">For a startup, the most important question is whether they miss it</a> <span class="dim">Ship something usable, give it away briefly, take it away and see whether anybody misses it; charge at a profit before you talk to investors.</span></li><li><a href="price-it-then-give-it-away.html">Price it, then give it away: the early access programme as the next step after "do they miss it"</a> <span class="dim">Define the product, price it, deliver it at a cost that grows a step at a time, then offer it free to people who know you and measure what it costs them.</span></li><li><a href="how-news-got-here.html">The reader was always the product: a corrected history of how news got into this mess</a> <span class="dim">News has sold the reader to advertisers since 1833; the web took the monopoly, the platforms made the reader measurable, and AI took the traffic.</span></li><li><a href="token-bill-nobody-is-sending.html">Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read</a> <span class="dim">AI answer engines pay to read the web as HTML; a publisher who serves markdown, dates, hashes and a typed graph saves them tokens and should get a share.</span></li><li><a href="the-bridge-followed-to-the-end.html">The bridge, followed to the end: what one local story is worth when it is kept as a graph</a> <span class="dim">A bridge closure simulated on a story vault: newsworthy on 5 days, needed on 57, used by three readers, four buyers and an agent, and paid back to its sources.</span></li></ul></div><div><h3>Continued by</h3><ul><li><a href="open-source-is-not-free.html">Open source is not free: who pays to keep the long tail working?</a> <span class="dim">An old iMac, the long tail of old versions that projects are not paid to support, measured from public data, and five ways to pay for it, simulated.</span></li></ul></div></div>
+ <div class="athreads-cols"><div><h3>Builds on</h3><ul><li><a href="going-live-with-the-reading-meter.html">Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks</a> <span class="dim">Pay for the share of a page you read, go below zero with no nagging, top up £5 on Stripe: the plan, and the numbers we check in eight weeks.</span></li><li><a href="the-question-is-whether-they-miss-it.html">For a startup, the most important question is whether they miss it</a> <span class="dim">Ship something usable, give it away briefly, take it away and see whether anybody misses it; charge at a profit before you talk to investors.</span></li><li><a href="price-it-then-give-it-away.html">Price it, then give it away: the early access programme as the next step after "do they miss it"</a> <span class="dim">Define the product, price it, deliver it at a cost that grows a step at a time, then offer it free to people who know you and measure what it costs them.</span></li><li><a href="how-news-got-here.html">The reader was always the product: a corrected history of how news got into this mess</a> <span class="dim">News has sold the reader to advertisers since 1833; the web took the monopoly, the platforms made the reader measurable, and AI took the traffic.</span></li><li><a href="token-bill-nobody-is-sending.html">Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read</a> <span class="dim">AI answer engines pay to read the web as HTML; a publisher who serves markdown, dates, hashes and a typed graph saves them tokens and should get a share.</span></li><li><a href="the-bridge-followed-to-the-end.html">The bridge, followed to the end: what one local story is worth when it is kept as a graph</a> <span class="dim">A bridge closure simulated on a story vault: newsworthy on 5 days, needed on 57, used by three readers, four buyers and an agent, and paid back to its sources.</span></li></ul></div><div><h3>Continued by</h3><ul><li><a href="going-live-with-the-reading-meter.html">Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks</a> <span class="dim">Pay for the share of a page you read, go below zero with no nagging, top up £5 on Stripe: the plan, and the numbers we check in eight weeks.</span></li><li><a href="open-source-is-not-free.html">Open source is not free: who pays to keep the long tail working?</a> <span class="dim">An old iMac, the long tail of old versions that projects are not paid to support, measured from public data, and five ways to pay for it, simulated.</span></li></ul></div></div>
  <p class="small dim"><a href="index.html">All articles</a> &middot; <a href="graphs.html">All graphs</a></p>
 </section>
 <aside class="lkit" aria-label="For LinkedIn"><b>Posting this article on LinkedIn?</b> The cover is <a href="../articles/banners/a-meter-in-the-browser.jpg" download>a-meter-in-the-browser.jpg</a> (1920&times;1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.</aside>
@@ -170,19 +173,16 @@
 </main>
 <script>
 (function () {
- fetch('../assets/shots.js?v=v0.7.25')
+ fetch('../assets/shots.js?v=v0.7.26')
  .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
  .then(function (t) { (0, eval)(t); })
  .catch(function (e) { console.error('[shots] component failed to load:', e); });
 }());
 </script>
-<div id="sgit-meter" hidden data-kind="article" data-date="2026-10-10" data-topics="startups-and-strategy news-and-evidence" data-title="A meter in the browser: a penny a page, a history you keep, and a site that picks for you, sgit.ai"></div>
+<script type="application/json" id="sg-meter-config">{"storageKey": "sgit.meter.v1", "start": 500, "newDays": 7, "symbol": "£", "prices": {"article_new": 10, "article": 5, "issue": 3, "note": 2, "collection": 2, "page": 1, "free": 0}, "depth": true, "minDepth": 0.1, "topup": {"amount": 500, "link": ""}, "packs": [{"id": "p2", "price": 200, "bonus": 0}, {"id": "p5", "price": 500, "bonus": 0}, {"id": "p10", "price": 1000, "bonus": 100}, {"id": "p20", "price": 2000, "bonus": 300}], "links": {"account": "account/index.html", "topup": "account/top-up.html"}, "picks": {"feed": "articles/graphs.json", "base": "articles/"}}</script>
 <script>
-window.SGIT_METER = {"currency": "GBP", "start": 500, "new_days": 7, "prices": {"article_new": 5, "article": 3, "issue": 2, "note": 2, "collection": 2, "page": 1, "free": 0}, "packs": [{"id": "p2", "price": 200, "bonus": 0}, {"id": "p5", "price": 500, "bonus": 0}, {"id": "p10", "price": 1000, "bonus": 100}, {"id": "p20", "price": 2000, "bonus": 300}]};
-fetch('../assets/meter.js?v=v0.7.25')
- .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
- .then(function (t) { (0, eval)(t); })
- .catch(function (e) { console.error('[meter] component failed to load:', e); });
+import('../assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.js?v=v0.7.26')
+ .catch(function (e) { console.error('[sg-meter] component failed to load:', e); });
 </script>
 
 <footer class="site"><div class="cols">
@@ -190,7 +190,7 @@ fetch('../assets/meter.js?v=v0.7.25')
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.7.25</a> · <a href="../admin/index.html">engineering</a> · <a href="a-meter-in-the-browser.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.7.26</a> · <a href="../admin/index.html">engineering</a> · <a href="a-meter-in-the-browser.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -233,7 +233,7 @@ fetch('../assets/meter.js?v=v0.7.25')
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.7.25';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.7.26';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

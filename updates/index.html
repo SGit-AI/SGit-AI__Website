@@ -26,7 +26,8 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.7.25</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.7.26</a>
+  <sg-meter class="meter-nav" view="balance"></sg-meter>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
  <div class="ni ni-has">
@@ -65,6 +66,7 @@
  <a class="sl" href="../docs/credentials.html">Credentials</a>
  <a class="sl" href="../docs/vault/index.html">SG/Vault</a>
  <a class="sl" href="../deploy/index.html">Deploy</a>
+ <a class="sl" href="../meter/index.html">SG Meter</a>
  <a class="sl" href="../skills/index.html">Skills</a>
  <a class="sl" href="../docs/briefs/index.html">Briefs</a>
  </div>
@@ -116,12 +118,13 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.7.25 &middot; 10 Oct 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.7.26 &middot; 10 Oct 2026</span></a></div>
 <main class="doc">
  <h1>Updates</h1>
  <p class="lead">What changed on sgit and on this site, as it happens, one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
  <p class="small dim">Follow along: <a href="feed.xml">RSS</a> &middot; <a href="updates.json">JSON</a>. Every entry links to the release that carries it.</p>
- <details class="updtoc" open><summary>71 entries, newest first</summary><ul>
+ <details class="updtoc" open><summary>72 entries, newest first</summary><ul>
+<li><span class="dim">2026-10-10</span> <a href="#the-meter-goes-live">The reading meter goes live: pay for what you read, go below zero if you like</a></li>
 <li><span class="dim">2026-10-10</span> <a href="#a-reading-meter">Every page now has a price, and a meter that keeps it in your browser</a></li>
 <li><span class="dim">2026-10-07</span> <a href="#the-newsroom">The articles get a newsroom: publish by adding a file, placement by one editor</a></li>
 <li><span class="dim">2026-10-07</span> <a href="#sgit-newsroom-newsletter">The SGit Newsroom, and a newsletter instead of an email per article</a></li>
@@ -195,6 +198,19 @@
 <li><span class="dim">2026-08-17</span> <a href="#green-does-not-mean-live">Green does not mean live</a></li>
  </ul></details>
  <h2 class="upd-date">2026-10-10</h2>
+ <article class="upd" id="the-meter-goes-live">
+ <h3><a href="#the-meter-goes-live">The reading meter goes live: pay for what you read, go below zero if you like</a> <a class="upd-ver" href="../admin/versions.html">v0.7.26</a></h3>
+ <p class="chips"><span class="chip">newsroom</span><span class="chip">micropayments</span><span class="chip">pricing</span><span class="chip">local-first</span><span class="chip">library</span></p>
+<p><b>The reading meter stops being a demonstration.</b> A page now costs the share of it you read, your balance can go below zero and stay there, and nothing nags.</p>
+<ul>
+<li><b>By depth.</b> Scroll a tenth of the way down and you pay a tenth: 10p for a new article read to the end, 5p for an older one.</li>
+<li><b>Below zero, without shame.</b> No bar, no block, no ask: only a small balance in the top bar.</li>
+<li><b>Not worth it? Don't charge me.</b> Refuse a page at its foot, with a reason, kept in your browser.</li>
+<li><b>£5 on Stripe.</b> One payment, no account, nothing renews; the page you come back to adds the credit, and cannot check it, on purpose.</li>
+<li><b>A library.</b> <a href="../meter/index.html">SG Meter</a> is one web component any site can add, with its <a href="../meter/security.html">security model</a>.</li>
+<li><b>Why, and the numbers we will check:</b> <a href="../articles/going-live-with-the-reading-meter.html">going live with the reading meter</a>. <b>Who could cheat, and why we let them:</b> <a href="../articles/who-will-game-the-reading-meter.html">who will game the reading meter</a>.</li>
+</ul>
+ </article>
  <article class="upd" id="a-reading-meter">
  <h3><a href="#a-reading-meter">Every page now has a price, and a meter that keeps it in your browser</a> <a class="upd-ver" href="../admin/versions.html">v0.7.24</a></h3>
  <p class="chips"><span class="chip">newsroom</span><span class="chip">micropayments</span><span class="chip">personalisation</span><span class="chip">local-first</span></p>
@@ -1247,13 +1263,11 @@
 <p>There is a longer account of this one in <a href="../articles/green-does-not-mean-live.html">Green does not mean live</a>.</p>
  </article>
 </main>
-<div id="sgit-meter" hidden data-kind="page" data-date="" data-topics="" data-title="Updates (sgit.ai)"></div>
+<sg-meter view="page" kind="page" date="" topics="" title="Updates (sgit.ai)" quiet></sg-meter>
+<script type="application/json" id="sg-meter-config">{"storageKey": "sgit.meter.v1", "start": 500, "newDays": 7, "symbol": "£", "prices": {"article_new": 10, "article": 5, "issue": 3, "note": 2, "collection": 2, "page": 1, "free": 0}, "depth": true, "minDepth": 0.1, "topup": {"amount": 500, "link": ""}, "packs": [{"id": "p2", "price": 200, "bonus": 0}, {"id": "p5", "price": 500, "bonus": 0}, {"id": "p10", "price": 1000, "bonus": 100}, {"id": "p20", "price": 2000, "bonus": 300}], "links": {"account": "account/index.html", "topup": "account/top-up.html"}, "picks": {"feed": "articles/graphs.json", "base": "articles/"}}</script>
 <script>
-window.SGIT_METER = {"currency": "GBP", "start": 500, "new_days": 7, "prices": {"article_new": 5, "article": 3, "issue": 2, "note": 2, "collection": 2, "page": 1, "free": 0}, "packs": [{"id": "p2", "price": 200, "bonus": 0}, {"id": "p5", "price": 500, "bonus": 0}, {"id": "p10", "price": 1000, "bonus": 100}, {"id": "p20", "price": 2000, "bonus": 300}]};
-fetch('../assets/meter.js?v=v0.7.25')
- .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
- .then(function (t) { (0, eval)(t); })
- .catch(function (e) { console.error('[meter] component failed to load:', e); });
+import('../assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.js?v=v0.7.26')
+ .catch(function (e) { console.error('[sg-meter] component failed to load:', e); });
 </script>
 
 <footer class="site"><div class="cols">
@@ -1261,7 +1275,7 @@ fetch('../assets/meter.js?v=v0.7.25')
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.7.25</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.7.26</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -1304,7 +1318,7 @@ fetch('../assets/meter.js?v=v0.7.25')
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.7.25';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.7.26';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

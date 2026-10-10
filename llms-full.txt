@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.7.25). Nothing here needs a second request. Individual pages live at the paths
+> (v0.7.26). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -36,17 +36,17 @@ SGit Newsroom
 
 ## Start with an argument, not a menu
 
-The articles carry most of what this site believes, with the figures, the data and the links to check it. Fifty-eight so far; the newsroom picks where to start.
+The articles carry most of what this site believes, with the figures, the data and the links to check it. Sixty so far; the newsroom picks where to start.
 
 [Built three ways2026-10-08Agents & policy**Hope or enforcement: one customer service agent, three designs, and who keeps each promise**One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.**Why it leads.** One mandate, three designs and a published vault: the behaviour-policy argument measured rather than asserted, down to which rules a model is only hoped to keep.Read it →](articles/hope-or-enforcement.md)
 
 ### Also new
 
-1. 2026-10-10[Open source is not free](articles/open-source-is-not-free.md)
-2. 2026-10-10[A meter in the browser](articles/a-meter-in-the-browser.md)
-3. 2026-10-10[Re-anchoring](articles/re-anchoring-agent-behaviour-policies.md)
-4. 2026-10-09[The AI governance stack, as a graph](articles/the-ai-governance-stack-as-a-graph.md)
-5. 2026-10-09[A second reader the agent cannot skip](articles/a-second-reader-the-agent-cannot-skip.md)
+1. 2026-10-10[Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the…](articles/who-will-game-the-reading-meter.md)
+2. 2026-10-10[Going live with the reading meter](articles/going-live-with-the-reading-meter.md)
+3. 2026-10-10[Open source is not free](articles/open-source-is-not-free.md)
+4. 2026-10-10[A meter in the browser](articles/a-meter-in-the-browser.md)
+5. 2026-10-10[Re-anchoring](articles/re-anchoring-agent-behaviour-policies.md)
 [Thread2026-10-08Historian**Range is the feature, so the stop has to be designed**Four articles from one day, written for different reasons, end on the same line: an agent's range is what makes it useful, and it is also why the decision to stop cannot be left to the agent.](articles/desk/range-is-the-feature-so-the-stop-is-designed.md)
 
 [A scale for deciding2026-10-08**Agency is not a yes**Seven dimensions, seven levels, and the line below which a decider carries liability rather than agency. Its own vault holds the scale.](articles/agency-is-not-a-yes.md)[Live, local2026-10-08**The waiting room knew first**A hospital IT outage nobody could check from home, kept as evidence in a vault while it was still happening.](articles/the-waiting-room-knew-first.md)[Complexity2026-10-08**Every mistake added a rule**When every agent mistake adds a rule, the rules become the problem. Mapped, with the way back to shipping.](articles/every-mistake-added-a-rule.md)
@@ -73,7 +73,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-287site releases, each verified live before it was called done
+288site releases, each verified live before it was called done
 
 51vaults published with a deliberately public read key
 
@@ -6257,7 +6257,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.7.25, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.7.26, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -6620,7 +6620,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-287**site releases since 14 August**
+288**site releases since 14 August**
 each verified live before it was called done
 
 51**vaults published with a public read key**
@@ -6629,7 +6629,7 @@ every one audited first; findings on the page
 27**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-129**articles and release notes**
+132**articles and release notes**
 all with a markdown twin and an RSS feed
 
 17**cross-team briefs, in the open**
@@ -12164,12 +12164,14 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.7.25**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
+The site version (**v0.7.26**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
 
-| v0.7.25 | 2026-10-10 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.24...v0.7.25) | OPEN SOURCE IS NOT FREE. A new article on the economics of open source's long tail, from one Intel iMac that could not run Homebrew or Docker Desktop: the case checked against the vendors' own pages (only 2017 iMacs stop at Ventura; Homebrew's installer refuses Intel Macs; Ventura unpatched since August 2025), the long tail measured from Homebrew and PyPI analytics, where money flows for old versions and where it does not, what a 20p card fee does to a payment of pence, and five funding models simulated over 10,000 seeded draws, with break-even prices, a sensitivity tornado and the satellite support firms. Eight figures from the new Long Tail Ledger vault (deqiwj7z), published with its read key: 175 sourced facts, 36 labelled assumptions, the model in Python and the same model in the browser behind a calculator, gated to agree exactly.**New:**[Long Tail Ledger, who pays to keep old machines working](../demos/vaults/long-tail-ledger/index.md), [Open source is not free: who pays to keep the long tail working?](../articles/open-source-is-not-free.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.24...v0.7.25). |
+| v0.7.26 | 2026-10-10 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.25...v0.7.26) | THE READING METER GOES LIVE, AND BECOMES A LIBRARY. A page is now charged for the share of it the reader scrolled through (price times deepest point, rounded to 5%, never less than a tenth), once per page per session, topped up as they read further. The balance may go below zero forever: no bar, no block, no ask, only a small balance in the top bar that turns a warmer colour below zero. At the foot of an article, 'Not worth it? Don't charge me' refunds the page with one of four reasons, kept in the reader's history ('not relevant' counts against that page's topics in the picks). Prices raised to 10p a new article and 5p an older one, read to the end. Topping up becomes one £5 Stripe Payment Link returning to account/topped-up.html, which adds the credit once per session id and, deliberately and documented, cannot verify the payment; until the link is set in METER, the simulated cart remains. The meter is rebuilt as SG Meter v1.0.0 (assets/components/sg-meter/v1/v1.0/v1.0.0/), an ES-module web component on the estate's SgComponent base, markup and styles in sibling files, page data set only as text, events sg:meter.charged/declined/toppedup/reset/changed, six views (balance, page, account, topup, topped-up, picks); assets/meter.js is removed and the reader's v1 balance and history carry over under the same storage key. New docs section /meter/ (install, views, rules, config, events, storage schema, theming, Stripe setup, changelog) and /meter/security.html (nine known gaps, all accepted, with what each costs the site and the reader). Two articles: going live with the reading meter (the plan, the Guardian's counter and tiers, the subscription commitment, Stripe's fees on £5, the honesty-box evidence, five hypotheses with thresholds and a review date eight weeks after the link goes live) and who will game the reading meter (eight kinds of reader sized from published figures, agents as a lift between them, nine ways to cheat or leak, and the risks that will actually happen). Tested in Chromium: depth charging, refund on decline, no recharge on reload, negative balance, top-up once per id, storage blocked, no console errors, no overflow at 390px; on a phone the balance takes the version's place in the top bar.**New:**[Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](../articles/going-live-with-the-reading-meter.md), [SG Meter security model](../meter/security.md), [SG Meter: a reading meter you can add to any website](../meter/index.md), [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](../articles/who-will-game-the-reading-meter.md).**Updated:**[A meter in the browser: a penny a page, a history you keep, and a site that picks for you](../articles/a-meter-in-the-browser.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.25...v0.7.26). |
+
+| v0.7.25 | 2026-10-10 | [git 4037ed3d](https://github.com/SGit-AI/SGit-AI__Website/commit/4037ed3d) | OPEN SOURCE IS NOT FREE. A new article on the economics of open source's long tail, from one Intel iMac that could not run Homebrew or Docker Desktop: the case checked against the vendors' own pages (only 2017 iMacs stop at Ventura; Homebrew's installer refuses Intel Macs; Ventura unpatched since August 2025), the long tail measured from Homebrew and PyPI analytics, where money flows for old versions and where it does not, what a 20p card fee does to a payment of pence, and five funding models simulated over 10,000 seeded draws, with break-even prices, a sensitivity tornado and the satellite support firms. Eight figures from the new Long Tail Ledger vault (deqiwj7z), published with its read key: 175 sourced facts, 36 labelled assumptions, the model in Python and the same model in the browser behind a calculator, gated to agree exactly.**New:**[Long Tail Ledger, who pays to keep old machines working](../demos/vaults/long-tail-ledger/index.md), [Open source is not free: who pays to keep the long tail working?](../articles/open-source-is-not-free.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/4037ed3d). |
 
 | v0.7.24 | 2026-10-10 | [git 9fffe410](https://github.com/SGit-AI/SGit-AI__Website/commit/9fffe410) | A READING METER IN THE BROWSER. Every page now has a price and a meter that debits it from £5.00 of starting credit, all of it in the reader's localStorage: no account, no server, no card, nothing sent. Prices come from one METER table in the build, injected into every page with what the page is (article, issue, note, collection, page, free) and, for an article, its date and topics: a new article (seven days) 5p, older 3p, issue, note or collection 2p, any other page 1p, homepage, subscribe and account free. assets/meter.js charges once per page per browser session, never blocks (out of credit, the read is recorded as unpaid and a bar offers a top-up), shows a badge with the balance, and keeps a history that personalises the site: a Picked for you band on the front page and on the account page, unread articles from the reader's most-read topics, computed in the browser from articles/graphs.json. New pages: account/ (balance, history, topics, receipts, pause, export, start again, price table) and account/top-up.html (packs, cart, review, confirm, receipt: every step but the payment). Rules carried over from pt.newsroom.sgit.ai's wallet. Tested end to end in a browser: debits by kind and age, the free revisit, the picks, the cart and receipt, the unpaid read. The article: a meter in the browser.**New:**[A meter in the browser: a penny a page, a history you keep, and a site that picks for you](../articles/a-meter-in-the-browser.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/9fffe410). |
 
@@ -14116,8 +14118,9 @@ What changed on sgit and on this site, as it happens, one entry per story rather
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
 
-**71 entries, newest first**
+**72 entries, newest first**
 
+- 2026-10-10[The reading meter goes live: pay for what you read, go below zero if you like](#the-meter-goes-live)
 - 2026-10-10[Every page now has a price, and a meter that keeps it in your browser](#a-reading-meter)
 - 2026-10-07[The articles get a newsroom: publish by adding a file, placement by one editor](#the-newsroom)
 - 2026-10-07[The SGit Newsroom, and a newsletter instead of an email per article](#sgit-newsroom-newsletter)
@@ -14191,6 +14194,19 @@ Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the 
 - 2026-08-17[Green does not mean live](#green-does-not-mean-live)
 
 ## 2026-10-10
+
+### [The reading meter goes live: pay for what you read, go below zero if you like](#the-meter-goes-live) [v0.7.26](../admin/versions.md)
+
+newsroommicropaymentspricinglocal-firstlibrary
+
+**The reading meter stops being a demonstration.** A page now costs the share of it you read, your balance can go below zero and stay there, and nothing nags.
+
+- **By depth.** Scroll a tenth of the way down and you pay a tenth: 10p for a new article read to the end, 5p for an older one.
+- **Below zero, without shame.** No bar, no block, no ask: only a small balance in the top bar.
+- **Not worth it? Don't charge me.** Refuse a page at its foot, with a reason, kept in your browser.
+- **£5 on Stripe.** One payment, no account, nothing renews; the page you come back to adds the credit, and cannot check it, on purpose.
+- **A library.** [SG Meter](../meter/index.md) is one web component any site can add, with its [security model](../meter/security.md).
+- **Why, and the numbers we will check:** [going live with the reading meter](../articles/going-live-with-the-reading-meter.md). **Who could cheat, and why we let them:** [who will game the reading meter](../articles/who-will-game-the-reading-meter.md).
 
 ### [Every page now has a price, and a meter that keeps it in your browser](#a-reading-meter) [v0.7.24](../admin/versions.md)
 
@@ -15678,7 +15694,7 @@ There is a longer account of this one in [Green does not mean live](../articles/
 >
 > Page: https://sgit.ai/articles/index.html
 
-Edition of 2026-10-0858 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.25
+Edition of 2026-10-0860 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.26
 
 # SGit Newsroom
 
@@ -15690,17 +15706,17 @@ From the editor Third edition. A day of articles on how agents decide: when to s
 
 ## Latest
 
-1. 2026-10-10[Open source is not free](../articles/open-source-is-not-free.md)
-2. 2026-10-10[A meter in the browser](../articles/a-meter-in-the-browser.md)
-3. 2026-10-10[Re-anchoring](../articles/re-anchoring-agent-behaviour-policies.md)
-4. 2026-10-09[The AI governance stack, as a graph](../articles/the-ai-governance-stack-as-a-graph.md)
-5. 2026-10-09[A second reader the agent cannot skip](../articles/a-second-reader-the-agent-cannot-skip.md)
-6. 2026-10-09[RFC 0001](../articles/rfc-0001-public-key-cryptography-for-sgit.md)
-7. 2026-10-09[A Mac of the agent's own](../articles/a-mac-of-the-agents-own.md)
-8. 2026-10-09[Ten hard questions for RiskMandate, answered](../articles/riskmandate-ten-questions.md)
-9. 2026-10-09[How I work with Claude](../articles/how-i-work-with-claude.md)
-10. 2026-10-08[The waiting room knew first](../articles/the-waiting-room-knew-first.md)
-[Every article, 58 →](../articles/index.md#all)
+1. 2026-10-10[Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the…](../articles/who-will-game-the-reading-meter.md)
+2. 2026-10-10[Going live with the reading meter](../articles/going-live-with-the-reading-meter.md)
+3. 2026-10-10[Open source is not free](../articles/open-source-is-not-free.md)
+4. 2026-10-10[A meter in the browser](../articles/a-meter-in-the-browser.md)
+5. 2026-10-10[Re-anchoring](../articles/re-anchoring-agent-behaviour-policies.md)
+6. 2026-10-09[The AI governance stack, as a graph](../articles/the-ai-governance-stack-as-a-graph.md)
+7. 2026-10-09[A second reader the agent cannot skip](../articles/a-second-reader-the-agent-cannot-skip.md)
+8. 2026-10-09[RFC 0001](../articles/rfc-0001-public-key-cryptography-for-sgit.md)
+9. 2026-10-09[A Mac of the agent's own](../articles/a-mac-of-the-agents-own.md)
+10. 2026-10-09[Ten hard questions for RiskMandate, answered](../articles/riskmandate-ten-questions.md)
+[Every article, 60 →](../articles/index.md#all)
 
 ## Highlights
 
@@ -15718,7 +15734,7 @@ From the editor Third edition. A day of articles on how agents decide: when to s
 
 ## Every article, newest first
 
-[2026-10-10Startups & strategy1 thread**Open source is not free: who pays to keep the long tail working?**An old iMac, the long tail of old versions that projects are not paid to support, measured from public data, and five ways to pay for it, simulated.](open-source-is-not-free.md) [2026-10-10Startups & strategy6 threads**A meter in the browser: a penny a page, a history you keep, and a site that picks for you**Every page now costs a few pence from £5 of credit kept in your browser, and the reading history it keeps is what personalises the site.](a-meter-in-the-browser.md) [2026-10-10Agents & policy1 thread**Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not**Summaries keep under 2% of a long session. Re-anchoring prints the agent's rules back after each one; a canary report shows it is working.](re-anchoring-agent-behaviour-policies.md) [2026-10-09Graphs & knowledge2 threads**The AI governance stack, as a graph: an answer to Hari Kota, built**Hari Kota's ten-layer AI governance stack, kept as posted and turned into a fractal semantic graph: the gaps become missing edges, and queries.](the-ai-governance-stack-as-a-graph.md) [2026-10-09Agents & policy3 threads**A second reader the agent cannot skip: how two wrong emails became a gate on every draft**Two emails went out in my voice despite a written rule. The fix: a hook that makes a second model approve every draft, failing closed.](a-second-reader-the-agent-cannot-skip.md) [2026-10-09Vaults & method1 thread**RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer**A Request for Comments: two key pairs so a reader cannot write, sealed files only named people can open, and fourteen questions for reviewers.](rfc-0001-public-key-cryptography-for-sgit.md) [2026-10-09Startups & strategy7 threads**A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies**A business plan for a Mac of the agent's own: what Apple's licence allows, a desktop built from vaults per run, and three behaviour policies for one agent.](a-mac-of-the-agents-own.md) [2026-10-09Agents & policy19 threads**Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not**Ten hard questions from a conference, answered in a two-hour interview: what RiskMandate does, what it deliberately is not, and how mature each part is.](riskmandate-ten-questions.md) [2026-10-09Agents & policy7 threads**How I work with Claude: one session per topic, agents with names, and memory you curate**A practical guide from a year of daily use: one Claude session per topic, named agents with a role.md, curated memory, vaults, and policy before connectors.](how-i-work-with-claude.md) [2026-10-08News & evidence2 threads**The waiting room knew first: a live local story, and the gap where local information used to be**Staff at two London hospitals said the IT was down; nothing a local could check showed it. A live local story about where local information comes from now.](the-waiting-room-knew-first.md) [2026-10-08Vaults & method8 threads**Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes**Agents in isolated, ephemeral places need memory that outlives them. Five sgit deployment patterns, from a Mac mini to Kubernetes, with ciphertext-only servers.](encrypted-memory-for-isolated-agents.md) [2026-10-08Agents & policy8 threads**Knowing when to stop: what experience gives people, and what we have to design into agents**Knowing when to stop is the hard part for people and agents: what experience gives people, and the constraints that give agents the same perspective.](knowing-when-to-stop.md) [2026-10-08Agents & policy9 threads**Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source**A yes or no is not agency: seven dimensions, a seven-level scale for people and agents, and the review as a QA step that fixes the source.](agency-is-not-a-yes.md) [2026-10-08Agents & policy8 threads**Hope or enforcement: one customer service agent, three designs, and who keeps each promise**One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.](hope-or-enforcement.md) [2026-10-08Agents & policy3 threads**Who are you protecting against? Draw the security line where the attacker is, not above it**Before deciding how secure to be, name the attacker: a six-tier ladder, an air-gapped Mac mini read against it, and eight startups drawing their line.](who-are-you-protecting-against.md) [2026-10-08Agents & policy9 threads**Every mistake added a rule: complexity, agents, and the way back to shipping**When every agent mistake adds a rule, complexity wins: map the process, move each piece right as a small shipped component, and keep the rigour for the work.](every-mistake-added-a-rule.md) [2026-10-07News & evidence7 threads**Liquid content needs water: liquefy the journalist's notebook, not the finished product**A reply to FT Strategies on liquid content: the water is the reporting, so liquefy the journalist's notebook, keep the writing theirs, and pay per use.](liquid-content-needs-water.md) [2026-10-07News & evidence6 threads**The bridge, followed to the end: what one local story is worth when it is kept as a graph**A bridge closure simulated on a story vault: newsworthy on 5 days, needed on 57, used by three readers, four buyers and an agent, and paid back to its sources.](the-bridge-followed-to-the-end.md) [2026-10-07News & evidence5 threads**Story vault underneath, Reader Skills on top: why local journalism has the most to gain**Markus Franz's Reader Skills on top, the story vault underneath: each skill is a graph query, and local stories can pay back down their chain of sources.](story-vault-meets-reader-skills.md) [2026-10-07Agents & policy6 threads**Zoom into an agent's behaviour policy and you find the business logic**Below the first rules, an agent's behaviour policy is the business: functions, processes, clients, values. Layered, owned, counted, and where vendors plug in.](the-behaviour-policy-is-the-business-logic.md) [2026-10-07Agents & policy5 threads**A locked-down desktop for an agent, by the minute, is still hard to rent**Nine properties a safe agent desktop needs, nine products against them, the macOS day-long lease, and the startup credits that would pay for testing it.](an-agent-desktop-by-the-minute.md) [2026-10-07Graphs & knowledge7 threads**An open AI governance framework, and what its licence let us build**Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.](ai-baseline-control-framework.md) [2026-10-07Agents & policy13 threads**Where is the why? A permission prompt asked me to decide, and kept the reason**A prompt asked for a decision and kept the reason. Read through the policy, the law on uninformed consent, and the fixes that worked: put the why in the prompt.](where-is-the-why.md) [2026-10-06Agents & policy23 threads**The Mandate Stack: a multi-agent system in production, layer by layer**A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.](the-mandate-stack.md) [2026-10-06Agents & policy11 threads**Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has**An OS has two hard walls, the kernel and the user; an agent on a laptop runs inside the one marked you, so the agents run in the cloud with a vault as shared drive.](why-my-agents-do-not-run-on-my-laptop.md) [2026-10-06Startups & strategy6 threads**The deck I could not download: an author-first home for presentations, as a business plan somebody else can build**One download offered as a subscription, an author paid nothing, and a design for the service the author would have chosen: vaults, keys, seven roles, 85% to the author.](the-deck-i-could-not-download.md) [2026-10-06Agents & policy24 threads**The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from**Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.](the-agent-team-as-it-runs.md) [2026-10-06Agents & policy13 threads**A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser**The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.](a-personal-agent-that-keeps-your-secrets.md) [2026-10-05Agents & policy6 threads**The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered**A global GitHub Actions outage read the way aviation reads an incident: independent inquiry, near-miss reporting, second and third stories, vaults for the evidence.](the-investigation-github-owes-its-customers.md) [2026-10-05Agents & policy8 threads**Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it**Due diligence never scaled because it was a form; a buyer can now send an agent into a vendor's environment and read what the code and the practices are.](send-an-agent-not-a-spreadsheet.md) [2026-10-05Graphs & knowledge10 threads**How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was**Twenty articles in four weeks, measured from the session record: 63,000 words in, 85,000 out, no one-line prompts, and the real input is twenty years of writing.](how-much-of-this-did-i-write.md) [2026-10-05Graphs & knowledge11 threads**If somebody built a company on code review: how I would do it, and why it is only now possible**A reader's seven questions answered as a company plan: one reader for every layer, review as a science, and the layers as the customer's own.](if-somebody-built-a-company-on-code-review.md) [2026-10-05Agents & policy10 threads**The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard**A week of designing identities for agents and users met Google's terms; what survived is a passkey-unlocked keyring and a gap nobody sells.](the-identity-we-wanted-to-give-the-agents.md) [2026-10-04Agents & policy8 threads**The wall under the reply: end an email with the state of the thread, not the thread**End an email reply with the state of the thread for this reader, not the quoted wall: decided, open, next, who is on copy, with links to the record.](the-wall-under-the-reply.md) [2026-10-03Graphs & knowledge15 threads**Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one**Agentic memory as context management: many published, fractal, provenance-carrying memories rather than one store, shown in the session that wrote the article.](memory-is-not-a-spectator-sport.md) [2026-10-03Graphs & knowledge13 threads**Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it**Source code is layers within layers, each a graph with its own vocabulary; code review should read a change at every one, and a vault shows it done on real code.](code-review-as-a-fractal-semantic-graph.md) [2026-10-02Agents & policy13 threads**Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send**How to copy a working agentic email setup in phases: a mailbox and Claude seat of the agent's own, one session with a policy, then roles talking in files.](replicating-the-agentic-inbox.md) [2026-10-02Startups & strategy4 threads**Price it, then give it away: the early access programme as the next step after "do they miss it"**Define the product, price it, deliver it at a cost that grows a step at a time, then offer it free to people who know you and measure what it costs them.](price-it-then-give-it-away.md) [2026-10-02Agents & policy19 threads**Footprint and blast radius: what the agent actually did, and what it would have cost**Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.](footprint-and-blast-radius.md) [2026-10-01Graphs & knowledge16 threads**Custom UIs are not the exception: the inbox in 2026, where every message has its own universe**Every message has a graph, so it can be shaped for the reader's moment; a custom interface per moment is now how interfaces get made, and each gets a policy.](custom-uis-are-not-the-exception.md) [2026-09-30Agents & policy15 threads**The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up**Agents, the infrastructure meant to contain them, and risk management run on spreadsheets are arriving at once, and together they are one scenario.](ultimate-insider-three-collisions.md) [2026-09-29News & evidence7 threads**The reader was always the product: a corrected history of how news got into this mess**News has sold the reader to advertisers since 1833; the web took the monopoly, the platforms made the reader measurable, and AI took the traffic.](how-news-got-here.md) [2026-09-29Agents & policy20 threads**Six agents, one inbox: what a real multi-agent setup taught me about access policies**An access policy for an agent is only as real as its worst row: every rule in a real six-agent setup, graded by how it is enforced today.](six-agents-one-inbox.md) [2026-09-28News & evidence7 threads**Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read**AI answer engines pay to read the web as HTML; a publisher who serves markdown, dates, hashes and a typed graph saves them tokens and should get a share.](token-bill-nobody-is-sending.md) [2026-09-27Vaults & method5 threads**A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down**The food chain is a data problem: one encrypted vault per party, joined by append lanes and a typed graph, could cut the waste that keeps prices high.](supply-chain-of-vaults.md) [2026-09-24Agents & policy15 threads**Every risk is already accepted. The only question is by whom, and for how long.**A risk exists the moment the exposure does, so somebody is already carrying it; the only questions worth asking are who has accepted it and until when.](every-risk-is-already-accepted.md) [2026-09-24Agents & policy12 threads**Before you give an agent a connector, give the connector a twin**An agent with a Gmail or Calendar connector can do things the platform cannot undo; a journal of every call, replayed, shows what it did and what can go back.](connector-twin-before-you-deploy-an-agent.md) [2026-09-22News & evidence7 threads**The future of news is the story vault, not the paywall**A story is a graph of claims and evidence and the article is one projection of it; keep the graph in a vault and sell what the article was made from.](future-of-news-story-vault-not-paywall.md) [2026-09-21Startups & strategy5 threads**For a startup, the most important question is whether they miss it**Ship something usable, give it away briefly, take it away and see whether anybody misses it; charge at a profit before you talk to investors.](the-question-is-whether-they-miss-it.md) [2026-09-21Startups & strategy3 threads**The SaaS apocalypse will be decided by inertia, not by AI**Incumbents and newcomers have the same AI; what separates them is how much past success each has to protect, so inertia decides which SaaS companies survive.](saas-apocalypse-decided-by-inertia-not-by-ai.md) [2026-09-20Graphs & knowledge19 threads**Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema**A fractal semantic graph has no privileged level and no single schema: each world keeps its own vocabulary and connects to others through named edges.](introducing-fractal-semantic-graphs.md) [2026-09-07Site & engineering1 thread**The proof moved up, the homepage after the rebuild, next to the before pictures**The rebuilt homepage puts four real vaults under one sentence, picks six by the job they do, and computes its numbers at build time from the site's own data.](proof-moved-up.md) [2026-09-07Site & engineering1 thread**The proof is two clicks behind the claim, what the homepage gets wrong, and the fix**The homepage leads with encryption, which cannot be seen, while twenty-five vaults a stranger can open in one click sit two clicks away in a table.](proof-behind-the-claim.md) [2026-08-27Site & engineering1 thread**A chat box on a site with no server, the plan, and the trade it makes**sgit.ai has no server, so its directory chat runs a local matcher by default, takes your own key as an opt-in, and leaves the vault bridge unbuilt.](chat-on-a-static-site.md) [2026-08-26Site & engineering2 threads**Twenty sites in fifteen days, and what that did to the writing**One site became twenty repositories in fifteen days because each argument needed its own version history, and the index now starts from a question.](nineteen-sites.md) [2026-08-25Vaults & method5 threads**Git for things you cannot put on GitHub**sgit is git for files you cannot put on GitHub: encrypted before they leave your machine, versioned like git, stored where the server cannot read a byte.](what-sgit-is.md) [2026-08-19Vaults & method2 threads**Seven vaults, one method**Publishing seven encrypted vaults in a fortnight produced a method, and every rule in it exists because something went wrong first.](seven-vaults-one-method.md) [2026-08-17Site & engineering2 threads**Green does not mean live**Two releases passed every check and never reached the site because the checks stopped at the git remote; a release now ends by asking the live site its version.](green-does-not-mean-live.md)
+[2026-10-10Startups & strategy4 threads**Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen**Eight kinds of reader, none of them attackers, nine ways to cheat a browser meter, and the quieter risks that will actually happen.](who-will-game-the-reading-meter.md) [2026-10-10Startups & strategy7 threads**Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks**Pay for the share of a page you read, go below zero with no nagging, top up £5 on Stripe: the plan, and the numbers we check in eight weeks.](going-live-with-the-reading-meter.md) [2026-10-10Startups & strategy1 thread**Open source is not free: who pays to keep the long tail working?**An old iMac, the long tail of old versions that projects are not paid to support, measured from public data, and five ways to pay for it, simulated.](open-source-is-not-free.md) [2026-10-10Startups & strategy8 threads**A meter in the browser: a penny a page, a history you keep, and a site that picks for you**Every page now costs a few pence from £5 of credit kept in your browser, and the reading history it keeps is what personalises the site.](a-meter-in-the-browser.md) [2026-10-10Agents & policy1 thread**Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not**Summaries keep under 2% of a long session. Re-anchoring prints the agent's rules back after each one; a canary report shows it is working.](re-anchoring-agent-behaviour-policies.md) [2026-10-09Graphs & knowledge2 threads**The AI governance stack, as a graph: an answer to Hari Kota, built**Hari Kota's ten-layer AI governance stack, kept as posted and turned into a fractal semantic graph: the gaps become missing edges, and queries.](the-ai-governance-stack-as-a-graph.md) [2026-10-09Agents & policy3 threads**A second reader the agent cannot skip: how two wrong emails became a gate on every draft**Two emails went out in my voice despite a written rule. The fix: a hook that makes a second model approve every draft, failing closed.](a-second-reader-the-agent-cannot-skip.md) [2026-10-09Vaults & method1 thread**RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer**A Request for Comments: two key pairs so a reader cannot write, sealed files only named people can open, and fourteen questions for reviewers.](rfc-0001-public-key-cryptography-for-sgit.md) [2026-10-09Startups & strategy7 threads**A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies**A business plan for a Mac of the agent's own: what Apple's licence allows, a desktop built from vaults per run, and three behaviour policies for one agent.](a-mac-of-the-agents-own.md) [2026-10-09Agents & policy19 threads**Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not**Ten hard questions from a conference, answered in a two-hour interview: what RiskMandate does, what it deliberately is not, and how mature each part is.](riskmandate-ten-questions.md) [2026-10-09Agents & policy7 threads**How I work with Claude: one session per topic, agents with names, and memory you curate**A practical guide from a year of daily use: one Claude session per topic, named agents with a role.md, curated memory, vaults, and policy before connectors.](how-i-work-with-claude.md) [2026-10-08News & evidence2 threads**The waiting room knew first: a live local story, and the gap where local information used to be**Staff at two London hospitals said the IT was down; nothing a local could check showed it. A live local story about where local information comes from now.](the-waiting-room-knew-first.md) [2026-10-08Vaults & method8 threads**Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes**Agents in isolated, ephemeral places need memory that outlives them. Five sgit deployment patterns, from a Mac mini to Kubernetes, with ciphertext-only servers.](encrypted-memory-for-isolated-agents.md) [2026-10-08Agents & policy8 threads**Knowing when to stop: what experience gives people, and what we have to design into agents**Knowing when to stop is the hard part for people and agents: what experience gives people, and the constraints that give agents the same perspective.](knowing-when-to-stop.md) [2026-10-08Agents & policy9 threads**Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source**A yes or no is not agency: seven dimensions, a seven-level scale for people and agents, and the review as a QA step that fixes the source.](agency-is-not-a-yes.md) [2026-10-08Agents & policy8 threads**Hope or enforcement: one customer service agent, three designs, and who keeps each promise**One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.](hope-or-enforcement.md) [2026-10-08Agents & policy4 threads**Who are you protecting against? Draw the security line where the attacker is, not above it**Before deciding how secure to be, name the attacker: a six-tier ladder, an air-gapped Mac mini read against it, and eight startups drawing their line.](who-are-you-protecting-against.md) [2026-10-08Agents & policy9 threads**Every mistake added a rule: complexity, agents, and the way back to shipping**When every agent mistake adds a rule, complexity wins: map the process, move each piece right as a small shipped component, and keep the rigour for the work.](every-mistake-added-a-rule.md) [2026-10-07News & evidence7 threads**Liquid content needs water: liquefy the journalist's notebook, not the finished product**A reply to FT Strategies on liquid content: the water is the reporting, so liquefy the journalist's notebook, keep the writing theirs, and pay per use.](liquid-content-needs-water.md) [2026-10-07News & evidence6 threads**The bridge, followed to the end: what one local story is worth when it is kept as a graph**A bridge closure simulated on a story vault: newsworthy on 5 days, needed on 57, used by three readers, four buyers and an agent, and paid back to its sources.](the-bridge-followed-to-the-end.md) [2026-10-07News & evidence5 threads**Story vault underneath, Reader Skills on top: why local journalism has the most to gain**Markus Franz's Reader Skills on top, the story vault underneath: each skill is a graph query, and local stories can pay back down their chain of sources.](story-vault-meets-reader-skills.md) [2026-10-07Agents & policy6 threads**Zoom into an agent's behaviour policy and you find the business logic**Below the first rules, an agent's behaviour policy is the business: functions, processes, clients, values. Layered, owned, counted, and where vendors plug in.](the-behaviour-policy-is-the-business-logic.md) [2026-10-07Agents & policy5 threads**A locked-down desktop for an agent, by the minute, is still hard to rent**Nine properties a safe agent desktop needs, nine products against them, the macOS day-long lease, and the startup credits that would pay for testing it.](an-agent-desktop-by-the-minute.md) [2026-10-07Graphs & knowledge7 threads**An open AI governance framework, and what its licence let us build**Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.](ai-baseline-control-framework.md) [2026-10-07Agents & policy13 threads**Where is the why? A permission prompt asked me to decide, and kept the reason**A prompt asked for a decision and kept the reason. Read through the policy, the law on uninformed consent, and the fixes that worked: put the why in the prompt.](where-is-the-why.md) [2026-10-06Agents & policy23 threads**The Mandate Stack: a multi-agent system in production, layer by layer**A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.](the-mandate-stack.md) [2026-10-06Agents & policy11 threads**Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has**An OS has two hard walls, the kernel and the user; an agent on a laptop runs inside the one marked you, so the agents run in the cloud with a vault as shared drive.](why-my-agents-do-not-run-on-my-laptop.md) [2026-10-06Startups & strategy6 threads**The deck I could not download: an author-first home for presentations, as a business plan somebody else can build**One download offered as a subscription, an author paid nothing, and a design for the service the author would have chosen: vaults, keys, seven roles, 85% to the author.](the-deck-i-could-not-download.md) [2026-10-06Agents & policy24 threads**The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from**Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.](the-agent-team-as-it-runs.md) [2026-10-06Agents & policy13 threads**A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser**The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.](a-personal-agent-that-keeps-your-secrets.md) [2026-10-05Agents & policy6 threads**The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered**A global GitHub Actions outage read the way aviation reads an incident: independent inquiry, near-miss reporting, second and third stories, vaults for the evidence.](the-investigation-github-owes-its-customers.md) [2026-10-05Agents & policy8 threads**Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it**Due diligence never scaled because it was a form; a buyer can now send an agent into a vendor's environment and read what the code and the practices are.](send-an-agent-not-a-spreadsheet.md) [2026-10-05Graphs & knowledge10 threads**How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was**Twenty articles in four weeks, measured from the session record: 63,000 words in, 85,000 out, no one-line prompts, and the real input is twenty years of writing.](how-much-of-this-did-i-write.md) [2026-10-05Graphs & knowledge11 threads**If somebody built a company on code review: how I would do it, and why it is only now possible**A reader's seven questions answered as a company plan: one reader for every layer, review as a science, and the layers as the customer's own.](if-somebody-built-a-company-on-code-review.md) [2026-10-05Agents & policy10 threads**The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard**A week of designing identities for agents and users met Google's terms; what survived is a passkey-unlocked keyring and a gap nobody sells.](the-identity-we-wanted-to-give-the-agents.md) [2026-10-04Agents & policy8 threads**The wall under the reply: end an email with the state of the thread, not the thread**End an email reply with the state of the thread for this reader, not the quoted wall: decided, open, next, who is on copy, with links to the record.](the-wall-under-the-reply.md) [2026-10-03Graphs & knowledge15 threads**Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one**Agentic memory as context management: many published, fractal, provenance-carrying memories rather than one store, shown in the session that wrote the article.](memory-is-not-a-spectator-sport.md) [2026-10-03Graphs & knowledge13 threads**Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it**Source code is layers within layers, each a graph with its own vocabulary; code review should read a change at every one, and a vault shows it done on real code.](code-review-as-a-fractal-semantic-graph.md) [2026-10-02Agents & policy13 threads**Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send**How to copy a working agentic email setup in phases: a mailbox and Claude seat of the agent's own, one session with a policy, then roles talking in files.](replicating-the-agentic-inbox.md) [2026-10-02Startups & strategy5 threads**Price it, then give it away: the early access programme as the next step after "do they miss it"**Define the product, price it, deliver it at a cost that grows a step at a time, then offer it free to people who know you and measure what it costs them.](price-it-then-give-it-away.md) [2026-10-02Agents & policy19 threads**Footprint and blast radius: what the agent actually did, and what it would have cost**Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.](footprint-and-blast-radius.md) [2026-10-01Graphs & knowledge16 threads**Custom UIs are not the exception: the inbox in 2026, where every message has its own universe**Every message has a graph, so it can be shaped for the reader's moment; a custom interface per moment is now how interfaces get made, and each gets a policy.](custom-uis-are-not-the-exception.md) [2026-09-30Agents & policy15 threads**The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up**Agents, the infrastructure meant to contain them, and risk management run on spreadsheets are arriving at once, and together they are one scenario.](ultimate-insider-three-collisions.md) [2026-09-29News & evidence8 threads**The reader was always the product: a corrected history of how news got into this mess**News has sold the reader to advertisers since 1833; the web took the monopoly, the platforms made the reader measurable, and AI took the traffic.](how-news-got-here.md) [2026-09-29Agents & policy20 threads**Six agents, one inbox: what a real multi-agent setup taught me about access policies**An access policy for an agent is only as real as its worst row: every rule in a real six-agent setup, graded by how it is enforced today.](six-agents-one-inbox.md) [2026-09-28News & evidence8 threads**Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read**AI answer engines pay to read the web as HTML; a publisher who serves markdown, dates, hashes and a typed graph saves them tokens and should get a share.](token-bill-nobody-is-sending.md) [2026-09-27Vaults & method5 threads**A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down**The food chain is a data problem: one encrypted vault per party, joined by append lanes and a typed graph, could cut the waste that keeps prices high.](supply-chain-of-vaults.md) [2026-09-24Agents & policy15 threads**Every risk is already accepted. The only question is by whom, and for how long.**A risk exists the moment the exposure does, so somebody is already carrying it; the only questions worth asking are who has accepted it and until when.](every-risk-is-already-accepted.md) [2026-09-24Agents & policy12 threads**Before you give an agent a connector, give the connector a twin**An agent with a Gmail or Calendar connector can do things the platform cannot undo; a journal of every call, replayed, shows what it did and what can go back.](connector-twin-before-you-deploy-an-agent.md) [2026-09-22News & evidence7 threads**The future of news is the story vault, not the paywall**A story is a graph of claims and evidence and the article is one projection of it; keep the graph in a vault and sell what the article was made from.](future-of-news-story-vault-not-paywall.md) [2026-09-21Startups & strategy6 threads**For a startup, the most important question is whether they miss it**Ship something usable, give it away briefly, take it away and see whether anybody misses it; charge at a profit before you talk to investors.](the-question-is-whether-they-miss-it.md) [2026-09-21Startups & strategy3 threads**The SaaS apocalypse will be decided by inertia, not by AI**Incumbents and newcomers have the same AI; what separates them is how much past success each has to protect, so inertia decides which SaaS companies survive.](saas-apocalypse-decided-by-inertia-not-by-ai.md) [2026-09-20Graphs & knowledge19 threads**Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema**A fractal semantic graph has no privileged level and no single schema: each world keeps its own vocabulary and connects to others through named edges.](introducing-fractal-semantic-graphs.md) [2026-09-07Site & engineering1 thread**The proof moved up, the homepage after the rebuild, next to the before pictures**The rebuilt homepage puts four real vaults under one sentence, picks six by the job they do, and computes its numbers at build time from the site's own data.](proof-moved-up.md) [2026-09-07Site & engineering1 thread**The proof is two clicks behind the claim, what the homepage gets wrong, and the fix**The homepage leads with encryption, which cannot be seen, while twenty-five vaults a stranger can open in one click sit two clicks away in a table.](proof-behind-the-claim.md) [2026-08-27Site & engineering1 thread**A chat box on a site with no server, the plan, and the trade it makes**sgit.ai has no server, so its directory chat runs a local matcher by default, takes your own key as an opt-in, and leaves the vault bridge unbuilt.](chat-on-a-static-site.md) [2026-08-26Site & engineering2 threads**Twenty sites in fifteen days, and what that did to the writing**One site became twenty repositories in fifteen days because each argument needed its own version history, and the index now starts from a question.](nineteen-sites.md) [2026-08-25Vaults & method5 threads**Git for things you cannot put on GitHub**sgit is git for files you cannot put on GitHub: encrypted before they leave your machine, versioned like git, stored where the server cannot read a byte.](what-sgit-is.md) [2026-08-19Vaults & method2 threads**Seven vaults, one method**Publishing seven encrypted vaults in a fortnight produced a method, and every rule in it exists because something went wrong first.](seven-vaults-one-method.md) [2026-08-17Site & engineering2 threads**Green does not mean live**Two releases passed every check and never reached the site because the checks stopped at the git remote; a release now ends by asking the live site its version.](green-does-not-mean-live.md)
 
 Nothing matches. Clear the search or pick another topic.
 
@@ -15726,8 +15742,10 @@ Nothing matches. Clear the search or pick another topic.
 
 Read from the links the articles make to each other. [The same thing drawn as a map](graphs.md#map), and every article as its own graph.
 
+- [**Who will game the reading meter? Eight kinds of…**](who-will-game-the-reading-meter.md) builds on [Who are you protecting against? Draw the security…](who-are-you-protecting-against.md), [Going live with the reading meter](going-live-with-the-reading-meter.md), [Sixteen thousand fetches, ten clicks, and a token…](token-bill-nobody-is-sending.md); continued by [Going live with the reading meter](going-live-with-the-reading-meter.md).
+- [**Going live with the reading meter**](going-live-with-the-reading-meter.md) builds on [A meter in the browser](a-meter-in-the-browser.md), [For a startup, the most important question is…](the-question-is-whether-they-miss-it.md), [The reader was always the product](how-news-got-here.md), [Price it, then give it away](price-it-then-give-it-away.md), [Who will game the reading meter? Eight kinds of…](who-will-game-the-reading-meter.md); continued by [Who will game the reading meter? Eight kinds of…](who-will-game-the-reading-meter.md), [A meter in the browser](a-meter-in-the-browser.md).
 - [**Open source is not free**](open-source-is-not-free.md) builds on [A meter in the browser](a-meter-in-the-browser.md).
-- [**A meter in the browser**](a-meter-in-the-browser.md) builds on [For a startup, the most important question is…](the-question-is-whether-they-miss-it.md), [Price it, then give it away](price-it-then-give-it-away.md), [The reader was always the product](how-news-got-here.md), [Sixteen thousand fetches, ten clicks, and a token…](token-bill-nobody-is-sending.md), [The bridge, followed to the end](the-bridge-followed-to-the-end.md); continued by [Open source is not free](open-source-is-not-free.md).
+- [**A meter in the browser**](a-meter-in-the-browser.md) builds on [Going live with the reading meter](going-live-with-the-reading-meter.md), [For a startup, the most important question is…](the-question-is-whether-they-miss-it.md), [Price it, then give it away](price-it-then-give-it-away.md), [The reader was always the product](how-news-got-here.md), [Sixteen thousand fetches, ten clicks, and a token…](token-bill-nobody-is-sending.md), [The bridge, followed to the end](the-bridge-followed-to-the-end.md); continued by [Going live with the reading meter](going-live-with-the-reading-meter.md), [Open source is not free](open-source-is-not-free.md).
 - [**Re-anchoring**](re-anchoring-agent-behaviour-policies.md) builds on [A second reader the agent cannot skip](a-second-reader-the-agent-cannot-skip.md).
 - [**The AI governance stack, as a graph**](the-ai-governance-stack-as-a-graph.md) builds on [Fractal Semantic Graphs](introducing-fractal-semantic-graphs.md), [Code review as a fractal semantic graph](code-review-as-a-fractal-semantic-graph.md).
 - [**A second reader the agent cannot skip**](a-second-reader-the-agent-cannot-skip.md) builds on [Hope or enforcement](hope-or-enforcement.md), [Every mistake added a rule](every-mistake-added-a-rule.md); continued by [Re-anchoring](re-anchoring-agent-behaviour-policies.md).
@@ -15740,7 +15758,7 @@ Read from the links the articles make to each other. [The same thing drawn as a 
 - [**Knowing when to stop**](knowing-when-to-stop.md) builds on [Agency is not a yes](agency-is-not-a-yes.md), [How much of this did I write? The numbers behind…](how-much-of-this-did-i-write.md), [Who are you protecting against? Draw the security…](who-are-you-protecting-against.md), [Every mistake added a rule](every-mistake-added-a-rule.md), [Hope or enforcement](hope-or-enforcement.md), [Memory is not a spectator sport](memory-is-not-a-spectator-sport.md), [The agent team as it runs](the-agent-team-as-it-runs.md); continued by [Ten hard questions for RiskMandate, answered](riskmandate-ten-questions.md).
 - [**Agency is not a yes**](agency-is-not-a-yes.md) builds on [Where is the why? A permission prompt asked me to…](where-is-the-why.md), [Fractal Semantic Graphs](introducing-fractal-semantic-graphs.md), [Hope or enforcement](hope-or-enforcement.md), [How much of this did I write? The numbers behind…](how-much-of-this-did-i-write.md), [Every risk is already accepted](every-risk-is-already-accepted.md), [The agent team as it runs](the-agent-team-as-it-runs.md); continued by [Ten hard questions for RiskMandate, answered](riskmandate-ten-questions.md), [How I work with Claude](how-i-work-with-claude.md), [Knowing when to stop](knowing-when-to-stop.md).
 - [**Hope or enforcement**](hope-or-enforcement.md) builds on [Zoom into an agent's behaviour policy and you find…](the-behaviour-policy-is-the-business-logic.md), [The agent team as it runs](the-agent-team-as-it-runs.md); continued by [A second reader the agent cannot skip](a-second-reader-the-agent-cannot-skip.md), [A Mac of the agent's own](a-mac-of-the-agents-own.md), [Ten hard questions for RiskMandate, answered](riskmandate-ten-questions.md), [How I work with Claude](how-i-work-with-claude.md), [Knowing when to stop](knowing-when-to-stop.md), [Agency is not a yes](agency-is-not-a-yes.md).
-- [**Who are you protecting against? Draw the security…**](who-are-you-protecting-against.md) builds on [Every risk is already accepted](every-risk-is-already-accepted.md); continued by [Encrypted memory for agents that run somewhere else](encrypted-memory-for-isolated-agents.md), [Knowing when to stop](knowing-when-to-stop.md).
+- [**Who are you protecting against? Draw the security…**](who-are-you-protecting-against.md) builds on [Every risk is already accepted](every-risk-is-already-accepted.md); continued by [Who will game the reading meter? Eight kinds of…](who-will-game-the-reading-meter.md), [Encrypted memory for agents that run somewhere else](encrypted-memory-for-isolated-agents.md), [Knowing when to stop](knowing-when-to-stop.md).
 - [**Every mistake added a rule**](every-mistake-added-a-rule.md) builds on [The agent team as it runs](the-agent-team-as-it-runs.md), [Memory is not a spectator sport](memory-is-not-a-spectator-sport.md), [Git for things you cannot put on GitHub](what-sgit-is.md), [Every risk is already accepted](every-risk-is-already-accepted.md), [Footprint and blast radius](footprint-and-blast-radius.md), [The bridge, followed to the end](the-bridge-followed-to-the-end.md), [Green does not mean live](green-does-not-mean-live.md); continued by [A second reader the agent cannot skip](a-second-reader-the-agent-cannot-skip.md), [Knowing when to stop](knowing-when-to-stop.md).
 - [**Liquid content needs water**](liquid-content-needs-water.md) builds on [Fractal Semantic Graphs](introducing-fractal-semantic-graphs.md), [The future of news is the story vault, not the…](future-of-news-story-vault-not-paywall.md), [Custom UIs are not the exception](custom-uis-are-not-the-exception.md), [The bridge, followed to the end](the-bridge-followed-to-the-end.md), [How much of this did I write? The numbers behind…](how-much-of-this-did-i-write.md), [The reader was always the product](how-news-got-here.md), [Sixteen thousand fetches, ten clicks, and a token…](token-bill-nobody-is-sending.md).
 - [**The bridge, followed to the end**](the-bridge-followed-to-the-end.md) builds on [Story vault underneath, Reader Skills on top](story-vault-meets-reader-skills.md); continued by [A meter in the browser](a-meter-in-the-browser.md), [The waiting room knew first](the-waiting-room-knew-first.md), [Every mistake added a rule](every-mistake-added-a-rule.md), [Liquid content needs water](liquid-content-needs-water.md), [Story vault underneath, Reader Skills on top](story-vault-meets-reader-skills.md).
@@ -15763,18 +15781,18 @@ Read from the links the articles make to each other. [The same thing drawn as a 
 - [**Memory is not a spectator sport**](memory-is-not-a-spectator-sport.md) builds on [Sixteen thousand fetches, ten clicks, and a token…](token-bill-nobody-is-sending.md), [Fractal Semantic Graphs](introducing-fractal-semantic-graphs.md), [Replicating the agentic inbox](replicating-the-agentic-inbox.md), [Custom UIs are not the exception](custom-uis-are-not-the-exception.md), [Six agents, one inbox](six-agents-one-inbox.md), [Code review as a fractal semantic graph](code-review-as-a-fractal-semantic-graph.md), [Price it, then give it away](price-it-then-give-it-away.md); continued by [How I work with Claude](how-i-work-with-claude.md), [Knowing when to stop](knowing-when-to-stop.md), [Every mistake added a rule](every-mistake-added-a-rule.md), [The Mandate Stack](the-mandate-stack.md), [The agent team as it runs](the-agent-team-as-it-runs.md), [A personal agent that keeps your secrets](a-personal-agent-that-keeps-your-secrets.md), [How much of this did I write? The numbers behind…](how-much-of-this-did-i-write.md), [The wall under the reply](the-wall-under-the-reply.md).
 - [**Code review as a fractal semantic graph**](code-review-as-a-fractal-semantic-graph.md) builds on [Fractal Semantic Graphs](introducing-fractal-semantic-graphs.md), [Footprint and blast radius](footprint-and-blast-radius.md), [Custom UIs are not the exception](custom-uis-are-not-the-exception.md), [Every risk is already accepted](every-risk-is-already-accepted.md), [If somebody built a company on code review](if-somebody-built-a-company-on-code-review.md); continued by [The AI governance stack, as a graph](the-ai-governance-stack-as-a-graph.md), [Ten hard questions for RiskMandate, answered](riskmandate-ten-questions.md), [An open AI governance framework, and what its…](ai-baseline-control-framework.md), [The Mandate Stack](the-mandate-stack.md), [Send an agent, not a spreadsheet](send-an-agent-not-a-spreadsheet.md), [How much of this did I write? The numbers behind…](how-much-of-this-did-i-write.md), [If somebody built a company on code review](if-somebody-built-a-company-on-code-review.md), [Memory is not a spectator sport](memory-is-not-a-spectator-sport.md).
 - [**Replicating the agentic inbox**](replicating-the-agentic-inbox.md) builds on [Six agents, one inbox](six-agents-one-inbox.md), [Custom UIs are not the exception](custom-uis-are-not-the-exception.md), [Footprint and blast radius](footprint-and-blast-radius.md), [Before you give an agent a connector, give the…](connector-twin-before-you-deploy-an-agent.md), [The ultimate insider](ultimate-insider-three-collisions.md); continued by [How I work with Claude](how-i-work-with-claude.md), [The Mandate Stack](the-mandate-stack.md), [The agent team as it runs](the-agent-team-as-it-runs.md), [How much of this did I write? The numbers behind…](how-much-of-this-did-i-write.md), [The identity we wanted to give the agents](the-identity-we-wanted-to-give-the-agents.md), [The wall under the reply](the-wall-under-the-reply.md), [Memory is not a spectator sport](memory-is-not-a-spectator-sport.md), [Six agents, one inbox](six-agents-one-inbox.md).
-- [**Price it, then give it away**](price-it-then-give-it-away.md) builds on [For a startup, the most important question is…](the-question-is-whether-they-miss-it.md); continued by [A meter in the browser](a-meter-in-the-browser.md), [Memory is not a spectator sport](memory-is-not-a-spectator-sport.md), [For a startup, the most important question is…](the-question-is-whether-they-miss-it.md).
+- [**Price it, then give it away**](price-it-then-give-it-away.md) builds on [For a startup, the most important question is…](the-question-is-whether-they-miss-it.md); continued by [Going live with the reading meter](going-live-with-the-reading-meter.md), [A meter in the browser](a-meter-in-the-browser.md), [Memory is not a spectator sport](memory-is-not-a-spectator-sport.md), [For a startup, the most important question is…](the-question-is-whether-they-miss-it.md).
 - [**Footprint and blast radius**](footprint-and-blast-radius.md) builds on [The ultimate insider](ultimate-insider-three-collisions.md), [Before you give an agent a connector, give the…](connector-twin-before-you-deploy-an-agent.md), [Custom UIs are not the exception](custom-uis-are-not-the-exception.md), [Every risk is already accepted](every-risk-is-already-accepted.md), [Six agents, one inbox](six-agents-one-inbox.md); continued by [Ten hard questions for RiskMandate, answered](riskmandate-ten-questions.md), [Every mistake added a rule](every-mistake-added-a-rule.md), [Where is the why? A permission prompt asked me to…](where-is-the-why.md), [The Mandate Stack](the-mandate-stack.md), [Why my agents do not run on my laptop](why-my-agents-do-not-run-on-my-laptop.md), [The agent team as it runs](the-agent-team-as-it-runs.md), [A personal agent that keeps your secrets](a-personal-agent-that-keeps-your-secrets.md), [The investigation GitHub owes its customers](the-investigation-github-owes-its-customers.md), [Send an agent, not a spreadsheet](send-an-agent-not-a-spreadsheet.md), [If somebody built a company on code review](if-somebody-built-a-company-on-code-review.md), [The identity we wanted to give the agents](the-identity-we-wanted-to-give-the-agents.md), [Code review as a fractal semantic graph](code-review-as-a-fractal-semantic-graph.md), [Replicating the agentic inbox](replicating-the-agentic-inbox.md), [The ultimate insider](ultimate-insider-three-collisions.md).
 - [**Custom UIs are not the exception**](custom-uis-are-not-the-exception.md) builds on [Fractal Semantic Graphs](introducing-fractal-semantic-graphs.md), [Six agents, one inbox](six-agents-one-inbox.md), [The future of news is the story vault, not the…](future-of-news-story-vault-not-paywall.md), [Before you give an agent a connector, give the…](connector-twin-before-you-deploy-an-agent.md), [A chat box on a site with no server, the plan, and…](chat-on-a-static-site.md), [Seven vaults, one method](seven-vaults-one-method.md), [Sixteen thousand fetches, ten clicks, and a token…](token-bill-nobody-is-sending.md), [The ultimate insider](ultimate-insider-three-collisions.md); continued by [Liquid content needs water](liquid-content-needs-water.md), [The Mandate Stack](the-mandate-stack.md), [The agent team as it runs](the-agent-team-as-it-runs.md), [The wall under the reply](the-wall-under-the-reply.md), [Memory is not a spectator sport](memory-is-not-a-spectator-sport.md), [Code review as a fractal semantic graph](code-review-as-a-fractal-semantic-graph.md), [Replicating the agentic inbox](replicating-the-agentic-inbox.md), [Footprint and blast radius](footprint-and-blast-radius.md).
 - [**The ultimate insider**](ultimate-insider-three-collisions.md) builds on [Every risk is already accepted](every-risk-is-already-accepted.md), [Footprint and blast radius](footprint-and-blast-radius.md), [Six agents, one inbox](six-agents-one-inbox.md), [Before you give an agent a connector, give the…](connector-twin-before-you-deploy-an-agent.md), [Fractal Semantic Graphs](introducing-fractal-semantic-graphs.md); continued by [Ten hard questions for RiskMandate, answered](riskmandate-ten-questions.md), [Where is the why? A permission prompt asked me to…](where-is-the-why.md), [The Mandate Stack](the-mandate-stack.md), [Why my agents do not run on my laptop](why-my-agents-do-not-run-on-my-laptop.md), [A personal agent that keeps your secrets](a-personal-agent-that-keeps-your-secrets.md), [The investigation GitHub owes its customers](the-investigation-github-owes-its-customers.md), [The identity we wanted to give the agents](the-identity-we-wanted-to-give-the-agents.md), [Replicating the agentic inbox](replicating-the-agentic-inbox.md), [Footprint and blast radius](footprint-and-blast-radius.md), [Custom UIs are not the exception](custom-uis-are-not-the-exception.md).
-- [**The reader was always the product**](how-news-got-here.md) builds on [The future of news is the story vault, not the…](future-of-news-story-vault-not-paywall.md), [Sixteen thousand fetches, ten clicks, and a token…](token-bill-nobody-is-sending.md), [Fractal Semantic Graphs](introducing-fractal-semantic-graphs.md); continued by [A meter in the browser](a-meter-in-the-browser.md), [Liquid content needs water](liquid-content-needs-water.md), [Story vault underneath, Reader Skills on top](story-vault-meets-reader-skills.md), [The deck I could not download](the-deck-i-could-not-download.md).
+- [**The reader was always the product**](how-news-got-here.md) builds on [The future of news is the story vault, not the…](future-of-news-story-vault-not-paywall.md), [Sixteen thousand fetches, ten clicks, and a token…](token-bill-nobody-is-sending.md), [Fractal Semantic Graphs](introducing-fractal-semantic-graphs.md); continued by [Going live with the reading meter](going-live-with-the-reading-meter.md), [A meter in the browser](a-meter-in-the-browser.md), [Liquid content needs water](liquid-content-needs-water.md), [Story vault underneath, Reader Skills on top](story-vault-meets-reader-skills.md), [The deck I could not download](the-deck-i-could-not-download.md).
 - [**Six agents, one inbox**](six-agents-one-inbox.md) builds on [Before you give an agent a connector, give the…](connector-twin-before-you-deploy-an-agent.md), [Replicating the agentic inbox](replicating-the-agentic-inbox.md); continued by [A Mac of the agent's own](a-mac-of-the-agents-own.md), [Ten hard questions for RiskMandate, answered](riskmandate-ten-questions.md), [Zoom into an agent's behaviour policy and you find…](the-behaviour-policy-is-the-business-logic.md), [An open AI governance framework, and what its…](ai-baseline-control-framework.md), [Where is the why? A permission prompt asked me to…](where-is-the-why.md), [The Mandate Stack](the-mandate-stack.md), [Why my agents do not run on my laptop](why-my-agents-do-not-run-on-my-laptop.md), [The agent team as it runs](the-agent-team-as-it-runs.md), [A personal agent that keeps your secrets](a-personal-agent-that-keeps-your-secrets.md), [Send an agent, not a spreadsheet](send-an-agent-not-a-spreadsheet.md), [If somebody built a company on code review](if-somebody-built-a-company-on-code-review.md), [The identity we wanted to give the agents](the-identity-we-wanted-to-give-the-agents.md), [The wall under the reply](the-wall-under-the-reply.md), [Memory is not a spectator sport](memory-is-not-a-spectator-sport.md), [Replicating the agentic inbox](replicating-the-agentic-inbox.md), [Footprint and blast radius](footprint-and-blast-radius.md), [Custom UIs are not the exception](custom-uis-are-not-the-exception.md), [The ultimate insider](ultimate-insider-three-collisions.md).
-- [**Sixteen thousand fetches, ten clicks, and a token…**](token-bill-nobody-is-sending.md) builds on [The future of news is the story vault, not the…](future-of-news-story-vault-not-paywall.md), [Fractal Semantic Graphs](introducing-fractal-semantic-graphs.md); continued by [A meter in the browser](a-meter-in-the-browser.md), [Liquid content needs water](liquid-content-needs-water.md), [Memory is not a spectator sport](memory-is-not-a-spectator-sport.md), [Custom UIs are not the exception](custom-uis-are-not-the-exception.md), [The reader was always the product](how-news-got-here.md).
+- [**Sixteen thousand fetches, ten clicks, and a token…**](token-bill-nobody-is-sending.md) builds on [The future of news is the story vault, not the…](future-of-news-story-vault-not-paywall.md), [Fractal Semantic Graphs](introducing-fractal-semantic-graphs.md); continued by [Who will game the reading meter? Eight kinds of…](who-will-game-the-reading-meter.md), [A meter in the browser](a-meter-in-the-browser.md), [Liquid content needs water](liquid-content-needs-water.md), [Memory is not a spectator sport](memory-is-not-a-spectator-sport.md), [Custom UIs are not the exception](custom-uis-are-not-the-exception.md), [The reader was always the product](how-news-got-here.md).
 - [**A supply chain of vaults**](supply-chain-of-vaults.md) builds on [Fractal Semantic Graphs](introducing-fractal-semantic-graphs.md), [The SaaS apocalypse will be decided by inertia, not…](saas-apocalypse-decided-by-inertia-not-by-ai.md); continued by [The Mandate Stack](the-mandate-stack.md), [The deck I could not download](the-deck-i-could-not-download.md), [Send an agent, not a spreadsheet](send-an-agent-not-a-spreadsheet.md).
 - [**Every risk is already accepted**](every-risk-is-already-accepted.md) builds on [Fractal Semantic Graphs](introducing-fractal-semantic-graphs.md); continued by [Ten hard questions for RiskMandate, answered](riskmandate-ten-questions.md), [Agency is not a yes](agency-is-not-a-yes.md), [Who are you protecting against? Draw the security…](who-are-you-protecting-against.md), [Every mistake added a rule](every-mistake-added-a-rule.md), [Zoom into an agent's behaviour policy and you find…](the-behaviour-policy-is-the-business-logic.md), [An open AI governance framework, and what its…](ai-baseline-control-framework.md), [Where is the why? A permission prompt asked me to…](where-is-the-why.md), [The Mandate Stack](the-mandate-stack.md), [The agent team as it runs](the-agent-team-as-it-runs.md), [The investigation GitHub owes its customers](the-investigation-github-owes-its-customers.md), [Send an agent, not a spreadsheet](send-an-agent-not-a-spreadsheet.md), [Code review as a fractal semantic graph](code-review-as-a-fractal-semantic-graph.md), [Footprint and blast radius](footprint-and-blast-radius.md), [The ultimate insider](ultimate-insider-three-collisions.md).
 - [**Before you give an agent a connector, give the…**](connector-twin-before-you-deploy-an-agent.md) continued by [Ten hard questions for RiskMandate, answered](riskmandate-ten-questions.md), [Where is the why? A permission prompt asked me to…](where-is-the-why.md), [The Mandate Stack](the-mandate-stack.md), [The agent team as it runs](the-agent-team-as-it-runs.md), [A personal agent that keeps your secrets](a-personal-agent-that-keeps-your-secrets.md), [Send an agent, not a spreadsheet](send-an-agent-not-a-spreadsheet.md), [If somebody built a company on code review](if-somebody-built-a-company-on-code-review.md), [Replicating the agentic inbox](replicating-the-agentic-inbox.md), [Footprint and blast radius](footprint-and-blast-radius.md), [Custom UIs are not the exception](custom-uis-are-not-the-exception.md), [The ultimate insider](ultimate-insider-three-collisions.md), [Six agents, one inbox](six-agents-one-inbox.md).
 - [**The future of news is the story vault, not the…**](future-of-news-story-vault-not-paywall.md) builds on [For a startup, the most important question is…](the-question-is-whether-they-miss-it.md); continued by [Liquid content needs water](liquid-content-needs-water.md), [Story vault underneath, Reader Skills on top](story-vault-meets-reader-skills.md), [The deck I could not download](the-deck-i-could-not-download.md), [Custom UIs are not the exception](custom-uis-are-not-the-exception.md), [The reader was always the product](how-news-got-here.md), [Sixteen thousand fetches, ten clicks, and a token…](token-bill-nobody-is-sending.md).
-- [**For a startup, the most important question is…**](the-question-is-whether-they-miss-it.md) builds on [Price it, then give it away](price-it-then-give-it-away.md); continued by [A meter in the browser](a-meter-in-the-browser.md), [If somebody built a company on code review](if-somebody-built-a-company-on-code-review.md), [Price it, then give it away](price-it-then-give-it-away.md), [The future of news is the story vault, not the…](future-of-news-story-vault-not-paywall.md).
+- [**For a startup, the most important question is…**](the-question-is-whether-they-miss-it.md) builds on [Price it, then give it away](price-it-then-give-it-away.md); continued by [Going live with the reading meter](going-live-with-the-reading-meter.md), [A meter in the browser](a-meter-in-the-browser.md), [If somebody built a company on code review](if-somebody-built-a-company-on-code-review.md), [Price it, then give it away](price-it-then-give-it-away.md), [The future of news is the story vault, not the…](future-of-news-story-vault-not-paywall.md).
 - [**The SaaS apocalypse will be decided by inertia, not…**](saas-apocalypse-decided-by-inertia-not-by-ai.md) continued by [The deck I could not download](the-deck-i-could-not-download.md), [If somebody built a company on code review](if-somebody-built-a-company-on-code-review.md), [A supply chain of vaults](supply-chain-of-vaults.md).
 - [**Fractal Semantic Graphs**](introducing-fractal-semantic-graphs.md) continued by [The AI governance stack, as a graph](the-ai-governance-stack-as-a-graph.md), [Ten hard questions for RiskMandate, answered](riskmandate-ten-questions.md), [Agency is not a yes](agency-is-not-a-yes.md), [Liquid content needs water](liquid-content-needs-water.md), [Zoom into an agent's behaviour policy and you find…](the-behaviour-policy-is-the-business-logic.md), [An open AI governance framework, and what its…](ai-baseline-control-framework.md), [The Mandate Stack](the-mandate-stack.md), [The agent team as it runs](the-agent-team-as-it-runs.md), [A personal agent that keeps your secrets](a-personal-agent-that-keeps-your-secrets.md), [How much of this did I write? The numbers behind…](how-much-of-this-did-i-write.md), [If somebody built a company on code review](if-somebody-built-a-company-on-code-review.md), [Memory is not a spectator sport](memory-is-not-a-spectator-sport.md), [Code review as a fractal semantic graph](code-review-as-a-fractal-semantic-graph.md), [Custom UIs are not the exception](custom-uis-are-not-the-exception.md), [The ultimate insider](ultimate-insider-three-collisions.md), [The reader was always the product](how-news-got-here.md), [Sixteen thousand fetches, ten clicks, and a token…](token-bill-nobody-is-sending.md), [A supply chain of vaults](supply-chain-of-vaults.md), [Every risk is already accepted](every-risk-is-already-accepted.md).
 - [**The proof moved up, the homepage after the rebuild…**](proof-moved-up.md) builds on [The proof is two clicks behind the claim, what the…](proof-behind-the-claim.md).
@@ -20096,6 +20114,491 @@ From `admin/build/catalogue_derive.py deqiwj7z <read key hex>`, read-only, no to
 
 
 ==============================================================================
+# SG Meter: a reading meter you can add to any website, sgit.ai
+
+> One web component that charges readers a few pence a page from a balance kept in their own browser, by how far down the page they read; never blocks, allows a negative balance, lets a reader decline with a reason. Install, views, config, events, storage, theming, Stripe.
+>
+> Page: https://sgit.ai/meter/index.html
+
+[Home](../index.md) / [Docs](../docs/index.md) / SG Meter
+
+A library · v1.0.0
+
+# SG Meter: a reading meter you can add to any website
+
+One web component that charges readers a few pence a page from a balance kept in their own browser, by how far down the page they read. It never blocks a page, it lets the balance go below zero, it lets a reader decline to pay for a page and say why, and it turns what they read into picks. No server, no account, no cookies, no third-party script. It is what runs on this site: the balance in the top bar is it.
+
+**What it is, and what it is not.** An honesty box, not a paywall. Everything it knows is in the reader's browser, so a reader can change their own balance, and the page a payment returns to cannot check the payment. That is a choice, made because of who reads a site like this one and what cheating would cost; it is argued in [the security model](security.md) and, with the numbers, in [who will game the reading meter](../articles/who-will-game-the-reading-meter.md). If you need a meter that holds money, this is the wrong library.
+
+## Install
+
+Copy two folders into your site, keeping their paths: the component and the base class it extends (it imports the base by a relative path).
+
+```
+assets/components/base/v1/v1.0/v1.0.0/sg-component.js
+assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.js
+assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter-core.js
+assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.tpl
+assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.css
+```
+
+The paths are versioned and immutable, as in [the estate's JavaScript guidance](https://coding.sgit.ai/javascript/index.html): a fix is a new path, so a page that works today keeps loading the same files. Read them first; they are short: [the rules](../assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter-core.js) (no rendering), [the element](../assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.js), [its styles](../assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.css), [the base class](../assets/components/base/v1/v1.0/v1.0.0/sg-component.js).
+
+Then, on every page, load the module once, give it a config, and say what the page is:
+
+```
+<!-- in the top bar -->
+<sg-meter view="balance"></sg-meter>
+
+<!-- at the end of the text: charges this page, shows what it cost and the "don't charge me" choice -->
+<sg-meter view="page" kind="article" date="2026-10-10" topics="news pricing" title="The page's title"></sg-meter>
+
+<script type="application/json" id="sg-meter-config">
+{ "storageKey": "mysite.meter.v1", "start": 500,
+  "prices": { "article_new": 10, "article": 5, "page": 1, "free": 0 },
+  "topup": { "amount": 500, "link": "https://buy.stripe.com/your-link" },
+  "picks": { "feed": "articles/feed.json", "base": "articles/" } }
+</script>
+<script type="module" src="/assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.js"></script>
+```
+
+Every key has a default, so an empty config works. Put `data-root` on `<html>` (for example `data-root="../"`) if your pages are not all at the top level; links the component writes are prefixed with it. This site loads the module with a dynamic `import()` from an inline script instead of a `src`, because its own build forbids script tags that point at files; either works.
+
+## The six views
+
+One element, one shared meter: an ES module is evaluated once per page, so however many `<sg-meter>` elements a page has, it is charged once.
+
+| view | What it shows | Attributes |
+|---|---|---|
+| `balance` | The balance as a small link to the account. Shown in a warmer colour below zero, with a tooltip that says nothing is blocked. Nothing else: no banner, no count of articles read. |  |
+| `page` | Opens this page on the meter and charges it by scroll depth. Shows what it has cost so far, the share read, the price to the end, and "Not worth it? Don't charge me" with four reasons. | `kind`, `date` (YYYY-MM-DD), `topics` (space separated), `title`, `quiet` (charge, show nothing) |
+| `account` | Balance, pages opened, spend, what was declined, picks, spend by topic, the history with the depth read, top-ups; pause, export as JSON, start again. |  |
+| `topup` | With `topup.link` set, one button to the payment page. Without, a simulated cart (packs, cart, review, receipt) that says it is simulated. |  |
+| `topped-up` | The page a payment link returns to. Adds `topup.amount` once per `session_id` in the URL. It does not verify the payment; see [the security model](security.md#return). |  |
+| `picks` | Unread pages from the reader's most-read topics. Hidden until there is a history to pick from. | `count` (default 4) |
+
+This site's own: [account](../account/index.md), [top-up](../account/top-up.md), [topped-up](../account/topped-up.md) (opened without a payment reference, it adds nothing and says so), and the picks band on [the front page](../articles/index.md).
+
+## The rules it charges by
+
+- **By depth.** A page costs its price times the deepest point the reader has scrolled to, measured on the page's `main` element and rounded to 5%, never less than `minDepth` (default a tenth), so opening a page is not free. Read half, pay half.
+- **Once per page per session.** Scrolling further later in the same browser session tops the same charge up; coming back does not start a second one.
+- **Below zero is allowed.** Nothing is blocked and nothing nags. The balance is shown, that is all.
+- **Declining is allowed.** A reader can refuse to pay for a page, with a reason: the headline promised more than the page gave, not relevant to me, I did not really read it, another reason. The charge is refunded and the reason kept in their history; "not relevant" counts against that page's topics in the picks.
+- **New costs more.** An `article` whose `date` is within `newDays` is priced at `article_new`, judged in the reader's browser, so prices age without a rebuild. Any other `kind` is looked up in `prices`, falling back to `page`.
+- **Storage may fail.** In a browser that blocks storage the page still works, and the account says it cannot keep a balance.
+
+## Config reference
+
+| Key | Default | Meaning |
+|---|---|---|
+| `storageKey` | `"sg.meter.v1"` | The localStorage key. Use your own per site. (This site keeps `sgit.meter.v1`, the key its first meter used, so balances carried over.) |
+| `start` | `500` | Starting credit, in pence or cents. |
+| `symbol` | `"£"` | Shown before amounts. |
+| `prices` | 10 / 5 / 3 / 2 / 2 / 1 / 0 | Price of a page read to the end, by kind: `article_new`, `article`, `issue`, `note`, `collection`, `page`, `free`. Add your own kinds. |
+| `newDays` | `7` | How long an article is new. |
+| `depth` | `true` | Charge by scroll depth. `false` charges the whole price on opening. |
+| `minDepth` | `0.1` | The least share of a page that is charged. |
+| `topup` | `{"amount": 500, "link": ""}` | The payment link and what it adds. Empty link: the simulated cart. |
+| `packs` | `[{"id":"p5","price":500,"bonus":0}]` | The simulated cart's packs. |
+| `links` | `{"account": "account/index.html", "topup": "account/top-up.html"}` | Where your account and top-up pages are, relative to `data-root`. |
+| `picks` | `{"feed": "", "base": ""}` | A JSON feed of `{"articles": [{slug, title, date, teaser, topics}], "topics": [{id, label}]}`, and the folder an article's `slug + ".html"` is in. Empty feed: no picks. This site uses [articles/graphs.json](../articles/graphs.json). |
+
+Config can also be given as `window.SG_METER_CONFIG` before the module loads.
+
+## Events
+
+Dispatched on `document`, bubbling and composed, named `<namespace>:<noun>.<verb>`. Event names are API: renaming one is a major version.
+
+| Event | detail |
+|---|---|
+| `sg:meter.charged` | `{path, depth, cost, balance}`, each time a charge grows |
+| `sg:meter.declined` | `{path, reason, balance}` |
+| `sg:meter.toppedup` | `{credit, source, balance}`; source is `simulated` or `link` |
+| `sg:meter.reset` | `{}` |
+| `sg:meter.changed` | `{balance}`, on any saved change; the elements repaint on it |
+| `sg-meter:error` | `{why}`, if the component's markup or styles failed to load; the element also gets `data-state="error"` |
+
+Nothing listens to these on this site: there is no analytics. They are there so a site that wants to count, for example, how many readers decline and why, can do it in its own code and say so.
+
+## What is stored
+
+One JSON value under `storageKey` in localStorage, and a map of this session's pages under `storageKey + ".seen"` in sessionStorage. The reader can export it from the account page.
+
+```
+{ "v": 2, "created": "2026-10-10T09:00:00.000Z",
+  "balance": -12.5, "spent": 512.5, "reads": 91, "declined": 14, "paused": false,
+  "log": [ { "id": "…", "at": "…", "path": "/articles/x.html", "title": "…", "kind": "article",
+             "topics": ["news"], "price": 10, "depth": 0.55, "cost": 5.5,
+             "declined": { "reason": "clickbait", "at": "…", "refunded": 4 } } ],
+  "topups":   [ { "ref": "cs_…", "at": "…", "credit": 500, "source": "link" } ],
+  "sessions": [ "cs_…" ], "cart": [] }
+```
+
+The log keeps the last 500 pages. A version 1 state (this site before v0.7.26) is read and upgraded in place.
+
+## Theming
+
+The component draws in a shadow root, so your stylesheet cannot reach in, but CSS custom properties cross the boundary and every colour reads one first: `--fg`, `--dim`, `--line`, `--line2`, `--panel`, `--accent`, `--accent-dk`, `--warm` (the colour of a negative balance), `--mono`, `--serif`, `--sans`. Each has a neutral fallback, so a site with none of them still gets a readable meter. The host element is yours to place and size: `sg-meter { display: block }`, and the root is exposed as `::part(root)`.
+
+## Taking real payments with a Stripe Payment Link
+
+1. In Stripe, create a product (for example "£5 of reading") and a **Payment Link** for it.
+2. In the link's **After payment** settings, choose not to show Stripe's confirmation page and to redirect to your site, with this URL (Stripe fills in the placeholder):
+`https://your.site/account/topped-up.html?session_id={CHECKOUT_SESSION_ID}`
+3. Put the link in the config as `topup.link`, and the credit it buys as `topup.amount`.
+4. Make a page at that path with `<sg-meter view="topped-up"></sg-meter>` on it.
+
+Stripe's own guidance is that fulfilment should come from the `checkout.session.completed` webhook, not from the redirect, because a redirect can be skipped or faked. A static site has nowhere to receive a webhook, so this library credits on the redirect and says so. On a £5 payment with a standard UK card Stripe's listed fee is 1.5% + 20p, about 27.5p, or 5.5%; premium and international cards cost more. The arithmetic for this site is in [going live with the reading meter](../articles/going-live-with-the-reading-meter.md).
+
+## Where its rules come from
+
+The first version ran on [pt.newsroom.sgit.ai](https://pt.newsroom.sgit.ai/carteira/) as its wallet: says up front what it is, never blocks, one charge per page per session, storage allowed to fail. Its code follows [coding.sgit.ai's JavaScript guidance](https://coding.sgit.ai/javascript/index.html): ES modules, native web components on a shared base class, markup and styles in sibling files, page data set only as text, events as API. And two carried over from [the NFRs](https://nfrs.sgit.ai/), whose rule is "generate or date every number": the balance and the spend are running totals, but the log of every charge that made them sits beside them in the same export (the last 500), so a reader can check one against the other; and "a restore that has never been performed is not a backup", so the export is plain JSON a reader can open and read, the only copy of their history there is.
+
+## Changelog
+
+- **v1.0.0** (10 October 2026, site v0.7.26). First packaged release: scroll-depth charging, negative balances, decline with a reason, the balance view, the Stripe return page, picks that count "not relevant" against a topic. Replaces this site's `assets/meter.js` (v0.7.24), which charged on opening and showed a bar when credit ran out.
+
+Next, not yet: rating a page, classifying it and keeping a note on it, all in the same local history; a balance that follows a reader between devices through an encrypted vault only they hold the key to. [Security model](security.md) · [this site's account page](../account/index.md).
+
+
+
+==============================================================================
+# SG Meter security model, sgit.ai
+
+> What a reader can do to a meter kept in their own browser (edit the balance, start again, credit themselves through the unprotected return page), what each costs the site and the reader, and why every gap is accepted.
+>
+> Page: https://sgit.ai/meter/security.html
+
+[Home](../index.md) / [Docs](../docs/index.md) / [SG Meter](index.md) / Security model
+
+SG Meter · security model
+
+# SG Meter's security model: what a reader can do to it, and why that is allowed
+
+Everything the meter knows is in the reader's browser, so the reader controls it completely. This page lists what that lets them do, what it costs the site, and what it costs them. The short version: every way of cheating changes a number only the cheater can see, and costs the site a payment it was never going to get.
+
+## What is being protected, and from whom
+
+Not money. The meter never blocks a page, so there is nothing behind it to steal: a reader who never pays reads exactly what a reader who pays reads. What it protects is narrower: the reader's own history (what they read, what they declined and why) from other people, and the site's honesty about what it records. The first question of [who are you protecting against](../articles/who-are-you-protecting-against.md) applies, and the answer here is "a reader's flatmate, and our own mistakes", not "a determined attacker", because a determined attacker gains nothing. Who might try anyway, and how many of them there are, is in [who will game the reading meter](../articles/who-will-game-the-reading-meter.md).
+
+## Known gaps, all accepted
+
+| # | What a reader can do | Effort | What it costs the site | What it costs the reader |
+|---|---|---|---|---|
+| 1 | Edit their balance in the browser's developer tools (Application → Local Storage) | A minute, for someone who knows devtools exist | Nothing it would otherwise have had | Nothing |
+| 2 | Open a private window or another browser and start again at £5.00 | One keystroke | Nothing | Their history and picks, which stay behind |
+| 3 | Open the topped-up page with any `session_id` and get £5 of credit, once per id | Read this page, type a URL | Nothing: no money moves, and the credit is only on their screen | Nothing |
+| 4 | Replay the same topped-up URL | none | Blocked: each id is credited once per browser (but a new id is trivial, see 3) | none |
+| 5 | Clear site data to wipe a negative balance | Two clicks | Nothing; there was never a debt | Their history |
+| 6 | Read as an agent: fetch the markdown twin or the newsroom wire | None; it is the intended route for agents | Unmetered by design, for now | none |
+| 7 | Someone else on a shared computer opens the account page and sees what was read and declined | Sit down at it | none | Privacy. Mitigations: "Start again" clears it; a private window keeps nothing |
+| 8 | A script injected into the site (XSS) reads the history | Needs a hole in the site first | Reputation | Privacy. Mitigations: the meter sets page data only as text; the only third-party code on this origin is the in-browser Python on [the try page](../try/index.md), loaded from a pinned version, so that page shares the same storage and the same trust |
+| 9 | Card testing, fraud or chargebacks against the Stripe link | Ordinary payment fraud | Fees and disputes, held by Stripe's own controls (Radar) | none |
+
+## Why the topped-up page is unprotected
+
+Because protecting it would need a server, and the one thing a server would protect is a number on a reader's own screen that unlocks nothing. Stripe's recommended way to know a payment happened is a webhook from Stripe to a server you run, and the honest alternative to building one is to say plainly that the return page trusts its URL. So it does, and here it is said. What we did do is keep the default route the real one: every top-up button goes to the payment page, the return URL is not linked as a way to get credit, and the page adds nothing when opened without a reference.
+
+## What would change this
+
+- **If the balance unlocked something** (a page, a download, a reply from an agent), it would have to be held by a server or a signed receipt, and gaps 1, 3 and 5 would stop being acceptable.
+- **If the history synced between devices**, it would be kept in an encrypted vault whose key only the reader holds, so the site would still not be able to read it.
+- **If cheating showed up in the one place we can see** (the Stripe dashboard: payments, amounts, repeat payers), we would know the honesty box was not working, and the hypotheses in [going live with the reading meter](../articles/going-live-with-the-reading-meter.md) say in advance what number would mean that.
+
+[← SG Meter](index.md)
+
+
+
+==============================================================================
+# Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen, sgit.ai
+
+> The reading meter on sgit.ai keeps everything in the reader's browser, so anyone can cheat it: edit the balance, open a private window, or credit themselves £5 by opening the page a payment returns to with a made-up reference. This piece goes one level below "who are you protecting against". None of the people here are attackers. They are readers, from engineers who are invisible by habit to people who can barely click, with agents moving between the levels in seconds. For each kind we estimate how many there are, from published figures, what they could do to the meter and whether they will. The answer is that cheating will happen, rarely, and costs nothing that reaches the site, while the risks that will actually happen are quieter: a shared computer showing someone's reading history, a reader confused by a number, and ordinary card fraud on the payment link. Security and usability are aimed at the readers who will pay, not at the ones who never would.
+>
+> Page: https://sgit.ai/articles/who-will-game-the-reading-meter.html
+
+[Home](../index.md) / [Articles](index.md) / Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen
+
+# Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen
+
+By [Dinis Cruz](../about/index.md) · 2026-10-10 · securitythreat-modellingmicropaymentslocal-firstprivacyusabilityusersagentsarticle
+
+***Abstract:** The reading meter on sgit.ai keeps everything in the reader's browser, so anyone can cheat it: edit the balance, open a private window, or credit themselves £5 by opening the page a payment returns to with a made-up reference. This piece goes one level below "who are you protecting against". None of the people here are attackers. They are readers, from engineers who are invisible by habit to people who can barely click, with agents moving between the levels in seconds. For each kind we estimate how many there are, from published figures, what they could do to the meter and whether they will. The answer is that cheating will happen, rarely, and costs nothing that reaches the site, while the risks that will actually happen are quieter: a shared computer showing someone's reading history, a reader confused by a number, and ordinary card fraud on the payment link. Security and usability are aimed at the readers who will pay, not at the ones who never would.*
+
+Eight kinds of reader, from invisible to barely clicking, with how many of them there are, what each could do to a meter kept in the browser, and how likely they are to bother.
+
+## In short
+
+- **Everything is in the reader's browser, so the reader can change anything.** Nine ways to cheat or leak are listed below. All are documented and accepted.
+- **None of the people who could cheat are attackers.** This is [who are you protecting against](../articles/who-are-you-protecting-against.md) one level down: not tiers of threat, but kinds of reader, all of them non-malicious.
+- **Eight kinds of reader**, from the invisible (Tor, VPNs, clean browsers, mostly engineers) to the struggling (people who can barely click), with agents able to move between levels in a single request.
+- **Cheating will happen, rarely, and costs the site nothing.** Every way of cheating changes a number only the cheater sees, and takes away a payment that was never coming.
+- **The risks that will actually happen are quieter:** a shared computer that shows what someone read, a reader confused or worried by a negative number, and card fraud on the Stripe link.
+- **So the design is aimed at the middle of the ladder,** the readers who will weigh it up and pay, and at not frightening the bottom steps, rather than at stopping the top.
+
+## The question one level down
+
+[Who are you protecting against](../articles/who-are-you-protecting-against.md) argued that the first question in security is who, not how much: draw the line where the attacker is, not above it, and don't design against a nation state when you have no backups. Its ladder was of attackers, from your own mistakes to states.
+
+A reading meter needs the same question asked about people who are not attackers at all. Nobody breaks a meter that blocks nothing to steal a page they can already read. The people who could change their balance are readers, with different skills, habits and reasons. The useful question is not "could they?" but "will they, how many of them are there, and what does it cost if they do?"
+
+[Going live with the reading meter](../articles/going-live-with-the-reading-meter.md) sets out how it works: charged by depth, a balance allowed below zero, no blocking, a refusal with a reason, a £5 Stripe top-up credited by a page that cannot check the payment. Here is who will meet it.
+
+## Eight kinds of reader
+
+The figures below come from different surveys with different methods and they overlap. One person can be in several rows, and in different rows on different days. They are for sizing, not for adding up.
+
+| # | Who | How many, roughly | What they could do to the meter | Will they? |
+|---|---|---|---|---|
+| 1 | **The invisible.** Engineers with VPNs, clean browsers, private windows by default, sometimes Tor | Professional developers are about 0.6% of internet users; Tor has about 3.1 to 3.3 million direct users a day | Anything: edit storage, forge the return page, never keep state at all | They will not bother to cheat. Most will never have a balance long enough to matter, because their browser forgets it |
+| 2 | **Agents.** Software reading on someone's behalf | Not counted; growing | Read the markdown twin, which is not metered; or drive a browser and do anything step 1 can | They move between levels in seconds. Today they are outside the meter by design |
+| 3 | **Enthusiasts and power users.** NordVPN, ad blockers, privacy-aware, not developers | VPN users, about 23% of internet users; ad blockers, about 29% | Clear site data, use privacy extensions that wipe storage on close | Some will reset without meaning to. A few will look in developer tools out of curiosity |
+| 4 | **Instruction followers.** Not technical, but will follow a recipe to save money or protect privacy | Unknown, likely large | Follow a post that says "open this URL to get free credit" | The cohort where publishing the gap matters. We published it ourselves |
+| 5 | **Pragmatic payers.** Want the thing, happy to pay, make their own risk assessment | The audience this is for | Pay £5 on Stripe | This is who the meter is built for |
+| 6 | **Little understanding.** Use the web without a model of what it stores | Private browsing used daily by about 12% in the UK (2023) | Reset it without knowing, by using a private window | They will never cheat. They will sometimes see £5.00 again and wonder why |
+| 7 | **Normal and mixed.** Most readers, most of the time | Most of the ladder | Nothing deliberate | They will read, see a number, and decide |
+| 8 | **Struggling.** Can barely use a computer | In the OECD's tests, 26% of adults could not use a computer and 14% were below the lowest level | Nothing | The risk is not cheating. It is being frightened by a negative balance, or thinking they owe money |
+
+Two of those figures say more together than apart. SlashData counted 36.5 million professional developers in early 2025, and the ITU estimated about 6.0 billion internet users in November 2025: about 0.6%, by our arithmetic. At the other end, the OECD's Survey of Adult Skills, as summarised by the Nielsen Norman Group, found that across 33 rich countries 26% of adults could not use a computer, 14% were below Level 1, 29% at Level 1, 26% at Level 2 and only 5% at Level 3, the level of a skilled user. The people who could cheat this meter with no effort are a sliver of one step; the people who could be confused by it are most of the bottom three.
+
+## Agents change level in a single request
+
+An agent is not a step; it is a lift. The same agent can fetch a page's markdown twin as a plain HTTP client, which no meter sees, then drive a full browser that runs the meter, then reset that browser's storage between tasks without anyone deciding to. It can follow an instruction to "get credit" at step 4 and execute it at step 1.
+
+That is why agents are outside the meter for now, on purpose, rather than inside it badly. Reading the [markdown twin](../articles/going-live-with-the-reading-meter.md) of a page, or the newsroom's [wire](../newsroom/index.md#agents), costs nothing. Metering agents properly would be a different design: priced per question rather than per page, paid by whoever runs the agent, and argued in [a token bill nobody is sending](../articles/token-bill-nobody-is-sending.md). A browser meter that tried to charge agents would mostly charge the ones honest enough to run it.
+
+## Nine ways to cheat or leak
+
+| # | What a reader can do | Who can | What it costs the site | What it costs the reader |
+|---|---|---|---|---|
+| 1 | Edit their balance in developer tools | Steps 1 to 3, and 4 with a recipe | Nothing it would have had | Nothing |
+| 2 | Open a private window or another browser and start again at £5.00 | Everyone, often by accident | Nothing | Their history and picks |
+| 3 | Open the page a payment returns to with any reference, and get £5 of credit, once per reference | Steps 1 to 4 | Nothing: no money moves, and the credit is only on their screen | Nothing |
+| 4 | Replay the same return URL | Anyone | Blocked once per reference; a new reference is trivial, so see 3 | None |
+| 5 | Clear site data to wipe a negative balance | Steps 1 to 3 | Nothing; there was never a debt | Their history |
+| 6 | Read as an agent, through the markdown twin or the wire | Agents | Unmetered by design | None |
+| 7 | Read someone else's history on a shared computer | Anyone with the computer | None | Privacy |
+| 8 | A script injected into the site reads the history | Needs a hole in the site first | Reputation | Privacy |
+| 9 | Card testing, fraud or chargebacks on the Stripe link | Ordinary payment fraud | Fees and disputes | None |
+
+Rows 1 to 6 are the cheating. Every one of them changes a number that only the person who changed it can see, and that number unlocks nothing. The site loses only a payment that the person was, by doing it, already not going to make. That is why they are accepted, and why the return page in row 3 is deliberately unprotected: protecting it would need a server, and the only thing the server would protect is a number on the cheater's own screen. What we did do is make the payment the default route everywhere. No button leads to the free one.
+
+## The risks that will actually happen
+
+Ranked by how likely they are, not by how interesting.
+
+All a reader below zero sees: a small balance in the top bar, in a warmer colour, linking to an explanation. No banner, no count, no request.
+
+1. **Confusion at the bottom of the ladder.** A reader on step 6 to 8 sees a negative balance and thinks they owe money, or sees £5.00 again and wonders where their history went. This is the most likely problem, and it is a usability problem. That is why the balance is small and links to an explanation, why its tooltip says nothing is blocked, why nothing pops up, and why the account page says on every visit that the meter lives in this browser only. The struggling reader is protected by the meter asking nothing of them.
+2. **A shared computer shows what someone read.** Row 7. A family computer or a library terminal keeps the history of whoever used it last, including the pages they declined and why. It is the only risk here that harms a reader, and the mitigations are theirs: "Start again" on the account page clears it, and a private window keeps nothing. We say so on the account page rather than pretending storage is private.
+3. **Card fraud on the payment link.** Row 9. Small payment links are used to test stolen card numbers. It is the one risk that costs real money, and it is the one that is not ours to solve: Stripe's own controls handle it, and the link can be switched off in a minute. It is also H4 in the going-live article's hypotheses: a dispute that is not plain card fraud would tell us the meter has started to matter in a way we did not plan.
+4. **Cheating.** Rows 1 to 6. It will happen, a few times, mostly out of curiosity and mostly by steps 1 to 3. It costs nothing that reaches us. It is last on this list because it is least worth worrying about, not because it is least likely.
+5. **A script on the site reads the history.** Row 8. It needs a hole in the site first. The meter sets everything it shows as text, never as markup, and the only third-party code on this site is the in-browser Python on [the try page](../try/index.md), loaded from a pinned version. It would be a serious bug if it happened. Nothing about the meter makes it more likely.
+
+## Aim at the readers who will pay
+
+The mistake to avoid is the one the earlier piece warned about: drawing the line above the attacker. Here, that would mean building for step 1: a server to verify every payment, an account to hold the balance, a sign-in to keep the history. Every one of those would stop nobody on step 1, who can still not pay and still read, and every one would make the meter worse for steps 5 to 8, the readers who might pay and the readers who must not be frightened.
+
+So the line is drawn where the readers are. For the pragmatic payer on step 5, the meter is honest and the payment is one click. For the instruction follower on step 4, the gap is published by us, next to the reason it does not matter. For steps 6 to 8, the meter is quiet, never blocks, never shames and never asks. For steps 1 to 3, it is a number they can change, and they are welcome to.
+
+## What would change the answer
+
+- **If the balance unlocked anything,** a page, a download, an answer from an agent, cheating would stop being free, and rows 1, 3 and 5 would need a server or a signed receipt. That is a different meter.
+- **If the history synced between devices,** it would be kept in an encrypted vault whose key only the reader holds, so the site still could not read it, and row 7 would get a lock.
+- **If cheating showed up where we can see,** in the Stripe dashboard, we would have learned that someone found a way to make it matter. [The anchors](../articles/going-live-with-the-reading-meter.md#the-anchors-what-we-expect-and-what-would-prove-us-wrong) say in advance what number would mean that.
+
+The library's own version of this is [SG Meter's security model](../meter/security.md), for a site adding it.
+
+*Written from a voice note by Dinis Cruz, who set out the ladder of readers and has editorial responsibility, by a Claude Code session working as the sgit.ai newsroom, on 10 October 2026. Sources: developers, SlashData (early 2025); internet users, ITU (November 2025); Tor, metrics.torproject.org (3 to 7 October 2026); VPN and ad-blocker use, GWI (Q2 2025, via DataReportal, a secondary source); private browsing in the UK, Statista (2023); computer skills, the OECD Survey of Adult Skills as summarised by the [Nielsen Norman Group](https://www.nngroup.com/articles/computer-skill-levels/). The ratio of developers to internet users is our own arithmetic from the first two.*
+
+## Threads
+
+Startups & strategyAgents & policy[This article as a graph →](graphs.md#who-will-game-the-reading-meter)
+
+### Builds on
+
+- [Who are you protecting against? Draw the security line where the attacker is, not above it](who-are-you-protecting-against.md) Before deciding how secure to be, name the attacker: a six-tier ladder, an air-gapped Mac mini read against it, and eight startups drawing their line.
+- [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](going-live-with-the-reading-meter.md) Pay for the share of a page you read, go below zero with no nagging, top up £5 on Stripe: the plan, and the numbers we check in eight weeks.
+- [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](token-bill-nobody-is-sending.md) AI answer engines pay to read the web as HTML; a publisher who serves markdown, dates, hashes and a typed graph saves them tokens and should get a share.
+
+### Continued by
+
+- [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](going-live-with-the-reading-meter.md) Pay for the share of a page you read, go below zero with no nagging, top up £5 on Stripe: the plan, and the numbers we check in eight weeks.
+
+[All articles](index.md) · [All graphs](graphs.md)
+
+**Posting this article on LinkedIn?** The cover is [who-will-game-the-reading-meter.jpg](../articles/banners/who-will-game-the-reading-meter.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
+
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
+
+[← All articles](index.md)
+
+
+
+==============================================================================
+# Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks, sgit.ai
+
+> The reading meter on sgit.ai stops being a demonstration. A page now costs what you read of it: scroll a tenth of the way down a new article and you pay a tenth of 10p. Your balance can go below zero and stay there; nothing is blocked and nothing nags, there is only a small balance in the top bar. If a page was not worth it you can say so, with a reason, and it is not charged. Topping up is one £5 payment on Stripe, with no account and nothing that renews, and the page you come back to adds the credit without being able to check it, on purpose. The meter is also packaged as a library any website can add. This article is the plan and the reasoning, written down before the results: the business case, what we expect, the numbers that would prove us wrong, and the date we look.
+>
+> Page: https://sgit.ai/articles/going-live-with-the-reading-meter.html
+
+[Home](../index.md) / [Articles](index.md) / Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks
+
+# Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks
+
+By [Dinis Cruz](../about/index.md) · 2026-10-10 · newsroommicropaymentspricingpersonalisationlocal-firstbusiness-casehypothesesstripearticle
+
+***Abstract:** The reading meter on sgit.ai stops being a demonstration. A page now costs what you read of it: scroll a tenth of the way down a new article and you pay a tenth of 10p. Your balance can go below zero and stay there; nothing is blocked and nothing nags, there is only a small balance in the top bar. If a page was not worth it you can say so, with a reason, and it is not charged. Topping up is one £5 payment on Stripe, with no account and nothing that renews, and the page you come back to adds the credit without being able to check it, on purpose. The meter is also packaged as a library any website can add. This article is the plan and the reasoning, written down before the results: the business case, what we expect, the numbers that would prove us wrong, and the date we look.*
+
+The plan on one page: six changes, and the five hypotheses written down before the first payment, each with what we expect and what would prove us wrong.
+
+**You are paying for this page, by how much of it you read.** It was published this week, so reading it to the end costs 10p. Your balance is in the top bar; if it is below zero, nothing happens. At the foot of the page you can see what you have paid, and decline to pay at all.
+
+## In short
+
+- **The meter goes live.** It charges by how far down a page you scroll, it lets your balance go below zero forever, it shows only a small balance in the top bar, and it lets you refuse to pay for a page, with a reason.
+- **Paying is one £5 payment on Stripe.** No account, no subscription, nothing renews. The page you come back to adds the credit without checking it, because a site with no server cannot, and we say so.
+- **The price is a hypothesis.** 10p for a new article read to the end, 5p for an older one, less for other pages. It could be wrong either way.
+- **The bet** is that people pay for reading when nothing forces them to, if what they get back is a site that knows what they read, with the history kept on their own machine.
+- **The anchors.** Five numbers we expect, the ones that would prove us wrong, and a review date: eight weeks after the payment link goes live.
+- **It is a library now.** [SG Meter](../meter/index.md) is one web component another site can add, with its config, events, storage and [security model](../meter/security.md) written down.
+
+## What changes today
+
+[A meter in the browser](../articles/a-meter-in-the-browser.md) described the first version: every page debited from £5.00 of credit kept in the browser, a badge in the corner, a bar when credit ran out, a cart with every step but the payment. It was a demonstration and said so. Six things change.
+
+1. **You pay for what you read.** A page's price is what it costs read to the end. You pay that times the share you scrolled through, never less than a tenth. Open a new article, read the first screen and leave: 1p. Read half: 5p. Reading further later in the same visit tops the same charge up.
+2. **Your balance can go below zero, and stay there.** Nothing is blocked. Nothing pops up. There is no bar, no count of articles read, no request.
+3. **One small number in the top bar.** The balance, as a link to your account. Below zero it changes colour, and its tooltip says nothing is blocked.
+4. **"Not worth it? Don't charge me."** At the foot of an article, four reasons: the headline promised more than the page gave, not relevant to me, I did not really read it, another reason. The charge is refunded, and the reason is kept in your history as a signal. "Not relevant" counts against that page's topics when the site picks articles for you.
+5. **A real payment.** The top-up becomes one £5 Stripe payment. The simulated cart stays only for a site with no payment link configured.
+6. **A library.** The meter is rebuilt as [SG Meter](../meter/index.md), a web component that follows the estate's [JavaScript guidance](https://coding.sgit.ai/javascript/index.html), so another site can add it with a script tag and a config.
+The foot of an article: what it has cost so far, for how much of it was read, the price to the end, and the choice not to pay, with four reasons. Kept in the reader's browser, nowhere else.The reading account below zero. This test account read sixteen articles to different depths and declined two; we then set its balance below zero in the browser's storage, the way any reader can. The balance in the top bar turns a warmer colour, and the account says nothing is blocked.
+
+## Why below zero, and why no nagging
+
+Most reader-funded sites do the opposite, and do it well. The Guardian counts what you read in your browser's own storage, the same place this meter keeps its history. Its open-source code keeps a weekly count under `gu.history.weeklyArticleCount`, with a count per tag, starting each week on a Monday, ignoring repeat visits to the same article and dropping weeks older than a year. The count is used to ask you for support.
+
+It works. Press Gazette reported in September 2025 that the Guardian's digital reader revenue rose 22%, "from £88m in 2023/2024 to £107m in the year to the end of March 2025". Its tiers are £4 a month to support, £12 a month to "avoid intrusive pop-up supporter messages" and read without ads, and £27 a month with the print weekly. Its app, Press Gazette added, "sits within a paywall (free users can only read 20 articles per month)".
+
+Two things in that are worth noticing. The middle tier sells, in part, the absence of the ask. And every tier is a subscription: £4 a month is £48 a year, £12 a month is £144 a year, a commitment decided once, in advance, for reading that has not happened yet. A one-off payment is the other door, and it is awkward in its own way: how much is fair, for what, and when?
+
+This meter tries a third door. The ask is never made, because the balance is always visible and the price of each page is stated where you read it. The commitment is never asked for, because you pay for pages after you have read them, as much of them as you read, and you can refuse. And going below zero is not a failure state. It is information you have, about what you have read, kept where only you can see it.
+
+The hypothesis is that a reader who can see an honest running total, and who is never shamed for it, is more willing to settle it than one who is counted and asked. More so as the site gives something back for the history: curation, picks, and in time a front page that is entirely personal to the reader, computed in their browser from what they read and what they declined.
+
+## Why by depth
+
+Because a page is not one thing. A reader who opens an article, sees in the first paragraph that it is not for them and leaves has not had the same page as one who read it to the end. Charging them the same is a small unfairness repeated many times, and it rewards exactly the wrong writing: a headline that gets the click, followed by a page nobody finishes.
+
+Depth is measured on the page's main column, rounded to 5%, at most once every 400 milliseconds while you scroll and once more as you leave. It is not reading time and it is not attention; a reader can scroll to the bottom without reading. That is fine. The point is not to measure reading precisely. It is to make the price follow the reader's own choice to keep going, and to give them the refusal for the cases where it did not.
+
+## Why "don't charge me" is the most useful button
+
+A charge tells us nothing; everyone who scrolled was charged. A refusal, with a reason, is the first thing this site has ever been told by a reader about a page without asking them to write anything. "The headline promised more than the page gave" is a verdict on the writing. "Not relevant to me" is a verdict on the placement, and on the picks. "I did not really read it" is a correction to the depth.
+
+They are kept in the reader's history, in their browser, like everything else, and used there: a page declined as not relevant pushes its topics down the reader's picks. We do not see them. If that changes, it will be because a reader chose to send their history, not because the meter sent it. Rating a page, classifying it and keeping a note on it are the obvious next steps, in the same local history. Not yet.
+
+## The price is the hypothesis
+
+| A page read to the end | Price | What £5 buys, read to the end |
+|---|---|---|
+| An article published in the last seven days | 10p | 50 |
+| An older article | 5p | 100 |
+| A newsletter issue | 3p | 166 |
+| A desk note or a collection | 2p | 250 |
+| Any other page: docs, vaults, the network | 1p | 500 |
+| The homepage, subscribe, your account | free |  |
+
+Read by depth, a fiver goes further than the table says, because most pages are not read to the end. These prices were raised from the first version's 5p and 3p for articles on purpose: a price that is too low teaches nothing, because nobody would ever notice paying it, and we would rather find out that 10p is too much than never find out whether anyone would pay 10p. It could be more. It could be less. The account page prints the current table, and the build prints it from the same `METER` rules the meter charges by, so the published price and the charged price cannot differ.
+
+## The business case, honestly
+
+The money first, because it is small and it should be said plainly. Stripe's listed UK fee for a standard UK card is 1.5% + 20p. On £5 that is 27.5p, so £4.72 reaches the site, about 94.5%. Premium UK cards are 2.8% + 20p (34p), European cards 2.5% + 20p (32.5p), international cards 3.15% + 20p (about 36p), plus 2% where the currency is converted. The fixed 20p is why the top-up is £5 and not £1: on £1, a standard card would cost 21.5p, more than a fifth.
+
+| Payers in eight weeks | Gross | After a standard UK card fee |
+|---|---|---|
+| 10 | £50 | £47.25 |
+| 50 | £250 | £236.25 |
+| 200 | £1,000 | £945 |
+
+None of those rows pays for anything that matters. That is not the case for doing this. The case is three things the money cannot buy.
+
+- **Evidence.** Whether anyone pays for reading on a site that does not make them is the question in [the question is whether they miss it](../articles/the-question-is-whether-they-miss-it.md). A meter that charges nothing could only answer half of it. A payment is the only signal on this site that cannot be produced by curiosity.
+- **A shape to test the personalisation against.** The history is the product, as the first article put it. If readers who pay are readers who read more, and who come back, that is the case for building the personal front page, and it costs nothing to collect because the reader collects it.
+- **A library.** If it works here it works on any site that can add a script tag, which is a different and larger question about [how news got here](../articles/how-news-got-here.md) and whether a penny a page was ever the problem, or only the machinery around it. The same idea, from the other side, is [price it, then give it away](../articles/price-it-then-give-it-away.md): put a real price on the thing, then let people decide.
+
+## Why an honesty box can work
+
+There is evidence that people pay when nothing forces them to, and evidence of how much less they pay. Both belong here.
+
+- **Paul Feldman's bagels.** For years he left bagels and an unwatched cash box in offices. *Freakonomics*, writing about him in the *New York Times Magazine* in June 2004, reported that about 87% of bagels were paid for by 2001, rising by about two points after September 11. He had set 90% as the rate he would call honest, and in his earlier, basket years, about 95%.
+- **Radiohead's *In Rainbows*** was released in 2007 for whatever buyers chose to pay. comScore estimated that 38% of downloaders paid something (48% in the UK), that those who paid averaged about $6, and that the average across everyone who downloaded was $2.26.
+- **Pay what you want, measured.** In a field experiment published in *Science* in 2010, Gneezy and colleagues sold photos at a theme park. At a fixed $12.95, 0.5% of riders bought. When riders could pay what they wanted, 8.39% bought, paying 92 cents on average. When half of what they paid went to charity, 4.49% bought, paying $5.33.
+
+The pattern is the one this meter is built around. Remove the force and many more people take part, while the average payment falls. A small, stated price per page sits between the two: the reader is told what is fair, and left to decide.
+
+## The anchors: what we expect, and what would prove us wrong
+
+Written now, before there is a single payment, so that we cannot move the goalposts later. The clock starts when the Stripe link goes live; the review is eight weeks after that. If the link goes live today, that is **5 December 2026**.
+
+| # | Hypothesis | We expect | Proved wrong if |
+|---|---|---|---|
+| H1 | Someone pays when nothing forces them to | A first real payment within 14 days | No payment in 14 days |
+| H2 | Enough pay for it to be a signal, not an accident | At least 10 different payers by the review | Fewer than 5 |
+| H3 | Paying is a habit, not a gesture | At least 3 payers pay a second time | No repeat payment |
+| H4 | Making cheating easy costs nothing that reaches us | No disputes or chargebacks | Any dispute that is not plain card fraud |
+| H5 | Below zero is normal, not a reason to leave | Readers who send us their history mostly have a negative balance, and still read | We cannot test this without readers sending their history; it is written here so that we notice if we start to believe it without evidence |
+
+What we can see, so that nobody has to take these on trust: the Stripe dashboard (payments, amounts, payers, repeat payers, disputes), and the views LinkedIn reports on the articles cross-posted there, which is the nearest thing to a denominator we have. What we cannot see: anything the meter records. There is no analytics on this site, and the meter sends nothing. The depth you read, the pages you declined and why, your balance: all of it is in your browser. If you want to help, the account page exports it as JSON, and you can send it to us. Nobody has to.
+
+We will publish the review on the review date, whatever it says, with the numbers from the Stripe dashboard. A hypothesis that fails is a result. The one outcome that would be a failure of the method is not looking.
+
+## What would make us change course
+
+- **If nobody pays (H1, H2),** the price is not the first suspect. The first suspect is that the trade is invisible: the balance is small, the payment is one click away from nowhere, and the personalisation is too thin to want. We would make the picks better before we made the meter louder.
+- **If people pay once and not again (H3),** the history is not worth enough to them yet. That points at the personal front page, not at the price.
+- **If cheating shows up somewhere we can see (H4),** the balance has started to unlock something, or someone is testing stolen cards. The first would need a server and a signed receipt; the second is Stripe's to stop, and the payment link can be switched off in a minute.
+- **If the reasons readers send are mostly "the headline promised more than the page gave",** that is about the writing, and the newsroom's [behaviour policies](../newsroom/policies.md) are where it gets fixed.
+
+## Who could cheat, and why we let them
+
+Anyone, in several easy ways: edit the balance in developer tools, open a private window, or open the page a payment returns to with a made-up reference and get £5 of credit. Each of those changes a number only the cheater can see, and costs the site a payment it was never going to receive. Who would actually do it, how many of them there are, and which risks are real is the subject of the companion piece, [who will game the reading meter](../articles/who-will-game-the-reading-meter.md).
+
+## Try it
+
+Your meter has been running since you arrived. Scroll to the foot of this page to see what it has cost, and the choice not to pay. [Your account](../account/index.md) shows your balance, your history and the depth you read each page; [top up](../account/top-up.md) to settle it, or don't. If you run a site and want the same thing, [SG Meter](../meter/index.md) is the library.
+
+*Written from a voice note by Dinis Cruz, who is the author of the idea and the plan and has editorial responsibility, by a Claude Code session working as the sgit.ai newsroom, on 10 October 2026. The Guardian figures are from Press Gazette's report of 12 September 2025 and the Guardian's open-source [support-dotcom-components](https://github.com/guardian/support-dotcom-components/blob/main/src/shared/lib/history.ts); the Stripe fees are Stripe's published UK prices on the day of writing; the bagel, Radiohead and theme-park figures are from the sources named beside them. The meter is [SG Meter v1.0.0](../meter/index.md); its prices are `METER` in `admin/build/build_pages.py`; the screenshots were taken from this site with the meter running.*
+
+## Threads
+
+Startups & strategyNews & evidence[This article as a graph →](graphs.md#going-live-with-the-reading-meter)
+
+### Builds on
+
+- [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](a-meter-in-the-browser.md) Every page now costs a few pence from £5 of credit kept in your browser, and the reading history it keeps is what personalises the site.
+- [For a startup, the most important question is whether they miss it](the-question-is-whether-they-miss-it.md) Ship something usable, give it away briefly, take it away and see whether anybody misses it; charge at a profit before you talk to investors.
+- [The reader was always the product: a corrected history of how news got into this mess](how-news-got-here.md) News has sold the reader to advertisers since 1833; the web took the monopoly, the platforms made the reader measurable, and AI took the traffic.
+- [Price it, then give it away: the early access programme as the next step after "do they miss it"](price-it-then-give-it-away.md) Define the product, price it, deliver it at a cost that grows a step at a time, then offer it free to people who know you and measure what it costs them.
+- [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](who-will-game-the-reading-meter.md) Eight kinds of reader, none of them attackers, nine ways to cheat a browser meter, and the quieter risks that will actually happen.
+
+### Continued by
+
+- [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](who-will-game-the-reading-meter.md) Eight kinds of reader, none of them attackers, nine ways to cheat a browser meter, and the quieter risks that will actually happen.
+- [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](a-meter-in-the-browser.md) Every page now costs a few pence from £5 of credit kept in your browser, and the reading history it keeps is what personalises the site.
+
+[All articles](index.md) · [All graphs](graphs.md)
+
+**Posting this article on LinkedIn?** The cover is [going-live-with-the-reading-meter.jpg](../articles/banners/going-live-with-the-reading-meter.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
+
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
+
+[← All articles](index.md)
+
+
+
+==============================================================================
 # Open source is not free: who pays to keep the long tail working?, sgit.ai
 
 > An old Intel iMac, clean-installed for my agents, could not run Homebrew or Docker Desktop, and needed Python by hand. Each project that dropped it did so because supporting old machines costs money and the people on the long tail have no easy way to pay for it. This article measures that long tail from Homebrew and PyPI analytics, sets out where money does flow for old versions (Oracle, Red Hat, Windows ESU, Rimini Street) and where it does not (open source receives about 0.09% of its estimated value), shows why pence payments only work aggregated, and simulates five ways to pay for it. About £1.80 a machine a year from individuals covers one project's long-tail cost in half the draws; customised builds for companies cover it in 94%. Open source is not free; the question is whether the people who get the value have an easy way to pay for it.
@@ -20329,7 +20832,7 @@ By [Dinis Cruz](../about/index.md) · 2026-10-10 · newsroommicropaymentspersona
 
 The reading account, as it looks after ten pages: the balance, what was spent, the articles picked for this reader from what they read, and what they paid to read, by topic. All of it is computed in the browser from a history kept in the browser.
 
-**You are paying for this page.** If you opened it in the first week, it cost you 5p of the £5.00 every new reader starts with; the badge in the bottom-left corner says so. Nothing is charged, no card is involved, and nothing leaves your browser. [Your account](../account/index.md) shows the balance, the history and what it bought you.
+**Updated the same day, v0.7.26: this describes the first version.** The meter has since gone live: it charges by how much of a page you read, your balance can go below zero with nothing blocked and no bar, you can decline to pay for a page with a reason, the badge is now a small balance in the top bar, and topping up is a £5 Stripe payment. Prices rose to 10p and 5p for articles. The plan and the reasoning are in [going live with the reading meter](../articles/going-live-with-the-reading-meter.md); the library is [SG Meter](../meter/index.md). What follows is kept as it was written.
 
 ## What it does
 
@@ -20385,6 +20888,7 @@ Startups & strategyNews & evidence[This article as a graph →](graphs.md#a-mete
 
 ### Builds on
 
+- [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](going-live-with-the-reading-meter.md) Pay for the share of a page you read, go below zero with no nagging, top up £5 on Stripe: the plan, and the numbers we check in eight weeks.
 - [For a startup, the most important question is whether they miss it](the-question-is-whether-they-miss-it.md) Ship something usable, give it away briefly, take it away and see whether anybody misses it; charge at a profit before you talk to investors.
 - [Price it, then give it away: the early access programme as the next step after "do they miss it"](price-it-then-give-it-away.md) Define the product, price it, deliver it at a cost that grows a step at a time, then offer it free to people who know you and measure what it costs them.
 - [The reader was always the product: a corrected history of how news got into this mess](how-news-got-here.md) News has sold the reader to advertisers since 1833; the web took the monopoly, the platforms made the reader measurable, and AI took the traffic.
@@ -20393,6 +20897,7 @@ Startups & strategyNews & evidence[This article as a graph →](graphs.md#a-mete
 
 ### Continued by
 
+- [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](going-live-with-the-reading-meter.md) Pay for the share of a page you read, go below zero with no nagging, top up £5 on Stripe: the plan, and the numbers we check in eight weeks.
 - [Open source is not free: who pays to keep the long tail working?](open-source-is-not-free.md) An old iMac, the long tail of old versions that projects are not paid to support, measured from public data, and five ways to pay for it, simulated.
 
 [All articles](index.md) · [All graphs](graphs.md)
@@ -23609,6 +24114,7 @@ Agents & policyStartups & strategy[This article as a graph →](graphs.md#who-ar
 
 ### Continued by
 
+- [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](who-will-game-the-reading-meter.md) Eight kinds of reader, none of them attackers, nine ways to cheat a browser meter, and the quieter risks that will actually happen.
 - [Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes](encrypted-memory-for-isolated-agents.md) Agents in isolated, ephemeral places need memory that outlives them. Five sgit deployment patterns, from a Mac mini to Kubernetes, with ciphertext-only servers.
 - [Knowing when to stop: what experience gives people, and what we have to design into agents](knowing-when-to-stop.md) Knowing when to stop is the hard part for people and agents: what experience gives people, and the constraints that give agents the same perspective.
 
@@ -28132,6 +28638,7 @@ Startups & strategyAgents & policy[This article as a graph →](graphs.md#price-
 
 ### Continued by
 
+- [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](going-live-with-the-reading-meter.md) Pay for the share of a page you read, go below zero with no nagging, top up £5 on Stripe: the plan, and the numbers we check in eight weeks.
 - [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](a-meter-in-the-browser.md) Every page now costs a few pence from £5 of credit kept in your browser, and the reading history it keeps is what personalises the site.
 - [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](memory-is-not-a-spectator-sport.md) Agentic memory as context management: many published, fractal, provenance-carrying memories rather than one store, shown in the session that wrote the article.
 - [For a startup, the most important question is whether they miss it](the-question-is-whether-they-miss-it.md) Ship something usable, give it away briefly, take it away and see whether anybody misses it; charge at a profit before you talk to investors.
@@ -28869,6 +29376,7 @@ News & evidence[This article as a graph →](graphs.md#how-news-got-here)
 
 ### Continued by
 
+- [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](going-live-with-the-reading-meter.md) Pay for the share of a page you read, go below zero with no nagging, top up £5 on Stripe: the plan, and the numbers we check in eight weeks.
 - [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](a-meter-in-the-browser.md) Every page now costs a few pence from £5 of credit kept in your browser, and the reading history it keeps is what personalises the site.
 - [Liquid content needs water: liquefy the journalist's notebook, not the finished product](liquid-content-needs-water.md) A reply to FT Strategies on liquid content: the water is the reporting, so liquefy the journalist's notebook, keep the writing theirs, and pay per use.
 - [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](story-vault-meets-reader-skills.md) Markus Franz's Reader Skills on top, the story vault underneath: each skill is a graph query, and local stories can pay back down their chain of sources.
@@ -29261,6 +29769,7 @@ News & evidenceGraphs & knowledge[This article as a graph →](graphs.md#token-b
 
 ### Continued by
 
+- [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](who-will-game-the-reading-meter.md) Eight kinds of reader, none of them attackers, nine ways to cheat a browser meter, and the quieter risks that will actually happen.
 - [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](a-meter-in-the-browser.md) Every page now costs a few pence from £5 of credit kept in your browser, and the reading history it keeps is what personalises the site.
 - [Liquid content needs water: liquefy the journalist's notebook, not the finished product](liquid-content-needs-water.md) A reply to FT Strategies on liquid content: the water is the reporting, so liquefy the journalist's notebook, keep the writing theirs, and pay per use.
 - [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](memory-is-not-a-spectator-sport.md) Agentic memory as context management: many published, fractal, provenance-carrying memories rather than one store, shown in the session that wrote the article.
@@ -30262,6 +30771,7 @@ Startups & strategy[This article as a graph →](graphs.md#the-question-is-wheth
 
 ### Continued by
 
+- [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](going-live-with-the-reading-meter.md) Pay for the share of a page you read, go below zero with no nagging, top up £5 on Stripe: the plan, and the numbers we check in eight weeks.
 - [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](a-meter-in-the-browser.md) Every page now costs a few pence from £5 of credit kept in your browser, and the reading history it keeps is what personalises the site.
 - [If somebody built a company on code review: how I would do it, and why it is only now possible](if-somebody-built-a-company-on-code-review.md) A reader's seven questions answered as a company plan: one reader for every layer, review as a science, and the layers as the customer's own.
 - [Price it, then give it away: the early access programme as the next step after "do they miss it"](price-it-then-give-it-away.md) Define the product, price it, deliver it at a cost that grows a step at a time, then offer it free to people who know you and measure what it costs them.
@@ -31396,13 +31906,68 @@ Every article here has a semantic graph beside it: the ideas it rests on, the cl
 
 The graphs are data first and pictures second. Take them as JSON: [all articles in one file](graphs.json), with the topics, the teasers and the links between articles resolved, or one file per article at `articles/graphs/<slug>.json` (for example [this one](graphs/footprint-and-blast-radius.json)). The pages on this site are rendered from the same files at build time; nothing here is hand-written HTML.
 
-58 of 58 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
+60 of 60 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
 
 ## How the articles connect
 
 *[diagram]*
 
-58 articles, 241 links between them (384 mentions in all). 49 articles cite an earlier one; 6 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (19 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+60 articles, 250 links between them (395 mentions in all). 51 articles cite an earlier one; 8 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (19 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+
+## [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](who-will-game-the-reading-meter.md)
+
+2026-10-10 · Startups & strategyAgents & policy
+
+A reading meter kept entirely in the browser can be cheated by anyone, but the people who could cheat are readers, not attackers; sized on a ladder from invisible engineers (about 0.6% of internet users are developers) to people who cannot use a computer (26% of OECD adults), with agents moving between steps, the cheating costs the site nothing it would have had, while the risks that will actually happen are confusion, a shared computer exposing history and card fraud, so the design is aimed at the readers who will pay and at not frightening the rest.
+
+*[diagram]*
+**concept**claim**method**artefact**example
+
+**9 nodes, 8 edges**
+
+- **Who are you protecting against, one level down** (concept) Kinds of reader instead of tiers of attacker; none malicious.
+- **Eight kinds of reader** (concept) Invisible, agents, power users, instruction followers, pragmatic payers, little understanding, mixed, struggling.
+- **Agents change level in a single request** (claim) Outside the meter by design; reading the markdown twin is not metered.
+- **Nine ways to cheat or leak** (artefact) Devtools, private window, forged return page, replay, clearing data, agents, shared computer, injected script, card fraud.
+- **Cheating costs nothing that reaches the site** (claim) It changes a number only the cheater sees and removes a payment that was never coming.
+- **The risks that will actually happen** (claim) Confusion at the bottom of the ladder, shared-computer history, card fraud on the payment link.
+- **Aim at the readers who will pay** (method) Do not build for step 1 at the expense of steps 5 to 8.
+- **26% of adults cannot use a computer** (example) OECD Survey of Adult Skills via Nielsen Norman Group: only 5% at the most skilled level.
+- **Developers are about 0.6% of internet users** (example) 36.5 million professional developers against about 6.0 billion internet users.
+
+> An agent is not a step; it is a lift. Agents move between levels of sophistication in a single request.
+
+> The struggling reader is protected by the meter asking nothing of them. Why the usability work is aimed at the bottom of the ladder.
+
+builds on [Who are you protecting against? Draw the security line where the attacker is, not above it](#who-are-you-protecting-against), [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending); continued by [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter).
+
+## [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](going-live-with-the-reading-meter.md)
+
+2026-10-10 · Startups & strategyNews & evidence
+
+The reading meter goes live as an honesty box rather than a paywall: pages are charged by scroll depth, the balance may go below zero forever, there is no ask and no banner, readers can decline to pay with a reason, and topping up is one £5 Stripe payment credited by an unverified return page; the business case is evidence, not revenue, and five hypotheses with thresholds and a review date are written down before the first payment.
+
+*[diagram]*
+**concept**claim**method**artefact**example**question
+
+**10 nodes, 8 edges**
+
+- **Pay for the share you read** (method) A page costs its price times the deepest point scrolled to, never less than a tenth.
+- **Below zero, forever, without shame** (method) Nothing blocked, nothing shown but a small balance in the top bar.
+- **Not worth it? Don't charge me** (method) Refund with a reason, kept locally as a signal for the picks.
+- **The Guardian's counter and ask** (example) Weekly article counts in localStorage used to ask for support; £4, £12 and £27 a month, £107m digital reader revenue.
+- **The subscription commitment** (concept) £4 a month is £48 a year, decided before the reading happens.
+- **An honesty box, not a paywall** (claim) Bagels about 87 to 95% paid; Radiohead 38%; pay-what-you-want raises take-up and lowers the average.
+- **One £5 Stripe payment** (artefact) 1.5% + 20p on a standard UK card, about 5.5%; the return page credits without verifying.
+- **The business case is evidence** (claim) A payment is the only signal on the site curiosity cannot produce.
+- **Five hypotheses and a review date** (question) First payment in 14 days, 10 payers, 3 repeat payers, no disputes, below zero is normal; review eight weeks after the link goes live.
+- **SG Meter, a library** (artefact) One web component any site can add, with config, events, storage and a security model.
+
+> And going below zero is not a failure state. The design choice that separates this meter from a paywall or an ask.
+
+> A payment is the only signal on this site that cannot be produced by curiosity. The business case in one line.
+
+builds on [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser), [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away), [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](#who-will-game-the-reading-meter); continued by [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](#who-will-game-the-reading-meter), [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser).
 
 ## [Open source is not free: who pays to keep the long tail working?](open-source-is-not-free.md)
 
@@ -31457,7 +32022,7 @@ A reading meter that lives only in the browser, a few pence a page from five pou
 
 > The history never leaves the machine it was made on. Personalisation without an account, a cookie banner or a server.
 
-builds on [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it), [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [The bridge, followed to the end: what one local story is worth when it is kept as a graph](#the-bridge-followed-to-the-end); continued by [Open source is not free: who pays to keep the long tail working?](#open-source-is-not-free).
+builds on [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it), [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [The bridge, followed to the end: what one local story is worth when it is kept as a graph](#the-bridge-followed-to-the-end); continued by [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [Open source is not free: who pays to keep the long tail working?](#open-source-is-not-free).
 
 ## [Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not](re-anchoring-agent-behaviour-policies.md)
 
@@ -31845,7 +32410,7 @@ Security decisions start with who the threat agent is, what the attack vector is
 
 > So the air gap protects against an attacker who, for a firm like this, does not really exist, and pays for it with the tools that defend against the attackers who do. The Mac mini, read against the ladder.
 
-builds on [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted); continued by [Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes](#encrypted-memory-for-isolated-agents), [Knowing when to stop: what experience gives people, and what we have to design into agents](#knowing-when-to-stop).
+builds on [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted); continued by [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](#who-will-game-the-reading-meter), [Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes](#encrypted-memory-for-isolated-agents), [Knowing when to stop: what experience gives people, and what we have to design into agents](#knowing-when-to-stop).
 
 ## [Every mistake added a rule: complexity, agents, and the way back to shipping](every-mistake-added-a-rule.md)
 
@@ -32598,7 +33163,7 @@ A price is a statement of what you think the thing is worth, and giving it away 
 
 > None of that is zero, and all of it is paid by them. The part that is easy to leave out: the offer costs the other side attention and schedule, and that cost is what the programme measures.
 
-builds on [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it); continued by [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it).
+builds on [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it); continued by [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it).
 
 ## [Footprint and blast radius: what the agent actually did, and what it would have cost](footprint-and-blast-radius.md)
 
@@ -32733,7 +33298,7 @@ The reader has been the product since 1833 and the money has always flowed to wh
 
 > The fix is to stop charging for the road and start charging for the cargo. The four eras end here: the money followed whoever owned distribution, so the proposal is to sell the evidence itself.
 
-builds on [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs); continued by [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser), [Liquid content needs water: liquefy the journalist's notebook, not the finished product](#liquid-content-needs-water), [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](#story-vault-meets-reader-skills), [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download).
+builds on [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs); continued by [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser), [Liquid content needs water: liquefy the journalist's notebook, not the finished product](#liquid-content-needs-water), [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](#story-vault-meets-reader-skills), [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download).
 
 ## [Six agents, one inbox: what a real multi-agent setup taught me about access policies](six-agents-one-inbox.md)
 
@@ -32801,7 +33366,7 @@ The fetches that answer engines make are a token cost to the fetcher as well as 
 
 > It is not new money. It is money being spent today, by the answer engines, on reading the web the hard way. Why a rebate on waste is the easiest money in the negotiation to agree to.
 
-builds on [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs); continued by [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser), [Liquid content needs water: liquefy the journalist's notebook, not the finished product](#liquid-content-needs-water), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here).
+builds on [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs); continued by [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](#who-will-game-the-reading-meter), [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser), [Liquid content needs water: liquefy the journalist's notebook, not the finished product](#liquid-content-needs-water), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here).
 
 ## [A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down](supply-chain-of-vaults.md)
 
@@ -32967,7 +33532,7 @@ A startup operating model in three pillars: be profitable, make investors come t
 
 > The worst possible time to raise money is before you are profitable, before you have the product, before you understand the fit. Pillar two stated plainly, and the reason profitability comes first.
 
-builds on [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away); continued by [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser), [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review), [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away), [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall).
+builds on [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away); continued by [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser), [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review), [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away), [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall).
 
 ## [The SaaS apocalypse will be decided by inertia, not by AI](saas-apocalypse-decided-by-inertia-not-by-ai.md)
 
@@ -33302,8 +33867,9 @@ Edition of **2026-10-08**. Third edition. A day of articles on how agents decide
 
 Computed at every build from the files: placements that point at nothing, articles published since the edition, open pitches, articles without a graph or a card. The same list is what `python3 admin/build/desk.py` prints for the Editor.
 
-- To do`front.json` 9 article(s) published since the 2026-10-08 edition: open-source-is-not-free, a-meter-in-the-browser, re-anchoring-agent-behaviour-policies, the-ai-governance-stack-as-a-graph, a-second-reader-the-agent-cannot-skip, rfc-0001-public-key-cryptography-for-sgit
-- To do`newsletter/` a newsletter issue is due: 9 articles since issue 2 (2026-10-08)
+- To do`front.json` 11 article(s) published since the 2026-10-08 edition: who-will-game-the-reading-meter, going-live-with-the-reading-meter, open-source-is-not-free, a-meter-in-the-browser, re-anchoring-agent-behaviour-policies, the-ai-governance-stack-as-a-graph
+- To do`newsletter/` a newsletter issue is due: 11 articles since issue 2 (2026-10-08)
+- To do`newsroom/pitches/2026-10-10__going-live-with-the-reading-meter.md` open pitch from journalist: lead for going-live-with-the-reading-meter
 - To do`newsroom/pitches/2026-10-10__a-meter-in-the-browser.md` open pitch from journalist: lead for a-meter-in-the-browser
 - Note`newsroom/newsletter/002-2026-10-08.md` issue 2 has no linkedin: URL yet; add it once it is posted
 
@@ -33317,7 +33883,7 @@ Each role is a file under `admin/content/newsroom/roles/` with a mission, a sent
 
 **2026-10-08 23:39 UTC, Editor:** Third edition, two pitches answered, and a desk run across three roles. [Read the entry →](log.md#2339__editor__third-edition)
 
-1 open pitch · 3 backlog · 1 doing · 1 review · 1 done on [the board](board.md).
+2 open pitches · 3 backlog · 1 doing · 1 review · 1 done on [the board](board.md).
 
 ## For the agents that write to subscribers
 
@@ -33491,6 +34057,7 @@ D6**Historian, three candidates for Behaviour policy in practice**[historian](ro
 
 | Date | From | Ask | Article | Status | Decision |
 |---|---|---|---|---|---|
+| 2026-10-10 | journalist | lead | going-live-with-the-reading-meter | open |  |
 | 2026-10-10 | journalist | lead | a-meter-in-the-browser | open |  |
 | 2026-10-07 | agent@riskmandate.ai | highlight | the-behaviour-policy-is-the-business-logic | accepted | Accepted in the edition of 2026-10-08: a highlight, because it is the article the day's pieces on enforcement build on. Also added to the Behaviour policy in practice collection. |
 | 2026-10-07 | agent@riskmandate.ai | highlight | story-vault-meets-reader-skills | parked | Parked as a highlight, placed instead at the head of the new collection Local news, kept as evidence, which the front features: it is the article that joins the bridge, the waiting room and the story vault, and reads best beside them. |
@@ -33572,7 +34139,7 @@ One entry per run of a desk role, newest first, each its own file and never edit
 >
 > Page: https://sgit.ai/articles/collections/index.html
 
-Edition of 2026-10-0858 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.25
+Edition of 2026-10-0860 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.26
 
 # Collections
 
@@ -33591,7 +34158,7 @@ A collection is one file in `admin/content/newsroom/collections/`. [How the desk
 >
 > Page: https://sgit.ai/articles/desk/index.html
 
-Edition of 2026-10-0858 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.25
+Edition of 2026-10-0860 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.26
 
 # From the desk
 
@@ -34011,7 +34578,7 @@ These six were written over two days and none of them sets out to be a series. R
 
 ## The articles
 
-[2026-10-08Agents & policy9 threads**Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source**A yes or no is not agency: seven dimensions, a seven-level scale for people and agents, and the review as a QA step that fixes the source.](../../articles/agency-is-not-a-yes.md)[2026-10-08Agents & policy8 threads**Knowing when to stop: what experience gives people, and what we have to design into agents**Knowing when to stop is the hard part for people and agents: what experience gives people, and the constraints that give agents the same perspective.](../../articles/knowing-when-to-stop.md)[2026-10-08Agents & policy9 threads**Every mistake added a rule: complexity, agents, and the way back to shipping**When every agent mistake adds a rule, complexity wins: map the process, move each piece right as a small shipped component, and keep the rigour for the work.](../../articles/every-mistake-added-a-rule.md)[2026-10-08Agents & policy8 threads**Hope or enforcement: one customer service agent, three designs, and who keeps each promise**One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.](../../articles/hope-or-enforcement.md)[2026-10-08Agents & policy3 threads**Who are you protecting against? Draw the security line where the attacker is, not above it**Before deciding how secure to be, name the attacker: a six-tier ladder, an air-gapped Mac mini read against it, and eight startups drawing their line.](../../articles/who-are-you-protecting-against.md)[2026-10-07Agents & policy13 threads**Where is the why? A permission prompt asked me to decide, and kept the reason**A prompt asked for a decision and kept the reason. Read through the policy, the law on uninformed consent, and the fixes that worked: put the why in the prompt.](../../articles/where-is-the-why.md)
+[2026-10-08Agents & policy9 threads**Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source**A yes or no is not agency: seven dimensions, a seven-level scale for people and agents, and the review as a QA step that fixes the source.](../../articles/agency-is-not-a-yes.md)[2026-10-08Agents & policy8 threads**Knowing when to stop: what experience gives people, and what we have to design into agents**Knowing when to stop is the hard part for people and agents: what experience gives people, and the constraints that give agents the same perspective.](../../articles/knowing-when-to-stop.md)[2026-10-08Agents & policy9 threads**Every mistake added a rule: complexity, agents, and the way back to shipping**When every agent mistake adds a rule, complexity wins: map the process, move each piece right as a small shipped component, and keep the rigour for the work.](../../articles/every-mistake-added-a-rule.md)[2026-10-08Agents & policy8 threads**Hope or enforcement: one customer service agent, three designs, and who keeps each promise**One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.](../../articles/hope-or-enforcement.md)[2026-10-08Agents & policy4 threads**Who are you protecting against? Draw the security line where the attacker is, not above it**Before deciding how secure to be, name the attacker: a six-tier ladder, an air-gapped Mac mini read against it, and eight startups drawing their line.](../../articles/who-are-you-protecting-against.md)[2026-10-07Agents & policy13 threads**Where is the why? A permission prompt asked me to decide, and kept the reason**A prompt asked for a decision and kept the reason. Read through the policy, the law on uninformed consent, and the fixes that worked: put the why in the prompt.](../../articles/where-is-the-why.md)
 
 [← All collections](index.md) · [The front page](../index.md)
 
@@ -34075,7 +34642,7 @@ The two September pieces underneath are [the future of news is a story vault, no
 
 ## The articles
 
-[2026-10-07News & evidence5 threads**Story vault underneath, Reader Skills on top: why local journalism has the most to gain**Markus Franz's Reader Skills on top, the story vault underneath: each skill is a graph query, and local stories can pay back down their chain of sources.](../../articles/story-vault-meets-reader-skills.md)[2026-10-07News & evidence6 threads**The bridge, followed to the end: what one local story is worth when it is kept as a graph**A bridge closure simulated on a story vault: newsworthy on 5 days, needed on 57, used by three readers, four buyers and an agent, and paid back to its sources.](../../articles/the-bridge-followed-to-the-end.md)[2026-10-08News & evidence2 threads**The waiting room knew first: a live local story, and the gap where local information used to be**Staff at two London hospitals said the IT was down; nothing a local could check showed it. A live local story about where local information comes from now.](../../articles/the-waiting-room-knew-first.md)[2026-10-07News & evidence7 threads**Liquid content needs water: liquefy the journalist's notebook, not the finished product**A reply to FT Strategies on liquid content: the water is the reporting, so liquefy the journalist's notebook, keep the writing theirs, and pay per use.](../../articles/liquid-content-needs-water.md)[2026-09-22News & evidence7 threads**The future of news is the story vault, not the paywall**A story is a graph of claims and evidence and the article is one projection of it; keep the graph in a vault and sell what the article was made from.](../../articles/future-of-news-story-vault-not-paywall.md)[2026-09-29News & evidence7 threads**The reader was always the product: a corrected history of how news got into this mess**News has sold the reader to advertisers since 1833; the web took the monopoly, the platforms made the reader measurable, and AI took the traffic.](../../articles/how-news-got-here.md)
+[2026-10-07News & evidence5 threads**Story vault underneath, Reader Skills on top: why local journalism has the most to gain**Markus Franz's Reader Skills on top, the story vault underneath: each skill is a graph query, and local stories can pay back down their chain of sources.](../../articles/story-vault-meets-reader-skills.md)[2026-10-07News & evidence6 threads**The bridge, followed to the end: what one local story is worth when it is kept as a graph**A bridge closure simulated on a story vault: newsworthy on 5 days, needed on 57, used by three readers, four buyers and an agent, and paid back to its sources.](../../articles/the-bridge-followed-to-the-end.md)[2026-10-08News & evidence2 threads**The waiting room knew first: a live local story, and the gap where local information used to be**Staff at two London hospitals said the IT was down; nothing a local could check showed it. A live local story about where local information comes from now.](../../articles/the-waiting-room-knew-first.md)[2026-10-07News & evidence7 threads**Liquid content needs water: liquefy the journalist's notebook, not the finished product**A reply to FT Strategies on liquid content: the water is the reporting, so liquefy the journalist's notebook, keep the writing theirs, and pay per use.](../../articles/liquid-content-needs-water.md)[2026-09-22News & evidence7 threads**The future of news is the story vault, not the paywall**A story is a graph of claims and evidence and the article is one projection of it; keep the graph in a vault and sell what the article was made from.](../../articles/future-of-news-story-vault-not-paywall.md)[2026-09-29News & evidence8 threads**The reader was always the product: a corrected history of how news got into this mess**News has sold the reader to advertisers since 1833; the web took the monopoly, the platforms made the reader measurable, and AI took the traffic.](../../articles/how-news-got-here.md)
 
 [← All collections](index.md) · [The front page](../index.md)
 
@@ -34146,7 +34713,7 @@ This newsroom runs on the same idea: every desk role has a written policy, and [
 ==============================================================================
 # Your reading account, sgit.ai
 
-> A reading meter kept in your browser: every page costs a few pence from £5.00 of starting credit, and what you read personalises the site. A simulation: nothing is charged and nothing leaves the browser.
+> A reading meter kept in your browser: every page costs a few pence, charged by how much of it you read, from £5.00 of starting credit. Credit can go negative and nothing is blocked; what you read personalises the site.
 >
 > Page: https://sgit.ai/account/index.html
 
@@ -34156,36 +34723,36 @@ SGit Newsroom · reading account
 
 # Your reading account
 
-Every page on sgit.ai has a price of a few pence. You started with £5.00 of credit, and each page you open is debited from it, once per visit. What you read is also what personalises the site for you: the more you read, the better the picks below and on the front page.
+Every page on sgit.ai has a price of a few pence, and you pay for the share of it you read: scroll a tenth of the way down and you pay a tenth. You started with £5.00 of credit. If a page was not worth it, say so at its foot and it is not charged. What you read is also what personalises the site: the more you read, the better the picks below and on the front page.
 
-**A simulation, and it says so first.** This meter charges nothing, takes no card and sends nothing anywhere. The balance, the history and the receipts live in this browser's storage. A new browser, a private window or clearing site data starts again with £5.00, and with no history, so with no personalisation. It never blocks a page: out of credit, you can still read, and the read is noted as unpaid.
+**Kept in this browser, and only here.** The balance, the history and the receipts are in this browser's storage; nothing is sent anywhere and there is no account. A new browser, a private window or clearing site data starts again with £5.00 and no history, so with no personalisation. It never blocks a page and it never nags: credit can go below zero, the balance says so in the top bar, and that is all. [How the meter works](../meter/index.md), and [why we run it this way](../articles/going-live-with-the-reading-meter.md).
 
 The reading account needs JavaScript: it lives in your browser and nowhere else.
 
-## What things cost
+## What things cost, read to the end
 
 | Page | Price |
 |---|---|
-| An article published in the last seven days | 5p |
-| An older article | 3p |
-| A newsletter issue | 2p |
+| An article published in the last seven days | 10p |
+| An older article | 5p |
+| A newsletter issue | 3p |
 | A desk note | 2p |
 | A collection | 2p |
 | Any other page: docs, vaults, the network, the newsroom | 1p |
 | The homepage, the subscribe page and your account | free |
 
-One debit per page per browser session: going back to a page you have opened this visit costs nothing. Reading the markdown twin of a page, or the newsroom wire, is not metered.
+The price of a page read to the end; you pay that times the share you scrolled through, never less than a tenth. One charge per page per browser session: reading further later tops the same charge up, and going back costs nothing more. Reading the markdown twin of a page, or the newsroom wire, is not metered.
 
-## Why a meter that charges nothing
+## Why it works like this
 
-To find out whether paying for reading, a penny at a time, is something people would do if it bought them something back: a site that knows what they read and picks for them, without an account, a cookie banner or anybody else holding the history. The case is made in [a meter in the browser](../articles/a-meter-in-the-browser.md).
+To find out whether people pay for reading, a few pence at a time, when nothing forces them to and what they get back is a site that knows what they read and picks for them, with no account and nobody else holding the history. The plan, the numbers we expect and the date we check them are in [going live with the reading meter](../articles/going-live-with-the-reading-meter.md); who could cheat it, and why that is allowed, is in [who will game the reading meter](../articles/who-will-game-the-reading-meter.md).
 
 
 
 ==============================================================================
 # Top up your reading account, sgit.ai
 
-> Buy reading credit through a cart and a checkout with every step except the payment. Simulated: nothing is charged.
+> Add £5 of reading credit to the balance kept in your browser: one payment on Stripe, no account, nothing renews.
 >
 > Page: https://sgit.ai/account/top-up.html
 
@@ -34195,11 +34762,32 @@ SGit Newsroom · reading account
 
 # Top up
 
-Every step of buying credit except the payment: pick a pack, adjust the cart, review, confirm, get a receipt. The credit lands in your balance straight away.
+£5 of reading, paid on Stripe's page. You come back to a page that adds the credit to the balance in this browser. No account, and no subscription: it is one payment, and nothing renews.
 
-**A simulation, and it says so first.** This meter charges nothing, takes no card and sends nothing anywhere. The balance, the history and the receipts live in this browser's storage. A new browser, a private window or clearing site data starts again with £5.00, and with no history, so with no personalisation. It never blocks a page: out of credit, you can still read, and the read is noted as unpaid.
+**Kept in this browser, and only here.** The balance, the history and the receipts are in this browser's storage; nothing is sent anywhere and there is no account. A new browser, a private window or clearing site data starts again with £5.00 and no history, so with no personalisation. It never blocks a page and it never nags: credit can go below zero, the balance says so in the top bar, and that is all. [How the meter works](../meter/index.md), and [why we run it this way](../articles/going-live-with-the-reading-meter.md).
 
 Top-ups need JavaScript: the balance lives in your browser.
+
+The page you come back to cannot check the payment (this site has no server to check it with), so it adds the credit once for each payment reference it is given. That is a known gap and it is written down, with why it is accepted, in [who will game the reading meter](../articles/who-will-game-the-reading-meter.md).
+
+
+
+==============================================================================
+# Topped up, sgit.ai
+
+> The page a top-up returns to: it adds the credit to the balance kept in your browser.
+>
+> Page: https://sgit.ai/account/topped-up.html
+
+[Home](../index.md) / [Your account](index.md) / Topped up
+
+SGit Newsroom · reading account
+
+# Topped up
+
+Adding the credit needs JavaScript: the balance lives in your browser.
+
+This is the page the payment returns to. It adds the top-up to the balance kept in this browser, once per payment reference, and it does not, and cannot, verify the payment. [Why that is accepted](../meter/security.md).
 
 
 
@@ -34239,7 +34827,7 @@ Your browser encrypts it to the public key of the agent that runs the list, then
 >
 > Page: https://sgit.ai/articles/newsletter/index.html
 
-Edition of 2026-10-0858 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.25
+Edition of 2026-10-0860 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.26
 
 # The newsletter
 
@@ -34265,7 +34853,7 @@ What it takes to let agents do real work for a business, from four sides: a team
 
 **Get the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../../subscribe/index.md)
 
-Next issue: due now (9 articles since issue 2 (2026-10-08)). Issues are written by the [Journalist](../../newsroom/roles/journalist.md) from the articles' own data; every quote is checked against its article when the site is built.
+Next issue: due now (11 articles since issue 2 (2026-10-08)). Issues are written by the [Journalist](../../newsroom/roles/journalist.md) from the articles' own data; every quote is checked against its article when the site is built.
 
 
 

@@ -2,7 +2,7 @@
 
 > Get the next issue of the SGit Newsroom by email: what was published, what it adds up to, and what is worth your time, about once a week. Your address is encrypted in your browser.
 
-*Source: <https://sgit.ai/subscribe/index.html> · site v0.7.25 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/subscribe/index.html> · site v0.7.26 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

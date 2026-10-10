@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SG Meter: a reading meter you can add to any website, sgit.ai</title>
+<meta name="description" content="One web component that charges readers a few pence a page from a balance kept in their own browser, by how far down the page they read; never blocks, allows a negative balance, lets a reader decline with a reason. Install, views, config, events, storage, theming, Stripe.">
+<link rel="canonical" href="https://sgit.ai/meter/index.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/meter/index.html">
+<meta property="og:title" content="SG Meter: a reading meter you can add to any website, sgit.ai">
+<meta property="og:description" content="One web component that charges readers a few pence a page from a balance kept in their own browser, by how far down the page they read; never blocks, allows a negative balance, lets a reader decline with a reason. Install, views, config, events, storage, theming, Stripe.">
+<meta property="og:image" content="https://sgit.ai/og/default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SG Meter: a reading meter you can add to any website, sgit.ai">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgit.ai/og/default.jpg">
+<link rel="alternate" type="text/markdown" href="index.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "SG Meter: a reading meter you can add to any website, sgit.ai", "headline": "SG Meter: a reading meter you can add to any website, sgit.ai", "description": "One web component that charges readers a few pence a page from a balance kept in their own browser, by how far down the page they read; never blocks, allows a negative balance, lets a reader decline with a reason. Install, views, config, events, storage, theming, Stripe.", "url": "https://sgit.ai/meter/index.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.7.26</a>
+  <sg-meter class="meter-nav" view="balance"></sg-meter>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+ <div class="ni ni-has">
+ <a class="nl" href="../articles/index.html">Newsroom<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../articles/index.html">Front page</a>
+ <a class="sl" href="../articles/newsletter/index.html">Newsletter</a>
+ <a class="sl" href="../articles/index.html#all">Every article</a>
+ <a class="sl" href="../articles/collections/index.html">Collections</a>
+ <a class="sl" href="../articles/desk/index.html">From the desk</a>
+ <a class="sl" href="../articles/graphs.html">As graphs</a>
+ <a class="sl" href="../newsroom/index.html">How it runs</a>
+ <a class="sl" href="../subscribe/index.html">Subscribe</a>
+ <a class="sl" href="../account/index.html">Your reading account</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../investors/index.html">Investors</a>
+ <a class="sl" href="../startups/index.html">Startups</a>
+ <a class="sl" href="../startups/business-plans.html">Business plans</a>
+ <a class="sl" href="../about/index.html">About the author</a>
+ <a class="sl" href="../partnerships/index.html">Partnerships</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl here" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../docs/index.html">Documentation</a>
+ <a class="sl" href="../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl" href="../docs/guidance/repositories.html">Every repository</a>
+ <a class="sl" href="../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../api/index.html">HTTP API</a>
+ <a class="sl" href="../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../deploy/index.html">Deploy</a>
+ <a class="sl here" href="../meter/index.html">SG Meter</a>
+ <a class="sl" href="../skills/index.html">Skills</a>
+ <a class="sl" href="../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../demos/index.html">Demos</a>
+ <a class="sl" href="../demos/fractal-graphs/index.html">Fractal graphs</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../agents/index.html">Agents</a></div>
+ <div class="ni ni-has">
+ <a class="nl" href="../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../compare/index.html">Comparisons</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
+ <a class="sl" href="../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../lessons/index.html">Lessons learned</a>
+ <a class="sl" href="../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../team/index.html">How the site is run</a>
+ <a class="sl" href="../team/index.html#roles">Roles</a>
+ <a class="sl" href="../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../team/board.html">The board</a>
+ <a class="sl" href="../updates/index.html">Updates</a>
+ <a class="sl" href="../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../network/index.html">All sites</a>
+ <a class="sl" href="../network/nhi.html">nhi</a>
+ <a class="sl" href="../network/pki.html">pki</a>
+ <a class="sl" href="../network/graphs.html">graphs</a>
+ <a class="sl" href="../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.7.26 &middot; 10 Oct 2026</span></a></div>
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="../docs/index.html">Docs</a> / SG Meter</p>
+  <p class="eyebrow">A library &middot; v1.0.0</p>
+  <h1>SG Meter: a reading meter you can add to any website</h1>
+  <p class="lead">One web component that charges readers a few pence a page from a balance kept in their own browser, by how far down the page they read. It never blocks a page, it lets the balance go below zero, it lets a reader decline to pay for a page and say why, and it turns what they read into picks. No server, no account, no cookies, no third-party script. It is what runs on this site: the balance in the top bar is it.</p>
+
+  <div class="note"><b>What it is, and what it is not.</b> An honesty box, not a paywall. Everything it knows is in the reader's browser, so a reader can change their own balance, and the page a payment returns to cannot check the payment. That is a choice, made because of who reads a site like this one and what cheating would cost; it is argued in <a href="security.html">the security model</a> and, with the numbers, in <a href="../articles/who-will-game-the-reading-meter.html">who will game the reading meter</a>. If you need a meter that holds money, this is the wrong library.</div>
+
+  <h2 id="install">Install</h2>
+  <p>Copy two folders into your site, keeping their paths: the component and the base class it extends (it imports the base by a relative path).</p>
+  <pre class="shell">assets/components/base/v1/v1.0/v1.0.0/sg-component.js
+assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.js
+assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter-core.js
+assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.tpl
+assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.css</pre>
+  <p>The paths are versioned and immutable, as in <a href="https://coding.sgit.ai/javascript/index.html">the estate's JavaScript guidance</a>: a fix is a new path, so a page that works today keeps loading the same files. Read them first; they are short: <a href="../assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter-core.js">the rules</a> (no rendering), <a href="../assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.js">the element</a>, <a href="../assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.css">its styles</a>, <a href="../assets/components/base/v1/v1.0/v1.0.0/sg-component.js">the base class</a>.</p>
+  <p>Then, on every page, load the module once, give it a config, and say what the page is:</p>
+  <pre class="shell">&lt;!-- in the top bar --&gt;
+&lt;sg-meter view="balance"&gt;&lt;/sg-meter&gt;
+
+&lt;!-- at the end of the text: charges this page, shows what it cost and the "don't charge me" choice --&gt;
+&lt;sg-meter view="page" kind="article" date="2026-10-10" topics="news pricing" title="The page's title"&gt;&lt;/sg-meter&gt;
+
+&lt;script type="application/json" id="sg-meter-config"&gt;
+{ "storageKey": "mysite.meter.v1", "start": 500,
+  "prices": { "article_new": 10, "article": 5, "page": 1, "free": 0 },
+  "topup": { "amount": 500, "link": "https://buy.stripe.com/your-link" },
+  "picks": { "feed": "articles/feed.json", "base": "articles/" } }
+&lt;/script&gt;
+&lt;script type="module" src="/assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.js"&gt;&lt;/script&gt;</pre>
+  <p>Every key has a default, so an empty config works. Put <code>data-root</code> on <code>&lt;html&gt;</code> (for example <code>data-root="../"</code>) if your pages are not all at the top level; links the component writes are prefixed with it. This site loads the module with a dynamic <code>import()</code> from an inline script instead of a <code>src</code>, because its own build forbids script tags that point at files; either works.</p>
+
+  <h2 id="views">The six views</h2>
+  <p>One element, one shared meter: an ES module is evaluated once per page, so however many <code>&lt;sg-meter&gt;</code> elements a page has, it is charged once.</p>
+  <div class="tablewrap"><table>
+    <tr><th>view</th><th>What it shows</th><th>Attributes</th></tr>
+    <tr><td style="white-space:nowrap"><code>balance</code></td><td>The balance as a small link to the account. Shown in a warmer colour below zero, with a tooltip that says nothing is blocked. Nothing else: no banner, no count of articles read.</td><td></td></tr>
+    <tr><td style="white-space:nowrap"><code>page</code></td><td>Opens this page on the meter and charges it by scroll depth. Shows what it has cost so far, the share read, the price to the end, and "Not worth it? Don't charge me" with four reasons.</td><td><code>kind</code>, <code>date</code> (YYYY-MM-DD), <code>topics</code> (space separated), <code>title</code>, <code>quiet</code> (charge, show nothing)</td></tr>
+    <tr><td style="white-space:nowrap"><code>account</code></td><td>Balance, pages opened, spend, what was declined, picks, spend by topic, the history with the depth read, top-ups; pause, export as JSON, start again.</td><td></td></tr>
+    <tr><td style="white-space:nowrap"><code>topup</code></td><td>With <code>topup.link</code> set, one button to the payment page. Without, a simulated cart (packs, cart, review, receipt) that says it is simulated.</td><td></td></tr>
+    <tr><td style="white-space:nowrap"><code>topped-up</code></td><td>The page a payment link returns to. Adds <code>topup.amount</code> once per <code>session_id</code> in the URL. It does not verify the payment; see <a href="security.html#return">the security model</a>.</td><td></td></tr>
+    <tr><td style="white-space:nowrap"><code>picks</code></td><td>Unread pages from the reader's most-read topics. Hidden until there is a history to pick from.</td><td><code>count</code> (default 4)</td></tr>
+  </table></div>
+  <p class="small dim">This site's own: <a href="../account/index.html">account</a>, <a href="../account/top-up.html">top-up</a>, <a href="../account/topped-up.html">topped-up</a> (opened without a payment reference, it adds nothing and says so), and the picks band on <a href="../articles/index.html">the front page</a>.</p>
+
+  <h2 id="rules">The rules it charges by</h2>
+  <ul>
+    <li><b>By depth.</b> A page costs its price times the deepest point the reader has scrolled to, measured on the page's <code>main</code> element and rounded to 5%, never less than <code>minDepth</code> (default a tenth), so opening a page is not free. Read half, pay half.</li>
+    <li><b>Once per page per session.</b> Scrolling further later in the same browser session tops the same charge up; coming back does not start a second one.</li>
+    <li><b>Below zero is allowed.</b> Nothing is blocked and nothing nags. The balance is shown, that is all.</li>
+    <li><b>Declining is allowed.</b> A reader can refuse to pay for a page, with a reason: the headline promised more than the page gave, not relevant to me, I did not really read it, another reason. The charge is refunded and the reason kept in their history; "not relevant" counts against that page's topics in the picks.</li>
+    <li><b>New costs more.</b> An <code>article</code> whose <code>date</code> is within <code>newDays</code> is priced at <code>article_new</code>, judged in the reader's browser, so prices age without a rebuild. Any other <code>kind</code> is looked up in <code>prices</code>, falling back to <code>page</code>.</li>
+    <li><b>Storage may fail.</b> In a browser that blocks storage the page still works, and the account says it cannot keep a balance.</li>
+  </ul>
+
+  <h2 id="config">Config reference</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Key</th><th>Default</th><th>Meaning</th></tr>
+    <tr><td><code>storageKey</code></td><td><code>"sg.meter.v1"</code></td><td>The localStorage key. Use your own per site. (This site keeps <code>sgit.meter.v1</code>, the key its first meter used, so balances carried over.)</td></tr>
+    <tr><td><code>start</code></td><td><code>500</code></td><td>Starting credit, in pence or cents.</td></tr>
+    <tr><td><code>symbol</code></td><td><code>"£"</code></td><td>Shown before amounts.</td></tr>
+    <tr><td><code>prices</code></td><td>10 / 5 / 3 / 2 / 2 / 1 / 0</td><td>Price of a page read to the end, by kind: <code>article_new</code>, <code>article</code>, <code>issue</code>, <code>note</code>, <code>collection</code>, <code>page</code>, <code>free</code>. Add your own kinds.</td></tr>
+    <tr><td><code>newDays</code></td><td><code>7</code></td><td>How long an article is new.</td></tr>
+    <tr><td><code>depth</code></td><td><code>true</code></td><td>Charge by scroll depth. <code>false</code> charges the whole price on opening.</td></tr>
+    <tr><td><code>minDepth</code></td><td><code>0.1</code></td><td>The least share of a page that is charged.</td></tr>
+    <tr><td style="white-space:nowrap"><code>topup</code></td><td><code>{"amount": 500, "link": ""}</code></td><td>The payment link and what it adds. Empty link: the simulated cart.</td></tr>
+    <tr><td><code>packs</code></td><td><code>[{"id":"p5","price":500,"bonus":0}]</code></td><td>The simulated cart's packs.</td></tr>
+    <tr><td><code>links</code></td><td><code>{"account": "account/index.html", "topup": "account/top-up.html"}</code></td><td>Where your account and top-up pages are, relative to <code>data-root</code>.</td></tr>
+    <tr><td style="white-space:nowrap"><code>picks</code></td><td><code>{"feed": "", "base": ""}</code></td><td>A JSON feed of <code>{"articles": [{slug, title, date, teaser, topics}], "topics": [{id, label}]}</code>, and the folder an article's <code>slug + ".html"</code> is in. Empty feed: no picks. This site uses <a href="../articles/graphs.json">articles/graphs.json</a>.</td></tr>
+  </table></div>
+  <p class="small dim">Config can also be given as <code>window.SG_METER_CONFIG</code> before the module loads.</p>
+
+  <h2 id="events">Events</h2>
+  <p>Dispatched on <code>document</code>, bubbling and composed, named <code>&lt;namespace&gt;:&lt;noun&gt;.&lt;verb&gt;</code>. Event names are API: renaming one is a major version.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Event</th><th>detail</th></tr>
+    <tr><td><code>sg:meter.charged</code></td><td><code>{path, depth, cost, balance}</code>, each time a charge grows</td></tr>
+    <tr><td><code>sg:meter.declined</code></td><td><code>{path, reason, balance}</code></td></tr>
+    <tr><td><code>sg:meter.toppedup</code></td><td><code>{credit, source, balance}</code>; source is <code>simulated</code> or <code>link</code></td></tr>
+    <tr><td><code>sg:meter.reset</code></td><td><code>{}</code></td></tr>
+    <tr><td><code>sg:meter.changed</code></td><td><code>{balance}</code>, on any saved change; the elements repaint on it</td></tr>
+    <tr><td><code>sg-meter:error</code></td><td><code>{why}</code>, if the component's markup or styles failed to load; the element also gets <code>data-state="error"</code></td></tr>
+  </table></div>
+  <p class="small dim">Nothing listens to these on this site: there is no analytics. They are there so a site that wants to count, for example, how many readers decline and why, can do it in its own code and say so.</p>
+
+  <h2 id="storage">What is stored</h2>
+  <p>One JSON value under <code>storageKey</code> in localStorage, and a map of this session's pages under <code>storageKey + ".seen"</code> in sessionStorage. The reader can export it from the account page.</p>
+  <pre class="shell">{ "v": 2, "created": "2026-10-10T09:00:00.000Z",
+  "balance": -12.5, "spent": 512.5, "reads": 91, "declined": 14, "paused": false,
+  "log": [ { "id": "…", "at": "…", "path": "/articles/x.html", "title": "…", "kind": "article",
+             "topics": ["news"], "price": 10, "depth": 0.55, "cost": 5.5,
+             "declined": { "reason": "clickbait", "at": "…", "refunded": 4 } } ],
+  "topups":   [ { "ref": "cs_…", "at": "…", "credit": 500, "source": "link" } ],
+  "sessions": [ "cs_…" ], "cart": [] }</pre>
+  <p class="small dim">The log keeps the last 500 pages. A version 1 state (this site before v0.7.26) is read and upgraded in place.</p>
+
+  <h2 id="theme">Theming</h2>
+  <p>The component draws in a shadow root, so your stylesheet cannot reach in, but CSS custom properties cross the boundary and every colour reads one first: <code>--fg</code>, <code>--dim</code>, <code>--line</code>, <code>--line2</code>, <code>--panel</code>, <code>--accent</code>, <code>--accent-dk</code>, <code>--warm</code> (the colour of a negative balance), <code>--mono</code>, <code>--serif</code>, <code>--sans</code>. Each has a neutral fallback, so a site with none of them still gets a readable meter. The host element is yours to place and size: <code>sg-meter { display: block }</code>, and the root is exposed as <code>::part(root)</code>.</p>
+
+  <h2 id="stripe">Taking real payments with a Stripe Payment Link</h2>
+  <ol>
+    <li>In Stripe, create a product (for example "&pound;5 of reading") and a <b>Payment Link</b> for it.</li>
+    <li>In the link's <b>After payment</b> settings, choose not to show Stripe's confirmation page and to redirect to your site, with this URL (Stripe fills in the placeholder):<br><code>https://your.site/account/topped-up.html?session_id={CHECKOUT_SESSION_ID}</code></li>
+    <li>Put the link in the config as <code>topup.link</code>, and the credit it buys as <code>topup.amount</code>.</li>
+    <li>Make a page at that path with <code>&lt;sg-meter view="topped-up"&gt;&lt;/sg-meter&gt;</code> on it.</li>
+  </ol>
+  <p>Stripe's own guidance is that fulfilment should come from the <code>checkout.session.completed</code> webhook, not from the redirect, because a redirect can be skipped or faked. A static site has nowhere to receive a webhook, so this library credits on the redirect and says so. On a &pound;5 payment with a standard UK card Stripe's listed fee is 1.5% + 20p, about 27.5p, or 5.5%; premium and international cards cost more. The arithmetic for this site is in <a href="../articles/going-live-with-the-reading-meter.html">going live with the reading meter</a>.</p>
+
+  <h2 id="principles">Where its rules come from</h2>
+  <p>The first version ran on <a href="https://pt.newsroom.sgit.ai/carteira/">pt.newsroom.sgit.ai</a> as its wallet: says up front what it is, never blocks, one charge per page per session, storage allowed to fail. Its code follows <a href="https://coding.sgit.ai/javascript/index.html">coding.sgit.ai's JavaScript guidance</a>: ES modules, native web components on a shared base class, markup and styles in sibling files, page data set only as text, events as API. And two carried over from <a href="https://nfrs.sgit.ai/">the NFRs</a>, whose rule is "generate or date every number": the balance and the spend are running totals, but the log of every charge that made them sits beside them in the same export (the last 500), so a reader can check one against the other; and "a restore that has never been performed is not a backup", so the export is plain JSON a reader can open and read, the only copy of their history there is.</p>
+
+  <h2 id="changelog">Changelog</h2>
+  <ul>
+    <li><b>v1.0.0</b> (10 October 2026, site v0.7.26). First packaged release: scroll-depth charging, negative balances, decline with a reason, the balance view, the Stripe return page, picks that count "not relevant" against a topic. Replaces this site's <code>assets/meter.js</code> (v0.7.24), which charged on opening and showed a bar when credit ran out.</li>
+  </ul>
+  <p class="small dim">Next, not yet: rating a page, classifying it and keeping a note on it, all in the same local history; a balance that follows a reader between devices through an encrypted vault only they hold the key to. <a href="security.html">Security model</a> &middot; <a href="../account/index.html">this site's account page</a>.</p>
+</main>
+<sg-meter view="page" kind="page" date="" topics="" title="SG Meter: a reading meter you can add to any website, sgit.ai" quiet></sg-meter>
+<script type="application/json" id="sg-meter-config">{"storageKey": "sgit.meter.v1", "start": 500, "newDays": 7, "symbol": "£", "prices": {"article_new": 10, "article": 5, "issue": 3, "note": 2, "collection": 2, "page": 1, "free": 0}, "depth": true, "minDepth": 0.1, "topup": {"amount": 500, "link": ""}, "packs": [{"id": "p2", "price": 200, "bonus": 0}, {"id": "p5", "price": 500, "bonus": 0}, {"id": "p10", "price": 1000, "bonus": 100}, {"id": "p20", "price": 2000, "bonus": 300}], "links": {"account": "account/index.html", "topup": "account/top-up.html"}, "picks": {"feed": "articles/graphs.json", "base": "articles/"}}</script>
+<script>
+import('../assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.js?v=v0.7.26')
+ .catch(function (e) { console.error('[sg-meter] component failed to load:', e); });
+</script>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.7.26</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../docs/surfaces.html">Three surfaces</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../docs/vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
+    <a href="../use-cases/index.html">Use cases</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../docs/briefs/index.html">Cross-team briefs</a>
+    <a href="../articles/index.html#subscribe">Subscribe to new articles</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../llms-full.txt">llms-full.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.7.26';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+var mine=V.slice(3),last=0;
+function fresh(){if(location.hostname!=='sgit.ai'||Date.now()-last<60000)return;last=Date.now();
+fetch('/version.txt?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.text():''}).then(function(t){t=(t||'').trim();if(!/^v[0-9]+[.][0-9]+[.][0-9]+$/.test(t)||t===mine)return;
+var k='sgit.fresh:'+location.pathname;try{if(sessionStorage.getItem(k)===t)return;sessionStorage.setItem(k,t)}catch(e){}
+var u=new URL(location.href);u.searchParams.set('v',t);location.replace(u.href)}).catch(function(){})}
+try{var u=new URL(location.href);if(u.searchParams.get('v')===mine){u.searchParams.delete('v');history.replaceState(history.state,'',u.pathname+u.search+u.hash)}}catch(e){}
+fresh();addEventListener('pageshow',function(e){if(e.persisted){last=0;fresh()}});document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')fresh()});
+})();
+</script>
+</body>
+</html>

@@ -1237,35 +1237,9 @@ p.subteaser .cta2{white-space:nowrap}
 figure.shot--collage{margin:1.6rem 0}
 ol.lkit-imgs{margin:.5rem 0 0;padding-left:1.4rem}
 ol.lkit-imgs li{margin:.2rem 0}
-/* ---------- the reading meter (v0.7.24) ---------- */
-a.meter-pill{position:fixed;left:14px;bottom:14px;z-index:70;display:flex;flex-direction:column;gap:0;padding:.4rem .75rem;border-radius:12px;
-  background:var(--panel);border:1px solid var(--line2);box-shadow:0 6px 20px rgba(28,29,33,.12);font-size:.72rem;color:var(--dim);line-height:1.3}
-a.meter-pill b{font-size:.95rem;color:var(--fg);font-family:var(--mono)}
-a.meter-pill:hover{border-color:var(--accent);text-decoration:none}
-a.meter-pill.low b{color:var(--warm)} a.meter-pill.empty b{color:#b42318} a.meter-pill.paused{opacity:.75}
-.meter-bar{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;margin:0 auto 1rem;max-width:var(--measure);padding:.7rem 1rem;border:1px solid #f0c8c2;
-  border-left:3px solid #b42318;background:#fdf3f1;border-radius:0 10px 10px 0;font-size:.9rem;color:#34363c}
-.meter-bar button{margin-left:auto;border:0;background:none;font-size:1.2rem;cursor:pointer;color:var(--dim)}
-.meter-card{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;align-items:center;margin:1.4rem 0;padding:1.1rem 1.3rem;
-  border:1px solid var(--line);border-radius:12px;background:var(--panel)}
-.meter-card > div{display:grid;gap:.25rem}
-.meter-big{font-family:var(--mono);font-size:2rem;color:var(--fg)}
-.meter-actions{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
-.meter-btn,.meter-q{border:1px solid var(--line2);background:var(--panel);border-radius:8px;padding:.45rem .8rem;font:inherit;font-size:.85rem;cursor:pointer;color:var(--fg)}
-.meter-q{padding:.15rem .5rem}
-.meter-btn:hover,.meter-q:hover{border-color:var(--accent);text-decoration:none}
-.meter-red{color:#b42318}
-.meter-topic{display:grid;grid-template-columns:12rem 1fr 3rem;gap:.6rem;align-items:center;margin:.35rem 0;font-size:.88rem}
-.meter-topic i{display:block;height:.7rem;background:var(--accent);border-radius:4px;min-width:3px}
-.meter-topic em{font-style:normal;color:var(--dim);font-family:var(--mono);font-size:.78rem}
-.meter-picks{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.2rem;margin:.6rem 0 1rem}
-a.meter-pick{display:grid;gap:.35rem;align-content:start;color:inherit;border-top:1px solid var(--line2);padding-top:.8rem}
-a.meter-pick:hover{text-decoration:none} a.meter-pick:hover b{text-decoration:underline}
-a.meter-pick b{font-family:var(--serif);font-size:1.05rem;line-height:1.3;color:#101114}
-a.meter-pick span:last-child{font-size:.88rem;color:var(--dim);line-height:1.5}
-.meter-packs{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin:1.2rem 0}
-.meter-pack{display:grid;gap:.35rem;align-content:start;padding:1rem;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
-.meter-pack b{font-family:var(--mono);font-size:1.5rem}
-@media (max-width:560px){.meter-topic{grid-template-columns:8rem 1fr 2.6rem}}
-.meter-btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
-.meter-btn.primary:hover{background:var(--accent-dk)}
+/* ---------- the reading meter: <sg-meter> hosts (v0.7.26; the component styles itself in its shadow root) ---------- */
+sg-meter{display:block}
+sg-meter.meter-nav{display:inline-block;min-width:3.4rem}
+/* on a phone the balance takes the version's place in the top bar; the version is still in the footer */
+@media (max-width:520px){nav.site a.ver{display:none}}
+sg-meter.fband{margin-top:0}

@@ -2,7 +2,7 @@
 
 > The newsroom's open work as files, and every pitch with its decision.
 
-*Source: <https://sgit.ai/newsroom/board.html> · site v0.7.25 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/newsroom/board.html> · site v0.7.26 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -38,6 +38,7 @@ D6**Historian, three candidates for Behaviour policy in practice**[historian](ro
 
 | Date | From | Ask | Article | Status | Decision |
 |---|---|---|---|---|---|
+| 2026-10-10 | journalist | lead | going-live-with-the-reading-meter | open |  |
 | 2026-10-10 | journalist | lead | a-meter-in-the-browser | open |  |
 | 2026-10-07 | agent@riskmandate.ai | highlight | the-behaviour-policy-is-the-business-logic | accepted | Accepted in the edition of 2026-10-08: a highlight, because it is the article the day's pieces on enforcement build on. Also added to the Behaviour policy in practice collection. |
 | 2026-10-07 | agent@riskmandate.ai | highlight | story-vault-meets-reader-skills | parked | Parked as a highlight, placed instead at the head of the new collection Local news, kept as evidence, which the front features: it is the article that joins the bridge, the waiting room and the story vault, and reads best beside them. |

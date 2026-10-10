@@ -1,8 +1,8 @@
 # Top up your reading account, sgit.ai
 
-> Buy reading credit through a cart and a checkout with every step except the payment. Simulated: nothing is charged.
+> Add £5 of reading credit to the balance kept in your browser: one payment on Stripe, no account, nothing renews.
 
-*Source: <https://sgit.ai/account/top-up.html> · site v0.7.25 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/account/top-up.html> · site v0.7.26 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,11 +12,13 @@ SGit Newsroom · reading account
 
 # Top up
 
-Every step of buying credit except the payment: pick a pack, adjust the cart, review, confirm, get a receipt. The credit lands in your balance straight away.
+£5 of reading, paid on Stripe's page. You come back to a page that adds the credit to the balance in this browser. No account, and no subscription: it is one payment, and nothing renews.
 
-**A simulation, and it says so first.** This meter charges nothing, takes no card and sends nothing anywhere. The balance, the history and the receipts live in this browser's storage. A new browser, a private window or clearing site data starts again with £5.00, and with no history, so with no personalisation. It never blocks a page: out of credit, you can still read, and the read is noted as unpaid.
+**Kept in this browser, and only here.** The balance, the history and the receipts are in this browser's storage; nothing is sent anywhere and there is no account. A new browser, a private window or clearing site data starts again with £5.00 and no history, so with no personalisation. It never blocks a page and it never nags: credit can go below zero, the balance says so in the top bar, and that is all. [How the meter works](../meter/index.md), and [why we run it this way](../articles/going-live-with-the-reading-meter.md).
 
 Top-ups need JavaScript: the balance lives in your browser.
+
+The page you come back to cannot check the payment (this site has no server to check it with), so it adds the credit once for each payment reference it is given. That is a known gap and it is written down, with why it is accepted, in [who will game the reading meter](../articles/who-will-game-the-reading-meter.md).
 
 
 ---

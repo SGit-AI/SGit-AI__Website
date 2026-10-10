@@ -1112,5 +1112,17 @@
     "section": "vaults",
     "title": "Long Tail Ledger, who pays to keep old machines working, sgit.ai",
     "desc": "A data-science vault on the economics of open source's long tail: one old iMac, the long tail measured from Homebrew and PyPI analytics, where money flows for old versions, the payment problem, five funding models simulated with break-even prices and a sensitivity tornado, the satellite support firms, and a calculator. Published with its read key."
+  },
+  {
+    "path": "meter/index.html",
+    "section": "meter",
+    "title": "SG Meter: a reading meter you can add to any website, sgit.ai",
+    "desc": "One web component that charges readers a few pence a page from a balance kept in their own browser, by how far down the page they read; never blocks, allows a negative balance, lets a reader decline with a reason. Install, views, config, events, storage, theming, Stripe."
+  },
+  {
+    "path": "meter/security.html",
+    "section": "meter",
+    "title": "SG Meter security model, sgit.ai",
+    "desc": "What a reader can do to a meter kept in their own browser (edit the balance, start again, credit themselves through the unprotected return page), what each costs the site and the reader, and why every gap is accepted."
   }
 ]

@@ -9,7 +9,7 @@ tags: newsroom, micropayments, personalisation, local-first, privacy, pricing, e
 
 !shot mt-account.webp | images/ | The reading account, as it looks after ten pages: the balance, what was spent, the articles picked for this reader from what they read, and what they paid to read, by topic. All of it is computed in the browser from a history kept in the browser.
 
-> **You are paying for this page.** If you opened it in the first week, it cost you 5p of the £5.00 every new reader starts with; the badge in the bottom-left corner says so. Nothing is charged, no card is involved, and nothing leaves your browser. [Your account](/account/index.html) shows the balance, the history and what it bought you.
+> **Updated the same day, v0.7.26: this describes the first version.** The meter has since gone live: it charges by how much of a page you read, your balance can go below zero with nothing blocked and no bar, you can decline to pay for a page with a reason, the badge is now a small balance in the top bar, and topping up is a £5 Stripe payment. Prices rose to 10p and 5p for articles. The plan and the reasoning are in [going live with the reading meter](/articles/going-live-with-the-reading-meter.html); the library is [SG Meter](/meter/index.html). What follows is kept as it was written.
 
 ## What it does
 

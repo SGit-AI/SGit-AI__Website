@@ -1,8 +1,8 @@
 # Your reading account, sgit.ai
 
-> A reading meter kept in your browser: every page costs a few pence from £5.00 of starting credit, and what you read personalises the site. A simulation: nothing is charged and nothing leaves the browser.
+> A reading meter kept in your browser: every page costs a few pence, charged by how much of it you read, from £5.00 of starting credit. Credit can go negative and nothing is blocked; what you read personalises the site.
 
-*Source: <https://sgit.ai/account/index.html> · site v0.7.25 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/account/index.html> · site v0.7.26 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,29 +12,29 @@ SGit Newsroom · reading account
 
 # Your reading account
 
-Every page on sgit.ai has a price of a few pence. You started with £5.00 of credit, and each page you open is debited from it, once per visit. What you read is also what personalises the site for you: the more you read, the better the picks below and on the front page.
+Every page on sgit.ai has a price of a few pence, and you pay for the share of it you read: scroll a tenth of the way down and you pay a tenth. You started with £5.00 of credit. If a page was not worth it, say so at its foot and it is not charged. What you read is also what personalises the site: the more you read, the better the picks below and on the front page.
 
-**A simulation, and it says so first.** This meter charges nothing, takes no card and sends nothing anywhere. The balance, the history and the receipts live in this browser's storage. A new browser, a private window or clearing site data starts again with £5.00, and with no history, so with no personalisation. It never blocks a page: out of credit, you can still read, and the read is noted as unpaid.
+**Kept in this browser, and only here.** The balance, the history and the receipts are in this browser's storage; nothing is sent anywhere and there is no account. A new browser, a private window or clearing site data starts again with £5.00 and no history, so with no personalisation. It never blocks a page and it never nags: credit can go below zero, the balance says so in the top bar, and that is all. [How the meter works](../meter/index.md), and [why we run it this way](../articles/going-live-with-the-reading-meter.md).
 
 The reading account needs JavaScript: it lives in your browser and nowhere else.
 
-## What things cost
+## What things cost, read to the end
 
 | Page | Price |
 |---|---|
-| An article published in the last seven days | 5p |
-| An older article | 3p |
-| A newsletter issue | 2p |
+| An article published in the last seven days | 10p |
+| An older article | 5p |
+| A newsletter issue | 3p |
 | A desk note | 2p |
 | A collection | 2p |
 | Any other page: docs, vaults, the network, the newsroom | 1p |
 | The homepage, the subscribe page and your account | free |
 
-One debit per page per browser session: going back to a page you have opened this visit costs nothing. Reading the markdown twin of a page, or the newsroom wire, is not metered.
+The price of a page read to the end; you pay that times the share you scrolled through, never less than a tenth. One charge per page per browser session: reading further later tops the same charge up, and going back costs nothing more. Reading the markdown twin of a page, or the newsroom wire, is not metered.
 
-## Why a meter that charges nothing
+## Why it works like this
 
-To find out whether paying for reading, a penny at a time, is something people would do if it bought them something back: a site that knows what they read and picks for them, without an account, a cookie banner or anybody else holding the history. The case is made in [a meter in the browser](../articles/a-meter-in-the-browser.md).
+To find out whether people pay for reading, a few pence at a time, when nothing forces them to and what they get back is a site that knows what they read and picks for them, with no account and nobody else holding the history. The plan, the numbers we expect and the date we check them are in [going live with the reading meter](../articles/going-live-with-the-reading-meter.md); who could cheat it, and why that is allowed, is in [who will game the reading meter](../articles/who-will-game-the-reading-meter.md).
 
 
 ---
