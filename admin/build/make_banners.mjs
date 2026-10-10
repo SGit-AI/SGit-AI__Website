@@ -60,6 +60,13 @@ function hashOf(e) {
 function collageHtml(e) {
   const n = e.items.length, cols = n <= 2 ? n : n === 4 ? 2 : 3, rows = Math.ceil(n / cols);
   const cards = e.items.map(i => `<figure><div class="im"><img src="${url(i.src)}"></div>${i.label ? `<figcaption>${esc(i.label)}</figcaption>` : ''}</figure>`).join('');
+  // Three wide pictures in one row leave each one letterboxed in a tall cell, so three becomes one
+  // large picture beside two stacked ones; two pictures hug their content and sit centred.
+  const layout = n === 3
+    ? `.grid{grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr}.grid figure:first-child{grid-row:span 2}`
+    : n === 2
+    ? `.grid{grid-template-rows:auto;align-content:center}.grid figure{min-height:auto}.im{flex:none;max-height:720px}.im img{width:100%;height:auto;max-height:720px}`
+    : '';
   return `<!doctype html><html><head><meta charset="utf-8"><style>
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{width:${W}px;height:${H}px;background:#faf9f5;color:#17181c;font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;overflow:hidden}
@@ -74,6 +81,7 @@ function collageHtml(e) {
   figcaption{font-size:24px;font-weight:700;line-height:1.25;padding:12px 4px 2px;color:#1c1d21}
   .foot{position:absolute;left:70px;right:70px;bottom:30px;display:flex;justify-content:space-between;font-size:22px;color:#5c5f66;border-top:2px solid #17181c;padding-top:12px}
   .foot b{color:#17181c}.foot b i{color:#0f766e;font-style:normal}
+  ${layout}
   </style></head><body><div class="top"></div>
   <div class="head"><b>${esc(e.kicker)}</b><span>${esc(e.title)}</span></div>
   <div class="grid">${cards}</div>

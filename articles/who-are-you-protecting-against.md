@@ -2,7 +2,7 @@
 
 > An entrepreneur doing everything they can to be secure bought a Mac mini for a customer, decided it would never touch the internet and that nothing would be installed on it, and ended up writing the application in the Perl that ships with macOS. The question that decides whether that is wise is not how secure the design is, but who it protects against. This article sets out the three questions that answer it, who the threat agent is, what the attack vector is, and how sophisticated they are, and a ladder of six tiers from your own mistakes to states, grounded in NIST SP 800-30, the NCSC's commodity, targeted and elevated threats, and MITRE ATT&CK. It notes that the UK's new AI Risk Management Toolkit asks "Who are the new threat actors?" without defining them. It reads the Mac mini against the ladder, where the air gap stops attackers that no inbound ports and patches also stop while adding a USB path and removing backups, monitoring and mainstream tooling; makes the same argument about keeping systems on premises for security; and argues that you should sell something better than what the customer has, not something beyond what they need, because drawing the line too high is a disservice to both sides. With it ships a vault of eight fictional startups, each with its assets, an attack tree mapped to ATT&CK techniques, and where it should draw the line, plus a questionnaire to draw your own.
 
-*Source: <https://sgit.ai/articles/who-are-you-protecting-against.html> · site v0.7.22 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/who-are-you-protecting-against.html> · site v0.7.23 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,7 +14,7 @@ By [Dinis Cruz](../about/index.md) · 2026-10-08 · [v0.7.3](../admin/versions.m
 
 ***Abstract:** An entrepreneur doing everything they can to be secure bought a Mac mini for a customer, decided it would never touch the internet and that nothing would be installed on it, and ended up writing the application in the Perl that ships with macOS. The question that decides whether that is wise is not how secure the design is, but who it protects against. This article sets out the three questions that answer it, who the threat agent is, what the attack vector is, and how sophisticated they are, and a ladder of six tiers from your own mistakes to states, grounded in NIST SP 800-30, the NCSC's commodity, targeted and elevated threats, and MITRE ATT&CK. It notes that the UK's new AI Risk Management Toolkit asks "Who are the new threat actors?" without defining them. It reads the Mac mini against the ladder, where the air gap stops attackers that no inbound ports and patches also stop while adding a USB path and removing backups, monitoring and mainstream tooling; makes the same argument about keeping systems on premises for security; and argues that you should sell something better than what the customer has, not something beyond what they need, because drawing the line too high is a disservice to both sides. With it ships a vault of eight fictional startups, each with its assets, an attack tree mapped to ATT&CK techniques, and where it should draw the line, plus a questionnaire to draw your own.*
 
-Six tiers of attacker, from your own mistakes to elevated threats, with what stops each, and where the eight fictional startups in the vault set their ceiling. Most of them plan for everything up to organised crime for money, and write down what they accept above it.
+Six tiers of attacker, from your own mistakes to elevated threats, with what stops each. Most startups plan for everything up to organised crime for money, and write down what they accept above it.
 
 **Where this comes from.** A voice memo I recorded after reading a report from an entrepreneur who is trying hard to do security properly and is learning fast. They are not named and their project is not described beyond the design choice the memo is about. The ladder, the scenarios and the questionnaire are in a vault published with this article, [Threat-sized security](../demos/vaults/threat-sized-security/index.md); the scenarios in it are fictional and the sources are real.
 
@@ -91,18 +91,18 @@ The vault's compare view: eight fictional startups against the six tiers, the ti
 
 The vault maps this out for eight fictional startups, because the line moves with the business, not with how careful the founder is.
 
-| Startup | What it is | Ceiling | Why |
-|---|---|---|---|
-| Courtside | A booking app for padel clubs | T1 | Member contact details; nothing that pays a ransom |
-| Ledgerlight | AI bookkeeping reading bank feeds | T3 | Financial data and live tokens: ransomware and extortion |
-| Quietroom | Session notes for independent therapists | T3, with T4 for insiders | The harm is to patients; the 2020 Vastaamo case shows how |
-| Benchbox | The Mac mini at an accounting firm | T3 | Ransomware starts at the staff laptops |
-| Courtfile | Document review for law firms in disputes | T4 | Hack-for-hire against litigants is documented |
-| Gridwise | Energy monitoring with optional control | T3 | Keep the dangerous capability off by default |
-| Openshelf | A popular open-source library | T5 | The target is everyone downstream; the xz Utils backdoor is the precedent |
-| Sovra | AI drafting for a government department | T5 | Set by the customer, who already owns the controls |
+| Fictional startup | Ceiling | Why |
+|---|---|---|
+| A booking app for padel clubs | T1 | Member contact details; nothing that pays a ransom |
+| AI bookkeeping reading bank feeds | T3 | Financial data and live tokens: ransomware and extortion |
+| Session notes for independent therapists | T3, with T4 for insiders | The harm is to patients; the 2020 Vastaamo case shows how |
+| The Mac mini at an accounting firm | T3 | Ransomware starts at the staff laptops |
+| Document review for law firms in disputes | T4 | Hack-for-hire against litigants is documented |
+| Energy monitoring with optional control | T3 | Keep the dangerous capability off by default |
+| A popular open-source library | T5 | The target is everyone downstream; the xz Utils backdoor is the precedent |
+| AI drafting for a government department | T5 | Set by the customer, who already owns the controls |
 
-One scenario in full: Benchbox's assets, its attack tree with an ATT&CK technique on every branch, and the line, with what must be done, what should, what is over the line and why, and the under-engineering to avoid.
+One scenario in full: the accounting firm assistant's assets, its attack tree with an ATT&CK technique on every branch, and the line, with what must be done, what should, what is over the line and why, and the under-engineering to avoid.
 
 Each scenario has an [attack tree](https://www.schneier.com/academic/archives/1999/12/attack_trees.html), the form Bruce Schneier described in 1999, "with the goal as the root node and different ways of achieving that goal as leaf nodes". Every branch carries the ATT&CK technique it uses, the tier of attacker who would use it, and a rough cost. Walk the tree and the line draws itself: the branches below the ceiling get controls; the branches above it are written down as accepted, with a reason. Two startups have a ceiling at the top tier, and the reasons are instructive. One is a two-person open-source project, because one malicious release reaches everyone who installs it. The other sells to government, where the customer sets the line and already owns the controls.
 

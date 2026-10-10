@@ -217,6 +217,26 @@ From a company that rents or hosts Macs, or wants to:
 - **Measure the boot**: the plan assumes about five minutes from request to a working desktop; it has not been timed yet.
 - **Keep state out of the machine**: one key in, vaults for everything else, and an erase at the end.
 
+## One Mac, many agents: what changes when you queue them
+
+*Added on 10 October 2026, after a question from the plan's author.*
+
+The obvious next question: if a leased Mac must be held for at least 24 hours, can one customer fill that day with many agents, one at a time, cleaning up after each? The cleaning-up part is easy. With the bootstrap above, everything an agent touched comes from vaults and goes back to vaults, so wiping between runs is a deletion, not a project. And the agents in our own team already run on a schedule, several times a day.
+
+The licence, read again with that question, cares about two things that queueing does not change: **what the Mac is used for**, and **who is using macOS**.
+
+!shot ad-queue.webp | images/ | Six scenarios against the clauses that decide them. Queueing satisfies "one user at a time"; the purpose of a lease, and who the user is, decide the rest. A reading of Apple's text, not legal advice.
+
+**Purpose.** A lease is valid only "for the sole purpose of providing Permitted Developer Services", which Apple defines as "continuous integration services, including but not limited to software development, building software from source, automated testing during software development, and running necessary developer tools to support such activities." So a queue of coding agents on a leased Mac fits: it is what a continuous integration runner already does, many jobs for one customer in a row. A queue of office agents, working in mail, a browser and desktop apps, is outside the lease however carefully it is scheduled.
+
+**Who.** If my agents, with my credentials, do the work and my customers buy the result, I am the user of macOS. That holds for developer work on a lease even when the work is for clients: a consultancy's build machine. If my customers' own agents, with their own credentials, get slots on my Mac, my customers are using macOS in turn, which is the "service bureau, time-sharing" the licence excludes "whether such services are being provided within your own organization or to third parties", and each of them would need a lease of their own of at least 24 hours.
+
+**The case worth a lawyer's hour.** On a Mac you own, Section 2B(ii) lets a business run macOS "by multiple individuals on a single shared Mac Computer that you own or control", alongside "only one user may use the Apple Software at a time". A queue of your own agents on your own Mac, wiped between runs, is the closest fit for office agents. Two words decide it: whether automated agents are "individuals", and whether rotating them is time-sharing "within your own organization".
+
+**What would need Apple's written terms.** Two cases: office agents on a leased Mac, and customers' agents sharing one Mac. The macOS 27 licence adds "except as otherwise provided in writing, signed, or issued by an authorized representative of Apple" to the virtualisation and leasing clauses, which is the route. The narrow ask is easier than the broad one: one organisation, a lease of 24 hours or more, sole use, one agent at a time, wiped between runs, for non-developer work. It keeps every condition Apple already sets except the purpose.
+
+So the plan's shapes hold, with one refinement. The dedicated Mac per customer (shape B) is needed whenever the agents are the customer's. When the agents are the operator's, doing work the customer buys, one Mac can serve many of them in turn, and for developer work that is already within the licence.
+
 ---
 
 *Drafted from a voice memo by Dinis Cruz, who is the author of the idea and the person with editorial responsibility, by agent@riskmandate.ai (Claude Opus 5.5, claude-opus-5-5) in the sgit.ai site session, on 9 October 2026. The licence quotes are from Apple's macOS 15, 26 and 27 licences as published on apple.com; the reading of them is ours and is not legal advice. Mac prices are from Apple's UK store on 9 October 2026; every other number is an assumption, labelled in the vault. No provider is named, at the request of the author.*

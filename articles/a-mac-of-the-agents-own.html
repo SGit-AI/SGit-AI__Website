@@ -27,7 +27,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.7.22</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.7.23</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
  <div class="ni ni-has">
@@ -116,7 +116,7 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.7.22 &middot; 10 Oct 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.7.23 &middot; 10 Oct 2026</span></a></div>
 <main class="doc">
  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Articles</a> / A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies</p>
  <h1>A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies</h1>
@@ -366,6 +366,16 @@
 <li><b>Measure the boot</b>: the plan assumes about five minutes from request to a working desktop; it has not been timed yet.</li>
 <li><b>Keep state out of the machine</b>: one key in, vaults for everything else, and an erase at the end.</li>
 </ul>
+<h2>One Mac, many agents: what changes when you queue them</h2>
+<p><em>Added on 10 October 2026, after a question from the plan's author.</em></p>
+<p>The obvious next question: if a leased Mac must be held for at least 24 hours, can one customer fill that day with many agents, one at a time, cleaning up after each? The cleaning-up part is easy. With the bootstrap above, everything an agent touched comes from vaults and goes back to vaults, so wiping between runs is a deletion, not a project. And the agents in our own team already run on a schedule, several times a day.</p>
+<p>The licence, read again with that question, cares about two things that queueing does not change: <b>what the Mac is used for</b>, and <b>who is using macOS</b>.</p>
+<figure class="shot" data-shot="ad-queue.webp" data-dir="images/" data-alt="Six scenarios against the clauses that decide them. Queueing satisfies &quot;one user at a time&quot;; the purpose of a lease, and who the user is, decide the rest. A reading of Apple&#x27;s text, not legal advice."><figcaption>Six scenarios against the clauses that decide them. Queueing satisfies "one user at a time"; the purpose of a lease, and who the user is, decide the rest. A reading of Apple's text, not legal advice.</figcaption></figure>
+<p><b>Purpose.</b> A lease is valid only "for the sole purpose of providing Permitted Developer Services", which Apple defines as "continuous integration services, including but not limited to software development, building software from source, automated testing during software development, and running necessary developer tools to support such activities." So a queue of coding agents on a leased Mac fits: it is what a continuous integration runner already does, many jobs for one customer in a row. A queue of office agents, working in mail, a browser and desktop apps, is outside the lease however carefully it is scheduled.</p>
+<p><b>Who.</b> If my agents, with my credentials, do the work and my customers buy the result, I am the user of macOS. That holds for developer work on a lease even when the work is for clients: a consultancy's build machine. If my customers' own agents, with their own credentials, get slots on my Mac, my customers are using macOS in turn, which is the "service bureau, time-sharing" the licence excludes "whether such services are being provided within your own organization or to third parties", and each of them would need a lease of their own of at least 24 hours.</p>
+<p><b>The case worth a lawyer's hour.</b> On a Mac you own, Section 2B(ii) lets a business run macOS "by multiple individuals on a single shared Mac Computer that you own or control", alongside "only one user may use the Apple Software at a time". A queue of your own agents on your own Mac, wiped between runs, is the closest fit for office agents. Two words decide it: whether automated agents are "individuals", and whether rotating them is time-sharing "within your own organization".</p>
+<p><b>What would need Apple's written terms.</b> Two cases: office agents on a leased Mac, and customers' agents sharing one Mac. The macOS 27 licence adds "except as otherwise provided in writing, signed, or issued by an authorized representative of Apple" to the virtualisation and leasing clauses, which is the route. The narrow ask is easier than the broad one: one organisation, a lease of 24 hours or more, sole use, one agent at a time, wiped between runs, for non-developer work. It keeps every condition Apple already sets except the purpose.</p>
+<p>So the plan's shapes hold, with one refinement. The dedicated Mac per customer (shape B) is needed whenever the agents are the customer's. When the agents are the operator's, doing work the customer buys, one Mac can serve many of them in turn, and for developer work that is already within the licence.</p>
 <hr>
 <p><em>Drafted from a voice memo by Dinis Cruz, who is the author of the idea and the person with editorial responsibility, by agent@riskmandate.ai (Claude Opus 5.5, claude-opus-5-5) in the sgit.ai site session, on 9 October 2026. The licence quotes are from Apple's macOS 15, 26 and 27 licences as published on apple.com; the reading of them is ours and is not legal advice. Mac prices are from Apple's UK store on 9 October 2026; every other number is an assumption, labelled in the vault. No provider is named, at the request of the author.</em></p>
 <section class="athreads" id="threads">
@@ -380,7 +390,7 @@
 </main>
 <script>
 (function () {
- fetch('../assets/shots.js?v=v0.7.22')
+ fetch('../assets/shots.js?v=v0.7.23')
  .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
  .then(function (t) { (0, eval)(t); })
  .catch(function (e) { console.error('[shots] component failed to load:', e); });
@@ -392,7 +402,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.7.22</a> · <a href="../admin/index.html">engineering</a> · <a href="a-mac-of-the-agents-own.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.7.23</a> · <a href="../admin/index.html">engineering</a> · <a href="a-mac-of-the-agents-own.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -435,7 +445,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.7.22';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.7.23';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

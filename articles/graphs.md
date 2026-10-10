@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.22 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.23 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

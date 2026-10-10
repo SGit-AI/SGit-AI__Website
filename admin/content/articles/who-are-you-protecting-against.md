@@ -11,7 +11,7 @@ tags: security, threat-modelling, threat-agents, attack-trees, mitre-attack, nis
 status: published
 ---
 
-!shot ts-ladder.webp | images/ | Six tiers of attacker, from your own mistakes to elevated threats, with what stops each, and where the eight fictional startups in the vault set their ceiling. Most of them plan for everything up to organised crime for money, and write down what they accept above it.
+!shot ts-ladder.webp | images/ | Six tiers of attacker, from your own mistakes to elevated threats, with what stops each. Most startups plan for everything up to organised crime for money, and write down what they accept above it.
 
 > **Where this comes from.** A voice memo I recorded after reading a report from an entrepreneur who is trying hard to do security properly and is learning fast. They are not named and their project is not described beyond the design choice the memo is about. The ladder, the scenarios and the questionnaire are in a vault published with this article, [Threat-sized security](/demos/vaults/threat-sized-security/index.html); the scenarios in it are fictional and the sources are real.
 
@@ -88,18 +88,18 @@ There is no point spending time and money building something far beyond the cust
 
 The vault maps this out for eight fictional startups, because the line moves with the business, not with how careful the founder is.
 
-| Startup | What it is | Ceiling | Why |
-|---|---|---|---|
-| Courtside | A booking app for padel clubs | T1 | Member contact details; nothing that pays a ransom |
-| Ledgerlight | AI bookkeeping reading bank feeds | T3 | Financial data and live tokens: ransomware and extortion |
-| Quietroom | Session notes for independent therapists | T3, with T4 for insiders | The harm is to patients; the 2020 Vastaamo case shows how |
-| Benchbox | The Mac mini at an accounting firm | T3 | Ransomware starts at the staff laptops |
-| Courtfile | Document review for law firms in disputes | T4 | Hack-for-hire against litigants is documented |
-| Gridwise | Energy monitoring with optional control | T3 | Keep the dangerous capability off by default |
-| Openshelf | A popular open-source library | T5 | The target is everyone downstream; the xz Utils backdoor is the precedent |
-| Sovra | AI drafting for a government department | T5 | Set by the customer, who already owns the controls |
+| Fictional startup | Ceiling | Why |
+|---|---|---|
+| A booking app for padel clubs | T1 | Member contact details; nothing that pays a ransom |
+| AI bookkeeping reading bank feeds | T3 | Financial data and live tokens: ransomware and extortion |
+| Session notes for independent therapists | T3, with T4 for insiders | The harm is to patients; the 2020 Vastaamo case shows how |
+| The Mac mini at an accounting firm | T3 | Ransomware starts at the staff laptops |
+| Document review for law firms in disputes | T4 | Hack-for-hire against litigants is documented |
+| Energy monitoring with optional control | T3 | Keep the dangerous capability off by default |
+| A popular open-source library | T5 | The target is everyone downstream; the xz Utils backdoor is the precedent |
+| AI drafting for a government department | T5 | Set by the customer, who already owns the controls |
 
-!shot app-benchbox.webp | ../demos/vaults/threat-sized-security/images/ | One scenario in full: Benchbox's assets, its attack tree with an ATT&CK technique on every branch, and the line, with what must be done, what should, what is over the line and why, and the under-engineering to avoid.
+!shot app-accounting-assistant.webp | ../demos/vaults/threat-sized-security/images/ | One scenario in full: the accounting firm assistant's assets, its attack tree with an ATT&CK technique on every branch, and the line, with what must be done, what should, what is over the line and why, and the under-engineering to avoid.
 
 Each scenario has an [attack tree](https://www.schneier.com/academic/archives/1999/12/attack_trees.html), the form Bruce Schneier described in 1999, "with the goal as the root node and different ways of achieving that goal as leaf nodes". Every branch carries the ATT&CK technique it uses, the tier of attacker who would use it, and a rough cost. Walk the tree and the line draws itself: the branches below the ceiling get controls; the branches above it are written down as accepted, with a reason. Two startups have a ceiling at the top tier, and the reasons are instructive. One is a two-person open-source project, because one malicious release reaches everyone who installs it. The other sells to government, where the customer sets the line and already owns the controls.
 

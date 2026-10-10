@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.22'
+SITE_VERSION = 'v0.7.23'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.22', '2026-10-10', 'this release',
+    ('v0.7.23', '2026-10-10', 'this release',
+     "ONE MAC, MANY AGENTS; NO NAMES; FULLER COLLAGES. A Mac of the agent's own gains a section on queueing many agents on one Mac: six scenarios against the licence clauses (purpose and who is using macOS decide it, not the queue), the case worth a lawyer's hour, and the narrow ask for Apple's written terms. Threat-sized security: the eight fictional startups are described by what they do instead of named, in the vault (v0.1.2, gate and tests passing, audited from a fresh read-key clone), its screenshots, the article and the ladder figure, which loses its ceiling column. Newsletter collages: three pictures become one large beside two stacked, two pictures hug their content, so screenshots are no longer letterboxed.",),
+    ('v0.7.22', '2026-10-10', 'git 0335818e',
      "RE-ANCHORING. Instructions given only in conversation can be lost when a session is summarised; this site's session was summarised eighteen times in a month, keeping about 1.7% each time (an infographic from its own transcript). Re-anchoring keeps the rules in an ABP file and prints it back after every summary (SessionStart, matcher compact); a canary status report, computed from the transcript and checked by a Stop hook, ends every few answers, the brown M&M. Both are running in this session. Three ways a rule fails, one file with three jobs, a measured rule, recipes that age with the platform. Two infographics, a diagram with its Mermaid source, the report on a phone and as a card, graph JSON.",),
     ('v0.7.21', '2026-10-10', 'git 2592327f',
      "AGENT DESK, WHERE IT COMES FROM. The article A Mac of the agent's own, the Agent Desk vault page and the business plans list no longer say the plan was written after companies replied to the earlier research; it now simply follows that research.",),

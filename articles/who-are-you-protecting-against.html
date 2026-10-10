@@ -27,7 +27,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.7.22</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.7.23</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
  <div class="ni ni-has">
@@ -116,13 +116,13 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.7.22 &middot; 10 Oct 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.7.23 &middot; 10 Oct 2026</span></a></div>
 <main class="doc">
  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Articles</a> / Who are you protecting against? Draw the security line where the attacker is, not above it</p>
  <h1>Who are you protecting against? Draw the security line where the attacker is, not above it</h1>
  <p class="small dim">By <a href="../about/index.html" rel="author">Dinis Cruz</a> &middot; 2026-10-08 &middot; <a href="../admin/versions.html">v0.7.3</a> &middot; <span class="chip">security</span><span class="chip">threat-modelling</span><span class="chip">threat-agents</span><span class="chip">attack-trees</span><span class="chip">mitre-attack</span><span class="chip">nist</span><span class="chip">ncsc</span><span class="chip">startups</span><span class="chip">founders</span><span class="chip">air-gap</span><span class="chip">cloud</span><span class="chip">vaults</span><span class="chip">article</span></p>
  <p class="abstract"><em><b>Abstract:</b> An entrepreneur doing everything they can to be secure bought a Mac mini for a customer, decided it would never touch the internet and that nothing would be installed on it, and ended up writing the application in the Perl that ships with macOS. The question that decides whether that is wise is not how secure the design is, but who it protects against. This article sets out the three questions that answer it, who the threat agent is, what the attack vector is, and how sophisticated they are, and a ladder of six tiers from your own mistakes to states, grounded in NIST SP 800-30, the NCSC's commodity, targeted and elevated threats, and MITRE ATT&CK. It notes that the UK's new AI Risk Management Toolkit asks "Who are the new threat actors?" without defining them. It reads the Mac mini against the ladder, where the air gap stops attackers that no inbound ports and patches also stop while adding a USB path and removing backups, monitoring and mainstream tooling; makes the same argument about keeping systems on premises for security; and argues that you should sell something better than what the customer has, not something beyond what they need, because drawing the line too high is a disservice to both sides. With it ships a vault of eight fictional startups, each with its assets, an attack tree mapped to ATT&CK techniques, and where it should draw the line, plus a questionnaire to draw your own.</em></p>
-<figure class="shot" data-shot="ts-ladder.webp" data-dir="images/" data-alt="Six tiers of attacker, from your own mistakes to elevated threats, with what stops each, and where the eight fictional startups in the vault set their ceiling. Most of them plan for everything up to organised crime for money, and write down what they accept above it."><figcaption>Six tiers of attacker, from your own mistakes to elevated threats, with what stops each, and where the eight fictional startups in the vault set their ceiling. Most of them plan for everything up to organised crime for money, and write down what they accept above it.</figcaption></figure>
+<figure class="shot" data-shot="ts-ladder.webp" data-dir="images/" data-alt="Six tiers of attacker, from your own mistakes to elevated threats, with what stops each. Most startups plan for everything up to organised crime for money, and write down what they accept above it."><figcaption>Six tiers of attacker, from your own mistakes to elevated threats, with what stops each. Most startups plan for everything up to organised crime for money, and write down what they accept above it.</figcaption></figure>
 <div class="note"><b>Where this comes from.</b> A voice memo I recorded after reading a report from an entrepreneur who is trying hard to do security properly and is learning fast. They are not named and their project is not described beyond the design choice the memo is about. The ladder, the scenarios and the questionnaire are in a vault published with this article, <a href="../demos/vaults/threat-sized-security/index.html">Threat-sized security</a>; the scenarios in it are fictional and the sources are real.</div>
 <h2>In short</h2>
 <ul>
@@ -173,17 +173,17 @@
 <figure class="shot" data-shot="app-compare.webp" data-dir="../demos/vaults/threat-sized-security/images/" data-alt="The vault&#x27;s compare view: eight fictional startups against the six tiers, the tiers in scope filled and each ceiling marked." data-href="../demos/vaults/threat-sized-security/index.html" data-href-label="Open the vault page" data-href-target="_self"><figcaption>The vault's compare view: eight fictional startups against the six tiers, the tiers in scope filled and each ceiling marked. <b>Click the image to open the vault page &#8599;</b></figcaption></figure>
 <p>The vault maps this out for eight fictional startups, because the line moves with the business, not with how careful the founder is.</p>
 <div class="tablewrap"><table>
-<tr><th>Startup</th><th>What it is</th><th>Ceiling</th><th>Why</th></tr>
-<tr><td>Courtside</td><td>A booking app for padel clubs</td><td>T1</td><td>Member contact details; nothing that pays a ransom</td></tr>
-<tr><td>Ledgerlight</td><td>AI bookkeeping reading bank feeds</td><td>T3</td><td>Financial data and live tokens: ransomware and extortion</td></tr>
-<tr><td>Quietroom</td><td>Session notes for independent therapists</td><td>T3, with T4 for insiders</td><td>The harm is to patients; the 2020 Vastaamo case shows how</td></tr>
-<tr><td>Benchbox</td><td>The Mac mini at an accounting firm</td><td>T3</td><td>Ransomware starts at the staff laptops</td></tr>
-<tr><td>Courtfile</td><td>Document review for law firms in disputes</td><td>T4</td><td>Hack-for-hire against litigants is documented</td></tr>
-<tr><td>Gridwise</td><td>Energy monitoring with optional control</td><td>T3</td><td>Keep the dangerous capability off by default</td></tr>
-<tr><td>Openshelf</td><td>A popular open-source library</td><td>T5</td><td>The target is everyone downstream; the xz Utils backdoor is the precedent</td></tr>
-<tr><td>Sovra</td><td>AI drafting for a government department</td><td>T5</td><td>Set by the customer, who already owns the controls</td></tr>
+<tr><th>Fictional startup</th><th>Ceiling</th><th>Why</th></tr>
+<tr><td>A booking app for padel clubs</td><td>T1</td><td>Member contact details; nothing that pays a ransom</td></tr>
+<tr><td>AI bookkeeping reading bank feeds</td><td>T3</td><td>Financial data and live tokens: ransomware and extortion</td></tr>
+<tr><td>Session notes for independent therapists</td><td>T3, with T4 for insiders</td><td>The harm is to patients; the 2020 Vastaamo case shows how</td></tr>
+<tr><td>The Mac mini at an accounting firm</td><td>T3</td><td>Ransomware starts at the staff laptops</td></tr>
+<tr><td>Document review for law firms in disputes</td><td>T4</td><td>Hack-for-hire against litigants is documented</td></tr>
+<tr><td>Energy monitoring with optional control</td><td>T3</td><td>Keep the dangerous capability off by default</td></tr>
+<tr><td>A popular open-source library</td><td>T5</td><td>The target is everyone downstream; the xz Utils backdoor is the precedent</td></tr>
+<tr><td>AI drafting for a government department</td><td>T5</td><td>Set by the customer, who already owns the controls</td></tr>
 </table></div>
-<figure class="shot" data-shot="app-benchbox.webp" data-dir="../demos/vaults/threat-sized-security/images/" data-alt="One scenario in full: Benchbox&#x27;s assets, its attack tree with an ATT&amp;CK technique on every branch, and the line, with what must be done, what should, what is over the line and why, and the under-engineering to avoid." data-href="../demos/vaults/threat-sized-security/index.html" data-href-label="Open the vault page" data-href-target="_self"><figcaption>One scenario in full: Benchbox's assets, its attack tree with an ATT&amp;CK technique on every branch, and the line, with what must be done, what should, what is over the line and why, and the under-engineering to avoid. <b>Click the image to open the vault page &#8599;</b></figcaption></figure>
+<figure class="shot" data-shot="app-accounting-assistant.webp" data-dir="../demos/vaults/threat-sized-security/images/" data-alt="One scenario in full: the accounting firm assistant&#x27;s assets, its attack tree with an ATT&amp;CK technique on every branch, and the line, with what must be done, what should, what is over the line and why, and the under-engineering to avoid." data-href="../demos/vaults/threat-sized-security/index.html" data-href-label="Open the vault page" data-href-target="_self"><figcaption>One scenario in full: the accounting firm assistant's assets, its attack tree with an ATT&amp;CK technique on every branch, and the line, with what must be done, what should, what is over the line and why, and the under-engineering to avoid. <b>Click the image to open the vault page &#8599;</b></figcaption></figure>
 <p>Each scenario has an <a href="https://www.schneier.com/academic/archives/1999/12/attack_trees.html">attack tree</a>, the form Bruce Schneier described in 1999, "with the goal as the root node and different ways of achieving that goal as leaf nodes". Every branch carries the ATT&amp;CK technique it uses, the tier of attacker who would use it, and a rough cost. Walk the tree and the line draws itself: the branches below the ceiling get controls; the branches above it are written down as accepted, with a reason. Two startups have a ceiling at the top tier, and the reasons are instructive. One is a two-person open-source project, because one malicious release reaches everyone who installs it. The other sells to government, where the customer sets the line and already owns the controls.</p>
 <h2>Draw your own line</h2>
 <figure class="shot" data-shot="app-line.webp" data-dir="../demos/vaults/threat-sized-security/images/" data-alt="The questionnaire: five questions about what you hold, who would pay to attack you, who you sell to, how far one breach reaches and what your customers use today, and the ceiling they point to, with the controls for every tier up to it." data-href="../demos/vaults/threat-sized-security/index.html" data-href-label="Open the vault page" data-href-target="_self"><figcaption>The questionnaire: five questions about what you hold, who would pay to attack you, who you sell to, how far one breach reaches and what your customers use today, and the ceiling they point to, with the controls for every tier up to it. <b>Click the image to open the vault page &#8599;</b></figcaption></figure>
@@ -214,7 +214,7 @@
 </main>
 <script>
 (function () {
- fetch('../assets/shots.js?v=v0.7.22')
+ fetch('../assets/shots.js?v=v0.7.23')
  .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
  .then(function (t) { (0, eval)(t); })
  .catch(function (e) { console.error('[shots] component failed to load:', e); });
@@ -226,7 +226,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.7.22</a> · <a href="../admin/index.html">engineering</a> · <a href="who-are-you-protecting-against.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.7.23</a> · <a href="../admin/index.html">engineering</a> · <a href="who-are-you-protecting-against.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -269,7 +269,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.7.22';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.7.23';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

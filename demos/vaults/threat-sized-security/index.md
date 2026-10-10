@@ -2,7 +2,7 @@
 
 > A six-tier ladder of attackers, from your own mistakes to states, built on NIST SP 800-30, the NCSC's commodity, targeted and elevated threats, and MITRE ATT&CK; eight fictional startups each with assets, an attack tree with a technique on every branch, and the line it should draw; an air-gapped, nothing-installed Mac mini compared with an isolated one, tier by tier; and five questions to draw your own line. Published with its read key.
 
-*Source: <https://sgit.ai/demos/vaults/threat-sized-security/index.html> · site v0.7.22 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/threat-sized-security/index.html> · site v0.7.23 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -43,7 +43,7 @@ an attack tree
 
 Each startup has an attack tree in the form Bruce Schneier described in 1999. Every branch carries the ATT&CK technique it uses, the tier of attacker who would use it and a rough cost; branches above the startup's ceiling are dashed and labelled above the line. Each tree also has a list version for screen readers.
 
-Benchbox: the usual way in does not involve the Mac mini at all.
+The accounting firm assistant: the usual way in does not involve the Mac mini at all.
 
 the line
 
@@ -57,7 +57,7 @@ compare
 
 ### Eight startups by six tiers
 
-Courtside, a booking app for padel clubs, stops at T1. Four of the eight stop at T3. Courtfile, which sells to law firms in disputes, plans for T4 because hack-for-hire against litigants is documented. Two reach T5 for opposite reasons: Openshelf, a two-person open-source library, because one malicious release reaches everyone downstream; Sovra, because its customer is a government department that already owns the controls.
+The padel booking app stops at T1. Four of the eight stop at T3. The legal review platform, which sells to law firms in disputes, plans for T4 because hack-for-hire against litigants is documented. Two reach T5 for opposite reasons: the open-source library, maintained by two people, because one malicious release reaches everyone downstream; the government drafting tool, because its customer is a government department that already owns the controls.
 
 Where each startup draws its line, and how many plan for each tier.
 
@@ -95,10 +95,10 @@ The same design system as the [bridge simulation](../bridge-simulation/index.md)
 
 From `admin/build/catalogue_derive.py zwlqqvkm <read key hex>`, read-only, no token, no clone.
 
-- **Files:** 55 · **plaintext size:** 472 KB
-- **Commits:** 3 · **last updated:** 2026-10-08 · **HEAD:** `obj-cas-imm-ccf171561d5e`
+- **Files:** 56 · **plaintext size:** 469 KB
+- **Commits:** 4 · **last updated:** 2026-10-10 · **HEAD:** `obj-cas-imm-cf0cc786022b`
 - **Top level:** `BRIEF-CORRECTIONS.md`, `PUBLIC.md`, `README.md`, `REALITY.md`, `app.json`, `app/`, `data/`, `index.html`, `tests/`, `tools/`, `versions/`
-- **File types:** .js ×15, .css ×14, .json ×13, .py ×7, .md ×4, .html ×2
+- **File types:** .js ×15, .json ×14, .css ×14, .py ×7, .md ×4, .html ×2
 - **Vault app:** yes, entry `index.html` · **browser-renderable:** yes
 
 ## Sources

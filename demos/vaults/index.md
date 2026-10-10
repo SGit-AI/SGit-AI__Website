@@ -2,7 +2,7 @@
 
 > Fifty vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it.
 
-*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.7.22 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.7.23 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -29,7 +29,7 @@ Open any of these in your browser right now. Every read key here was published o
 
 | 46 | [Hope or enforcement](hope-or-enforcement/index.md)`wz9dw0m5` | The Agent Behaviour Policy at work: one customer service mandate for a fictional shop, three designs of the agent (one model with connectors, a harness of business tools, a team of narrow agents behind a gateway), sixty-two emails through each, and for every rule who enforces it; the policy after the run, the client's promises, and a year you can recompute | Reference | 67 | 1,068 KB | 2026-10-08 |
 
-| 45 | [Threat-sized security](threat-sized-security/index.md)`zwlqqvkm` | Who are you actually protecting against? A six-tier ladder of attackers built on NIST SP 800-30, the NCSC and MITRE ATT&CK; eight fictional startups with attack trees and the line each should draw; an air-gapped Mac mini compared with an isolated one; and five questions to draw your own line | Reference | 55 | 472 KB | 2026-10-08 |
+| 45 | [Threat-sized security](threat-sized-security/index.md)`zwlqqvkm` | Who are you actually protecting against? A six-tier ladder of attackers built on NIST SP 800-30, the NCSC and MITRE ATT&CK; eight fictional startups with attack trees and the line each should draw; an air-gapped Mac mini compared with an isolated one; and five questions to draw your own line | Reference | 56 | 469 KB | 2026-10-08 |
 
 | 44 | [The Mill Street Bridge](bridge-simulation/index.md)`vk3jlgzb` | A simulation of Markus Franz's bridge example on a story vault: one fictional local bridge closure from first notice to reopening, the journalism that got the date right, the paper on five dates, three readers whose own graphs meet the story graph, three institutions and an agent buying from the same graph, and where every penny goes; every figure computed from written assumptions; v0.2 adds the economics and the data, v0.3 a new navigation, four themes and a reviewed, gated codebase | Reference | 127 | 913 KB | 2026-10-07 |
 

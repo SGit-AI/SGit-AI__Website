@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.7.22). Nothing here needs a second request. Individual pages live at the paths
+> (v0.7.23). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -73,7 +73,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-284site releases, each verified live before it was called done
+285site releases, each verified live before it was called done
 
 50vaults published with a deliberately public read key
 
@@ -416,7 +416,7 @@ Open any of these in your browser right now. Every read key here was published o
 
 | 46 | [Hope or enforcement](hope-or-enforcement/index.md)`wz9dw0m5` | The Agent Behaviour Policy at work: one customer service mandate for a fictional shop, three designs of the agent (one model with connectors, a harness of business tools, a team of narrow agents behind a gateway), sixty-two emails through each, and for every rule who enforces it; the policy after the run, the client's promises, and a year you can recompute | Reference | 67 | 1,068 KB | 2026-10-08 |
 
-| 45 | [Threat-sized security](threat-sized-security/index.md)`zwlqqvkm` | Who are you actually protecting against? A six-tier ladder of attackers built on NIST SP 800-30, the NCSC and MITRE ATT&CK; eight fictional startups with attack trees and the line each should draw; an air-gapped Mac mini compared with an isolated one; and five questions to draw your own line | Reference | 55 | 472 KB | 2026-10-08 |
+| 45 | [Threat-sized security](threat-sized-security/index.md)`zwlqqvkm` | Who are you actually protecting against? A six-tier ladder of attackers built on NIST SP 800-30, the NCSC and MITRE ATT&CK; eight fictional startups with attack trees and the line each should draw; an air-gapped Mac mini compared with an isolated one; and five questions to draw your own line | Reference | 56 | 469 KB | 2026-10-08 |
 
 | 44 | [The Mill Street Bridge](bridge-simulation/index.md)`vk3jlgzb` | A simulation of Markus Franz's bridge example on a story vault: one fictional local bridge closure from first notice to reopening, the journalism that got the date right, the paper on five dates, three readers whose own graphs meet the story graph, three institutions and an agent buying from the same graph, and where every penny goes; every figure computed from written assumptions; v0.2 adds the economics and the data, v0.3 a new navigation, four themes and a reviewed, gated codebase | Reference | 127 | 913 KB | 2026-10-07 |
 
@@ -6255,7 +6255,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.7.22, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.7.23, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -6618,7 +6618,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-284**site releases since 14 August**
+285**site releases since 14 August**
 each verified live before it was called done
 
 50**vaults published with a public read key**
@@ -9898,7 +9898,7 @@ an attack tree
 
 Each startup has an attack tree in the form Bruce Schneier described in 1999. Every branch carries the ATT&CK technique it uses, the tier of attacker who would use it and a rough cost; branches above the startup's ceiling are dashed and labelled above the line. Each tree also has a list version for screen readers.
 
-Benchbox: the usual way in does not involve the Mac mini at all.
+The accounting firm assistant: the usual way in does not involve the Mac mini at all.
 
 the line
 
@@ -9912,7 +9912,7 @@ compare
 
 ### Eight startups by six tiers
 
-Courtside, a booking app for padel clubs, stops at T1. Four of the eight stop at T3. Courtfile, which sells to law firms in disputes, plans for T4 because hack-for-hire against litigants is documented. Two reach T5 for opposite reasons: Openshelf, a two-person open-source library, because one malicious release reaches everyone downstream; Sovra, because its customer is a government department that already owns the controls.
+The padel booking app stops at T1. Four of the eight stop at T3. The legal review platform, which sells to law firms in disputes, plans for T4 because hack-for-hire against litigants is documented. Two reach T5 for opposite reasons: the open-source library, maintained by two people, because one malicious release reaches everyone downstream; the government drafting tool, because its customer is a government department that already owns the controls.
 
 Where each startup draws its line, and how many plan for each tier.
 
@@ -9950,10 +9950,10 @@ The same design system as the [bridge simulation](../bridge-simulation/index.md)
 
 From `admin/build/catalogue_derive.py zwlqqvkm <read key hex>`, read-only, no token, no clone.
 
-- **Files:** 55 · **plaintext size:** 472 KB
-- **Commits:** 3 · **last updated:** 2026-10-08 · **HEAD:** `obj-cas-imm-ccf171561d5e`
+- **Files:** 56 · **plaintext size:** 469 KB
+- **Commits:** 4 · **last updated:** 2026-10-10 · **HEAD:** `obj-cas-imm-cf0cc786022b`
 - **Top level:** `BRIEF-CORRECTIONS.md`, `PUBLIC.md`, `README.md`, `REALITY.md`, `app.json`, `app/`, `data/`, `index.html`, `tests/`, `tools/`, `versions/`
-- **File types:** .js ×15, .css ×14, .json ×13, .py ×7, .md ×4, .html ×2
+- **File types:** .js ×15, .json ×14, .css ×14, .py ×7, .md ×4, .html ×2
 - **Vault app:** yes, entry `index.html` · **browser-renderable:** yes
 
 ## Sources
@@ -12162,12 +12162,14 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.7.22**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
+The site version (**v0.7.23**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
 
-| v0.7.22 | 2026-10-10 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.21...v0.7.22) | RE-ANCHORING. Instructions given only in conversation can be lost when a session is summarised; this site's session was summarised eighteen times in a month, keeping about 1.7% each time (an infographic from its own transcript). Re-anchoring keeps the rules in an ABP file and prints it back after every summary (SessionStart, matcher compact); a canary status report, computed from the transcript and checked by a Stop hook, ends every few answers, the brown M&M. Both are running in this session. Three ways a rule fails, one file with three jobs, a measured rule, recipes that age with the platform. Two infographics, a diagram with its Mermaid source, the report on a phone and as a card, graph JSON.**New:**[Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not](../articles/re-anchoring-agent-behaviour-policies.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.21...v0.7.22). |
+| v0.7.23 | 2026-10-10 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.22...v0.7.23) | ONE MAC, MANY AGENTS; NO NAMES; FULLER COLLAGES. A Mac of the agent's own gains a section on queueing many agents on one Mac: six scenarios against the licence clauses (purpose and who is using macOS decide it, not the queue), the case worth a lawyer's hour, and the narrow ask for Apple's written terms. Threat-sized security: the eight fictional startups are described by what they do instead of named, in the vault (v0.1.2, gate and tests passing, audited from a fresh read-key clone), its screenshots, the article and the ladder figure, which loses its ceiling column. Newsletter collages: three pictures become one large beside two stacked, two pictures hug their content, so screenshots are no longer letterboxed.**Updated:**[A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies](../articles/a-mac-of-the-agents-own.md), [Threat-sized security, who are you actually protecting against? A teaching vault for founders](../demos/vaults/threat-sized-security/index.md), [Who are you protecting against? Draw the security line where the attacker is, not above it](../articles/who-are-you-protecting-against.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.22...v0.7.23). |
+
+| v0.7.22 | 2026-10-10 | [git 0335818e](https://github.com/SGit-AI/SGit-AI__Website/commit/0335818e) | RE-ANCHORING. Instructions given only in conversation can be lost when a session is summarised; this site's session was summarised eighteen times in a month, keeping about 1.7% each time (an infographic from its own transcript). Re-anchoring keeps the rules in an ABP file and prints it back after every summary (SessionStart, matcher compact); a canary status report, computed from the transcript and checked by a Stop hook, ends every few answers, the brown M&M. Both are running in this session. Three ways a rule fails, one file with three jobs, a measured rule, recipes that age with the platform. Two infographics, a diagram with its Mermaid source, the report on a phone and as a card, graph JSON.**New:**[Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not](../articles/re-anchoring-agent-behaviour-policies.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/0335818e). |
 
 | v0.7.21 | 2026-10-10 | [git 2592327f](https://github.com/SGit-AI/SGit-AI__Website/commit/2592327f) | AGENT DESK, WHERE IT COMES FROM. The article A Mac of the agent's own, the Agent Desk vault page and the business plans list no longer say the plan was written after companies replied to the earlier research; it now simply follows that research.**Updated:**[A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies](../articles/a-mac-of-the-agents-own.md), [Agent Desk, a business plan for a Mac of the agent's own](../demos/vaults/agent-desk/index.md), [Business plans to build on sgit](../startups/business-plans.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/2592327f). |
 
@@ -15655,7 +15657,7 @@ There is a longer account of this one in [Green does not mean live](../articles/
 >
 > Page: https://sgit.ai/articles/index.html
 
-Edition of 2026-10-0856 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.22
+Edition of 2026-10-0856 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.23
 
 # SGit Newsroom
 
@@ -21328,6 +21330,26 @@ From a company that rents or hosts Macs, or wants to:
 - **Measure the boot**: the plan assumes about five minutes from request to a working desktop; it has not been timed yet.
 - **Keep state out of the machine**: one key in, vaults for everything else, and an erase at the end.
 
+## One Mac, many agents: what changes when you queue them
+
+*Added on 10 October 2026, after a question from the plan's author.*
+
+The obvious next question: if a leased Mac must be held for at least 24 hours, can one customer fill that day with many agents, one at a time, cleaning up after each? The cleaning-up part is easy. With the bootstrap above, everything an agent touched comes from vaults and goes back to vaults, so wiping between runs is a deletion, not a project. And the agents in our own team already run on a schedule, several times a day.
+
+The licence, read again with that question, cares about two things that queueing does not change: **what the Mac is used for**, and **who is using macOS**.
+
+Six scenarios against the clauses that decide them. Queueing satisfies "one user at a time"; the purpose of a lease, and who the user is, decide the rest. A reading of Apple's text, not legal advice.
+
+**Purpose.** A lease is valid only "for the sole purpose of providing Permitted Developer Services", which Apple defines as "continuous integration services, including but not limited to software development, building software from source, automated testing during software development, and running necessary developer tools to support such activities." So a queue of coding agents on a leased Mac fits: it is what a continuous integration runner already does, many jobs for one customer in a row. A queue of office agents, working in mail, a browser and desktop apps, is outside the lease however carefully it is scheduled.
+
+**Who.** If my agents, with my credentials, do the work and my customers buy the result, I am the user of macOS. That holds for developer work on a lease even when the work is for clients: a consultancy's build machine. If my customers' own agents, with their own credentials, get slots on my Mac, my customers are using macOS in turn, which is the "service bureau, time-sharing" the licence excludes "whether such services are being provided within your own organization or to third parties", and each of them would need a lease of their own of at least 24 hours.
+
+**The case worth a lawyer's hour.** On a Mac you own, Section 2B(ii) lets a business run macOS "by multiple individuals on a single shared Mac Computer that you own or control", alongside "only one user may use the Apple Software at a time". A queue of your own agents on your own Mac, wiped between runs, is the closest fit for office agents. Two words decide it: whether automated agents are "individuals", and whether rotating them is time-sharing "within your own organization".
+
+**What would need Apple's written terms.** Two cases: office agents on a leased Mac, and customers' agents sharing one Mac. The macOS 27 licence adds "except as otherwise provided in writing, signed, or issued by an authorized representative of Apple" to the virtualisation and leasing clauses, which is the route. The narrow ask is easier than the broad one: one organisation, a lease of 24 hours or more, sole use, one agent at a time, wiped between runs, for non-developer work. It keeps every condition Apple already sets except the purpose.
+
+So the plan's shapes hold, with one refinement. The dedicated Mac per customer (shape B) is needed whenever the agents are the customer's. When the agents are the operator's, doing work the customer buys, one Mac can serve many of them in turn, and for developer work that is already within the licence.
+
 *Drafted from a voice memo by Dinis Cruz, who is the author of the idea and the person with editorial responsibility, by agent@riskmandate.ai (Claude Opus 5.5, claude-opus-5-5) in the sgit.ai site session, on 9 October 2026. The licence quotes are from Apple's macOS 15, 26 and 27 licences as published on apple.com; the reading of them is ours and is not legal advice. Mac prices are from Apple's UK store on 9 October 2026; every other number is an assumption, labelled in the vault. No provider is named, at the request of the author.*
 
 ## Threads
@@ -23004,7 +23026,7 @@ By [Dinis Cruz](../about/index.md) · 2026-10-08 · [v0.7.3](../admin/versions.m
 
 ***Abstract:** An entrepreneur doing everything they can to be secure bought a Mac mini for a customer, decided it would never touch the internet and that nothing would be installed on it, and ended up writing the application in the Perl that ships with macOS. The question that decides whether that is wise is not how secure the design is, but who it protects against. This article sets out the three questions that answer it, who the threat agent is, what the attack vector is, and how sophisticated they are, and a ladder of six tiers from your own mistakes to states, grounded in NIST SP 800-30, the NCSC's commodity, targeted and elevated threats, and MITRE ATT&CK. It notes that the UK's new AI Risk Management Toolkit asks "Who are the new threat actors?" without defining them. It reads the Mac mini against the ladder, where the air gap stops attackers that no inbound ports and patches also stop while adding a USB path and removing backups, monitoring and mainstream tooling; makes the same argument about keeping systems on premises for security; and argues that you should sell something better than what the customer has, not something beyond what they need, because drawing the line too high is a disservice to both sides. With it ships a vault of eight fictional startups, each with its assets, an attack tree mapped to ATT&CK techniques, and where it should draw the line, plus a questionnaire to draw your own.*
 
-Six tiers of attacker, from your own mistakes to elevated threats, with what stops each, and where the eight fictional startups in the vault set their ceiling. Most of them plan for everything up to organised crime for money, and write down what they accept above it.
+Six tiers of attacker, from your own mistakes to elevated threats, with what stops each. Most startups plan for everything up to organised crime for money, and write down what they accept above it.
 
 **Where this comes from.** A voice memo I recorded after reading a report from an entrepreneur who is trying hard to do security properly and is learning fast. They are not named and their project is not described beyond the design choice the memo is about. The ladder, the scenarios and the questionnaire are in a vault published with this article, [Threat-sized security](../demos/vaults/threat-sized-security/index.md); the scenarios in it are fictional and the sources are real.
 
@@ -23081,18 +23103,18 @@ The vault's compare view: eight fictional startups against the six tiers, the ti
 
 The vault maps this out for eight fictional startups, because the line moves with the business, not with how careful the founder is.
 
-| Startup | What it is | Ceiling | Why |
-|---|---|---|---|
-| Courtside | A booking app for padel clubs | T1 | Member contact details; nothing that pays a ransom |
-| Ledgerlight | AI bookkeeping reading bank feeds | T3 | Financial data and live tokens: ransomware and extortion |
-| Quietroom | Session notes for independent therapists | T3, with T4 for insiders | The harm is to patients; the 2020 Vastaamo case shows how |
-| Benchbox | The Mac mini at an accounting firm | T3 | Ransomware starts at the staff laptops |
-| Courtfile | Document review for law firms in disputes | T4 | Hack-for-hire against litigants is documented |
-| Gridwise | Energy monitoring with optional control | T3 | Keep the dangerous capability off by default |
-| Openshelf | A popular open-source library | T5 | The target is everyone downstream; the xz Utils backdoor is the precedent |
-| Sovra | AI drafting for a government department | T5 | Set by the customer, who already owns the controls |
+| Fictional startup | Ceiling | Why |
+|---|---|---|
+| A booking app for padel clubs | T1 | Member contact details; nothing that pays a ransom |
+| AI bookkeeping reading bank feeds | T3 | Financial data and live tokens: ransomware and extortion |
+| Session notes for independent therapists | T3, with T4 for insiders | The harm is to patients; the 2020 Vastaamo case shows how |
+| The Mac mini at an accounting firm | T3 | Ransomware starts at the staff laptops |
+| Document review for law firms in disputes | T4 | Hack-for-hire against litigants is documented |
+| Energy monitoring with optional control | T3 | Keep the dangerous capability off by default |
+| A popular open-source library | T5 | The target is everyone downstream; the xz Utils backdoor is the precedent |
+| AI drafting for a government department | T5 | Set by the customer, who already owns the controls |
 
-One scenario in full: Benchbox's assets, its attack tree with an ATT&CK technique on every branch, and the line, with what must be done, what should, what is over the line and why, and the under-engineering to avoid.
+One scenario in full: the accounting firm assistant's assets, its attack tree with an ATT&CK technique on every branch, and the line, with what must be done, what should, what is over the line and why, and the under-engineering to avoid.
 
 Each scenario has an [attack tree](https://www.schneier.com/academic/archives/1999/12/attack_trees.html), the form Bruce Schneier described in 1999, "with the goal as the root node and different ways of achieving that goal as leaf nodes". Every branch carries the ATT&CK technique it uses, the tier of attacker who would use it, and a rough cost. Walk the tree and the line draws itself: the branches below the ceiling get controls; the branches above it are written down as accepted, with a reason. Two startups have a ceiling at the top tier, and the reasons are instructive. One is a two-person open-source project, because one malicious release reaches everyone who installs it. The other sells to government, where the customer sets the line and already owns the controls.
 
@@ -33027,7 +33049,7 @@ One entry per run of a desk role, newest first, each its own file and never edit
 >
 > Page: https://sgit.ai/articles/collections/index.html
 
-Edition of 2026-10-0856 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.22
+Edition of 2026-10-0856 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.23
 
 # Collections
 
@@ -33046,7 +33068,7 @@ A collection is one file in `admin/content/newsroom/collections/`. [How the desk
 >
 > Page: https://sgit.ai/articles/desk/index.html
 
-Edition of 2026-10-0856 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.22
+Edition of 2026-10-0856 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.23
 
 # From the desk
 
@@ -33634,7 +33656,7 @@ Your browser encrypts it to the public key of the agent that runs the list, then
 >
 > Page: https://sgit.ai/articles/newsletter/index.html
 
-Edition of 2026-10-0856 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.22
+Edition of 2026-10-0856 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.23
 
 # The newsletter
 
