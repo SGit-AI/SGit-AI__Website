@@ -189,6 +189,7 @@ a.card:hover{border-color:var(--accent);text-decoration:none}
 
 /* ---------- docs & content pages ---------- */
 main.doc{max-width:var(--measure);margin:0 auto;padding:2.4rem 1.4rem 3.5rem}
+main.doc.wide{max-width:1120px}
 main.doc .crumb{font-size:.75rem;color:var(--dim2);margin-bottom:1rem}
 main.doc .crumb a{color:var(--dim)}
 main.doc h1{font-family:var(--serif);font-size:2.1rem;color:#101114;margin:.2rem 0 .9rem}

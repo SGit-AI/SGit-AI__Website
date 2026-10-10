@@ -16,7 +16,7 @@
     <tr><td>4</td><td>Replay the same topped-up URL</td><td>none</td><td>Blocked: each id is credited once per browser (but a new id is trivial, see 3)</td><td>none</td></tr>
     <tr><td>5</td><td>Clear site data to wipe a negative balance</td><td>Two clicks</td><td>Nothing; there was never a debt</td><td>Their history</td></tr>
     <tr><td>6</td><td>Read as an agent: fetch the markdown twin or the newsroom wire</td><td>None; it is the intended route for agents</td><td>Unmetered by design, for now</td><td>none</td></tr>
-    <tr><td>7</td><td>Someone else on a shared computer opens the account page and sees what was read and declined</td><td>Sit down at it</td><td>none</td><td>Privacy. Mitigations: "Start again" clears it; a private window keeps nothing</td></tr>
+    <tr><td>7</td><td>Someone else on a shared computer opens the account or newsroom and sees what was read and declined, and the reader's personas</td><td>Sit down at it</td><td>none</td><td>Privacy. Mitigations: "Start again" clears it; a private window keeps nothing</td></tr>
     <tr><td>8</td><td>A script injected into the site (XSS) reads the history</td><td>Needs a hole in the site first</td><td>Reputation</td><td>Privacy. Mitigations: the meter sets page data only as text; the only third-party code on this origin is the in-browser Python on <a href="../try/index.html">the try page</a>, loaded from a pinned version, so that page shares the same storage and the same trust</td></tr>
     <tr><td>9</td><td>Card testing, fraud or chargebacks against the Stripe link</td><td>Ordinary payment fraud</td><td>Fees and disputes, held by Stripe's own controls (Radar)</td><td>none</td></tr>
   </table></div>

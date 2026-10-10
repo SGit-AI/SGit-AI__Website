@@ -46,7 +46,7 @@ Two things in that are worth noticing. The middle tier sells, in part, the absen
 
 This meter tries a third door. The ask is never made, because the balance is always visible and the price of each page is stated where you read it. The commitment is never asked for, because you pay for pages after you have read them, as much of them as you read, and you can refuse. And going below zero is not a failure state. It is information you have, about what you have read, kept where only you can see it.
 
-The hypothesis is that a reader who can see an honest running total, and who is never shamed for it, is more willing to settle it than one who is counted and asked. More so as the site gives something back for the history: curation, picks, and in time a front page that is entirely personal to the reader, computed in their browser from what they read and what they declined.
+The hypothesis is that a reader who can see an honest running total, and who is never shamed for it, is more willing to settle it than one who is counted and asked. More so as the site gives something back for the history: curation, picks, and in time a front page that is entirely personal to the reader, computed in their browser from what they read and what they declined. The first version of that front page is live the same day: [your newsroom](/account/newsroom.html), one per persona, and why personas are what a reader would pay to keep is in [pay to keep your persona](/articles/pay-to-keep-your-persona.html).
 
 ## Why by depth
 
@@ -112,6 +112,8 @@ Written now, before there is a single payment, so that we cannot move the goalpo
 | H5 | Below zero is normal, not a reason to leave | Readers who send us their history mostly have a negative balance, and still read | We cannot test this without readers sending their history; it is written here so that we notice if we start to believe it without evidence |
 
 What we can see, so that nobody has to take these on trust: the Stripe dashboard (payments, amounts, payers, repeat payers, disputes), and the views LinkedIn reports on the articles cross-posted there, which is the nearest thing to a denominator we have. What we cannot see: anything the meter records. There is no analytics on this site, and the meter sends nothing. The depth you read, the pages you declined and why, your balance: all of it is in your browser. If you want to help, the account page exports it as JSON, and you can send it to us. Nobody has to.
+
+*Added the same day, before any payment:* two more hypotheses, H6 and H7, about what readers would pay for beyond reading, are in [pay to keep your persona](/articles/pay-to-keep-your-persona.html). The five above are unchanged.
 
 We will publish the review on the review date, whatever it says, with the numbers from the Stripe dashboard. A hypothesis that fails is a result. The one outcome that would be a failure of the method is not looking.
 

@@ -2,7 +2,7 @@
 
 > A business plan for somebody else to build: a dedicated macOS desktop for AI agents, clean per run, built from encrypted vaults by a short bootstrap, keys by PKI, locked down and observed, erased at the end. Apple's licence quoted, with the five shapes it allows and the one it rules out; three Agent Behaviour Policies for the same customer service agent; economics with a calculator; a Wardley map. Published with its read key.
 
-*Source: <https://sgit.ai/demos/vaults/agent-desk/index.html> · site v0.7.28 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/agent-desk/index.html> · site v0.7.29 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

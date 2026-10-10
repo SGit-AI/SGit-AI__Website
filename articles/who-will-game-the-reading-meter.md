@@ -2,7 +2,7 @@
 
 > The reading meter on sgit.ai keeps everything in the reader's browser, so anyone can cheat it: edit the balance, open a private window, or credit themselves £5 by opening the page a payment returns to with a made-up reference. This piece goes one level below "who are you protecting against". None of the people here are attackers. They are readers, from engineers who are invisible by habit to people who can barely click, with agents moving between the levels in seconds. For each kind we estimate how many there are, from published figures, what they could do to the meter and whether they will. The answer is that cheating will happen, rarely, and costs nothing that reaches the site, while the risks that will actually happen are quieter: a shared computer showing someone's reading history, a reader confused by a number, and ordinary card fraud on the payment link. Security and usability are aimed at the readers who will pay, not at the ones who never would.
 
-*Source: <https://sgit.ai/articles/who-will-game-the-reading-meter.html> · site v0.7.28 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/who-will-game-the-reading-meter.html> · site v0.7.29 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 # Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen
 
-By [Dinis Cruz](../about/index.md) · 2026-10-10 · [article v1.0.0](versions/who-will-game-the-reading-meter.md) · securitythreat-modellingmicropaymentslocal-firstprivacyusabilityusersagentsarticle
+By [Dinis Cruz](../about/index.md) · 2026-10-10 · [article v1.1.0, 2 versions](versions/who-will-game-the-reading-meter.md) · securitythreat-modellingmicropaymentslocal-firstprivacyusabilityusersagentsarticle
 
 ***Abstract:** The reading meter on sgit.ai keeps everything in the reader's browser, so anyone can cheat it: edit the balance, open a private window, or credit themselves £5 by opening the page a payment returns to with a made-up reference. This piece goes one level below "who are you protecting against". None of the people here are attackers. They are readers, from engineers who are invisible by habit to people who can barely click, with agents moving between the levels in seconds. For each kind we estimate how many there are, from published figures, what they could do to the meter and whether they will. The answer is that cheating will happen, rarely, and costs nothing that reaches the site, while the risks that will actually happen are quieter: a shared computer showing someone's reading history, a reader confused by a number, and ordinary card fraud on the payment link. Security and usability are aimed at the readers who will pay, not at the ones who never would.*
 
@@ -66,7 +66,7 @@ That is why agents are outside the meter for now, on purpose, rather than inside
 | 4 | Replay the same return URL | Anyone | Blocked once per reference; a new reference is trivial, so see 3 | None |
 | 5 | Clear site data to wipe a negative balance | Steps 1 to 3 | Nothing; there was never a debt | Their history |
 | 6 | Read as an agent, through the markdown twin or the wire | Agents | Unmetered by design | None |
-| 7 | Read someone else's history on a shared computer | Anyone with the computer | None | Privacy |
+| 7 | Read someone else's history and personas on a shared computer | Anyone with the computer | None | Privacy |
 | 8 | A script injected into the site reads the history | Needs a hole in the site first | Reputation | Privacy |
 | 9 | Card testing, fraud or chargebacks on the Stripe link | Ordinary payment fraud | Fees and disputes | None |
 
@@ -112,6 +112,7 @@ Startups & strategyAgents & policy[This article as a graph →](graphs.md#who-wi
 
 ### Continued by
 
+- [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](pay-to-keep-your-persona.md) Readers should pay because it helps them: a persona with a name and a graph, several for focus, and one that follows you between devices.
 - [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](going-live-with-the-reading-meter.md) Pay for the share of a page you read, go below zero with no nagging, top up £5 on Stripe: the plan, and the numbers we check in eight weeks.
 
 [All articles](index.md) · [All graphs](graphs.md)

@@ -2,7 +2,7 @@
 
 > The articles on this site are deep and carry their evidence, and that makes them long and hard to consume. The answer tried here is not shorter articles. It is to keep writing the article first, as prose, because writing is how the argument is found, and then to send five readers through it afterwards, each an agent with a defined role. Two build the platform: a Librarian that catalogues every fact, claim, number, question and source with the sentence it came from, and a Cartographer that turns the catalogues into an ontology at three altitudes and draws the maps. Three write for a person: a Historian that says what the article added and where it sits in the arc, an Explainer that says it in two minutes, and a Storyteller that tells it as a deck. We ran it on the five articles about agent behaviour policies published between 7 and 10 October: 662 items catalogued, 32 problems flagged in published articles, 45 concepts, nine maps, five decks, and one new concept in the most recent article. The views are now on those five articles, and the whole run is in a vault you can open.
 
-*Source: <https://sgit.ai/articles/one-article-five-readers.html> · site v0.7.28 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/one-article-five-readers.html> · site v0.7.29 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -210,6 +210,10 @@ News & evidenceGraphs & knowledge[This article as a graph →](graphs.md#one-art
 - [Footprint and blast radius: what the agent actually did, and what it would have cost](footprint-and-blast-radius.md) Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.
 - [The Mandate Stack: a multi-agent system in production, layer by layer](the-mandate-stack.md) A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.
 - [Every risk is already accepted. The only question is by whom, and for how long.](every-risk-is-already-accepted.md) A risk exists the moment the exposure does, so somebody is already carrying it; the only questions worth asking are who has accepted it and until when.
+
+### Continued by
+
+- [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](pay-to-keep-your-persona.md) Readers should pay because it helps them: a persona with a name and a graph, several for focus, and one that follows you between devices.
 
 [All articles](index.md) · [All graphs](graphs.md)
 

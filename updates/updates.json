@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-10",
-  "site_version": "v0.7.28",
+  "site_version": "v0.7.29",
   "updates": [
     {
       "slug": "the-meter-goes-live",
@@ -16,6 +16,19 @@
         "library"
       ],
       "summary": "The reading meter stops being a demonstration. A page now costs the share of it you read, your balance can go below zero and stay there, and nothing nags. By depth. Scroll a tenth of the way down and you pay a tenth: 10p for a new article read to the end, 5p f…"
+    },
+    {
+      "slug": "personas",
+      "title": "Personas, and a newsroom of your own",
+      "date": "2026-10-10",
+      "version": "v0.7.28",
+      "tags": [
+        "newsroom",
+        "personalisation",
+        "personas",
+        "local-first"
+      ],
+      "summary": "Your reading now builds a persona, and you can have several. Each has a name, its own picks and a graph you can watch grow, all kept in your browser. Your newsroom : a front page for the active persona, with Keep and Not for this persona on every pick. Your pe…"
     },
     {
       "slug": "a-reading-meter",
@@ -917,6 +930,24 @@
     }
   ],
   "articles": [
+    {
+      "slug": "pay-to-keep-your-persona",
+      "title": "Pay to keep your persona: readers should pay because it helps them, not because they feel they should",
+      "date": "2026-10-10",
+      "version": "",
+      "tags": [
+        "newsroom",
+        "personalisation",
+        "personas",
+        "value-proposition",
+        "micropayments",
+        "local-first",
+        "privacy",
+        "focus",
+        "article"
+      ],
+      "summary": "Most of what readers are asked to pay for, they pay for because they have to, because they are made to feel they should, or because it is the right thing to do. That works to a degree, and it does not scale. The value proposition we want is the opposite: a reader pays because it helps them, because what they are buying is time, context, focus, the ability to make good decisions and a better experience. On this site that thing now has a name. Your reading builds a persona, with a name and a graph you can watch grow, and you can have several, because a persona is a way to manage focus: one for security, one for AI development, one for everything else. Start from five made from what this site publishes, keep articles in a persona or put them out of it, and switch between them. Today it all lives in one browser, so opening the site on an iPad and then on a laptop gives you two strangers. That is the bad experience worth fixing, and the thing worth paying for: a persona that follows you to your phone, your laptop and your agent, with the privacy intact."
+    },
     {
       "slug": "who-will-game-the-reading-meter",
       "title": "Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen",

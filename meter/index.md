@@ -2,17 +2,17 @@
 
 > One web component that charges readers a few pence a page from a balance kept in their own browser, by how far down the page they read; never blocks, allows a negative balance, lets a reader decline with a reason. Install, views, config, events, storage, theming, Stripe.
 
-*Source: <https://sgit.ai/meter/index.html> · site v0.7.28 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/meter/index.html> · site v0.7.29 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
 [Home](../index.md) / [Docs](../docs/index.md) / SG Meter
 
-A library · v1.0.0
+A library · v1.1.0
 
 # SG Meter: a reading meter you can add to any website
 
-One web component that charges readers a few pence a page from a balance kept in their own browser, by how far down the page they read. It never blocks a page, it lets the balance go below zero, it lets a reader decline to pay for a page and say why, and it turns what they read into picks. No server, no account, no cookies, no third-party script. It is what runs on this site: the balance in the top bar is it.
+One web component that charges readers a few pence a page from a balance kept in their own browser, by how far down the page they read. It never blocks a page, it lets the balance go below zero, it lets a reader decline to pay for a page and say why, and it turns what they read into personas: named, drawn as a graph, curated by the reader, and as many as they want. No server, no account, no cookies, no third-party script. It is what runs on this site: the balance in the top bar is it.
 
 **What it is, and what it is not.** An honesty box, not a paywall. Everything it knows is in the reader's browser, so a reader can change their own balance, and the page a payment returns to cannot check the payment. That is a choice, made because of who reads a site like this one and what cheating would cost; it is argued in [the security model](security.md) and, with the numbers, in [who will game the reading meter](../articles/who-will-game-the-reading-meter.md). If you need a meter that holds money, this is the wrong library.
 
@@ -22,13 +22,13 @@ Copy two folders into your site, keeping their paths: the component and the base
 
 ```
 assets/components/base/v1/v1.0/v1.0.0/sg-component.js
-assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.js
-assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter-core.js
-assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.tpl
-assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.css
+assets/components/sg-meter/v1/v1.1/v1.1.0/sg-meter.js
+assets/components/sg-meter/v1/v1.1/v1.1.0/sg-meter-core.js
+assets/components/sg-meter/v1/v1.1/v1.1.0/sg-meter.tpl
+assets/components/sg-meter/v1/v1.1/v1.1.0/sg-meter.css
 ```
 
-The paths are versioned and immutable, as in [the estate's JavaScript guidance](https://coding.sgit.ai/javascript/index.html): a fix is a new path, so a page that works today keeps loading the same files. Read them first; they are short: [the rules](../assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter-core.js) (no rendering), [the element](../assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.js), [its styles](../assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.css), [the base class](../assets/components/base/v1/v1.0/v1.0.0/sg-component.js).
+The paths are versioned and immutable, as in [the estate's JavaScript guidance](https://coding.sgit.ai/javascript/index.html): a fix is a new path, so a page that works today keeps loading the same files. Read them first; they are short: [the rules](../assets/components/sg-meter/v1/v1.1/v1.1.0/sg-meter-core.js) (no rendering), [the element](../assets/components/sg-meter/v1/v1.1/v1.1.0/sg-meter.js), [its styles](../assets/components/sg-meter/v1/v1.1/v1.1.0/sg-meter.css), [the base class](../assets/components/base/v1/v1.0/v1.0.0/sg-component.js).
 
 Then, on every page, load the module once, give it a config, and say what the page is:
 
@@ -45,12 +45,12 @@ Then, on every page, load the module once, give it a config, and say what the pa
   "topup": { "amount": 500, "link": "https://buy.stripe.com/your-link" },
   "picks": { "feed": "articles/feed.json", "base": "articles/" } }
 </script>
-<script type="module" src="/assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.js"></script>
+<script type="module" src="/assets/components/sg-meter/v1/v1.1/v1.1.0/sg-meter.js"></script>
 ```
 
 Every key has a default, so an empty config works. Put `data-root` on `<html>` (for example `data-root="../"`) if your pages are not all at the top level; links the component writes are prefixed with it. This site loads the module with a dynamic `import()` from an inline script instead of a `src`, because its own build forbids script tags that point at files; either works.
 
-## The six views
+## The ten views
 
 One element, one shared meter: an ES module is evaluated once per page, so however many `<sg-meter>` elements a page has, it is charged once.
 
@@ -61,9 +61,13 @@ One element, one shared meter: an ES module is evaluated once per page, so howev
 | `account` | Balance, pages opened, spend, what was declined, picks, spend by topic, the history with the depth read, top-ups; pause, export as JSON, start again. |  |
 | `topup` | With `topup.link` set, one button to the payment page. Without, a simulated cart (packs, cart, review, receipt) that says it is simulated. |  |
 | `topped-up` | The page a payment link returns to. Adds `topup.amount` once per `session_id` in the URL. It does not verify the payment; see [the security model](security.md#return). |  |
-| `picks` | Unread pages from the reader's most-read topics. Hidden until there is a history to pick from. | `count` (default 4) |
+| `picks` | Unread pages for the active persona. Hidden until there is something to pick from. | `count` (default 4) |
+| `newsroom` | The reader's own front page (v1.1): their personas as chips, the active one's name and description, its picks with Keep and Not for this persona on each, what was kept in it or put out, and its graph. | `count` (default 9) |
+| `personas` | Rename, switch and remove personas, and add one from a preset or a blank one (v1.1). |  |
+| `graph` | A persona drawn as an SVG graph (v1.1): the persona in the middle, its topics sized by weight, the pages behind each topic, and the citations between those pages, from the feed's `links_out`. Each page is a link, with its title and depth read as a tooltip. | `persona` (default the active one) |
+| `link` | One line linking to the newsroom, named for the active persona (v1.1). |  |
 
-This site's own: [account](../account/index.md), [top-up](../account/top-up.md), [topped-up](../account/topped-up.md) (opened without a payment reference, it adds nothing and says so), and the picks band on [the front page](../articles/index.md).
+This site's own: [newsroom](../account/newsroom.md), [personas](../account/personas.md), [account](../account/index.md), [top-up](../account/top-up.md), [topped-up](../account/topped-up.md) (opened without a payment reference, it adds nothing and says so), and the link on [the front page](../articles/index.md).
 
 ## The rules it charges by
 
@@ -73,6 +77,19 @@ This site's own: [account](../account/index.md), [top-up](../account/top-up.md),
 - **Declining is allowed.** A reader can refuse to pay for a page, with a reason: the headline promised more than the page gave, not relevant to me, I did not really read it, another reason. The charge is refunded and the reason kept in their history; "not relevant" counts against that page's topics in the picks.
 - **New costs more.** An `article` whose `date` is within `newDays` is priced at `article_new`, judged in the reader's browser, so prices age without a rebuild. Any other `kind` is looked up in `prices`, falling back to `page`.
 - **Storage may fail.** In a browser that blocks storage the page still works, and the account says it cannot keep a balance.
+
+## Personas (v1.1)
+
+A reader has one or more personas and one is active. They are a way to manage focus: the same reader reads differently as a founder and as a security lead, and wants different picks for each.
+
+- **"me" always exists.** It is built from everything the reader reads, weighted by what each page cost them (so by depth), and named from the topics it reads most until the reader names it: with `names` set to `{"agents-and-policy": "The Policy Architect", …}`, a reader of agents and graphs becomes *The Policy Architect, with a streak of the Cartographer*.
+- **Presets.** A site can offer starting personas in `personas.presets`: a name, a label, a colour, a description, a few topic weights and a handful of articles. Adding one makes it active.
+- **Reading counts towards the active persona.** Each page opened records the persona that was active; a persona's profile is its preset, plus what was read while it was active, plus its curation.
+- **Curation.** Any article can be kept in a persona (its topics and tags +5) or put out of it (−3, and never picked). The page view has "Keep in your persona"; the newsroom has Keep and Not for this persona on every pick.
+- **Picks** score unread articles by the persona's topic weights plus twice its tag weights, so two personas on the same topics still differ.
+- **Moving them.** The account view exports everything as JSON and restores it in another browser. Nothing syncs on its own yet.
+
+This site's five presets (founder, journalist, security lead, AI builder, board member) are `PERSONAS` in its build, which refuses a preset that names an article that does not exist. Why personas, and why they are what a reader would pay to keep: [pay to keep your persona](../articles/pay-to-keep-your-persona.md).
 
 ## Config reference
 
@@ -102,6 +119,8 @@ Dispatched on `document`, bubbling and composed, named `<namespace>:<noun>.<verb
 | `sg:meter.declined` | `{path, reason, balance}` |
 | `sg:meter.toppedup` | `{credit, source, balance}`; source is `simulated` or `link` |
 | `sg:meter.reset` | `{}` |
+| `sg:meter.persona` | `{active, what}`; what is `active`, `added`, `renamed`, `removed` or `curated` (v1.1) |
+| `sg:meter.restored` | `{reads}`, after a restore from an export (v1.1) |
 | `sg:meter.changed` | `{balance}`, on any saved change; the elements repaint on it |
 | `sg-meter:error` | `{why}`, if the component's markup or styles failed to load; the element also gets `data-state="error"` |
 
@@ -112,16 +131,20 @@ Nothing listens to these on this site: there is no analytics. They are there so 
 One JSON value under `storageKey` in localStorage, and a map of this session's pages under `storageKey + ".seen"` in sessionStorage. The reader can export it from the account page.
 
 ```
-{ "v": 2, "created": "2026-10-10T09:00:00.000Z",
+{ "v": 3, "created": "2026-10-10T09:00:00.000Z",
   "balance": -12.5, "spent": 512.5, "reads": 91, "declined": 14, "paused": false,
   "log": [ { "id": "…", "at": "…", "path": "/articles/x.html", "title": "…", "kind": "article",
-             "topics": ["news"], "price": 10, "depth": 0.55, "cost": 5.5,
+             "topics": ["news"], "price": 10, "depth": 0.55, "cost": 5.5, "persona": "me",
              "declined": { "reason": "clickbait", "at": "…", "refunded": 4 } } ],
   "topups":   [ { "ref": "cs_…", "at": "…", "credit": 500, "source": "link" } ],
-  "sessions": [ "cs_…" ], "cart": [] }
+  "sessions": [ "cs_…" ], "cart": [],
+  "active": "security-mv2h4bb2",
+  "personas": [ { "id": "me", "name": "", "on": [], "off": [] },
+                { "id": "security-mv2h4bb2", "preset": "security", "name": "",
+                  "on": ["footprint-and-blast-radius"], "off": ["a-mac-of-the-agents-own"] } ] }
 ```
 
-The log keeps the last 500 pages. A version 1 state (this site before v0.7.26) is read and upgraded in place.
+The log keeps the last 500 pages. Earlier states (versions 1 and 2) are read and upgraded in place; an upgraded state gets the "me" persona and keeps everything else.
 
 ## Theming
 
@@ -143,9 +166,10 @@ The first version ran on [pt.newsroom.sgit.ai](https://pt.newsroom.sgit.ai/carte
 
 ## Changelog
 
+- **v1.1.0** (10 October 2026, site v0.7.28). Personas: a default one built from all reading and named from its topics, presets offered by the site, as many as the reader wants, reading credited to the active one, Keep and Not for this persona. Four new views: `newsroom`, `personas`, `graph`, `link`. Picks score tags as well as topics. The account view draws the reader's graph and can restore an export. State version 3. v1.0.0 stays at its own path.
 - **v1.0.0** (10 October 2026, site v0.7.26). First packaged release: scroll-depth charging, negative balances, decline with a reason, the balance view, the Stripe return page, picks that count "not relevant" against a topic. Replaces this site's `assets/meter.js` (v0.7.24), which charged on opening and showed a bar when credit ran out.
 
-Next, not yet: rating a page, classifying it and keeping a note on it, all in the same local history; a balance that follows a reader between devices through an encrypted vault only they hold the key to. [Security model](security.md) · [this site's account page](../account/index.md).
+Next, not yet: rating a page, classifying it and keeping a note on it, all in the same local history; personas and a balance that follow a reader between devices, and to their agent, through an encrypted vault only they hold the key to. [Security model](security.md) · [this site's account page](../account/index.md).
 
 
 ---

@@ -2,7 +2,7 @@
 
 > The reading meter on sgit.ai stops being a demonstration. A page now costs what you read of it: scroll a tenth of the way down a new article and you pay a tenth of 10p. Your balance can go below zero and stay there; nothing is blocked and nothing nags, there is only a small balance in the top bar. If a page was not worth it you can say so, with a reason, and it is not charged. Topping up is one £5 payment on Stripe, with no account and nothing that renews, and the page you come back to adds the credit without being able to check it, on purpose. The meter is also packaged as a library any website can add. This article is the plan and the reasoning, written down before the results: the business case, what we expect, the numbers that would prove us wrong, and the date we look.
 
-*Source: <https://sgit.ai/articles/going-live-with-the-reading-meter.html> · site v0.7.28 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/going-live-with-the-reading-meter.html> · site v0.7.29 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 # Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks
 
-By [Dinis Cruz](../about/index.md) · 2026-10-10 · [article v1.0.0](versions/going-live-with-the-reading-meter.md) · newsroommicropaymentspricingpersonalisationlocal-firstbusiness-casehypothesesstripearticle
+By [Dinis Cruz](../about/index.md) · 2026-10-10 · [article v1.1.0, 2 versions](versions/going-live-with-the-reading-meter.md) · newsroommicropaymentspricingpersonalisationlocal-firstbusiness-casehypothesesstripearticle
 
 ***Abstract:** The reading meter on sgit.ai stops being a demonstration. A page now costs what you read of it: scroll a tenth of the way down a new article and you pay a tenth of 10p. Your balance can go below zero and stay there; nothing is blocked and nothing nags, there is only a small balance in the top bar. If a page was not worth it you can say so, with a reason, and it is not charged. Topping up is one £5 payment on Stripe, with no account and nothing that renews, and the page you come back to adds the credit without being able to check it, on purpose. The meter is also packaged as a library any website can add. This article is the plan and the reasoning, written down before the results: the business case, what we expect, the numbers that would prove us wrong, and the date we look.*
 
@@ -49,7 +49,7 @@ Two things in that are worth noticing. The middle tier sells, in part, the absen
 
 This meter tries a third door. The ask is never made, because the balance is always visible and the price of each page is stated where you read it. The commitment is never asked for, because you pay for pages after you have read them, as much of them as you read, and you can refuse. And going below zero is not a failure state. It is information you have, about what you have read, kept where only you can see it.
 
-The hypothesis is that a reader who can see an honest running total, and who is never shamed for it, is more willing to settle it than one who is counted and asked. More so as the site gives something back for the history: curation, picks, and in time a front page that is entirely personal to the reader, computed in their browser from what they read and what they declined.
+The hypothesis is that a reader who can see an honest running total, and who is never shamed for it, is more willing to settle it than one who is counted and asked. More so as the site gives something back for the history: curation, picks, and in time a front page that is entirely personal to the reader, computed in their browser from what they read and what they declined. The first version of that front page is live the same day: [your newsroom](../account/newsroom.md), one per persona, and why personas are what a reader would pay to keep is in [pay to keep your persona](../articles/pay-to-keep-your-persona.md).
 
 ## Why by depth
 
@@ -116,6 +116,8 @@ Written now, before there is a single payment, so that we cannot move the goalpo
 
 What we can see, so that nobody has to take these on trust: the Stripe dashboard (payments, amounts, payers, repeat payers, disputes), and the views LinkedIn reports on the articles cross-posted there, which is the nearest thing to a denominator we have. What we cannot see: anything the meter records. There is no analytics on this site, and the meter sends nothing. The depth you read, the pages you declined and why, your balance: all of it is in your browser. If you want to help, the account page exports it as JSON, and you can send it to us. Nobody has to.
 
+*Added the same day, before any payment:* two more hypotheses, H6 and H7, about what readers would pay for beyond reading, are in [pay to keep your persona](../articles/pay-to-keep-your-persona.md). The five above are unchanged.
+
 We will publish the review on the review date, whatever it says, with the numbers from the Stripe dashboard. A hypothesis that fails is a result. The one outcome that would be a failure of the method is not looking.
 
 ## What would make us change course
@@ -142,6 +144,7 @@ Startups & strategyNews & evidence[This article as a graph →](graphs.md#going-
 ### Builds on
 
 - [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](a-meter-in-the-browser.md) Every page now costs a few pence from £5 of credit kept in your browser, and the reading history it keeps is what personalises the site.
+- [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](pay-to-keep-your-persona.md) Readers should pay because it helps them: a persona with a name and a graph, several for focus, and one that follows you between devices.
 - [For a startup, the most important question is whether they miss it](the-question-is-whether-they-miss-it.md) Ship something usable, give it away briefly, take it away and see whether anybody misses it; charge at a profit before you talk to investors.
 - [The reader was always the product: a corrected history of how news got into this mess](how-news-got-here.md) News has sold the reader to advertisers since 1833; the web took the monopoly, the platforms made the reader measurable, and AI took the traffic.
 - [Price it, then give it away: the early access programme as the next step after "do they miss it"](price-it-then-give-it-away.md) Define the product, price it, deliver it at a cost that grows a step at a time, then offer it free to people who know you and measure what it costs them.
@@ -149,6 +152,7 @@ Startups & strategyNews & evidence[This article as a graph →](graphs.md#going-
 
 ### Continued by
 
+- [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](pay-to-keep-your-persona.md) Readers should pay because it helps them: a persona with a name and a graph, several for focus, and one that follows you between devices.
 - [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](who-will-game-the-reading-meter.md) Eight kinds of reader, none of them attackers, nine ways to cheat a browser meter, and the quieter risks that will actually happen.
 - [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](a-meter-in-the-browser.md) Every page now costs a few pence from £5 of credit kept in your browser, and the reading history it keeps is what personalises the site.
 

@@ -60,7 +60,7 @@ That is why agents are outside the meter for now, on purpose, rather than inside
 | 4 | Replay the same return URL | Anyone | Blocked once per reference; a new reference is trivial, so see 3 | None |
 | 5 | Clear site data to wipe a negative balance | Steps 1 to 3 | Nothing; there was never a debt | Their history |
 | 6 | Read as an agent, through the markdown twin or the wire | Agents | Unmetered by design | None |
-| 7 | Read someone else's history on a shared computer | Anyone with the computer | None | Privacy |
+| 7 | Read someone else's history and personas on a shared computer | Anyone with the computer | None | Privacy |
 | 8 | A script injected into the site reads the history | Needs a hole in the site first | Reputation | Privacy |
 | 9 | Card testing, fraud or chargebacks on the Stripe link | Ordinary payment fraud | Fees and disputes | None |
 

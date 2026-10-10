@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.28'
+SITE_VERSION = 'v0.7.29'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,8 +29,28 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.28', '2026-10-10', 'this release',
+    ('v0.7.29', '2026-10-10', 'this release',
      "ARTICLES HAVE VERSIONS, AND FIVE READERS FOLDS AWAY. Every article now carries its own version beside the site release it was published in: v1.0.0 is the article as first published, a change to its text is the next minor version, a change only to its other details the next patch. The history is read from git at every build (renames followed, cached for shallow clones), so nobody keeps the numbers and publishing is still adding one file. Each article has a versions page (61 articles, 195 versions), and every version after the first has a page showing what changed, paragraph by paragraph, with a word-level diff. The diff renderer moved into admin/build/article_versions.py and article_diff.py now uses it (output unchanged). Version pages quote earlier text verbatim and are exempt from the em-dash and retired-word style rules, not from the leak checks. Read it another way becomes Five readers: one closed line under the abstract saying what is inside, the five readers closed within it, the article version the views were read from, and links to the other articles the readers have read and to the Article Views vault.",),
+    ('v0.7.28', '2026-10-10', 'git 55aee85d',
+     "PERSONAS, AND A NEWSROOM OF YOUR OWN. SG Meter v1.1.0 (new immutable path assets/components/sg-meter/v1/v1.1/v1.1.0/; "
+     "v1.0.0 kept) gives every reader personas, kept in the same local state as the balance. A default persona is built "
+     "from everything read, weighted by depth, and named from its top topics until the reader names it ('The Policy "
+     "Architect, with a streak of the Cartographer'). Five starting personas built from what the site publishes "
+     "(PERSONAS in the build, which refuses a preset naming an article that does not exist): Morgan the founder, Rowan "
+     "the journalist, Sam the security lead, Kai the AI builder, Jordan the board member. As many personas as a reader "
+     "wants; reading is credited to the active one; any article can be kept in a persona or put out of it, from the "
+     "newsroom or from the foot of the article. Picks now score tags as well as topics. New pages: account/newsroom.html "
+     "(your newsroom: personas as chips, picks for the active one with Keep and Not for this persona, what was kept and "
+     "put out, and its graph) and account/personas.html (rename, switch, remove, add from a preset or blank). The graph "
+     "view draws a persona as SVG: the persona in the middle, topics sized by weight with arcs in proportion to their "
+     "pages, the pages behind each topic, and the citations between them. Picked for you moves off the front page (now "
+     "one line linking to your newsroom) and off the account page, which now draws your graph and can restore an export "
+     "in another browser. State version 3, older states upgraded in place. Docs at /meter/ updated (personas, four new "
+     "views, config, events, schema, changelog). New article: pay to keep your persona (why readers should pay because "
+     "it helps them, not out of guilt; personas as focus; the iPad problem; a persona that follows you as the thing worth "
+     "paying for; H6 and H7). Going live and who will game the reading meter link to it; their pre-registered "
+     "hypotheses are unchanged. Tested in Chromium: v1 state migration, keep from the page, presets, curation, reads "
+     "credited to the active persona, rename, export and restore into a fresh browser, no overflow at 390px, no errors.",),
     ('v0.7.27', '2026-10-10', 'git 759a5fda',
      "ONE ARTICLE, FIVE READERS. The articles are deep and hard to consume, so they are now read again after they are written by five agents with defined roles: a Librarian that catalogues every fact, claim, number, question and source with its verbatim sentence, a Cartographer and Ontologist that builds concepts and verbs at article, topic and site altitude and draws the maps, a Historian that says what the article added and where it sits, an Explainer that says it in two minutes, and a Storyteller that tells it as a deck. Run on the five behaviour-policy articles of 7 to 10 October: 662 items, 32 problems flagged in published text, 45 concepts, 78 edges, nine maps, five decks of nine slides, and one new concept in the newest article. Those five articles now open with Read it another way (two minutes, the arc, the deck with a PDF, the map, the catalogue with its flags), in the page and its markdown twin. A new vault, Article Views (chtgtd9e, read key published), holds the role files, every output, the renderers, the checks and an app; and the article that tells the story.",),
     ('v0.7.26', '2026-10-10', 'git bf3701ab',
@@ -3829,6 +3849,7 @@ NAV = [
         ('graphs', 'As graphs', 'articles/graphs.html'),
         ('newsroom', 'How it runs', 'newsroom/index.html'),
         ('subscribe', 'Subscribe', 'subscribe/index.html'),
+        ('yours', 'Your newsroom', 'account/newsroom.html'),
         ('account', 'Your reading account', 'account/index.html'),
     ]),
     ('why', 'Why', 'why/index.html', [
@@ -4130,18 +4151,61 @@ def meter_kind(path):
     return 'page', '', []
 
 
-METER_JS = 'assets/components/sg-meter/v1/v1.0/v1.0.0/sg-meter.js'
+METER_JS = 'assets/components/sg-meter/v1/v1.1/v1.1.0/sg-meter.js'
+
+# Five personas a reader can start from (SG Meter v1.1), each a handful of topics and articles
+# chosen from what this site has actually published. A persona is a way to manage focus: the
+# same reader reads differently as a founder and as a security lead. The names are made up on
+# purpose and gender-neutral; a reader can rename any persona. The build refuses a slug that
+# is not an article, so a preset cannot point at nothing.
+PERSONAS = [
+    {'id': 'founder', 'label': 'The founder', 'name': 'Morgan', 'theme': '#b45309',
+     'blurb': 'Building a company: what to build, what to charge, what to secure and when to stop. Strategy, pricing and the questions investors ask.',
+     'topics': {'startups-and-strategy': 3, 'agents-and-policy': 1},
+     'articles': ['the-question-is-whether-they-miss-it', 'price-it-then-give-it-away', 'saas-apocalypse-decided-by-inertia-not-by-ai',
+                  'who-are-you-protecting-against', 'knowing-when-to-stop', 'open-source-is-not-free', 'going-live-with-the-reading-meter']},
+    {'id': 'journalist', 'label': 'The journalist', 'name': 'Rowan', 'theme': '#1d4ed8',
+     'blurb': 'Where news came from and where it could go: story vaults, liquid content, local evidence, and what publishers are owed by the machines that read them.',
+     'topics': {'news-and-evidence': 3, 'graphs-and-knowledge': 1},
+     'articles': ['how-news-got-here', 'future-of-news-story-vault-not-paywall', 'liquid-content-needs-water', 'the-bridge-followed-to-the-end',
+                  'story-vault-meets-reader-skills', 'the-waiting-room-knew-first', 'token-bill-nobody-is-sending']},
+    {'id': 'security', 'label': 'The security lead', 'name': 'Sam', 'theme': '#b91c1c',
+     'blurb': 'Agents as insiders: who you are protecting against, blast radius, identity, incidents and the controls that hold when a model does not.',
+     'topics': {'agents-and-policy': 3, 'vaults-and-method': 1},
+     'articles': ['who-are-you-protecting-against', 'ultimate-insider-three-collisions', 'footprint-and-blast-radius', 'six-agents-one-inbox',
+                  'the-investigation-github-owes-its-customers', 'why-my-agents-do-not-run-on-my-laptop', 'the-identity-we-wanted-to-give-the-agents',
+                  'where-is-the-why']},
+    {'id': 'builder', 'label': 'The AI builder', 'name': 'Kai', 'theme': '#0f766e',
+     'blurb': 'Making agents work day to day: Claude Code sessions, hooks, memory, behaviour policies, and the engineering lessons each mistake left behind.',
+     'topics': {'agents-and-policy': 2, 'site-and-engineering': 2, 'vaults-and-method': 1},
+     'articles': ['how-i-work-with-claude', 'a-second-reader-the-agent-cannot-skip', 're-anchoring-agent-behaviour-policies', 'every-mistake-added-a-rule',
+                  'memory-is-not-a-spectator-sport', 'encrypted-memory-for-isolated-agents', 'hope-or-enforcement']},
+    {'id': 'board', 'label': 'The board member', 'name': 'Jordan', 'theme': '#6d28d9',
+     'blurb': 'How AI is changing the business and how to govern it: business models, due diligence, risk acceptance, accountability and the governance frameworks.',
+     'topics': {'graphs-and-knowledge': 2, 'startups-and-strategy': 2, 'agents-and-policy': 1},
+     'articles': ['saas-apocalypse-decided-by-inertia-not-by-ai', 'send-an-agent-not-a-spreadsheet', 'every-risk-is-already-accepted',
+                  'agency-is-not-a-yes', 'the-ai-governance-stack-as-a-graph', 'ai-baseline-control-framework', 'what-sgit-is']},
+]
+# What a persona built from reading is called, after the topic it reads most.
+PERSONA_NAMES = {'agents-and-policy': 'The Policy Architect', 'vaults-and-method': 'The Vault Keeper',
+                 'news-and-evidence': 'The Fact Finder', 'startups-and-strategy': 'The Strategist',
+                 'graphs-and-knowledge': 'The Cartographer', 'site-and-engineering': 'The Builder'}
 
 
 def meter_config():
     """The METER rules in the shape the component reads (see /meter/ for every key). The storage
     key is the one v0.7.24 used, so a reader's balance and history carry over."""
+    bad = [(p['id'], x) for p in PERSONAS for x in p['articles'] if x not in BY_SLUG]
+    if bad:
+        raise SystemExit(f'PERSONAS name articles that do not exist: {bad}')
     return json.dumps({
         'storageKey': 'sgit.meter.v1', 'start': METER['start'], 'newDays': METER['new_days'], 'symbol': '£',
         'prices': METER['prices'], 'depth': True, 'minDepth': 0.1,
         'topup': METER['topup'], 'packs': METER['packs'],
         'links': {'account': 'account/index.html', 'topup': 'account/top-up.html'},
         'picks': {'feed': 'articles/graphs.json', 'base': 'articles/'},
+        'links2': {'newsroom': 'account/newsroom.html', 'personas': 'account/personas.html'},
+        'personas': {'presets': PERSONAS, 'names': PERSONA_NAMES},
     }, ensure_ascii=False).replace('</', '<\\/')
 
 
@@ -4683,6 +4747,7 @@ LLMS_SECTIONS = [
     ('articles', 'Articles (longer pieces that argue across pages, with the evidence linked)'),
     ('collections', 'Collections (articles read together, each set with an introduction saying what it shows that no single article does)'),
     ('account', 'Your reading account (a reading meter kept in the browser: prices charged by scroll depth, balance that may go negative, history, top-ups and the personalisation they buy)'),
+    ('yours', 'Your newsroom (a front page per reading persona, worked out in the browser: picks, kept articles, the persona graph; and managing personas)'),
     ('meter', 'SG Meter (the reading meter as a library any website can add: install, views, config, events, storage, theming, Stripe, security model)'),
     ('subscribe', 'Subscribe (the one page with the newsletter sign-up form; the address is encrypted in the browser)'),
     ('newsletter', 'The newsletter (the regular SGit Newsroom issue: what was published and what it adds up to, also posted on LinkedIn)'),
@@ -6698,7 +6763,7 @@ def articles_index_body():
         out.append(f'<p class="fnote"><span class="fkick">From the editor</span> {_esc(fr["note"])} '
                    f'<a href="../newsroom/log.html">The desk log &rarr;</a></p>')
     out.append('<div class="ftop">' + (_lead_block(lead, root) if lead else '') + _latest_rail(10, root) + '</div>')
-    out.append('<sg-meter class="fband" view="picks" count="4" hidden></sg-meter>')
+    out.append('<sg-meter class="fband" view="link"></sg-meter>')
     if fr['highlights']:
         out.append('<section class="fband"><h2 class="fsect">Highlights</h2><div class="fhighs">'
                    + ''.join(_high_card(h, root) for h in fr['highlights']) + '</div></section>')
@@ -7253,8 +7318,8 @@ def account_body():
             ' <p class="eyebrow">SGit Newsroom &middot; reading account</p>\n <h1>Your reading account</h1>\n'
             ' <p class="lead">Every page on sgit.ai has a price of a few pence, and you pay for the share of it you read: scroll a '
             'tenth of the way down and you pay a tenth. You started with &pound;5.00 of credit. If a page was not worth it, say so at '
-            'its foot and it is not charged. What you read is also what personalises the site: the more you read, the better the '
-            'picks below and on the front page.</p>\n'
+            'its foot and it is not charged. What you read is also what builds your graph below, and your '
+            '<a href="newsroom.html">newsroom</a>: a front page for each of your <a href="personas.html">personas</a>.</p>\n'
             + METER_NOTE +
             '\n <sg-meter view="account"><noscript><p>The reading account needs JavaScript: it lives in your browser and nowhere else.</p></noscript></sg-meter>\n'
             f' <h2 id="prices">What things cost, read to the end</h2>\n <div class="tablewrap"><table><tr><th>Page</th><th>Price</th></tr>{rows}</table></div>\n'
@@ -7267,6 +7332,32 @@ def account_body():
             'numbers we expect and the date we check them are in <a href="../articles/going-live-with-the-reading-meter.html">going live '
             'with the reading meter</a>; who could cheat it, and why that is allowed, is in '
             '<a href="../articles/who-will-game-the-reading-meter.html">who will game the reading meter</a>.</p>\n</main>')
+
+
+def yours_body():
+    return ('<main class="doc wide">\n <p class="crumb"><a href="../index.html">Home</a> / <a href="../articles/index.html">SGit Newsroom</a> / Your newsroom</p>\n'
+            ' <p class="eyebrow">SGit Newsroom &middot; yours</p>\n <h1>Your newsroom</h1>\n'
+            ' <p class="lead">A front page made for one persona at a time: the articles it would want next, the ones you kept in it, '
+            'and the graph it has grown. Your default persona is built from everything you read. Add others, one for each kind of '
+            'reading you do, and switch between them: a persona is a way to keep your focus.</p>\n'
+            ' <sg-meter view="newsroom" count="9"><noscript><p>Your newsroom needs JavaScript: it is worked out in your browser, from a '
+            'history kept in your browser.</p></noscript></sg-meter>\n'
+            ' <p class="small dim">Worked out here, from the history and personas kept in this browser only. Nothing is sent anywhere. '
+            'On another device you start again, which is the problem <a href="../articles/pay-to-keep-your-persona.html">pay to keep '
+            'your persona</a> is about. <a href="personas.html">Manage your personas</a> &middot; <a href="index.html">your reading '
+            'account</a>.</p>\n</main>')
+
+
+def personas_body():
+    return ('<main class="doc">\n <p class="crumb"><a href="../index.html">Home</a> / <a href="newsroom.html">Your newsroom</a> / Personas</p>\n'
+            ' <p class="eyebrow">SGit Newsroom &middot; yours</p>\n <h1>Your personas</h1>\n'
+            ' <p class="lead">You are not one reader. Each persona has its own picks, its own graph and its own list of articles kept '
+            'in it or put out of it, and grows from what you read while it is the active one. Start from one of five personas made '
+            'from what this site publishes, or from nothing, and give it a name.</p>\n'
+            ' <sg-meter view="personas"><noscript><p>Personas need JavaScript: they live in your browser.</p></noscript></sg-meter>\n'
+            ' <p class="small dim">Kept in this browser with your balance and history, and exported and restored with them from '
+            '<a href="index.html#restore">your account</a>. Anyone who uses this browser can see them; "Start again" on the account '
+            'page clears them.</p>\n</main>')
 
 
 def topup_body():
@@ -7342,7 +7433,13 @@ def newsroom_pages():
         out.append((f'articles/collections/{c["id"]}.html', f'{c["title"]}, a collection, sgit.ai', c['dek'], 'collections', collection_body(c)))
     out.append(('account/index.html', 'Your reading account, sgit.ai',
                 'A reading meter kept in your browser: every page costs a few pence, charged by how much of it you read, from £5.00 of '
-                'starting credit. Credit can go negative and nothing is blocked; what you read personalises the site.', 'account', account_body()))
+                'starting credit. Credit can go negative and nothing is blocked; your history, graph and personas live here too.', 'account', account_body()))
+    out.append(('account/newsroom.html', 'Your newsroom, sgit.ai',
+                'Your own front page, one persona at a time: picks, what you kept, and the graph your reading has grown. Worked out in '
+                'your browser from a history nobody else holds.', 'yours', yours_body()))
+    out.append(('account/personas.html', 'Your personas, sgit.ai',
+                'Add, name and switch between reading personas, each with its own picks and graph; start from five made from what '
+                'sgit.ai publishes. Kept in your browser.', 'yours', personas_body()))
     out.append(('account/top-up.html', 'Top up your reading account, sgit.ai',
                 'Add £5 of reading credit to the balance kept in your browser: one payment on Stripe, no account, nothing renews.',
                 'account', topup_body()))
