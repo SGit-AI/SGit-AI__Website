@@ -6,6 +6,23 @@
  "generated_by": "admin/build/build_pages.py",
  "entries": [
   {
+   "slug": "where-the-vault-keys-live",
+   "kind": "article",
+   "kicker": "SGit Newsroom",
+   "date": "2026-10-10",
+   "author": "Dinis Cruz",
+   "title": "Where the vault keys live: key management at sgit-ai v0.20.0, and what comes next",
+   "teaser": "Vault key management at sgit-ai v0.20.0: the one secret, where keys are kept, how they travel sealed on append lanes, and what comes next.",
+   "ideas": [
+    "Giving a key to an agent",
+    "What comes next",
+    "Sealed handover"
+   ],
+   "hero": "articles/images/km-architecture.webp",
+   "url": "sgit.ai/articles/where-the-vault-keys-live.html",
+   "out": "articles/banners/where-the-vault-keys-live.jpg"
+  },
+  {
    "slug": "pay-to-keep-your-persona",
    "kind": "article",
    "kicker": "SGit Newsroom",
@@ -1134,10 +1151,10 @@
     "Next: an issue picked for what you care about"
    ],
    "mosaic": [
+    "articles/cards/where-the-vault-keys-live.webp",
     "articles/cards/pay-to-keep-your-persona.webp",
     "articles/cards/who-will-game-the-reading-meter.webp",
-    "articles/cards/the-infographic-bake-off.webp",
-    "articles/cards/going-live-with-the-reading-meter.webp"
+    "articles/cards/the-infographic-bake-off.webp"
    ],
    "url": "sgit.ai/subscribe/",
    "out": "articles/banners/subscribe.jpg"

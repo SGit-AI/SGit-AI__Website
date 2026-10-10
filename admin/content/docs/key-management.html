@@ -1,0 +1,53 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Docs</a> / Vault key management</p>
+  <h1>Vault key management: where each key lives, and how it travels</h1>
+  <p class="lead">A vault is encrypted in the client, so the server never holds a key and the key is the whole question: whoever holds it holds the vault. This page is the reference for sgit-ai v0.20.0: each kind of credential, where it should be kept, how a key travels without entering a chat, how to give one to an agent, and how to rotate one. The reasoning and the roadmap are in the article <a href="../articles/where-the-vault-keys-live.html">Where the vault keys live</a>.</p>
+
+  <div class="note"><b>Why this page exists, with the date on it.</b> On 10 October 2026 a reader asked where the keys of the vaults that temporary agent sessions write to are managed. The docs explained what each credential can do (<a href="credentials.html">vault credentials</a>) and how to hand a key to a registry (<a href="send-a-vault-key.html">send a vault key</a>), but nowhere said where keys should live. This page is that answer.</div>
+
+  <h2 id="kinds">Each credential, and where it belongs</h2>
+  <table>
+    <tr><th>Credential</th><th>Can</th><th>Keep it in</th><th>Publish?</th></tr>
+    <tr><td><b>Vault key</b><br><code>sgit_private_vault_&lt;passphrase&gt;:&lt;vault_id&gt;</code></td><td>Read and write the vault, and derive everything below</td><td>A password manager, for keys a person holds. A registry vault, for keys agents create. The working session that needs it, for as long as it needs it</td><td><b>Never.</b> Not in a page, a repository, a commit message, an issue, a log or a chat</td></tr>
+    <tr><td><b>Read key</b><br><code>sgit_public_read_&lt;read key&gt;:&lt;vault_id&gt;</code></td><td>Read every file and every commit</td><td>Anywhere you would put the content itself</td><td>Yes, on purpose, under the public prefix. Check it with <code>check_credential.py</code> first</td></tr>
+    <tr><td><b>Write key</b></td><td>Push, and configure append lanes with the access token</td><td>Derived when needed (<code>sgit vault derive-keys</code>); nowhere on its own</td><td>Never</td></tr>
+    <tr><td><b>Append token</b></td><td>Write to one lane, blind</td><td>The one sender it was issued to, one token per sender</td><td>Never. Retire it once it has appeared anywhere durable</td></tr>
+    <tr><td><b>Enumeration key</b></td><td>List, fetch and mark lane messages processed</td><td>The vault owner, beside the vault key</td><td>Never</td></tr>
+    <tr><td><b>PKI private key</b></td><td>Decrypt what was sealed to you; sign</td><td>The machine or vault that generated it (<code>sgit pki keygen</code>)</td><td>Never. Publish the public bundle (<code>sgit pki export</code>) instead</td></tr>
+    <tr><td><b>SG/Send access token</b></td><td>Use a server: create, push, configure</td><td>The environment of the sessions that push, as narrowly as the platform allows (see below)</td><td>Never</td></tr>
+  </table>
+
+  <h2 id="travel">How a key travels</h2>
+  <ul>
+    <li><b>Into the registry.</b> The agent that made the vault seals the key to the registry's public key and writes it to the registry's append lane with a write-only token. It never displays the key. The full instructions, for the agent that has to follow them, are on <a href="send-a-vault-key.html">send a vault key</a>.</li>
+    <li><b>To a person.</b> Through their own password manager, or a lane of their own sealed to their public key. Not in a message thread: a transcript is a durable record held by someone else.</li>
+    <li><b>Onto a page.</b> As a read key only, with the <code>sgit_public_read_</code> prefix, after <code>check_credential.py</code> classifies it. The build refuses any <code>sgit_private_</code> credential in a tracked file.</li>
+    <li><b>To another agent.</b> See the next section. Where you can, let the agent create its own vault and send the key back on a lane, so no key has to be handed in.</li>
+  </ul>
+
+  <h2 id="agents">Giving a key to an agent</h2>
+  <p>An agent needs three things to work with a vault: the key, sgit, and network access to the API host (or a server in its own network: <a href="self-host-for-agents.html">self-hosting</a>). The key is the hard part, because agent platforms do not have secrets per session.</p>
+  <ul>
+    <li><b>Claude Code on the web.</b> Environment variables belong to the environment and "any command Claude runs can read" them; on Team and Enterprise, every member's sessions in a shared environment read its variables (<a href="https://code.claude.com/docs/en/cloud-environments#set-environment-variables" rel="noopener" target="_blank">cloud environments</a>). On Pro and Max, a <b>network secret</b> is attached by the agent proxy outside the session, which suits a server token such as the SG/Send access token, but not a vault key, which has to be inside the session to decrypt.</li>
+    <li><b>OpenAI Codex cloud.</b> Secrets reach setup scripts only and are removed before the agent runs (<a href="https://learn.chatgpt.com/docs/environments/cloud-environment" rel="noopener" target="_blank">cloud environments</a>).</li>
+    <li><b>What we do meanwhile.</b> One small vault per conversation or job, so each key opens little; the agent creates the vault where it can, and sends the key to the registry; a key that had to be pasted into a prompt is treated as exposed, and the vault is rotated when the work ends.</li>
+  </ul>
+
+  <h2 id="rotate">Rotation and retirement</h2>
+  <ul>
+    <li><code>sgit vault rekey</code> replaces the vault key and re-encrypts all content (<code>check</code>, then <code>wipe</code>, <code>init</code>, <code>commit</code>).</li>
+    <li><code>sgit vault move</code> moves the vault to a new identity, a new key and optionally a new server, in eight steps with <code>--dry-run</code> and <code>--cleanup</code>.</li>
+    <li><b>Rotation is not retroactive.</b> Anyone who already fetched the objects keeps them; a new key protects future commits only. Treat a leaked read key as published content, and a leaked vault key as a reason to rotate now.</li>
+    <li><b>Retire lanes</b> whose tokens have appeared anywhere durable: reconfigure the lane without that anchor.</li>
+  </ul>
+
+  <h2 id="local">On one machine</h2>
+  <p><code>sgit vault add &lt;alias&gt;</code>, <code>sgit vault list</code>, <code>sgit vault show &lt;alias&gt;</code> and <code>sgit vault remove &lt;alias&gt;</code> keep keys under aliases on one machine. That is convenient on a laptop. It is not a backup: an ephemeral container loses it with everything else when it is reclaimed, so a key that matters is also in the registry or a password manager.</p>
+
+  <h2 id="next">What comes next</h2>
+  <p>Integrations with password managers (<a href="../partnerships/vault-key-management.html">the open call</a>), the passkey-unlocked keyring of <a href="https://secrets.sgit.ai/" rel="noopener" target="_blank">secrets.sgit.ai</a>, <a href="pki.html">PKI</a> for sharing without shared secrets, and decryption that happens out of band. Statuses are in <a href="../articles/where-the-vault-keys-live.html#next">the article</a>.</p>
+
+  <p class="small dim">Checked against sgit-ai v0.20.0 and the live API documentation of <code>send.sgraph.ai</code> (v0.32.4) and <code>dev.send.sgraph.ai</code> (v0.33.69) on 10 October 2026.</p>
+
+  <div class="pagenav"><a href="credentials.html">&larr; Vault credentials</a><a href="send-a-vault-key.html">Send a vault key &rarr;</a></div>
+</main>

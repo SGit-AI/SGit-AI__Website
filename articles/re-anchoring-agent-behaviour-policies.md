@@ -2,7 +2,7 @@
 
 > Instructions given only in conversation can be lost when a long session is summarised. The session that runs this site has been summarised eighteen times in a month, each time keeping under 2% of what it replaced. Re-anchoring is the answer: keep the agent's rules in a behaviour policy file and have the harness print it back after every summary, so the rules are restored rather than remembered. And because you cannot see what a summary drops, add a canary: a short status report, computed from the transcript, that ends every few answers. If it stops appearing, something in the policy has not been read. Both are running in this session now. This is how they work, what each piece is for, and why the best way to do it today is a recipe that someone has to keep up to date.
 
-*Source: <https://sgit.ai/articles/re-anchoring-agent-behaviour-policies.html> · site v0.7.31 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/re-anchoring-agent-behaviour-policies.html> · site v0.7.32 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 # Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not
 
-By [Dinis Cruz](../about/index.md) · 2026-10-10 · [article v1.0.0](versions/re-anchoring-agent-behaviour-policies.md) · [site v0.7.22](../admin/versions.md) · agentsclaude-codehooksagent-behaviour-policycompactioncontextre-anchoringguardrailsgovernancearticle
+By [Dinis Cruz](../about/index.md) · 2026-10-10 · [article v1.1.0, 2 versions](versions/re-anchoring-agent-behaviour-policies.md) · [site v0.7.22](../admin/versions.md) · agentsclaude-codehooksagent-behaviour-policycompactioncontextre-anchoringguardrailsgovernancearticle
 
 ***Abstract:** Instructions given only in conversation can be lost when a long session is summarised. The session that runs this site has been summarised eighteen times in a month, each time keeping under 2% of what it replaced. Re-anchoring is the answer: keep the agent's rules in a behaviour policy file and have the harness print it back after every summary, so the rules are restored rather than remembered. And because you cannot see what a summary drops, add a canary: a short status report, computed from the transcript, that ends every few answers. If it stops appearing, something in the policy has not been read. Both are running in this session now. This is how they work, what each piece is for, and why the best way to do it today is a recipe that someone has to keep up to date.*
 
@@ -392,7 +392,9 @@ The first observations, honestly, after one evening:
 
 - **The hooks loaded mid-session.** They were added to a user settings file while the session was running, and the next prompt arrived carrying the policy's one-line anchor. The documentation says edits to hooks in settings files are "normally picked up automatically by the file watcher", and that is what happened here.
 - **The first report rendered on a phone at 41 characters wide** without wrapping.
-- **The re-anchor after a compaction has not been observed yet.** There has been no compaction since the hooks were installed. When there is, the `anchor` line will show it, and this article will be updated with what happened.
+- **The re-anchor after a compaction has now been observed.** Updated 10 October 2026: at 12:03:36 UTC the session was summarised for the nineteenth time, automatically, from 789,144 tokens to 12,092. The `SessionStart` hook fired in the same second, printed the policy back from disk, and logged the event; the session resumed with the full policy in view, and the `anchor` line moved to 1 re-anchor for 1 compaction. The release that followed ran its leak scan before the commit, as rule 2 asks.
+- **Then the canary did its other job.** At about 15:16 UTC the session's container was restarted, and everything outside the repository and the transcript went with it: the policy file, the script and the hooks in the user settings. The next prompt arrived with no anchor line. What the agent noticed first was its missing working files; the absent anchor confirmed that the hooks had gone too, and the first report due after the restart would have been missing, which is the signal the person watches for. The policy was restored from the copy the last re-anchor had printed into the conversation, and its hash came back as the same `#a0d6d2`, byte for byte. The script was rebuilt, carrying the last report's totals as a baseline. Lesson: a policy that lives on an ephemeral machine needs a copy somewhere that survives it, and the anchor line is worth keeping even when no report is due.
+- **The leak scan counter was undercounting scans.** It recognised one way of writing the scan, so commits that were scanned in a different way were counted as unscanned. The scan is now one script that every commit runs, and the counter looks for that script.
 - **The cost line can lag.** It comes from the harness's cost record, which is written periodically rather than after every call.
 
 We are going to live with it for a while: how often to show it (every three answers today), which lines people actually read, and what else belongs there. That is the point of running it in the session that writes about it.

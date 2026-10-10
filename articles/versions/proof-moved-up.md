@@ -2,7 +2,7 @@
 
 > Every published version of the article "The proof moved up, the homepage after the rebuild, next to the before pictures", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/proof-moved-up.html> · site v0.7.31 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/proof-moved-up.html> · site v0.7.32 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -18,8 +18,8 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 |---|---|---|---|---|---|---|
 | **v1.2.2** | 2026-10-07 | patch | 964 | front matter only (the text is unchanged) | [`d86d0b70a`](https://github.com/SGit-AI/SGit-AI__Website/commit/d86d0b70abbe2879a585ed04c090b63f3584ca4e) | [what changed](proof-moved-up/v1.2.2.md) · [current](../proof-moved-up.md) |
 | **v1.2.1** | 2026-09-28 | patch | 964 | front matter only (the text is unchanged) | [`6a06cb06a`](https://github.com/SGit-AI/SGit-AI__Website/commit/6a06cb06a6b44a05e15bc5e643474002b69006e4) | [what changed](proof-moved-up/v1.2.1.md) |
-| **v1.2.0** | 2026-09-20 | minor | 964 | +0 / −0 words; 0 changed, 0 added, 0 removed paragraphs | [`8b46d2853`](https://github.com/SGit-AI/SGit-AI__Website/commit/8b46d28539aedc4588291e71599e2d5650febaa6) | [what changed](proof-moved-up/v1.2.0.md) |
-| **v1.1.0** | 2026-09-07 | minor | 977 | +0 / −0 words; 0 changed, 0 added, 0 removed paragraphs | [`60bceff94`](https://github.com/SGit-AI/SGit-AI__Website/commit/60bceff94a6c704f73e2aff6c929bd402c644091) | [what changed](proof-moved-up/v1.1.0.md) |
+| **v1.2.0** | 2026-09-20 | minor | 964 | +0 / −14 words; 10 changed, 0 added, 0 removed paragraphs | [`8b46d2853`](https://github.com/SGit-AI/SGit-AI__Website/commit/8b46d28539aedc4588291e71599e2d5650febaa6) | [what changed](proof-moved-up/v1.2.0.md) |
+| **v1.1.0** | 2026-09-07 | minor | 977 | +50 / −0 words; 1 changed, 0 added, 0 removed paragraphs | [`60bceff94`](https://github.com/SGit-AI/SGit-AI__Website/commit/60bceff94a6c704f73e2aff6c929bd402c644091) | [what changed](proof-moved-up/v1.1.0.md) |
 | **v1.0.0** | 2026-09-07 | published | 927 | first published | [`d140cdbb4`](https://github.com/SGit-AI/SGit-AI__Website/commit/d140cdbb4d3062b660fa440b58fe76088c12b717) |  |
 
 [← Back to the article](../proof-moved-up.md) · [All articles](../index.md)

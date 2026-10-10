@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.31 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.32 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,13 +14,40 @@ Every article here has a semantic graph beside it: the ideas it rests on, the cl
 
 The graphs are data first and pictures second. Take them as JSON: [all articles in one file](graphs.json), with the topics, the teasers and the links between articles resolved, or one file per article at `articles/graphs/<slug>.json` (for example [this one](graphs/footprint-and-blast-radius.json)). The pages on this site are rendered from the same files at build time; nothing here is hand-written HTML.
 
-63 of 63 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
+64 of 64 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
 
 ## How the articles connect
 
 *[diagram]*
 
-63 articles, 267 links between them (415 mentions in all). 54 articles cite an earlier one; 9 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (20 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+64 articles, 271 links between them (419 mentions in all). 55 articles cite an earlier one; 9 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (20 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+
+## [Where the vault keys live: key management at sgit-ai v0.20.0, and what comes next](where-the-vault-keys-live.md)
+
+2026-10-10 · Vaults & methodAgents & policy
+
+Vaults are encrypted in the client, so the server never holds a key and the key is the whole question. Today vault keys live in a password manager and in a registry vault run by an isolated session; agents that create vaults seal the key to the registry's public key and send it on a write-only append lane, so it never enters a chat. The weakest step is giving a key to another agent, because agent platforms have no per-session secrets. Append lanes carry keys, logs, observations and messages; small communication vaults keep each key's blast radius small and multiply the keys. Next: password manager integrations, secrets.sgit.ai's passkey-unlocked keyring, PKI, and out-of-band decryption.
+
+*[diagram]*
+**concept**claim**method**artefact**example
+
+**9 nodes, 8 edges**
+
+- **Decryption in the client** (concept) S3 stores ciphertext; the API and the edge never see a vault key.
+- **One secret, derived keys** (concept) The vault key reads and writes; the read key is derived one way and published on purpose.
+- **Where keys live today** (example) A password manager for a person's keys; a registry vault for keys agents create.
+- **Sealed handover** (method) Seal to the registry's public key, one POST on a write-only lane, deterministic drain, human review.
+- **Giving a key to an agent** (claim) No per-session secrets: environment variables are shared per environment; network secrets carry API keys only.
+- **Append lanes** (method) Write-only, blind, one POST from anywhere; used for keys, logs, observations and messages.
+- **Communication vaults** (method) A vault per conversation or job, with EmailFS and IssuesFS inside.
+- **What comes next** (claim) Password managers, secrets.sgit.ai, PKI, out-of-band decryption.
+- **secrets.sgit.ai** (artefact) A passkey PRF unwraps the keyring key; ciphertext in a cloud bucket; app proposed at v0.1.13.
+
+> The key is the whole question. Why key management matters for client-side encryption.
+
+> Nothing between the sender and the registry can read the key, the key is never typed or shown. What the sealed handover changes.
+
+builds on [RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer](#rfc-0001-public-key-cryptography-for-sgit), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes](#encrypted-memory-for-isolated-agents), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets).
 
 ## [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](pay-to-keep-your-persona.md)
 
@@ -338,7 +365,7 @@ An sgit vault's read key is symmetric, so anyone who holds it and can write to t
 
 > its hard part is not the cryptography but downgrade resistance Where the writer signature's real work is.
 
-builds on [Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes](#encrypted-memory-for-isolated-agents).
+builds on [Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes](#encrypted-memory-for-isolated-agents); continued by [Where the vault keys live: key management at sgit-ai v0.20.0, and what comes next](#where-the-vault-keys-live).
 
 ## [A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies](a-mac-of-the-agents-own.md)
 
@@ -489,7 +516,7 @@ Agents are safer in isolated places, but isolation takes away the shared drive a
 
 > `--path` decides what is downloaded, not what can be read. Scoped clones are speed, not an access boundary.
 
-builds on [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [A locked-down desktop for an agent, by the minute, is still hard to rent](#an-agent-desktop-by-the-minute), [Who are you protecting against? Draw the security line where the attacker is, not above it](#who-are-you-protecting-against), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs); continued by [RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer](#rfc-0001-public-key-cryptography-for-sgit), [A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies](#a-mac-of-the-agents-own), [Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not](#riskmandate-ten-questions), [How I work with Claude: one session per topic, agents with names, and memory you curate](#how-i-work-with-claude).
+builds on [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [A locked-down desktop for an agent, by the minute, is still hard to rent](#an-agent-desktop-by-the-minute), [Who are you protecting against? Draw the security line where the attacker is, not above it](#who-are-you-protecting-against), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs); continued by [Where the vault keys live: key management at sgit-ai v0.20.0, and what comes next](#where-the-vault-keys-live), [RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer](#rfc-0001-public-key-cryptography-for-sgit), [A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies](#a-mac-of-the-agents-own), [Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not](#riskmandate-ten-questions), [How I work with Claude: one session per topic, agents with names, and memory you curate](#how-i-work-with-claude).
 
 ## [Knowing when to stop: what experience gives people, and what we have to design into agents](knowing-when-to-stop.md)
 
@@ -1032,7 +1059,7 @@ The personal agent became a product category in 2026, an always-on agent with a 
 
 > Who gives the mandate over a piece of information is a different question from who holds the key. The question the design does not answer, and the mechanisms it would need.
 
-builds on [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [Git for things you cannot put on GitHub](#what-sgit-is), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent); continued by [Where is the why? A permission prompt asked me to decide, and kept the reason](#where-is-the-why), [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs).
+builds on [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [Git for things you cannot put on GitHub](#what-sgit-is), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent); continued by [Where the vault keys live: key management at sgit-ai v0.20.0, and what comes next](#where-the-vault-keys-live), [Where is the why? A permission prompt asked me to decide, and kept the reason](#where-is-the-why), [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs).
 
 ## [The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered](the-investigation-github-owes-its-customers.md)
 
@@ -1200,7 +1227,7 @@ A plan to give every agent and user a Workspace identity from one tenant was sto
 
 > The law describes the property; the market does not sell it. The gap the article ends on: login, zero-knowledge storage and agent identity are still three separate jobs.
 
-builds on [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions); continued by [Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not](#riskmandate-ten-questions), [An open AI governance framework, and what its licence let us build](#ai-baseline-control-framework), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets).
+builds on [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions); continued by [Where the vault keys live: key management at sgit-ai v0.20.0, and what comes next](#where-the-vault-keys-live), [Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not](#riskmandate-ten-questions), [An open AI governance framework, and what its licence let us build](#ai-baseline-control-framework), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets).
 
 ## [The wall under the reply: end an email with the state of the thread, not the thread](the-wall-under-the-reply.md)
 

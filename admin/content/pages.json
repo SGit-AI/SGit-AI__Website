@@ -1136,5 +1136,11 @@
     "section": "meter",
     "title": "SG Meter security model, sgit.ai",
     "desc": "What a reader can do to a meter kept in their own browser (edit the balance, start again, credit themselves through the unprotected return page), what each costs the site and the reader, and why every gap is accepted."
+  },
+  {
+    "path": "docs/key-management.html",
+    "section": "docs",
+    "title": "Vault key management, where each key lives and how it travels, sgit.ai",
+    "desc": "The reference for sgit-ai v0.20.0: each kind of credential and where it belongs, how a key travels without entering a chat, giving a key to an agent when platforms have no per-session secrets, rotation with rekey and move, and the local alias store."
   }
 ]

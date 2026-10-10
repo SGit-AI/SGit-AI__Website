@@ -2,7 +2,7 @@
 
 > Every published version of the article "Seven vaults, one method", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/seven-vaults-one-method.html> · site v0.7.31 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/seven-vaults-one-method.html> · site v0.7.32 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -17,8 +17,8 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
 | **v1.2.1** | 2026-10-07 | patch | 1,118 | front matter only (the text is unchanged) | [`d86d0b70a`](https://github.com/SGit-AI/SGit-AI__Website/commit/d86d0b70abbe2879a585ed04c090b63f3584ca4e) | [what changed](seven-vaults-one-method/v1.2.1.md) · [current](../seven-vaults-one-method.md) |
-| **v1.2.0** | 2026-09-28 | minor | 1,118 | +0 / −0 words; 0 changed, 0 added, 0 removed paragraphs | [`6a06cb06a`](https://github.com/SGit-AI/SGit-AI__Website/commit/6a06cb06a6b44a05e15bc5e643474002b69006e4) | [what changed](seven-vaults-one-method/v1.2.0.md) |
-| **v1.1.0** | 2026-09-20 | minor | 1,073 | +0 / −0 words; 0 changed, 0 added, 0 removed paragraphs | [`8b46d2853`](https://github.com/SGit-AI/SGit-AI__Website/commit/8b46d28539aedc4588291e71599e2d5650febaa6) | [what changed](seven-vaults-one-method/v1.1.0.md) |
+| **v1.2.0** | 2026-09-28 | minor | 1,118 | +45 / −0 words; 0 changed, 1 added, 0 removed paragraphs | [`6a06cb06a`](https://github.com/SGit-AI/SGit-AI__Website/commit/6a06cb06a6b44a05e15bc5e643474002b69006e4) | [what changed](seven-vaults-one-method/v1.2.0.md) |
+| **v1.1.0** | 2026-09-20 | minor | 1,073 | +0 / −14 words; 12 changed, 0 added, 0 removed paragraphs | [`8b46d2853`](https://github.com/SGit-AI/SGit-AI__Website/commit/8b46d28539aedc4588291e71599e2d5650febaa6) | [what changed](seven-vaults-one-method/v1.1.0.md) |
 | **v1.0.0** | 2026-08-19 | published | 1,087 | first published | [`dbfd422f0`](https://github.com/SGit-AI/SGit-AI__Website/commit/dbfd422f09047ace4b9fd8b53760910881bea5e5) |  |
 
 [← Back to the article](../seven-vaults-one-method.md) · [All articles](../index.md)

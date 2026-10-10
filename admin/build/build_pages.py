@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.31'
+SITE_VERSION = 'v0.7.32'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,21 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.31', '2026-10-10', 'this release',
+    ('v0.7.32', '2026-10-10', 'this release',
+     "WHERE THE VAULT KEYS LIVE. A new article on vault key management at sgit-ai v0.20.0, after a reader found the gap: "
+     "the architecture (S3, a Lambda API behind CloudFront, decryption in the client), the one secret and the keys derived "
+     "from it, where vault keys are kept today (a password manager, and a registry vault run by an isolated session), how a "
+     "new key reaches the registry sealed on a write-only append lane, why giving a key to an agent is the weakest step "
+     "(environment variables shared per environment; network secrets for API keys only, on Pro and Max), append lanes as the "
+     "transport behind most of it, small communication vaults, and the roadmap: password managers, secrets.sgit.ai's "
+     "passkey-unlocked keyring, PKI and out-of-band decryption. Six figures. New docs page Vault key management; vault "
+     "messaging now says which host serves which route names (send.sgraph.ai v0.32.4 still on /api/vault/inbox/*, "
+     "dev.send.sgraph.ai v0.33.69 on /api/vault/append/*) and that the lane address derivation is still proposed at "
+     "v0.20.0; credentials and send a vault key link to the new page. The re-anchoring article records the first observed "
+     "re-anchor, a container restart that took the policy with it, and the fixed leak scan counter. Built on the full git "
+     "history, which restores the article version diffs that v0.7.31 emptied (it was built from a shallow clone, so every "
+     "diff read as 0 paragraphs changed)."),
+    ('v0.7.31', '2026-10-10', 'git 536b8b7f',
      "SEND US YOUR READING, GET A FRONT PAGE DESIGNED FOR YOU. A new page, account/share.html (in the Newsroom menu as "
      "'A newsroom designed for you', and linked from your newsroom and your account), offers the deal plainly: read as you "
      "normally would, then send us what you read, and Dinis replies with what your front page could look like, built "

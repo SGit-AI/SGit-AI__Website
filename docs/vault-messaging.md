@@ -2,7 +2,7 @@
 
 > How two vaults exchange encrypted messages without sharing a vault key and without the sender holding an account: append lanes addressed by a token, composed with PKI. Worked example in CLI, curl and sg.append, with the one step that is not yet wired marked PROPOSED.
 
-*Source: <https://sgit.ai/docs/vault-messaging.html> · site v0.7.31 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/vault-messaging.html> · site v0.7.32 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -75,14 +75,14 @@ $ curl -X POST https://dev.send.sgraph.ai/api/vault/append/configure/$VAULT_ID \
          "enum_key_hash":"<sha256 of your enum_key>"}'
 ```
 
-`configure` patches an existing vault manifest. It does not create a vault. It needs the SG/Send access token as well as the write key. **It replaces the anchor list**, so adding a sender means sending every existing anchor plus the new one. A **404 with an HTML page** means the vault ID or the write key is wrong. The routes are on `dev.send.sgraph.ai` only. Corrected on 26 September 2026: this paragraph said a wrong key returned 403, and the examples used `send.sgraph.ai`, which has no append routes. See [the write-up](append-lane-messaging.md) that found both.
+`configure` patches an existing vault manifest. It does not create a vault. It needs the SG/Send access token as well as the write key. **It replaces the anchor list**, so adding a sender means sending every existing anchor plus the new one. A **404 with an HTML page** means the vault ID or the write key is wrong. The `/api/vault/append/*` routes are on `dev.send.sgraph.ai`. Checked 10 October 2026: `dev.send.sgraph.ai` (API v0.33.69) serves the six `/api/vault/append/*` routes; `send.sgraph.ai` (API v0.32.4) still serves the same six under their older `/api/vault/inbox/*` names (`inbox/append` for the write), from before the rename.Corrected on 26 September 2026: this paragraph said a wrong key returned 403, and the examples used `send.sgraph.ai`, which has no append routes. See [the write-up](append-lane-messaging.md) that found both.
 
 ## Deriving the lane address read this before writing code
 
 **This step is not yet wired end to end, and the gap is worth stating precisely.**
  The design is `append_token = H(recipient public key)`, so a sender can compute your lane address from the public bundle you gave them, with no extra coordination. That is an elegant property and it is the intended model.
 
- What ships today on **sgit v0.15.0**: `sgit pki export` emits a **JSON bundle** containing two PEM blocks, a label and two fingerprints, *not* a bare public key. No shipped command emits the append token, and hashing the bundle file is not a defined derivation (field order and whitespace would change the answer). The **server** side of append lanes is code-verified and shipped; the **client** derivation that turns a public key into a lane address is **PROPOSED**.
+ What ships on **sgit v0.15.0**, and is still the case on **sgit-ai v0.20.0** (checked 10 October 2026): `sgit pki export` emits a **JSON bundle** containing two PEM blocks, a label and two fingerprints, *not* a bare public key. No shipped command emits the append token, and hashing the bundle file is not a defined derivation (field order and whitespace would change the answer). The **server** side of append lanes is code-verified and shipped; the **client** derivation that turns a public key into a lane address is **PROPOSED**.
 
 **What to do meanwhile:** treat `append_token` as an opaque 64-hex secret you agree out of band, generate one, hand it to your sender, register its SHA-256 as an `append_anchor`. Everything else on this page works today. When the derivation lands, the token stops needing to be exchanged; nothing else changes.
 
@@ -166,7 +166,7 @@ await sg.append.purge({ folder: 'processed' });
 - **Limits.** 5 MB per message (**413**) · 1000 pending files per token (**507**) · 100 file IDs per batch (**400**) · 3 MB inline-content ceiling when listing with content (**413**) · list page size 50 by default, 200 max, clamped silently.
 - **Several senders.** Register several `append_anchors`. Each sender writes to their own lane, so a listing can be scoped to one of them.
 - **Housekeeping.** `purge` with `folder:"processed"` and no file IDs clears a whole lane’s processed set in one call. It takes `"pending"` or `"processed"`, the older `"inbox"` value now returns 400.
-- **The API was renamed.** `inbox` became `append` in v0.32.7; any `/api/vault/inbox/*` URL is gone.
+- **The API was renamed.** `inbox` became `append` in v0.32.7, so a server at v0.32.7 or later has no `/api/vault/inbox/*` URL. A server on an earlier version still has only the old names: on 10 October 2026 that included `send.sgraph.ai` (v0.32.4). Check `/api/openapi.json` on the host you use.
 
 ## What this is not
 

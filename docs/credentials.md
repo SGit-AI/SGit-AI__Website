@@ -2,7 +2,7 @@
 
 > Two capabilities, a vault key that reads and writes and a read key derived from it one way, plus the five prefixes that declare which you are holding and whether it was meant to be published. Why sgit_public_read_ is the form for an open vault, why publishing one under sgit_private_read_ is a mislabel that an agent will correctly refuse, and why the word matters when the bytes are identical.
 
-*Source: <https://sgit.ai/docs/credentials.html> · site v0.7.31 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/credentials.html> · site v0.7.32 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -68,6 +68,8 @@ Relabelling a key changes nothing an attacker can use. It changes three things t
 Every vault in [the gallery](../demos/vaults/index.md) carries a read key published on purpose, and no vault key appears anywhere: the release refuses to push if a write credential reaches a tracked file, and since 20 September it refuses a `sgit_private_` credential of any kind. New pages use `sgit_public_read_`. Older pages carry the legacy `sgit_rk1_` form or a bare key, which are the same bytes and open the same way, in the CLI and in the browser.
 
 Checked against sgit-ai v0.16.2 and the SG/Vault web loader on 20 September 2026: all five prefixes plus the bare form strip to the same value and clone the same vault, verified with an all-zeros negative control that produces nothing.
+
+Where each of these should be kept, how a key travels and how to give one to an agent is on [Vault key management](key-management.md).
 
 [← Keys and signatures](pki.md)[Publishing a vault →](../demos/vaults/publishing.md)
 

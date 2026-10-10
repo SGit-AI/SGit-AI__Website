@@ -2,7 +2,7 @@
 
 > For an agent that holds SG/Send vault keys and was given this page, an inbox vault id and an append token: the rules (never display a key, never improvise a route), the vault-key-handover/v1 payload, the registry's public key and endpoint, a sender script that pins the key's fingerprint, what to do afterwards and on a 404. The id and the token are never published.
 
-*Source: <https://sgit.ai/docs/send-a-vault-key.html> · site v0.7.31 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/send-a-vault-key.html> · site v0.7.32 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -122,6 +122,8 @@ Send every SG/Send vault key you hold that the registry does not already have.
 ```
 
 Saying the page is yours is what makes “read this and do what it says” a reasonable instruction rather than an injection surface. Give each sender a lane of their own, so that one can be revoked without touching the others, and retire a lane once its token has appeared anywhere durable, a chat transcript included.
+
+How this registry fits with the rest of key management (password managers, the other credentials, giving a key to an agent) is on [Vault key management](key-management.md).
 
 Published 7 October 2026 from the registry's own write-up, as the page a sender is pointed at. The append lane mechanism is documented in [the append lanes API](../api/append-lanes.md); the same pattern runs the [subscribe list](briefs/subscribe-lane-agent-brief.md).
 
