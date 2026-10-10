@@ -2,13 +2,13 @@
 
 > One web component that charges readers a few pence a page from a balance kept in their own browser, by how far down the page they read; never blocks, allows a negative balance, lets a reader decline with a reason. Install, views, config, events, storage, theming, Stripe.
 
-*Source: <https://sgit.ai/meter/index.html> · site v0.7.30 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/meter/index.html> · site v0.7.31 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
 [Home](../index.md) / [Docs](../docs/index.md) / SG Meter
 
-A library · v1.1.0
+A library · v1.2.0
 
 # SG Meter: a reading meter you can add to any website
 
@@ -22,13 +22,13 @@ Copy two folders into your site, keeping their paths: the component and the base
 
 ```
 assets/components/base/v1/v1.0/v1.0.0/sg-component.js
-assets/components/sg-meter/v1/v1.1/v1.1.0/sg-meter.js
-assets/components/sg-meter/v1/v1.1/v1.1.0/sg-meter-core.js
-assets/components/sg-meter/v1/v1.1/v1.1.0/sg-meter.tpl
-assets/components/sg-meter/v1/v1.1/v1.1.0/sg-meter.css
+assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.js
+assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter-core.js
+assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.tpl
+assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.css
 ```
 
-The paths are versioned and immutable, as in [the estate's JavaScript guidance](https://coding.sgit.ai/javascript/index.html): a fix is a new path, so a page that works today keeps loading the same files. Read them first; they are short: [the rules](../assets/components/sg-meter/v1/v1.1/v1.1.0/sg-meter-core.js) (no rendering), [the element](../assets/components/sg-meter/v1/v1.1/v1.1.0/sg-meter.js), [its styles](../assets/components/sg-meter/v1/v1.1/v1.1.0/sg-meter.css), [the base class](../assets/components/base/v1/v1.0/v1.0.0/sg-component.js).
+The paths are versioned and immutable, as in [the estate's JavaScript guidance](https://coding.sgit.ai/javascript/index.html): a fix is a new path, so a page that works today keeps loading the same files. Read them first; they are short: [the rules](../assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter-core.js) (no rendering), [the element](../assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.js), [its styles](../assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.css), [the base class](../assets/components/base/v1/v1.0/v1.0.0/sg-component.js).
 
 Then, on every page, load the module once, give it a config, and say what the page is:
 
@@ -45,12 +45,12 @@ Then, on every page, load the module once, give it a config, and say what the pa
   "topup": { "amount": 500, "link": "https://buy.stripe.com/your-link" },
   "picks": { "feed": "articles/feed.json", "base": "articles/" } }
 </script>
-<script type="module" src="/assets/components/sg-meter/v1/v1.1/v1.1.0/sg-meter.js"></script>
+<script type="module" src="/assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.js"></script>
 ```
 
 Every key has a default, so an empty config works. Put `data-root` on `<html>` (for example `data-root="../"`) if your pages are not all at the top level; links the component writes are prefixed with it. This site loads the module with a dynamic `import()` from an inline script instead of a `src`, because its own build forbids script tags that point at files; either works.
 
-## The ten views
+## The eleven views
 
 One element, one shared meter: an ES module is evaluated once per page, so however many `<sg-meter>` elements a page has, it is charged once.
 
@@ -66,8 +66,9 @@ One element, one shared meter: an ES module is evaluated once per page, so howev
 | `personas` | Rename, switch and remove personas, and add one from a preset or a blank one (v1.1). |  |
 | `graph` | A persona drawn as an SVG graph (v1.1): the persona in the middle, its topics sized by weight, the pages behind each topic, and the citations between those pages, from the feed's `links_out`. Each page is a link, with its title and depth read as a tooltip. | `persona` (default the active one) |
 | `link` | One line linking to the newsroom, named for the active persona (v1.1). |  |
+| `share` | Shows the reader exactly what their reading looks like as text (a summary, then the same data as JSON), copies it to the clipboard, or sends it with their name and email, encrypted in the browser to the public key in `share.contact` and written to that file's append lane (v1.2). Sends nothing until the reader asks and ticks consent; never includes payment references. |  |
 
-This site's own: [newsroom](../account/newsroom.md), [personas](../account/personas.md), [account](../account/index.md), [top-up](../account/top-up.md), [topped-up](../account/topped-up.md) (opened without a payment reference, it adds nothing and says so), and the link on [the front page](../articles/index.md).
+This site's own: [newsroom](../account/newsroom.md), [share](../account/share.md), [personas](../account/personas.md), [account](../account/index.md), [top-up](../account/top-up.md), [topped-up](../account/topped-up.md) (opened without a payment reference, it adds nothing and says so), and the link on [the front page](../articles/index.md).
 
 ## The rules it charges by
 
@@ -120,6 +121,7 @@ Dispatched on `document`, bubbling and composed, named `<namespace>:<noun>.<verb
 | `sg:meter.toppedup` | `{credit, source, balance}`; source is `simulated` or `link` |
 | `sg:meter.reset` | `{}` |
 | `sg:meter.persona` | `{active, what}`; what is `active`, `added`, `renamed`, `removed` or `curated` (v1.1) |
+| `sg:meter.shared` | `{how, pages}`; how is `copied` or `sent` (v1.2) |
 | `sg:meter.restored` | `{reads}`, after a restore from an export (v1.1) |
 | `sg:meter.changed` | `{balance}`, on any saved change; the elements repaint on it |
 | `sg-meter:error` | `{why}`, if the component's markup or styles failed to load; the element also gets `data-state="error"` |
@@ -166,6 +168,7 @@ The first version ran on [pt.newsroom.sgit.ai](https://pt.newsroom.sgit.ai/carte
 
 ## Changelog
 
+- **v1.2.0** (10 October 2026, site v0.7.31). Sharing: the `share` view, `shareData()` in the core, the `share` config and the `sg:meter.shared` event. A reader sees the exact text, copies it, or sends it encrypted (sgit's hybrid envelope v2, RSA-OAEP-SHA256 and AES-256-GCM, with Web Crypto) into an append lane, with the fingerprint recomputed from the published key before anything is sent. The newsroom and account link to it.
 - **v1.1.0** (10 October 2026, site v0.7.28). Personas: a default one built from all reading and named from its topics, presets offered by the site, as many as the reader wants, reading credited to the active one, Keep and Not for this persona. Four new views: `newsroom`, `personas`, `graph`, `link`. Picks score tags as well as topics. The account view draws the reader's graph and can restore an export. State version 3. v1.0.0 stays at its own path.
 - **v1.0.0** (10 October 2026, site v0.7.26). First packaged release: scroll-depth charging, negative balances, decline with a reason, the balance view, the Stripe return page, picks that count "not relevant" against a topic. Replaces this site's `assets/meter.js` (v0.7.24), which charged on opening and showed a bar when credit ran out.
 

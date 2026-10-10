@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.30'
+SITE_VERSION = 'v0.7.31'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,22 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.30', '2026-10-10', 'this release',
+    ('v0.7.31', '2026-10-10', 'this release',
+     "SEND US YOUR READING, GET A FRONT PAGE DESIGNED FOR YOU. A new page, account/share.html (in the Newsroom menu as "
+     "'A newsroom designed for you', and linked from your newsroom and your account), offers the deal plainly: read as you "
+     "normally would, then send us what you read, and Dinis replies with what your front page could look like, built "
+     "from your actual reading. The page shows word for word everything that would be sent: a readable summary (pages, "
+     "spend, topics, personas, the newest 40 pages with depth read, cost and decline reason) and the same data as one "
+     "JSON object (up to 300 rows), with no payment references. Copy puts it on the clipboard for an email or a message; "
+     "Send takes a name, an email, an optional note and a consent tick, encrypts it in the browser with sgit's hybrid "
+     "envelope v2 to the subscribe identity's published key (fingerprint recomputed first) and writes it to the subscribe "
+     "vault's write-only lane, marked X-SGit-Form: reading-share so the list agent files it apart from subscriptions; "
+     "the newsletter is a separate tick. The drain brief documents the new kind. SG Meter v1.2.0 (new path, earlier "
+     "versions kept): the share view, shareData(), the share config, the sg:meter.shared event; docs updated. Pay to "
+     "keep your persona gains 'Help us design it'. admin/build/test_meter.mjs covers the preview and the copy (23 checks "
+     "pass); the encrypted send was verified separately by decrypting an intercepted POST with a throwaway key, so no "
+     "test message was put in the real inbox.",),
+    ('v0.7.30', '2026-10-10', 'git 362dfa6a',
      "THE INFOGRAPHIC BAKE-OFF. Every image-output model on OpenRouter on 10 October 2026, its auto-router and a code-drawn control, given eleven briefs from the Re-anchoring article over five rounds (an 18-word stat card to the whole article, a 14-number chart, an edit, a UI component, a brand slide, a three-slide deck with and without a style reference, and the bake-off's own conclusion). 101 images judged blind by Designer agents, OCR as a check, $10.44 recorded by OpenRouter, an Accountant and a Data Scientist on the numbers. Recommended: Nano Banana 2.1 (concept slides, charts, decks), Gemini 3 Pro Image (when speed matters), GPT-5.4 Image 2 (documents, edits, components, brand). A new vault, Infographic bake-off (po5i477i, read key published), holds every brief, image, score, reason and cost as an app, with the guidance; and the article, with six figures.",),
     ('v0.7.29', '2026-10-10', 'git ab006b20',
      "ARTICLES HAVE VERSIONS, AND FIVE READERS FOLDS AWAY. Every article now carries its own version beside the site release it was published in: v1.0.0 is the article as first published, a change to its text is the next minor version, a change only to its other details the next patch. The history is read from git at every build (renames followed, cached for shallow clones), so nobody keeps the numbers and publishing is still adding one file. Each article has a versions page (61 articles, 195 versions), and every version after the first has a page showing what changed, paragraph by paragraph, with a word-level diff. The diff renderer moved into admin/build/article_versions.py and article_diff.py now uses it (output unchanged). Version pages quote earlier text verbatim and are exempt from the em-dash and retired-word style rules, not from the leak checks. Read it another way becomes Five readers: one closed line under the abstract saying what is inside, the five readers closed within it, the article version the views were read from, and links to the other articles the readers have read and to the Article Views vault.",),
@@ -3852,6 +3867,7 @@ NAV = [
         ('newsroom', 'How it runs', 'newsroom/index.html'),
         ('subscribe', 'Subscribe', 'subscribe/index.html'),
         ('yours', 'Your newsroom', 'account/newsroom.html'),
+        ('share', 'A newsroom designed for you', 'account/share.html'),
         ('account', 'Your reading account', 'account/index.html'),
     ]),
     ('why', 'Why', 'why/index.html', [
@@ -4153,7 +4169,7 @@ def meter_kind(path):
     return 'page', '', []
 
 
-METER_JS = 'assets/components/sg-meter/v1/v1.1/v1.1.0/sg-meter.js'
+METER_JS = 'assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.js'
 
 # Five personas a reader can start from (SG Meter v1.1), each a handful of topics and articles
 # chosen from what this site has actually published. A persona is a way to manage focus: the
@@ -4206,7 +4222,11 @@ def meter_config():
         'topup': METER['topup'], 'packs': METER['packs'],
         'links': {'account': 'account/index.html', 'topup': 'account/top-up.html'},
         'picks': {'feed': 'articles/graphs.json', 'base': 'articles/'},
-        'links2': {'newsroom': 'account/newsroom.html', 'personas': 'account/personas.html'},
+        'links2': {'newsroom': 'account/newsroom.html', 'personas': 'account/personas.html', 'share': 'account/share.html'},
+        # v1.2: a reader can send their reading, encrypted in the browser, into the subscribe vault's
+        # write-only lane, marked X-SGit-Form: reading-share so the list agent files it apart from
+        # subscriptions (docs/briefs/subscribe-lane-agent-brief.html#reading-share).
+        'share': {'contact': '.well-known/sgit-subscribe.json', 'form': 'reading-share', 'site': 'sgit.ai', 'max': 300},
         'personas': {'presets': PERSONAS, 'names': PERSONA_NAMES},
     }, ensure_ascii=False).replace('</', '<\\/')
 
@@ -4749,6 +4769,7 @@ LLMS_SECTIONS = [
     ('articles', 'Articles (longer pieces that argue across pages, with the evidence linked)'),
     ('collections', 'Collections (articles read together, each set with an introduction saying what it shows that no single article does)'),
     ('account', 'Your reading account (a reading meter kept in the browser: prices charged by scroll depth, balance that may go negative, history, top-ups and the personalisation they buy)'),
+    ('share', 'A newsroom designed for you (send your reading, encrypted or copied, and get back a front page designed from it)'),
     ('yours', 'Your newsroom (a front page per reading persona, worked out in the browser: picks, kept articles, the persona graph; and managing personas)'),
     ('meter', 'SG Meter (the reading meter as a library any website can add: install, views, config, events, storage, theming, Stripe, security model)'),
     ('subscribe', 'Subscribe (the one page with the newsletter sign-up form; the address is encrypted in the browser)'),
@@ -7350,6 +7371,29 @@ def yours_body():
             'account</a>.</p>\n</main>')
 
 
+def share_body():
+    return ('<main class="doc">\n <p class="crumb"><a href="../index.html">Home</a> / <a href="newsroom.html">Your newsroom</a> / Send us your reading</p>\n'
+            ' <p class="eyebrow">SGit Newsroom &middot; a newsroom designed for you</p>\n <h1>Send us your reading, get a front page designed for you</h1>\n'
+            ' <p class="lead">Use the site as you normally would for a few days. Then send us what you read: which pages, how far down '
+            'each one, what you kept, put out of a persona or declined to pay for. In return, Dinis will reply with what your front '
+            'page could look like, built from your actual reading. It is the fastest way for us to learn what a personal newsroom '
+            'should be, and you get the first one.</p>\n'
+            ' <ol><li><b>Read.</b> Open whatever interests you, scroll as far as it deserves, keep what is worth keeping. '
+            '<a href="newsroom.html">Your newsroom</a> shows what the site has learned so far.</li>'
+            '<li><b>Look.</b> Below is exactly what would be sent, word for word. Nothing else leaves your browser.</li>'
+            '<li><b>Send or copy.</b> Send it with your name and email, encrypted in this browser so that only our list agent can read '
+            'it, or copy it and paste it into an email or a message to us.</li></ol>\n'
+            ' <sg-meter view="share"><noscript><p>Sharing needs JavaScript: your reading is kept in your browser, and only your browser '
+            'can put it together.</p></noscript></sg-meter>\n'
+            ' <h2 id="how">Where it goes</h2>\n'
+            ' <p>Into the same encrypted, write-only inbox the <a href="../subscribe/index.html">newsletter</a> uses. Your browser '
+            'encrypts it to the public key published in <a href="../.well-known/sgit-subscribe.json">/.well-known/sgit-subscribe.json</a> '
+            'and drops the ciphertext into a lane that can be written to but not read with anything on this site. The agent that holds '
+            'the key files it as a reading share, separately from subscriptions, and it is used for one thing: to design your front '
+            'page and reply to you. <a href="../docs/briefs/subscribe-lane-agent-brief.html#reading-share">How the inbox works</a>. '
+            'Sending it does not subscribe you to the newsletter unless you tick that box.</p>\n</main>')
+
+
 def personas_body():
     return ('<main class="doc">\n <p class="crumb"><a href="../index.html">Home</a> / <a href="newsroom.html">Your newsroom</a> / Personas</p>\n'
             ' <p class="eyebrow">SGit Newsroom &middot; yours</p>\n <h1>Your personas</h1>\n'
@@ -7439,6 +7483,9 @@ def newsroom_pages():
     out.append(('account/newsroom.html', 'Your newsroom, sgit.ai',
                 'Your own front page, one persona at a time: picks, what you kept, and the graph your reading has grown. Worked out in '
                 'your browser from a history nobody else holds.', 'yours', yours_body()))
+    out.append(('account/share.html', 'A newsroom designed for you: send us your reading, sgit.ai',
+                'Read as you normally would, then send us what you read, encrypted in your browser or copied into an email, and get back '
+                'what your own front page could look like.', 'share', share_body()))
     out.append(('account/personas.html', 'Your personas, sgit.ai',
                 'Add, name and switch between reading personas, each with its own picks and graph; start from five made from what '
                 'sgit.ai publishes. Kept in your browser.', 'yours', personas_body()))

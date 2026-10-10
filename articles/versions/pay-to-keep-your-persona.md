@@ -2,7 +2,7 @@
 
 > Every published version of the article "Pay to keep your persona", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/pay-to-keep-your-persona.html> · site v0.7.30 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/pay-to-keep-your-persona.html> · site v0.7.31 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,7 +16,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.1.0** | 2026-10-10 | minor | 2,323 | +35 / −0 words; 1 changed, 0 added, 0 removed paragraphs | this release | [what changed](pay-to-keep-your-persona/v1.1.0.md) · [current](../pay-to-keep-your-persona.md) |
+| **v1.1.0** | 2026-10-10 | minor | 2,455 | +258 / −91 words; 1 changed, 3 added, 1 removed paragraphs | this release | [what changed](pay-to-keep-your-persona/v1.1.0.md) · [current](../pay-to-keep-your-persona.md) |
 | **v1.0.0** | 2026-10-10 | published | 2,288 | first published | [`2d49ab1d8`](https://github.com/SGit-AI/SGit-AI__Website/commit/2d49ab1d821953fa15819daef046707bda169fef) |  |
 
 [← Back to the article](../pay-to-keep-your-persona.md) · [All articles](../index.md)

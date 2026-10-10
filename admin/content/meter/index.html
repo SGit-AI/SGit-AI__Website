@@ -1,6 +1,6 @@
 <main class="doc">
   <p class="crumb"><a href="../index.html">Home</a> / <a href="../docs/index.html">Docs</a> / SG Meter</p>
-  <p class="eyebrow">A library &middot; v1.1.0</p>
+  <p class="eyebrow">A library &middot; v1.2.0</p>
   <h1>SG Meter: a reading meter you can add to any website</h1>
   <p class="lead">One web component that charges readers a few pence a page from a balance kept in their own browser, by how far down the page they read. It never blocks a page, it lets the balance go below zero, it lets a reader decline to pay for a page and say why, and it turns what they read into personas: named, drawn as a graph, curated by the reader, and as many as they want. No server, no account, no cookies, no third-party script. It is what runs on this site: the balance in the top bar is it.</p>
 
@@ -9,11 +9,11 @@
   <h2 id="install">Install</h2>
   <p>Copy two folders into your site, keeping their paths: the component and the base class it extends (it imports the base by a relative path).</p>
   <pre class="shell">assets/components/base/v1/v1.0/v1.0.0/sg-component.js
-assets/components/sg-meter/v1/v1.1/v1.1.0/sg-meter.js
-assets/components/sg-meter/v1/v1.1/v1.1.0/sg-meter-core.js
-assets/components/sg-meter/v1/v1.1/v1.1.0/sg-meter.tpl
-assets/components/sg-meter/v1/v1.1/v1.1.0/sg-meter.css</pre>
-  <p>The paths are versioned and immutable, as in <a href="https://coding.sgit.ai/javascript/index.html">the estate's JavaScript guidance</a>: a fix is a new path, so a page that works today keeps loading the same files. Read them first; they are short: <a href="../assets/components/sg-meter/v1/v1.1/v1.1.0/sg-meter-core.js">the rules</a> (no rendering), <a href="../assets/components/sg-meter/v1/v1.1/v1.1.0/sg-meter.js">the element</a>, <a href="../assets/components/sg-meter/v1/v1.1/v1.1.0/sg-meter.css">its styles</a>, <a href="../assets/components/base/v1/v1.0/v1.0.0/sg-component.js">the base class</a>.</p>
+assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.js
+assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter-core.js
+assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.tpl
+assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.css</pre>
+  <p>The paths are versioned and immutable, as in <a href="https://coding.sgit.ai/javascript/index.html">the estate's JavaScript guidance</a>: a fix is a new path, so a page that works today keeps loading the same files. Read them first; they are short: <a href="../assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter-core.js">the rules</a> (no rendering), <a href="../assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.js">the element</a>, <a href="../assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.css">its styles</a>, <a href="../assets/components/base/v1/v1.0/v1.0.0/sg-component.js">the base class</a>.</p>
   <p>Then, on every page, load the module once, give it a config, and say what the page is:</p>
   <pre class="shell">&lt;!-- in the top bar --&gt;
 &lt;sg-meter view="balance"&gt;&lt;/sg-meter&gt;
@@ -27,10 +27,10 @@ assets/components/sg-meter/v1/v1.1/v1.1.0/sg-meter.css</pre>
   "topup": { "amount": 500, "link": "https://buy.stripe.com/your-link" },
   "picks": { "feed": "articles/feed.json", "base": "articles/" } }
 &lt;/script&gt;
-&lt;script type="module" src="/assets/components/sg-meter/v1/v1.1/v1.1.0/sg-meter.js"&gt;&lt;/script&gt;</pre>
+&lt;script type="module" src="/assets/components/sg-meter/v1/v1.2/v1.2.0/sg-meter.js"&gt;&lt;/script&gt;</pre>
   <p>Every key has a default, so an empty config works. Put <code>data-root</code> on <code>&lt;html&gt;</code> (for example <code>data-root="../"</code>) if your pages are not all at the top level; links the component writes are prefixed with it. This site loads the module with a dynamic <code>import()</code> from an inline script instead of a <code>src</code>, because its own build forbids script tags that point at files; either works.</p>
 
-  <h2 id="views">The ten views</h2>
+  <h2 id="views">The eleven views</h2>
   <p>One element, one shared meter: an ES module is evaluated once per page, so however many <code>&lt;sg-meter&gt;</code> elements a page has, it is charged once.</p>
   <div class="tablewrap"><table>
     <tr><th>view</th><th>What it shows</th><th>Attributes</th></tr>
@@ -44,8 +44,9 @@ assets/components/sg-meter/v1/v1.1/v1.1.0/sg-meter.css</pre>
     <tr><td style="white-space:nowrap"><code>personas</code></td><td>Rename, switch and remove personas, and add one from a preset or a blank one (v1.1).</td><td></td></tr>
     <tr><td style="white-space:nowrap"><code>graph</code></td><td>A persona drawn as an SVG graph (v1.1): the persona in the middle, its topics sized by weight, the pages behind each topic, and the citations between those pages, from the feed's <code>links_out</code>. Each page is a link, with its title and depth read as a tooltip.</td><td><code>persona</code> (default the active one)</td></tr>
     <tr><td style="white-space:nowrap"><code>link</code></td><td>One line linking to the newsroom, named for the active persona (v1.1).</td><td></td></tr>
+    <tr><td style="white-space:nowrap"><code>share</code></td><td>Shows the reader exactly what their reading looks like as text (a summary, then the same data as JSON), copies it to the clipboard, or sends it with their name and email, encrypted in the browser to the public key in <code>share.contact</code> and written to that file's append lane (v1.2). Sends nothing until the reader asks and ticks consent; never includes payment references.</td><td></td></tr>
   </table></div>
-  <p class="small dim">This site's own: <a href="../account/newsroom.html">newsroom</a>, <a href="../account/personas.html">personas</a>, <a href="../account/index.html">account</a>, <a href="../account/top-up.html">top-up</a>, <a href="../account/topped-up.html">topped-up</a> (opened without a payment reference, it adds nothing and says so), and the link on <a href="../articles/index.html">the front page</a>.</p>
+  <p class="small dim">This site's own: <a href="../account/newsroom.html">newsroom</a>, <a href="../account/share.html">share</a>, <a href="../account/personas.html">personas</a>, <a href="../account/index.html">account</a>, <a href="../account/top-up.html">top-up</a>, <a href="../account/topped-up.html">topped-up</a> (opened without a payment reference, it adds nothing and says so), and the link on <a href="../articles/index.html">the front page</a>.</p>
 
   <h2 id="rules">The rules it charges by</h2>
   <ul>
@@ -95,6 +96,7 @@ assets/components/sg-meter/v1/v1.1/v1.1.0/sg-meter.css</pre>
     <tr><td><code>sg:meter.toppedup</code></td><td><code>{credit, source, balance}</code>; source is <code>simulated</code> or <code>link</code></td></tr>
     <tr><td><code>sg:meter.reset</code></td><td><code>{}</code></td></tr>
     <tr><td><code>sg:meter.persona</code></td><td><code>{active, what}</code>; what is <code>active</code>, <code>added</code>, <code>renamed</code>, <code>removed</code> or <code>curated</code> (v1.1)</td></tr>
+    <tr><td><code>sg:meter.shared</code></td><td><code>{how, pages}</code>; how is <code>copied</code> or <code>sent</code> (v1.2)</td></tr>
     <tr><td><code>sg:meter.restored</code></td><td><code>{reads}</code>, after a restore from an export (v1.1)</td></tr>
     <tr><td><code>sg:meter.changed</code></td><td><code>{balance}</code>, on any saved change; the elements repaint on it</td></tr>
     <tr><td><code>sg-meter:error</code></td><td><code>{why}</code>, if the component's markup or styles failed to load; the element also gets <code>data-state="error"</code></td></tr>
@@ -133,6 +135,7 @@ assets/components/sg-meter/v1/v1.1/v1.1.0/sg-meter.css</pre>
 
   <h2 id="changelog">Changelog</h2>
   <ul>
+    <li><b>v1.2.0</b> (10 October 2026, site v0.7.31). Sharing: the <code>share</code> view, <code>shareData()</code> in the core, the <code>share</code> config and the <code>sg:meter.shared</code> event. A reader sees the exact text, copies it, or sends it encrypted (sgit's hybrid envelope v2, RSA-OAEP-SHA256 and AES-256-GCM, with Web Crypto) into an append lane, with the fingerprint recomputed from the published key before anything is sent. The newsroom and account link to it.</li>
     <li><b>v1.1.0</b> (10 October 2026, site v0.7.28). Personas: a default one built from all reading and named from its topics, presets offered by the site, as many as the reader wants, reading credited to the active one, Keep and Not for this persona. Four new views: <code>newsroom</code>, <code>personas</code>, <code>graph</code>, <code>link</code>. Picks score tags as well as topics. The account view draws the reader's graph and can restore an export. State version 3. v1.0.0 stays at its own path.</li>
     <li><b>v1.0.0</b> (10 October 2026, site v0.7.26). First packaged release: scroll-depth charging, negative balances, decline with a reason, the balance view, the Stripe return page, picks that count "not relevant" against a topic. Replaces this site's <code>assets/meter.js</code> (v0.7.24), which charged on opening and showed a bar when credit ran out.</li>
   </ul>

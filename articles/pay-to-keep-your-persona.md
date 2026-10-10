@@ -2,7 +2,7 @@
 
 > Most of what readers are asked to pay for, they pay for because they have to, because they are made to feel they should, or because it is the right thing to do. That works to a degree, and it does not scale. The value proposition we want is the opposite: a reader pays because it helps them, because what they are buying is time, context, focus, the ability to make good decisions and a better experience. On this site that thing now has a name. Your reading builds a persona, with a name and a graph you can watch grow, and you can have several, because a persona is a way to manage focus: one for security, one for AI development, one for everything else. Start from five made from what this site publishes, keep articles in a persona or put them out of it, and switch between them. Today it all lives in one browser, so opening the site on an iPad and then on a laptop gives you two strangers. That is the bad experience worth fixing, and the thing worth paying for: a persona that follows you to your phone, your laptop and your agent, with the privacy intact.
 
-*Source: <https://sgit.ai/articles/pay-to-keep-your-persona.html> · site v0.7.30 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/pay-to-keep-your-persona.html> · site v0.7.31 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -98,6 +98,10 @@ The privacy angle does not go away when that happens; it is what makes it possib
 
 If the persona is worth keeping, the next question is whether there is enough worth reading in it. There are about sixty articles on this site today, across six topics, and the five starting personas were chosen so that each has a real starting shelf. The better the graph of each article becomes, the better every persona built on it becomes, which is why the work on extracting more from each article, more facts, more connections, more ways to read it, matters to this as much as to the articles themselves. [One article, five readers](../articles/one-article-five-readers.md) is the first of it: a librarian, a cartographer, a historian, an explainer and a storyteller sent through each article after it is written, with every item anchored to its sentence.
 
+## Help us design it
+
+There is a faster way than waiting for numbers. Use the site as you normally would for a few days, then [send us your reading](../account/share.md): which pages, how far down each, what you kept, put out or declined. Dinis will reply with what your front page could look like, designed from your actual reading. The page shows you, word for word, everything that would be sent; you can copy it into an email or a message, or send it with your name and email, encrypted in your browser so that only our list agent can open it. It is the tightest feedback loop we have: real reading in, a real front page back.
+
 ## What we expect, written down now
 
 These are added to the anchors in [going live with the reading meter](../articles/going-live-with-the-reading-meter.md), after its five were written and before the first payment. They cannot be tested until a persona can follow a reader between devices; they are here so that we cannot pretend later that we expected something else.
@@ -109,7 +113,7 @@ These are added to the anchors in [going live with the reading meter](../article
 
 ## Try it
 
-You have a persona already; [your newsroom](../account/newsroom.md) shows it. Add one of the five, keep a few articles, put one out, and watch the graph change. Then open the site on another device and see what you have to leave behind.
+You have a persona already; [your newsroom](../account/newsroom.md) shows it. Add one of the five, keep a few articles, put one out, and watch the graph change. Then open the site on another device and see what you have to leave behind, or [send us your reading](../account/share.md) and we will design your front page from it.
 
 *Written from a voice note by Dinis Cruz, who is the author of the idea and has editorial responsibility, by a Claude Code session working as the sgit.ai newsroom, on 10 October 2026. The quoted sentence about why people should not pay is his, from that note. The Guardian figures are from Press Gazette's report of 12 September 2025; the Wikipedia figure is from the Wikimedia Foundation's [2023-24 fundraising report](https://meta.wikimedia.org/wiki/Fundraising/2023-24_Report). Personas are in [SG Meter v1.1](../meter/index.md#personas); the five starting personas are `PERSONAS` in `admin/build/build_pages.py`, and the build refuses one that names an article that does not exist. The screenshots were taken from this site with a test history.*
 

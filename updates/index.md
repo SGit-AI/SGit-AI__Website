@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens) one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.7.30 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.7.31 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,9 +12,10 @@ What changed on sgit and on this site, as it happens, one entry per story rather
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
 
-**73 entries, newest first**
+**74 entries, newest first**
 
 - 2026-10-10[The reading meter goes live: pay for what you read, go below zero if you like](#the-meter-goes-live)
+- 2026-10-10[Send us your reading, get a front page designed for you](#share-your-reading)
 - 2026-10-10[Personas, and a newsroom of your own](#personas)
 - 2026-10-10[Every page now has a price, and a meter that keeps it in your browser](#a-reading-meter)
 - 2026-10-07[The articles get a newsroom: publish by adding a file, placement by one editor](#the-newsroom)
@@ -102,6 +103,16 @@ newsroommicropaymentspricinglocal-firstlibrary
 - **£5 on Stripe.** One payment, no account, nothing renews; the page you come back to adds the credit, and cannot check it, on purpose.
 - **A library.** [SG Meter](../meter/index.md) is one web component any site can add, with its [security model](../meter/security.md).
 - **Why, and the numbers we will check:** [going live with the reading meter](../articles/going-live-with-the-reading-meter.md). **Who could cheat, and why we let them:** [who will game the reading meter](../articles/who-will-game-the-reading-meter.md).
+
+### [Send us your reading, get a front page designed for you](#share-your-reading) [v0.7.31](../admin/versions.md)
+
+newsroompersonalisationpersonasfeedback
+
+**A new deal on [a newsroom designed for you](../account/share.md).** Read as you normally would for a few days, then send us what you read, and we reply with what your front page could look like, built from your actual reading.
+
+- **You see all of it first**: the page shows, word for word, everything that would be sent. No payment references, nothing from other sites.
+- **Copy it** into an email or a message, or **send it** with your name and email, encrypted in your browser so that only our list agent can read it.
+- **It does not subscribe you** to the newsletter unless you tick that box.
 
 ### [Personas, and a newsroom of your own](#personas) [v0.7.28](../admin/versions.md)
 

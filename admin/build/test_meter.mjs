@@ -128,9 +128,16 @@ try {
     const r = await p2.evaluate(() => JSON.parse(localStorage.getItem('sgit.meter.v1')))
     check(r.reads === s.reads && r.personas.length === 2, 'an export restores balance, history and personas in another browser')
     fs.unlinkSync(file)
+    // sharing: the page shows exactly what would be sent, and copies it
+    await pg.goto(B + 'account/share.html'); await wait(1500)
+    const preview = await pg.evaluate(() => document.querySelector('sg-meter[view=share]').shadowRoot.querySelector('textarea.preview').value)
+    check(/^My reading on /.test(preview) && /\nData:\n\{/.test(preview) && !/cs_test_1/.test(preview), 'the share preview has the summary and data, and no payment references')
+    await ctx.grantPermissions(['clipboard-read', 'clipboard-write'])
+    await pg.evaluate(() => [...document.querySelector('sg-meter[view=share]').shadowRoot.querySelectorAll('button')].find(b => /Copy to clipboard/.test(b.textContent)).click()); await wait(600)
+    check((await pg.evaluate(() => navigator.clipboard.readText())) === preview, 'Copy puts exactly the preview on the clipboard')
     // phones
     const m = await browser.newPage({ viewport: { width: 390, height: 800 } })
-    for (const u of ['account/newsroom.html', 'account/personas.html', 'account/index.html', `articles/${art[0].slug}.html`]) {
+    for (const u of ['account/newsroom.html', 'account/personas.html', 'account/share.html', 'account/index.html', `articles/${art[0].slug}.html`]) {
         await m.goto(B + u); await m.waitForTimeout(1200)
         const w = await m.evaluate(() => document.documentElement.scrollWidth)
         check(w <= 390, `no sideways scroll at 390px: ${u} (${w})`)

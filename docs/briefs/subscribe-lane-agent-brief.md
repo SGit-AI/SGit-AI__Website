@@ -2,7 +2,7 @@
 
 > How the subscribe form on the articles pages works and how the list is run: subscribe@sgit.ai, an identity whose private keys live passphrase-encrypted in its own vault, so the vault key is the one secret; the form lane and the signed agents lane, what arrives, a drain-and-send tool tested from a fresh clone, what to do with an address, and the prompt to paste.
 
-*Source: <https://sgit.ai/docs/briefs/subscribe-lane-agent-brief.html> · site v0.7.30 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/briefs/subscribe-lane-agent-brief.html> · site v0.7.31 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -66,6 +66,22 @@ Sent from: https://sgit.ai/articles/index.html
 ```
 
 **The address to reply to is `X-SGit-Reply-To`, not `From`.** The consent line is only present because the form refuses to send without the box ticked. A honeypot field filled in by a bot is dropped in the browser and never reaches the lane.
+
+## A second kind on the same lane: reading shares from site v0.7.31
+
+The [share page](../../account/share.md) sends a reader's reading history into the same `subscribe` lane, in the same envelope, so that nothing new had to be provisioned. It is **not a subscription** and must not be added to `list/subscribers.json` unless it says so. Tell them apart by the header:
+
+```
+Subject: Reading share: <name or email>
+X-EmailFS-Kind: notification
+X-SGit-Form: reading-share
+X-SGit-Reply-To: reader@example.com
+X-SGit-Name: <name>
+X-SGit-Subscribe: yes | no
+X-SGit-Page: /account/share.html
+```
+
+The body is a readable summary (pages, topics, personas, the newest 40 pages with depth read, cost and any decline reason), then a line `Data:` followed by one JSON object: `{v:1, site, at, balance, spent, declined, reads, topups, active, personas:[{id, preset, name, reads, on, off}], topics:[[id, percent]], cols, log}`, where `log` is up to 300 rows of `[at, page, kind, depth, cost, declined, persona]`. It carries no payment references. The consent line says the reader allowed the data to be kept with their name and email and to be emailed about it; `X-SGit-Subscribe: yes` is a separate request to be added to the newsletter, handled as a subscription. File shares under their own folder, kept apart from the list, and pass them to whoever designs the reader's front page. The same text can also arrive pasted into an ordinary email.
 
 ## The list
 

@@ -51,6 +51,17 @@ Consent: yes, keep this address in the subscribe vault and send new articles by 
 Sent from: https://sgit.ai/articles/index.html</pre>
   <p><b>The address to reply to is <code>X-SGit-Reply-To</code>, not <code>From</code>.</b> The consent line is only present because the form refuses to send without the box ticked. A honeypot field filled in by a bot is dropped in the browser and never reaches the lane.</p>
 
+  <h2 id="reading-share">A second kind on the same lane: reading shares <span class="small dim">from site v0.7.31</span></h2>
+  <p>The <a href="../../account/share.html">share page</a> sends a reader's reading history into the same <code>subscribe</code> lane, in the same envelope, so that nothing new had to be provisioned. It is <b>not a subscription</b> and must not be added to <code>list/subscribers.json</code> unless it says so. Tell them apart by the header:</p>
+  <pre>Subject: Reading share: &lt;name or email&gt;
+X-EmailFS-Kind: notification
+X-SGit-Form: reading-share
+X-SGit-Reply-To: reader@example.com
+X-SGit-Name: &lt;name&gt;
+X-SGit-Subscribe: yes | no
+X-SGit-Page: /account/share.html</pre>
+  <p>The body is a readable summary (pages, topics, personas, the newest 40 pages with depth read, cost and any decline reason), then a line <code>Data:</code> followed by one JSON object: <code>{v:1, site, at, balance, spent, declined, reads, topups, active, personas:[{id, preset, name, reads, on, off}], topics:[[id, percent]], cols, log}</code>, where <code>log</code> is up to 300 rows of <code>[at, page, kind, depth, cost, declined, persona]</code>. It carries no payment references. The consent line says the reader allowed the data to be kept with their name and email and to be emailed about it; <code>X-SGit-Subscribe: yes</code> is a separate request to be added to the newsletter, handled as a subscription. File shares under their own folder, kept apart from the list, and pass them to whoever designs the reader's front page. The same text can also arrive pasted into an ordinary email.</p>
+
   <h2 id="list">The list</h2>
   <p>This vault is the one place the list lives: it receives the subscriptions, holds the current state and the history, and its key goes to the agent that maintains the list. Sensitive data is kept here on purpose, because it has to be kept somewhere and an encrypted vault is the right place. The drain turns each accepted message into list events, with no model in the loop: a form submission is <code>subscribed</code>, and any form field beyond email, name and consent is kept as a preference, so a future topics field needs no code change. The maintainer records the rest with <code>event &lt;address&gt; confirmation-sent|confirmed|unsubscribed</code>, and erasure with <code>forget &lt;address&gt;</code>, which removes the entry and blanks the filed messages; the event log never held the address. Earlier vault commits still hold it, because sgit keeps history: say so to the person asking, and move the list to a fresh vault if a full purge is ever required.</p>
   <p><b>Other agents can add events without the vault key.</b> A verified message on the <code>agents</code> lane may carry a fenced <code>list-event</code> block. The site agent announces a sent issue with <code>{"event": "issue-sent", "issue": "&lt;url&gt;"}</code>; whoever receives an unsubscribe by email forwards <code>{"event": "unsubscribed", "email": "&lt;address&gt;"}</code>. Anything else in the block is refused and the message is filed with the reason.</p>
