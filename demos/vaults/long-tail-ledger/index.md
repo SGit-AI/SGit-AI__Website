@@ -2,7 +2,7 @@
 
 > A data-science vault on the economics of open source's long tail: one old iMac, the long tail measured from Homebrew and PyPI analytics, where money flows for old versions, the payment problem, five funding models simulated with break-even prices and a sensitivity tornado, the satellite support firms, and a calculator. Published with its read key.
 
-*Source: <https://sgit.ai/demos/vaults/long-tail-ledger/index.html> · site v0.7.26 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/long-tail-ledger/index.html> · site v0.7.28 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

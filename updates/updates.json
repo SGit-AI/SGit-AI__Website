@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-10",
-  "site_version": "v0.7.26",
+  "site_version": "v0.7.28",
   "updates": [
     {
       "slug": "the-meter-goes-live",
@@ -16,6 +16,19 @@
         "library"
       ],
       "summary": "The reading meter stops being a demonstration. A page now costs the share of it you read, your balance can go below zero and stay there, and nothing nags. By depth. Scroll a tenth of the way down and you pay a tenth: 10p for a new article read to the end, 5p f…"
+    },
+    {
+      "slug": "personas",
+      "title": "Personas, and a newsroom of your own",
+      "date": "2026-10-10",
+      "version": "v0.7.28",
+      "tags": [
+        "newsroom",
+        "personalisation",
+        "personas",
+        "local-first"
+      ],
+      "summary": "Your reading now builds a persona, and you can have several. Each has a name, its own picks and a graph you can watch grow, all kept in your browser. Your newsroom : a front page for the active persona, with Keep and Not for this persona on every pick. Your pe…"
     },
     {
       "slug": "a-reading-meter",
@@ -991,6 +1004,26 @@
         "article"
       ],
       "summary": "An old Intel iMac, clean-installed for my agents, could not run Homebrew or Docker Desktop, and needed Python by hand. Each project that dropped it did so because supporting old machines costs money and the people on the long tail have no easy way to pay for it. This article measures that long tail from Homebrew and PyPI analytics, sets out where money does flow for old versions (Oracle, Red Hat, Windows ESU, Rimini Street) and where it does not (open source receives about 0.09% of its estimated value), shows why pence payments only work aggregated, and simulates five ways to pay for it. About £1.80 a machine a year from individuals covers one project's long-tail cost in half the draws; customised builds for companies cover it in 94%. Open source is not free; the question is whether the people who get the value have an easy way to pay for it."
+    },
+    {
+      "slug": "one-article-five-readers",
+      "title": "One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece",
+      "date": "2026-10-10",
+      "version": "v0.7.27",
+      "tags": [
+        "newsroom",
+        "journalism",
+        "liquid-content",
+        "fractal-semantic-graphs",
+        "ontology",
+        "agents",
+        "librarian",
+        "cartographer",
+        "historian",
+        "multi-view",
+        "article"
+      ],
+      "summary": "The articles on this site are deep and carry their evidence, and that makes them long and hard to consume. The answer tried here is not shorter articles. It is to keep writing the article first, as prose, because writing is how the argument is found, and then to send five readers through it afterwards, each an agent with a defined role. Two build the platform: a Librarian that catalogues every fact, claim, number, question and source with the sentence it came from, and a Cartographer that turns the catalogues into an ontology at three altitudes and draws the maps. Three write for a person: a Historian that says what the article added and where it sits in the arc, an Explainer that says it in two minutes, and a Storyteller that tells it as a deck. We ran it on the five articles about agent behaviour policies published between 7 and 10 October: 662 items catalogued, 32 problems flagged in published articles, 45 concepts, nine maps, five decks, and one new concept in the most recent article. The views are now on those five articles, and the whole run is in a vault you can open."
     },
     {
       "slug": "a-meter-in-the-browser",

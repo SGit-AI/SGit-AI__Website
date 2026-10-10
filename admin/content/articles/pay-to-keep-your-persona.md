@@ -90,7 +90,7 @@ The privacy angle does not go away when that happens; it is what makes it possib
 
 ## The question after that
 
-If the persona is worth keeping, the next question is whether there is enough worth reading in it. There are about sixty articles on this site today, across six topics, and the five starting personas were chosen so that each has a real starting shelf. The better the graph of each article becomes, the better every persona built on it becomes, which is why the work on extracting more from each article, more facts, more connections, more ways to read it, matters to this as much as to the articles themselves.
+If the persona is worth keeping, the next question is whether there is enough worth reading in it. There are about sixty articles on this site today, across six topics, and the five starting personas were chosen so that each has a real starting shelf. The better the graph of each article becomes, the better every persona built on it becomes, which is why the work on extracting more from each article, more facts, more connections, more ways to read it, matters to this as much as to the articles themselves. [One article, five readers](/articles/one-article-five-readers.html) is the first of it: a librarian, a cartographer, a historian, an explainer and a storyteller sent through each article after it is written, with every item anchored to its sentence.
 
 ## What we expect, written down now
 

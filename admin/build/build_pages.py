@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.27'
+SITE_VERSION = 'v0.7.28'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,7 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.27', '2026-10-10', 'this release',
+    ('v0.7.28', '2026-10-10', 'this release',
      "PERSONAS, AND A NEWSROOM OF YOUR OWN. SG Meter v1.1.0 (new immutable path assets/components/sg-meter/v1/v1.1/v1.1.0/; "
      "v1.0.0 kept) gives every reader personas, kept in the same local state as the balance. A default persona is built "
      "from everything read, weighted by depth, and named from its top topics until the reader names it ('The Policy "
@@ -49,6 +49,8 @@ VERSION_LOG = [
      "paying for; H6 and H7). Going live and who will game the reading meter link to it; their pre-registered "
      "hypotheses are unchanged. Tested in Chromium: v1 state migration, keep from the page, presets, curation, reads "
      "credited to the active persona, rename, export and restore into a fresh browser, no overflow at 390px, no errors.",),
+    ('v0.7.27', '2026-10-10', 'git 759a5fda',
+     "ONE ARTICLE, FIVE READERS. The articles are deep and hard to consume, so they are now read again after they are written by five agents with defined roles: a Librarian that catalogues every fact, claim, number, question and source with its verbatim sentence, a Cartographer and Ontologist that builds concepts and verbs at article, topic and site altitude and draws the maps, a Historian that says what the article added and where it sits, an Explainer that says it in two minutes, and a Storyteller that tells it as a deck. Run on the five behaviour-policy articles of 7 to 10 October: 662 items, 32 problems flagged in published text, 45 concepts, 78 edges, nine maps, five decks of nine slides, and one new concept in the newest article. Those five articles now open with Read it another way (two minutes, the arc, the deck with a PDF, the map, the catalogue with its flags), in the page and its markdown twin. A new vault, Article Views (chtgtd9e, read key published), holds the role files, every output, the renderers, the checks and an app; and the article that tells the story.",),
     ('v0.7.26', '2026-10-10', 'git bf3701ab',
      "THE READING METER GOES LIVE, AND BECOMES A LIBRARY. A page is now charged for the share of it the reader scrolled "
      "through (price times deepest point, rounded to 5%, never less than a tenth), once per page per session, topped up "
@@ -6231,8 +6233,111 @@ def subscribe_block(pre='', compact=False):
             f'articles and the desk notes; agents can read <a href="{pre}newsroom/wire.json">the wire</a>.</p></aside>')
 
 
+# ---- other ways to read an article. Written once as prose with its evidence, an article can
+# carry views extracted from it by the desk's readers (admin/content/newsroom/roles/): the
+# Explainer's two minutes, the Historian's place in the arc, the Storyteller's deck, the
+# Cartographer's map and the Librarian's catalogue. Each lives in
+# admin/content/articles/views/<slug>/ and every one is optional; an article without the folder
+# renders exactly as before. Rendered as <details>, so it works without JavaScript and prints.
+VIEWS_DIR = os.path.join(ADMIN, 'content', 'articles', 'views')
+VIEW_KIND_LABELS = [('claim', 'Claims'), ('evidence', 'Evidence'), ('data-point', 'Data points'),
+                    ('fact', 'Facts'), ('hypothesis', 'Hypotheses'), ('question', 'Open questions'),
+                    ('definition', 'Definitions'), ('method', 'Methods'), ('decision', 'Decisions'),
+                    ('limitation', 'Limitations'), ('example', 'Examples'), ('source', 'Sources'),
+                    ('artefact', 'Artefacts'), ('entity', 'Names')]
+
+
+def _view_text(t):
+    """Escape a catalogue line; a token with angle brackets (mcp__<server>__<tool>) becomes code,
+    so the markdown twin carries it in backticks rather than as something that looks like HTML."""
+    return re.sub(r'\S*&lt;\S+?&gt;\S*', lambda m: f'<code>{m.group(0)}</code>', _esc(t))
+
+
+def article_views(slug):
+    d = os.path.join(VIEWS_DIR, slug)
+    if not os.path.isdir(d):
+        return None
+    def read(name):
+        p = os.path.join(d, name)
+        return open(p).read() if os.path.exists(p) else None
+    v = {'explainer': read('explainer.md'), 'historian': read('historian.md')}
+    for k in ('catalog', 'deck', 'meta'):
+        t = read(k + '.json')
+        v[k] = json.loads(t) if t else None
+    return v
+
+
+def article_views_block(a):
+    v = article_views(a['slug'])
+    if not v:
+        return ''
+    where = f'articles/views/{a["slug"]}'
+    meta = v.get('meta') or {}
+    def md_view(md):
+        # drop the view's own H1: the summary line already names it
+        body = '\n'.join(l for l in md.splitlines() if not l.startswith('# '))
+        return LOADER.md_to_html(body, depth=1, where=where)
+    def first_h1(md, fallback):
+        return next((l[2:].strip() for l in md.splitlines() if l.startswith('# ')), fallback)
+    parts = []
+    if v['explainer']:
+        parts.append(('two-minutes', 'In two minutes', 'Explainer', first_h1(v['explainer'], ''),
+                      md_view(v['explainer']), True))
+    if v['historian']:
+        parts.append(('arc', 'In the arc', 'Historian', 'What it added, and where it sits',
+                      md_view(v['historian']), False))
+    if v['deck']:
+        dk = v['deck']
+        n = len(dk['slides'])
+        figs = ''.join(
+            f'<figure class="shot" data-shot="slide-{i:02d}.webp" data-dir="views/{a["slug"]}/" '
+            f'data-alt="Slide {i} of {n}"><figcaption>{i} / {n}</figcaption></figure>'
+            for i in range(1, n + 1))
+        pdf = (f' <a href="views/{a["slug"]}/{a["slug"]}.pdf">Download the deck as a PDF</a> (one page '
+               f'per slide, ready for a LinkedIn document post).' if meta.get('pdf') else '')
+        parts.append(('pictures', 'In pictures', 'Storyteller', f'{n} slides',
+                      f'<div class="vdeck">{figs}</div><p class="small dim">Swipe or scroll sideways.{pdf}</p>',
+                      False))
+    if meta.get('map'):
+        parts.append(('map', 'On the map', 'Cartographer', meta.get('map_caption', 'The argument as a map'),
+                      f'<figure class="shot" data-shot="map.webp" data-dir="views/{a["slug"]}/" '
+                      f'data-alt="{_esc(meta.get("map_caption", ""))}"><figcaption>{_esc(meta.get("map_caption", ""))}'
+                      f'</figcaption></figure>', False))
+    if v['catalog']:
+        cat = v['catalog']
+        items = cat.get('items', [])
+        groups = []
+        for kind, label in VIEW_KIND_LABELS:
+            its = [i for i in items if i.get('kind') == kind]
+            if not its:
+                continue
+            lis = ''.join(f'<li>{_view_text(i["text"])} <span class="dim">({_esc(i.get("section", ""))})</span></li>'
+                          for i in its)
+            groups.append(f'<details class="vkind"><summary>{label}: <span class="vn">{len(its)}</span></summary><ul>{lis}</ul></details>')
+        flags = cat.get('flags') or []
+        flag_html = (f'<details class="vkind vflags"><summary>Flagged for the author: <span class="vn">{len(flags)}</span></summary>'
+                     '<ul>' + ''.join(f'<li>{_view_text(f)}</li>' for f in flags) + '</ul></details>') if flags else ''
+        parts.append(('catalogue', 'The catalogue', 'Librarian',
+                      f'{len(items)} items, each anchored to a sentence of the article',
+                      '<p class="small dim">Everything the article contains, by kind. Every item was extracted '
+                      'with the exact sentence it came from, and a script checked each one against the article.</p>'
+                      + ''.join(groups) + flag_html, False))
+    if not parts:
+        return ''
+    how = meta.get('about', '/articles/one-article-five-readers.html')
+    out = ['\n<section class="aviews" id="views">\n <h2>Read it another way</h2>\n'
+           f' <p class="small dim">Views extracted from this article by the desk\'s readers, after it was written. '
+           f'None adds a claim the article does not make. <a href="{LOADER._link_href(how, 1, where)}">How they are made</a>.</p>\n']
+    for vid, title, role, sub, body, open_ in parts:
+        out.append(f' <details class="aview" id="view-{vid}"{" open" if open_ else ""}><summary>'
+                   f'<span class="aview-t">{title}</span><span class="aview-r"><span class="sr"> (</span>{role}<span class="sr">): </span></span>'
+                   f'<span class="aview-s">{_esc(sub)}</span></summary>\n  <div class="aview-b">{body}</div>\n </details>\n')
+    out.append('</section>\n')
+    return ''.join(out)
+
+
 def article_body(a):
-    ver = (f' &middot; <a href="../admin/versions.html">{a["version"]}</a>' if a['version'] else '')
+    ver =(f' &middot; <a href="../admin/versions.html">{a["version"]}</a>' if a['version'] else '')
     # The byline is the first thing after the title, because an article written in the
     # first person without a name on it is a provenance failure on a site about provenance.
     # author_url is either absolute (external profile) or site-root relative (a page here,
@@ -6253,6 +6358,7 @@ def article_body(a):
                if a.get('linkedin') else '')
             + (f' &middot; {_chips(a["tags"])}' if a['tags'] else '') + '</p>\n'
             f' <p class="abstract"><em><b>Abstract:</b> {a["summary"]}</em></p>\n'
+            + article_views_block(a)
             + LOADER.md_to_html(a['body'], depth=1, where=a['where'])
             + article_threads_block(a)
             + article_desk_block(a)

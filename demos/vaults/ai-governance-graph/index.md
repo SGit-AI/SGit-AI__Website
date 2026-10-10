@@ -2,7 +2,7 @@
 
 > Hari Kota's ten-layer AI governance stack, kept exactly as posted, turned into a fractal semantic graph: the edges the table already contains, sourced edges between the layers, each example zoomed into the instrument and provisions it names, and the three gaps and the do-this-today test run as queries on a fictional shop. Published with its read key.
 
-*Source: <https://sgit.ai/demos/vaults/ai-governance-graph/index.html> · site v0.7.26 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/ai-governance-graph/index.html> · site v0.7.28 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

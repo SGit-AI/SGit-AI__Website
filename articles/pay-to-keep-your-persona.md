@@ -2,7 +2,7 @@
 
 > Most of what readers are asked to pay for, they pay for because they have to, because they are made to feel they should, or because it is the right thing to do. That works to a degree, and it does not scale. The value proposition we want is the opposite: a reader pays because it helps them, because what they are buying is time, context, focus, the ability to make good decisions and a better experience. On this site that thing now has a name. Your reading builds a persona, with a name and a graph you can watch grow, and you can have several, because a persona is a way to manage focus: one for security, one for AI development, one for everything else. Start from five made from what this site publishes, keep articles in a persona or put them out of it, and switch between them. Today it all lives in one browser, so opening the site on an iPad and then on a laptop gives you two strangers. That is the bad experience worth fixing, and the thing worth paying for: a persona that follows you to your phone, your laptop and your agent, with the privacy intact.
 
-*Source: <https://sgit.ai/articles/pay-to-keep-your-persona.html> · site v0.7.26 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/pay-to-keep-your-persona.html> · site v0.7.28 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -96,7 +96,7 @@ The privacy angle does not go away when that happens; it is what makes it possib
 
 ## The question after that
 
-If the persona is worth keeping, the next question is whether there is enough worth reading in it. There are about sixty articles on this site today, across six topics, and the five starting personas were chosen so that each has a real starting shelf. The better the graph of each article becomes, the better every persona built on it becomes, which is why the work on extracting more from each article, more facts, more connections, more ways to read it, matters to this as much as to the articles themselves.
+If the persona is worth keeping, the next question is whether there is enough worth reading in it. There are about sixty articles on this site today, across six topics, and the five starting personas were chosen so that each has a real starting shelf. The better the graph of each article becomes, the better every persona built on it becomes, which is why the work on extracting more from each article, more facts, more connections, more ways to read it, matters to this as much as to the articles themselves. [One article, five readers](../articles/one-article-five-readers.md) is the first of it: a librarian, a cartographer, a historian, an explainer and a storyteller sent through each article after it is written, with every item anchored to its sentence.
 
 ## What we expect, written down now
 
@@ -122,8 +122,15 @@ Startups & strategyNews & evidence[This article as a graph →](graphs.md#pay-to
 - [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](going-live-with-the-reading-meter.md) Pay for the share of a page you read, go below zero with no nagging, top up £5 on Stripe: the plan, and the numbers we check in eight weeks.
 - [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](who-will-game-the-reading-meter.md) Eight kinds of reader, none of them attackers, nine ways to cheat a browser meter, and the quieter risks that will actually happen.
 - [Git for things you cannot put on GitHub](what-sgit-is.md) sgit is git for files you cannot put on GitHub: encrypted before they leave your machine, versioned like git, stored where the server cannot read a byte.
+- [One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece](one-article-five-readers.md) Write the article first, then send five agent readers through it: a catalogue, an ontology and maps, the arc, two minutes, and a deck.
+
+### Continued by
+
+- [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](going-live-with-the-reading-meter.md) Pay for the share of a page you read, go below zero with no nagging, top up £5 on Stripe: the plan, and the numbers we check in eight weeks.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Posting this article on LinkedIn?** The cover is [pay-to-keep-your-persona.jpg](../articles/banners/pay-to-keep-your-persona.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
 **Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 

@@ -1,0 +1,155 @@
+{
+  "slug": "hope-or-enforcement",
+  "title": "Hope or enforcement",
+  "palette": "violet",
+  "slides": [
+    {
+      "layout": "cover",
+      "kicker": "Customer service agents",
+      "headline": "Hope or enforcement: who keeps each promise?",
+      "sub": "One fictional shop's support agent, built three ways and simulated. Every design has a rule for everything."
+    },
+    {
+      "layout": "statement",
+      "headline": "A rule the model keeps is hope",
+      "sub": "A limit the agent cannot reach is a boundary. Only the second is a control."
+    },
+    {
+      "layout": "list",
+      "headline": "How much of each policy is hope",
+      "items": [
+        "Design 1, one agent, two connectors: 97%",
+        "Design 2, a harness of tools: 73%",
+        "Design 3, gated narrow agents: 23%"
+      ]
+    },
+    {
+      "layout": "compare",
+      "headline": "What one run can reach",
+      "left": {
+        "title": "Design 1",
+        "points": [
+          "38,000 customer records",
+          "Unlimited refunds",
+          "Any email address"
+        ]
+      },
+      "right": {
+        "title": "Design 3",
+        "points": [
+          "One verified customer",
+          "100 GBP per order",
+          "No other address"
+        ]
+      }
+    },
+    {
+      "layout": "diagram",
+      "headline": "Design 3 turns one prompt into a flow",
+      "nodes": [
+        "Identity gateway, in code",
+        "Intake and security agent",
+        "Orchestrator",
+        "One narrow specialist",
+        "Controller checks reply"
+      ],
+      "edges": [
+        [
+          "Identity gateway, in code",
+          "Intake and security agent",
+          "verified"
+        ],
+        [
+          "Intake and security agent",
+          "Orchestrator",
+          "classified"
+        ],
+        [
+          "Orchestrator",
+          "One narrow specialist",
+          "routed"
+        ],
+        [
+          "One narrow specialist",
+          "Controller checks reply",
+          "drafted"
+        ]
+      ],
+      "sub": "The specialists' tools take no customer argument."
+    },
+    {
+      "layout": "statement",
+      "headline": "As reach falls, the policy gets smaller",
+      "sub": "It no longer has to say \"do not delete the database\" to an agent that has no way to."
+    },
+    {
+      "layout": "list",
+      "headline": "The policy shows which boundary to build next",
+      "items": [
+        "New address: confirm by email link first",
+        "Refunds stop at 250 GBP per customer in 30 days",
+        "Claims need an image",
+        "Two vouchers per customer in 90 days"
+      ]
+    },
+    {
+      "layout": "number",
+      "value": "6 of 8",
+      "label": "client promises kept by a boundary in Design 3",
+      "sub": "Design 1 keeps none by a boundary, Design 2 one. Accurate, polite replies rest on a model in every design."
+    },
+    {
+      "layout": "end",
+      "headline": "Show the client the record, not a score",
+      "sub": "A promise is only as strong as the weakest thing it rests on.",
+      "url": "https://sgit.ai/articles/hope-or-enforcement.html"
+    }
+  ],
+  "image_prompts": [
+    {
+      "slide": 1,
+      "template": "executive",
+      "prompt": "Clean editorial infographic, cream background #faf9f5, violet accents, simple flat icons, no photographs. A portrait cover slide for a deck about customer service agents. In the centre, a simple flat envelope icon with a small shop awning above it represents a fictional online homeware shop's support inbox. Below it, three small identical promise cards fan out side by side, each with a question mark beside a tiny hand and a tiny lock, asking whether the promise is kept by the model or by something it cannot reach. A small uppercase kicker reads 'Customer service agents'. The serif headline reads 'Hope or enforcement: who keeps each promise?' A short line beneath says that one fictional shop's support agent is built three ways and simulated, and that every design has a rule for everything. Thin violet bar along the top, generous cream space, no people, no brand logos, no figures on the cover."
+    },
+    {
+      "slide": 2,
+      "template": "comparison",
+      "prompt": "Clean editorial infographic, cream background #faf9f5, violet accents, simple flat icons, no photographs. A portrait statement slide. The serif headline reads 'A rule the model keeps is hope'. Below, two simple flat icons side by side with a gentle contrast. On the left, a paper rule sheet held up only by a small robot-like agent figure, with a pair of crossed fingers beside it, captioned 'hope'. On the right, the same agent figure standing behind a solid violet wall it cannot reach over, captioned 'boundary'. A short supporting line reads that a limit the agent cannot reach is a boundary, and that only the second is a control. Sparse composition, dark grey text, violet used for the wall and the top bar only, no numbers and no extra labels."
+    },
+    {
+      "slide": 3,
+      "template": "stats",
+      "prompt": "Clean editorial infographic, cream background #faf9f5, violet accents, simple flat icons, no photographs. A portrait slide titled 'How much of each policy is hope'. Three horizontal bars stacked vertically, one per design, each a simple progress bar whose violet filled portion shows the share of the policy that is hope. The top bar, labelled 'Design 1, one agent, two connectors', is filled to 97%. The middle bar, labelled 'Design 2, a harness of tools', is filled to 73%. The bottom bar, labelled 'Design 3, gated narrow agents', is filled to 23%. Beside each label sits a small icon: a single agent with two plugs, an agent inside a toolbox frame, and a row of small agents behind a gate. The percentages are printed at the end of each bar. No other numbers, clean alignment, legible text."
+    },
+    {
+      "slide": 4,
+      "template": "comparison",
+      "prompt": "Clean editorial infographic, cream background #faf9f5, violet accents, simple flat icons, no photographs. A portrait comparison slide titled 'What one run can reach'. Two side by side panels. The left panel, titled 'Design 1', shows a huge crowd of tiny person icons, an open cash drawer with no limit and an envelope flying off in every direction, captioned '38,000 customer records', 'Unlimited refunds' and 'Any email address'. The right panel, tinted pale violet and titled 'Design 3', shows a single person icon inside a circle, a small coin stack with a cap marked 100 GBP, and an envelope with a return arrow to that one person, captioned 'One verified customer', '100 GBP per order' and 'No other address'. The contrast in scale between the two panels carries the idea. No other figures."
+    },
+    {
+      "slide": 5,
+      "template": "architecture",
+      "prompt": "Clean editorial infographic, cream background #faf9f5, violet accents, simple flat icons, no photographs. A portrait flow diagram titled 'Design 3 turns one prompt into a flow'. Five rounded white boxes with violet outlines are stacked top to bottom, joined by downward violet arrows with small italic labels. Top: 'Identity gateway, in code', with a gear and a check mark. Arrow 'verified'. Next: 'Intake and security agent', with a shield and a magnifier. Arrow 'classified'. Next: 'Orchestrator', with a small routing table. Arrow 'routed'. Next: 'One narrow specialist', with a single tool icon. Arrow 'drafted'. Bottom: 'Controller checks reply', with a checklist over an envelope. A short line at the foot notes that the specialists' tools take no customer argument. Legible labels, even spacing, nothing beyond these five steps."
+    },
+    {
+      "slide": 6,
+      "template": "executive",
+      "prompt": "Clean editorial infographic, cream background #faf9f5, violet accents, simple flat icons, no photographs. A portrait statement slide. The serif headline reads 'As reach falls, the policy gets smaller'. Below, a simple visual: on the left a long scroll of rules beside a large circle representing a wide reach; on the right a short card of rules beside a small circle representing a narrow reach, with a violet arrow between them. On the short card, a faded line reading 'do not delete the database' is crossed out, and next to it the agent figure has no delete tool in its small toolbox. The supporting line reads that the policy no longer has to say 'do not delete the database' to an agent that has no way to. Calm, minimal, no numbers."
+    },
+    {
+      "slide": 7,
+      "template": "process",
+      "prompt": "Clean editorial infographic, cream background #faf9f5, violet accents, simple flat icons, no photographs. A portrait list slide titled 'The policy shows which boundary to build next'. Four horizontal cards stacked vertically, each with a violet left edge and a small flat icon. One: a house with a new pin and an email link, 'New address: confirm by email link first'. Two: a coin stack with a calendar and a person, 'Refunds stop at 250 GBP per customer in 30 days'. Three: a parcel with a camera, 'Claims need an image'. Four: two voucher tickets and a calendar, 'Two vouchers per customer in 90 days'. Each card shows a small dashed outline turning into a solid wall, suggesting a rule moving from hope to a boundary. Clean, legible, no extra numbers."
+    },
+    {
+      "slide": 8,
+      "template": "stats",
+      "prompt": "Clean editorial infographic, cream background #faf9f5, violet accents, simple flat icons, no photographs. A portrait statistics slide with one large violet serif figure, '6 of 8', and the label 'client promises kept by a boundary in Design 3'. Under it, a row of eight small promise cards: six with a solid violet lock, two with a small model icon and a question mark. A thin legend notes that Design 1 keeps none by a boundary and Design 2 keeps one, and that accurate, polite replies rest on a model in every design. Keep the large figure dominant and the rest quiet. No percentages, no other statistics, no logos."
+    },
+    {
+      "slide": 9,
+      "template": "executive",
+      "prompt": "Clean editorial infographic, cream background #faf9f5, violet accents, simple flat icons, no photographs. A closing slide with a solid violet panel and white text. The serif headline reads 'Show the client the record, not a score'. Beneath it, the line 'A promise is only as strong as the weakest thing it rests on.' A simple white line drawing shows a ledger page listing promises, each with a small marker for what keeps it, a lock for a boundary or a small model icon for hope, held out towards a shop awning. At the bottom, in a rounded translucent box, the address sgit.ai/articles/hope-or-enforcement.html invites readers to the full article and its vault. Uncluttered, no logos, no figures beyond the address."
+    }
+  ]
+}

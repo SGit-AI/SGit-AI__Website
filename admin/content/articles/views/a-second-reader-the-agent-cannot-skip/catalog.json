@@ -1,0 +1,3315 @@
+{
+  "slug": "a-second-reader-the-agent-cannot-skip",
+  "title": "A second reader the agent cannot skip: how two wrong emails became a gate on every draft",
+  "date": "2026-10-09",
+  "counts": {
+    "artefact": 11,
+    "claim": 38,
+    "data-point": 9,
+    "decision": 6,
+    "definition": 9,
+    "entity": 9,
+    "evidence": 20,
+    "example": 5,
+    "fact": 14,
+    "hypothesis": 1,
+    "limitation": 11,
+    "method": 26,
+    "source": 26
+  },
+  "items": [
+    {
+      "id": "sr-example-1",
+      "kind": "example",
+      "text": "On 9 October two emails from agent@riskmandate.ai went out in the author's first person and signed \"Dinis\"",
+      "anchor": "On 9 October, two emails from agent@riskmandate.ai went out written in my first person and signed \"Dinis\".",
+      "section": "lead",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "incident",
+        "email",
+        "voice rule"
+      ]
+    },
+    {
+      "id": "sr-data-point-1",
+      "kind": "data-point",
+      "text": "The rule against writing in the author's voice existed in 4 places before the incident",
+      "anchor": "The rule against that already existed, written in four places.",
+      "section": "lead",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "voice rule",
+        "incident"
+      ]
+    },
+    {
+      "id": "sr-claim-1",
+      "kind": "claim",
+      "text": "The reasons the rule failed are not specific to email or to the author's setup",
+      "anchor": "because they are not specific to email or to my setup",
+      "section": "lead",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "self-held rule"
+      ]
+    },
+    {
+      "id": "sr-claim-2",
+      "kind": "claim",
+      "text": "The only thing enforcing the rule was the drafting agent remembering it",
+      "anchor": "The only thing enforcing the rule was the drafting agent remembering it.",
+      "section": "lead",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "self-held rule",
+        "expectation"
+      ]
+    },
+    {
+      "id": "sr-definition-1",
+      "kind": "definition",
+      "text": "Expectation (ABP): a rule in prose, enforced by nobody",
+      "anchor": "In the language of the [Agent Behaviour Policy](https://abp.sgit.ai/), that is an expectation: \"a rule in prose, enforced by nobody\".",
+      "section": "lead",
+      "supports": [],
+      "refs": [
+        "https://abp.sgit.ai/"
+      ],
+      "terms": [
+        "expectation",
+        "agent behaviour policy",
+        "barrier"
+      ]
+    },
+    {
+      "id": "sr-entity-1",
+      "kind": "entity",
+      "text": "Agent Behaviour Policy (ABP), at abp.sgit.ai",
+      "anchor": "[Agent Behaviour Policy](https://abp.sgit.ai/)",
+      "section": "lead",
+      "supports": [],
+      "refs": [
+        "https://abp.sgit.ai/"
+      ],
+      "terms": [
+        "agent behaviour policy"
+      ]
+    },
+    {
+      "id": "sr-claim-3",
+      "kind": "claim",
+      "text": "The drafting agent was the only reader of its own draft",
+      "anchor": "The drafting agent was the only reader of its own draft.",
+      "section": "lead",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "self-held rule",
+        "second reader"
+      ]
+    },
+    {
+      "id": "sr-claim-4",
+      "kind": "claim",
+      "text": "The rule fell out of the agent's working context when the conversation was summarised",
+      "anchor": "The rule fell out of the agent's working context when the conversation was summarised.",
+      "section": "lead",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "compaction",
+        "self-held rule"
+      ]
+    },
+    {
+      "id": "sr-evidence-1",
+      "kind": "evidence",
+      "text": "Anthropic's memory docs: CLAUDE.md is context, not enforced configuration; use a PreToolUse hook to block an action",
+      "anchor": "CLAUDE.md is \"context, not enforced configuration. To block an action regardless of what Claude decides, use a PreToolUse hook instead.\"",
+      "section": "lead",
+      "supports": [
+        "sr-claim-4"
+      ],
+      "refs": [
+        "https://code.claude.com/docs/en/memory"
+      ],
+      "terms": [
+        "claude.md",
+        "compaction",
+        "pretooluse hook"
+      ]
+    },
+    {
+      "id": "sr-source-1",
+      "kind": "source",
+      "text": "Claude Code memory documentation",
+      "anchor": "([memory docs](https://code.claude.com/docs/en/memory))",
+      "section": "lead",
+      "supports": [],
+      "refs": [
+        "https://code.claude.com/docs/en/memory"
+      ],
+      "terms": [
+        "claude code documentation",
+        "compaction"
+      ]
+    },
+    {
+      "id": "sr-entity-2",
+      "kind": "entity",
+      "text": "Anthropic, whose documentation describes the compaction failure",
+      "anchor": "Anthropic's own documentation describes exactly this",
+      "section": "lead",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "anthropic"
+      ]
+    },
+    {
+      "id": "sr-artefact-1",
+      "kind": "artefact",
+      "text": "The inbox agent's design document 'The independent checker: a hook that makes a second model approve every email draft', with code, tests and a list of limits",
+      "anchor": "a document called *The independent checker: a hook that makes a second model approve every email draft*, with the code, the tests and an honest list of limits.",
+      "section": "lead",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "design document",
+        "draft guard"
+      ]
+    },
+    {
+      "id": "sr-entity-3",
+      "kind": "entity",
+      "text": "The inbox agent (RiskMandate.ai), which wrote up and built its own fix the same day",
+      "anchor": "The same day, the inbox agent wrote up its own fix",
+      "section": "lead",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "inbox agent"
+      ]
+    },
+    {
+      "id": "sr-claim-5",
+      "kind": "claim",
+      "text": "The case shows a real failure in real use turned into an enforced control the same day, by the system that failed",
+      "anchor": "a real failure, in real use, turned into an enforced control the same day, by the system that failed.",
+      "section": "lead",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "enforcement",
+        "incident"
+      ]
+    },
+    {
+      "id": "sr-artefact-2",
+      "kind": "artefact",
+      "text": "Figure ck-flow.webp: the draft guard flow, every create or update draft call passes through a harness-run hook",
+      "anchor": "The draft guard: every call to create or update a Gmail draft passes through a hook the harness runs, not the agent.",
+      "section": "lead",
+      "supports": [],
+      "refs": [
+        "images/ck-flow.webp"
+      ],
+      "terms": [
+        "draft guard",
+        "figure",
+        "harness"
+      ]
+    },
+    {
+      "id": "sr-artefact-3",
+      "kind": "artefact",
+      "text": "Mermaid source for the draft guard figure",
+      "anchor": "!source The draft guard, Mermaid source | images/ck-flow.webp",
+      "section": "lead",
+      "supports": [],
+      "refs": [
+        "images/ck-flow.webp"
+      ],
+      "terms": [
+        "mermaid",
+        "figure"
+      ]
+    },
+    {
+      "id": "sr-claim-6",
+      "kind": "claim",
+      "text": "A rule kept by the agent it governs is hope",
+      "anchor": "A rule kept by the agent it governs is hope.",
+      "section": "In short",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "self-held rule",
+        "hope"
+      ]
+    },
+    {
+      "id": "sr-claim-7",
+      "kind": "claim",
+      "text": "A self-held rule can be forgotten, misread, summarised away, or argued around by the agent's own reasoning",
+      "anchor": "It can be forgotten, misread, summarised away, or argued around by the agent's own reasoning.",
+      "section": "In short",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "self-held rule",
+        "failure mode"
+      ]
+    },
+    {
+      "id": "sr-claim-8",
+      "kind": "claim",
+      "text": "The fix has two parts: a second independent reader, and a gate the harness runs on the tool call so the agent cannot skip it",
+      "anchor": "A second, independent reader, and a gate the drafting agent cannot skip because the harness, not the agent, runs it on the tool call.",
+      "section": "In short",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "second reader",
+        "gate",
+        "harness"
+      ]
+    },
+    {
+      "id": "sr-claim-9",
+      "kind": "claim",
+      "text": "Certain things go in code; signatures, dashes, key shapes, HTML and recipients are checked deterministically before any model",
+      "anchor": "Signatures, dashes, key shapes, HTML and recipients are checked deterministically before any model is called.",
+      "section": "In short",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "code check",
+        "determinism"
+      ]
+    },
+    {
+      "id": "sr-claim-10",
+      "kind": "claim",
+      "text": "The checker gets less than the author on purpose: no history, no tools, ideally a different model",
+      "anchor": "No conversation history, no tools, ideally a different model: only the rules, the sources and the draft.",
+      "section": "In short",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "checker",
+        "context isolation",
+        "model diversity"
+      ]
+    },
+    {
+      "id": "sr-claim-11",
+      "kind": "claim",
+      "text": "Anything but an explicit PASS is a FAIL; a late email is cheap, a wrong one cannot be taken back",
+      "anchor": "A late email is cheap; a wrong one cannot be taken back.",
+      "section": "In short",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "fail closed"
+      ]
+    },
+    {
+      "id": "sr-claim-12",
+      "kind": "claim",
+      "text": "Today the guard is a setting the agent's own account could switch off",
+      "anchor": "Today it is a setting the agent's own account could switch off.",
+      "section": "In short",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "setting",
+        "placement"
+      ]
+    },
+    {
+      "id": "sr-claim-13",
+      "kind": "claim",
+      "text": "Under managed settings the same code becomes a boundary: same code, different owner",
+      "anchor": "Under managed settings it becomes a boundary. Same code, different owner.",
+      "section": "In short",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "boundary",
+        "managed settings",
+        "placement"
+      ]
+    },
+    {
+      "id": "sr-claim-14",
+      "kind": "claim",
+      "text": "The pattern is old: segregation of duties (banks), the two-person rule (military), independent double check (pharmacies)",
+      "anchor": "Banks call it segregation of duties, the military calls it the two-person rule, pharmacies call it an independent double check.",
+      "section": "In short",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "maker-checker",
+        "segregation of duties",
+        "two-person rule",
+        "independent double check"
+      ]
+    },
+    {
+      "id": "sr-claim-15",
+      "kind": "claim",
+      "text": "Any behaviour policy held by the agent it governs has this general weakness",
+      "anchor": "This is the general weakness of any behaviour policy that is held by the agent it governs.",
+      "section": "Why the rule failed: hope held by the agent it governs",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "self-held rule",
+        "behaviour policy"
+      ]
+    },
+    {
+      "id": "sr-source-2",
+      "kind": "source",
+      "text": "Earlier sgit.ai article 'Hope or enforcement': a rule the model keeps is an expectation, hope",
+      "anchor": "In [Hope or enforcement](/articles/hope-or-enforcement.html) I put it as \"a rule the model keeps is an expectation: hope\"",
+      "section": "Why the rule failed: hope held by the agent it governs",
+      "supports": [],
+      "refs": [
+        "/articles/hope-or-enforcement.html"
+      ],
+      "terms": [
+        "hope",
+        "expectation"
+      ]
+    },
+    {
+      "id": "sr-source-3",
+      "kind": "source",
+      "text": "Earlier sgit.ai article 'Every mistake added a rule': each failure tends to produce another paragraph of instructions",
+      "anchor": "[Every mistake added a rule](/articles/every-mistake-added-a-rule.html) I described how each failure tends to produce another paragraph of instructions",
+      "section": "Why the rule failed: hope held by the agent it governs",
+      "supports": [],
+      "refs": [
+        "/articles/every-mistake-added-a-rule.html"
+      ],
+      "terms": [
+        "instruction growth"
+      ]
+    },
+    {
+      "id": "sr-claim-16",
+      "kind": "claim",
+      "text": "This failure is the case where the paragraph of instructions already existed four times",
+      "anchor": "This failure is the case where the paragraph already existed four times.",
+      "section": "Why the rule failed: hope held by the agent it governs",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "instruction growth",
+        "incident"
+      ]
+    },
+    {
+      "id": "sr-claim-17",
+      "kind": "claim",
+      "text": "There are three separate ways a self-held rule fails, needing different fixes",
+      "anchor": "There are three separate ways a self-held rule fails, and they need different fixes.",
+      "section": "Why the rule failed: hope held by the agent it governs",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "failure mode",
+        "self-held rule"
+      ]
+    },
+    {
+      "id": "sr-definition-2",
+      "kind": "definition",
+      "text": "Forget: the rule leaves the agent's context",
+      "anchor": "The agent can **forget** it (the rule leaves the context).",
+      "section": "Why the rule failed: hope held by the agent it governs",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "failure mode",
+        "forget",
+        "compaction"
+      ]
+    },
+    {
+      "id": "sr-definition-3",
+      "kind": "definition",
+      "text": "Not see: the author is the worst reader of its own text and misses the violation",
+      "anchor": "The agent can **not see** the violation",
+      "section": "Why the rule failed: hope held by the agent it governs",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "failure mode",
+        "not see",
+        "self-correction"
+      ]
+    },
+    {
+      "id": "sr-evidence-2",
+      "kind": "evidence",
+      "text": "Huang et al.: models struggle to self-correct without external feedback",
+      "anchor": "models \"struggle to self-correct their responses without external feedback\" ([Huang et al., ICLR 2024](https://arxiv.org/abs/2310.01798))",
+      "section": "Why the rule failed: hope held by the agent it governs",
+      "supports": [
+        "sr-definition-3"
+      ],
+      "refs": [
+        "https://arxiv.org/abs/2310.01798"
+      ],
+      "terms": [
+        "self-correction",
+        "research"
+      ]
+    },
+    {
+      "id": "sr-evidence-3",
+      "kind": "evidence",
+      "text": "Panickssery et al.: LLM judges show self-preference for their own outputs",
+      "anchor": "LLM judges show \"self-preference\" for their own outputs ([Panickssery et al., NeurIPS 2024](https://arxiv.org/abs/2404.13076))",
+      "section": "Why the rule failed: hope held by the agent it governs",
+      "supports": [
+        "sr-definition-3",
+        "sr-decision-2"
+      ],
+      "refs": [
+        "https://arxiv.org/abs/2404.13076"
+      ],
+      "terms": [
+        "self-preference",
+        "llm-as-a-judge",
+        "research"
+      ]
+    },
+    {
+      "id": "sr-source-4",
+      "kind": "source",
+      "text": "Huang et al., ICLR 2024, arXiv 2310.01798",
+      "anchor": "[Huang et al., ICLR 2024](https://arxiv.org/abs/2310.01798)",
+      "section": "Why the rule failed: hope held by the agent it governs",
+      "supports": [],
+      "refs": [
+        "https://arxiv.org/abs/2310.01798"
+      ],
+      "terms": [
+        "research",
+        "self-correction"
+      ]
+    },
+    {
+      "id": "sr-source-5",
+      "kind": "source",
+      "text": "Panickssery et al., NeurIPS 2024, arXiv 2404.13076",
+      "anchor": "[Panickssery et al., NeurIPS 2024](https://arxiv.org/abs/2404.13076)",
+      "section": "Why the rule failed: hope held by the agent it governs",
+      "supports": [],
+      "refs": [
+        "https://arxiv.org/abs/2404.13076"
+      ],
+      "terms": [
+        "research",
+        "self-preference"
+      ]
+    },
+    {
+      "id": "sr-definition-4",
+      "kind": "definition",
+      "text": "Decide an exception applies: persuaded by its own earlier reasoning in the conversation",
+      "anchor": "And the agent can **decide an exception applies**, persuaded by its own earlier reasoning in the same conversation.",
+      "section": "Why the rule failed: hope held by the agent it governs",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "failure mode",
+        "exception"
+      ]
+    },
+    {
+      "id": "sr-claim-18",
+      "kind": "claim",
+      "text": "A reminder fixes only forgetting; a fresh second reader fixes the other two; an unskippable gate makes the fix hold",
+      "anchor": "A reminder fixes only the first. A second reader with a fresh context fixes the second and third. A gate the agent cannot skip makes the fix hold.",
+      "section": "Why the rule failed: hope held by the agent it governs",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "re-anchoring",
+        "second reader",
+        "gate"
+      ]
+    },
+    {
+      "id": "sr-fact-1",
+      "kind": "fact",
+      "text": "Claude Code raises an event before every tool call, including MCP tools and calls by sub-agents",
+      "anchor": "Claude Code raises an event before every tool call, including calls to MCP tools such as the Gmail connector and calls made by sub-agents.",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "tool.call",
+        "sub-agent",
+        "mcp"
+      ]
+    },
+    {
+      "id": "sr-entity-4",
+      "kind": "entity",
+      "text": "Claude Code, the harness that runs the hook",
+      "anchor": "Claude Code raises an event before every tool call",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "claude code",
+        "harness"
+      ]
+    },
+    {
+      "id": "sr-entity-5",
+      "kind": "entity",
+      "text": "The Gmail connector (MCP), whose create_draft and update_draft tools are guarded",
+      "anchor": "such as the Gmail connector",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "gmail",
+        "mcp"
+      ]
+    },
+    {
+      "id": "sr-method-1",
+      "kind": "method",
+      "text": "The guard registers on tool.call for mcp__Gmail__create_draft and mcp__Gmail__update_draft, with .catch(failClosed)",
+      "anchor": "on('tool.call', { tool: 'mcp__Gmail__create_draft' }, guard).catch(failClosed)",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "tool.call",
+        "create_draft",
+        "update_draft",
+        "fail closed"
+      ]
+    },
+    {
+      "id": "sr-fact-2",
+      "kind": "fact",
+      "text": "Claude Code mods are public and on by default from v2.1.287",
+      "anchor": "This is Claude Code's [mods](https://code.claude.com/docs/en/plugins/mods/overview) system, which is public and on by default from v2.1.287",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [
+        "https://code.claude.com/docs/en/plugins/mods/overview"
+      ],
+      "terms": [
+        "mod",
+        "claude code"
+      ]
+    },
+    {
+      "id": "sr-evidence-4",
+      "kind": "evidence",
+      "text": "Events docs: tool.call fires before a tool runs, including sub-agent and MCP calls",
+      "anchor": "\"`tool.call` fires when Claude Code is about to run a tool, including calls a subagent makes and calls to MCP tools\"",
+      "section": "How the guard works",
+      "supports": [
+        "sr-fact-1",
+        "sr-claim-19"
+      ],
+      "refs": [
+        "https://code.claude.com/docs/en/plugins/mods/events#guard-or-change-a-tool-call"
+      ],
+      "terms": [
+        "tool.call",
+        "sub-agent"
+      ]
+    },
+    {
+      "id": "sr-source-6",
+      "kind": "source",
+      "text": "Claude Code mods events documentation",
+      "anchor": "([events](https://code.claude.com/docs/en/plugins/mods/events#guard-or-change-a-tool-call))",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [
+        "https://code.claude.com/docs/en/plugins/mods/events#guard-or-change-a-tool-call"
+      ],
+      "terms": [
+        "claude code documentation",
+        "tool.call"
+      ]
+    },
+    {
+      "id": "sr-fact-3",
+      "kind": "fact",
+      "text": "The hook either calls next(e) and the draft is created, or returns { deny } and the tool never runs; the deny text reaches the agent as the tool error",
+      "anchor": "The hook either calls `next(e)`, and the draft is created, or returns `{ deny: \"...\" }`, and the tool never runs",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "deny",
+        "hook"
+      ]
+    },
+    {
+      "id": "sr-claim-19",
+      "kind": "claim",
+      "text": "Since the event fires for sub-agents too, a sub-agent cannot route around the gate",
+      "anchor": "Since the event fires for sub-agents too, a sub-agent cannot route around the gate.",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "sub-agent",
+        "gate"
+      ]
+    },
+    {
+      "id": "sr-method-2",
+      "kind": "method",
+      "text": "Stage 1: certain, cheap rules run first in code; a failure stops the call without a model call",
+      "anchor": "They run first, and a failure stops the call without spending a model call",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "code check",
+        "stage 1"
+      ]
+    },
+    {
+      "id": "sr-method-3",
+      "kind": "method",
+      "text": "R1 voice: mail with a To must carry the agent's signature, and none of the three lines before it a sign-off in the author's name; only the visible email is read",
+      "anchor": "R1 voice | For mail with a To: the body must carry the agent's signature line, and none of the three lines before it may be a sign-off in my name. Only the visible email is read, not the thread summary below it.",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "r1",
+        "voice rule",
+        "code check",
+        "signature"
+      ]
+    },
+    {
+      "id": "sr-method-4",
+      "kind": "method",
+      "text": "R3 format: mail with a To must have the branded HTML body",
+      "anchor": "R3 format | For mail with a To: the branded HTML body must be present.",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "r3",
+        "html",
+        "code check"
+      ]
+    },
+    {
+      "id": "sr-method-5",
+      "kind": "method",
+      "text": "R4 dashes: no em or en dashes anywhere",
+      "anchor": "R4 dashes | No em or en dashes anywhere.",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "r4",
+        "dash",
+        "code check"
+      ]
+    },
+    {
+      "id": "sr-method-6",
+      "kind": "method",
+      "text": "R5 secrets: no string shaped like a vault key, API key, AWS key, GitHub token or private key block",
+      "anchor": "R5 secrets | No string shaped like a vault key, an API key, an AWS key, a GitHub token or a private key block.",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "r5",
+        "secret",
+        "key shape",
+        "code check"
+      ]
+    },
+    {
+      "id": "sr-method-7",
+      "kind": "method",
+      "text": "R6 Cc: the author's addresses in the right place when others are in To",
+      "anchor": "R6 Cc | My addresses in the right place when others are in To.",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "r6",
+        "cc",
+        "recipient",
+        "code check"
+      ]
+    },
+    {
+      "id": "sr-method-8",
+      "kind": "method",
+      "text": "Internal drafts with no To skip the signature and HTML checks",
+      "anchor": "Internal drafts with no To, notes to me rather than emails to anyone else, skip the signature and HTML checks.",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "internal draft",
+        "code check"
+      ]
+    },
+    {
+      "id": "sr-method-9",
+      "kind": "method",
+      "text": "Stage 2: one prompt built from the rules, the sources and the draft",
+      "anchor": "If the code passes, the hook builds one prompt from three things",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "stage 2",
+        "checker",
+        "prompt"
+      ]
+    },
+    {
+      "id": "sr-data-point-2",
+      "kind": "data-point",
+      "text": "10 numbered rules in the checker prompt, from voice and disclosure to claims, scope, attachments and private pages, with a fixed answer format",
+      "anchor": "the rules (ten numbered rules, from voice and disclosure to claims, scope, attachments and private pages, with a fixed answer format",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "rule",
+        "answer format"
+      ]
+    },
+    {
+      "id": "sr-decision-1",
+      "kind": "decision",
+      "text": "Sources are used only if written in the last 60 minutes, so stale notes from another email are not used",
+      "anchor": "used only if written in the last 60 minutes, so stale notes from another email are not used",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "source file",
+        "freshness"
+      ]
+    },
+    {
+      "id": "sr-fact-4",
+      "kind": "fact",
+      "text": "The checker prompt is sent as a single $.model.complete call",
+      "anchor": "It sends that as a single `$.model.complete` call.",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "$.model.complete",
+        "checker"
+      ]
+    },
+    {
+      "id": "sr-evidence-5",
+      "kind": "evidence",
+      "text": "API docs: $.model.complete sends the prompt on its own, one user message, CLAUDE.md not included, no tools",
+      "anchor": "\"`$.model.complete` sends your prompt on its own\", with one user message, CLAUDE.md \"Not included\" and tools \"None\"",
+      "section": "How the guard works",
+      "supports": [
+        "sr-claim-20",
+        "sr-claim-21"
+      ],
+      "refs": [
+        "https://code.claude.com/docs/en/plugins/mods/api#call-a-model"
+      ],
+      "terms": [
+        "$.model.complete",
+        "context isolation"
+      ]
+    },
+    {
+      "id": "sr-source-7",
+      "kind": "source",
+      "text": "Claude Code mods API documentation, call a model",
+      "anchor": "([API](https://code.claude.com/docs/en/plugins/mods/api#call-a-model))",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [
+        "https://code.claude.com/docs/en/plugins/mods/api#call-a-model"
+      ],
+      "terms": [
+        "claude code documentation"
+      ]
+    },
+    {
+      "id": "sr-claim-20",
+      "kind": "claim",
+      "text": "The checker has no conversation history: it does not see the drafter's reasoning, excuses or persuading messages",
+      "anchor": "It does not see the drafting agent's reasoning, its excuses, or the earlier messages that persuaded it an exception applied",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "context isolation",
+        "checker"
+      ]
+    },
+    {
+      "id": "sr-claim-21",
+      "kind": "claim",
+      "text": "The checker has no tools: it can only read what it is given and answer",
+      "anchor": "It can only read what it is given and answer",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "checker",
+        "no tools"
+      ]
+    },
+    {
+      "id": "sr-decision-2",
+      "kind": "decision",
+      "text": "The drafter runs on Opus and the checker on Sonnet, so they do not share every blind spot and no model grades its own work",
+      "anchor": "The drafter runs on Opus; the checker on Sonnet.",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "model diversity",
+        "opus",
+        "sonnet"
+      ]
+    },
+    {
+      "id": "sr-claim-22",
+      "kind": "claim",
+      "text": "Two different models do not share every blind spot, and a model is not grading its own work",
+      "anchor": "The two do not share every blind spot, and a model is not grading its own work.",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "model diversity",
+        "self-preference"
+      ]
+    },
+    {
+      "id": "sr-method-10",
+      "kind": "method",
+      "text": "An answer passes only with RESULT: PASS and no R<n> FAIL line",
+      "anchor": "The answer passes only if it says `RESULT: PASS` **and** no line says `R<n> FAIL`.",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "answer format",
+        "explicit pass"
+      ]
+    },
+    {
+      "id": "sr-decision-3",
+      "kind": "decision",
+      "text": "A contradictory checker answer is treated as a FAIL",
+      "anchor": "A contradictory answer is a FAIL.",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "fail closed",
+        "answer format"
+      ]
+    },
+    {
+      "id": "sr-claim-23",
+      "kind": "claim",
+      "text": "Failing closed is the part most guards get wrong",
+      "anchor": "This is the part most guards get wrong",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "fail closed"
+      ]
+    },
+    {
+      "id": "sr-fact-5",
+      "kind": "fact",
+      "text": "Hooks fail open by default",
+      "anchor": "hooks fail **open** by default",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "fail open",
+        "hook"
+      ]
+    },
+    {
+      "id": "sr-evidence-6",
+      "kind": "evidence",
+      "text": "Events docs: a throwing mod hook is skipped; add a .catch handler to fail closed",
+      "anchor": "\"to make a hook that blocks calls fail closed, add a `.catch` error handler that answers in its place\"",
+      "section": "How the guard works",
+      "supports": [
+        "sr-fact-5",
+        "sr-method-12"
+      ],
+      "refs": [
+        "https://code.claude.com/docs/en/plugins/mods/events#handle-a-hook-that-fails"
+      ],
+      "terms": [
+        "fail closed",
+        "mod"
+      ]
+    },
+    {
+      "id": "sr-source-8",
+      "kind": "source",
+      "text": "Claude Code mods events documentation, handle a hook that fails",
+      "anchor": "([events](https://code.claude.com/docs/en/plugins/mods/events#handle-a-hook-that-fails))",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [
+        "https://code.claude.com/docs/en/plugins/mods/events#handle-a-hook-that-fails"
+      ],
+      "terms": [
+        "claude code documentation",
+        "fail closed"
+      ]
+    },
+    {
+      "id": "sr-evidence-7",
+      "kind": "evidence",
+      "text": "Hooks docs: a policy hook with a wrong path or crashing script lets everything through unless onFailure is block",
+      "anchor": "\"a policy hook with a wrong path or a crashing script lets everything through\", unless `\"onFailure\": \"block\"` is set",
+      "section": "How the guard works",
+      "supports": [
+        "sr-fact-5"
+      ],
+      "refs": [
+        "https://code.claude.com/docs/en/hooks"
+      ],
+      "terms": [
+        "fail open",
+        "onfailure",
+        "settings hook"
+      ]
+    },
+    {
+      "id": "sr-source-9",
+      "kind": "source",
+      "text": "Claude Code hooks documentation",
+      "anchor": "([hooks](https://code.claude.com/docs/en/hooks))",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [
+        "https://code.claude.com/docs/en/hooks"
+      ],
+      "terms": [
+        "claude code documentation",
+        "settings hook"
+      ]
+    },
+    {
+      "id": "sr-evidence-8",
+      "kind": "evidence",
+      "text": "Docs: a Claude API failure does not reject the call, so check r.isAnswered",
+      "anchor": "\"A Claude API failure doesn't reject the call, so check `r.isAnswered`.\"",
+      "section": "How the guard works",
+      "supports": [
+        "sr-method-11"
+      ],
+      "refs": [],
+      "terms": [
+        "r.isanswered",
+        "fail closed"
+      ]
+    },
+    {
+      "id": "sr-method-11",
+      "kind": "method",
+      "text": "If the checker is overloaded, errors, times out or returns nothing, the guard denies with 'checker unavailable'",
+      "anchor": "The checker is overloaded, errors, times out or returns nothing: deny, \"checker unavailable\".",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "fail closed",
+        "checker unavailable"
+      ]
+    },
+    {
+      "id": "sr-method-12",
+      "kind": "method",
+      "text": "If the hook throws, the .catch(failClosed) handler denies",
+      "anchor": "The hook throws: the `.catch(failClosed)` handler denies.",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "fail closed",
+        "hook"
+      ]
+    },
+    {
+      "id": "sr-evidence-9",
+      "kind": "evidence",
+      "text": "The inbox agent's words: a late email is a small cost, a wrong one cannot be taken back",
+      "anchor": "An email that is late is a small cost. An email that goes out wrong cannot be taken back.",
+      "section": "How the guard works",
+      "supports": [
+        "sr-claim-11"
+      ],
+      "refs": [],
+      "terms": [
+        "fail closed",
+        "design document"
+      ]
+    },
+    {
+      "id": "sr-method-13",
+      "kind": "method",
+      "text": "Every check appends one line to a log, which never decides the outcome",
+      "anchor": "Every check appends one line to a log, which never decides the outcome",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "log",
+        "audit trail"
+      ]
+    },
+    {
+      "id": "sr-example-2",
+      "kind": "example",
+      "text": "A log line: verdict FAIL at stage model, model sonnet, sources given, R7 FAIL for a proposal attributed to Dinis not in the notes",
+      "anchor": "\"modelFails\":[\"R7 FAIL: a proposal attributed to Dinis is not in the notes\"]",
+      "section": "How the guard works",
+      "supports": [
+        "sr-claim-24"
+      ],
+      "refs": [],
+      "terms": [
+        "log",
+        "r7",
+        "verdict"
+      ]
+    },
+    {
+      "id": "sr-limitation-1",
+      "kind": "limitation",
+      "text": "In the example log line the recipient and the claim are replaced; only the shape is real",
+      "anchor": "(The recipient and the claim are replaced here; the shape is the real one.)",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "log"
+      ]
+    },
+    {
+      "id": "sr-claim-24",
+      "kind": "claim",
+      "text": "The log is the audit trail: what was checked, by which model, against which sources, and why it failed",
+      "anchor": "That is the audit trail: what was checked, by which model, against which sources, and why it failed.",
+      "section": "How the guard works",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "audit trail",
+        "log"
+      ]
+    },
+    {
+      "id": "sr-fact-6",
+      "kind": "fact",
+      "text": "The first run used Haiku as the checker",
+      "anchor": "The first run used Haiku as the checker.",
+      "section": "What the first run caught",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "first run",
+        "haiku"
+      ]
+    },
+    {
+      "id": "sr-data-point-3",
+      "kind": "data-point",
+      "text": "4 real invented claims caught on the first run: statements presented as the author's view, decision or promise not in anything he had said",
+      "anchor": "It caught four real invented claims",
+      "section": "What the first run caught",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "first run",
+        "invented claim"
+      ]
+    },
+    {
+      "id": "sr-example-3",
+      "kind": "example",
+      "text": "False FAILs on the first run: correct facts with no source, such as dates read from Gmail and an uncopied earlier note",
+      "anchor": "It also flagged correct facts it had no source for, such as dates read from Gmail and an earlier note of mine that had not been copied into the sources file.",
+      "section": "What the first run caught",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "first run",
+        "false fail",
+        "source file"
+      ]
+    },
+    {
+      "id": "sr-claim-25",
+      "kind": "claim",
+      "text": "Both results, catches and false FAILs, are the design working",
+      "anchor": "Both results are the design working.",
+      "section": "What the first run caught",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "false fail"
+      ]
+    },
+    {
+      "id": "sr-method-14",
+      "kind": "method",
+      "text": "On a false FAIL the agent is told to add the missing source, never remove the rule",
+      "anchor": "add the missing source, never remove the rule",
+      "section": "What the first run caught",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "false fail",
+        "source file"
+      ]
+    },
+    {
+      "id": "sr-decision-4",
+      "kind": "decision",
+      "text": "The default checker became Sonnet because R7 (are the claims in the sources) needs judgement and the smaller model over-flagged",
+      "anchor": "And they are why the default checker became Sonnet: rule R7, are the claims in the sources, needs judgement, and the smaller model over-flagged.",
+      "section": "What the first run caught",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "sonnet",
+        "r7",
+        "checker"
+      ]
+    },
+    {
+      "id": "sr-decision-5",
+      "kind": "decision",
+      "text": "Haiku stays the choice for high-volume mechanical checks, after everything certain is in code",
+      "anchor": "Haiku stays the choice for high-volume mechanical checks, after everything certain has gone into code.",
+      "section": "What the first run caught",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "haiku",
+        "code check"
+      ]
+    },
+    {
+      "id": "sr-entity-6",
+      "kind": "entity",
+      "text": "Claude models named: Opus (drafter), Sonnet 5.5 (checker), Haiku 5.5 (first-run checker)",
+      "anchor": "Sonnet 5.5 is $2 per million input tokens",
+      "section": "What the first run caught",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "sonnet",
+        "haiku",
+        "opus"
+      ]
+    },
+    {
+      "id": "sr-data-point-4",
+      "kind": "data-point",
+      "text": "Sonnet 5.5 list price on 9 October 2026: $2 per million input tokens, $10 per million output",
+      "anchor": "Sonnet 5.5 is $2 per million input tokens and $10 per million output",
+      "section": "What the first run caught",
+      "supports": [],
+      "refs": [
+        "https://platform.claude.com/docs/en/about-claude/pricing"
+      ],
+      "terms": [
+        "cost",
+        "sonnet"
+      ]
+    },
+    {
+      "id": "sr-source-10",
+      "kind": "source",
+      "text": "Claude pricing page",
+      "anchor": "([pricing](https://platform.claude.com/docs/en/about-claude/pricing))",
+      "section": "What the first run caught",
+      "supports": [],
+      "refs": [
+        "https://platform.claude.com/docs/en/about-claude/pricing"
+      ],
+      "terms": [
+        "cost"
+      ]
+    },
+    {
+      "id": "sr-data-point-5",
+      "kind": "data-point",
+      "text": "Roughly $12 to $21 a month at 5,000 to 10,000 tokens a draft and 30 drafts a day on Sonnet",
+      "anchor": "At 5,000 to 10,000 tokens a draft and thirty drafts a day, that is roughly $12 to $21 a month",
+      "section": "What the first run caught",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "cost",
+        "sonnet"
+      ]
+    },
+    {
+      "id": "sr-data-point-6",
+      "kind": "data-point",
+      "text": "Haiku 5.5 at $0.10 input and $0.50 output per million comes to about a dollar a month",
+      "anchor": "Haiku 5.5, at $0.10 and $0.50, is about a dollar",
+      "section": "What the first run caught",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "cost",
+        "haiku"
+      ]
+    },
+    {
+      "id": "sr-limitation-2",
+      "kind": "limitation",
+      "text": "Thinking tokens or caching move the cost figures, not their order of magnitude",
+      "anchor": "Thinking tokens or caching move those figures, not their order of magnitude.",
+      "section": "What the first run caught",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "cost"
+      ]
+    },
+    {
+      "id": "sr-claim-26",
+      "kind": "claim",
+      "text": "A second reader is only as independent as the things it does not share with the author",
+      "anchor": "A second reader is only as independent as the things it does not share with the author",
+      "section": "Six kinds of independence",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "independence",
+        "second reader"
+      ]
+    },
+    {
+      "id": "sr-definition-5",
+      "kind": "definition",
+      "text": "Six kinds of independence: three about what the checker sees, two about who decides whether it runs, one about who wrote the evidence",
+      "anchor": "there are six of them: three about what the checker sees, two about who decides whether it runs, and one about who wrote the evidence it checks against",
+      "section": "Six kinds of independence",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "independence"
+      ]
+    },
+    {
+      "id": "sr-artefact-4",
+      "kind": "artefact",
+      "text": "Figure ck-independence.webp: six kinds of independence and which check has which",
+      "anchor": "!shot ck-independence.webp | images/ | Six kinds of independence, and which check has which.",
+      "section": "Six kinds of independence",
+      "supports": [],
+      "refs": [
+        "images/ck-independence.webp"
+      ],
+      "terms": [
+        "independence",
+        "figure"
+      ]
+    },
+    {
+      "id": "sr-data-point-7",
+      "kind": "data-point",
+      "text": "Independence scores: drafter re-reading its own draft 0 of 6; the guard today 4; the guard under managed settings with external sources 6",
+      "anchor": "The drafter re-reading its own draft has none; the guard as it runs today has four; the guard under managed settings, with sources written by someone else, has all six.",
+      "section": "Six kinds of independence",
+      "supports": [],
+      "refs": [
+        "images/ck-independence.webp"
+      ],
+      "terms": [
+        "independence",
+        "managed settings"
+      ]
+    },
+    {
+      "id": "sr-example-4",
+      "kind": "example",
+      "text": "The stopgap in scheduled runs (spawn a checker sub-agent) has fresh context and a different model, but the drafter chooses to run it, so it is still an expectation",
+      "anchor": "The stopgap in the scheduled runs, where each drafting step is told to spawn a checker sub-agent before creating a draft, has a fresh context and a different model, but the drafter chooses whether to run it, so it is still an expectation.",
+      "section": "Six kinds of independence",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "stopgap",
+        "scheduled run",
+        "expectation",
+        "sub-agent"
+      ]
+    },
+    {
+      "id": "sr-limitation-3",
+      "kind": "limitation",
+      "text": "The checker compares claims with sources the drafting agent writes, and an agent could pad them",
+      "anchor": "today the drafting agent writes the sources. An agent could pad them.",
+      "section": "Six kinds of independence",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "source file",
+        "independence"
+      ]
+    },
+    {
+      "id": "sr-fact-7",
+      "kind": "fact",
+      "text": "The log records whether sources were given, so source provision is auditable",
+      "anchor": "The log records whether sources were given, so that is auditable",
+      "section": "Six kinds of independence",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "log",
+        "source file",
+        "audit trail"
+      ]
+    },
+    {
+      "id": "sr-claim-27",
+      "kind": "claim",
+      "text": "The article proposes the full fix is sources from somewhere else: the author's notes, the CRM, the page being described",
+      "anchor": "the full fix is sources that come from somewhere else: my own notes, the CRM, the page being described",
+      "section": "Six kinds of independence",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "source file",
+        "independence"
+      ]
+    },
+    {
+      "id": "sr-fact-8",
+      "kind": "fact",
+      "text": "The guard was written by the inbox agent in its own session and loaded with one click on a prompt",
+      "anchor": "The guard was written by the inbox agent in its own session, and loading it took one click on this prompt",
+      "section": "From setting to boundary: where the hook lives decides what it is",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "mod",
+        "hot reload"
+      ]
+    },
+    {
+      "id": "sr-artefact-5",
+      "kind": "artefact",
+      "text": "Figure ck-hot-reload.webp: the hot-reload prompt, 'A mod is code Claude wrote; it runs with your permissions.'",
+      "anchor": "The prompt that loaded the guard: \"A mod is code Claude wrote; it runs with your permissions.\"",
+      "section": "From setting to boundary: where the hook lives decides what it is",
+      "supports": [],
+      "refs": [
+        "images/ck-hot-reload.webp"
+      ],
+      "terms": [
+        "hot reload",
+        "figure",
+        "mod"
+      ]
+    },
+    {
+      "id": "sr-claim-28",
+      "kind": "claim",
+      "text": "The hot-reload prompt is the honest centre of the story",
+      "anchor": "That prompt is the honest centre of this story.",
+      "section": "From setting to boundary: where the hook lives decides what it is",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "hot reload",
+        "placement"
+      ]
+    },
+    {
+      "id": "sr-evidence-10",
+      "kind": "evidence",
+      "text": "Create-a-mod docs: on the first saved file Claude Code asks whether to enable hot reloading for the session",
+      "anchor": "\"when Claude saves the first file, Claude Code asks whether to enable hot reloading for the session\"",
+      "section": "From setting to boundary: where the hook lives decides what it is",
+      "supports": [
+        "sr-limitation-4"
+      ],
+      "refs": [
+        "https://code.claude.com/docs/en/plugins/mods/create#ask-claude-for-a-mod"
+      ],
+      "terms": [
+        "hot reload",
+        "mod"
+      ]
+    },
+    {
+      "id": "sr-source-11",
+      "kind": "source",
+      "text": "Claude Code docs, create a mod",
+      "anchor": "([create a mod](https://code.claude.com/docs/en/plugins/mods/create#ask-claude-for-a-mod))",
+      "section": "From setting to boundary: where the hook lives decides what it is",
+      "supports": [],
+      "refs": [
+        "https://code.claude.com/docs/en/plugins/mods/create#ask-claude-for-a-mod"
+      ],
+      "terms": [
+        "claude code documentation",
+        "mod"
+      ]
+    },
+    {
+      "id": "sr-limitation-4",
+      "kind": "limitation",
+      "text": "The agent gated by the hook can edit the hook",
+      "anchor": "It also means the agent that is gated by the hook can edit the hook.",
+      "section": "From setting to boundary: where the hook lives decides what it is",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "setting",
+        "placement"
+      ]
+    },
+    {
+      "id": "sr-definition-6",
+      "kind": "definition",
+      "text": "Setting (ABP): a switch the agent's own account can flip",
+      "anchor": "In ABP terms that is a **setting**, \"a switch the agent's own account can flip\"",
+      "section": "From setting to boundary: where the hook lives decides what it is",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "setting",
+        "agent behaviour policy",
+        "barrier"
+      ]
+    },
+    {
+      "id": "sr-claim-29",
+      "kind": "claim",
+      "text": "A setting is far better than memory because the harness runs it every time, but not yet a control",
+      "anchor": "far better than memory, because the harness runs it every time, but not yet a control",
+      "section": "From setting to boundary: where the hook lives decides what it is",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "setting",
+        "control"
+      ]
+    },
+    {
+      "id": "sr-method-15",
+      "kind": "method",
+      "text": "Proposed by the inbox agent: publish the plugin to a repository and install it from there, where the agent cannot write",
+      "anchor": "The inbox agent's document proposes the next step: publish the plugin to a repository and install it from there, where the agent cannot write.",
+      "section": "From setting to boundary: where the hook lives decides what it is",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "plugin",
+        "placement",
+        "proposed"
+      ]
+    },
+    {
+      "id": "sr-claim-30",
+      "kind": "claim",
+      "text": "The documentation says repository installation is better and still not enough",
+      "anchor": "The documentation says that is better and still not enough.",
+      "section": "From setting to boundary: where the hook lives decides what it is",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "plugin",
+        "placement"
+      ]
+    },
+    {
+      "id": "sr-evidence-11",
+      "kind": "evidence",
+      "text": "Admin docs: an installed plugin counts as a user's, and a user's mod can approve calls an ask rule or non-managed PreToolUse hook would stop",
+      "anchor": "\"a user's mod that approves tool calls can approve a call that an `ask` rule would prompt for, or that a `PreToolUse` hook outside managed settings blocked\"",
+      "section": "From setting to boundary: where the hook lives decides what it is",
+      "supports": [
+        "sr-claim-30"
+      ],
+      "refs": [
+        "https://code.claude.com/docs/en/plugins/mods/admin"
+      ],
+      "terms": [
+        "plugin",
+        "managed settings"
+      ]
+    },
+    {
+      "id": "sr-source-12",
+      "kind": "source",
+      "text": "Claude Code docs, mods for administrators",
+      "anchor": "([mods for administrators](https://code.claude.com/docs/en/plugins/mods/admin))",
+      "section": "From setting to boundary: where the hook lives decides what it is",
+      "supports": [],
+      "refs": [
+        "https://code.claude.com/docs/en/plugins/mods/admin"
+      ],
+      "terms": [
+        "claude code documentation",
+        "managed settings"
+      ]
+    },
+    {
+      "id": "sr-evidence-12",
+      "kind": "evidence",
+      "text": "Events docs: managed-settings PreToolUse hooks run before any mod's tool.call hook and their block is final",
+      "anchor": "\"`PreToolUse` hooks from managed settings: run before the first mod's `tool.call` hook, and a block from one of them is final, so no mod sees the call\"",
+      "section": "From setting to boundary: where the hook lives decides what it is",
+      "supports": [
+        "sr-claim-13"
+      ],
+      "refs": [
+        "https://code.claude.com/docs/en/plugins/mods/events#where-settings-hooks-run-in-the-order"
+      ],
+      "terms": [
+        "managed settings",
+        "boundary",
+        "pretooluse hook"
+      ]
+    },
+    {
+      "id": "sr-source-13",
+      "kind": "source",
+      "text": "Claude Code mods events documentation, where settings hooks run in the order",
+      "anchor": "([events](https://code.claude.com/docs/en/plugins/mods/events#where-settings-hooks-run-in-the-order))",
+      "section": "From setting to boundary: where the hook lives decides what it is",
+      "supports": [],
+      "refs": [
+        "https://code.claude.com/docs/en/plugins/mods/events#where-settings-hooks-run-in-the-order"
+      ],
+      "terms": [
+        "claude code documentation"
+      ]
+    },
+    {
+      "id": "sr-method-16",
+      "kind": "method",
+      "text": "Alternative boundary: an organisation mod from an admin-only directory named in managed settings, with allowManagedModsOnly so session mods do not load",
+      "anchor": "The alternative is an organisation mod from a directory on the machine that only an administrator can write, named in managed settings, with `allowManagedModsOnly` so that mods Claude writes in a session do not load.",
+      "section": "From setting to boundary: where the hook lives decides what it is",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "organisation mod",
+        "allowmanagedmodsonly",
+        "managed settings"
+      ]
+    },
+    {
+      "id": "sr-artefact-6",
+      "kind": "artefact",
+      "text": "Figure ck-ladder.webp: who enforces the voice rule, weakest first (none, expectation, setting, setting still, boundary)",
+      "anchor": "!shot ck-ladder.webp | images/ | Who enforces the voice rule, weakest first.",
+      "section": "From setting to boundary: where the hook lives decides what it is",
+      "supports": [],
+      "refs": [
+        "images/ck-ladder.webp"
+      ],
+      "terms": [
+        "barrier ladder",
+        "figure"
+      ]
+    },
+    {
+      "id": "sr-definition-7",
+      "kind": "definition",
+      "text": "Boundary: enforced above the grant, out of the agent's reach",
+      "anchor": "\"enforced above the grant, out of the agent's reach\"",
+      "section": "From setting to boundary: where the hook lives decides what it is",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "boundary",
+        "barrier"
+      ]
+    },
+    {
+      "id": "sr-claim-31",
+      "kind": "claim",
+      "text": "Nothing in the hook changes, only who can change the hook",
+      "anchor": "Nothing in the hook changes, only who can change the hook.",
+      "section": "From setting to boundary: where the hook lives decides what it is",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "placement",
+        "barrier ladder"
+      ]
+    },
+    {
+      "id": "sr-artefact-7",
+      "kind": "artefact",
+      "text": "Mermaid source for the barrier ladder figure",
+      "anchor": "!source The barrier ladder, Mermaid source | images/ck-ladder.webp",
+      "section": "From setting to boundary: where the hook lives decides what it is",
+      "supports": [],
+      "refs": [
+        "images/ck-ladder.webp"
+      ],
+      "terms": [
+        "mermaid",
+        "barrier ladder"
+      ]
+    },
+    {
+      "id": "sr-limitation-5",
+      "kind": "limitation",
+      "text": "A fresh scheduled run starts in a fresh container, so a session mod is not there at all",
+      "anchor": "a fresh scheduled run starts in a fresh container, so a session mod is not there at all",
+      "section": "From setting to boundary: where the hook lives decides what it is",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "scheduled run",
+        "mod"
+      ]
+    },
+    {
+      "id": "sr-claim-32",
+      "kind": "claim",
+      "text": "A managed hook is there in every session, scheduled or not",
+      "anchor": "A managed hook is there in every session, scheduled or not.",
+      "section": "From setting to boundary: where the hook lives decides what it is",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "managed settings",
+        "scheduled run"
+      ]
+    },
+    {
+      "id": "sr-claim-33",
+      "kind": "claim",
+      "text": "Three documented ways to build the guard trade simplicity against robustness",
+      "anchor": "There are three ways to build the same guard with documented Claude Code features, and they trade simplicity against robustness",
+      "section": "Building it with what is public today",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "route",
+        "hook"
+      ]
+    },
+    {
+      "id": "sr-method-17",
+      "kind": "method",
+      "text": "Route: a mod, as built; $.model.complete, reads sources, fails closed with .catch and r.isAnswered",
+      "anchor": "**A mod**, as built | `$.model.complete`: no history, no tools | yes | with `.catch` and a check of `r.isAnswered` | the hook's own run time is limited to 10 seconds, but time inside the model call does not count",
+      "section": "Building it with what is public today",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "route",
+        "mod"
+      ]
+    },
+    {
+      "id": "sr-data-point-8",
+      "kind": "data-point",
+      "text": "A mod hook's own run time is limited to 10 seconds; time inside the model call does not count",
+      "anchor": "the hook's own run time is limited to 10 seconds, but time inside the model call does not count",
+      "section": "Building it with what is public today",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "mod",
+        "timeout"
+      ]
+    },
+    {
+      "id": "sr-method-18",
+      "kind": "method",
+      "text": "Route: a command hook on PreToolUse; script calls the model; fails closed with onFailure block and exit 2; most robust public form, works in managed settings",
+      "anchor": "**A command hook** on `PreToolUse` | the script calls the model itself | yes | with `\"onFailure\": \"block\"` and exit code 2 (exit 1 does not block) | the most robust public form; works in managed settings",
+      "section": "Building it with what is public today",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "route",
+        "command hook",
+        "pretooluse hook",
+        "managed settings"
+      ]
+    },
+    {
+      "id": "sr-fact-9",
+      "kind": "fact",
+      "text": "For a command hook, exit code 2 blocks and exit code 1 does not",
+      "anchor": "exit code 2 (exit 1 does not block)",
+      "section": "Building it with what is public today",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "command hook",
+        "exit code"
+      ]
+    },
+    {
+      "id": "sr-method-19",
+      "kind": "method",
+      "text": "Route: a prompt hook; built-in LLM evaluation, sources must be pasted into the prompt, fail-closed not documented for model failures",
+      "anchor": "**A prompt hook** (`\"type\": \"prompt\"`) | built in: \"use an LLM to evaluate whether to allow or block an action\" | no, the sources must be pasted into the prompt | not documented for model failures | answers in JSON, `{\"ok\": false, \"reason\": ...}`; set `model` explicitly",
+      "section": "Building it with what is public today",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "route",
+        "prompt hook"
+      ]
+    },
+    {
+      "id": "sr-decision-6",
+      "kind": "decision",
+      "text": "The author would put the command hook under managed settings",
+      "anchor": "The command hook is the one I would put under managed settings.",
+      "section": "Building it with what is public today",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "command hook",
+        "managed settings"
+      ]
+    },
+    {
+      "id": "sr-fact-10",
+      "kind": "fact",
+      "text": "MCP tools are named mcp__<server>__<tool>",
+      "anchor": "(MCP tools are named `mcp__<server>__<tool>`)",
+      "section": "Building it with what is public today",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "mcp",
+        "matcher"
+      ]
+    },
+    {
+      "id": "sr-artefact-8",
+      "kind": "artefact",
+      "text": "Minimal settings JSON: PreToolUse command hooks matching create_draft and update_draft, /opt/guards/draft-guard (placeholder path), onFailure block",
+      "anchor": "{ \"type\": \"command\", \"command\": \"/opt/guards/draft-guard\", \"onFailure\": \"block\" }",
+      "section": "Building it with what is public today",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "command hook",
+        "settings hook",
+        "onfailure"
+      ]
+    },
+    {
+      "id": "sr-fact-11",
+      "kind": "fact",
+      "text": "In auto mode a second model, the classifier, reviews actions, running on Sonnet by default",
+      "anchor": "In auto mode, \"a second model, the classifier, reviews actions instead of you\", running on Sonnet by default",
+      "section": "Building it with what is public today",
+      "supports": [],
+      "refs": [
+        "https://code.claude.com/docs/en/permission-modes"
+      ],
+      "terms": [
+        "auto mode",
+        "classifier",
+        "sonnet"
+      ]
+    },
+    {
+      "id": "sr-evidence-13",
+      "kind": "evidence",
+      "text": "Permission-modes docs: if the classifier's response does not parse, Claude Code denies the action",
+      "anchor": "when \"the classifier's response doesn't parse, Claude Code denies the action\"",
+      "section": "Building it with what is public today",
+      "supports": [
+        "sr-claim-34"
+      ],
+      "refs": [
+        "https://code.claude.com/docs/en/permission-modes"
+      ],
+      "terms": [
+        "classifier",
+        "fail closed"
+      ]
+    },
+    {
+      "id": "sr-source-14",
+      "kind": "source",
+      "text": "Claude Code permission modes documentation",
+      "anchor": "([permission modes](https://code.claude.com/docs/en/permission-modes))",
+      "section": "Building it with what is public today",
+      "supports": [],
+      "refs": [
+        "https://code.claude.com/docs/en/permission-modes"
+      ],
+      "terms": [
+        "claude code documentation",
+        "auto mode"
+      ]
+    },
+    {
+      "id": "sr-claim-34",
+      "kind": "claim",
+      "text": "Anthropic ships the same shape in auto mode: a different model, less context, fail closed",
+      "anchor": "Same shape: a different model, less context, fail closed.",
+      "section": "Building it with what is public today",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "classifier",
+        "auto mode",
+        "maker-checker"
+      ]
+    },
+    {
+      "id": "sr-evidence-14",
+      "kind": "evidence",
+      "text": "Permission-modes docs: a boundary stated in conversation can be lost to compaction; add a deny rule for a hard guarantee",
+      "anchor": "\"can be lost if context compaction removes the message that stated it. For a hard guarantee, add a deny rule instead.\"",
+      "section": "Building it with what is public today",
+      "supports": [
+        "sr-claim-4",
+        "sr-claim-35"
+      ],
+      "refs": [
+        "https://code.claude.com/docs/en/permission-modes"
+      ],
+      "terms": [
+        "compaction",
+        "deny rule"
+      ]
+    },
+    {
+      "id": "sr-claim-35",
+      "kind": "claim",
+      "text": "The vendor's warning describes the 9 October failure",
+      "anchor": "That is the 9 October failure, described by the vendor.",
+      "section": "Building it with what is public today",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "incident",
+        "compaction"
+      ]
+    },
+    {
+      "id": "sr-definition-8",
+      "kind": "definition",
+      "text": "Maker-checker, called the oldest control in finance, is what the inbox agent built",
+      "anchor": "What the inbox agent built is maker-checker, the oldest control in finance.",
+      "section": "The pattern is old, and it has a name",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "maker-checker",
+        "segregation of duties"
+      ]
+    },
+    {
+      "id": "sr-entity-7",
+      "kind": "entity",
+      "text": "Basel Committee on Banking Supervision, 1998 framework, Principle 6",
+      "anchor": "The Basel Committee's 1998 framework put it as Principle 6",
+      "section": "The pattern is old, and it has a name",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "basel committee",
+        "segregation of duties"
+      ]
+    },
+    {
+      "id": "sr-evidence-15",
+      "kind": "evidence",
+      "text": "Basel Principle 6: effective internal control requires appropriate segregation of duties",
+      "anchor": "\"An effective internal control system requires that there is appropriate segregation of duties and that personnel are not assigned conflicting responsibilities\"",
+      "section": "The pattern is old, and it has a name",
+      "supports": [
+        "sr-definition-8"
+      ],
+      "refs": [
+        "https://www.bis.org/publ/bcbs40.pdf"
+      ],
+      "terms": [
+        "segregation of duties",
+        "basel committee"
+      ]
+    },
+    {
+      "id": "sr-evidence-16",
+      "kind": "evidence",
+      "text": "Basel: supervisors find lack of segregation of duties a major cause of losses",
+      "anchor": "\"typically find that one of the major causes of such losses is the lack of adequate segregation of duties\"",
+      "section": "The pattern is old, and it has a name",
+      "supports": [
+        "sr-definition-8"
+      ],
+      "refs": [
+        "https://www.bis.org/publ/bcbs40.pdf"
+      ],
+      "terms": [
+        "segregation of duties"
+      ]
+    },
+    {
+      "id": "sr-source-15",
+      "kind": "source",
+      "text": "BCBS 40, Framework for Internal Control Systems in Banking Organisations (1998)",
+      "anchor": "([BCBS 40](https://www.bis.org/publ/bcbs40.pdf))",
+      "section": "The pattern is old, and it has a name",
+      "supports": [],
+      "refs": [
+        "https://www.bis.org/publ/bcbs40.pdf"
+      ],
+      "terms": [
+        "basel committee"
+      ]
+    },
+    {
+      "id": "sr-definition-9",
+      "kind": "definition",
+      "text": "NIST separation of duty: no user should have enough privileges to misuse the system on their own; example, the two-person rule",
+      "anchor": "NIST defines separation of duty as the principle \"that no user should be given enough privileges to misuse the system on their own\", with the two-person rule as its example",
+      "section": "The pattern is old, and it has a name",
+      "supports": [],
+      "refs": [
+        "https://csrc.nist.gov/glossary/term/separation_of_duty"
+      ],
+      "terms": [
+        "separation of duty",
+        "two-person rule",
+        "nist"
+      ]
+    },
+    {
+      "id": "sr-source-16",
+      "kind": "source",
+      "text": "NIST CSRC glossary, separation of duty",
+      "anchor": "([CSRC](https://csrc.nist.gov/glossary/term/separation_of_duty))",
+      "section": "The pattern is old, and it has a name",
+      "supports": [],
+      "refs": [
+        "https://csrc.nist.gov/glossary/term/separation_of_duty"
+      ],
+      "terms": [
+        "nist"
+      ]
+    },
+    {
+      "id": "sr-fact-12",
+      "kind": "fact",
+      "text": "ISO/IEC 27001:2022 carries segregation of duties as control A.5.3",
+      "anchor": "ISO/IEC 27001:2022 carries it as control A.5.3, segregation of duties.",
+      "section": "The pattern is old, and it has a name",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "iso/iec 27001",
+        "segregation of duties"
+      ]
+    },
+    {
+      "id": "sr-example-5",
+      "kind": "example",
+      "text": "Hospital pharmacies run independent double checks for high-alert medicines",
+      "anchor": "Hospital pharmacies run independent double checks for high-alert medicines",
+      "section": "The pattern is old, and it has a name",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "independent double check",
+        "pharmacy"
+      ]
+    },
+    {
+      "id": "sr-evidence-17",
+      "kind": "evidence",
+      "text": "ISMP: if the same person prepares and checks, they likely see only what they expect to see",
+      "anchor": "\"they likely will see only what they expect to see, even if an error has occurred\"",
+      "section": "The pattern is old, and it has a name",
+      "supports": [
+        "sr-definition-3"
+      ],
+      "refs": [
+        "https://home.ecri.org/blogs/ismp-alerts-and-articles-library/independent-double-checks-worth-the-effort-if-used-judiciously-and-properly"
+      ],
+      "terms": [
+        "independent double check",
+        "self-correction"
+      ]
+    },
+    {
+      "id": "sr-source-17",
+      "kind": "source",
+      "text": "ISMP, independent double checks article",
+      "anchor": "([ISMP](https://home.ecri.org/blogs/ismp-alerts-and-articles-library/independent-double-checks-worth-the-effort-if-used-judiciously-and-properly))",
+      "section": "The pattern is old, and it has a name",
+      "supports": [],
+      "refs": [
+        "https://home.ecri.org/blogs/ismp-alerts-and-articles-library/independent-double-checks-worth-the-effort-if-used-judiciously-and-properly"
+      ],
+      "terms": [
+        "independent double check"
+      ]
+    },
+    {
+      "id": "sr-source-18",
+      "kind": "source",
+      "text": "Redwood Research, AI Control (ICML 2024)",
+      "anchor": "Redwood Research's [AI Control](https://arxiv.org/abs/2312.06942) work (ICML 2024)",
+      "section": "The pattern is old, and it has a name",
+      "supports": [],
+      "refs": [
+        "https://arxiv.org/abs/2312.06942"
+      ],
+      "terms": [
+        "ai control",
+        "research"
+      ]
+    },
+    {
+      "id": "sr-evidence-18",
+      "kind": "evidence",
+      "text": "AI Control studies an untrusted powerful model watched by a less powerful trusted model, with trusted monitoring and trusted editing",
+      "anchor": "a powerful untrusted model watched by \"a less powerful trusted model\", with protocols such as trusted monitoring and trusted editing",
+      "section": "The pattern is old, and it has a name",
+      "supports": [
+        "sr-definition-8"
+      ],
+      "refs": [
+        "https://arxiv.org/abs/2312.06942"
+      ],
+      "terms": [
+        "ai control",
+        "trusted monitoring"
+      ]
+    },
+    {
+      "id": "sr-source-19",
+      "kind": "source",
+      "text": "Simon Willison, Dual LLM pattern (2023)",
+      "anchor": "Simon Willison's [Dual LLM pattern](https://simonwillison.net/2023/Apr/25/dual-llm-pattern/) (2023)",
+      "section": "The pattern is old, and it has a name",
+      "supports": [],
+      "refs": [
+        "https://simonwillison.net/2023/Apr/25/dual-llm-pattern/"
+      ],
+      "terms": [
+        "dual llm pattern",
+        "prompt injection"
+      ]
+    },
+    {
+      "id": "sr-source-20",
+      "kind": "source",
+      "text": "Google DeepMind, CaMeL (2025)",
+      "anchor": "Google DeepMind's [CaMeL](https://arxiv.org/abs/2503.18813) (2025)",
+      "section": "The pattern is old, and it has a name",
+      "supports": [],
+      "refs": [
+        "https://arxiv.org/abs/2503.18813"
+      ],
+      "terms": [
+        "camel",
+        "prompt injection"
+      ]
+    },
+    {
+      "id": "sr-fact-13",
+      "kind": "fact",
+      "text": "Dual LLM and CaMeL separate a model that acts from one that reads, against prompt injection",
+      "anchor": "separate a model that acts from one that reads, against prompt injection",
+      "section": "The pattern is old, and it has a name",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "prompt injection",
+        "dual llm pattern",
+        "camel"
+      ]
+    },
+    {
+      "id": "sr-source-21",
+      "kind": "source",
+      "text": "Meta, Agents Rule of Two (2025)",
+      "anchor": "Meta's [Agents Rule of Two](https://ai.meta.com/blog/practical-ai-agent-security/) (2025)",
+      "section": "The pattern is old, and it has a name",
+      "supports": [],
+      "refs": [
+        "https://ai.meta.com/blog/practical-ai-agent-security/"
+      ],
+      "terms": [
+        "agents rule of two"
+      ]
+    },
+    {
+      "id": "sr-evidence-19",
+      "kind": "evidence",
+      "text": "Rule of Two: an agent with untrusted input, private data and external communication (like an email drafter) should not operate autonomously",
+      "anchor": "\"should not be permitted to operate autonomously and at a minimum requires supervision\"",
+      "section": "The pattern is old, and it has a name",
+      "supports": [
+        "sr-claim-37"
+      ],
+      "refs": [
+        "https://ai.meta.com/blog/practical-ai-agent-security/"
+      ],
+      "terms": [
+        "agents rule of two",
+        "email"
+      ]
+    },
+    {
+      "id": "sr-source-22",
+      "kind": "source",
+      "text": "OWASP LLM06 Excessive Agency",
+      "anchor": "OWASP's [LLM06 Excessive Agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/)",
+      "section": "The pattern is old, and it has a name",
+      "supports": [],
+      "refs": [
+        "https://genai.owasp.org/llmrisk/llm062025-excessive-agency/"
+      ],
+      "terms": [
+        "owasp",
+        "excessive agency"
+      ]
+    },
+    {
+      "id": "sr-evidence-20",
+      "kind": "evidence",
+      "text": "OWASP LLM06: authorise in downstream systems rather than relying on an LLM to decide",
+      "anchor": "\"in downstream systems rather than relying on an LLM to decide if an action is allowed\"",
+      "section": "The pattern is old, and it has a name",
+      "supports": [
+        "sr-claim-8"
+      ],
+      "refs": [
+        "https://genai.owasp.org/llmrisk/llm062025-excessive-agency/"
+      ],
+      "terms": [
+        "owasp",
+        "excessive agency"
+      ]
+    },
+    {
+      "id": "sr-source-23",
+      "kind": "source",
+      "text": "Llama Guard, an output-checking product",
+      "anchor": "[Llama Guard](https://arxiv.org/abs/2312.06674)",
+      "section": "The pattern is old, and it has a name",
+      "supports": [],
+      "refs": [
+        "https://arxiv.org/abs/2312.06674"
+      ],
+      "terms": [
+        "guardrail product"
+      ]
+    },
+    {
+      "id": "sr-source-24",
+      "kind": "source",
+      "text": "NeMo Guardrails output rails",
+      "anchor": "[NeMo Guardrails](https://docs.nvidia.com/nemo/guardrails/latest/configure-guardrails/colang/colang-1/tutorials/5-output-rails) output rails",
+      "section": "The pattern is old, and it has a name",
+      "supports": [],
+      "refs": [
+        "https://docs.nvidia.com/nemo/guardrails/latest/configure-guardrails/colang/colang-1/tutorials/5-output-rails"
+      ],
+      "terms": [
+        "guardrail product"
+      ]
+    },
+    {
+      "id": "sr-source-25",
+      "kind": "source",
+      "text": "Guardrails AI validators",
+      "anchor": "[Guardrails AI](https://www.guardrailsai.com/docs) validators",
+      "section": "The pattern is old, and it has a name",
+      "supports": [],
+      "refs": [
+        "https://www.guardrailsai.com/docs"
+      ],
+      "terms": [
+        "guardrail product"
+      ]
+    },
+    {
+      "id": "sr-source-26",
+      "kind": "source",
+      "text": "OpenAI Agents SDK tool guardrails",
+      "anchor": "the [OpenAI Agents SDK](https://openai.github.io/openai-agents-python/guardrails/) tool guardrails",
+      "section": "The pattern is old, and it has a name",
+      "supports": [],
+      "refs": [
+        "https://openai.github.io/openai-agents-python/guardrails/"
+      ],
+      "terms": [
+        "guardrail product"
+      ]
+    },
+    {
+      "id": "sr-claim-36",
+      "kind": "claim",
+      "text": "What the draft guard adds is not a new idea",
+      "anchor": "What the draft guard adds is not a new idea.",
+      "section": "The pattern is old, and it has a name",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "maker-checker"
+      ]
+    },
+    {
+      "id": "sr-claim-37",
+      "kind": "claim",
+      "text": "The guard places the idea where it bites: on the one consequential tool call, with business rules, sources, a different model and an explicit barrier statement",
+      "anchor": "It is the idea placed exactly where it bites: on the one tool call with consequences, with business rules rather than safety categories, sources to check claims against, a model that differs from the author, and an explicit statement of which barrier it is.",
+      "section": "The pattern is old, and it has a name",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "draft guard",
+        "consequential tool call",
+        "barrier"
+      ]
+    },
+    {
+      "id": "sr-artefact-9",
+      "kind": "artefact",
+      "text": "Figure ck-pattern.webp: the reusable pattern on a consequential tool call",
+      "anchor": "!shot ck-pattern.webp | images/ | A hook on a consequential tool call",
+      "section": "The pattern, reusable",
+      "supports": [],
+      "refs": [
+        "images/ck-pattern.webp"
+      ],
+      "terms": [
+        "reusable pattern",
+        "figure"
+      ]
+    },
+    {
+      "id": "sr-artefact-10",
+      "kind": "artefact",
+      "text": "Mermaid source for the reusable pattern figure",
+      "anchor": "!source The reusable pattern, Mermaid source | images/ck-pattern.webp",
+      "section": "The pattern, reusable",
+      "supports": [],
+      "refs": [
+        "images/ck-pattern.webp"
+      ],
+      "terms": [
+        "mermaid",
+        "reusable pattern"
+      ]
+    },
+    {
+      "id": "sr-method-20",
+      "kind": "method",
+      "text": "The reusable pattern in six steps, as the inbox agent wrote them",
+      "anchor": "In six steps, as the inbox agent wrote them:",
+      "section": "The pattern, reusable",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "reusable pattern"
+      ]
+    },
+    {
+      "id": "sr-method-21",
+      "kind": "method",
+      "text": "Step 1: pick the tool call that matters (Slack message, CRM write, page publish, vault commit, payment API)",
+      "anchor": "**Pick the tool call that matters**: sending a Slack message, writing to the CRM, publishing a page, committing to a vault, a payment API.",
+      "section": "The pattern, reusable",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "reusable pattern",
+        "consequential tool call"
+      ]
+    },
+    {
+      "id": "sr-method-22",
+      "kind": "method",
+      "text": "Step 2: write the rules as a short numbered checklist with a fixed answer format",
+      "anchor": "**Write the rules as a short numbered checklist** with a fixed answer format.",
+      "section": "The pattern, reusable",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "reusable pattern",
+        "answer format"
+      ]
+    },
+    {
+      "id": "sr-method-23",
+      "kind": "method",
+      "text": "Step 3: put everything certain into code first; leave only judgement to the model",
+      "anchor": "**Put everything certain into code first**; leave only judgement to the model.",
+      "section": "The pattern, reusable",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "reusable pattern",
+        "code check"
+      ]
+    },
+    {
+      "id": "sr-method-24",
+      "kind": "method",
+      "text": "Step 4: give the checker only rules, sources and the proposed action; no history",
+      "anchor": "**Give the checker only what it needs**: rules, sources, the proposed action. No history.",
+      "section": "The pattern, reusable",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "reusable pattern",
+        "context isolation"
+      ]
+    },
+    {
+      "id": "sr-method-25",
+      "kind": "method",
+      "text": "Step 5: deny on anything other than an explicit PASS",
+      "anchor": "5. **Deny on anything other than an explicit PASS.**",
+      "section": "The pattern, reusable",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "reusable pattern",
+        "fail closed",
+        "explicit pass"
+      ]
+    },
+    {
+      "id": "sr-method-26",
+      "kind": "method",
+      "text": "Step 6: log every verdict",
+      "anchor": "6. **Log every verdict.**",
+      "section": "The pattern, reusable",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "reusable pattern",
+        "log"
+      ]
+    },
+    {
+      "id": "sr-hypothesis-1",
+      "kind": "hypothesis",
+      "text": "Next candidates in the team: CRM agent writes, newsroom page promotions, Slack posts, the leak check before vault push",
+      "anchor": "The next candidates in our own team are the CRM agent's writes (no keys, no unverified facts presented as verified), the newsroom's page promotions (nothing indexed until I promote it; quotes are claims), Slack posts",
+      "section": "The pattern, reusable",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "reusable pattern",
+        "crm",
+        "newsroom",
+        "slack"
+      ]
+    },
+    {
+      "id": "sr-limitation-6",
+      "kind": "limitation",
+      "text": "On this site the leak check before a vault push is still a script the author runs, not a gate",
+      "anchor": "the leak check before any vault push, which on this site is still a script I run rather than a gate I cannot skip",
+      "section": "The pattern, reusable",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "leak check",
+        "vault",
+        "expectation"
+      ]
+    },
+    {
+      "id": "sr-limitation-7",
+      "kind": "limitation",
+      "text": "The guard is only as independent as its installation; today it is a setting",
+      "anchor": "It is only as independent as its installation",
+      "section": "What it does not do",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "independence",
+        "setting",
+        "placement"
+      ]
+    },
+    {
+      "id": "sr-limitation-8",
+      "kind": "limitation",
+      "text": "R7 is only as good as the sources, and the drafter writes them",
+      "anchor": "R7 is only as good as the sources",
+      "section": "What it does not do",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "r7",
+        "source file"
+      ]
+    },
+    {
+      "id": "sr-limitation-9",
+      "kind": "limitation",
+      "text": "The checker can be wrong in both directions; expect false FAILs, which cost a retry",
+      "anchor": "The checker can be wrong in both directions.",
+      "section": "What it does not do",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "false fail",
+        "checker"
+      ]
+    },
+    {
+      "id": "sr-limitation-10",
+      "kind": "limitation",
+      "text": "It checks drafts, not sending; the author sends, and the no-send rule is a separate barrier question",
+      "anchor": "The rule that agents never send is enforced separately, and is a different barrier question.",
+      "section": "What it does not do",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "sending",
+        "barrier"
+      ]
+    },
+    {
+      "id": "sr-limitation-11",
+      "kind": "limitation",
+      "text": "It does not replace reading: a PASS means ten rules held, not that the email is good",
+      "anchor": "A PASS means ten rules held, not that the email is good.",
+      "section": "What it does not do",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "explicit pass",
+        "human review"
+      ]
+    },
+    {
+      "id": "sr-claim-38",
+      "kind": "claim",
+      "text": "The rule that lived in four paragraphs now lives on the tool call, with a log, one step short of a control",
+      "anchor": "a rule that used to live in four paragraphs now lives on the tool call, with a log, and a clear statement of the one step left before it is a control",
+      "section": "What it does not do",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "control",
+        "incident",
+        "log"
+      ]
+    },
+    {
+      "id": "sr-data-point-9",
+      "kind": "data-point",
+      "text": "11 of 11 tests passing for the guard built by the inbox agent",
+      "anchor": "which built and tested the guard (11 of 11 tests passing)",
+      "section": "What it does not do",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "test",
+        "draft guard"
+      ]
+    },
+    {
+      "id": "sr-artefact-11",
+      "kind": "artefact",
+      "text": "The design document, version 0.1, written on 9 October 2026 by the RiskMandate.ai inbox agent",
+      "anchor": "version 0.1, written on 9 October 2026 by the RiskMandate.ai inbox agent",
+      "section": "What it does not do",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "design document",
+        "inbox agent"
+      ]
+    },
+    {
+      "id": "sr-entity-8",
+      "kind": "entity",
+      "text": "agent@riskmandate.ai (Claude Opus 5.5) wrote up the article for Dinis Cruz, who has editorial responsibility",
+      "anchor": "Researched, illustrated and written up for this site by agent@riskmandate.ai (Claude Opus 5.5, claude-opus-5-5)",
+      "section": "What it does not do",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "agent@riskmandate.ai",
+        "opus",
+        "authorship"
+      ]
+    },
+    {
+      "id": "sr-entity-9",
+      "kind": "entity",
+      "text": "Dinis Cruz, author with editorial responsibility",
+      "anchor": "for Dinis Cruz, who has editorial responsibility",
+      "section": "What it does not do",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "dinis cruz",
+        "authorship"
+      ]
+    },
+    {
+      "id": "sr-fact-14",
+      "kind": "fact",
+      "text": "Claude Code behaviour is quoted from documentation as read on 9 October 2026; prices are list prices on that date",
+      "anchor": "Claude Code behaviour is quoted from its documentation as read on 9 October 2026; prices are list prices on that date.",
+      "section": "What it does not do",
+      "supports": [],
+      "refs": [],
+      "terms": [
+        "claude code documentation",
+        "cost"
+      ]
+    }
+  ],
+  "terms": {
+    "$.model.complete": [
+      "sr-fact-4",
+      "sr-evidence-5"
+    ],
+    "agent behaviour policy": [
+      "sr-definition-1",
+      "sr-entity-1",
+      "sr-definition-6"
+    ],
+    "agent@riskmandate.ai": [
+      "sr-entity-8"
+    ],
+    "agents rule of two": [
+      "sr-source-21",
+      "sr-evidence-19"
+    ],
+    "ai control": [
+      "sr-source-18",
+      "sr-evidence-18"
+    ],
+    "allowmanagedmodsonly": [
+      "sr-method-16"
+    ],
+    "answer format": [
+      "sr-data-point-2",
+      "sr-method-10",
+      "sr-decision-3",
+      "sr-method-22"
+    ],
+    "anthropic": [
+      "sr-entity-2"
+    ],
+    "audit trail": [
+      "sr-method-13",
+      "sr-claim-24",
+      "sr-fact-7"
+    ],
+    "authorship": [
+      "sr-entity-8",
+      "sr-entity-9"
+    ],
+    "auto mode": [
+      "sr-fact-11",
+      "sr-source-14",
+      "sr-claim-34"
+    ],
+    "barrier": [
+      "sr-definition-1",
+      "sr-definition-6",
+      "sr-definition-7",
+      "sr-claim-37",
+      "sr-limitation-10"
+    ],
+    "barrier ladder": [
+      "sr-artefact-6",
+      "sr-claim-31",
+      "sr-artefact-7"
+    ],
+    "basel committee": [
+      "sr-entity-7",
+      "sr-evidence-15",
+      "sr-source-15"
+    ],
+    "behaviour policy": [
+      "sr-claim-15"
+    ],
+    "boundary": [
+      "sr-claim-13",
+      "sr-evidence-12",
+      "sr-definition-7"
+    ],
+    "camel": [
+      "sr-source-20",
+      "sr-fact-13"
+    ],
+    "cc": [
+      "sr-method-7"
+    ],
+    "checker": [
+      "sr-claim-10",
+      "sr-method-9",
+      "sr-fact-4",
+      "sr-claim-20",
+      "sr-claim-21",
+      "sr-decision-4",
+      "sr-limitation-9"
+    ],
+    "checker unavailable": [
+      "sr-method-11"
+    ],
+    "classifier": [
+      "sr-fact-11",
+      "sr-evidence-13",
+      "sr-claim-34"
+    ],
+    "claude code": [
+      "sr-entity-4",
+      "sr-fact-2"
+    ],
+    "claude code documentation": [
+      "sr-source-1",
+      "sr-source-6",
+      "sr-source-7",
+      "sr-source-8",
+      "sr-source-9",
+      "sr-source-11",
+      "sr-source-12",
+      "sr-source-13",
+      "sr-source-14",
+      "sr-fact-14"
+    ],
+    "claude.md": [
+      "sr-evidence-1"
+    ],
+    "code check": [
+      "sr-claim-9",
+      "sr-method-2",
+      "sr-method-3",
+      "sr-method-4",
+      "sr-method-5",
+      "sr-method-6",
+      "sr-method-7",
+      "sr-method-8",
+      "sr-decision-5",
+      "sr-method-23"
+    ],
+    "command hook": [
+      "sr-method-18",
+      "sr-fact-9",
+      "sr-decision-6",
+      "sr-artefact-8"
+    ],
+    "compaction": [
+      "sr-claim-4",
+      "sr-evidence-1",
+      "sr-source-1",
+      "sr-definition-2",
+      "sr-evidence-14",
+      "sr-claim-35"
+    ],
+    "consequential tool call": [
+      "sr-claim-37",
+      "sr-method-21"
+    ],
+    "context isolation": [
+      "sr-claim-10",
+      "sr-evidence-5",
+      "sr-claim-20",
+      "sr-method-24"
+    ],
+    "control": [
+      "sr-claim-29",
+      "sr-claim-38"
+    ],
+    "cost": [
+      "sr-data-point-4",
+      "sr-source-10",
+      "sr-data-point-5",
+      "sr-data-point-6",
+      "sr-limitation-2",
+      "sr-fact-14"
+    ],
+    "create_draft": [
+      "sr-method-1"
+    ],
+    "crm": [
+      "sr-hypothesis-1"
+    ],
+    "dash": [
+      "sr-method-5"
+    ],
+    "deny": [
+      "sr-fact-3"
+    ],
+    "deny rule": [
+      "sr-evidence-14"
+    ],
+    "design document": [
+      "sr-artefact-1",
+      "sr-evidence-9",
+      "sr-artefact-11"
+    ],
+    "determinism": [
+      "sr-claim-9"
+    ],
+    "dinis cruz": [
+      "sr-entity-9"
+    ],
+    "draft guard": [
+      "sr-artefact-1",
+      "sr-artefact-2",
+      "sr-claim-37",
+      "sr-data-point-9"
+    ],
+    "dual llm pattern": [
+      "sr-source-19",
+      "sr-fact-13"
+    ],
+    "email": [
+      "sr-example-1",
+      "sr-evidence-19"
+    ],
+    "enforcement": [
+      "sr-claim-5"
+    ],
+    "exception": [
+      "sr-definition-4"
+    ],
+    "excessive agency": [
+      "sr-source-22",
+      "sr-evidence-20"
+    ],
+    "exit code": [
+      "sr-fact-9"
+    ],
+    "expectation": [
+      "sr-claim-2",
+      "sr-definition-1",
+      "sr-source-2",
+      "sr-example-4",
+      "sr-limitation-6"
+    ],
+    "explicit pass": [
+      "sr-method-10",
+      "sr-method-25",
+      "sr-limitation-11"
+    ],
+    "fail closed": [
+      "sr-claim-11",
+      "sr-method-1",
+      "sr-decision-3",
+      "sr-claim-23",
+      "sr-evidence-6",
+      "sr-source-8",
+      "sr-evidence-8",
+      "sr-method-11",
+      "sr-method-12",
+      "sr-evidence-9",
+      "sr-evidence-13",
+      "sr-method-25"
+    ],
+    "fail open": [
+      "sr-fact-5",
+      "sr-evidence-7"
+    ],
+    "failure mode": [
+      "sr-claim-7",
+      "sr-claim-17",
+      "sr-definition-2",
+      "sr-definition-3",
+      "sr-definition-4"
+    ],
+    "false fail": [
+      "sr-example-3",
+      "sr-claim-25",
+      "sr-method-14",
+      "sr-limitation-9"
+    ],
+    "figure": [
+      "sr-artefact-2",
+      "sr-artefact-3",
+      "sr-artefact-4",
+      "sr-artefact-5",
+      "sr-artefact-6",
+      "sr-artefact-9"
+    ],
+    "first run": [
+      "sr-fact-6",
+      "sr-data-point-3",
+      "sr-example-3"
+    ],
+    "forget": [
+      "sr-definition-2"
+    ],
+    "freshness": [
+      "sr-decision-1"
+    ],
+    "gate": [
+      "sr-claim-8",
+      "sr-claim-18",
+      "sr-claim-19"
+    ],
+    "gmail": [
+      "sr-entity-5"
+    ],
+    "guardrail product": [
+      "sr-source-23",
+      "sr-source-24",
+      "sr-source-25",
+      "sr-source-26"
+    ],
+    "haiku": [
+      "sr-fact-6",
+      "sr-decision-5",
+      "sr-entity-6",
+      "sr-data-point-6"
+    ],
+    "harness": [
+      "sr-artefact-2",
+      "sr-claim-8",
+      "sr-entity-4"
+    ],
+    "hook": [
+      "sr-fact-3",
+      "sr-fact-5",
+      "sr-method-12",
+      "sr-claim-33"
+    ],
+    "hope": [
+      "sr-claim-6",
+      "sr-source-2"
+    ],
+    "hot reload": [
+      "sr-fact-8",
+      "sr-artefact-5",
+      "sr-claim-28",
+      "sr-evidence-10"
+    ],
+    "html": [
+      "sr-method-4"
+    ],
+    "human review": [
+      "sr-limitation-11"
+    ],
+    "inbox agent": [
+      "sr-entity-3",
+      "sr-artefact-11"
+    ],
+    "incident": [
+      "sr-example-1",
+      "sr-data-point-1",
+      "sr-claim-5",
+      "sr-claim-16",
+      "sr-claim-35",
+      "sr-claim-38"
+    ],
+    "independence": [
+      "sr-claim-26",
+      "sr-definition-5",
+      "sr-artefact-4",
+      "sr-data-point-7",
+      "sr-limitation-3",
+      "sr-claim-27",
+      "sr-limitation-7"
+    ],
+    "independent double check": [
+      "sr-claim-14",
+      "sr-example-5",
+      "sr-evidence-17",
+      "sr-source-17"
+    ],
+    "instruction growth": [
+      "sr-source-3",
+      "sr-claim-16"
+    ],
+    "internal draft": [
+      "sr-method-8"
+    ],
+    "invented claim": [
+      "sr-data-point-3"
+    ],
+    "iso/iec 27001": [
+      "sr-fact-12"
+    ],
+    "key shape": [
+      "sr-method-6"
+    ],
+    "leak check": [
+      "sr-limitation-6"
+    ],
+    "llm-as-a-judge": [
+      "sr-evidence-3"
+    ],
+    "log": [
+      "sr-method-13",
+      "sr-example-2",
+      "sr-limitation-1",
+      "sr-claim-24",
+      "sr-fact-7",
+      "sr-method-26",
+      "sr-claim-38"
+    ],
+    "maker-checker": [
+      "sr-claim-14",
+      "sr-claim-34",
+      "sr-definition-8",
+      "sr-claim-36"
+    ],
+    "managed settings": [
+      "sr-claim-13",
+      "sr-data-point-7",
+      "sr-evidence-11",
+      "sr-source-12",
+      "sr-evidence-12",
+      "sr-method-16",
+      "sr-claim-32",
+      "sr-method-18",
+      "sr-decision-6"
+    ],
+    "matcher": [
+      "sr-fact-10"
+    ],
+    "mcp": [
+      "sr-fact-1",
+      "sr-entity-5",
+      "sr-fact-10"
+    ],
+    "mermaid": [
+      "sr-artefact-3",
+      "sr-artefact-7",
+      "sr-artefact-10"
+    ],
+    "mod": [
+      "sr-fact-2",
+      "sr-evidence-6",
+      "sr-fact-8",
+      "sr-artefact-5",
+      "sr-evidence-10",
+      "sr-source-11",
+      "sr-limitation-5",
+      "sr-method-17",
+      "sr-data-point-8"
+    ],
+    "model diversity": [
+      "sr-claim-10",
+      "sr-decision-2",
+      "sr-claim-22"
+    ],
+    "newsroom": [
+      "sr-hypothesis-1"
+    ],
+    "nist": [
+      "sr-definition-9",
+      "sr-source-16"
+    ],
+    "no tools": [
+      "sr-claim-21"
+    ],
+    "not see": [
+      "sr-definition-3"
+    ],
+    "onfailure": [
+      "sr-evidence-7",
+      "sr-artefact-8"
+    ],
+    "opus": [
+      "sr-decision-2",
+      "sr-entity-6",
+      "sr-entity-8"
+    ],
+    "organisation mod": [
+      "sr-method-16"
+    ],
+    "owasp": [
+      "sr-source-22",
+      "sr-evidence-20"
+    ],
+    "pharmacy": [
+      "sr-example-5"
+    ],
+    "placement": [
+      "sr-claim-12",
+      "sr-claim-13",
+      "sr-claim-28",
+      "sr-limitation-4",
+      "sr-method-15",
+      "sr-claim-30",
+      "sr-claim-31",
+      "sr-limitation-7"
+    ],
+    "plugin": [
+      "sr-method-15",
+      "sr-claim-30",
+      "sr-evidence-11"
+    ],
+    "pretooluse hook": [
+      "sr-evidence-1",
+      "sr-evidence-12",
+      "sr-method-18"
+    ],
+    "prompt": [
+      "sr-method-9"
+    ],
+    "prompt hook": [
+      "sr-method-19"
+    ],
+    "prompt injection": [
+      "sr-source-19",
+      "sr-source-20",
+      "sr-fact-13"
+    ],
+    "proposed": [
+      "sr-method-15"
+    ],
+    "r.isanswered": [
+      "sr-evidence-8"
+    ],
+    "r1": [
+      "sr-method-3"
+    ],
+    "r3": [
+      "sr-method-4"
+    ],
+    "r4": [
+      "sr-method-5"
+    ],
+    "r5": [
+      "sr-method-6"
+    ],
+    "r6": [
+      "sr-method-7"
+    ],
+    "r7": [
+      "sr-example-2",
+      "sr-decision-4",
+      "sr-limitation-8"
+    ],
+    "re-anchoring": [
+      "sr-claim-18"
+    ],
+    "recipient": [
+      "sr-method-7"
+    ],
+    "research": [
+      "sr-evidence-2",
+      "sr-evidence-3",
+      "sr-source-4",
+      "sr-source-5",
+      "sr-source-18"
+    ],
+    "reusable pattern": [
+      "sr-artefact-9",
+      "sr-artefact-10",
+      "sr-method-20",
+      "sr-method-21",
+      "sr-method-22",
+      "sr-method-23",
+      "sr-method-24",
+      "sr-method-25",
+      "sr-method-26",
+      "sr-hypothesis-1"
+    ],
+    "route": [
+      "sr-claim-33",
+      "sr-method-17",
+      "sr-method-18",
+      "sr-method-19"
+    ],
+    "rule": [
+      "sr-data-point-2"
+    ],
+    "scheduled run": [
+      "sr-example-4",
+      "sr-limitation-5",
+      "sr-claim-32"
+    ],
+    "second reader": [
+      "sr-claim-3",
+      "sr-claim-8",
+      "sr-claim-18",
+      "sr-claim-26"
+    ],
+    "secret": [
+      "sr-method-6"
+    ],
+    "segregation of duties": [
+      "sr-claim-14",
+      "sr-definition-8",
+      "sr-entity-7",
+      "sr-evidence-15",
+      "sr-evidence-16",
+      "sr-fact-12"
+    ],
+    "self-correction": [
+      "sr-definition-3",
+      "sr-evidence-2",
+      "sr-source-4",
+      "sr-evidence-17"
+    ],
+    "self-held rule": [
+      "sr-claim-1",
+      "sr-claim-2",
+      "sr-claim-3",
+      "sr-claim-4",
+      "sr-claim-6",
+      "sr-claim-7",
+      "sr-claim-15",
+      "sr-claim-17"
+    ],
+    "self-preference": [
+      "sr-evidence-3",
+      "sr-source-5",
+      "sr-claim-22"
+    ],
+    "sending": [
+      "sr-limitation-10"
+    ],
+    "separation of duty": [
+      "sr-definition-9"
+    ],
+    "setting": [
+      "sr-claim-12",
+      "sr-limitation-4",
+      "sr-definition-6",
+      "sr-claim-29",
+      "sr-limitation-7"
+    ],
+    "settings hook": [
+      "sr-evidence-7",
+      "sr-source-9",
+      "sr-artefact-8"
+    ],
+    "signature": [
+      "sr-method-3"
+    ],
+    "slack": [
+      "sr-hypothesis-1"
+    ],
+    "sonnet": [
+      "sr-decision-2",
+      "sr-decision-4",
+      "sr-entity-6",
+      "sr-data-point-4",
+      "sr-data-point-5",
+      "sr-fact-11"
+    ],
+    "source file": [
+      "sr-decision-1",
+      "sr-example-3",
+      "sr-method-14",
+      "sr-limitation-3",
+      "sr-fact-7",
+      "sr-claim-27",
+      "sr-limitation-8"
+    ],
+    "stage 1": [
+      "sr-method-2"
+    ],
+    "stage 2": [
+      "sr-method-9"
+    ],
+    "stopgap": [
+      "sr-example-4"
+    ],
+    "sub-agent": [
+      "sr-fact-1",
+      "sr-evidence-4",
+      "sr-claim-19",
+      "sr-example-4"
+    ],
+    "test": [
+      "sr-data-point-9"
+    ],
+    "timeout": [
+      "sr-data-point-8"
+    ],
+    "tool.call": [
+      "sr-fact-1",
+      "sr-method-1",
+      "sr-evidence-4",
+      "sr-source-6"
+    ],
+    "trusted monitoring": [
+      "sr-evidence-18"
+    ],
+    "two-person rule": [
+      "sr-claim-14",
+      "sr-definition-9"
+    ],
+    "update_draft": [
+      "sr-method-1"
+    ],
+    "vault": [
+      "sr-limitation-6"
+    ],
+    "verdict": [
+      "sr-example-2"
+    ],
+    "voice rule": [
+      "sr-example-1",
+      "sr-data-point-1",
+      "sr-method-3"
+    ]
+  },
+  "flags": [
+    "In short says 'the military calls it the two-person rule', but the body attributes the two-person rule only to NIST's definition of separation of duty; the military attribution is not supported in the body. Anchor: 'Banks call it segregation of duties, the military calls it the two-person rule, pharmacies call it an independent double check.'",
+    "Six kinds of independence: the six kinds are not named individually in the text, and 'Two rows deserve a comment' and 'the last column' refer to a table that exists only inside the image ck-independence.webp, so the scores (none, four, all six) cannot be checked from the article text. Anchor: 'The drafter re-reading its own draft has none; the guard as it runs today has four; the guard under managed settings, with sources written by someone else, has all six.'",
+    "Cost estimate not reproducible from the stated figures: the input/output split and days per month are not given; 4.5M to 9M tokens a month gives $9 to $18 if all input, and no single fixed split gives exactly $12 to $21. Anchor: 'At 5,000 to 10,000 tokens a draft and thirty drafts a day, that is roughly $12 to $21 a month'",
+    "Superlative without support: 'the oldest control in finance' is asserted but the earliest cited source is the 1998 Basel framework. Anchor: 'What the inbox agent built is maker-checker, the oldest control in finance.'",
+    "The checker uses ten numbered rules, but only R1, R3, R4, R5, R6 and R7 are identified; R2 and R8 to R10 are never named, so 'A PASS means ten rules held' cannot be fully traced. Anchor: 'the rules (ten numbered rules, from voice and disclosure to claims, scope, attachments and private pages, with a fixed answer format'",
+    "Existing graph links.articles lists 'where-is-the-why' and 'the-mandate-stack', which the article neither links nor mentions; it links only hope-or-enforcement and every-mistake-added-a-rule.",
+    "Existing graph uses kind 'concept' for nodes 'independence' and 'maker-checker', which is not a Librarian kind; catalogued here as 'definition'."
+  ]
+}

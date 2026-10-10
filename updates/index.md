@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens) one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.7.26 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.7.28 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,9 +12,10 @@ What changed on sgit and on this site, as it happens, one entry per story rather
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
 
-**72 entries, newest first**
+**73 entries, newest first**
 
 - 2026-10-10[The reading meter goes live: pay for what you read, go below zero if you like](#the-meter-goes-live)
+- 2026-10-10[Personas, and a newsroom of your own](#personas)
 - 2026-10-10[Every page now has a price, and a meter that keeps it in your browser](#a-reading-meter)
 - 2026-10-07[The articles get a newsroom: publish by adding a file, placement by one editor](#the-newsroom)
 - 2026-10-07[The SGit Newsroom, and a newsletter instead of an email per article](#sgit-newsroom-newsletter)
@@ -101,6 +102,17 @@ newsroommicropaymentspricinglocal-firstlibrary
 - **£5 on Stripe.** One payment, no account, nothing renews; the page you come back to adds the credit, and cannot check it, on purpose.
 - **A library.** [SG Meter](../meter/index.md) is one web component any site can add, with its [security model](../meter/security.md).
 - **Why, and the numbers we will check:** [going live with the reading meter](../articles/going-live-with-the-reading-meter.md). **Who could cheat, and why we let them:** [who will game the reading meter](../articles/who-will-game-the-reading-meter.md).
+
+### [Personas, and a newsroom of your own](#personas) [v0.7.28](../admin/versions.md)
+
+newsroompersonalisationpersonaslocal-first
+
+**Your reading now builds a persona, and you can have several.** Each has a name, its own picks and a graph you can watch grow, all kept in your browser.
+
+- **[Your newsroom](../account/newsroom.md)**: a front page for the active persona, with Keep and *Not for this persona* on every pick.
+- **[Your personas](../account/personas.md)**: start from Morgan the founder, Rowan the journalist, Sam the security lead, Kai the AI builder or Jordan the board member, or from nothing, and rename any of them.
+- **Your graph**, on [your reading account](../account/index.md): every page you read, attached to its topics and linked to what it cites.
+- **Why:** [pay to keep your persona](../articles/pay-to-keep-your-persona.md). Readers should pay because it helps them, not because they feel they should.
 
 ### [Every page now has a price, and a meter that keeps it in your browser](#a-reading-meter) [v0.7.24](../admin/versions.md)
 

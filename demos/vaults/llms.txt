@@ -1,7 +1,7 @@
 # Published vaults on sgit.ai
 
 > The catalogue of encrypted vaults published at https://sgit.ai/demos/vaults/index.html,
-> generated at build time (v0.7.26) from the same file the table on that page is built
+> generated at build time (v0.7.28) from the same file the table on that page is built
 > from, so this list and that table cannot drift apart.
 >
 > Every vault below is opened by a READ KEY: a 64-character hex string and a vault id, derived
@@ -12,7 +12,11 @@
 > The server stores ciphertext under opaque ids and cannot read any of this. How a browser
 > reads one file out of a vault is written up at /vault/reading-a-vault-file.md.
 
-## The vaults (51)
+## The vaults (52)
+- **#52 Article Views**: Five articles read again by five agents with roles: 662 items catalogued with their verbatim sentences and 32 flags, an ontology at article, topic and site altitude with nine maps, each article's place in the arc, two-minute versions and nine-slide decks, with the role files, renderers, checks and an app
+ - page: /demos/vaults/article-views/index.md
+ - id `chtgtd9e` · Reference · published 2026-10-10 · 9608 KB · 143 files
+ - read key: `sgit_public_read_19230bd5438497c7f73760c6eab2e5b57ab465834ccfaba585bf21cacafea68d:chtgtd9e`
 - **#51 Long Tail Ledger**: The economics of open source's long tail, measured and simulated: one Intel iMac that could not run Homebrew or Docker Desktop, the long tail sized from Homebrew and PyPI analytics, where money flows for old versions, what card fees do to a payment of pence, five funding models over 10,000 seeded draws, break-even prices, a sensitivity tornado, the satellite support firms, and a calculator that runs the same model in the browser
  - page: /demos/vaults/long-tail-ledger/index.md
  - id `deqiwj7z` · Reference · published 2026-10-10 · 1767 KB · 68 files

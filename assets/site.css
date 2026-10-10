@@ -1238,6 +1238,32 @@ p.subteaser .cta2{white-space:nowrap}
 figure.shot--collage{margin:1.6rem 0}
 ol.lkit-imgs{margin:.5rem 0 0;padding-left:1.4rem}
 ol.lkit-imgs li{margin:.2rem 0}
+
+/* article views: "Read it another way", under the abstract. One <details> per reader (Explainer,
+   Historian, Storyteller, Cartographer, Librarian); the two-minute view starts open. */
+.aviews{margin:1.2rem 0 2rem;padding:1rem 1.1rem .6rem;background:var(--panel);border:1px solid var(--line);border-radius:12px}
+main.doc .aviews h2{font-family:var(--sans);font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--accent-dk);margin:0 0 .3rem}
+.aviews>p{margin:0 0 .7rem}
+details.aview{border-top:1px solid var(--line)}
+details.aview summary{cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;gap:.2rem .7rem;align-items:baseline;padding:.65rem 0}
+details.aview summary::-webkit-details-marker{display:none}
+details.aview summary::before{content:"\25B8";color:var(--accent);flex:none}
+details.aview[open] summary::before{content:"\25BE"}
+.aview-t{font-weight:700;color:var(--fg)}
+.aview-r{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-dk);background:var(--panel2);border-radius:999px;padding:.08rem .5rem}
+.aview-s{font-size:.84rem;color:var(--dim);flex-basis:100%;padding-left:1.1rem}
+.aview-b{padding:0 0 .9rem 1.1rem;font-size:.94rem}
+.aview-b p{margin:.45rem 0}
+.vdeck{display:flex;gap:.7rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:.2rem 0 .6rem}
+.vdeck figure.shot{flex:0 0 min(62%,300px);margin:0;scroll-snap-align:start}
+.vdeck figure.shot figcaption{text-align:center}
+details.vkind{margin:.25rem 0}
+details.vkind summary{cursor:pointer;font-size:.88rem;font-weight:600}
+details.vkind summary .vn{color:var(--accent-dk);font-weight:700;margin-left:.3rem}
+details.vkind ul{margin:.3rem 0 .6rem;font-size:.86rem}
+details.vkind li{margin:.18rem 0}
+details.vflags summary{color:var(--warm)}
+@media print{details.aview .aview-b{display:block}.vdeck{flex-wrap:wrap}}
 /* ---------- the reading meter: <sg-meter> hosts (v0.7.26; the component styles itself in its shadow root) ---------- */
 sg-meter{display:block}
 sg-meter.meter-nav{display:inline-block;min-width:3.4rem}

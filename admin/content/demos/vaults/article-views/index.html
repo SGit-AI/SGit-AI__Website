@@ -1,0 +1,112 @@
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / Article Views</p>
+  <h1>Article Views: five readers of one article, run on five articles</h1>
+  <p class="lead">The articles on this site are written once, as prose with their evidence attached. This vault is a simulation of what happens when five agents with defined roles read each one again afterwards: a Librarian that catalogues every fact, claim, number, question and source with the sentence it came from; a Cartographer and Ontologist that turns the catalogues into concepts and verbs at three altitudes and draws the maps; a Historian that says what the article added and where it sits; an Explainer that says it in two minutes; and a Storyteller that tells it as a deck. It was run on the five articles about agent behaviour policies published between 7 and 10 October 2026, and published with the article <a href="../../../articles/one-article-five-readers.html">One article, five readers</a>.</p>
+
+  <figure class="shot" data-shot="app-start.webp" data-dir="images/" data-alt="The app's start page: the question, the five readers, the run's numbers (five articles, 17,106 words, 662 items catalogued, 32 flagged, 45 topic concepts, nine maps) and a card for each article."><figcaption>Five articles, five readers each, one app.</figcaption></figure>
+
+  <div class="note"><b>Open it yourself. The key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_public_read_19230bd5438497c7f73760c6eab2e5b57ab465834ccfaba585bf21cacafea68d:chtgtd9e</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_public_read_19230bd5438497c7f73760c6eab2e5b57ab465834ccfaba585bf21cacafea68d%3Achtgtd9e" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone sgit_public_read_19230bd5438497c7f73760c6eab2e5b57ab465834ccfaba585bf21cacafea68d:chtgtd9e</code><br>
+  <span class="small dim">Published deliberately under the <code>sgit_public_read_</code> prefix, and <b>derived</b> one-way from a vault key kept in the gitignored tier and never published. Classified with <code>check_credential.py</code> before it touched this page, cloned back with the published key alone and compared with the source file by file, and checked with an all-zeros read key as the negative control. Created, pushed and audited with sgit-ai 0.20.0.</span></div>
+
+  <h2 id="live">See it live, here</h2>
+  <p class="small dim" style="margin:.2rem 0 .9rem">The vault opens as an app: the five views of each article (two minutes, the arc, the deck, the map, the ontology, the catalogue), the arc across all five, which article carries which idea, all nine maps, and the five role files. You can also <a href="https://dev.vault.sgraph.ai/#sgit_public_read_19230bd5438497c7f73760c6eab2e5b57ab465834ccfaba585bf21cacafea68d%3Achtgtd9e" rel="noopener" target="_blank"><b>open it in the official UI</b></a>.</p>
+  <div class="sgv-uiembed" data-vault="chtgtd9e" data-readkey="19230bd5438497c7f73760c6eab2e5b57ab465834ccfaba585bf21cacafea68d" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js'].forEach(function (f) {
+      fetch('../../../assets/' + f).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function (t) { (0, eval)(t); }).catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>The one idea</h2>
+  <p>Keep writing the article first, because writing is how the argument is found, and extract everything else from it afterwards. Two readers build the platform: every item in the article anchored to its sentence, and every concept connected at the altitude of the article, the topic and the site. Three readers write for a person from that platform: short, and never adding a claim the article does not make.</p>
+
+  <h2>What is in it</h2>
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">librarian</span>
+        <h3>662 items, every one anchored to its sentence</h3>
+        <p>Five Librarians ran in parallel, one per article. Each item has a kind (fact, data point, claim, evidence, hypothesis, question, definition, method, decision, limitation, example, source, artefact, name), a one-line statement, its section, its index terms and its anchor, the exact sentence it came from. A script checked all 662 anchors against the articles. Cataloguing that closely also produced 32 flags for the authors: totals that do not add up, lists shorter than their count, claims the text does not support.</p>
+      </div>
+      <figure class="shot" data-shot="app-catalogue.webp" data-dir="images/" data-alt="The catalogue of Re-anchoring: 116 items, a search box, filters by kind with counts, and each item with its kind, statement, verbatim anchor, section, id and sources."><figcaption>Search, filter by kind, and every item points home.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">cartographer</span>
+        <h3>Three altitudes, one grammar, nine maps</h3>
+        <p>13 classes and 24 verbs at the site altitude, each verb with its inverse; 45 concepts and 78 edges for the topic, every edge citing the catalogue items it rests on; and each article's own concepts mapped up as same-as, narrower-than or instance-of. Ideas named differently across articles are merged (expectation and hope; second reader and maker-checker) and the merges are explained. A feedback file sends the Librarian 13 merges, 8 splits and 6 changes of kind: the round trip.</p>
+      </div>
+      <figure class="shot" data-shot="app-map.webp" data-dir="images/" data-alt="The maps view on the barriers map: which barrier each mechanism in the five articles rests on, expectation, setting or boundary, with the moves between them."><figcaption>Each map states the question it answers.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">topic</span>
+        <h3>Which article carries which idea</h3>
+        <p>Every topic concept against the five articles, amber where it first appears. Seventeen concepts run through three or more articles. New concepts per article fall 17, 11, 5, 11, 1: the newest article introduced one and reused 25.</p>
+      </div>
+      <figure class="shot" data-shot="app-topic.webp" data-dir="images/" data-alt="A grid of topic concepts by article, with a dot where a concept appears and an amber dot where it first appears."><figcaption>The spine of the topic, and what each article brought.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">historian</span>
+        <h3>What each article added, and the arc</h3>
+        <p>For each article, under 400 words: what it introduced, the nugget quoted exactly, what it reused, what it changed, what it left open, and its contribution. Then the five as one story: the pattern none of them names, the tensions between them, and a lineage table that reaches back into earlier articles on the site.</p>
+      </div>
+      <figure class="shot" data-shot="app-arc.webp" data-dir="images/" data-alt="The arc: the five articles in date order, the pattern nobody named, contradictions and tensions, and a lineage table."><figcaption>"The rule moves out of the agent, and every article stops one barrier short."</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">explainer</span>
+        <h3>Two minutes, no jargon</h3>
+        <p>For a smart reader who has never configured an agent: the point, one example from the article, why it matters, one thing to remember, and up to four words defined in a line each. Under 250 words, every number from the article.</p>
+      </div>
+      <figure class="shot" data-shot="app-explainer.webp" data-dir="images/" data-alt="The two-minute view of Hope or enforcement."><figcaption>The view that opens first.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">storyteller</span>
+        <h3>Nine slides per article, and a PDF</h3>
+        <p>Each deck is data: one idea per slide in one of nine layouts, a headline of at most nine words. A renderer draws them at 1080 by 1350, the shape of a LinkedIn document post, refuses to clip a slide with too many words, and writes a PDF. Every slide also carries a prompt for an image model, not yet run.</p>
+      </div>
+      <figure class="shot" data-shot="app-deck.webp" data-dir="images/" data-alt="The deck view for A second reader: the cover, a list slide and a diagram of the draft guard."><figcaption>Swipe sideways; click to enlarge.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">ontology</span>
+        <h3>What an article brought, concept by concept</h3>
+        <p>For each article: the concepts it introduced to the topic, the ones it reused and where each was first seen, and its own concepts with the topic concept each maps to.</p>
+      </div>
+      <figure class="shot" data-shot="app-ontology.webp" data-dir="images/" data-alt="The ontology view of Re-anchoring: one new concept, 25 reused, and the article's concepts mapped to the topic."><figcaption>One new concept, 25 reused.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>How it is built</h2>
+  <p>The five articles and their graphs are in <code>sources/</code> exactly as they were read. Each reader's role is a file in <code>roles/</code> with its mission, its failure sentence, what it must never do, its output format and its starting prompt; each agent was given one role file and its inputs. <code>tools/check.py</code> runs before every commit: every anchor verbatim, every cited item and concept exists, every verb is declared, word limits, quotes on slides verbatim, no em-dash and none of the site's retired words. <code>tools/render_maps.mjs</code> renders the Mermaid maps offline; <code>tools/render_deck.mjs</code> draws the decks; <code>tools/build_app.py</code> gathers everything into <code>app/data.json</code> and inlines it into the app, so the page also works opened on its own.</p>
+
+  <h2>The audit, honestly</h2>
+  <p><b>What was scanned.</b> Every file before the first commit for credential shapes (vault keys, every <code>sgit_</code> credential prefix, private-key headers, the SG/Send access token), and again after cloning with the published read key alone. The clone matched the source, file by file.</p>
+  <p><b>What was found.</b> Nothing. The negative control, an all-zeros read key against the same vault id, returned nothing.</p>
+  <p><b>What it does not claim.</b> The views were produced by agents and checked by script where a script can check them; a summary that is subtly unfair to its article passes every check, so each was read before publication. The Librarian checks each article against itself, not against the world. "New" concepts are new to these five articles, not to the site. The Cartographer's feedback to the Librarian is written and not yet applied. The 32 flags are open: the articles have not been corrected in this release.</p>
+  <p><b>Write-key status:</b> escrowed, in the gitignored credential tier, before this page was written.</p>
+
+  <h2>Derived facts</h2>
+  <p class="small dim">From <code>admin/build/catalogue_derive.py chtgtd9e &lt;read key hex&gt;</code>, read-only, no token, no clone.</p>
+  <ul>
+    <li><b>Files:</b> 143 · <b>plaintext size:</b> 9608 KB</li>
+    <li><b>Commits:</b> 2 · <b>last updated:</b> 2026-10-10 · <b>HEAD:</b> <code>obj-cas-imm-e72e985c5b14</code></li>
+    <li><b>Top level:</b> <code>README.md</code>, <code>app.json</code>, <code>app/</code>, <code>cartographer/</code>, <code>explainer/</code>, <code>historian/</code>, <code>index.html</code>, <code>librarian/</code>, <code>roles/</code>, <code>sources/</code>, <code>storyteller/</code>, <code>tools/</code></li>
+    <li><b>File types:</b> .webp ×54, .md ×26, .json ×26, .mmd ×9, .png ×9, .svg ×9, .pdf ×5, .py ×2, .mjs ×2, .html ×1</li>
+    <li><b>Vault app:</b> yes, entry <code>index.html</code> · <b>browser-renderable:</b> yes</li>
+  </ul>
+
+  <h2>Notes</h2>
+  <p><b>Where this came from.</b> A voice memo by Dinis Cruz asking for multiple views of the same article; the roles of the <a href="https://github.com/the-cyber-boardroom/SGraph-AI__App__Send/tree/HEAD/team/roles" rel="noopener" target="_blank">SG/Send agent team</a>; the argument in <a href="../../../articles/liquid-content-needs-water.html">Liquid content needs water</a>; and the method in <a href="../../../articles/introducing-fractal-semantic-graphs.html">Fractal Semantic Graphs</a>. The five articles read: <a href="../../../articles/the-behaviour-policy-is-the-business-logic.html">The behaviour policy is the business logic</a>, <a href="../../../articles/every-mistake-added-a-rule.html">Every mistake added a rule</a>, <a href="../../../articles/hope-or-enforcement.html">Hope or enforcement</a>, <a href="../../../articles/a-second-reader-the-agent-cannot-skip.html">A second reader the agent cannot skip</a> and <a href="../../../articles/re-anchoring-agent-behaviour-policies.html">Re-anchoring</a>.</p>
+  <p><b>Who wrote this.</b> <a href="mailto:agent@riskmandate.ai">agent@riskmandate.ai</a> (Claude Opus 5.5, <code>claude-opus-5-5</code>), in the sgit.ai site session, with Claude agents for each reader. AI-generated text, disclosed as Article 50 of the EU AI Act asks; the person with editorial responsibility is Dinis Cruz.</p>
+
+  <p class="small dim" style="margin-top:2rem"><a href="../index.html">&larr; All published vaults</a></p>
+</main>

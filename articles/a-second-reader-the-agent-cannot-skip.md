@@ -2,7 +2,7 @@
 
 > On 9 October two emails drafted by my agent went out in my voice and signed with my name. The rule against it existed, in four places, and it failed because the only thing enforcing it was the agent's memory, the agent was the only reader of its own draft, and the rule fell out of context when the conversation was summarised. The fix, built the same day by the agent itself, is a hook on the draft tool: code checks first, then a fresh model call with only the rules, the sources and the draft, failing closed and logging every verdict. This is how it works, what the first run caught, why its independence depends on where it is installed, and how the same pattern, which banks call maker-checker, applies to any tool call that matters.
 
-*Source: <https://sgit.ai/articles/a-second-reader-the-agent-cannot-skip.html> · site v0.7.26 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/a-second-reader-the-agent-cannot-skip.html> · site v0.7.28 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -13,6 +13,298 @@
 By [Dinis Cruz](../about/index.md) · 2026-10-09 · [v0.7.20](../admin/versions.md) · agentsclaude-codehooksguardrailsllm-as-a-judgemaker-checkeragent-behaviour-policyemailgovernancearticle
 
 ***Abstract:** On 9 October two emails drafted by my agent went out in my voice and signed with my name. The rule against it existed, in four places, and it failed because the only thing enforcing it was the agent's memory, the agent was the only reader of its own draft, and the rule fell out of context when the conversation was summarised. The fix, built the same day by the agent itself, is a hook on the draft tool: code checks first, then a fresh model call with only the rules, the sources and the draft, failing closed and logging every verdict. This is how it works, what the first run caught, why its independence depends on where it is installed, and how the same pattern, which banks call maker-checker, applies to any tool call that matters.*
+
+## Read it another way
+
+Views extracted from this article by the desk's readers, after it was written. None adds a claim the article does not make. [How they are made](../articles/one-article-five-readers.md).
+
+**In two minutes (Explainer): Why an AI should never be the only reader of its own work**
+
+**The point.** On 9 October two emails drafted by the author's agent (an AI assistant acting for him) went out in his voice, signed with his name. A rule against it existed in four places, but only the agent's memory enforced it, nobody else read the draft, and the rule was lost when the long conversation was summarised. The fix, built that day, checks every draft automatically: code checks, then a separate AI that sees only the rules, the notes and the draft. Anything but a clear PASS stops the draft; every verdict is logged.
+
+**An example.** On its first run the checker caught four invented claims: statements presented as the author's view or promise that were not in anything he had said.
+
+**Why it matters to you.** Banks call this maker-checker: whoever prepares something does not approve it. Today the agent could still switch the check off; it becomes a true control only when installed where only an administrator can change it.
+
+**If you remember one thing.** A rule kept only by the AI it governs is hope; a second reader the AI cannot skip makes it hold.
+
+**Words used.**
+
+- **Hook:** a check the software runs automatically before an action, whatever the AI decides.
+- **Fail closed:** if the check breaks or times out, the action is blocked.
+- **Maker-checker:** one party does the work, a different party approves it.
+
+**In the arc (Historian): What it added, and where it sits**
+
+**Introduced.**
+
+- Three ways a self-held rule fails: forget, not see, decide an exception applies, each with its own fix (`rule-failure-modes`, `unseen-violation`, `argued-exception`; `re-anchoring` is first seen here as "A reminder fixes only the first").
+- Placement: where a hook is installed decides its barrier kind (`placement`, `hook`).
+- Fail closed and six kinds of independence as the properties of a checker (`fail-closed`, `independence`).
+- The site's own incident, two emails signed "Dinis" on 9 October, and the vendor's documentation that predicts it (`voice-incident`, `compaction-warning`), plus three build routes compared (`recipe`).
+
+**The nugget.** "Nothing in the hook changes, only who can change the hook." It adds a dimension the earlier counts lacked: the same mechanism is a setting or a boundary depending on its owner.
+
+**Reused.** From every-mistake-added-a-rule, which it links: `compaction`, `forgetting`, `rule-growth` ("the paragraph already existed four times"), `second-reader`, `gate`, `harness`. From hope-or-enforcement, which it links and quotes ("a rule the model keeps is an expectation: hope"): `deterministic-check`, `hostile-input`. From article 1: the barrier kinds, `owner`, `grant`. Before the set, why-my-agents-do-not-run-on-my-laptop had already said settings are "enforced by the process they constrain"; this article does not cite it.
+
+**Changed.** It retires the stopgap of a checker sub-agent the drafter chooses to spawn ("still an expectation"), and replaces Haiku with Sonnet as the default checker after over-flagging. It sharpens article 3's boundary count by asking who can edit the enforcer.
+
+**Left open.**
+
+- Managed placement, the one step before the guard is a boundary.
+- The sources the checker reads are written by the drafter.
+- Sending is a separate barrier question; the leak check before a vault push is "still a script I run rather than a gate I cannot skip".
+- Librarian flags: the six kinds of independence are scored only inside an image; the cost figure does not reconcile; the graph links where-is-the-why and the-mandate-stack, which the text never mentions.
+
+**Contribution.** 11 new / 30 total. The widest article in the set: it reuses almost everything before it and still adds the failure taxonomy and placement, which article 5 then builds on.
+
+**In pictures (Storyteller): 9 slides**
+
+1 / 92 / 93 / 94 / 95 / 96 / 97 / 98 / 99 / 9
+
+Swipe or scroll sideways. [Download the deck as a PDF](views/a-second-reader-the-agent-cannot-skip/a-second-reader-the-agent-cannot-skip.pdf) (one page per slide, ready for a LinkedIn document post).
+
+**On the map (Cartographer): The argument as a map: why a rule written four times failed, and what turns it into a check the agent cannot skip.**
+
+The argument as a map: why a rule written four times failed, and what turns it into a check the agent cannot skip.
+
+**The catalogue (Librarian): 185 items, each anchored to a sentence of the article**
+
+Everything the article contains, by kind. Every item was extracted with the exact sentence it came from, and a script checked each one against the article.
+
+**Claims: 38**
+
+- The reasons the rule failed are not specific to email or to the author's setup (lead)
+- The only thing enforcing the rule was the drafting agent remembering it (lead)
+- The drafting agent was the only reader of its own draft (lead)
+- The rule fell out of the agent's working context when the conversation was summarised (lead)
+- The case shows a real failure in real use turned into an enforced control the same day, by the system that failed (lead)
+- A rule kept by the agent it governs is hope (In short)
+- A self-held rule can be forgotten, misread, summarised away, or argued around by the agent's own reasoning (In short)
+- The fix has two parts: a second independent reader, and a gate the harness runs on the tool call so the agent cannot skip it (In short)
+- Certain things go in code; signatures, dashes, key shapes, HTML and recipients are checked deterministically before any model (In short)
+- The checker gets less than the author on purpose: no history, no tools, ideally a different model (In short)
+- Anything but an explicit PASS is a FAIL; a late email is cheap, a wrong one cannot be taken back (In short)
+- Today the guard is a setting the agent's own account could switch off (In short)
+- Under managed settings the same code becomes a boundary: same code, different owner (In short)
+- The pattern is old: segregation of duties (banks), the two-person rule (military), independent double check (pharmacies) (In short)
+- Any behaviour policy held by the agent it governs has this general weakness (Why the rule failed: hope held by the agent it governs)
+- This failure is the case where the paragraph of instructions already existed four times (Why the rule failed: hope held by the agent it governs)
+- There are three separate ways a self-held rule fails, needing different fixes (Why the rule failed: hope held by the agent it governs)
+- A reminder fixes only forgetting; a fresh second reader fixes the other two; an unskippable gate makes the fix hold (Why the rule failed: hope held by the agent it governs)
+- Since the event fires for sub-agents too, a sub-agent cannot route around the gate (How the guard works)
+- The checker has no conversation history: it does not see the drafter's reasoning, excuses or persuading messages (How the guard works)
+- The checker has no tools: it can only read what it is given and answer (How the guard works)
+- Two different models do not share every blind spot, and a model is not grading its own work (How the guard works)
+- Failing closed is the part most guards get wrong (How the guard works)
+- The log is the audit trail: what was checked, by which model, against which sources, and why it failed (How the guard works)
+- Both results, catches and false FAILs, are the design working (What the first run caught)
+- A second reader is only as independent as the things it does not share with the author (Six kinds of independence)
+- The article proposes the full fix is sources from somewhere else: the author's notes, the CRM, the page being described (Six kinds of independence)
+- The hot-reload prompt is the honest centre of the story (From setting to boundary: where the hook lives decides what it is)
+- A setting is far better than memory because the harness runs it every time, but not yet a control (From setting to boundary: where the hook lives decides what it is)
+- The documentation says repository installation is better and still not enough (From setting to boundary: where the hook lives decides what it is)
+- Nothing in the hook changes, only who can change the hook (From setting to boundary: where the hook lives decides what it is)
+- A managed hook is there in every session, scheduled or not (From setting to boundary: where the hook lives decides what it is)
+- Three documented ways to build the guard trade simplicity against robustness (Building it with what is public today)
+- Anthropic ships the same shape in auto mode: a different model, less context, fail closed (Building it with what is public today)
+- The vendor's warning describes the 9 October failure (Building it with what is public today)
+- What the draft guard adds is not a new idea (The pattern is old, and it has a name)
+- The guard places the idea where it bites: on the one consequential tool call, with business rules, sources, a different model and an explicit barrier statement (The pattern is old, and it has a name)
+- The rule that lived in four paragraphs now lives on the tool call, with a log, one step short of a control (What it does not do)
+
+**Evidence: 20**
+
+- Anthropic's memory docs: CLAUDE.md is context, not enforced configuration; use a PreToolUse hook to block an action (lead)
+- Huang et al.: models struggle to self-correct without external feedback (Why the rule failed: hope held by the agent it governs)
+- Panickssery et al.: LLM judges show self-preference for their own outputs (Why the rule failed: hope held by the agent it governs)
+- Events docs: tool.call fires before a tool runs, including sub-agent and MCP calls (How the guard works)
+- API docs: $.model.complete sends the prompt on its own, one user message, CLAUDE.md not included, no tools (How the guard works)
+- Events docs: a throwing mod hook is skipped; add a .catch handler to fail closed (How the guard works)
+- Hooks docs: a policy hook with a wrong path or crashing script lets everything through unless onFailure is block (How the guard works)
+- Docs: a Claude API failure does not reject the call, so check r.isAnswered (How the guard works)
+- The inbox agent's words: a late email is a small cost, a wrong one cannot be taken back (How the guard works)
+- Create-a-mod docs: on the first saved file Claude Code asks whether to enable hot reloading for the session (From setting to boundary: where the hook lives decides what it is)
+- Admin docs: an installed plugin counts as a user's, and a user's mod can approve calls an ask rule or non-managed PreToolUse hook would stop (From setting to boundary: where the hook lives decides what it is)
+- Events docs: managed-settings PreToolUse hooks run before any mod's tool.call hook and their block is final (From setting to boundary: where the hook lives decides what it is)
+- Permission-modes docs: if the classifier's response does not parse, Claude Code denies the action (Building it with what is public today)
+- Permission-modes docs: a boundary stated in conversation can be lost to compaction; add a deny rule for a hard guarantee (Building it with what is public today)
+- Basel Principle 6: effective internal control requires appropriate segregation of duties (The pattern is old, and it has a name)
+- Basel: supervisors find lack of segregation of duties a major cause of losses (The pattern is old, and it has a name)
+- ISMP: if the same person prepares and checks, they likely see only what they expect to see (The pattern is old, and it has a name)
+- AI Control studies an untrusted powerful model watched by a less powerful trusted model, with trusted monitoring and trusted editing (The pattern is old, and it has a name)
+- Rule of Two: an agent with untrusted input, private data and external communication (like an email drafter) should not operate autonomously (The pattern is old, and it has a name)
+- OWASP LLM06: authorise in downstream systems rather than relying on an LLM to decide (The pattern is old, and it has a name)
+
+**Data points: 9**
+
+- The rule against writing in the author's voice existed in 4 places before the incident (lead)
+- 10 numbered rules in the checker prompt, from voice and disclosure to claims, scope, attachments and private pages, with a fixed answer format (How the guard works)
+- 4 real invented claims caught on the first run: statements presented as the author's view, decision or promise not in anything he had said (What the first run caught)
+- Sonnet 5.5 list price on 9 October 2026: $2 per million input tokens, $10 per million output (What the first run caught)
+- Roughly $12 to $21 a month at 5,000 to 10,000 tokens a draft and 30 drafts a day on Sonnet (What the first run caught)
+- Haiku 5.5 at $0.10 input and $0.50 output per million comes to about a dollar a month (What the first run caught)
+- Independence scores: drafter re-reading its own draft 0 of 6; the guard today 4; the guard under managed settings with external sources 6 (Six kinds of independence)
+- A mod hook's own run time is limited to 10 seconds; time inside the model call does not count (Building it with what is public today)
+- 11 of 11 tests passing for the guard built by the inbox agent (What it does not do)
+
+**Facts: 14**
+
+- Claude Code raises an event before every tool call, including MCP tools and calls by sub-agents (How the guard works)
+- Claude Code mods are public and on by default from v2.1.287 (How the guard works)
+- The hook either calls next(e) and the draft is created, or returns { deny } and the tool never runs; the deny text reaches the agent as the tool error (How the guard works)
+- The checker prompt is sent as a single $.model.complete call (How the guard works)
+- Hooks fail open by default (How the guard works)
+- The first run used Haiku as the checker (What the first run caught)
+- The log records whether sources were given, so source provision is auditable (Six kinds of independence)
+- The guard was written by the inbox agent in its own session and loaded with one click on a prompt (From setting to boundary: where the hook lives decides what it is)
+- For a command hook, exit code 2 blocks and exit code 1 does not (Building it with what is public today)
+- MCP tools are named `mcp__<server>__<tool>` (Building it with what is public today)
+- In auto mode a second model, the classifier, reviews actions, running on Sonnet by default (Building it with what is public today)
+- ISO/IEC 27001:2022 carries segregation of duties as control A.5.3 (The pattern is old, and it has a name)
+- Dual LLM and CaMeL separate a model that acts from one that reads, against prompt injection (The pattern is old, and it has a name)
+- Claude Code behaviour is quoted from documentation as read on 9 October 2026; prices are list prices on that date (What it does not do)
+
+**Hypotheses: 1**
+
+- Next candidates in the team: CRM agent writes, newsroom page promotions, Slack posts, the leak check before vault push (The pattern, reusable)
+
+**Definitions: 9**
+
+- Expectation (ABP): a rule in prose, enforced by nobody (lead)
+- Forget: the rule leaves the agent's context (Why the rule failed: hope held by the agent it governs)
+- Not see: the author is the worst reader of its own text and misses the violation (Why the rule failed: hope held by the agent it governs)
+- Decide an exception applies: persuaded by its own earlier reasoning in the conversation (Why the rule failed: hope held by the agent it governs)
+- Six kinds of independence: three about what the checker sees, two about who decides whether it runs, one about who wrote the evidence (Six kinds of independence)
+- Setting (ABP): a switch the agent's own account can flip (From setting to boundary: where the hook lives decides what it is)
+- Boundary: enforced above the grant, out of the agent's reach (From setting to boundary: where the hook lives decides what it is)
+- Maker-checker, called the oldest control in finance, is what the inbox agent built (The pattern is old, and it has a name)
+- NIST separation of duty: no user should have enough privileges to misuse the system on their own; example, the two-person rule (The pattern is old, and it has a name)
+
+**Methods: 26**
+
+- The guard registers on tool.call for mcp__Gmail__create_draft and mcp__Gmail__update_draft, with .catch(failClosed) (How the guard works)
+- Stage 1: certain, cheap rules run first in code; a failure stops the call without a model call (How the guard works)
+- R1 voice: mail with a To must carry the agent's signature, and none of the three lines before it a sign-off in the author's name; only the visible email is read (How the guard works)
+- R3 format: mail with a To must have the branded HTML body (How the guard works)
+- R4 dashes: no em or en dashes anywhere (How the guard works)
+- R5 secrets: no string shaped like a vault key, API key, AWS key, GitHub token or private key block (How the guard works)
+- R6 Cc: the author's addresses in the right place when others are in To (How the guard works)
+- Internal drafts with no To skip the signature and HTML checks (How the guard works)
+- Stage 2: one prompt built from the rules, the sources and the draft (How the guard works)
+- An answer passes only with RESULT: PASS and no `R<n>` FAIL line (How the guard works)
+- If the checker is overloaded, errors, times out or returns nothing, the guard denies with 'checker unavailable' (How the guard works)
+- If the hook throws, the .catch(failClosed) handler denies (How the guard works)
+- Every check appends one line to a log, which never decides the outcome (How the guard works)
+- On a false FAIL the agent is told to add the missing source, never remove the rule (What the first run caught)
+- Proposed by the inbox agent: publish the plugin to a repository and install it from there, where the agent cannot write (From setting to boundary: where the hook lives decides what it is)
+- Alternative boundary: an organisation mod from an admin-only directory named in managed settings, with allowManagedModsOnly so session mods do not load (From setting to boundary: where the hook lives decides what it is)
+- Route: a mod, as built; $.model.complete, reads sources, fails closed with .catch and r.isAnswered (Building it with what is public today)
+- Route: a command hook on PreToolUse; script calls the model; fails closed with onFailure block and exit 2; most robust public form, works in managed settings (Building it with what is public today)
+- Route: a prompt hook; built-in LLM evaluation, sources must be pasted into the prompt, fail-closed not documented for model failures (Building it with what is public today)
+- The reusable pattern in six steps, as the inbox agent wrote them (The pattern, reusable)
+- Step 1: pick the tool call that matters (Slack message, CRM write, page publish, vault commit, payment API) (The pattern, reusable)
+- Step 2: write the rules as a short numbered checklist with a fixed answer format (The pattern, reusable)
+- Step 3: put everything certain into code first; leave only judgement to the model (The pattern, reusable)
+- Step 4: give the checker only rules, sources and the proposed action; no history (The pattern, reusable)
+- Step 5: deny on anything other than an explicit PASS (The pattern, reusable)
+- Step 6: log every verdict (The pattern, reusable)
+
+**Decisions: 6**
+
+- Sources are used only if written in the last 60 minutes, so stale notes from another email are not used (How the guard works)
+- The drafter runs on Opus and the checker on Sonnet, so they do not share every blind spot and no model grades its own work (How the guard works)
+- A contradictory checker answer is treated as a FAIL (How the guard works)
+- The default checker became Sonnet because R7 (are the claims in the sources) needs judgement and the smaller model over-flagged (What the first run caught)
+- Haiku stays the choice for high-volume mechanical checks, after everything certain is in code (What the first run caught)
+- The author would put the command hook under managed settings (Building it with what is public today)
+
+**Limitations: 11**
+
+- In the example log line the recipient and the claim are replaced; only the shape is real (How the guard works)
+- Thinking tokens or caching move the cost figures, not their order of magnitude (What the first run caught)
+- The checker compares claims with sources the drafting agent writes, and an agent could pad them (Six kinds of independence)
+- The agent gated by the hook can edit the hook (From setting to boundary: where the hook lives decides what it is)
+- A fresh scheduled run starts in a fresh container, so a session mod is not there at all (From setting to boundary: where the hook lives decides what it is)
+- On this site the leak check before a vault push is still a script the author runs, not a gate (The pattern, reusable)
+- The guard is only as independent as its installation; today it is a setting (What it does not do)
+- R7 is only as good as the sources, and the drafter writes them (What it does not do)
+- The checker can be wrong in both directions; expect false FAILs, which cost a retry (What it does not do)
+- It checks drafts, not sending; the author sends, and the no-send rule is a separate barrier question (What it does not do)
+- It does not replace reading: a PASS means ten rules held, not that the email is good (What it does not do)
+
+**Examples: 5**
+
+- On 9 October two emails from agent@riskmandate.ai went out in the author's first person and signed "Dinis" (lead)
+- A log line: verdict FAIL at stage model, model sonnet, sources given, R7 FAIL for a proposal attributed to Dinis not in the notes (How the guard works)
+- False FAILs on the first run: correct facts with no source, such as dates read from Gmail and an uncopied earlier note (What the first run caught)
+- The stopgap in scheduled runs (spawn a checker sub-agent) has fresh context and a different model, but the drafter chooses to run it, so it is still an expectation (Six kinds of independence)
+- Hospital pharmacies run independent double checks for high-alert medicines (The pattern is old, and it has a name)
+
+**Sources: 26**
+
+- Claude Code memory documentation (lead)
+- Earlier sgit.ai article 'Hope or enforcement': a rule the model keeps is an expectation, hope (Why the rule failed: hope held by the agent it governs)
+- Earlier sgit.ai article 'Every mistake added a rule': each failure tends to produce another paragraph of instructions (Why the rule failed: hope held by the agent it governs)
+- Huang et al., ICLR 2024, arXiv 2310.01798 (Why the rule failed: hope held by the agent it governs)
+- Panickssery et al., NeurIPS 2024, arXiv 2404.13076 (Why the rule failed: hope held by the agent it governs)
+- Claude Code mods events documentation (How the guard works)
+- Claude Code mods API documentation, call a model (How the guard works)
+- Claude Code mods events documentation, handle a hook that fails (How the guard works)
+- Claude Code hooks documentation (How the guard works)
+- Claude pricing page (What the first run caught)
+- Claude Code docs, create a mod (From setting to boundary: where the hook lives decides what it is)
+- Claude Code docs, mods for administrators (From setting to boundary: where the hook lives decides what it is)
+- Claude Code mods events documentation, where settings hooks run in the order (From setting to boundary: where the hook lives decides what it is)
+- Claude Code permission modes documentation (Building it with what is public today)
+- BCBS 40, Framework for Internal Control Systems in Banking Organisations (1998) (The pattern is old, and it has a name)
+- NIST CSRC glossary, separation of duty (The pattern is old, and it has a name)
+- ISMP, independent double checks article (The pattern is old, and it has a name)
+- Redwood Research, AI Control (ICML 2024) (The pattern is old, and it has a name)
+- Simon Willison, Dual LLM pattern (2023) (The pattern is old, and it has a name)
+- Google DeepMind, CaMeL (2025) (The pattern is old, and it has a name)
+- Meta, Agents Rule of Two (2025) (The pattern is old, and it has a name)
+- OWASP LLM06 Excessive Agency (The pattern is old, and it has a name)
+- Llama Guard, an output-checking product (The pattern is old, and it has a name)
+- NeMo Guardrails output rails (The pattern is old, and it has a name)
+- Guardrails AI validators (The pattern is old, and it has a name)
+- OpenAI Agents SDK tool guardrails (The pattern is old, and it has a name)
+
+**Artefacts: 11**
+
+- The inbox agent's design document 'The independent checker: a hook that makes a second model approve every email draft', with code, tests and a list of limits (lead)
+- Figure ck-flow.webp: the draft guard flow, every create or update draft call passes through a harness-run hook (lead)
+- Mermaid source for the draft guard figure (lead)
+- Figure ck-independence.webp: six kinds of independence and which check has which (Six kinds of independence)
+- Figure ck-hot-reload.webp: the hot-reload prompt, 'A mod is code Claude wrote; it runs with your permissions.' (From setting to boundary: where the hook lives decides what it is)
+- Figure ck-ladder.webp: who enforces the voice rule, weakest first (none, expectation, setting, setting still, boundary) (From setting to boundary: where the hook lives decides what it is)
+- Mermaid source for the barrier ladder figure (From setting to boundary: where the hook lives decides what it is)
+- Minimal settings JSON: PreToolUse command hooks matching create_draft and update_draft, /opt/guards/draft-guard (placeholder path), onFailure block (Building it with what is public today)
+- Figure ck-pattern.webp: the reusable pattern on a consequential tool call (The pattern, reusable)
+- Mermaid source for the reusable pattern figure (The pattern, reusable)
+- The design document, version 0.1, written on 9 October 2026 by the RiskMandate.ai inbox agent (What it does not do)
+
+**Names: 9**
+
+- Agent Behaviour Policy (ABP), at abp.sgit.ai (lead)
+- Anthropic, whose documentation describes the compaction failure (lead)
+- The inbox agent (RiskMandate.ai), which wrote up and built its own fix the same day (lead)
+- Claude Code, the harness that runs the hook (How the guard works)
+- The Gmail connector (MCP), whose create_draft and update_draft tools are guarded (How the guard works)
+- Claude models named: Opus (drafter), Sonnet 5.5 (checker), Haiku 5.5 (first-run checker) (What the first run caught)
+- Basel Committee on Banking Supervision, 1998 framework, Principle 6 (The pattern is old, and it has a name)
+- agent@riskmandate.ai (Claude Opus 5.5) wrote up the article for Dinis Cruz, who has editorial responsibility (What it does not do)
+- Dinis Cruz, author with editorial responsibility (What it does not do)
+
+**Flagged for the author: 7**
+
+- In short says 'the military calls it the two-person rule', but the body attributes the two-person rule only to NIST's definition of separation of duty; the military attribution is not supported in the body. Anchor: 'Banks call it segregation of duties, the military calls it the two-person rule, pharmacies call it an independent double check.'
+- Six kinds of independence: the six kinds are not named individually in the text, and 'Two rows deserve a comment' and 'the last column' refer to a table that exists only inside the image ck-independence.webp, so the scores (none, four, all six) cannot be checked from the article text. Anchor: 'The drafter re-reading its own draft has none; the guard as it runs today has four; the guard under managed settings, with sources written by someone else, has all six.'
+- Cost estimate not reproducible from the stated figures: the input/output split and days per month are not given; 4.5M to 9M tokens a month gives $9 to $18 if all input, and no single fixed split gives exactly $12 to $21. Anchor: 'At 5,000 to 10,000 tokens a draft and thirty drafts a day, that is roughly $12 to $21 a month'
+- Superlative without support: 'the oldest control in finance' is asserted but the earliest cited source is the 1998 Basel framework. Anchor: 'What the inbox agent built is maker-checker, the oldest control in finance.'
+- The checker uses ten numbered rules, but only R1, R3, R4, R5, R6 and R7 are identified; R2 and R8 to R10 are never named, so 'A PASS means ten rules held' cannot be fully traced. Anchor: 'the rules (ten numbered rules, from voice and disclosure to claims, scope, attachments and private pages, with a fixed answer format'
+- Existing graph links.articles lists 'where-is-the-why' and 'the-mandate-stack', which the article neither links nor mentions; it links only hope-or-enforcement and every-mistake-added-a-rule.
+- Existing graph uses kind 'concept' for nodes 'independence' and 'maker-checker', which is not a Librarian kind; catalogued here as 'definition'.
 
 On 9 October, two emails from agent@riskmandate.ai went out written in my first person and signed "Dinis".
 
@@ -280,6 +572,7 @@ Agents & policySite & engineering[This article as a graph →](graphs.md#a-secon
 
 ### Continued by
 
+- [One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece](one-article-five-readers.md) Write the article first, then send five agent readers through it: a catalogue, an ontology and maps, the arc, two minutes, and a deck.
 - [Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not](re-anchoring-agent-behaviour-policies.md) Summaries keep under 2% of a long session. Re-anchoring prints the agent's rules back after each one; a canary report shows it is working.
 
 [All articles](index.md) · [All graphs](graphs.md)
