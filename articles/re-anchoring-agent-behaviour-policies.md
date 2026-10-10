@@ -2,7 +2,7 @@
 
 > Instructions given only in conversation can be lost when a long session is summarised. The session that runs this site has been summarised eighteen times in a month, each time keeping under 2% of what it replaced. Re-anchoring is the answer: keep the agent's rules in a behaviour policy file and have the harness print it back after every summary, so the rules are restored rather than remembered. And because you cannot see what a summary drops, add a canary: a short status report, computed from the transcript, that ends every few answers. If it stops appearing, something in the policy has not been read. Both are running in this session now. This is how they work, what each piece is for, and why the best way to do it today is a recipe that someone has to keep up to date.
 
-*Source: <https://sgit.ai/articles/re-anchoring-agent-behaviour-policies.html> · site v0.7.28 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/re-anchoring-agent-behaviour-policies.html> · site v0.7.29 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,13 +10,13 @@
 
 # Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not
 
-By [Dinis Cruz](../about/index.md) · 2026-10-10 · [v0.7.22](../admin/versions.md) · agentsclaude-codehooksagent-behaviour-policycompactioncontextre-anchoringguardrailsgovernancearticle
+By [Dinis Cruz](../about/index.md) · 2026-10-10 · [article v1.0.0](versions/re-anchoring-agent-behaviour-policies.md) · [site v0.7.22](../admin/versions.md) · agentsclaude-codehooksagent-behaviour-policycompactioncontextre-anchoringguardrailsgovernancearticle
 
 ***Abstract:** Instructions given only in conversation can be lost when a long session is summarised. The session that runs this site has been summarised eighteen times in a month, each time keeping under 2% of what it replaced. Re-anchoring is the answer: keep the agent's rules in a behaviour policy file and have the harness print it back after every summary, so the rules are restored rather than remembered. And because you cannot see what a summary drops, add a canary: a short status report, computed from the transcript, that ends every few answers. If it stops appearing, something in the policy has not been read. Both are running in this session now. This is how they work, what each piece is for, and why the best way to do it today is a recipe that someone has to keep up to date.*
 
-## Read it another way
+**Five readerstwo minutes · the arc · 9 slides · a map · 116 catalogued items, 6 flagged**
 
-Views extracted from this article by the desk's readers, after it was written. None adds a claim the article does not make. [How they are made](../articles/one-article-five-readers.md).
+This article read again, after it was written, by five of the desk's readers: the Explainer, the Historian, the Storyteller, the Cartographer and the Librarian. None adds a claim the article does not make. Read from article v1.0.0 on 10 October 2026; the views are not part of the article's text and do not change its version. [How the five readers work](../articles/one-article-five-readers.md).
 
 **In two minutes (Explainer): Stopping an AI assistant forgetting its rules**
 
@@ -238,6 +238,15 @@ Everything the article contains, by kind. Every item was extracted with the exac
 - "The hooks this depends on arrived or changed in the last few months." Only mods (v2.1.287), onFailure (v2.1.295) and prompt-hook deny (v2.1.210) are versioned, with no dates; the compact matcher and SessionStart are not dated, so "last few months" is unsupported here.
 - Graph gaps: sources/re-anchoring-agent-behaviour-policies.graph.json links omit sources cited in the article: permission-modes docs, NPR and abp.sgit.ai.
 - Section 'Three ways a rule fails' names the three failures only in the figure caption ("Re-anchoring fixes forgetting. A second reader fixes the violation the author cannot see. A gate fixes the exception the agent argues itself into."); the prose never lists them, so the content depends on the image directive.
+
+**The five readers have also read:**
+
+- [Zoom into an agent's behaviour policy and you find the business logic](the-behaviour-policy-is-the-business-logic.md#views)
+- [Every mistake added a rule](every-mistake-added-a-rule.md#views)
+- [Hope or enforcement](hope-or-enforcement.md#views)
+- [A second reader the agent cannot skip](a-second-reader-the-agent-cannot-skip.md#views)
+
+Every view, the role files and the tools are in the [Article Views vault](../demos/vaults/article-views/index.md).
 
 Claude Code's documentation says it plainly: "If an instruction disappeared after compaction, it was given only in conversation, lives in a nested CLAUDE.md that hasn't reloaded yet, or is a path-scoped rule that hasn't matched a file since" ([memory](https://code.claude.com/docs/en/memory)). Anthropic's own permission classifier has the same weakness, in its own words: a boundary "can be lost if context compaction removes the message that stated it" ([permission modes](https://code.claude.com/docs/en/permission-modes)).
 

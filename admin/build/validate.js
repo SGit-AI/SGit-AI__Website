@@ -245,7 +245,10 @@ for (const f of files.filter(f => /\.(html|css|js|md|json)$/.test(f)
 {
   // docs/briefs/secrets-sgit-ai-design-pack/ holds design documents published as written, to be
   // corrected in their own repository; their punctuation is not this site's to change (v0.6.59).
-  const exemptDirs = ['skills/', 'assets/', 'node_modules/', 'docs/briefs/secrets-sgit-ai-design-pack/'];
+  // articles/versions/ shows each article's earlier versions, and what changed, verbatim: text from
+  // before this rule existed is quoted as it was published, because rewriting history to pass today's
+  // style would falsify the record the pages exist to keep (v0.7.27). The leak checks still apply.
+  const exemptDirs = ['skills/', 'assets/', 'node_modules/', 'docs/briefs/secrets-sgit-ai-design-pack/', 'articles/versions/'];
   const exemptFiles = ['team/board.html', 'team/board.md'];
   for (const f of files.filter(f => /\.(html|md)$/.test(f))) {
     const rel = path.relative(root, f).replace(/\\/g, '/');
@@ -294,7 +297,7 @@ for (const f of files.filter(f => /\.(html|css|js|md|json)$/.test(f)
 {
   for (const f of files.filter(f => /\.(html|md|json)$/.test(f))) {
     const rel = path.relative(root, f).replace(/\\/g, '/');
-    if (!rel.startsWith('articles/')) continue;
+    if (!rel.startsWith('articles/') || rel.startsWith('articles/versions/')) continue;   // history, quoted verbatim (see 5c)
     const prose = fs.readFileSync(f, 'utf8')
       .replace(/<pre\b[\s\S]*?<\/pre>/gi, ' ')
       .replace(/<code\b[\s\S]*?<\/code>/gi, ' ')

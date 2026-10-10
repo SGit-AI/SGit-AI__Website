@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.28'
+SITE_VERSION = 'v0.7.29'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.28', '2026-10-10', 'this release',
+    ('v0.7.29', '2026-10-10', 'this release',
+     "ARTICLES HAVE VERSIONS, AND FIVE READERS FOLDS AWAY. Every article now carries its own version beside the site release it was published in: v1.0.0 is the article as first published, a change to its text is the next minor version, a change only to its other details the next patch. The history is read from git at every build (renames followed, cached for shallow clones), so nobody keeps the numbers and publishing is still adding one file. Each article has a versions page (61 articles, 195 versions), and every version after the first has a page showing what changed, paragraph by paragraph, with a word-level diff. The diff renderer moved into admin/build/article_versions.py and article_diff.py now uses it (output unchanged). Version pages quote earlier text verbatim and are exempt from the em-dash and retired-word style rules, not from the leak checks. Read it another way becomes Five readers: one closed line under the abstract saying what is inside, the five readers closed within it, the article version the views were read from, and links to the other articles the readers have read and to the Article Views vault.",),
+    ('v0.7.28', '2026-10-10', 'git 55aee85d',
      "PERSONAS, AND A NEWSROOM OF YOUR OWN. SG Meter v1.1.0 (new immutable path assets/components/sg-meter/v1/v1.1/v1.1.0/; "
      "v1.0.0 kept) gives every reader personas, kept in the same local state as the balance. A default persona is built "
      "from everything read, weighted by depth, and named from its top topics until the reader names it ('The Policy "
@@ -5279,6 +5281,16 @@ def load_pages():
     for a in ARTICLES:
         pages.append((f'articles/{a["slug"]}.html',
                       f'{a["title"]}, sgit.ai', a['summary'], 'articles', article_body(a)))
+        pages.append((f'articles/versions/{a["slug"]}.html',
+                      f'Versions of {a["title"].split(":")[0]}, sgit.ai',
+                      f'Every published version of the article "{a["title"].split(":")[0]}", with the date, the words and what changed.',
+                      'articles', article_versions_body(a)))
+        for _i in range(1, len(VERSIONS[a['slug']])):
+            _v = VERSIONS[a['slug']][_i]
+            pages.append((f'articles/versions/{a["slug"]}/{_vfile(_v)}',
+                          f'{a["title"].split(":")[0]}: what changed in {_v["version"]}, sgit.ai',
+                          f'The changes to the article "{a["title"].split(":")[0]}" in {_v["version"]}, paragraph by paragraph.',
+                          'articles', article_version_diff_body(a, _i)))
     pages.append(('articles/graphs.html', 'The articles as graphs, sgit.ai',
                   'Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it '
                   'makes, and how they connect, plus a map of how the articles link to each other.',
@@ -5308,6 +5320,19 @@ def load_pages():
 LOADER = Content_Loader(os.path.join(ADMIN, 'content'))
 UPDATES = [u for u in LOADER.load_updates() if u['status'] == 'published']
 ARTICLES = [a for a in LOADER.load_articles() if a['status'] == 'published']
+
+# ---- article versions (admin/build/article_versions.py). v1.0.0 is the article as first published;
+# a commit that changes its text is the next minor version, one that changes only other front matter
+# the next patch; an uncommitted edit is the version this release publishes. Read from git, so nobody
+# keeps the numbers by hand and publishing stays adding one file.
+import article_versions as AV
+_HIST = AV.all_histories(ROOT, [a['slug'] for a in ARTICLES])
+VERSIONS = {}
+for _a in ARTICLES:
+    _src = open(os.path.join(ADMIN, 'content', 'articles', _a['slug'] + '.md')).read()
+    VERSIONS[_a['slug']] = AV.with_working_tree(ROOT, _a['slug'], _HIST[_a['slug']], _src, SITE_VERSION,
+                                                datetime.date.today().isoformat())
+    _a['article_version'] = VERSIONS[_a['slug']][-1]['version']
 for _a in ARTICLES:
     if _a['author']:
         if not _a['author_url']:
@@ -6324,20 +6349,114 @@ def article_views_block(a):
                       + ''.join(groups) + flag_html, False))
     if not parts:
         return ''
-    how = meta.get('about', '/articles/one-article-five-readers.html')
-    out = ['\n<section class="aviews" id="views">\n <h2>Read it another way</h2>\n'
-           f' <p class="small dim">Views extracted from this article by the desk\'s readers, after it was written. '
-           f'None adds a claim the article does not make. <a href="{LOADER._link_href(how, 1, where)}">How they are made</a>.</p>\n']
+    how = LOADER._link_href(meta.get('about', '/articles/one-article-five-readers.html'), 1, where)
+    # one line when closed: what is inside, so a reader can decide without opening it
+    cat = v.get('catalog') or {}
+    n_items, n_flags = len(cat.get('items', [])), len(cat.get('flags') or [])
+    bits = {'two-minutes': 'two minutes', 'arc': 'the arc',
+            'pictures': f'{len((v.get("deck") or {}).get("slides", []))} slides', 'map': 'a map',
+            'catalogue': f'{n_items} catalogued items' + (f', {n_flags} flagged' if n_flags else '')}
+    line = ' &middot; '.join(bits[p[0]] for p in parts if p[0] in bits)
+    others = [s_ for s_ in sorted(os.listdir(VIEWS_DIR)) if s_ != a['slug'] and s_ in VERSIONS]
+    others.sort(key=lambda s_: next((x['date'] + x['time'] for x in ARTICLES if x['slug'] == s_), ''))
+    of = (f' Read from article {meta["of_version"]}' + (f' on {meta["date"]}' if meta.get('date') else '') +
+          '; the views are not part of the article\'s text and do not change its version.') if meta.get('of_version') else ''
+    out = ['\n<details class="aviews" id="views">\n <summary><span class="aviews-t">Five readers</span>'
+           f'<span class="aviews-s">{line}</span></summary>\n'
+           f' <p class="small dim">This article read again, after it was written, by five of the desk\'s readers: the Explainer, '
+           f'the Historian, the Storyteller, the Cartographer and the Librarian. None adds a claim the article does not make.{of} '
+           f'<a href="{how}">How the five readers work</a>.</p>\n']
     for vid, title, role, sub, body, open_ in parts:
-        out.append(f' <details class="aview" id="view-{vid}"{" open" if open_ else ""}><summary>'
+        out.append(f' <details class="aview" id="view-{vid}"><summary>'
                    f'<span class="aview-t">{title}</span><span class="aview-r"><span class="sr"> (</span>{role}<span class="sr">): </span></span>'
                    f'<span class="aview-s">{_esc(sub)}</span></summary>\n  <div class="aview-b">{body}</div>\n </details>\n')
-    out.append('</section>\n')
+    if others:
+        links = ''.join(f'<li><a href="{s_}.html#views">{_esc(next(x["title"] for x in ARTICLES if x["slug"] == s_).split(":")[0])}</a></li>'
+                        for s_ in others)
+        out.append(f' <div class="aviews-more"><p class="small"><b>The five readers have also read:</b></p><ul class="small">{links}</ul>'
+                   f'<p class="small dim">Every view, the role files and the tools are in the '
+                   f'<a href="../demos/vaults/article-views/index.html">Article Views vault</a>.</p></div>\n')
+    out.append('</details>\n')
     return ''.join(out)
 
 
+def _vfile(v):
+    return v['version'] + '.html'
+
+
+def article_versions_body(a):
+    """articles/versions/<slug>.html: every published version of one article, with what changed."""
+    vs = VERSIONS[a['slug']]
+    src = open(os.path.join(ADMIN, 'content', 'articles', a['slug'] + '.md')).read()
+    rows, prev_text = [], None
+    for i, v in enumerate(vs):
+        text = AV.text_at(ROOT, v, src)
+        if prev_text is None:
+            change = 'first published'
+            link = f'<a href="../{a["slug"]}.html">read it</a>' if len(vs) == 1 else ''
+        else:
+            _, st = AV.diff(prev_text, text)
+            change = (f'+{st["words_added"]:,} / &minus;{st["words_removed"]:,} words; '
+                      f'{st["changed"]} changed, {st["added"]} added, {st["removed"]} removed paragraphs'
+                      if v['kind'] != 'patch' else 'front matter only (the text is unchanged)')
+            link = f'<a href="{a["slug"]}/{_vfile(v)}">what changed</a>'
+        if i == len(vs) - 1:
+            link = (link + ' &middot; ' if link and i else '') + f'<a href="../{a["slug"]}.html">current</a>'
+        commit = (f'<a href="https://github.com/SGit-AI/SGit-AI__Website/commit/{v["full"]}" rel="noopener" '
+                  f'target="_blank"><code style="white-space:nowrap">{v["commit"]}</code></a>' if v.get('full') else 'this release')
+        rows.append(f'<tr><td style="white-space:nowrap"><b>{v["version"]}</b></td><td style="white-space:nowrap">{v["date"]}</td><td>{v["kind"]}</td>'
+                    f'<td>{v["words"]:,}</td><td>{change}</td><td>{commit}</td><td>{link}</td></tr>')
+        prev_text = text
+    n = len(vs)
+    return ('<main class="doc">\n'
+            f' <p class="crumb"><a href="../../index.html">Home</a> / <a href="../index.html">Articles</a> / '
+            f'<a href="../{a["slug"]}.html">{_esc(a["title"].split(":")[0])}</a> / Versions</p>\n'
+            f' <h1>Versions of: {_esc(a["title"].split(":")[0])}</h1>\n'
+            f' <p class="lead">{n} published version{"s" if n != 1 else ""} of <a href="../{a["slug"]}.html">{_esc(a["title"])}</a>. '
+            f'The current one is <b>{vs[-1]["version"]}</b>.</p>\n'
+            ' <p class="small dim">v1.0.0 is the article as first published. A change to its text (title, abstract or body) '
+            'is the next minor version, v1.1.0; a change only to its other details (a LinkedIn link, the release it belongs to) '
+            'is the next patch, v1.0.1. The list is read from the site\'s git history at every build, so it cannot be edited '
+            'by hand and cannot leave a version out. Views extracted from an article, such as the Five readers, are not part '
+            'of its text and do not change its version.</p>\n'
+            ' <table><tr><th>Version</th><th>Date</th><th>Kind</th><th>Words</th><th>Change from the version before</th>'
+            '<th>Commit</th><th></th></tr>\n  ' + '\n  '.join(reversed(rows)) + '\n </table>\n'
+            f' <p class="small dim" style="margin-top:2rem"><a href="../{a["slug"]}.html">&larr; Back to the article</a> &middot; '
+            '<a href="../index.html">All articles</a></p>\n</main>')
+
+
+def article_version_diff_body(a, i):
+    """articles/versions/<slug>/<version>.html: the change from version i-1 to version i."""
+    vs = VERSIONS[a['slug']]
+    src = open(os.path.join(ADMIN, 'content', 'articles', a['slug'] + '.md')).read()
+    old, new = AV.text_at(ROOT, vs[i - 1], src), AV.text_at(ROOT, vs[i], src)
+    blocks, st = AV.diff(old, new, up='../../..')
+    t = _esc(a['title'].split(':')[0])
+    label = lambda v: f'{v["version"]} ({v["date"]}' + (f', <code>{v["commit"]}</code>)' if v.get('commit') else ', this release)')
+    nav = []
+    if i > 1: nav.append(f'<a href="{_vfile(vs[i - 1])}">&larr; {vs[i - 1]["version"]}</a>')
+    nav.append(f'<a href="../{a["slug"]}.html">all versions</a>')
+    if i < len(vs) - 1: nav.append(f'<a href="{_vfile(vs[i + 1])}">{vs[i + 1]["version"]} &rarr;</a>')
+    if vs[i]['kind'] == 'patch':
+        blocks = ['<p class="diff-same">The text is identical. This version changed only the article\'s other details, '
+                  'such as a link or the release it belongs to.</p>']
+    return ('<main class="doc diff">\n'
+            f' <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../../index.html">Articles</a> / '
+            f'<a href="../../{a["slug"]}.html">{t}</a> / <a href="../{a["slug"]}.html">Versions</a> / {vs[i]["version"]}</p>\n'
+            f' <h1>{t}: what changed in {vs[i]["version"]}</h1>\n'
+            f' <p class="lead">From {label(vs[i - 1])} to {label(vs[i])}, paragraph by paragraph.</p>\n'
+            f' <p class="small dim">{st["added"]} paragraph{"s" if st["added"] != 1 else ""} added, {st["removed"]} removed, '
+            f'{st["changed"]} changed in place, {st["same"]} unchanged. About {st["words_added"]:,} words added and '
+            f'{st["words_removed"]:,} removed. Insertions are marked like <ins>this</ins>, deletions like <del>this</del>; '
+            'unchanged runs are folded to one line; figures appear as their file names.</p>\n'
+            f' {AV.DIFF_CSS}\n'
+            f' <p class="small">{" &middot; ".join(nav)}</p>\n'
+            + '\n'.join(' ' + b for b in blocks) +
+            f'\n <p class="small" style="margin-top:2rem">{" &middot; ".join(nav)}</p>\n</main>')
+
+
 def article_body(a):
-    ver =(f' &middot; <a href="../admin/versions.html">{a["version"]}</a>' if a['version'] else '')
+    ver = (f' &middot; <a href="../admin/versions.html" title="The site release it was published in">site {a["version"]}</a>' if a['version'] else '')
     # The byline is the first thing after the title, because an article written in the
     # first person without a name on it is a provenance failure on a site about provenance.
     # author_url is either absolute (external profile) or site-root relative (a page here,
@@ -6353,7 +6472,9 @@ def article_body(a):
             f'<a href="index.html">Articles</a> / {a["title"]}</p>\n'
             f' <h1>{a["title"]}</h1>\n'
             f' <p class="small dim">{by}{a["date"]}'
-            + (f' &middot; updated {a["updated"]}' if a.get('updated') else '') + ver
+            + (f' &middot; updated {a["updated"]}' if a.get('updated') else '')
+            + f' &middot; <a href="versions/{a["slug"]}.html" title="Every published version of this article, and what changed">article {a["article_version"]}'
+            + (f', {len(VERSIONS[a["slug"]])} versions' if len(VERSIONS[a['slug']]) > 1 else '') + '</a>' + ver
             + (f' &middot; <a href="{_esc(a["linkedin"])}" rel="noopener" target="_blank">also on LinkedIn &#8599;</a>'
                if a.get('linkedin') else '')
             + (f' &middot; {_chips(a["tags"])}' if a['tags'] else '') + '</p>\n'

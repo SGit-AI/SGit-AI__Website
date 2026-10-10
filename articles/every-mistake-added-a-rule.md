@@ -2,7 +2,7 @@
 
 > A friend who uses agents better than most, one writing, others verifying, ChatGPT reviewing, every claim resting on an output read in full, sent me two messages about a verification that keeps breaking. The code is holding up. The process around it is not: long sessions compact and skip steps, outputs of failing commands are lost, prompts have grown to 100 KB, scripts are edited in place, the harness suggests what the rules forbid, and every mistake added a rule that caused new mistakes. This is complexity, and it is what hits the founders who are doing the right thing, clever, careful, now working as engineers without the scar tissue of engineering. This article maps their process as a Wardley map, where complexity is a position, custom-built process sitting where commodities already exist, and maps it again with each piece made small, shipped and moved right. Then it sets out the principles I work by: map it, commoditise small chunks and let them compound, ship, keep sessions small and the context yours, memory as versioned files, slow down when complexity hits, security by asset and attack vector, rules for incidents and machines for enforcement, run it in five environments, reverse-engineer the path to the destination, and learn the engineering that already exists. It ends with direct answers to their questions on compaction, audit cards and what deserves a STOP.
 
-*Source: <https://sgit.ai/articles/every-mistake-added-a-rule.html> · site v0.7.28 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/every-mistake-added-a-rule.html> · site v0.7.29 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,13 +10,13 @@
 
 # Every mistake added a rule: complexity, agents, and the way back to shipping
 
-By [Dinis Cruz](../about/index.md) · 2026-10-08 · [v0.7.1](../admin/versions.md) · agentscomplexitywardley-mapsengineering-practicecontext-windowcompactionmemoryshippingfoundersnfrstestingcoworkchatgptarticle
+By [Dinis Cruz](../about/index.md) · 2026-10-08 · [article v1.0.0](versions/every-mistake-added-a-rule.md) · [site v0.7.1](../admin/versions.md) · agentscomplexitywardley-mapsengineering-practicecontext-windowcompactionmemoryshippingfoundersnfrstestingcoworkchatgptarticle
 
 ***Abstract:** A friend who uses agents better than most, one writing, others verifying, ChatGPT reviewing, every claim resting on an output read in full, sent me two messages about a verification that keeps breaking. The code is holding up. The process around it is not: long sessions compact and skip steps, outputs of failing commands are lost, prompts have grown to 100 KB, scripts are edited in place, the harness suggests what the rules forbid, and every mistake added a rule that caused new mistakes. This is complexity, and it is what hits the founders who are doing the right thing, clever, careful, now working as engineers without the scar tissue of engineering. This article maps their process as a Wardley map, where complexity is a position, custom-built process sitting where commodities already exist, and maps it again with each piece made small, shipped and moved right. Then it sets out the principles I work by: map it, commoditise small chunks and let them compound, ship, keep sessions small and the context yours, memory as versioned files, slow down when complexity hits, security by asset and attack vector, rules for incidents and machines for enforcement, run it in five environments, reverse-engineer the path to the destination, and learn the engineering that already exists. It ends with direct answers to their questions on compaction, audit cards and what deserves a STOP.*
 
-## Read it another way
+**Five readerstwo minutes · the arc · 9 slides · a map · 137 catalogued items, 6 flagged**
 
-Views extracted from this article by the desk's readers, after it was written. None adds a claim the article does not make. [How they are made](../articles/one-article-five-readers.md).
+This article read again, after it was written, by five of the desk's readers: the Explainer, the Historian, the Storyteller, the Cartographer and the Librarian. None adds a claim the article does not make. Read from article v1.0.0 on 10 October 2026; the views are not part of the article's text and do not change its version. [How the five readers work](../articles/one-article-five-readers.md).
 
 **In two minutes (Explainer): When an AI assistant keeps making mistakes, more rules make it worse**
 
@@ -257,6 +257,15 @@ Everything the article contains, by kind. Every item was extracted with the exac
 - Map two source: "Scripts committed and hashed before they run" has no incoming edge (only an edge to "Files, hashes, git"), so it is not connected to the agents or report, unlike the other moved components and unlike its map one counterpart "Proof of which bytes ran".
 - Relative date: "The bridge simulation I published yesterday is a good test of this." depends on the publication date (2026-10-08); a reader of the catalogue cannot resolve 'yesterday' without it.
 - Unsupported in-article: '40 doctrines' ("lists forty doctrines"), '31 documented rules ... four structural guards' and '44 of them' are cited from other sites/articles with no figure or quotation shown here; checkable only at the linked sources.
+
+**The five readers have also read:**
+
+- [Zoom into an agent's behaviour policy and you find the business logic](the-behaviour-policy-is-the-business-logic.md#views)
+- [Hope or enforcement](hope-or-enforcement.md#views)
+- [A second reader the agent cannot skip](a-second-reader-the-agent-cannot-skip.md#views)
+- [Re-anchoring](re-anchoring-agent-behaviour-policies.md#views)
+
+Every view, the role files and the tools are in the [Article Views vault](../demos/vaults/article-views/index.md).
 
 Two ways to answer a mistake an agent makes. Add a rule, and the prompt grows, the session compacts sooner, and compaction decides which rules survive. Ship a component, and the mistake stops being possible, so the rule can go.
 

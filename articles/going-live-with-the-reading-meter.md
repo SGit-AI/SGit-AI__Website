@@ -2,7 +2,7 @@
 
 > The reading meter on sgit.ai stops being a demonstration. A page now costs what you read of it: scroll a tenth of the way down a new article and you pay a tenth of 10p. Your balance can go below zero and stay there; nothing is blocked and nothing nags, there is only a small balance in the top bar. If a page was not worth it you can say so, with a reason, and it is not charged. Topping up is one £5 payment on Stripe, with no account and nothing that renews, and the page you come back to adds the credit without being able to check it, on purpose. The meter is also packaged as a library any website can add. This article is the plan and the reasoning, written down before the results: the business case, what we expect, the numbers that would prove us wrong, and the date we look.
 
-*Source: <https://sgit.ai/articles/going-live-with-the-reading-meter.html> · site v0.7.28 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/going-live-with-the-reading-meter.html> · site v0.7.29 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 # Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks
 
-By [Dinis Cruz](../about/index.md) · 2026-10-10 · newsroommicropaymentspricingpersonalisationlocal-firstbusiness-casehypothesesstripearticle
+By [Dinis Cruz](../about/index.md) · 2026-10-10 · [article v1.1.0, 2 versions](versions/going-live-with-the-reading-meter.md) · newsroommicropaymentspricingpersonalisationlocal-firstbusiness-casehypothesesstripearticle
 
 ***Abstract:** The reading meter on sgit.ai stops being a demonstration. A page now costs what you read of it: scroll a tenth of the way down a new article and you pay a tenth of 10p. Your balance can go below zero and stay there; nothing is blocked and nothing nags, there is only a small balance in the top bar. If a page was not worth it you can say so, with a reason, and it is not charged. Topping up is one £5 payment on Stripe, with no account and nothing that renews, and the page you come back to adds the credit without being able to check it, on purpose. The meter is also packaged as a library any website can add. This article is the plan and the reasoning, written down before the results: the business case, what we expect, the numbers that would prove us wrong, and the date we look.*
 

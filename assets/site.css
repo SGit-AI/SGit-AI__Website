@@ -1239,10 +1239,18 @@ figure.shot--collage{margin:1.6rem 0}
 ol.lkit-imgs{margin:.5rem 0 0;padding-left:1.4rem}
 ol.lkit-imgs li{margin:.2rem 0}
 
-/* article views: "Read it another way", under the abstract. One <details> per reader (Explainer,
-   Historian, Storyteller, Cartographer, Librarian); the two-minute view starts open. */
-.aviews{margin:1.2rem 0 2rem;padding:1rem 1.1rem .6rem;background:var(--panel);border:1px solid var(--line);border-radius:12px}
-main.doc .aviews h2{font-family:var(--sans);font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--accent-dk);margin:0 0 .3rem}
+/* Five readers: the views extracted from an article, under its abstract. One closed <details> with a
+   one-line summary of what is inside; opening it shows the five readers, each closed in turn. */
+details.aviews{margin:1.2rem 0 2rem;padding:.2rem 1.1rem;background:var(--panel);border:1px solid var(--line);border-radius:12px}
+details.aviews>summary{cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;gap:.15rem .8rem;align-items:baseline;padding:.75rem 0}
+details.aviews>summary::-webkit-details-marker{display:none}
+details.aviews>summary::before{content:"\25B8";color:var(--accent);flex:none}
+details.aviews[open]>summary::before{content:"\25BE"}
+.aviews-t{font-family:var(--sans);font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;color:var(--accent-dk);font-weight:700}
+.aviews-s{font-size:.86rem;color:var(--dim)}
+details.aviews>p{margin:0 0 .7rem}
+.aviews-more{border-top:1px solid var(--line);padding:.6rem 0 .4rem}
+.aviews-more p{margin:.2rem 0}.aviews-more ul{margin:.2rem 0 .5rem}
 .aviews>p{margin:0 0 .7rem}
 details.aview{border-top:1px solid var(--line)}
 details.aview summary{cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;gap:.2rem .7rem;align-items:baseline;padding:.65rem 0}

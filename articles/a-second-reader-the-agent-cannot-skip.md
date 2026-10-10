@@ -2,7 +2,7 @@
 
 > On 9 October two emails drafted by my agent went out in my voice and signed with my name. The rule against it existed, in four places, and it failed because the only thing enforcing it was the agent's memory, the agent was the only reader of its own draft, and the rule fell out of context when the conversation was summarised. The fix, built the same day by the agent itself, is a hook on the draft tool: code checks first, then a fresh model call with only the rules, the sources and the draft, failing closed and logging every verdict. This is how it works, what the first run caught, why its independence depends on where it is installed, and how the same pattern, which banks call maker-checker, applies to any tool call that matters.
 
-*Source: <https://sgit.ai/articles/a-second-reader-the-agent-cannot-skip.html> · site v0.7.28 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/a-second-reader-the-agent-cannot-skip.html> · site v0.7.29 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,13 +10,13 @@
 
 # A second reader the agent cannot skip: how two wrong emails became a gate on every draft
 
-By [Dinis Cruz](../about/index.md) · 2026-10-09 · [v0.7.20](../admin/versions.md) · agentsclaude-codehooksguardrailsllm-as-a-judgemaker-checkeragent-behaviour-policyemailgovernancearticle
+By [Dinis Cruz](../about/index.md) · 2026-10-09 · [article v1.0.0](versions/a-second-reader-the-agent-cannot-skip.md) · [site v0.7.20](../admin/versions.md) · agentsclaude-codehooksguardrailsllm-as-a-judgemaker-checkeragent-behaviour-policyemailgovernancearticle
 
 ***Abstract:** On 9 October two emails drafted by my agent went out in my voice and signed with my name. The rule against it existed, in four places, and it failed because the only thing enforcing it was the agent's memory, the agent was the only reader of its own draft, and the rule fell out of context when the conversation was summarised. The fix, built the same day by the agent itself, is a hook on the draft tool: code checks first, then a fresh model call with only the rules, the sources and the draft, failing closed and logging every verdict. This is how it works, what the first run caught, why its independence depends on where it is installed, and how the same pattern, which banks call maker-checker, applies to any tool call that matters.*
 
-## Read it another way
+**Five readerstwo minutes · the arc · 9 slides · a map · 185 catalogued items, 7 flagged**
 
-Views extracted from this article by the desk's readers, after it was written. None adds a claim the article does not make. [How they are made](../articles/one-article-five-readers.md).
+This article read again, after it was written, by five of the desk's readers: the Explainer, the Historian, the Storyteller, the Cartographer and the Librarian. None adds a claim the article does not make. Read from article v1.0.0 on 10 October 2026; the views are not part of the article's text and do not change its version. [How the five readers work](../articles/one-article-five-readers.md).
 
 **In two minutes (Explainer): Why an AI should never be the only reader of its own work**
 
@@ -305,6 +305,15 @@ Everything the article contains, by kind. Every item was extracted with the exac
 - The checker uses ten numbered rules, but only R1, R3, R4, R5, R6 and R7 are identified; R2 and R8 to R10 are never named, so 'A PASS means ten rules held' cannot be fully traced. Anchor: 'the rules (ten numbered rules, from voice and disclosure to claims, scope, attachments and private pages, with a fixed answer format'
 - Existing graph links.articles lists 'where-is-the-why' and 'the-mandate-stack', which the article neither links nor mentions; it links only hope-or-enforcement and every-mistake-added-a-rule.
 - Existing graph uses kind 'concept' for nodes 'independence' and 'maker-checker', which is not a Librarian kind; catalogued here as 'definition'.
+
+**The five readers have also read:**
+
+- [Zoom into an agent's behaviour policy and you find the business logic](the-behaviour-policy-is-the-business-logic.md#views)
+- [Every mistake added a rule](every-mistake-added-a-rule.md#views)
+- [Hope or enforcement](hope-or-enforcement.md#views)
+- [Re-anchoring](re-anchoring-agent-behaviour-policies.md#views)
+
+Every view, the role files and the tools are in the [Article Views vault](../demos/vaults/article-views/index.md).
 
 On 9 October, two emails from agent@riskmandate.ai went out written in my first person and signed "Dinis".
 
