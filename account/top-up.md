@@ -2,7 +2,7 @@
 
 > Buy reading credit through a cart and a checkout with every step except the payment. Simulated: nothing is charged.
 
-*Source: <https://sgit.ai/account/top-up.html> · site v0.7.24 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/account/top-up.html> · site v0.7.25 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

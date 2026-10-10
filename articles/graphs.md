@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.24 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.25 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,13 +14,68 @@ Every article here has a semantic graph beside it: the ideas it rests on, the cl
 
 The graphs are data first and pictures second. Take them as JSON: [all articles in one file](graphs.json), with the topics, the teasers and the links between articles resolved, or one file per article at `articles/graphs/<slug>.json` (for example [this one](graphs/footprint-and-blast-radius.json)). The pages on this site are rendered from the same files at build time; nothing here is hand-written HTML.
 
-57 of 57 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
+58 of 58 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
 
 ## How the articles connect
 
 *[diagram]*
 
-57 articles, 240 links between them (383 mentions in all). 48 articles cite an earlier one; 6 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (19 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+58 articles, 241 links between them (384 mentions in all). 49 articles cite an earlier one; 6 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (19 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+
+## [Open source is not free: who pays to keep the long tail working?](open-source-is-not-free.md)
+
+2026-10-10 · Startups & strategyVaults & method
+
+Open source is not free: somebody pays, at least in time. The long tail of old versions and old machines is measurable (6.99% of Homebrew macOS install events in 30 days, 16.66% in a year, are on versions older than the newest three) and projects drop it because it has no revenue stream, while vendors such as Oracle and Red Hat turn the same need into large, high-margin support businesses. Pence payments only work aggregated, because a 20p card fee dominates below about five pounds. Simulated over 10,000 draws for one project at Homebrew's scale, micro-paid supported builds cover the long-tail cost in half the draws at about 1.80 pounds a machine a year with typical conversion but never in nine in ten, donations in about a quarter, and customised builds for companies in 94%: the reliable money is companies paying for a build below their own cost of keeping the tool working, sold as value, not as a donation or a weaker free tier.
+
+*[diagram]*
+**concept**claim**method**artefact**example
+
+**11 nodes, 10 edges**
+
+- **One old iMac** (example) Intel iMac on Ventura: Chrome and Claude work; Homebrew and Docker Desktop do not; Python by hand.
+- **Open source is not free** (claim) Somebody pays, at least in time; the long tail has no revenue stream back to the maintainers.
+- **The long tail, measured** (artefact) Homebrew: 6.99% (30 days) to 16.66% (365 days) of macOS install events on versions older than the newest three; PyPI: 18.55% of pip on end-of-life Python.
+- **Where money flows** (concept) Oracle support $19.8bn, Red Hat subscriptions at about 93% margin, Windows 10 ESU, Ubuntu Pro, against about 0.09% of open source's value invested.
+- **Charging has costs** (concept) Docker's seat licence and the switch to alternatives, relicensing forks, dual licensing, gamed per-install rewards.
+- **The pence problem** (claim) A 20p card fee is 41.5% of 50p; pence payments need aggregation.
+- **Five models, simulated** (method) Donations, seat licence, support rising with age, micro-paid builds, customised builds for companies; 10,000 seeded draws.
+- **Break-even near two pounds** (artefact) About 1.80 pounds a machine a year covers the cost in half the draws with typical conversion; no price reaches nine in ten.
+- **Customised builds for companies** (method) Priced below the internal cost of keeping the tool working; covers the cost in 94% of draws.
+- **The satellites** (concept) About 18 small support firms worldwide per project's pool; Rimini Street as the existence proof.
+- **Long Tail Ledger vault** (artefact) 175 sourced facts, 36 labelled assumptions, the model in Python and in the browser, gated to agree exactly.
+
+> Open source is not free. Somebody is paying for it, even if what they pay with is only their time. The thesis.
+
+> Pence from individuals can make the long tail roughly self-funding. They cannot make it safe to depend on. What the break-even view shows.
+
+builds on [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser).
+
+## [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](a-meter-in-the-browser.md)
+
+2026-10-10 · Startups & strategyNews & evidence
+
+A reading meter that lives only in the browser, a few pence a page from five pounds of starting credit with a simulated top-up and no blocking, tests whether people would pay a little for reading when what they get back is a site that personalises itself from a history nobody else holds; escaping the meter is easy, but escaping it also discards the history, which is the point of the experiment.
+
+*[diagram]*
+**claim**method**artefact**example**question
+
+**8 nodes, 7 edges**
+
+- **A meter in the browser** (artefact) Every page priced in pence, debited from £5.00 of credit kept in localStorage; one debit per page per visit.
+- **Never block a page** (method) Out of credit, the page is shown and the read recorded as unpaid, with an offer to top up.
+- **Every step but the payment** (method) Packs, a cart, a review, a confirm and a receipt; credit added at once, nothing charged.
+- **The history is the product** (claim) The ledger of what was read, with topics, is enough to pick unread articles for the reader.
+- **The meter can be escaped; the personalisation cannot be copied** (claim) A private window starts again at £5.00 and with no history.
+- **Would people pay for a site that knows them?** (question) The experiment the meter puts in front of a reader.
+- **The pt.newsroom wallet** (example) One cent a page, a self-refilling five-euro wallet, a ledger page: the first version.
+- **402 Payment Required** (example) Reserved in the web's protocol in 1997 for micropayments, still unused.
+
+> The meter can be escaped; the personalisation cannot be copied. The trade the experiment puts in front of a reader.
+
+> The history never leaves the machine it was made on. Personalisation without an account, a cookie banner or a server.
+
+builds on [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it), [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [The bridge, followed to the end: what one local story is worth when it is kept as a graph](#the-bridge-followed-to-the-end); continued by [Open source is not free: who pays to keep the long tail working?](#open-source-is-not-free).
 
 ## [Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not](re-anchoring-agent-behaviour-policies.md)
 
@@ -49,32 +104,6 @@ Instructions given only in conversation can be lost when a long session is summa
 > A policy row with a number next to it is a different thing from a policy row on its own. Why the canary measures a rule.
 
 builds on [A second reader the agent cannot skip: how two wrong emails became a gate on every draft](#a-second-reader-the-agent-cannot-skip).
-
-## [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](a-meter-in-the-browser.md)
-
-2026-10-10 · Startups & strategyNews & evidence
-
-A reading meter that lives only in the browser, a few pence a page from five pounds of starting credit with a simulated top-up and no blocking, tests whether people would pay a little for reading when what they get back is a site that personalises itself from a history nobody else holds; escaping the meter is easy, but escaping it also discards the history, which is the point of the experiment.
-
-*[diagram]*
-**claim**method**artefact**example**question
-
-**8 nodes, 7 edges**
-
-- **A meter in the browser** (artefact) Every page priced in pence, debited from £5.00 of credit kept in localStorage; one debit per page per visit.
-- **Never block a page** (method) Out of credit, the page is shown and the read recorded as unpaid, with an offer to top up.
-- **Every step but the payment** (method) Packs, a cart, a review, a confirm and a receipt; credit added at once, nothing charged.
-- **The history is the product** (claim) The ledger of what was read, with topics, is enough to pick unread articles for the reader.
-- **The meter can be escaped; the personalisation cannot be copied** (claim) A private window starts again at £5.00 and with no history.
-- **Would people pay for a site that knows them?** (question) The experiment the meter puts in front of a reader.
-- **The pt.newsroom wallet** (example) One cent a page, a self-refilling five-euro wallet, a ledger page: the first version.
-- **402 Payment Required** (example) Reserved in the web's protocol in 1997 for micropayments, still unused.
-
-> The meter can be escaped; the personalisation cannot be copied. The trade the experiment puts in front of a reader.
-
-> The history never leaves the machine it was made on. Personalisation without an account, a cookie banner or a server.
-
-builds on [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it), [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [The bridge, followed to the end: what one local story is worth when it is kept as a graph](#the-bridge-followed-to-the-end).
 
 ## [The AI governance stack, as a graph: an answer to Hari Kota, built](the-ai-governance-stack-as-a-graph.md)
 

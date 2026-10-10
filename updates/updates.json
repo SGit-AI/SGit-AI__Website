@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-10",
-  "site_version": "v0.7.24",
+  "site_version": "v0.7.25",
   "updates": [
     {
       "slug": "a-reading-meter",
@@ -904,23 +904,25 @@
   ],
   "articles": [
     {
-      "slug": "re-anchoring-agent-behaviour-policies",
-      "title": "Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not",
+      "slug": "open-source-is-not-free",
+      "title": "Open source is not free: who pays to keep the long tail working?",
       "date": "2026-10-10",
-      "version": "v0.7.22",
+      "version": "v0.7.25",
       "tags": [
-        "agents",
-        "claude-code",
-        "hooks",
-        "agent-behaviour-policy",
-        "compaction",
-        "context",
-        "re-anchoring",
-        "guardrails",
-        "governance",
+        "open-source",
+        "economics",
+        "funding",
+        "long-tail",
+        "support",
+        "micropayments",
+        "simulation",
+        "data-science",
+        "homebrew",
+        "docker",
+        "macos",
         "article"
       ],
-      "summary": "Instructions given only in conversation can be lost when a long session is summarised. The session that runs this site has been summarised eighteen times in a month, each time keeping under 2% of what it replaced. Re-anchoring is the answer: keep the agent's rules in a behaviour policy file and have the harness print it back after every summary, so the rules are restored rather than remembered. And because you cannot see what a summary drops, add a canary: a short status report, computed from the transcript, that ends every few answers. If it stops appearing, something in the policy has not been read. Both are running in this session now. This is how they work, what each piece is for, and why the best way to do it today is a recipe that someone has to keep up to date."
+      "summary": "An old Intel iMac, clean-installed for my agents, could not run Homebrew or Docker Desktop, and needed Python by hand. Each project that dropped it did so because supporting old machines costs money and the people on the long tail have no easy way to pay for it. This article measures that long tail from Homebrew and PyPI analytics, sets out where money does flow for old versions (Oracle, Red Hat, Windows ESU, Rimini Street) and where it does not (open source receives about 0.09% of its estimated value), shows why pence payments only work aggregated, and simulates five ways to pay for it. About £1.80 a machine a year from individuals covers one project's long-tail cost in half the draws; customised builds for companies cover it in 94%. Open source is not free; the question is whether the people who get the value have an easy way to pay for it."
     },
     {
       "slug": "a-meter-in-the-browser",
@@ -938,6 +940,25 @@
         "article"
       ],
       "summary": "Every page on sgit.ai now has a price, a few pence, and a meter in the corner of the screen that debits it from five pounds of starting credit. There is a reading account with a history, a price table, a top-up page with a cart and a checkout that has every step except the payment, and an out-of-credit state that never blocks a page. All of it lives in the reader's browser and nowhere else: no account, no server, no card, nothing sent. Open a private window and the meter starts again at five pounds, which looks like a way to read for free, except that it also starts again with no history, and the history is what the site uses to pick articles for you. That is the trade this experiment puts in front of a reader: pay a little, keep the record of what you read on your own machine, and get a site that knows you back. Whether people would make that trade is the question worth testing, and a meter that charges nothing is the cheapest way to start."
+    },
+    {
+      "slug": "re-anchoring-agent-behaviour-policies",
+      "title": "Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not",
+      "date": "2026-10-10",
+      "version": "v0.7.22",
+      "tags": [
+        "agents",
+        "claude-code",
+        "hooks",
+        "agent-behaviour-policy",
+        "compaction",
+        "context",
+        "re-anchoring",
+        "guardrails",
+        "governance",
+        "article"
+      ],
+      "summary": "Instructions given only in conversation can be lost when a long session is summarised. The session that runs this site has been summarised eighteen times in a month, each time keeping under 2% of what it replaced. Re-anchoring is the answer: keep the agent's rules in a behaviour policy file and have the harness print it back after every summary, so the rules are restored rather than remembered. And because you cannot see what a summary drops, add a canary: a short status report, computed from the transcript, that ends every few answers. If it stops appearing, something in the policy has not been read. Both are running in this session now. This is how they work, what each piece is for, and why the best way to do it today is a recipe that someone has to keep up to date."
     },
     {
       "slug": "the-ai-governance-stack-as-a-graph",

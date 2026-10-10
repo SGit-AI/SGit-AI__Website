@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.24'
+SITE_VERSION = 'v0.7.25'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,16 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.24', '2026-10-10', 'this release',
+    ('v0.7.25', '2026-10-10', 'this release',
+     "OPEN SOURCE IS NOT FREE. A new article on the economics of open source's long tail, from one Intel iMac that "
+     "could not run Homebrew or Docker Desktop: the case checked against the vendors' own pages (only 2017 iMacs stop "
+     "at Ventura; Homebrew's installer refuses Intel Macs; Ventura unpatched since August 2025), the long tail measured "
+     "from Homebrew and PyPI analytics, where money flows for old versions and where it does not, what a 20p card fee "
+     "does to a payment of pence, and five funding models simulated over 10,000 seeded draws, with break-even prices, a "
+     "sensitivity tornado and the satellite support firms. Eight figures from the new Long Tail Ledger vault (deqiwj7z), "
+     "published with its read key: 175 sourced facts, 36 labelled assumptions, the model in Python and the same model "
+     "in the browser behind a calculator, gated to agree exactly."),
+    ('v0.7.24', '2026-10-10', 'git 9fffe410',
      "A READING METER IN THE BROWSER. Every page now has a price and a meter that debits it from £5.00 of starting "
      "credit, all of it in the reader's localStorage: no account, no server, no card, nothing sent. Prices come from one "
      "METER table in the build, injected into every page with what the page is (article, issue, note, collection, page, "
