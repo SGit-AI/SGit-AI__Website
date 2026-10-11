@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.46'
+SITE_VERSION = 'v0.7.47'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,15 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.46', '2026-10-11', 'this release',
+    ('v0.7.47', '2026-10-11', 'this release',
+     "NEWSLETTER ISSUE 3: PAY AFTER YOU READ, NO SERVER BY DESIGN, AND AUTHORITY THAT SITS OUTSIDE THE MODEL. The 24 "
+     "articles published from 9 to 11 October in one issue: the reading meter from demonstration to a working model "
+     "(pay by depth, the rating sets the price, below zero without nagging, personas, a link to a persona; payments live "
+     "and the hypotheses reviewed on 6 December), the newsroom running in the browser and a language model in the tab, "
+     "five agent readers and what their graphs save, and the answer to Satya Nadella on models as insider risks with "
+     "Microsoft's agent containers mapped to behaviour policies. Eleven quotes, each checked word for word against its "
+     "article; two collages and a LinkedIn cover rendered; every article listed by topic.",),
+    ('v0.7.46', '2026-10-11', 'git 89cf1469',
      "A MODEL IN THE TAB. Chrome 148 (5 May 2026) lets any page prompt Gemini Nano on the reader's own machine: the "
      "hardest piece of the client-side pattern from No server, by design. A briefing on the built-in AI APIs and their "
      "status, what the Prompt API accepts and returns, the hardware it needs and the model's lifecycle; why a first run "

@@ -2,17 +2,25 @@
 
 > The regular issue of the SGit Newsroom: what was published, what it adds up to, and the pieces worth reading, also published on LinkedIn.
 
-*Source: <https://sgit.ai/articles/newsletter/index.html> · site v0.7.46 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/newsletter/index.html> · site v0.7.47 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
-Edition of 2026-10-0873 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.46
+Edition of 2026-10-0873 articles · 4 desk notes · 5 collections · 3 issuessgit.ai · v0.7.47
 
 # The newsletter
 
 The regular issue of the SGit Newsroom: what was published, what it adds up to, and the pieces worth your time. Weekly, or sooner when there is enough to say. The same issue goes out as a LinkedIn article in [Deterministic GenAI](https://www.linkedin.com/newsletters/deterministic-genai-7174563523795005440/).
 
 ## Issues
+
+Issue 32026-10-11
+
+## [Pay after you read, no server by design, and authority that sits outside the model](../../articles/newsletter/2026/10/11/003-pay-after-you-read.md)
+
+Three days and twenty-four articles. The reading meter went from an experiment to a working model: you pay for the share of a page you read, you say how useful it was and that sets the price, your balance can go below zero without a word of nagging, and your reading builds personas that are yours. Underneath it, the whole newsroom now runs in the reader's browser, with a language model arriving in the tab as the last piece. And from the other side of the network, an answer to Satya Nadella on models as insider risks, and Microsoft's new agent containers mapped to the behaviour policies they make enforceable.
+
+12 articles
 
 Issue 22026-10-08
 
@@ -32,7 +40,7 @@ What it takes to let agents do real work for a business, from four sides: a team
 
 **Get the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../../subscribe/index.md)
 
-Next issue: due now (24 articles since issue 2 (2026-10-08)). Issues are written by the [Journalist](../../newsroom/roles/journalist.md) from the articles' own data; every quote is checked against its article when the site is built.
+Next issue: not yet due (0 article(s) since issue 3; due at 5 or after 7 days). Issues are written by the [Journalist](../../newsroom/roles/journalist.md) from the articles' own data; every quote is checked against its article when the site is built.
 
 
 ---
