@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.50'
+SITE_VERSION = 'v0.7.51'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,15 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.50', '2026-10-11', 'this release',
+    ('v0.7.51', '2026-10-11', 'this release',
+     "FROM ME TO YOU, IN A LINK. A personal reading list in the URL fragment (from, to, articles to read, to look at, "
+     "and to follow), opened on the newsroom as a persona the reader can keep or remove; a stable public number for "
+     "every article; and a page to make a list for anyone. Two briefs: one for the newsroom to build it (validation, "
+     "tests, a synthetic recipient, no tracking), one for the RiskMandate agent to use it with Dinis's contacts "
+     "(choose, research, pick with reasons, test, draft; Dinis sends). And the loop that connects five parts of a "
+     "company in about a day, with this week's evidence (personas by link 17 hours after their brief) and its costs. "
+     "Three figures."),
+    ('v0.7.50', '2026-10-11', 'git be4a1252',
      "ISSUE 2 ON LINKEDIN. The newsletter's second issue, how agents decide, when they stop, and a local story kept as "
      "evidence, is now published on LinkedIn in Deterministic GenAI; its page links to the LinkedIn version.",),
     ('v0.7.49', '2026-10-11', 'git f0e452b2',

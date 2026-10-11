@@ -2,7 +2,7 @@
 
 > Every release of the sgit.ai site: version, date, vault commit, and changes. The version increments on every push.
 
-*Source: <https://sgit.ai/admin/versions.html> · site v0.7.50 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/admin/versions.html> · site v0.7.51 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,12 +10,14 @@
 
 # Release history
 
-The site version (**v0.7.50**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
+The site version (**v0.7.51**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
 
-| v0.7.50 | 2026-10-11 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.49...v0.7.50) | ISSUE 2 ON LINKEDIN. The newsletter's second issue, how agents decide, when they stop, and a local story kept as evidence, is now published on LinkedIn in Deterministic GenAI; its page links to the LinkedIn version.[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.49...v0.7.50). |
+| v0.7.51 | 2026-10-11 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.50...v0.7.51) | FROM ME TO YOU, IN A LINK. A personal reading list in the URL fragment (from, to, articles to read, to look at, and to follow), opened on the newsroom as a persona the reader can keep or remove; a stable public number for every article; and a page to make a list for anyone. Two briefs: one for the newsroom to build it (validation, tests, a synthetic recipient, no tracking), one for the RiskMandate agent to use it with Dinis's contacts (choose, research, pick with reasons, test, draft; Dinis sends). And the loop that connects five parts of a company in about a day, with this week's evidence (personas by link 17 hours after their brief) and its costs. Three figures.**New:**[From me to you, in a link: a personal reading list, two briefs to build and use it, and the loop that makes it a day's work](../articles/a-reading-list-in-a-link.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.50...v0.7.51). |
+
+| v0.7.50 | 2026-10-11 | [git be4a1252](https://github.com/SGit-AI/SGit-AI__Website/commit/be4a1252) | ISSUE 2 ON LINKEDIN. The newsletter's second issue, how agents decide, when they stop, and a local story kept as evidence, is now published on LinkedIn in Deterministic GenAI; its page links to the LinkedIn version.[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/be4a1252). |
 
 | v0.7.49 | 2026-10-11 | [git f0e452b2](https://github.com/SGit-AI/SGit-AI__Website/commit/f0e452b2) | FOR PUBLISHERS. A new page, /publishers/, to send to journalists, publishers and anyone thinking about the future of news: what newsroom.sgit.ai is in one paragraph, how to try it in five minutes (read, rate, your account, your newsroom, read as a persona, a real £5 top-up, send your reading), a table of what is live, why it is worth their time without claiming a first, what is not done, three articles to read, and what we would like back: their reaction. Screenshots from the live newsroom (v0.7.1) on 11 October.**New:**[For publishers: a newsroom that runs, what is live and how to try it](../publishers/index.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/f0e452b2). |
 
