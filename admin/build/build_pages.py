@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.42'
+SITE_VERSION = 'v0.7.43'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,20 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.42', '2026-10-11', 'this release',
+    ('v0.7.43', '2026-10-11', 'this release',
+     "THE AGENT IS THE READER. The follow-up to One article, five readers, with the numbers: what the five readers built, "
+     "in tokens (the catalogue is 2.8 times the articles; a question answered from the graph is a median of 2,579 tokens "
+     "against 25,698, 90% less, across all 45 concepts); the readers checking each other, and the cost of each pass; the "
+     "hypothesis that content compresses as it grows, half right (908 of 928 uncurated labels are unique; the curated "
+     "topic reuses); a projection to 100,000 articles; PageRank against typed edges; agents as personas; the economics "
+     "(the agent pays not to pay), the rails, signed claims with an expiry, and what it does not show. Model and "
+     "measurements published as data. Drafted in a separate session from a voice memo, rewritten in the site's voice; "
+     "two figures re-rendered with softer wording. Also corrects One article, five readers: most of the 1.1 million tokens "
+     "were the five Librarians (403,000) and the Cartographer (264,000), not the Cartographer alone. Its history is now "
+     "v1.0.0 then v1.1.0: the earlier v1.0.1 page was a front-matter change made in a merge, which the version history "
+     "(git log --follow, which skips merges) never recorded, so it showed as a standing 'in this release'; it is removed, "
+     "and v1.1.0 carries that change and the correction."),
+    ('v0.7.42', '2026-10-11', 'git 1de62256',
      "WHERE THE PLATFORM DRAWS THE LINE. Microsoft Execution Containers (generally available on 7 October) and the Agent "
      "Control Specification, briefed field by field: the JSON policy (an example that validates against the stable 1.0.0 "
      "schema, published as data), four sandboxes and where each runs, the three modes mapped to measure, calibrate and "

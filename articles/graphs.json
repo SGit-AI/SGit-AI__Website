@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-11",
-  "site_version": "v0.7.42",
+  "site_version": "v0.7.43",
   "schema": "https://sgit.ai/articles/graphs.html",
   "topics": [
     {
@@ -54,6 +54,211 @@
     "produces"
   ],
   "articles": [
+    {
+      "slug": "the-agent-is-the-reader",
+      "title": "The agent is the reader: why agents will pay for graphs, personas and signed claims, because it is cheaper than not paying",
+      "date": "2026-10-11",
+      "updated": "",
+      "url": "https://sgit.ai/articles/the-agent-is-the-reader.html",
+      "markdown": "https://sgit.ai/articles/the-agent-is-the-reader.md",
+      "card": "https://sgit.ai/articles/cards/the-agent-is-the-reader.webp",
+      "teaser": "Agents pay to read the raw web and guess its meaning. A curated graph answers for 90% fewer tokens, so paying the publisher is cheaper than not paying.",
+      "topics": [
+        "news-and-evidence",
+        "startups-and-strategy"
+      ],
+      "tags": [
+        "newsroom",
+        "economics",
+        "agents",
+        "micropayments",
+        "fractal-semantic-graphs",
+        "compression",
+        "personas",
+        "tokens",
+        "provenance",
+        "signed-claims",
+        "librarian",
+        "cartographer",
+        "article"
+      ],
+      "links_out": [
+        "one-article-five-readers",
+        "the-bridge-followed-to-the-end",
+        "pay-to-keep-your-persona",
+        "a-link-to-a-persona",
+        "re-anchoring-agent-behaviour-policies",
+        "token-bill-nobody-is-sending",
+        "pay-after-you-read",
+        "rfc-0001-public-key-cryptography-for-sgit",
+        "introducing-fractal-semantic-graphs",
+        "memory-is-not-a-spectator-sport",
+        "future-of-news-story-vault-not-paywall"
+      ],
+      "links_in": [],
+      "graph": {
+        "slug": "the-agent-is-the-reader",
+        "teaser": "Agents pay to read the raw web and guess its meaning. A curated graph answers for 90% fewer tokens, so paying the publisher is cheaper than not paying.",
+        "topics": [
+          "news-and-evidence",
+          "startups-and-strategy"
+        ],
+        "core_idea": "When agents are the readers, a publisher that serves curated meaning, an anchored graph fitted to the agent's persona and objective, and claims signed with an expiry saves the agent more tokens than it charges, so the agent pays not to pay; measured on five articles the graph answers in 90% fewer tokens, and on 70 articles compression with scale appears only where a Cartographer curates, which is the work worth paying for.",
+        "nodes": [
+          {
+            "id": "layers",
+            "label": "The graph is bigger than the text",
+            "kind": "example",
+            "summary": "The full catalogue is 2.8 times the articles; the concept index is 7%."
+          },
+          {
+            "id": "query",
+            "label": "A question costs 90% less in the graph",
+            "kind": "claim",
+            "summary": "Median 2,579 tokens against 25,698, across all 45 concepts, with anchors."
+          },
+          {
+            "id": "loop",
+            "label": "Making the map is the verification",
+            "kind": "example",
+            "summary": "32 flags, 37 corrections, one systematic catch; the cost per finding rises on the third pass."
+          },
+          {
+            "id": "curation",
+            "label": "Compression with scale needs curation",
+            "kind": "claim",
+            "summary": "908 of 928 uncurated labels unique; 114 curated mentions over 45 concepts."
+          },
+          {
+            "id": "projection",
+            "label": "Projected to 100,000 articles",
+            "kind": "claim",
+            "summary": "Curated index 150 to 2,660 times smaller; a question about 13,000 tokens; search sees 2%."
+          },
+          {
+            "id": "meaning",
+            "label": "PageRank with meaning",
+            "kind": "concept",
+            "summary": "Typed edges citing their sentences say what a link means; a two-article loop tops our own PageRank."
+          },
+          {
+            "id": "persona",
+            "label": "Agents are personas too",
+            "kind": "concept",
+            "summary": "An agent arrives with an objective; the slice fitted to it is the product."
+          },
+          {
+            "id": "pay",
+            "label": "The agent pays not to pay",
+            "kind": "claim",
+            "summary": "A fee below the token saving is rational; about ten questions pay for an article's graph."
+          },
+          {
+            "id": "signed",
+            "label": "Signed claims with an expiry",
+            "kind": "method",
+            "summary": "A claim re-checked and signed as of a date, until a date, renewed for a fee."
+          },
+          {
+            "id": "open",
+            "label": "Will agents pay?",
+            "kind": "question",
+            "summary": "The rails exist and the arithmetic works on paper; demand is untested."
+          }
+        ],
+        "edges": [
+          {
+            "from": "query",
+            "to": "layers",
+            "rel": "contrasts"
+          },
+          {
+            "from": "loop",
+            "to": "layers",
+            "rel": "produces"
+          },
+          {
+            "from": "projection",
+            "to": "curation",
+            "rel": "depends-on"
+          },
+          {
+            "from": "meaning",
+            "to": "query",
+            "rel": "extends"
+          },
+          {
+            "from": "persona",
+            "to": "query",
+            "rel": "extends"
+          },
+          {
+            "from": "pay",
+            "to": "query",
+            "rel": "depends-on"
+          },
+          {
+            "from": "pay",
+            "to": "curation",
+            "rel": "depends-on"
+          },
+          {
+            "from": "signed",
+            "to": "pay",
+            "rel": "extends"
+          },
+          {
+            "from": "signed",
+            "to": "loop",
+            "rel": "depends-on"
+          },
+          {
+            "from": "open",
+            "to": "pay",
+            "rel": "answers"
+          },
+          {
+            "from": "persona",
+            "to": "pay",
+            "rel": "leads-to"
+          }
+        ],
+        "links": {
+          "articles": [
+            "one-article-five-readers",
+            "token-bill-nobody-is-sending",
+            "the-bridge-followed-to-the-end",
+            "pay-to-keep-your-persona",
+            "a-link-to-a-persona",
+            "pay-after-you-read",
+            "re-anchoring-agent-behaviour-policies",
+            "rfc-0001-public-key-cryptography-for-sgit",
+            "introducing-fractal-semantic-graphs",
+            "memory-is-not-a-spectator-sport",
+            "future-of-news-story-vault-not-paywall"
+          ],
+          "pages": [
+            "/demos/vaults/article-views/index.html",
+            "/articles/data/the-agent-is-the-reader__model.json"
+          ],
+          "sites": [
+            "https://eco.com/support/en/articles/14839402-x402-protocol-explained",
+            "https://forklog.com/en/stripe-unveils-payments-for-ai-agents-using-usdc-and-x402-protocol/",
+            "https://enterprise.wikimedia.com/"
+          ]
+        },
+        "quotes": [
+          {
+            "text": "Compression with scale is not a property of graphs. It is a property of curation.",
+            "why": "The hypothesis, tested."
+          },
+          {
+            "text": "A reader that saves money by using it will pay for it, not out of goodwill but because paying is cheaper than not paying.",
+            "why": "The economic model in one sentence."
+          }
+        ]
+      }
+    },
     {
       "slug": "where-the-platform-draws-the-line",
       "title": "Where the platform draws the line: Microsoft Execution Containers, the shared responsibility model for agents, and the business logic above it",
@@ -866,6 +1071,7 @@
         "pay-to-keep-your-persona"
       ],
       "links_in": [
+        "the-agent-is-the-reader",
         "how-to-run-synthetic-users"
       ],
       "graph": {
@@ -1056,7 +1262,9 @@
         "who-will-game-the-reading-meter",
         "pay-to-keep-your-persona"
       ],
-      "links_in": [],
+      "links_in": [
+        "the-agent-is-the-reader"
+      ],
       "graph": {
         "slug": "pay-after-you-read",
         "teaser": "Seven releases in one afternoon turned the reading meter into a working model: pay after you read, and the rating sets the price.",
@@ -1654,6 +1862,7 @@
         "one-article-five-readers"
       ],
       "links_in": [
+        "the-agent-is-the-reader",
         "a-link-to-a-persona",
         "pay-after-you-read",
         "going-live-with-the-reading-meter"
@@ -2355,7 +2564,7 @@
       "slug": "one-article-five-readers",
       "title": "One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece",
       "date": "2026-10-10",
-      "updated": "",
+      "updated": "2026-10-11",
       "url": "https://sgit.ai/articles/one-article-five-readers.html",
       "markdown": "https://sgit.ai/articles/one-article-five-readers.md",
       "card": "https://sgit.ai/articles/cards/one-article-five-readers.webp",
@@ -2390,6 +2599,7 @@
         "every-risk-is-already-accepted"
       ],
       "links_in": [
+        "the-agent-is-the-reader",
         "authority-outside-the-model",
         "the-infographic-bake-off",
         "pay-to-keep-your-persona"
@@ -2803,6 +3013,7 @@
         "a-second-reader-the-agent-cannot-skip"
       ],
       "links_in": [
+        "the-agent-is-the-reader",
         "authority-outside-the-model",
         "the-infographic-bake-off",
         "one-article-five-readers"
@@ -3388,6 +3599,7 @@
         "encrypted-memory-for-isolated-agents"
       ],
       "links_in": [
+        "the-agent-is-the-reader",
         "where-the-vault-keys-live"
       ],
       "graph": {
@@ -6088,6 +6300,7 @@
         "story-vault-meets-reader-skills"
       ],
       "links_in": [
+        "the-agent-is-the-reader",
         "a-meter-in-the-browser",
         "the-waiting-room-knew-first",
         "every-mistake-added-a-rule",
@@ -10467,6 +10680,7 @@
         "price-it-then-give-it-away"
       ],
       "links_in": [
+        "the-agent-is-the-reader",
         "how-i-work-with-claude",
         "knowing-when-to-stop",
         "every-mistake-added-a-rule",
@@ -12983,6 +13197,7 @@
         "introducing-fractal-semantic-graphs"
       ],
       "links_in": [
+        "the-agent-is-the-reader",
         "who-will-game-the-reading-meter",
         "a-meter-in-the-browser",
         "liquid-content-needs-water",
@@ -14072,6 +14287,7 @@
         "the-question-is-whether-they-miss-it"
       ],
       "links_in": [
+        "the-agent-is-the-reader",
         "liquid-content-needs-water",
         "story-vault-meets-reader-skills",
         "the-deck-i-could-not-download",
@@ -14833,6 +15049,7 @@
       ],
       "links_out": [],
       "links_in": [
+        "the-agent-is-the-reader",
         "one-article-five-readers",
         "the-ai-governance-stack-as-a-graph",
         "riskmandate-ten-questions",

@@ -2,7 +2,7 @@
 
 > On 10 October the reading meter on sgit.ai went, in seven releases between 12:09 and 15:49, from an experiment to a working pay-on-demand publication. A reader pays pence for the share of a page they actually read, from a balance that can go below zero without ever blocking them; after reading, they say how useful it was, and that sets the price, from free to double; their reading builds personas and a newsroom of their own, kept in their browser; and they can send it to us, encrypted, for a front page designed for them. Once a Stripe link is set, the only question left is whether people pay. This article introduces each feature, shows how each one grew out of the last, with a Wardley map that adds them one at a time, explains why paying after you see the value is the right way round, and why every decision started from one rule: do not rip off the reader. It ends with an offer to sites with traffic that would like to test it.
 
-*Source: <https://sgit.ai/articles/pay-after-you-read.html> · site v0.7.42 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/pay-after-you-read.html> · site v0.7.43 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -180,6 +180,10 @@ News & evidenceStartups & strategy[This article as a graph →](graphs.md#pay-af
 - [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](a-meter-in-the-browser.md) Every page now costs a few pence from £5 of credit kept in your browser, and the reading history it keeps is what personalises the site.
 - [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](who-will-game-the-reading-meter.md) Eight kinds of reader, none of them attackers, nine ways to cheat a browser meter, and the quieter risks that will actually happen.
 - [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](pay-to-keep-your-persona.md) Readers should pay because it helps them: a persona with a name and a graph, several for focus, and one that follows you between devices.
+
+### Continued by
+
+- [The agent is the reader: why agents will pay for graphs, personas and signed claims, because it is cheaper than not paying](the-agent-is-the-reader.md) Agents pay to read the raw web and guess its meaning. A curated graph answers for 90% fewer tokens, so paying the publisher is cheaper than not paying.
 
 [All articles](index.md) · [All graphs](graphs.md)
 

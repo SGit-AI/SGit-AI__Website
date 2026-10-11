@@ -1,6 +1,7 @@
 ---
 title: One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece
 date: 2026-10-10
+updated: 2026-10-11
 time: 14:30
 author: Dinis Cruz
 author_url: about/index.html
@@ -175,7 +176,7 @@ The [Article Views vault](/demos/vaults/article-views/index.html) holds everythi
 - **The views can be wrong.** They are produced by agents and checked by script where a script can check them: anchors verbatim, edges citing real items, word limits, quotes verbatim. A plain-language summary that is subtly unfair to its article passes every check. Each view should be read by the author before it goes on the page, as these were.
 - **New is relative.** Without the site altitude, "new" means new to the set. The Historian caught it this time because it had the site's graphs; a run without them would not.
 - **The round trip ran once in one direction.** The Cartographer's feedback to the Librarian is written, not applied.
-- **It costs something.** About 1.1 million tokens for five articles, most of it the Cartographer reading 662 items. Per article, the Librarian, the Explainer and the Historian are cheap; the ontology is the expensive part, and it is also the part that gets cheaper as the site ontology settles and each new article only has to map onto it.
+- **It costs something.** About 1.1 million tokens for five articles, most of it the five Librarians (403,000 between them) and the Cartographer reading their 662 items (264,000). Per article, the Explainer and the Historian are cheap; the catalogue and the ontology are the expensive parts, and the ontology is also the part that gets cheaper as the site ontology settles and each new article only has to map onto it.
 
 ## What comes next
 

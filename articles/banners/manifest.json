@@ -6,6 +6,23 @@
  "generated_by": "admin/build/build_pages.py",
  "entries": [
   {
+   "slug": "the-agent-is-the-reader",
+   "kind": "article",
+   "kicker": "SGit Newsroom",
+   "date": "2026-10-11",
+   "author": "Dinis Cruz",
+   "title": "The agent is the reader: why agents will pay for graphs, personas and signed claims, because it is cheaper than not paying",
+   "teaser": "Agents pay to read the raw web and guess its meaning. A curated graph answers for 90% fewer tokens, so paying the publisher is cheaper than not paying.",
+   "ideas": [
+    "A question costs 90% less in the graph",
+    "Compression with scale needs curation",
+    "Projected to 100,000 articles"
+   ],
+   "hero": "articles/images/ar-layers.webp",
+   "url": "sgit.ai/articles/the-agent-is-the-reader.html",
+   "out": "articles/banners/the-agent-is-the-reader.jpg"
+  },
+  {
    "slug": "where-the-platform-draws-the-line",
    "kind": "article",
    "kicker": "SGit Newsroom",
@@ -1253,10 +1270,10 @@
     "Next: an issue picked for what you care about"
    ],
    "mosaic": [
+    "articles/cards/the-agent-is-the-reader.webp",
     "articles/cards/where-the-platform-draws-the-line.webp",
     "articles/cards/the-same-argument-in-our-words.webp",
-    "articles/cards/authority-outside-the-model.webp",
-    "articles/cards/how-to-run-synthetic-users.webp"
+    "articles/cards/authority-outside-the-model.webp"
    ],
    "url": "sgit.ai/subscribe/",
    "out": "articles/banners/subscribe.jpg"

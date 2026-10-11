@@ -2,7 +2,7 @@
 
 > Five minutes for an agent team: sgit update, check the version, change the clone command to --path and --depth, and what to do when a pull is refused. Published 7 October 2026.
 
-*Source: <https://sgit.ai/docs/update-to-0-18-0.html> · site v0.7.42 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/update-to-0-18-0.html> · site v0.7.43 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

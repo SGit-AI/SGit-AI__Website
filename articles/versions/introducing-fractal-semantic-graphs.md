@@ -2,7 +2,7 @@
 
 > Every published version of the article "Fractal Semantic Graphs", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/introducing-fractal-semantic-graphs.html> · site v0.7.42 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/introducing-fractal-semantic-graphs.html> · site v0.7.43 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

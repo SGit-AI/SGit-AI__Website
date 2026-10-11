@@ -2,7 +2,7 @@
 
 > Every published version of the article "Where the platform draws the line", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/where-the-platform-draws-the-line.html> · site v0.7.42 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/where-the-platform-draws-the-line.html> · site v0.7.43 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,7 +16,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.0.0** | 2026-10-11 | published | 4,855 | first published | this release | [current](../where-the-platform-draws-the-line.md) |
+| **v1.0.0** | 2026-10-11 | published | 4,855 | first published | [`1de62256c`](https://github.com/SGit-AI/SGit-AI__Website/commit/1de62256cbd8b4f36c20af5fe24f6a34ef7c8bd7) | [current](../where-the-platform-draws-the-line.md) |
 
 [← Back to the article](../where-the-platform-draws-the-line.md) · [All articles](../index.md)
 
