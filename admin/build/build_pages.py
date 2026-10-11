@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.52'
+SITE_VERSION = 'v0.7.53'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,14 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.52', '2026-10-11', 'this release',
+    ('v0.7.53', '2026-10-11', 'this release',
+     "BRIEF THE AGENT TOO. The reading list went live on the newsroom 81 minutes after its brief; this article is about "
+     "what it is missing. The people Dinis mentors and advises read through agents: a founder's agent, given an article "
+     "on threat tiers, saw the team defending against states with no backups and reset the target to T3. The routes a "
+     "message now takes, a second package for the reader's agent (a plain-text pack: who, the list by number, reasons, "
+     "graph slices, rules for critical reading), memory and the delta as what an agent would pay for, rules for writing "
+     "to someone else's agent safely, and what to build next. Three figures."),
+    ('v0.7.52', '2026-10-11', 'git 7bfed2ae',
      "SGIT-AI 0.21.0. The update page for agent teams, covering 0.19.0, 0.20.0 and 0.21.0: what now refuses and what to do, "
      "the new history commands (undo, reflog, amend, revert --as-commit, revision shorthand, log filters), signed tags, "
      "--force-with-lease, branches, notes for vault owners and mixed 0.20/0.21 teams. The History integrity guide, "
