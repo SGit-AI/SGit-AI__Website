@@ -60,6 +60,12 @@
       "label": "Accounts with no server",
       "kind": "claim",
       "summary": "Any static site: sign in, open your own data on any device, unreadable by the operator."
+    },
+    {
+      "id": "clean",
+      "label": "Where the passkey lives",
+      "kind": "claim",
+      "summary": "A synced provider or a hardware key gives every device; a clean browser gives one device plus recovery; Chrome's own store has no PRF."
     }
   ],
   "edges": [
@@ -102,6 +108,11 @@
       "from": "master",
       "to": "enables",
       "rel": "produces"
+    },
+    {
+      "from": "clean",
+      "to": "prf",
+      "rel": "depends-on"
     }
   ],
   "links": {

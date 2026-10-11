@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.59 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.60 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -57,7 +57,7 @@ An end-to-end, client-side account with no sign-in, no account and no email: a p
 *[diagram]*
 **concept**claim**method**artefact**example
 
-**9 nodes, 8 edges**
+**10 nodes, 9 edges**
 
 - **Sign in, later and optional** (concept) Not in the MVP; on its own origin; continuity and backup; never a key.
 - **Passkey with PRF** (concept) 32 bytes only your authenticator produces for this site, the same on synced devices.
@@ -68,6 +68,7 @@ An end-to-end, client-side account with no sign-in, no account and no email: a p
 - **No third-party scripts where keys live** (claim) Sign-in runs on its own page; the unlock page loads nothing it did not build.
 - **PRF support in 2026** (example) Google Password Manager, iCloud Keychain, Windows Hello, Firefox.
 - **Accounts with no server** (claim) Any static site: sign in, open your own data on any device, unreadable by the operator.
+- **Where the passkey lives** (claim) A synced provider or a hardware key gives every device; a clean browser gives one device plus recovery; Chrome's own store has no PRF.
 
 > The short answer, after the research, is that it is not kept anywhere. It is computed. The answer to where the vault key lives.
 

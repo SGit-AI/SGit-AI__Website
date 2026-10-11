@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.7.59). Nothing here needs a second request. Individual pages live at the paths
+> (v0.7.60). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -73,7 +73,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-321site releases, each verified live before it was called done
+322site releases, each verified live before it was called done
 
 54vaults published with a deliberately public read key
 
@@ -6563,7 +6563,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.7.59, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.7.60, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -6926,7 +6926,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-321**site releases since 14 August**
+322**site releases since 14 August**
 each verified live before it was called done
 
 54**vaults published with a public read key**
@@ -12486,12 +12486,14 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.7.59**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
+The site version (**v0.7.60**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
 
-| v0.7.59 | 2026-10-11 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.58...v0.7.59) | The key-chain figure in The passkey opens the vault catches up with v0.7.58: Google sees nothing in the MVP, and the steps are numbered from the passkey.[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.58...v0.7.59). |
+| v0.7.60 | 2026-10-11 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.59...v0.7.60) | WHAT HAPPENS IN A CLEAN BROWSER. The passkey opens the vault gains a section and a figure on where a passkey lives and what that gives the reader: Google Password Manager and iCloud Keychain sync through the reader's own account, Windows Hello is device-bound unless synced, a hardware key travels with no account, a phone by QR opens a clean laptop one scan at a time, and Chrome's own profile store signs but returns no PRF bytes in 2026 tests. The rule: the same newsroom on every device needs a synced provider or a hardware key; a clean browser gives one device plus the recovery code. The page checks prf.enabled at creation and offers a ladder of alternatives; the brief tests a clean profile.**Updated:**[The passkey opens the vault: touch a passkey, and a master vault for every user, with no server of ours, no account and no email](../articles/the-passkey-opens-the-vault.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.59...v0.7.60). |
+
+| v0.7.59 | 2026-10-11 | [git ad8b5b75](https://github.com/SGit-AI/SGit-AI__Website/commit/ad8b5b75) | The key-chain figure in The passkey opens the vault catches up with v0.7.58: Google sees nothing in the MVP, and the steps are numbered from the passkey.[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/ad8b5b75). |
 
 | v0.7.58 | 2026-10-11 | [git cd0dbdc2](https://github.com/SGit-AI/SGit-AI__Website/commit/cd0dbdc2) | THE PASSKEY OPENS THE VAULT, REVIEWED. The MVP is passkey-only: no Google sign-in, no OAuth, no app, no email; the page makes a discoverable credential through WebAuthn and the site learns a credential id, a public key and 32 PRF bytes. Sign-in with Google becomes a later, optional phase on its own origin. Also from the review: the unlock costs up to six PBKDF2 derivations of 600,000 iterations (measured: about 105 ms each in headless Chromium, slower on a phone) with mitigations; the passphrase is the hex of 32 bytes, since sgit accepts any printable passphrase, and only the id needs rejection sampling; the rule against third-party scripts applies to the whole origin, with the vault code vendored; the Drive backup is an availability backup wrapped under the recovery code. Two figures re-rendered. And the villager brief names the repository SGit-AI__Newsroom__API.**Updated:**[Go slow to go fast: moving the newsroom from an explorer project to a villager one, with the brief to do it](../articles/explorer-to-villager-newsroom.md), [The passkey opens the vault: touch a passkey, and a master vault for every user, with no server of ours, no account and no email](../articles/the-passkey-opens-the-vault.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/cd0dbdc2). |
 
@@ -16217,7 +16219,7 @@ There is a longer account of this one in [Green does not mean live](../articles/
 >
 > Page: https://sgit.ai/articles/index.html
 
-Edition of 2026-10-0878 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.59
+Edition of 2026-10-0878 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.60
 
 # SGit Newsroom
 
@@ -21827,7 +21829,7 @@ From v1.1.0 (2026-10-11, `002b84173`) to v1.2.0 (2026-10-11, `cd0dbdc22`), parag
 
 # The passkey opens the vault: touch a passkey, and a master vault for every user, with no server of ours, no account and no email
 
-By [Dinis Cruz](../about/index.md) · 2026-10-11 · [article v1.1.0, 2 versions](versions/the-passkey-opens-the-vault.md) · [site v0.7.55](../admin/versions.md) · passkeyswebauthnprfvaultskey-managementgoogle-sign-inclient-sidenewsroomarchitecturebriefsecretsarticle
+By [Dinis Cruz](../about/index.md) · 2026-10-11 · [article v1.2.0, 3 versions](versions/the-passkey-opens-the-vault.md) · [site v0.7.55](../admin/versions.md) · passkeyswebauthnprfvaultskey-managementgoogle-sign-inclient-sidenewsroomarchitecturebriefsecretsarticle
 
 ***Abstract:** The missing piece of the client-side puzzle is a user who can open their own vaults on any device, in a few seconds, with nothing to remember and nothing to sign up for. This is the design. A passkey, through the WebAuthn PRF extension, gives the browser 32 bytes that only your authenticator can produce for this site, and from those bytes the browser computes the key of a small door vault, which holds the key of your master vault, which holds the keys of everything else, starting with your newsroom vault. There is no sign-in: the page makes and uses the passkey through the browser's own API, with no Google app, no OAuth and no server, and it never learns your email or your name. The question I could not answer, where the encrypted vault key is stored, has a simple answer: nowhere. sgit vault keys are made in the client, so the door's key and its id can be computed from the passkey on any device, before anything is fetched, and there is no chicken and egg. A recovery code makes a second door to the same master. PRF is now supported by Google Password Manager, iCloud Keychain, Windows Hello and Firefox. The unlock costs up to six key derivations, measured. The first part is the technical design and the brief for the MVP on newsroom.sgit.ai, end to end; the second is what it enables: accounts with no server and no identity, for this site and for any other.*
 
@@ -21847,7 +21849,7 @@ I had one question I could not answer: where is the vault key kept? The short an
 - **Where is the vault key stored? Nowhere.** sgit vault keys are made in the client, a passphrase and a vault id. So the browser computes a door vault's key and id from the PRF bytes, opens it, and finds the master vault's key inside. No chicken and egg, no new storage, only vault APIs.
 - **One master vault per user.** It holds the keys of your other vaults (the newsroom vault first), your access key, your key pair and the list of your doors.
 - **Every passkey is a door, and so is a recovery code.** An iPhone and a Windows laptop with different passkeys get two doors to the same master. A 128-bit recovery code, shown once, is a third. Lose them all and no one, including us, can open it.
-- **Support is good enough to build on.** PRF works in Google Password Manager, iCloud Keychain (Safari 18 and macOS 15), Windows Hello (since February 2026) and Firefox. Where it does not, the page says so and offers the recovery code.
+- **Support is good enough to build on, and where the passkey lives decides what the reader gets.** PRF works in Google Password Manager, iCloud Keychain (Safari 18 and macOS 15), Windows Hello (since February 2026) and Firefox. A synced provider or a hardware key gives the same newsroom on every device; a clean browser with neither gives one device plus the recovery code, and Chrome's own store returns no PRF bytes at all, so the page checks at creation and offers a ladder of alternatives.
 - **One rule the design depends on:** the whole origin loads no third-party scripts, on any page, because browser storage is per origin and a script on one page can read what another page kept. The vault code is vendored into the reader repository, not loaded from anywhere else.
 - **It is not just for the newsroom.** Every site we build needs the same thing: an account with no server, data nobody else can read, on every device. This is that, as a pattern.
 
@@ -21941,17 +21943,36 @@ As of October 2026, from vendor documentation and published tests (see the sourc
 
 The page checks `prf.enabled` when it creates the passkey, and never guesses: if it is false, it says so and offers another authenticator or the recovery code.
 
+### What happens in a clean browser
+
+The table above is about browsers. The question that matters to a reader is about devices: will the newsroom I opened on my laptop be the same one on my phone? That depends on where the passkey lives, which is a choice the reader made long before they met this site, usually without noticing.
+
+Where a passkey can live, what each place needs, whether the passkey travels, whether it can return the PRF bytes, and what that means for the reader. The ladder below the table is what the page offers when PRF is off.
+
+| Where the passkey lives | Needs | Travels? | PRF | What the reader gets |
+|---|---|---|---|---|
+| **Google Password Manager** (Chrome signed in, Android) | A Google account | Yes, to every device signed in to it | Yes | The same newsroom everywhere |
+| **iCloud Keychain** (Safari, iPhone, iPad, Mac) | An Apple ID | Yes, across Apple devices | Yes, Safari 18 and macOS 15 | The same newsroom on every Apple device |
+| **Windows Hello** (Windows 11) | The device; a Microsoft account to sync | Device-bound, unless synced | Yes, since February 2026 | This PC, or every PC on the account |
+| **A hardware key** (YubiKey and others) | The key, and its PIN | Yes, wherever the key is plugged in | Yes, through `hmac-secret`; not with YubiKeys in Safari | No account anywhere; a few dozen passkeys per key |
+| **Your phone, by QR** (the hybrid flow) | A passkey on the phone, in its own provider | Yes, one scan at a time | Where the phone's provider does | A clean laptop opens with the phone beside it |
+| **Chrome's own profile store** (a clean Chrome, no provider) | Nothing | No: this browser, on this computer | No, in 2026 tests | Signs, returns no bytes: the door cannot be derived |
+
+So the rule, in one line: **the same newsroom on every device needs a synced provider or a hardware key in your pocket.** A clean browser with neither gives you this device, plus the recovery code. A passkey made there still works, as a passkey; it is stored by the device, tied to that browser profile on that computer, and deleted with it. The catch for this design is the last row: Chrome's own store, used when there is no provider (a clean Chrome on Linux, or on a Mac with iCloud Keychain off), signs but returns no PRF bytes in 2026 tests, so the door cannot be derived there at all.
+
+Two things follow. The page learns which case it is in at creation, from `prf.enabled`, and never guesses. And when PRF is off, it offers a ladder, in this order: sign in to a provider, so the passkey syncs from now on; use your phone by QR, one scan at a time; plug in a hardware key; or stay on this device, where the browser's own copy keeps working and the recovery code is the way back. That is a real limitation of PRF today, not of the design, and the article would be dishonest without it. One caveat on the Chrome-profile row: it comes from a vendor's published tests, so the brief includes a five-minute check on a clean profile before anyone depends on it.
+
 ### The brief for the MVP
 
 *For the session that runs newsroom.sgit.ai. Written by the sgit.ai site session for Dinis Cruz, 11 October 2026. Dinis decides what ships, and is the first user.*
 
 1. **No sign-in.** The first screen is the passkey. Google sign-in is a later phase, on its own origin, and only for what it is good for: continuity for support, a Drive backup, a reference for purchases.
-2. **The passkey**: create with `rp.id = newsroom.sgit.ai`, a resident key, user verification required, `extensions.prf`; get with the fixed PRF input; check `prf.enabled`.
+2. **The passkey**: create with `rp.id = newsroom.sgit.ai`, a resident key, user verification required, `extensions.prf`; get with the fixed PRF input; check `prf.enabled`. When it is false, the ladder: sign in to a provider, your phone by QR, a hardware key, or this device only with the recovery code, each explained in one line.
 3. **The derivation** in part one, with test vectors shared with the sgit command line.
 4. **The vaults**: door, master, newsroom and recovery door, created with the access key, using the browser code that already reads and writes vaults, taken from the [vault web app](https://vault.sgraph.ai/) and [tools.sgraph.ai](https://tools.sgraph.ai/) and vendored into the reader repository.
 5. **The move**: the reading account from the browser's storage into the newsroom vault, as the first device's log.
 6. **The right-hand side**: once open, show the vault: the master's list of vaults and doors, and the newsroom vault's contents, so the user can see what is kept and where.
-7. **Tests**: Chromium's virtual authenticator with PRF in the build (secrets.sgit.ai found it works in Chromium 141); the first run, a new device and the recovery code, end to end; two devices editing offline and agreeing; a [synthetic reader](../articles/how-to-run-synthetic-users.md) who has never heard of a vault key.
+7. **Tests**: Chromium's virtual authenticator with PRF in the build (secrets.sgit.ai found it works in Chromium 141); the first run, a new device and the recovery code, end to end; a clean Chrome profile with no provider, to confirm what its own store returns for `prf.enabled` and that the ladder appears; two devices editing offline and agreeing; a [synthetic reader](../articles/how-to-run-synthetic-users.md) who has never heard of a vault key.
 8. **Not in the MVP**: Google sign-in, the Drive backup, sharing across sites, anything on a server of ours.
 
 The acceptance test is the experience in the second paragraph of this article: a new browser, a gesture, and my reading account, on my iPhone, my iPad, my laptops and my iMac.
@@ -22019,13 +22040,14 @@ Vaults & methodSite & engineering[This article as a graph →](graphs.md#the-pas
 
 # Versions of: The passkey opens the vault
 
-2 published versions of [The passkey opens the vault: touch a passkey, and a master vault for every user, with no server of ours, no account and no email](../the-passkey-opens-the-vault.md). The current one is **v1.1.0**.
+3 published versions of [The passkey opens the vault: touch a passkey, and a master vault for every user, with no server of ours, no account and no email](../the-passkey-opens-the-vault.md). The current one is **v1.2.0**.
 
 v1.0.0 is the article as first published. A change to its text (title, abstract or body) is the next minor version, v1.1.0; a change only to its other details (a LinkedIn link, the release it belongs to) is the next patch, v1.0.1. The list is read from the site's git history at every build, so it cannot be edited by hand and cannot leave a version out. Views extracted from an article, such as the Five readers, are not part of its text and do not change its version.
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.1.0** | 2026-10-11 | minor | 3,923 | +452 / −59 words; 18 changed, 2 added, 1 removed paragraphs | [`cd0dbdc22`](https://github.com/SGit-AI/SGit-AI__Website/commit/cd0dbdc22a71f902d0bd9e998f2803dd81589796) | [what changed](the-passkey-opens-the-vault/v1.1.0.md) · [current](../the-passkey-opens-the-vault.md) |
+| **v1.2.0** | 2026-10-11 | minor | 4,595 | +672 / −0 words; 2 changed, 6 added, 0 removed paragraphs | this release | [what changed](the-passkey-opens-the-vault/v1.2.0.md) · [current](../the-passkey-opens-the-vault.md) |
+| **v1.1.0** | 2026-10-11 | minor | 3,923 | +452 / −59 words; 18 changed, 2 added, 1 removed paragraphs | [`cd0dbdc22`](https://github.com/SGit-AI/SGit-AI__Website/commit/cd0dbdc22a71f902d0bd9e998f2803dd81589796) | [what changed](the-passkey-opens-the-vault/v1.1.0.md) |
 | **v1.0.0** | 2026-10-11 | published | 3,531 | first published | [`4dc636a97`](https://github.com/SGit-AI/SGit-AI__Website/commit/4dc636a977875ed66ce4865410ad7e9c9f7de848) |  |
 
 [← Back to the article](../the-passkey-opens-the-vault.md) · [All articles](../index.md)
@@ -22047,7 +22069,7 @@ From v1.0.0 (2026-10-11, `4dc636a97`) to v1.1.0 (2026-10-11, `cd0dbdc22`), parag
 
 2 paragraphs added, 1 removed, 18 changed in place, 58 unchanged. About 452 words added and 59 removed. Insertions are marked like this, deletions like this; unchanged runs are folded to one line; figures appear as their file names.
 
-[all versions](../the-passkey-opens-the-vault.md)
+[all versions](../the-passkey-opens-the-vault.md) · [v1.2.0 →](v1.2.0.md)
 
 # The passkey opens the vault: sign in with Google, touch a passkey, and a master vault for every user, with no server of oursours, no account and no email
 
@@ -22113,7 +22135,52 @@ The acceptance test is the experience in the second paragraph of this article: a
 
 A voice memo of mine, recorded on 11 October 2026, asking for the design and for research into what a passkey gives a website and where an encrypted vault key could be kept; written by this site's agent in the voice of this site. The argument and the editorial responsibility are mine. The design builds on secrets.sgit.ai's published design ([how it works](https://secrets.sgit.ai/how-it-works/), [the keyring format](https://secrets.sgit.ai/keyring/), [passkeys, WebAuthn and PRF](https://secrets.sgit.ai/learn/passkeys/) and [keys](https://secrets.sgit.ai/learn/keys/)), and on how sgit generates and parses vault keys in the client (`generate_vault_key` and `parse_vault_key` in the sgit command line).line); the unlock cost was measured with WebCrypto PBKDF2 in headless Chromium on 11 October 2026. The research: Corbado, [Passkeys and WebAuthn PRF for end-to-end encryption (2026)](https://www.corbado.com/blog/passkeys-prf-webauthn) and [WebAuthn L3 support in credential managers](https://www.corbado.com/blog/webauthn-l3-credential-manager-support); Yubico, [Developer's guide to PRF](https://developers.yubico.com/WebAuthn/Concepts/PRF_Extension/Developers_Guide_to_PRF.html); Mozilla, [support for the WebAuthn PRF extension](https://bugzilla.mozilla.org/show_bug.cgi?id=1863819); Chromium, [intent to ship the PRF extension](https://groups.google.com/a/chromium.org/g/blink-dev/c/iTNOgLwD2bI); web.dev, [passkey reuse across sites with Related Origin Requests](https://web.dev/articles/webauthn-related-origin-requests); Google, [choosing Google Drive API scopes](https://developers.google.com/workspace/drive/api/guides/api-specific-auth) and [authorising for the web](https://developers.google.com/identity/oauth2/web/guides/overview). Related articles: [I miss it, so it is working](../../../articles/i-miss-it.md), [No server, by design](../../../articles/no-server-by-design.md), [Where the vault keys live](../../../articles/where-the-vault-keys-live.md), [RFC 0001](../../../articles/rfc-0001-public-key-cryptography-for-sgit.md) and [How to run synthetic users](../../../articles/how-to-run-synthetic-users.md).
 
-[all versions](../the-passkey-opens-the-vault.md)
+[all versions](../the-passkey-opens-the-vault.md) · [v1.2.0 →](v1.2.0.md)
+
+
+
+==============================================================================
+# The passkey opens the vault: what changed in v1.2.0, sgit.ai
+
+> The changes to the article "The passkey opens the vault" in v1.2.0, paragraph by paragraph.
+>
+> Page: https://sgit.ai/articles/versions/the-passkey-opens-the-vault/v1.2.0.html
+
+[Home](../../../index.md) / [Articles](../../index.md) / [The passkey opens the vault](../../the-passkey-opens-the-vault.md) / [Versions](../the-passkey-opens-the-vault.md) / v1.2.0
+
+# The passkey opens the vault: what changed in v1.2.0
+
+From v1.1.0 (2026-10-11, `cd0dbdc22`) to v1.2.0 (2026-10-11, this release), paragraph by paragraph.
+
+6 paragraphs added, 0 removed, 2 changed in place, 76 unchanged. About 672 words added and 0 removed. Insertions are marked like this, deletions like this; unchanged runs are folded to one line; figures appear as their file names.
+
+[← v1.1.0](v1.1.0.md) · [all versions](../the-passkey-opens-the-vault.md)
+
+13 unchanged paragraphs, under In short {#short}
+
+• **Support is good enough to build on.**on, and where the passkey lives decides what the reader gets.** PRF works in Google Password Manager, iCloud Keychain (Safari 18 and macOS 15), Windows Hello (since February 2026) and Firefox. WhereAitsynceddoesprovidernot,or a hardware key gives the same newsroom on every device; a clean browser with neither gives one device plus the recovery code, and Chrome's own store returns no PRF bytes at all, so the page sayscheckssoat creation and offers thearecoveryladdercode.of alternatives.
+
+44 unchanged paragraphs, under Part one: the design {#design}
+
+### What happens in a clean browser {#clean}
+
+The table above is about browsers. The question that matters to a reader is about devices: will the newsroom I opened on my laptop be the same one on my phone? That depends on where the passkey lives, which is a choice the reader made long before they met this site, usually without noticing.
+
+[figure pk-where.webp] Where a passkey can live, what each place needs, whether the passkey travels, whether it can return the PRF bytes, and what that means for the reader. The ladder below the table is what the page offers when PRF is off.
+
+| Where the passkey lives | Needs | Travels? | PRF | What the reader gets | |---|---|---|---|---| | **Google Password Manager** (Chrome signed in, Android) | A Google account | Yes, to every device signed in to it | Yes | The same newsroom everywhere | | **iCloud Keychain** (Safari, iPhone, iPad, Mac) | An Apple ID | Yes, across Apple devices | Yes, Safari 18 and macOS 15 | The same newsroom on every Apple device | | **Windows Hello** (Windows 11) | The device; a Microsoft account to sync | Device-bound, unless synced | Yes, since February 2026 | This PC, or every PC on the account | | **A hardware key** (YubiKey and others) | The key, and its PIN | Yes, wherever the key is plugged in | Yes, through `hmac-secret`; not with YubiKeys in Safari | No account anywhere; a few dozen passkeys per key | | **Your phone, by QR** (the hybrid flow) | A passkey on the phone, in its own provider | Yes, one scan at a time | Where the phone's provider does | A clean laptop opens with the phone beside it | | **Chrome's own profile store** (a clean Chrome, no provider) | Nothing | No: this browser, on this computer | No, in 2026 tests | Signs, returns no bytes: the door cannot be derived |
+
+So the rule, in one line: **the same newsroom on every device needs a synced provider or a hardware key in your pocket.** A clean browser with neither gives you this device, plus the recovery code. A passkey made there still works, as a passkey; it is stored by the device, tied to that browser profile on that computer, and deleted with it. The catch for this design is the last row: Chrome's own store, used when there is no provider (a clean Chrome on Linux, or on a Mac with iCloud Keychain off), signs but returns no PRF bytes in 2026 tests, so the door cannot be derived there at all.
+
+Two things follow. The page learns which case it is in at creation, from `prf.enabled`, and never guesses. And when PRF is off, it offers a ladder, in this order: sign in to a provider, so the passkey syncs from now on; use your phone by QR, one scan at a time; plug in a hardware key; or stay on this device, where the browser's own copy keeps working and the recovery code is the way back. That is a real limitation of PRF today, not of the design, and the article would be dishonest without it. One caveat on the Chrome-profile row: it comes from a vendor's published tests, so the brief includes a five-minute check on a clean profile before anyone depends on it.
+
+2 unchanged paragraphs
+
+1. **No sign-in.** The first screen is the passkey. Google sign-in is a later phase, on its own origin, and only for what it is good for: continuity for support, a Drive backup, a reference for purchases. 2. **The passkey**: create with `rp.id = newsroom.sgit.ai`, a resident key, user verification required, `extensions.prf`; get with the fixed PRF input; check `prf.enabled`. When it is false, the ladder: sign in to a provider, your phone by QR, a hardware key, or this device only with the recovery code, each explained in one line. 3. **The derivation** in part one, with test vectors shared with the sgit command line. 4. **The vaults**: door, master, newsroom and recovery door, created with the access key, using the browser code that already reads and writes vaults, taken from the [vault web app](https://vault.sgraph.ai/) and [tools.sgraph.ai](https://tools.sgraph.ai/) and vendored into the reader repository. 5. **The move**: the reading account from the browser's storage into the newsroom vault, as the first device's log. 6. **The right-hand side**: once open, show the vault: the master's list of vaults and doors, and the newsroom vault's contents, so the user can see what is kept and where. 7. **Tests**: Chromium's virtual authenticator with PRF in the build (secrets.sgit.ai found it works in Chromium 141); the first run, a new device and the recovery code, end to end; a clean Chrome profile with no provider, to confirm what its own store returns for `prf.enabled` and that the ladder appears; two devices editing offline and agreeing; a [synthetic reader](../../../articles/how-to-run-synthetic-users.md) who has never heard of a vault key. 8. **Not in the MVP**: Google sign-in, the Drive backup, sharing across sites, anything on a server of ours.
+
+17 unchanged paragraphs, under Part two: what this enables {#enables}, What this does not claim {#limits}, Where this comes from {#sources}
+
+[← v1.1.0](v1.1.0.md) · [all versions](../the-passkey-opens-the-vault.md)
 
 
 
@@ -45694,7 +45761,7 @@ An end-to-end, client-side account with no sign-in, no account and no email: a p
 *[diagram]*
 **concept**claim**method**artefact**example
 
-**9 nodes, 8 edges**
+**10 nodes, 9 edges**
 
 - **Sign in, later and optional** (concept) Not in the MVP; on its own origin; continuity and backup; never a key.
 - **Passkey with PRF** (concept) 32 bytes only your authenticator produces for this site, the same on synced devices.
@@ -45705,6 +45772,7 @@ An end-to-end, client-side account with no sign-in, no account and no email: a p
 - **No third-party scripts where keys live** (claim) Sign-in runs on its own page; the unlock page loads nothing it did not build.
 - **PRF support in 2026** (example) Google Password Manager, iCloud Keychain, Windows Hello, Firefox.
 - **Accounts with no server** (claim) Any static site: sign in, open your own data on any device, unreadable by the operator.
+- **Where the passkey lives** (claim) A synced provider or a hardware key gives every device; a clean browser gives one device plus recovery; Chrome's own store has no PRF.
 
 > The short answer, after the research, is that it is not kept anywhere. It is computed. The answer to where the vault key lives.
 
@@ -48404,7 +48472,7 @@ One entry per run of a desk role, newest first, each its own file and never edit
 >
 > Page: https://sgit.ai/articles/collections/index.html
 
-Edition of 2026-10-0878 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.59
+Edition of 2026-10-0878 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.60
 
 # Collections
 
@@ -48423,7 +48491,7 @@ A collection is one file in `admin/content/newsroom/collections/`. [How the desk
 >
 > Page: https://sgit.ai/articles/desk/index.html
 
-Edition of 2026-10-0878 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.59
+Edition of 2026-10-0878 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.60
 
 # From the desk
 
@@ -49161,7 +49229,7 @@ Your browser encrypts it to the public key of the agent that runs the list, then
 >
 > Page: https://sgit.ai/articles/newsletter/index.html
 
-Edition of 2026-10-0878 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.59
+Edition of 2026-10-0878 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.60
 
 # The newsletter
 

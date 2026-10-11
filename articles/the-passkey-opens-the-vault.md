@@ -2,7 +2,7 @@
 
 > The missing piece of the client-side puzzle is a user who can open their own vaults on any device, in a few seconds, with nothing to remember and nothing to sign up for. This is the design. A passkey, through the WebAuthn PRF extension, gives the browser 32 bytes that only your authenticator can produce for this site, and from those bytes the browser computes the key of a small door vault, which holds the key of your master vault, which holds the keys of everything else, starting with your newsroom vault. There is no sign-in: the page makes and uses the passkey through the browser's own API, with no Google app, no OAuth and no server, and it never learns your email or your name. The question I could not answer, where the encrypted vault key is stored, has a simple answer: nowhere. sgit vault keys are made in the client, so the door's key and its id can be computed from the passkey on any device, before anything is fetched, and there is no chicken and egg. A recovery code makes a second door to the same master. PRF is now supported by Google Password Manager, iCloud Keychain, Windows Hello and Firefox. The unlock costs up to six key derivations, measured. The first part is the technical design and the brief for the MVP on newsroom.sgit.ai, end to end; the second is what it enables: accounts with no server and no identity, for this site and for any other.
 
-*Source: <https://sgit.ai/articles/the-passkey-opens-the-vault.html> · site v0.7.59 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/the-passkey-opens-the-vault.html> · site v0.7.60 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 # The passkey opens the vault: touch a passkey, and a master vault for every user, with no server of ours, no account and no email
 
-By [Dinis Cruz](../about/index.md) · 2026-10-11 · [article v1.1.0, 2 versions](versions/the-passkey-opens-the-vault.md) · [site v0.7.55](../admin/versions.md) · passkeyswebauthnprfvaultskey-managementgoogle-sign-inclient-sidenewsroomarchitecturebriefsecretsarticle
+By [Dinis Cruz](../about/index.md) · 2026-10-11 · [article v1.2.0, 3 versions](versions/the-passkey-opens-the-vault.md) · [site v0.7.55](../admin/versions.md) · passkeyswebauthnprfvaultskey-managementgoogle-sign-inclient-sidenewsroomarchitecturebriefsecretsarticle
 
 ***Abstract:** The missing piece of the client-side puzzle is a user who can open their own vaults on any device, in a few seconds, with nothing to remember and nothing to sign up for. This is the design. A passkey, through the WebAuthn PRF extension, gives the browser 32 bytes that only your authenticator can produce for this site, and from those bytes the browser computes the key of a small door vault, which holds the key of your master vault, which holds the keys of everything else, starting with your newsroom vault. There is no sign-in: the page makes and uses the passkey through the browser's own API, with no Google app, no OAuth and no server, and it never learns your email or your name. The question I could not answer, where the encrypted vault key is stored, has a simple answer: nowhere. sgit vault keys are made in the client, so the door's key and its id can be computed from the passkey on any device, before anything is fetched, and there is no chicken and egg. A recovery code makes a second door to the same master. PRF is now supported by Google Password Manager, iCloud Keychain, Windows Hello and Firefox. The unlock costs up to six key derivations, measured. The first part is the technical design and the brief for the MVP on newsroom.sgit.ai, end to end; the second is what it enables: accounts with no server and no identity, for this site and for any other.*
 
@@ -30,7 +30,7 @@ I had one question I could not answer: where is the vault key kept? The short an
 - **Where is the vault key stored? Nowhere.** sgit vault keys are made in the client, a passphrase and a vault id. So the browser computes a door vault's key and id from the PRF bytes, opens it, and finds the master vault's key inside. No chicken and egg, no new storage, only vault APIs.
 - **One master vault per user.** It holds the keys of your other vaults (the newsroom vault first), your access key, your key pair and the list of your doors.
 - **Every passkey is a door, and so is a recovery code.** An iPhone and a Windows laptop with different passkeys get two doors to the same master. A 128-bit recovery code, shown once, is a third. Lose them all and no one, including us, can open it.
-- **Support is good enough to build on.** PRF works in Google Password Manager, iCloud Keychain (Safari 18 and macOS 15), Windows Hello (since February 2026) and Firefox. Where it does not, the page says so and offers the recovery code.
+- **Support is good enough to build on, and where the passkey lives decides what the reader gets.** PRF works in Google Password Manager, iCloud Keychain (Safari 18 and macOS 15), Windows Hello (since February 2026) and Firefox. A synced provider or a hardware key gives the same newsroom on every device; a clean browser with neither gives one device plus the recovery code, and Chrome's own store returns no PRF bytes at all, so the page checks at creation and offers a ladder of alternatives.
 - **One rule the design depends on:** the whole origin loads no third-party scripts, on any page, because browser storage is per origin and a script on one page can read what another page kept. The vault code is vendored into the reader repository, not loaded from anywhere else.
 - **It is not just for the newsroom.** Every site we build needs the same thing: an account with no server, data nobody else can read, on every device. This is that, as a pattern.
 
@@ -124,17 +124,36 @@ As of October 2026, from vendor documentation and published tests (see the sourc
 
 The page checks `prf.enabled` when it creates the passkey, and never guesses: if it is false, it says so and offers another authenticator or the recovery code.
 
+### What happens in a clean browser
+
+The table above is about browsers. The question that matters to a reader is about devices: will the newsroom I opened on my laptop be the same one on my phone? That depends on where the passkey lives, which is a choice the reader made long before they met this site, usually without noticing.
+
+Where a passkey can live, what each place needs, whether the passkey travels, whether it can return the PRF bytes, and what that means for the reader. The ladder below the table is what the page offers when PRF is off.
+
+| Where the passkey lives | Needs | Travels? | PRF | What the reader gets |
+|---|---|---|---|---|
+| **Google Password Manager** (Chrome signed in, Android) | A Google account | Yes, to every device signed in to it | Yes | The same newsroom everywhere |
+| **iCloud Keychain** (Safari, iPhone, iPad, Mac) | An Apple ID | Yes, across Apple devices | Yes, Safari 18 and macOS 15 | The same newsroom on every Apple device |
+| **Windows Hello** (Windows 11) | The device; a Microsoft account to sync | Device-bound, unless synced | Yes, since February 2026 | This PC, or every PC on the account |
+| **A hardware key** (YubiKey and others) | The key, and its PIN | Yes, wherever the key is plugged in | Yes, through `hmac-secret`; not with YubiKeys in Safari | No account anywhere; a few dozen passkeys per key |
+| **Your phone, by QR** (the hybrid flow) | A passkey on the phone, in its own provider | Yes, one scan at a time | Where the phone's provider does | A clean laptop opens with the phone beside it |
+| **Chrome's own profile store** (a clean Chrome, no provider) | Nothing | No: this browser, on this computer | No, in 2026 tests | Signs, returns no bytes: the door cannot be derived |
+
+So the rule, in one line: **the same newsroom on every device needs a synced provider or a hardware key in your pocket.** A clean browser with neither gives you this device, plus the recovery code. A passkey made there still works, as a passkey; it is stored by the device, tied to that browser profile on that computer, and deleted with it. The catch for this design is the last row: Chrome's own store, used when there is no provider (a clean Chrome on Linux, or on a Mac with iCloud Keychain off), signs but returns no PRF bytes in 2026 tests, so the door cannot be derived there at all.
+
+Two things follow. The page learns which case it is in at creation, from `prf.enabled`, and never guesses. And when PRF is off, it offers a ladder, in this order: sign in to a provider, so the passkey syncs from now on; use your phone by QR, one scan at a time; plug in a hardware key; or stay on this device, where the browser's own copy keeps working and the recovery code is the way back. That is a real limitation of PRF today, not of the design, and the article would be dishonest without it. One caveat on the Chrome-profile row: it comes from a vendor's published tests, so the brief includes a five-minute check on a clean profile before anyone depends on it.
+
 ### The brief for the MVP
 
 *For the session that runs newsroom.sgit.ai. Written by the sgit.ai site session for Dinis Cruz, 11 October 2026. Dinis decides what ships, and is the first user.*
 
 1. **No sign-in.** The first screen is the passkey. Google sign-in is a later phase, on its own origin, and only for what it is good for: continuity for support, a Drive backup, a reference for purchases.
-2. **The passkey**: create with `rp.id = newsroom.sgit.ai`, a resident key, user verification required, `extensions.prf`; get with the fixed PRF input; check `prf.enabled`.
+2. **The passkey**: create with `rp.id = newsroom.sgit.ai`, a resident key, user verification required, `extensions.prf`; get with the fixed PRF input; check `prf.enabled`. When it is false, the ladder: sign in to a provider, your phone by QR, a hardware key, or this device only with the recovery code, each explained in one line.
 3. **The derivation** in part one, with test vectors shared with the sgit command line.
 4. **The vaults**: door, master, newsroom and recovery door, created with the access key, using the browser code that already reads and writes vaults, taken from the [vault web app](https://vault.sgraph.ai/) and [tools.sgraph.ai](https://tools.sgraph.ai/) and vendored into the reader repository.
 5. **The move**: the reading account from the browser's storage into the newsroom vault, as the first device's log.
 6. **The right-hand side**: once open, show the vault: the master's list of vaults and doors, and the newsroom vault's contents, so the user can see what is kept and where.
-7. **Tests**: Chromium's virtual authenticator with PRF in the build (secrets.sgit.ai found it works in Chromium 141); the first run, a new device and the recovery code, end to end; two devices editing offline and agreeing; a [synthetic reader](../articles/how-to-run-synthetic-users.md) who has never heard of a vault key.
+7. **Tests**: Chromium's virtual authenticator with PRF in the build (secrets.sgit.ai found it works in Chromium 141); the first run, a new device and the recovery code, end to end; a clean Chrome profile with no provider, to confirm what its own store returns for `prf.enabled` and that the ladder appears; two devices editing offline and agreeing; a [synthetic reader](../articles/how-to-run-synthetic-users.md) who has never heard of a vault key.
 8. **Not in the MVP**: Google sign-in, the Drive backup, sharing across sites, anything on a server of ours.
 
 The acceptance test is the experience in the second paragraph of this article: a new browser, a gesture, and my reading account, on my iPhone, my iPad, my laptops and my iMac.

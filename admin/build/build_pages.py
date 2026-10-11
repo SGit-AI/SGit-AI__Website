@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.59'
+SITE_VERSION = 'v0.7.60'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,15 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.59', '2026-10-11', 'this release',
+    ('v0.7.60', '2026-10-11', 'this release',
+     "WHAT HAPPENS IN A CLEAN BROWSER. The passkey opens the vault gains a section and a figure on where a passkey "
+     "lives and what that gives the reader: Google Password Manager and iCloud Keychain sync through the reader's own "
+     "account, Windows Hello is device-bound unless synced, a hardware key travels with no account, a phone by QR opens "
+     "a clean laptop one scan at a time, and Chrome's own profile store signs but returns no PRF bytes in 2026 tests. "
+     "The rule: the same newsroom on every device needs a synced provider or a hardware key; a clean browser gives one "
+     "device plus the recovery code. The page checks prf.enabled at creation and offers a ladder of alternatives; the "
+     "brief tests a clean profile."),
+    ('v0.7.59', '2026-10-11', 'git ad8b5b75',
      "The key-chain figure in The passkey opens the vault catches up with v0.7.58: Google sees nothing in the MVP, and "
      "the steps are numbered from the passkey."),
     ('v0.7.58', '2026-10-11', 'git cd0dbdc2',

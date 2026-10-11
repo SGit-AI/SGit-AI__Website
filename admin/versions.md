@@ -2,7 +2,7 @@
 
 > Every release of the sgit.ai site: version, date, vault commit, and changes. The version increments on every push.
 
-*Source: <https://sgit.ai/admin/versions.html> · site v0.7.59 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/admin/versions.html> · site v0.7.60 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,12 +10,14 @@
 
 # Release history
 
-The site version (**v0.7.59**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
+The site version (**v0.7.60**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
 
-| v0.7.59 | 2026-10-11 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.58...v0.7.59) | The key-chain figure in The passkey opens the vault catches up with v0.7.58: Google sees nothing in the MVP, and the steps are numbered from the passkey.[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.58...v0.7.59). |
+| v0.7.60 | 2026-10-11 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.59...v0.7.60) | WHAT HAPPENS IN A CLEAN BROWSER. The passkey opens the vault gains a section and a figure on where a passkey lives and what that gives the reader: Google Password Manager and iCloud Keychain sync through the reader's own account, Windows Hello is device-bound unless synced, a hardware key travels with no account, a phone by QR opens a clean laptop one scan at a time, and Chrome's own profile store signs but returns no PRF bytes in 2026 tests. The rule: the same newsroom on every device needs a synced provider or a hardware key; a clean browser gives one device plus the recovery code. The page checks prf.enabled at creation and offers a ladder of alternatives; the brief tests a clean profile.**Updated:**[The passkey opens the vault: touch a passkey, and a master vault for every user, with no server of ours, no account and no email](../articles/the-passkey-opens-the-vault.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.59...v0.7.60). |
+
+| v0.7.59 | 2026-10-11 | [git ad8b5b75](https://github.com/SGit-AI/SGit-AI__Website/commit/ad8b5b75) | The key-chain figure in The passkey opens the vault catches up with v0.7.58: Google sees nothing in the MVP, and the steps are numbered from the passkey.[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/ad8b5b75). |
 
 | v0.7.58 | 2026-10-11 | [git cd0dbdc2](https://github.com/SGit-AI/SGit-AI__Website/commit/cd0dbdc2) | THE PASSKEY OPENS THE VAULT, REVIEWED. The MVP is passkey-only: no Google sign-in, no OAuth, no app, no email; the page makes a discoverable credential through WebAuthn and the site learns a credential id, a public key and 32 PRF bytes. Sign-in with Google becomes a later, optional phase on its own origin. Also from the review: the unlock costs up to six PBKDF2 derivations of 600,000 iterations (measured: about 105 ms each in headless Chromium, slower on a phone) with mitigations; the passphrase is the hex of 32 bytes, since sgit accepts any printable passphrase, and only the id needs rejection sampling; the rule against third-party scripts applies to the whole origin, with the vault code vendored; the Drive backup is an availability backup wrapped under the recovery code. Two figures re-rendered. And the villager brief names the repository SGit-AI__Newsroom__API.**Updated:**[Go slow to go fast: moving the newsroom from an explorer project to a villager one, with the brief to do it](../articles/explorer-to-villager-newsroom.md), [The passkey opens the vault: touch a passkey, and a master vault for every user, with no server of ours, no account and no email](../articles/the-passkey-opens-the-vault.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/cd0dbdc2). |
 
