@@ -2,7 +2,7 @@
 
 > Every release of the sgit.ai site: version, date, vault commit, and changes. The version increments on every push.
 
-*Source: <https://sgit.ai/admin/versions.html> · site v0.7.49 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/admin/versions.html> · site v0.7.50 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,12 +10,14 @@
 
 # Release history
 
-The site version (**v0.7.49**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
+The site version (**v0.7.50**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
 
-| v0.7.49 | 2026-10-11 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.48...v0.7.49) | FOR PUBLISHERS. A new page, /publishers/, to send to journalists, publishers and anyone thinking about the future of news: what newsroom.sgit.ai is in one paragraph, how to try it in five minutes (read, rate, your account, your newsroom, read as a persona, a real £5 top-up, send your reading), a table of what is live, why it is worth their time without claiming a first, what is not done, three articles to read, and what we would like back: their reaction. Screenshots from the live newsroom (v0.7.1) on 11 October.**New:**[For publishers: a newsroom that runs, what is live and how to try it](../publishers/index.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.48...v0.7.49). |
+| v0.7.50 | 2026-10-11 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.49...v0.7.50) | ISSUE 2 ON LINKEDIN. The newsletter's second issue, how agents decide, when they stop, and a local story kept as evidence, is now published on LinkedIn in Deterministic GenAI; its page links to the LinkedIn version.[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.49...v0.7.50). |
+
+| v0.7.49 | 2026-10-11 | [git f0e452b2](https://github.com/SGit-AI/SGit-AI__Website/commit/f0e452b2) | FOR PUBLISHERS. A new page, /publishers/, to send to journalists, publishers and anyone thinking about the future of news: what newsroom.sgit.ai is in one paragraph, how to try it in five minutes (read, rate, your account, your newsroom, read as a persona, a real £5 top-up, send your reading), a table of what is live, why it is worth their time without claiming a first, what is not done, three articles to read, and what we would like back: their reaction. Screenshots from the live newsroom (v0.7.1) on 11 October.**New:**[For publishers: a newsroom that runs, what is live and how to try it](../publishers/index.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/f0e452b2). |
 
 | v0.7.48 | 2026-10-11 | [git 9844edc6](https://github.com/SGit-AI/SGit-AI__Website/commit/9844edc6) | THE NEWSLETTER, SPLIT INTO THREE ISSUES OF EIGHT. Issue 3 tried to cover all 24 articles from 9 to 11 October; that is too much for one LinkedIn post, and good articles were lost in the middle. It is now three issues, grouped by theme rather than date, each with its own narrative, collage, quotes checked word for word and LinkedIn cover, and links to the other two: Issue 3, pay after you read (the reading meter, the plan and its hypotheses, who could game it, personas, a link to a persona, agents that pay, open source); Issue 4, authority outside the model (Nadella's seven principles, the same argument in our words, Microsoft's containers, RiskMandate's ten questions, the second reader, re-anchoring, how I work with Claude, a Mac of the agent's own); Issue 5, no server by design (the browser as the application, a model in the tab, the vault keys, RFC 0001, five readers, synthetic users, the infographic bake-off, the governance stack as a graph). Issue 3 keeps its address.[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/9844edc6). |
 

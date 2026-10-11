@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.49'
+SITE_VERSION = 'v0.7.50'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,10 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.49', '2026-10-11', 'this release',
+    ('v0.7.50', '2026-10-11', 'this release',
+     "ISSUE 2 ON LINKEDIN. The newsletter's second issue, how agents decide, when they stop, and a local story kept as "
+     "evidence, is now published on LinkedIn in Deterministic GenAI; its page links to the LinkedIn version.",),
+    ('v0.7.49', '2026-10-11', 'git f0e452b2',
      "FOR PUBLISHERS. A new page, /publishers/, to send to journalists, publishers and anyone thinking about the future of "
      "news: what newsroom.sgit.ai is in one paragraph, how to try it in five minutes (read, rate, your account, your "
      "newsroom, read as a persona, a real £5 top-up, send your reading), a table of what is live, why it is worth their "

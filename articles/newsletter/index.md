@@ -2,11 +2,11 @@
 
 > The regular issue of the SGit Newsroom: what was published, what it adds up to, and the pieces worth reading, also published on LinkedIn.
 
-*Source: <https://sgit.ai/articles/newsletter/index.html> · site v0.7.49 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/newsletter/index.html> · site v0.7.50 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
-Edition of 2026-10-0873 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.49
+Edition of 2026-10-0873 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.50
 
 # The newsletter
 
@@ -44,7 +44,7 @@ Issue 22026-10-08
 
 A day of articles on deciding: what a real decision needs, why an agent that can go anywhere has no reason to stop, what happens when every mistake adds a rule, and one customer service agent built three ways to count which rules are only hoped for. Alongside, a live local story, a hospital outage nobody could check from home, kept as evidence while it was happening.
 
-8 articles
+8 articles · [on LinkedIn ↗](https://www.linkedin.com/pulse/how-agents-decide-when-stop-local-story-kept-evidence-dinis-cruz-reune/)
 
 Issue 12026-10-07
 
