@@ -2,7 +2,7 @@
 
 > Every published version of the article "Brief the agent too", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/brief-the-agent-too.html> · site v0.7.53 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/brief-the-agent-too.html> · site v0.7.54 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,7 +16,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.0.0** | 2026-10-11 | published | 2,634 | first published | this release | [current](../brief-the-agent-too.md) |
+| **v1.0.0** | 2026-10-11 | published | 2,634 | first published | [`31ed6f0de`](https://github.com/SGit-AI/SGit-AI__Website/commit/31ed6f0def8d612223eab5cc298c96e24c436301) | [current](../brief-the-agent-too.md) |
 
 [← Back to the article](../brief-the-agent-too.md) · [All articles](../index.md)
 

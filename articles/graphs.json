@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-11",
-  "site_version": "v0.7.53",
+  "site_version": "v0.7.54",
   "schema": "https://sgit.ai/articles/graphs.html",
   "topics": [
     {
@@ -54,6 +54,173 @@
     "produces"
   ],
   "articles": [
+    {
+      "slug": "i-miss-it",
+      "title": "I miss it, so it is working: the people who decide the roadmap have to use the product, and the vault the newsroom now needs",
+      "date": "2026-10-11",
+      "updated": "",
+      "url": "https://sgit.ai/articles/i-miss-it.html",
+      "markdown": "https://sgit.ai/articles/i-miss-it.md",
+      "card": "https://sgit.ai/articles/cards/i-miss-it.webp",
+      "teaser": "I read the newsroom on four devices and they do not agree. Missing a feature is the best sign; the makers must use it. And the brief for the reader's vault.",
+      "topics": [
+        "startups-and-strategy",
+        "site-and-engineering"
+      ],
+      "tags": [
+        "product",
+        "dogfooding",
+        "startups",
+        "feedback-loop",
+        "execution-speed",
+        "vaults",
+        "sync",
+        "pki",
+        "passkeys",
+        "newsroom",
+        "personas",
+        "brief",
+        "article"
+      ],
+      "links_out": [
+        "the-question-is-whether-they-miss-it",
+        "how-much-of-this-did-i-write",
+        "knowing-when-to-stop",
+        "a-reading-list-in-a-link",
+        "a-link-to-a-persona",
+        "rfc-0001-public-key-cryptography-for-sgit",
+        "how-to-run-synthetic-users",
+        "no-server-by-design",
+        "where-the-vault-keys-live"
+      ],
+      "links_in": [],
+      "graph": {
+        "slug": "i-miss-it",
+        "teaser": "I read the newsroom on four devices and they do not agree. Missing a feature is the best sign; the makers must use it. And the brief for the reader's vault.",
+        "topics": [
+          "startups-and-strategy",
+          "site-and-engineering"
+        ],
+        "core_idea": "The people who decide a roadmap have to use the product: they give the best feedback and direction, and when they do not use it, something is missing. Dinis failed that test with earlier startups and the vaults now pass it, getting better because they are used. With agents able to build almost anything, direction from usage is the scarce part, and the speed of the loop from comment to article to feature is the moat. Reading the newsroom on four devices that do not agree is the signal for the next feature: the reader's own encrypted vault, with an access key, a key pair, a log per device merged by union, a way to add a device, and a one-way line to the agent that edits the site.",
+        "nodes": [
+          {
+            "id": "miss",
+            "label": "Whether they miss it",
+            "kind": "concept",
+            "summary": "The test applies to the makers as much as the customers."
+          },
+          {
+            "id": "makers",
+            "label": "Makers as users",
+            "kind": "claim",
+            "summary": "Developers, product owners and founders use it daily, on real work."
+          },
+          {
+            "id": "failed",
+            "label": "Good ideas I did not use",
+            "kind": "example",
+            "summary": "The Cyber Boardroom, MyFeeds and early sgit: the signal I missed."
+          },
+          {
+            "id": "vaults",
+            "label": "The vaults pass the test",
+            "kind": "example",
+            "summary": "Created all the time by me and my agents; 54 published; better because used."
+          },
+          {
+            "id": "direction",
+            "label": "Direction is the scarce part",
+            "kind": "claim",
+            "summary": "Agents can build almost anything; usage supplies direction, context and focus."
+          },
+          {
+            "id": "moat",
+            "label": "The loop is the moat",
+            "kind": "claim",
+            "summary": "Comment, article, feature: 81 minutes for the reading list."
+          },
+          {
+            "id": "devices",
+            "label": "Four devices, four newsrooms",
+            "kind": "example",
+            "summary": "Separate balances, personas and histories in each browser."
+          },
+          {
+            "id": "vault",
+            "label": "The reader's own vault",
+            "kind": "method",
+            "summary": "Access key, key pair, a log per device merged by union, add a device, a line to the agent."
+          }
+        ],
+        "edges": [
+          {
+            "from": "miss",
+            "to": "makers",
+            "rel": "leads-to"
+          },
+          {
+            "from": "failed",
+            "to": "makers",
+            "rel": "example-of"
+          },
+          {
+            "from": "vaults",
+            "to": "makers",
+            "rel": "example-of"
+          },
+          {
+            "from": "makers",
+            "to": "direction",
+            "rel": "produces"
+          },
+          {
+            "from": "direction",
+            "to": "moat",
+            "rel": "leads-to"
+          },
+          {
+            "from": "devices",
+            "to": "vault",
+            "rel": "leads-to"
+          },
+          {
+            "from": "miss",
+            "to": "devices",
+            "rel": "example-of"
+          }
+        ],
+        "links": {
+          "articles": [
+            "the-question-is-whether-they-miss-it",
+            "knowing-when-to-stop",
+            "how-much-of-this-did-i-write",
+            "a-reading-list-in-a-link",
+            "a-link-to-a-persona",
+            "no-server-by-design",
+            "where-the-vault-keys-live",
+            "rfc-0001-public-key-cryptography-for-sgit",
+            "how-to-run-synthetic-users"
+          ],
+          "pages": [],
+          "sites": [
+            "https://vault.sgraph.ai/",
+            "https://tools.sgraph.ai/",
+            "https://secrets.sgit.ai/",
+            "https://newsroom.sgit.ai/account/share.html"
+          ]
+        },
+        "quotes": [
+          {
+            "text": "Momentum does not come from the plan. It comes from use.",
+            "why": "Why releasing and using matter."
+          },
+          {
+            "text": "if I have access, I can customise it, I can do a lot with it, and I still do not use it, then something is missing.",
+            "why": "The test, applied to the makers."
+          }
+        ]
+      }
+    },
     {
       "slug": "brief-the-agent-too",
       "title": "Brief the agent too: the people I talk to work with agents, so what I send has to reach both",
@@ -267,6 +434,7 @@
         "the-same-argument-in-our-words"
       ],
       "links_in": [
+        "i-miss-it",
         "brief-the-agent-too"
       ],
       "graph": {
@@ -645,6 +813,7 @@
         "chat-on-a-static-site"
       ],
       "links_in": [
+        "i-miss-it",
         "a-reading-list-in-a-link",
         "a-model-in-the-tab"
       ],
@@ -1641,6 +1810,7 @@
         "a-link-to-a-persona"
       ],
       "links_in": [
+        "i-miss-it",
         "a-reading-list-in-a-link",
         "a-model-in-the-tab",
         "no-server-by-design",
@@ -1835,6 +2005,7 @@
         "pay-to-keep-your-persona"
       ],
       "links_in": [
+        "i-miss-it",
         "brief-the-agent-too",
         "a-reading-list-in-a-link",
         "no-server-by-design",
@@ -2221,6 +2392,7 @@
         "a-personal-agent-that-keeps-your-secrets"
       ],
       "links_in": [
+        "i-miss-it",
         "no-server-by-design",
         "authority-outside-the-model"
       ],
@@ -4374,6 +4546,7 @@
         "encrypted-memory-for-isolated-agents"
       ],
       "links_in": [
+        "i-miss-it",
         "a-reading-list-in-a-link",
         "the-agent-is-the-reader",
         "where-the-vault-keys-live"
@@ -5692,6 +5865,7 @@
         "the-agent-team-as-it-runs"
       ],
       "links_in": [
+        "i-miss-it",
         "the-same-argument-in-our-words",
         "riskmandate-ten-questions"
       ],
@@ -10358,6 +10532,7 @@
         "the-wall-under-the-reply"
       ],
       "links_in": [
+        "i-miss-it",
         "knowing-when-to-stop",
         "agency-is-not-a-yes",
         "liquid-content-needs-water",
@@ -15350,6 +15525,7 @@
         "price-it-then-give-it-away"
       ],
       "links_in": [
+        "i-miss-it",
         "going-live-with-the-reading-meter",
         "a-meter-in-the-browser",
         "if-somebody-built-a-company-on-code-review",

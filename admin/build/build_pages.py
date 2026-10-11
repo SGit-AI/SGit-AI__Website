@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.53'
+SITE_VERSION = 'v0.7.54'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,14 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.53', '2026-10-11', 'this release',
+    ('v0.7.54', '2026-10-11', 'this release',
+     "I MISS IT, SO IT IS WORKING. Reading the newsroom on four devices that do not agree is the best signal this week. "
+     "The people who decide the roadmap have to use the product; Dinis failed that test with earlier good ideas and the "
+     "vaults now pass it; with agents that can build almost anything, direction from usage is the scarce part, and the "
+     "loop is the moat. Ends with the brief for the feature he misses: the reader's own encrypted vault on the newsroom "
+     "(access key, key pair, a log per device merged by union, add a device, a one-way line to the agent that edits the "
+     "site). Two figures."),
+    ('v0.7.53', '2026-10-11', 'git 31ed6f0d',
      "BRIEF THE AGENT TOO. The reading list went live on the newsroom 81 minutes after its brief; this article is about "
      "what it is missing. The people Dinis mentors and advises read through agents: a founder's agent, given an article "
      "on threat tiers, saw the team defending against states with no backups and reset the target to T3. The routes a "
