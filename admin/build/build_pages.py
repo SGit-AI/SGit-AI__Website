@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.44'
+SITE_VERSION = 'v0.7.45'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,13 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.44', '2026-10-11', 'this release',
+    ('v0.7.45', '2026-10-11', 'this release',
+     "PAYMENTS ARE LIVE. The £5 Stripe payment link is set on newsroom.sgit.ai (newsroom v0.6.3), so the top-up is no "
+     "longer the simulated cart. No server, by design now says so (the table, the limits and the architecture figure, "
+     "a few hours after v0.7.44 said the link was not set yet); Pay after you read and Going live with the reading meter "
+     "get dated update notes: the eight-week clock has started, and the review of the hypotheses is on 6 December 2026. "
+     "Also plainer wording in No server, by design: the database and the back end are retired, not got rid of."),
+    ('v0.7.44', '2026-10-11', 'git 1f924000',
      "NO SERVER, BY DESIGN. First the database went (the file system is the database; LETS), now the back end: the SGit "
      "Newsroom's personas, meter, payment on-ramp, private reading area, encrypted sharing and in-browser databases all run "
      "in the reader's browser, against commodity servers, the one holding reader data storing only ciphertext. The "

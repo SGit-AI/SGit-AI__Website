@@ -1,6 +1,7 @@
 ---
 title: Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time
 date: 2026-10-10
+updated: 2026-10-11
 author: Dinis Cruz
 author_url: about/index.html
 summary: On 10 October the reading meter on sgit.ai went, in seven releases between 12:09 and 15:49, from an experiment to a working pay-on-demand publication. A reader pays pence for the share of a page they actually read, from a balance that can go below zero without ever blocking them; after reading, they say how useful it was, and that sets the price, from free to double; their reading builds personas and a newsroom of their own, kept in their browser; and they can send it to us, encrypted, for a front page designed for them. Once a Stripe link is set, the only question left is whether people pay. This article introduces each feature, shows how each one grew out of the last, with a Wardley map that adds them one at a time, explains why paying after you see the value is the right way round, and why every decision started from one rule: do not rip off the reader. It ends with an offer to sites with traffic that would like to test it.
@@ -147,7 +148,7 @@ What exists and runs: a price for every page; metering by depth; a balance that 
 
 What does not exist yet:
 
-- **The Stripe link itself.** Until it is set, readers see the simulated top-up, and the eight-week clock has not started.
+- **The Stripe link itself.** Until it is set, readers see the simulated top-up, and the eight-week clock has not started. *Update, 11 October 2026: the link is set and payments are live on [newsroom.sgit.ai](https://newsroom.sgit.ai/account/top-up.html), so the clock has started.*
 - **Payment verification.** A static site cannot receive Stripe's confirmation, so the return page credits without checking it, and says so. That is accepted, because the cost of someone faking a top-up is that they read more of our articles.
 - **Your reading on more than one device.** Everything lives in one browser; a new device starts again unless you export. The answer is a persona in your own encrypted vault, which follows you and your agent, and which we cannot read. That is the next step, and it is why the vault matters.
 - **The accounting side of real money**: receipts, and the obligations that come once revenue is material.

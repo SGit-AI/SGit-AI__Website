@@ -1,6 +1,7 @@
 ---
 title: Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks
 date: 2026-10-10
+updated: 2026-10-11
 time: 15:00
 author: Dinis Cruz
 author_url: about/index.html
@@ -103,7 +104,7 @@ The pattern is the one this meter is built around. Remove the force and many mor
 
 ## The anchors: what we expect, and what would prove us wrong
 
-Written now, before there is a single payment, so that we cannot move the goalposts later. The clock starts when the Stripe link goes live; the review is eight weeks after that. If the link goes live today, that is **5 December 2026**.
+Written now, before there is a single payment, so that we cannot move the goalposts later. The clock starts when the Stripe link goes live; the review is eight weeks after that. If the link goes live today, that is **5 December 2026**. *Update, 11 October 2026: the link went live on newsroom.sgit.ai today, so the review is on **6 December 2026**.*
 
 | # | Hypothesis | We expect | Proved wrong if |
 |---|---|---|---|
