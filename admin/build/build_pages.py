@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.54'
+SITE_VERSION = 'v0.7.55'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,14 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.54', '2026-10-11', 'this release',
+    ('v0.7.55', '2026-10-11', 'this release',
+     "THE PASSKEY OPENS THE VAULT. The design for a client-side account: Sign in with Google for who you are, a passkey "
+     "with the WebAuthn PRF extension for what you can open, and a master vault per user. Where the vault key is stored: "
+     "nowhere; sgit vault keys are made in the client, so a door vault's key and id are derived from the PRF bytes, and "
+     "the door holds the master key. Recovery code, flows, vault layout, security (no third-party scripts where keys "
+     "live; the relying party ID as a trust boundary), PRF support in 2026, the MVP brief for newsroom.sgit.ai, and what "
+     "it enables for any static site. Three figures."),
+    ('v0.7.54', '2026-10-11', 'git dc849dad',
      "I MISS IT, SO IT IS WORKING. Reading the newsroom on four devices that do not agree is the best signal this week. "
      "The people who decide the roadmap have to use the product; Dinis failed that test with earlier good ideas and the "
      "vaults now pass it; with agents that can build almost anything, direction from usage is the scarce part, and the "

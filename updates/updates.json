@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-11",
-  "site_version": "v0.7.54",
+  "site_version": "v0.7.55",
   "updates": [
     {
       "slug": "sgit-ai-0-21-0",
@@ -971,6 +971,27 @@
     }
   ],
   "articles": [
+    {
+      "slug": "the-passkey-opens-the-vault",
+      "title": "The passkey opens the vault: sign in with Google, touch a passkey, and a master vault for every user, with no server of ours",
+      "date": "2026-10-11",
+      "version": "v0.7.55",
+      "tags": [
+        "passkeys",
+        "webauthn",
+        "prf",
+        "vaults",
+        "key-management",
+        "google-sign-in",
+        "client-side",
+        "newsroom",
+        "architecture",
+        "brief",
+        "secrets",
+        "article"
+      ],
+      "summary": "The missing piece of the client-side puzzle is a user who can open their own vaults on any device, in a few seconds, with nothing to remember. This is the design. Sign in with Google says who you are. A passkey, through the WebAuthn PRF extension, gives the browser 32 bytes that only your authenticator can produce for this site, and from those bytes the browser computes the key of a small door vault, which holds the key of your master vault, which holds the keys of everything else, starting with your newsroom vault. The question I could not answer, where the encrypted vault key is stored, has a simple answer: nowhere. sgit vault keys are made in the client, so the door's key and its id can be computed from the passkey on any device, before anything is fetched, and there is no chicken and egg. A recovery code makes a second door to the same master. Google holds no key; its Drive app-data folder can keep a backup. PRF is now supported by Google Password Manager, iCloud Keychain, Windows Hello and Firefox. The first part is the technical design and the brief for the MVP on newsroom.sgit.ai, end to end; the second is what it enables: accounts with no server, for this site and for any other."
+    },
     {
       "slug": "i-miss-it",
       "title": "I miss it, so it is working: the people who decide the roadmap have to use the product, and the vault the newsroom now needs",

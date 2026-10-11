@@ -6,6 +6,23 @@
  "generated_by": "admin/build/build_pages.py",
  "entries": [
   {
+   "slug": "the-passkey-opens-the-vault",
+   "kind": "article",
+   "kicker": "SGit Newsroom",
+   "date": "2026-10-11",
+   "author": "Dinis Cruz",
+   "title": "The passkey opens the vault: sign in with Google, touch a passkey, and a master vault for every user, with no server of ours",
+   "teaser": "Sign in with Google says who you are; a passkey's PRF bytes derive a door vault, which opens your master vault. No key is stored anywhere.",
+   "ideas": [
+    "Where the key lives: nowhere",
+    "No third-party scripts where keys live",
+    "Accounts with no server"
+   ],
+   "hero": "articles/images/pk-chain.webp",
+   "url": "sgit.ai/articles/the-passkey-opens-the-vault.html",
+   "out": "articles/banners/the-passkey-opens-the-vault.jpg"
+  },
+  {
    "slug": "i-miss-it",
    "kind": "article",
    "kicker": "SGit Newsroom",
@@ -1421,10 +1438,10 @@
     "Next: an issue picked for what you care about"
    ],
    "mosaic": [
+    "articles/cards/the-passkey-opens-the-vault.webp",
     "articles/cards/i-miss-it.webp",
     "articles/cards/brief-the-agent-too.webp",
-    "articles/cards/a-reading-list-in-a-link.webp",
-    "articles/cards/a-model-in-the-tab.webp"
+    "articles/cards/a-reading-list-in-a-link.webp"
    ],
    "url": "sgit.ai/subscribe/",
    "out": "articles/banners/subscribe.jpg"

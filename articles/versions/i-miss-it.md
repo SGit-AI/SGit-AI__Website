@@ -2,7 +2,7 @@
 
 > Every published version of the article "I miss it, so it is working", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/i-miss-it.html> · site v0.7.54 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/i-miss-it.html> · site v0.7.55 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,7 +16,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.0.0** | 2026-10-11 | published | 2,663 | first published | this release | [current](../i-miss-it.md) |
+| **v1.0.0** | 2026-10-11 | published | 2,663 | first published | [`dc849dad1`](https://github.com/SGit-AI/SGit-AI__Website/commit/dc849dad178ca746b63b8188038c1e142ee343fb) | [current](../i-miss-it.md) |
 
 [← Back to the article](../i-miss-it.md) · [All articles](../index.md)
 

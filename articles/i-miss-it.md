@@ -2,7 +2,7 @@
 
 > I read the newsroom on my iPhone, my iPad, my laptops and my iMac, and they do not agree: four balances, four sets of personas, four reading histories. I miss a feature, and that is the best news this week. The test I keep coming back to, from For a startup, the most important question is whether they miss it, applies to the people who build a product too: if they have access, can change it, and still do not use it, something is missing, and it is not the code. I failed that test with good ideas before, The Cyber Boardroom and MyFeeds among them. The vaults pass it now: I create them all the time, my agents create them, and they are getting good because they are used. And when the people who decide the roadmap are users, the next feature announces itself; with agents that can build almost anything, that sense of direction is the scarce part, and the speed of the loop, from a comment to an article to a feature, is the moat. This article makes that case, and ends with the brief for the feature I miss: the reader's own encrypted vault on the newsroom, with an access key, a key pair for signing and receiving, a log per device that merges without conflict, adding a device, and a one-way line to the agent that edits the site.
 
-*Source: <https://sgit.ai/articles/i-miss-it.html> · site v0.7.54 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/i-miss-it.html> · site v0.7.55 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -137,6 +137,10 @@ Startups & strategySite & engineering[This article as a graph →](graphs.md#i-m
 - [How to run synthetic users on your own site: five people who do not exist, a browser, and an afternoon](how-to-run-synthetic-users.md) Five invented users, a model reading screenshots, and a real browser: how to run synthetic users, from three studies.
 - [No server, by design: first I retired the database, now I am retiring the back end](no-server-by-design.md) First the database went, now the back end: the SGit Newsroom runs all its logic in the browser, on commodity servers that cannot read your data.
 - [Where the vault keys live: key management at sgit-ai v0.20.0, and what comes next](where-the-vault-keys-live.md) Vault key management at sgit-ai v0.20.0: the one secret, where keys are kept, how they travel sealed on append lanes, and what comes next.
+
+### Continued by
+
+- [The passkey opens the vault: sign in with Google, touch a passkey, and a master vault for every user, with no server of ours](the-passkey-opens-the-vault.md) Sign in with Google says who you are; a passkey's PRF bytes derive a door vault, which opens your master vault. No key is stored anywhere.
 
 [All articles](index.md) · [All graphs](graphs.md)
 

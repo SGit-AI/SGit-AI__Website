@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-11",
-  "site_version": "v0.7.54",
+  "site_version": "v0.7.55",
   "schema": "https://sgit.ai/articles/graphs.html",
   "topics": [
     {
@@ -55,6 +55,177 @@
   ],
   "articles": [
     {
+      "slug": "the-passkey-opens-the-vault",
+      "title": "The passkey opens the vault: sign in with Google, touch a passkey, and a master vault for every user, with no server of ours",
+      "date": "2026-10-11",
+      "updated": "",
+      "url": "https://sgit.ai/articles/the-passkey-opens-the-vault.html",
+      "markdown": "https://sgit.ai/articles/the-passkey-opens-the-vault.md",
+      "card": "https://sgit.ai/articles/cards/the-passkey-opens-the-vault.webp",
+      "teaser": "Sign in with Google says who you are; a passkey's PRF bytes derive a door vault, which opens your master vault. No key is stored anywhere.",
+      "topics": [
+        "vaults-and-method",
+        "site-and-engineering"
+      ],
+      "tags": [
+        "passkeys",
+        "webauthn",
+        "prf",
+        "vaults",
+        "key-management",
+        "google-sign-in",
+        "client-side",
+        "newsroom",
+        "architecture",
+        "brief",
+        "secrets",
+        "article"
+      ],
+      "links_out": [
+        "i-miss-it",
+        "no-server-by-design",
+        "how-to-run-synthetic-users",
+        "rfc-0001-public-key-cryptography-for-sgit",
+        "pay-after-you-read",
+        "where-the-vault-keys-live"
+      ],
+      "links_in": [],
+      "graph": {
+        "slug": "the-passkey-opens-the-vault",
+        "teaser": "Sign in with Google says who you are; a passkey's PRF bytes derive a door vault, which opens your master vault. No key is stored anywhere.",
+        "topics": [
+          "vaults-and-method",
+          "site-and-engineering"
+        ],
+        "core_idea": "An end-to-end, client-side account: Sign in with Google for identity, a passkey with the WebAuthn PRF extension for 32 bytes only the user's authenticator can produce for the site, and sgit vaults. Because sgit vault keys are made in the client, the browser derives a door vault's key and id from the PRF bytes with HKDF, so nothing has to be stored or found first; the door holds the master vault key, and the master holds the keys of the user's other vaults, the access key, a key pair and the list of doors. A 128-bit recovery code derives a recovery door. Google holds no key; Drive's app-data folder can keep a backup. PRF works in Google Password Manager, iCloud Keychain, Windows Hello and Firefox. The page that holds keys loads no third-party scripts. The pattern gives any static site accounts with no server and data the operator cannot read.",
+        "nodes": [
+          {
+            "id": "google",
+            "label": "Sign in with Google",
+            "kind": "concept",
+            "summary": "Who you are; ties purchases to you; holds no key."
+          },
+          {
+            "id": "prf",
+            "label": "Passkey with PRF",
+            "kind": "concept",
+            "summary": "32 bytes only your authenticator produces for this site, the same on synced devices."
+          },
+          {
+            "id": "door",
+            "label": "A derived door vault",
+            "kind": "method",
+            "summary": "Key and id computed from the PRF bytes with HKDF; holds the master key."
+          },
+          {
+            "id": "master",
+            "label": "The master vault",
+            "kind": "artefact",
+            "summary": "Keys of other vaults, the access key, a key pair, the list of doors."
+          },
+          {
+            "id": "nowhere",
+            "label": "Where the key lives: nowhere",
+            "kind": "claim",
+            "summary": "sgit keys are made in the client, so the door is computed, not stored."
+          },
+          {
+            "id": "recovery",
+            "label": "The recovery code",
+            "kind": "method",
+            "summary": "128 bits, shown once; derives a recovery door to the same master."
+          },
+          {
+            "id": "noscripts",
+            "label": "No third-party scripts where keys live",
+            "kind": "claim",
+            "summary": "Sign-in runs on its own page; the unlock page loads nothing it did not build."
+          },
+          {
+            "id": "support",
+            "label": "PRF support in 2026",
+            "kind": "example",
+            "summary": "Google Password Manager, iCloud Keychain, Windows Hello, Firefox."
+          },
+          {
+            "id": "enables",
+            "label": "Accounts with no server",
+            "kind": "claim",
+            "summary": "Any static site: sign in, open your own data on any device, unreadable by the operator."
+          }
+        ],
+        "edges": [
+          {
+            "from": "prf",
+            "to": "door",
+            "rel": "produces"
+          },
+          {
+            "from": "nowhere",
+            "to": "door",
+            "rel": "answers"
+          },
+          {
+            "from": "door",
+            "to": "master",
+            "rel": "leads-to"
+          },
+          {
+            "from": "recovery",
+            "to": "master",
+            "rel": "leads-to"
+          },
+          {
+            "from": "google",
+            "to": "prf",
+            "rel": "contrasts"
+          },
+          {
+            "from": "noscripts",
+            "to": "door",
+            "rel": "depends-on"
+          },
+          {
+            "from": "support",
+            "to": "prf",
+            "rel": "example-of"
+          },
+          {
+            "from": "master",
+            "to": "enables",
+            "rel": "produces"
+          }
+        ],
+        "links": {
+          "articles": [
+            "i-miss-it",
+            "no-server-by-design",
+            "where-the-vault-keys-live",
+            "rfc-0001-public-key-cryptography-for-sgit",
+            "how-to-run-synthetic-users",
+            "pay-after-you-read"
+          ],
+          "pages": [],
+          "sites": [
+            "https://secrets.sgit.ai/",
+            "https://www.corbado.com/blog/passkeys-prf-webauthn",
+            "https://web.dev/articles/webauthn-related-origin-requests",
+            "https://developers.google.com/workspace/drive/api/guides/api-specific-auth"
+          ]
+        },
+        "quotes": [
+          {
+            "text": "The short answer, after the research, is that it is not kept anywhere. It is computed.",
+            "why": "The answer to where the vault key lives."
+          },
+          {
+            "text": "Sign in with Google and the passkey are two separate steps, for two separate jobs: who you are, and what you can open.",
+            "why": "The distinction the design rests on."
+          }
+        ]
+      }
+    },
+    {
       "slug": "i-miss-it",
       "title": "I miss it, so it is working: the people who decide the roadmap have to use the product, and the vault the newsroom now needs",
       "date": "2026-10-11",
@@ -93,7 +264,9 @@
         "no-server-by-design",
         "where-the-vault-keys-live"
       ],
-      "links_in": [],
+      "links_in": [
+        "the-passkey-opens-the-vault"
+      ],
       "graph": {
         "slug": "i-miss-it",
         "teaser": "I read the newsroom on four devices and they do not agree. Missing a feature is the best sign; the makers must use it. And the brief for the reader's vault.",
@@ -813,6 +986,7 @@
         "chat-on-a-static-site"
       ],
       "links_in": [
+        "the-passkey-opens-the-vault",
         "i-miss-it",
         "a-reading-list-in-a-link",
         "a-model-in-the-tab"
@@ -1810,6 +1984,7 @@
         "a-link-to-a-persona"
       ],
       "links_in": [
+        "the-passkey-opens-the-vault",
         "i-miss-it",
         "a-reading-list-in-a-link",
         "a-model-in-the-tab",
@@ -2201,6 +2376,7 @@
         "pay-to-keep-your-persona"
       ],
       "links_in": [
+        "the-passkey-opens-the-vault",
         "no-server-by-design",
         "the-agent-is-the-reader"
       ],
@@ -2392,6 +2568,7 @@
         "a-personal-agent-that-keeps-your-secrets"
       ],
       "links_in": [
+        "the-passkey-opens-the-vault",
         "i-miss-it",
         "no-server-by-design",
         "authority-outside-the-model"
@@ -4546,6 +4723,7 @@
         "encrypted-memory-for-isolated-agents"
       ],
       "links_in": [
+        "the-passkey-opens-the-vault",
         "i-miss-it",
         "a-reading-list-in-a-link",
         "the-agent-is-the-reader",
