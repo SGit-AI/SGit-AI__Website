@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.45'
+SITE_VERSION = 'v0.7.46'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,16 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.45', '2026-10-11', 'this release',
+    ('v0.7.46', '2026-10-11', 'this release',
+     "A MODEL IN THE TAB. Chrome 148 (5 May 2026) lets any page prompt Gemini Nano on the reader's own machine: the "
+     "hardest piece of the client-side pattern from No server, by design. A briefing on the built-in AI APIs and their "
+     "status, what the Prompt API accepts and returns, the hardware it needs and the model's lifecycle; why a first run "
+     "felt so rough (the download never stopped, the page lost the progress bar); why there are so few examples; the "
+     "objections from Mozilla, WebKit, the W3C TAG and Microsoft, taken seriously; why a small model fits anchored graph "
+     "slices; and a map of what to build first. Drafted in a separate session from a voice memo; a last pass here for "
+     "plainer wording and one correction (in-browser models existed before; the browser now supplies one for every site). "
+     "Four figures. A vault with measurements follows."),
+    ('v0.7.45', '2026-10-11', 'git a3c4b52c',
      "PAYMENTS ARE LIVE. The £5 Stripe payment link is set on newsroom.sgit.ai (newsroom v0.6.3), so the top-up is no "
      "longer the simulated cart. No server, by design now says so (the table, the limits and the architecture figure, "
      "a few hours after v0.7.44 said the link was not set yet); Pay after you read and Going live with the reading meter "
