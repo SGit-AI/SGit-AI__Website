@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.43'
+SITE_VERSION = 'v0.7.44'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,17 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.43', '2026-10-11', 'this release',
+    ('v0.7.44', '2026-10-11', 'this release',
+     "NO SERVER, BY DESIGN. First the database went (the file system is the database; LETS), now the back end: the SGit "
+     "Newsroom's personas, meter, payment on-ramp, private reading area, encrypted sharing and in-browser databases all run "
+     "in the reader's browser, against commodity servers, the one holding reader data storing only ciphertext. The "
+     "constraint that designed it, the accepted security gaps and what a server would cost to close each, scaling without "
+     "the complexity scaling, open source as the reason technology gets thrown away, 114 releases in eleven days "
+     "(published as data), sovereignty, privacy, explainability and determinism, and how far it can be pushed. Drafted in "
+     "a separate session from two voice memos, rewritten in the site's voice. Two corrections from checking the live "
+     "site: the payment link is not set yet (the top-up is still simulated) and client-side sign-in is next, not shipped; "
+     "the architecture figure is re-rendered to say so."),
+    ('v0.7.43', '2026-10-11', 'git 56b7cfbf',
      "THE AGENT IS THE READER. The follow-up to One article, five readers, with the numbers: what the five readers built, "
      "in tokens (the catalogue is 2.8 times the articles; a question answered from the graph is a median of 2,579 tokens "
      "against 25,698, 90% less, across all 45 concepts); the readers checking each other, and the cost of each pass; the "

@@ -971,6 +971,7 @@
    "words": 911
   }
  ],
+ "no-server-by-design": [],
  "one-article-five-readers": [
   {
    "commit": "f1c358a02",
@@ -981,6 +982,16 @@
    "subject": "site v0.7.24: one article, five readers (multi-view articles, with the Article Views vault)",
    "version": "v1.0.0",
    "words": 4034
+  },
+  {
+   "commit": "56b7cfbf0",
+   "date": "2026-10-11",
+   "full": "56b7cfbf0e7efe020ad9ece77f575053d9c47c6d",
+   "kind": "minor",
+   "path": "admin/content/articles/one-article-five-readers.md",
+   "subject": "site v0.7.43: the agent is the reader (agents pay for graphs, personas and signed claims because it is cheaper)",
+   "version": "v1.1.0",
+   "words": 4045
   }
  ],
  "open-source-is-not-free": [
@@ -1575,7 +1586,18 @@
    "words": 5030
   }
  ],
- "the-agent-is-the-reader": [],
+ "the-agent-is-the-reader": [
+  {
+   "commit": "56b7cfbf0",
+   "date": "2026-10-11",
+   "full": "56b7cfbf0e7efe020ad9ece77f575053d9c47c6d",
+   "kind": "published",
+   "path": "admin/content/articles/the-agent-is-the-reader.md",
+   "subject": "site v0.7.43: the agent is the reader (agents pay for graphs, personas and signed claims because it is cheaper)",
+   "version": "v1.0.0",
+   "words": 4946
+  }
+ ],
  "the-agent-team-as-it-runs": [
   {
    "commit": "83369caed",

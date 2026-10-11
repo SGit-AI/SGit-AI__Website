@@ -6,6 +6,23 @@
  "generated_by": "admin/build/build_pages.py",
  "entries": [
   {
+   "slug": "no-server-by-design",
+   "kind": "article",
+   "kicker": "SGit Newsroom",
+   "date": "2026-10-11",
+   "author": "Dinis Cruz",
+   "title": "No server, by design: first I got rid of the database, now I am getting rid of the back end",
+   "teaser": "First the database went, now the back end: the SGit Newsroom runs all its logic in the browser, on commodity servers that cannot read your data.",
+   "ideas": [
+    "No back end",
+    "Commodity servers, not no servers",
+    "Scales without complexity scaling"
+   ],
+   "hero": "articles/images/ns-architecture.webp",
+   "url": "sgit.ai/articles/no-server-by-design.html",
+   "out": "articles/banners/no-server-by-design.jpg"
+  },
+  {
    "slug": "the-agent-is-the-reader",
    "kind": "article",
    "kicker": "SGit Newsroom",
@@ -1270,10 +1287,10 @@
     "Next: an issue picked for what you care about"
    ],
    "mosaic": [
+    "articles/cards/no-server-by-design.webp",
     "articles/cards/the-agent-is-the-reader.webp",
     "articles/cards/where-the-platform-draws-the-line.webp",
-    "articles/cards/the-same-argument-in-our-words.webp",
-    "articles/cards/authority-outside-the-model.webp"
+    "articles/cards/the-same-argument-in-our-words.webp"
    ],
    "url": "sgit.ai/subscribe/",
    "out": "articles/banners/subscribe.jpg"

@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.43 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.44 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,13 +14,41 @@ Every article here has a semantic graph beside it: the ideas it rests on, the cl
 
 The graphs are data first and pictures second. Take them as JSON: [all articles in one file](graphs.json), with the topics, the teasers and the links between articles resolved, or one file per article at `articles/graphs/<slug>.json` (for example [this one](graphs/footprint-and-blast-radius.json)). The pages on this site are rendered from the same files at build time; nothing here is hand-written HTML.
 
-71 of 71 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
+72 of 72 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
 
 ## How the articles connect
 
 *[diagram]*
 
-71 articles, 327 links between them (532 mentions in all). 62 articles cite an earlier one; 10 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (21 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+72 articles, 337 links between them (551 mentions in all). 63 articles cite an earlier one; 10 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (21 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+
+## [No server, by design: first I got rid of the database, now I am getting rid of the back end](no-server-by-design.md)
+
+2026-10-11 · Site & engineeringVaults & method
+
+After replacing the database with the file system (LETS), the next step is removing the back end: encrypted vaults make the server blind, so the application moves to the browser, leaving only commodity products on the server side; the security gaps this leaves are written down and accepted because they do not match the threat, and the result scales without its complexity scaling and ships as files.
+
+*[diagram]*
+**concept**claim**method**example**question
+
+**10 nodes, 11 edges**
+
+- **The file system is the database** (method) LETS: load, extract, transform, save; every state a file you can version and read.
+- **No back end** (claim) All application logic runs in the reader's browser.
+- **A blind server** (concept) Vaults are encrypted in the client, so anything that reads data must run where the key is.
+- **Commodity servers, not no servers** (claim) Static hosting, a ciphertext store, a payment link, DNS and CI, with a sign-in provider next, all products.
+- **The SGit Newsroom** (example) Personas, a reading meter, a payment on-ramp, a newsroom of your own, encrypted sharing, in-browser databases.
+- **Gaps written down and accepted** (method) SG Meter's security model: every cheat changes a number only the cheater sees.
+- **Scales without complexity scaling** (claim) More readers add bandwidth against cached files, not moving parts.
+- **A release is a set of files** (example) 114 releases in eleven days; the meter in seven releases in an afternoon.
+- **Sovereignty, privacy, explainability, determinism** (concept) The pattern's properties, not its policies.
+- **How far can it be pushed?** (question) Secrets the reader must not hold are the honest boundary.
+
+> Encryption came first, and the client-side architecture followed, because there was nowhere else for the logic to go. The constraint that designed it.
+
+> First the database went, and the work got simpler. Now the back end is going, and the work is getting faster. The pattern in two sentences.
+
+builds on [Where the vault keys live: key management at sgit-ai v0.20.0, and what comes next](#where-the-vault-keys-live), [A link to a persona: send people to the newsroom as someone, not as nobody](#a-link-to-a-persona), [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](#pay-to-keep-your-persona), [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time](#pay-after-you-read), [Every mistake added a rule: complexity, agents, and the way back to shipping](#every-mistake-added-a-rule), [Who are you protecting against? Draw the security line where the attacker is, not above it](#who-are-you-protecting-against), [How to run synthetic users on your own site: five people who do not exist, a browser, and an afternoon](#how-to-run-synthetic-users), [Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes](#encrypted-memory-for-isolated-agents), [A chat box on a site with no server, the plan, and the trade it makes](#chat-on-a-static-site).
 
 ## [The agent is the reader: why agents will pay for graphs, personas and signed claims, because it is cheaper than not paying](the-agent-is-the-reader.md)
 
@@ -159,7 +187,7 @@ Synthetic users are invented people, each a record with a situation, a question,
 
 > A findings list that silently loses items cannot be compared with the next one. Why artefacts are labelled, not deleted.
 
-builds on [A link to a persona: send people to the newsroom as someone, not as nobody](#a-link-to-a-persona); continued by [Where the platform draws the line: Microsoft Execution Containers, the shared responsibility model for agents, and the business logic above it](#where-the-platform-draws-the-line), [Authority outside the model: an answer to Satya Nadella on models as insider risks, principle by principle, with what we run, what we ship and what we plan](#authority-outside-the-model).
+builds on [A link to a persona: send people to the newsroom as someone, not as nobody](#a-link-to-a-persona); continued by [No server, by design: first I got rid of the database, now I am getting rid of the back end](#no-server-by-design), [Where the platform draws the line: Microsoft Execution Containers, the shared responsibility model for agents, and the business logic above it](#where-the-platform-draws-the-line), [Authority outside the model: an answer to Satya Nadella on models as insider risks, principle by principle, with what we run, what we ship and what we plan](#authority-outside-the-model).
 
 ## [A link to a persona: send people to the newsroom as someone, not as nobody](a-link-to-a-persona.md)
 
@@ -187,7 +215,7 @@ A link should land a reader as someone rather than as nobody: personas move from
 
 > a persona is a reading list with a history, and you either track the upstream or branch from it. Follow and fork, from git.
 
-builds on [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](#pay-to-keep-your-persona); continued by [The agent is the reader: why agents will pay for graphs, personas and signed claims, because it is cheaper than not paying](#the-agent-is-the-reader), [How to run synthetic users on your own site: five people who do not exist, a browser, and an afternoon](#how-to-run-synthetic-users).
+builds on [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](#pay-to-keep-your-persona); continued by [No server, by design: first I got rid of the database, now I am getting rid of the back end](#no-server-by-design), [The agent is the reader: why agents will pay for graphs, personas and signed claims, because it is cheaper than not paying](#the-agent-is-the-reader), [How to run synthetic users on your own site: five people who do not exist, a browser, and an afternoon](#how-to-run-synthetic-users).
 
 ## [Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time](pay-after-you-read.md)
 
@@ -215,7 +243,7 @@ On 10 October the reading meter became a working pay-on-demand publication in se
 
 > If you saw the value, pay; if you saw more value, pay more; if you did not, do not. The reader card in one line.
 
-builds on [Open source is not free: who pays to keep the long tail working?](#open-source-is-not-free), [Every mistake added a rule: complexity, agents, and the way back to shipping](#every-mistake-added-a-rule), [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser), [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](#who-will-game-the-reading-meter), [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](#pay-to-keep-your-persona); continued by [The agent is the reader: why agents will pay for graphs, personas and signed claims, because it is cheaper than not paying](#the-agent-is-the-reader).
+builds on [Open source is not free: who pays to keep the long tail working?](#open-source-is-not-free), [Every mistake added a rule: complexity, agents, and the way back to shipping](#every-mistake-added-a-rule), [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser), [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](#who-will-game-the-reading-meter), [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](#pay-to-keep-your-persona); continued by [No server, by design: first I got rid of the database, now I am getting rid of the back end](#no-server-by-design), [The agent is the reader: why agents will pay for graphs, personas and signed claims, because it is cheaper than not paying](#the-agent-is-the-reader).
 
 ## [Where the vault keys live: key management at sgit-ai v0.20.0, and what comes next](where-the-vault-keys-live.md)
 
@@ -242,7 +270,7 @@ Vaults are encrypted in the client, so the server never holds a key and the key 
 
 > Nothing between the sender and the registry can read the key, the key is never typed or shown. What the sealed handover changes.
 
-builds on [RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer](#rfc-0001-public-key-cryptography-for-sgit), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes](#encrypted-memory-for-isolated-agents), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets); continued by [Authority outside the model: an answer to Satya Nadella on models as insider risks, principle by principle, with what we run, what we ship and what we plan](#authority-outside-the-model).
+builds on [RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer](#rfc-0001-public-key-cryptography-for-sgit), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes](#encrypted-memory-for-isolated-agents), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets); continued by [No server, by design: first I got rid of the database, now I am getting rid of the back end](#no-server-by-design), [Authority outside the model: an answer to Satya Nadella on models as insider risks, principle by principle, with what we run, what we ship and what we plan](#authority-outside-the-model).
 
 ## [The infographic bake-off: which image model for which job, judged blind on 10 October 2026](the-infographic-bake-off.md)
 
@@ -301,7 +329,7 @@ Paying for content because you have to, feel you should, or think it right works
 
 > A persona is a way to manage focus. Why one reader wants several personas.
 
-builds on [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](#who-will-game-the-reading-meter), [Git for things you cannot put on GitHub](#what-sgit-is), [One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece](#one-article-five-readers); continued by [The agent is the reader: why agents will pay for graphs, personas and signed claims, because it is cheaper than not paying](#the-agent-is-the-reader), [A link to a persona: send people to the newsroom as someone, not as nobody](#a-link-to-a-persona), [Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time](#pay-after-you-read), [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter).
+builds on [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter), [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](#who-will-game-the-reading-meter), [Git for things you cannot put on GitHub](#what-sgit-is), [One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece](#one-article-five-readers); continued by [No server, by design: first I got rid of the database, now I am getting rid of the back end](#no-server-by-design), [The agent is the reader: why agents will pay for graphs, personas and signed claims, because it is cheaper than not paying](#the-agent-is-the-reader), [A link to a persona: send people to the newsroom as someone, not as nobody](#a-link-to-a-persona), [Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time](#pay-after-you-read), [Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks](#going-live-with-the-reading-meter).
 
 ## [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](who-will-game-the-reading-meter.md)
 
@@ -356,7 +384,7 @@ The reading meter goes live as an honesty box rather than a paywall: pages are c
 
 > A payment is the only signal on this site that cannot be produced by curiosity. The business case in one line.
 
-builds on [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser), [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](#pay-to-keep-your-persona), [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away), [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](#who-will-game-the-reading-meter); continued by [Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time](#pay-after-you-read), [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](#pay-to-keep-your-persona), [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](#who-will-game-the-reading-meter), [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser).
+builds on [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser), [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](#pay-to-keep-your-persona), [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away), [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](#who-will-game-the-reading-meter); continued by [No server, by design: first I got rid of the database, now I am getting rid of the back end](#no-server-by-design), [Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time](#pay-after-you-read), [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](#pay-to-keep-your-persona), [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](#who-will-game-the-reading-meter), [A meter in the browser: a penny a page, a history you keep, and a site that picks for you](#a-meter-in-the-browser).
 
 ## [Open source is not free: who pays to keep the long tail working?](open-source-is-not-free.md)
 
@@ -711,7 +739,7 @@ Agents are safer in isolated places, but isolation takes away the shared drive a
 
 > `--path` decides what is downloaded, not what can be read. Scoped clones are speed, not an access boundary.
 
-builds on [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [A locked-down desktop for an agent, by the minute, is still hard to rent](#an-agent-desktop-by-the-minute), [Who are you protecting against? Draw the security line where the attacker is, not above it](#who-are-you-protecting-against), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs); continued by [Where the vault keys live: key management at sgit-ai v0.20.0, and what comes next](#where-the-vault-keys-live), [RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer](#rfc-0001-public-key-cryptography-for-sgit), [A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies](#a-mac-of-the-agents-own), [Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not](#riskmandate-ten-questions), [How I work with Claude: one session per topic, agents with names, and memory you curate](#how-i-work-with-claude).
+builds on [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [A locked-down desktop for an agent, by the minute, is still hard to rent](#an-agent-desktop-by-the-minute), [Who are you protecting against? Draw the security line where the attacker is, not above it](#who-are-you-protecting-against), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs); continued by [No server, by design: first I got rid of the database, now I am getting rid of the back end](#no-server-by-design), [Where the vault keys live: key management at sgit-ai v0.20.0, and what comes next](#where-the-vault-keys-live), [RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer](#rfc-0001-public-key-cryptography-for-sgit), [A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies](#a-mac-of-the-agents-own), [Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not](#riskmandate-ten-questions), [How I work with Claude: one session per topic, agents with names, and memory you curate](#how-i-work-with-claude).
 
 ## [Knowing when to stop: what experience gives people, and what we have to design into agents](knowing-when-to-stop.md)
 
@@ -832,7 +860,7 @@ Security decisions start with who the threat agent is, what the attack vector is
 
 > So the air gap protects against an attacker who, for a firm like this, does not really exist, and pays for it with the tools that defend against the attackers who do. The Mac mini, read against the ladder.
 
-builds on [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted); continued by [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](#who-will-game-the-reading-meter), [Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes](#encrypted-memory-for-isolated-agents), [Knowing when to stop: what experience gives people, and what we have to design into agents](#knowing-when-to-stop).
+builds on [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted); continued by [No server, by design: first I got rid of the database, now I am getting rid of the back end](#no-server-by-design), [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](#who-will-game-the-reading-meter), [Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes](#encrypted-memory-for-isolated-agents), [Knowing when to stop: what experience gives people, and what we have to design into agents](#knowing-when-to-stop).
 
 ## [Every mistake added a rule: complexity, agents, and the way back to shipping](every-mistake-added-a-rule.md)
 
@@ -867,7 +895,7 @@ Founders who now work as engineers with agents often meet complexity not in thei
 
 > If you are not releasing something, you are probably not solving problems at the right altitude. Shipping as the check on over-engineering.
 
-builds on [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Git for things you cannot put on GitHub](#what-sgit-is), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The bridge, followed to the end: what one local story is worth when it is kept as a graph](#the-bridge-followed-to-the-end), [Green does not mean live](#green-does-not-mean-live); continued by [Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time](#pay-after-you-read), [One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece](#one-article-five-readers), [A second reader the agent cannot skip: how two wrong emails became a gate on every draft](#a-second-reader-the-agent-cannot-skip), [Knowing when to stop: what experience gives people, and what we have to design into agents](#knowing-when-to-stop).
+builds on [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Git for things you cannot put on GitHub](#what-sgit-is), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The bridge, followed to the end: what one local story is worth when it is kept as a graph](#the-bridge-followed-to-the-end), [Green does not mean live](#green-does-not-mean-live); continued by [No server, by design: first I got rid of the database, now I am getting rid of the back end](#no-server-by-design), [Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time](#pay-after-you-read), [One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece](#one-article-five-readers), [A second reader the agent cannot skip: how two wrong emails became a gate on every draft](#a-second-reader-the-agent-cannot-skip), [Knowing when to stop: what experience gives people, and what we have to design into agents](#knowing-when-to-stop).
 
 ## [Liquid content needs water: liquefy the journalist's notebook, not the finished product](liquid-content-needs-water.md)
 
@@ -2113,7 +2141,7 @@ With no server to hold a key, a chat box on a static site has three honest tiers
 
 > A chat box on one site is a feature. The same panel on all nineteen, reading each site's own catalogue, is the thing that makes a network of nineteen sites navigable, and it is why the catalogue is generated rather than written. Why the piece is about a network's navigation rather than one widget.
 
-continued by [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception).
+continued by [No server, by design: first I got rid of the database, now I am getting rid of the back end](#no-server-by-design), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception).
 
 ## [Twenty sites in fifteen days, and what that did to the writing](nineteen-sites.md)
 

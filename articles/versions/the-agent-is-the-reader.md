@@ -2,7 +2,7 @@
 
 > Every published version of the article "The agent is the reader", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/the-agent-is-the-reader.html> · site v0.7.43 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/the-agent-is-the-reader.html> · site v0.7.44 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,7 +16,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.0.0** | 2026-10-11 | published | 4,946 | first published | this release | [current](../the-agent-is-the-reader.md) |
+| **v1.0.0** | 2026-10-11 | published | 4,946 | first published | [`56b7cfbf0`](https://github.com/SGit-AI/SGit-AI__Website/commit/56b7cfbf0e7efe020ad9ece77f575053d9c47c6d) | [current](../the-agent-is-the-reader.md) |
 
 [← Back to the article](../the-agent-is-the-reader.md) · [All articles](../index.md)
 

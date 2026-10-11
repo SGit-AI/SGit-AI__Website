@@ -2,7 +2,7 @@
 
 > The reading meter on sgit.ai stops being a demonstration. A page now costs what you read of it: scroll a tenth of the way down a new article and you pay a tenth of 10p. Your balance can go below zero and stay there; nothing is blocked and nothing nags, there is only a small balance in the top bar. If a page was not worth it you can say so, with a reason, and it is not charged. Topping up is one £5 payment on Stripe, with no account and nothing that renews, and the page you come back to adds the credit without being able to check it, on purpose. The meter is also packaged as a library any website can add. This article is the plan and the reasoning, written down before the results: the business case, what we expect, the numbers that would prove us wrong, and the date we look.
 
-*Source: <https://sgit.ai/articles/going-live-with-the-reading-meter.html> · site v0.7.43 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/going-live-with-the-reading-meter.html> · site v0.7.44 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -154,6 +154,7 @@ Startups & strategyNews & evidence[This article as a graph →](graphs.md#going-
 
 ### Continued by
 
+- [No server, by design: first I got rid of the database, now I am getting rid of the back end](no-server-by-design.md) First the database went, now the back end: the SGit Newsroom runs all its logic in the browser, on commodity servers that cannot read your data.
 - [Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time](pay-after-you-read.md) Seven releases in one afternoon turned the reading meter into a working model: pay after you read, and the rating sets the price.
 - [Pay to keep your persona: readers should pay because it helps them, not because they feel they should](pay-to-keep-your-persona.md) Readers should pay because it helps them: a persona with a name and a graph, several for focus, and one that follows you between devices.
 - [Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen](who-will-game-the-reading-meter.md) Eight kinds of reader, none of them attackers, nine ways to cheat a browser meter, and the quieter risks that will actually happen.
