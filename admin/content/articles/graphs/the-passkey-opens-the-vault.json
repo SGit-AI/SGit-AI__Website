@@ -1,145 +1,192 @@
 {
-  "slug": "the-passkey-opens-the-vault",
-  "teaser": "Sign in with Google says who you are; a passkey's PRF bytes derive a door vault, which opens your master vault. No key is stored anywhere.",
-  "topics": [
-    "vaults-and-method",
-    "site-and-engineering"
-  ],
-  "core_idea": "An end-to-end, client-side account with no sign-in, no account and no email: a passkey with the WebAuthn PRF extension for 32 bytes only the user's authenticator can produce for the site, and sgit vaults. Because sgit vault keys are made in the client, the browser derives a door vault's key and id from the PRF bytes with HKDF, so nothing has to be stored or found first; the door holds the master vault key, and the master holds the keys of the user's other vaults, the access key, a key pair and the list of doors. A 128-bit recovery code derives a recovery door. Google holds no key; Drive's app-data folder can keep a backup. PRF works in Google Password Manager, iCloud Keychain, Windows Hello and Firefox. The page that holds keys loads no third-party scripts. The pattern gives any static site accounts with no server and data the operator cannot read.",
-  "nodes": [
-    {
-      "id": "google",
-      "label": "Sign in, later and optional",
-      "kind": "concept",
-      "summary": "Not in the MVP; on its own origin; continuity and backup; never a key."
-    },
-    {
-      "id": "prf",
-      "label": "Passkey with PRF",
-      "kind": "concept",
-      "summary": "32 bytes only your authenticator produces for this site, the same on synced devices."
-    },
-    {
-      "id": "door",
-      "label": "A derived door vault",
-      "kind": "method",
-      "summary": "Key and id computed from the PRF bytes with HKDF; holds the master key."
-    },
-    {
-      "id": "master",
-      "label": "The master vault",
-      "kind": "artefact",
-      "summary": "Keys of other vaults, the access key, a key pair, the list of doors."
-    },
-    {
-      "id": "nowhere",
-      "label": "Where the key lives: nowhere",
-      "kind": "claim",
-      "summary": "sgit keys are made in the client, so the door is computed, not stored."
-    },
-    {
-      "id": "recovery",
-      "label": "The recovery code",
-      "kind": "method",
-      "summary": "128 bits, shown once; derives a recovery door to the same master."
-    },
-    {
-      "id": "noscripts",
-      "label": "No third-party scripts where keys live",
-      "kind": "claim",
-      "summary": "Sign-in runs on its own page; the unlock page loads nothing it did not build."
-    },
-    {
-      "id": "support",
-      "label": "PRF support in 2026",
-      "kind": "example",
-      "summary": "Google Password Manager, iCloud Keychain, Windows Hello, Firefox."
-    },
-    {
-      "id": "enables",
-      "label": "Accounts with no server",
-      "kind": "claim",
-      "summary": "Any static site: sign in, open your own data on any device, unreadable by the operator."
-    },
-    {
-      "id": "clean",
-      "label": "Where the passkey lives",
-      "kind": "claim",
-      "summary": "A synced provider or a hardware key gives every device; a clean browser gives one device plus recovery; Chrome's own store has no PRF."
-    }
-  ],
-  "edges": [
-    {
-      "from": "prf",
-      "to": "door",
-      "rel": "produces"
-    },
-    {
-      "from": "nowhere",
-      "to": "door",
-      "rel": "answers"
-    },
-    {
-      "from": "door",
-      "to": "master",
-      "rel": "leads-to"
-    },
-    {
-      "from": "recovery",
-      "to": "master",
-      "rel": "leads-to"
-    },
-    {
-      "from": "google",
-      "to": "prf",
-      "rel": "contrasts"
-    },
-    {
-      "from": "noscripts",
-      "to": "door",
-      "rel": "depends-on"
-    },
-    {
-      "from": "support",
-      "to": "prf",
-      "rel": "example-of"
-    },
-    {
-      "from": "master",
-      "to": "enables",
-      "rel": "produces"
-    },
-    {
-      "from": "clean",
-      "to": "prf",
-      "rel": "depends-on"
-    }
-  ],
-  "links": {
-    "articles": [
-      "i-miss-it",
-      "no-server-by-design",
-      "where-the-vault-keys-live",
-      "rfc-0001-public-key-cryptography-for-sgit",
-      "how-to-run-synthetic-users",
-      "pay-after-you-read"
-    ],
-    "pages": [],
-    "sites": [
-      "https://secrets.sgit.ai/",
-      "https://www.corbado.com/blog/passkeys-prf-webauthn",
-      "https://web.dev/articles/webauthn-related-origin-requests",
-      "https://developers.google.com/workspace/drive/api/guides/api-specific-auth"
-    ]
+ "slug": "the-passkey-opens-the-vault",
+ "teaser": "A passkey's PRF bytes compute the top vault, a keyring for every other key, so no key is stored and the passkey is a lock, not an identity.",
+ "topics": [
+  "vaults-and-method",
+  "site-and-engineering"
+ ],
+ "core_idea": "An end-to-end, client-side account with no sign-in to the site: a passkey with the WebAuthn PRF extension for 32 bytes only the user's authenticator can produce for the site, and sgit vaults. Because sgit vault keys are made in the client, the browser computes the top vault's key and id from the PRF bytes with HKDF, so nothing has to be stored or found first; the top is the root of the chain of vaults that hold other vaults' keys, holding the keys of the reading and notes vaults, received read keys, the access key, and key pairs that are generated at random and never derived from the passkey. The user is signed in where they already are, Apple, Google or Microsoft, and the vault travels with that passkey store. Several passkeys give several tops, chosen in the store's own picker, for separating admin from reader; keys move between tops by copying and rotating; a top is retired by deleting its vault, after which its passkey opens nothing. Recovery is the top key saved once. PRF works in Google Password Manager, iCloud Keychain, Windows Hello and Firefox. The page that holds keys loads no third-party scripts.",
+ "nodes": [
+  {
+   "id": "store",
+   "label": "Signed in where you already are",
+   "kind": "concept",
+   "summary": "Apple, Google or Microsoft syncs the passkey store; the site is never signed in to, and the vault travels with the store."
   },
-  "quotes": [
-    {
-      "text": "The short answer, after the research, is that it is not kept anywhere. It is computed.",
-      "why": "The answer to where the vault key lives."
-    },
-    {
-      "text": "There is no sign-in in this flow at all: the page registers a discoverable credential with a random user handle, and the only login involved is the one you already have with your passkey provider, which syncs it.",
-      "why": "What the passkey needs, and what it does not."
-    }
+  {
+   "id": "prf",
+   "label": "Passkey with PRF",
+   "kind": "concept",
+   "summary": "32 bytes only your authenticator produces for this site, the same on synced devices."
+  },
+  {
+   "id": "door",
+   "label": "The top vault, computed",
+   "kind": "method",
+   "summary": "Key and id computed from the PRF bytes with HKDF; the root of the chain, a keyring and nothing else."
+  },
+  {
+   "id": "keyring",
+   "label": "What the top holds",
+   "kind": "artefact",
+   "summary": "The keys of the vaults below, received read keys, the access key, and the key pairs for the site."
+  },
+  {
+   "id": "nowhere",
+   "label": "Where the key lives: nowhere",
+   "kind": "claim",
+   "summary": "sgit keys are made in the client, so the top is computed, not stored; delete the vault and the passkey opens nothing."
+  },
+  {
+   "id": "recovery",
+   "label": "The top key, saved once",
+   "kind": "method",
+   "summary": "Shown at first run and kept in a password manager; opens the top without the passkey."
+  },
+  {
+   "id": "noscripts",
+   "label": "No third-party scripts where keys live",
+   "kind": "claim",
+   "summary": "Storage is per origin; the unlock page loads nothing it did not build."
+  },
+  {
+   "id": "support",
+   "label": "PRF support in 2026",
+   "kind": "example",
+   "summary": "Google Password Manager, iCloud Keychain, Windows Hello, Firefox."
+  },
+  {
+   "id": "enables",
+   "label": "Accounts with no server",
+   "kind": "claim",
+   "summary": "Any static site: sign in, open your own data on any device, unreadable by the operator."
+  },
+  {
+   "id": "clean",
+   "label": "Where the passkey lives",
+   "kind": "claim",
+   "summary": "A synced provider or a hardware key gives every device; a clean browser gives one device plus recovery; Chrome's own store has no PRF."
+  },
+  {
+   "id": "lock",
+   "label": "A lock, not an identity",
+   "kind": "claim",
+   "summary": "Key pairs are generated at random and stored in the top, never derived from the passkey, so the identity survives any change of lock."
+  },
+  {
+   "id": "several",
+   "label": "Several passkeys, several tops",
+   "kind": "method",
+   "summary": "Distinct user handles and names, the store's picker as the switch; an admin top on a hardware key, a reader top in the cloud."
+  },
+  {
+   "id": "retire",
+   "label": "Move and retire",
+   "kind": "method",
+   "summary": "Copy an entry between tops, rotate what moved for security, delete a retired top with the write key, then delete the passkey in the store."
+  },
+  {
+   "id": "chain",
+   "label": "Vaults all the way down",
+   "kind": "concept",
+   "summary": "The pattern already in use: vaults that hold the keys of other vaults, so a read key to one child exposes nothing above it."
+  }
+ ],
+ "edges": [
+  {
+   "from": "prf",
+   "to": "door",
+   "rel": "produces"
+  },
+  {
+   "from": "nowhere",
+   "to": "door",
+   "rel": "answers"
+  },
+  {
+   "from": "door",
+   "to": "keyring",
+   "rel": "produces"
+  },
+  {
+   "from": "chain",
+   "to": "door",
+   "rel": "extends"
+  },
+  {
+   "from": "lock",
+   "to": "keyring",
+   "rel": "depends-on"
+  },
+  {
+   "from": "store",
+   "to": "prf",
+   "rel": "depends-on"
+  },
+  {
+   "from": "several",
+   "to": "door",
+   "rel": "extends"
+  },
+  {
+   "from": "retire",
+   "to": "several",
+   "rel": "depends-on"
+  },
+  {
+   "from": "recovery",
+   "to": "door",
+   "rel": "leads-to"
+  },
+  {
+   "from": "noscripts",
+   "to": "door",
+   "rel": "depends-on"
+  },
+  {
+   "from": "support",
+   "to": "prf",
+   "rel": "example-of"
+  },
+  {
+   "from": "keyring",
+   "to": "enables",
+   "rel": "produces"
+  },
+  {
+   "from": "clean",
+   "to": "prf",
+   "rel": "depends-on"
+  }
+ ],
+ "links": {
+  "articles": [
+   "i-miss-it",
+   "no-server-by-design",
+   "where-the-vault-keys-live",
+   "rfc-0001-public-key-cryptography-for-sgit",
+   "how-to-run-synthetic-users",
+   "pay-after-you-read"
+  ],
+  "pages": [],
+  "sites": [
+   "https://secrets.sgit.ai/",
+   "https://www.corbado.com/blog/passkeys-prf-webauthn",
+   "https://web.dev/articles/webauthn-related-origin-requests"
   ]
+ },
+ "quotes": [
+  {
+   "text": "The answer, after the research, is that it is not kept anywhere. It is computed.",
+   "why": "The answer to where the top key lives."
+  },
+  {
+   "text": "More important, the passkey is a lock, not an identity: it opens the top and does nothing else.",
+   "why": "Why the key pairs are never derived from the passkey."
+  },
+  {
+   "text": "Deleting either side retires the pair.",
+   "why": "The coupling between a passkey and the vault it computes."
+  }
+ ]
 }

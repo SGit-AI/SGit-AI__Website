@@ -45,8 +45,8 @@
    "kicker": "SGit Newsroom",
    "date": "2026-10-11",
    "author": "Dinis Cruz",
-   "title": "The passkey opens the vault: touch a passkey, and a master vault for every user, with no server of ours, no account and no email",
-   "teaser": "Sign in with Google says who you are; a passkey's PRF bytes derive a door vault, which opens your master vault. No key is stored anywhere.",
+   "title": "The passkey opens the vault: a top vault computed from a passkey, vaults all the way down, and no server of ours",
+   "teaser": "A passkey's PRF bytes compute the top vault, a keyring for every other key, so no key is stored and the passkey is a lock, not an identity.",
    "ideas": [
     "Where the key lives: nowhere",
     "No third-party scripts where keys live",

@@ -2,7 +2,7 @@
 
 > On 10 October the reading meter on sgit.ai went, in seven releases between 12:09 and 15:49, from an experiment to a working pay-on-demand publication. A reader pays pence for the share of a page they actually read, from a balance that can go below zero without ever blocking them; after reading, they say how useful it was, and that sets the price, from free to double; their reading builds personas and a newsroom of their own, kept in their browser; and they can send it to us, encrypted, for a front page designed for them. Once a Stripe link is set, the only question left is whether people pay. This article introduces each feature, shows how each one grew out of the last, with a Wardley map that adds them one at a time, explains why paying after you see the value is the right way round, and why every decision started from one rule: do not rip off the reader. It ends with an offer to sites with traffic that would like to test it.
 
-*Source: <https://sgit.ai/articles/pay-after-you-read.html> · site v0.7.61 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/pay-after-you-read.html> · site v0.7.62 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -183,7 +183,7 @@ News & evidenceStartups & strategy[This article as a graph →](graphs.md#pay-af
 
 ### Continued by
 
-- [The passkey opens the vault: touch a passkey, and a master vault for every user, with no server of ours, no account and no email](the-passkey-opens-the-vault.md) Sign in with Google says who you are; a passkey's PRF bytes derive a door vault, which opens your master vault. No key is stored anywhere.
+- [The passkey opens the vault: a top vault computed from a passkey, vaults all the way down, and no server of ours](the-passkey-opens-the-vault.md) A passkey's PRF bytes compute the top vault, a keyring for every other key, so no key is stored and the passkey is a lock, not an identity.
 - [No server, by design: first I retired the database, now I am retiring the back end](no-server-by-design.md) First the database went, now the back end: the SGit Newsroom runs all its logic in the browser, on commodity servers that cannot read your data.
 - [The agent is the reader: why agents will pay for graphs, personas and signed claims, because it is cheaper than not paying](the-agent-is-the-reader.md) Agents pay to read the raw web and guess its meaning. A curated graph answers for 90% fewer tokens, so paying the publisher is cheaper than not paying.
 
