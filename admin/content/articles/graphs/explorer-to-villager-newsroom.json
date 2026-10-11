@@ -5,7 +5,7 @@
     "site-and-engineering",
     "startups-and-strategy"
   ],
-  "core_idea": "The newsroom's reader features are live and taking money, but bundled with the content in one repository; measured at v0.8.0, about 2,700 lines of live reader code have 433 lines of tests, one deploy workflow and no Content-Security-Policy. To keep shipping fast without breaking anything, the reader application moves to its own repository as a pure refactoring, proved by the live site serving the same bytes, then goes through the explorer-to-villager phases: map, test with bugs as passing tests and no mocks, review with every finding a GitHub issue, refactor until no adversarial change slips through, and only then new features. A pipeline under two minutes per commit runs Node and three browser engines, with pre-production on a Stripe test link, synthetic readers and a live check at release.",
+  "core_idea": "The newsroom's reader features are live and taking money, but bundled with the content in one repository; measured at v0.8.0, about 2,700 lines of live reader code have 433 lines of tests the one workflow never runs, two upstreams for the same code (sgit.ai and the newsroom, with diverging meters) and no Content-Security-Policy. To keep shipping fast without breaking anything, the reader application moves to its own repository, which both sites consume, as a pure refactoring, proved by the live site serving the same bytes, then goes through the explorer-to-villager phases: map, test with bugs as passing tests and no mocks, review with every finding a GitHub issue, refactor until no adversarial change slips through, and only then new features. A pipeline under two minutes per commit runs Node and three browser engines, with pre-production on a Stripe test link, synthetic readers and a live check at release.",
   "nodes": [
     {
       "id": "villager",
@@ -17,13 +17,13 @@
       "id": "measure",
       "label": "What I measured",
       "kind": "example",
-      "summary": "About 2,700 lines of live reader code, 433 lines of tests, no CSP."
+      "summary": "About 2,700 lines of live reader code, 433 lines of tests CI never runs, two upstreams, no CSP."
     },
     {
       "id": "split",
       "label": "Content stays, the reader app moves",
       "kind": "method",
-      "summary": "A separate repository, released as versioned files the newsroom pins."
+      "summary": "A separate repository both sites consume, released as versioned files they pin; the sync stops carrying it."
     },
     {
       "id": "samebytes",

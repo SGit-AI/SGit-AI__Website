@@ -3,7 +3,7 @@ title: Go slow to go fast: moving the newsroom from an explorer project to a vil
 date: 2026-10-11
 author: Dinis Cruz
 author_url: about/index.html
-summary: The newsroom's first MVP already has a crazy amount of powerful features, and it is live, and it is taking money. Like most explorer projects, it is also bundled in the middle of something much bigger: the application that bills, remembers and personalises sits in the same repository as 74 articles and their images. Measured on newsroom v0.8.0, the live reader code is about 2,700 lines, and the tests that cover it are 433. I want to keep shipping a massive number of features without breaking anything, so this is the moment to take a step back and go slow to go fast. This article is the case for it and the brief: move every feature that is not content into its own repository, as a pure refactoring, with the same behaviour and the same bugs, checked by hashing the files the live site serves; map every file, capability and web control; build the safety net, with bugs and vulnerabilities written down as tests that pass; review it for security and quality, with every finding a GitHub issue; refactor until no change that alters what a reader sees or pays can slip through; and build a pipeline fast enough to run on every commit, in Node, in three browser engines, against a pre-production copy and with synthetic readers. Then the explorer returns, with the vault and the passkey.
+summary: The newsroom's first MVP already has a crazy amount of powerful features, and it is live, and it is taking money. Like most explorer projects, it is also bundled in the middle of something much bigger: the application that bills, remembers and personalises sits in the same repository as 74 articles and their images. Measured on newsroom v0.8.0, the live reader code is about 2,700 lines, the tests that cover it are 433 and the one workflow never runs them, and the same application has two upstreams, with two diverging copies of the meter. I want to keep shipping a massive number of features without breaking anything, so this is the moment to take a step back and go slow to go fast. This article is the case for it and the brief: move every feature that is not content into its own repository that both sites consume, as a pure refactoring, with the same behaviour and the same bugs, checked by hashing the files the live site serves; map every file, capability and web control; build the safety net, with bugs and vulnerabilities written down as tests that pass; review it for security and quality, with every finding a GitHub issue; refactor until no change that alters what a reader sees or pays can slip through; and build a pipeline fast enough to run on every commit, in Node, in three browser engines, against a pre-production copy and with synthetic readers. Then the explorer returns, with the vault and the passkey.
 version: v0.7.56
 license: https://creativecommons.org/licenses/by/4.0/
 tags: engineering, explorer, villager, refactoring, testing, ci, security-review, code-review, newsroom, sg-meter, github-issues, brief, article
@@ -22,7 +22,7 @@ I want to keep pushing a massive amount of features. The reader's own vault, sig
 
 - **The newsroom is now a villager project.** It is live, it charges, and changes land on real readers. Explorer code is read for intent; villager code is read line by line, because that is where the blast radius lives.
 - **Content and application get separate repositories.** Everything the reader does moves to its own repository, released as versioned files that the newsroom pins. The content stays.
-- **The numbers are the reason.** About 2,700 lines of live reader code, 433 lines of tests, one workflow that deploys and none that tests, and no Content-Security-Policy on any page.
+- **The numbers are the reason.** About 2,700 lines of live reader code, 433 lines of tests that the one workflow never runs, two upstreams for the same code, and no Content-Security-Policy on any page.
 - **First, a pure refactoring.** Same behaviour, same bugs. The proof is not a reviewed diff; it is the live site serving the same bytes before and after, by hash.
 - **Six phases, and features wait until the fifth.** Map, move, test, review, refactor; then the explorer returns. Bugs and vulnerabilities found on the way become tests that pass, so fixing them later is a deliberate, visible change.
 - **A pipeline fast enough to run on every commit.** Plain JavaScript and static files mean Node tests in seconds and three browser engines in about a minute; pre-production with a Stripe test link; synthetic readers; and a release that ends by checking the live site.
@@ -51,10 +51,11 @@ Counted in the newsroom repository at v0.8.0, on 11 October 2026:
 | Account and persona pages | 12 pages |
 | Tests for the meter and the lists | 433 lines |
 | Earlier meter versions, kept on their versioned paths | 5,016 lines in 10 files |
-| GitHub workflows | 1, and it deploys |
+| GitHub workflows | 1: validate, tag, deploy. It runs the site validator on every push and pull request; it does not run the 433 lines of reader tests |
+| Upstreams of the reader code | 2: the account pages, subscribe and the meter to v1.3.1 are imported from sgit.ai on every sync; the newsroom rewrites them to load its own fork, v1.4.0 |
 | Pages with a Content-Security-Policy | 0 |
 
-On this site's side, where the meter was first built and the newsroom's content still comes from, the page builder is a single file of 7,844 lines, about 240 of which touch the meter, personas or the account. That is the "bundled in the middle of a massive thing" in numbers.
+On this site's side, where the meter was first built and the newsroom's content still comes from, the page builder is a single file of 7,844 lines, about 240 of which touch the meter, personas or the account. That is the "bundled in the middle of a massive thing" in numbers. And there is a second kind of bundling: the newsroom's account pages, its subscribe file and the meter up to v1.3.1 are not the newsroom's own. Its sync script imports them from sgit.ai's built pages on every sync, then rewrites every page to load the newsroom's fork of the meter, v1.4.0, in place of sgit.ai's v1.3.1. Two repositories hold two diverging copies of the same application.
 
 None of this is a criticism of the explorer work. It is what explorer code looks like, and it is why it was fast. It is also exactly what has to change before the next wave.
 
@@ -64,9 +65,11 @@ None of this is a criticism of the explorer work. It is what explorer code looks
 
 **0. Map.** Before anything moves, map all of it: every file, every capability, every web control (anything a reader can click, type or pay), every input, every place data leaves the browser, every external call and every secret or configuration value. As a table and as a graph, the way [code review as a fractal semantic graph](/articles/code-review-as-a-fractal-semantic-graph.html) does it, and the way secrets.sgit.ai's review pages map that project's claims to their evidence. No code changes. The map lives in the new repository and is regenerated every night.
 
-**1. Move.** The reader code goes to its own repository, unchanged, and is released from there as versioned files on versioned paths, which is already how SG Meter is published. The newsroom pins a version. The rule is strict: **the same behaviour and the same bugs**. The check is strict too: hash every file the live site serves for the reader features before the move and after it. If one hash differs, the move is not finished.
+**1. Move.** The reader code goes to its own repository, unchanged, and is released from there as versioned files on versioned paths, which is already how SG Meter is published. Both sites then consume those files: the newsroom pins a version, sgit.ai pins the same one, and the sync stops carrying the account pages, subscribe and the meter. The newsroom's v1.4.0 is the line that continues; sgit.ai's v1.3.1 is retired. The move is one copy-and-cut commit with no edits in it. The rule is strict: **the same behaviour and the same bugs**. The check is strict too: hash every file the live site serves for the reader features before the move and after it, the scripts, styles and JSON raw, and the HTML pages with the site chrome and version stamps normalised, which is exactly what the newsroom's own validator does today for imported pages. If one hash differs, the move is not finished.
 
-**2. Test.** Only test code is written. Unit tests in Node for the money, the parsing and the state; browser tests in Chromium, WebKit and Firefox, on phone and desktop sizes; tests against a pre-production copy; and a synthetic reader run. No mocks: a test that needs a browser uses a browser, and a test that needs a vault uses a vault. **Bugs and vulnerabilities are written as tests that pass**, recording the current behaviour, so the fix later is a visible change to a test, not a silent one.
+The 5,016 lines of earlier meter versions are published artefacts, not code to maintain: they move, frozen, and the only test they ever get is that they are still served byte for byte.
+
+**2. Test.** Only test code is written. Unit tests in Node for the money, the parsing and the state; browser tests in Chromium, WebKit and Firefox, on phone and desktop sizes; tests against a pre-production copy; and a synthetic reader run. No mocks: a test that needs a browser uses a browser, and a test that needs a vault uses a vault. **Bugs and vulnerabilities are written as tests that pass**, recording the current behaviour, so the fix later is a visible change to a test, not a silent one. One exception, because the repository is public: a test that records a vulnerability is a public description of it before the fix, so those tests and their issues live in a private vault until the fix lands, and move into the repository with it.
 
 **3. Review.** Security and quality, by people and by agent reviewers, against the map. Findings, not fixes: every finding is a GitHub issue, labelled, with the test that shows it.
 
@@ -78,11 +81,11 @@ None of this is a criticism of the explorer work. It is what explorer code looks
 
 !shot ev-pipeline.webp | images/ | Every commit, merge, release and night, with what runs at each and the time it should take. Slow checks run at night, not on the commit.
 
-I want to see how fast and effective we can make this. The reader application is pure JavaScript and static files: no server to start, no database to seed, no container to build. That means most of it can be tested in Node in seconds and in real browsers in about a minute, and that is the target for every commit: **under two minutes**, lint, unit tests, three browser engines, and a build that produces the same bytes twice.
+I want to see how fast and effective we can make this. The reader application is pure JavaScript and static files: no server to start, no database to seed, no container to build. That means most of it can be tested in Node in seconds and in real browsers in about a minute, and that is the target for every commit: **under two minutes**, lint, unit tests, three browser engines, and a build that produces the same bytes twice, which means the version and the date it stamps into pages come from a file, not from the clock.
 
-On every merge, pre-production: a copy of the newsroom with the new version, a Stripe link in test mode that can never charge anyone, smoke tests of every reader page and every control, and a short synthetic reader run on a phone and a laptop. On every release: publish the versioned files, pin them in one commit, and ask the live site for its version and the hash of every reader file, because [green does not mean live](/articles/green-does-not-mean-live.html). Rolling back is pinning the previous version. And every night: the full synthetic reader study, the adversarial changes, dependency and header checks, and the map regenerated and compared with yesterday's.
+On every merge, pre-production. GitHub Pages serves one site per repository, so the copy is a second site: either the newsroom's `main` branch, which its workflow already describes as a deploy test, published on a host name of its own, or a separate repository. Either way, a copy of the newsroom with the new version, a Stripe link in test mode that can never charge anyone, smoke tests of every reader page and every control, and a short synthetic reader run on a phone and a laptop. On every release: publish the versioned files, pin them in one commit, and ask the live site for its version and the hash of every reader file, because [green does not mean live](/articles/green-does-not-mean-live.html). Rolling back is pinning the previous version. And every night: the full synthetic reader study, the adversarial changes, dependency and header checks, and the map regenerated and compared with yesterday's.
 
-Code review becomes part of the pipeline: a pull request needs one person and one agent reviewer before it merges. I want to be reviewing these changes myself, and I want a set of agent reviewers alongside me, each with a written role, the way the newsroom's desk already works.
+Code review becomes part of the pipeline: a pull request needs one person and one agent reviewer before it merges. GitHub only counts a review from an account with write access, so the agent reviewer either has one, or posts its verdict as a status check that branch protection requires; the brief says which. I want to be reviewing these changes myself, and I want a set of agent reviewers alongside me, each with a written role, the way the newsroom's desk already works.
 
 ## The brief {#brief}
 
@@ -90,18 +93,19 @@ Code review becomes part of the pipeline: a pull request needs one person and on
 
 ### What moves, and what stays {#scope}
 
-- **Moves:** SG Meter, every version; the account pages; reading lists and the make page; persona links and their configuration; subscribe and the encrypted share; the build code for article numbers, lists and personas; and their tests. Next to arrive there: the reader's vault, passkey sign-in and the agent pack.
+- **Moves:** SG Meter, every version, from both repositories, with v1.4.0 as the line that continues; the account pages; reading lists and the make page; persona links and their configuration; subscribe and the encrypted share; the build code for article numbers, lists and personas; and their tests. Next to arrive there: the reader's vault, passkey sign-in and the agent pack.
+- **Changes on both sites:** the newsroom's sync stops importing the account pages, subscribe and the meter from sgit.ai; sgit.ai stops building them and pins the released files instead. After the move, neither site holds a copy of the reader code.
 - **Stays:** the articles and everything generated from them, the front page, the desk, collections, the newsletter, World News Day, the archive and the content build.
-- **The name:** for now, a newsroom-specific name, such as `SGit-AI__Newsroom__Reader`, because what moves is everything the reader does. It may become more generic later, a reader platform any publication can use; the name can follow when it does.
+- **The name:** since both sites will consume it, not a newsroom-specific one: `SGit-AI__Reader`, or `SGit-AI__SG-Meter` after the component most people will know it by. It is a reader platform any publication can use, and the name should say so from the start.
 
 ### Rules {#rules}
 
 1. **No behaviour changes until phase five.** Not a feature, not a fix, not a copy edit on a reader page.
-2. **Same bytes served.** The move is proved by hashing every reader file on the live site before and after, not by reading the diff.
-3. **Bugs and vulnerabilities as passing tests.** Each one gets a test that records the current behaviour, and an issue that links to it.
+2. **Same bytes served.** The move is proved by hashing every reader file on the live site before and after, not by reading the diff: scripts, styles and JSON raw; HTML pages with the site chrome and version stamps normalised, as the newsroom's validator already does.
+3. **Bugs and vulnerabilities as passing tests.** Each one gets a test that records the current behaviour, and an issue that links to it. Vulnerability tests and their issues stay in a private vault until the fix lands.
 4. **No mocks.** Real browsers, real vaults, a real pre-production copy, a Stripe link in test mode.
 5. **Every finding is an issue.** In the new repository's GitHub issues, labelled by phase, area and severity, with its evidence.
-6. **Every change is reviewed** by one person and one agent reviewer before it merges.
+6. **Every change is reviewed** by one person and one agent reviewer before it merges, the agent's review as a required status check.
 7. **Releases are versioned and pinned.** The newsroom never loads an unversioned reader file; a rollback is one commit.
 
 ### Where the security review starts {#security}
@@ -119,9 +123,9 @@ From the measurement above and the newsroom's own [security model](https://newsr
 | # | Done when |
 |---|---|
 | 1 | The map exists in the new repository: files, capabilities, web controls, inputs, outputs, external calls |
-| 2 | The reader code is released from the new repository and pinned by the newsroom, and every reader file on the live site hashes the same as before the move |
+| 2 | The reader code is released from the new repository and pinned by both sites, the sync no longer carries it, and every reader file on the live site hashes the same as before the move (pages with chrome and version stamps normalised) |
 | 3 | The commit pipeline runs in under two minutes: lint, Node tests, Chromium, WebKit and Firefox, and a reproducible build |
-| 4 | Pre-production runs on every merge, with a Stripe test link, smoke tests and a short synthetic reader run |
+| 4 | Pre-production runs on every merge, on its own host name, with a Stripe test link, smoke tests and a short synthetic reader run |
 | 5 | Every known bug and vulnerability is a passing test and an open issue |
 | 6 | Every pull request has one person and one agent reviewer |
 | 7 | No adversarial change to what a reader sees or pays slips through the tests |

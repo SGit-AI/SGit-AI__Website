@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.56 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.57 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -26,7 +26,7 @@ The graphs are data first and pictures second. Take them as JSON: [all articles 
 
 2026-10-11 · Site & engineeringStartups & strategy
 
-The newsroom's reader features are live and taking money, but bundled with the content in one repository; measured at v0.8.0, about 2,700 lines of live reader code have 433 lines of tests, one deploy workflow and no Content-Security-Policy. To keep shipping fast without breaking anything, the reader application moves to its own repository as a pure refactoring, proved by the live site serving the same bytes, then goes through the explorer-to-villager phases: map, test with bugs as passing tests and no mocks, review with every finding a GitHub issue, refactor until no adversarial change slips through, and only then new features. A pipeline under two minutes per commit runs Node and three browser engines, with pre-production on a Stripe test link, synthetic readers and a live check at release.
+The newsroom's reader features are live and taking money, but bundled with the content in one repository; measured at v0.8.0, about 2,700 lines of live reader code have 433 lines of tests the one workflow never runs, two upstreams for the same code (sgit.ai and the newsroom, with diverging meters) and no Content-Security-Policy. To keep shipping fast without breaking anything, the reader application moves to its own repository, which both sites consume, as a pure refactoring, proved by the live site serving the same bytes, then goes through the explorer-to-villager phases: map, test with bugs as passing tests and no mocks, review with every finding a GitHub issue, refactor until no adversarial change slips through, and only then new features. A pipeline under two minutes per commit runs Node and three browser engines, with pre-production on a Stripe test link, synthetic readers and a live check at release.
 
 *[diagram]*
 **concept**claim**method**example
@@ -34,8 +34,8 @@ The newsroom's reader features are live and taking money, but bundled with the c
 **8 nodes, 7 edges**
 
 - **Explorer to villager** (concept) Live, charging code is read line by line; explorer code for intent.
-- **What I measured** (example) About 2,700 lines of live reader code, 433 lines of tests, no CSP.
-- **Content stays, the reader app moves** (method) A separate repository, released as versioned files the newsroom pins.
+- **What I measured** (example) About 2,700 lines of live reader code, 433 lines of tests CI never runs, two upstreams, no CSP.
+- **Content stays, the reader app moves** (method) A separate repository both sites consume, released as versioned files they pin; the sync stops carrying it.
 - **Same bytes served** (method) The move is proved by hashing the live reader files before and after.
 - **Bugs as passing tests** (method) Record current behaviour; fixing later is a visible change.
 - **A two-minute pipeline** (method) Node, three browser engines, a reproducible build, pre-prod, synthetic readers.

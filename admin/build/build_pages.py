@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.56'
+SITE_VERSION = 'v0.7.57'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,16 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.56', '2026-10-11', 'this release',
+    ('v0.7.57', '2026-10-11', 'this release',
+     "GO SLOW TO GO FAST, REVIEWED. Corrections to the explorer-to-villager article after a review of its plan against "
+     "the newsroom repository: the reader code has two upstreams today (the account pages, subscribe and the meter to "
+     "v1.3.1 are imported from sgit.ai on every sync and rewritten to load the newsroom's v1.4.0 fork), so the new "
+     "repository must be consumed by both sites and the sync must stop carrying it; the same-bytes check hashes pages "
+     "with chrome and version stamps normalised, as the newsroom's validator already does; vulnerability tests stay in "
+     "a private vault until fixed, because the repository is public; the one workflow does validate on every push, "
+     "what it never runs is the reader tests; old meter versions are frozen artefacts; pre-production needs its own "
+     "host; an agent review counts as a required status check; and a name both sites can share. Figure updated."),
+    ('v0.7.56', '2026-10-11', 'git 0c0b1d3b',
      "GO SLOW TO GO FAST. The newsroom moves from an explorer project to a villager one: the reader application (SG "
      "Meter, the account, reading lists, personas, sharing) to its own repository as a pure refactoring, proved by the "
      "live site serving the same bytes; then map, test (bugs as passing tests, no mocks), review (every finding a GitHub "
