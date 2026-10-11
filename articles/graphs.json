@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-11",
-  "site_version": "v0.7.41",
+  "site_version": "v0.7.42",
   "schema": "https://sgit.ai/articles/graphs.html",
   "topics": [
     {
@@ -55,6 +55,182 @@
   ],
   "articles": [
     {
+      "slug": "where-the-platform-draws-the-line",
+      "title": "Where the platform draws the line: Microsoft Execution Containers, the shared responsibility model for agents, and the business logic above it",
+      "date": "2026-10-11",
+      "updated": "",
+      "url": "https://sgit.ai/articles/where-the-platform-draws-the-line.html",
+      "markdown": "https://sgit.ai/articles/where-the-platform-draws-the-line.md",
+      "card": "https://sgit.ai/articles/cards/where-the-platform-draws-the-line.webp",
+      "teaser": "Microsoft's MXC and ACS, briefed field by field and mapped to Agent Behaviour Policies: the platform bounds what it can see; the business logic is above.",
+      "topics": [
+        "agents-and-policy"
+      ],
+      "tags": [
+        "riskmandate",
+        "agent-behaviour-policy",
+        "microsoft",
+        "mxc",
+        "execution-containers",
+        "agent-control-specification",
+        "containment",
+        "shared-responsibility",
+        "business-logic",
+        "barriers",
+        "briefing",
+        "article"
+      ],
+      "links_out": [
+        "the-same-argument-in-our-words",
+        "authority-outside-the-model",
+        "how-to-run-synthetic-users",
+        "a-second-reader-the-agent-cannot-skip",
+        "the-behaviour-policy-is-the-business-logic",
+        "connector-twin-before-you-deploy-an-agent",
+        "hope-or-enforcement",
+        "every-risk-is-already-accepted",
+        "footprint-and-blast-radius",
+        "riskmandate-ten-questions"
+      ],
+      "links_in": [],
+      "graph": {
+        "slug": "where-the-platform-draws-the-line",
+        "teaser": "Microsoft's MXC and ACS, briefed field by field and mapped to Agent Behaviour Policies: the platform bounds what it can see; the business logic is above.",
+        "topics": [
+          "agents-and-policy"
+        ],
+        "core_idea": "Microsoft Execution Containers and the Agent Control Specification confirm the direction of travel, policy outside the agent, deny by default, observe before enforcing, but like the cloud's shared responsibility model they draw the line where the platform can see, at paths, numeric addresses and tool calls, so the business logic above it, what a label means, whose voice, how many, which customer, and who accepts what is left, has to come from the deployer's behaviour policy, which is what turns the platform's hooks into boundaries.",
+        "nodes": [
+          {
+            "id": "mxc",
+            "label": "Microsoft Execution Containers",
+            "kind": "artefact",
+            "summary": "A versioned JSON policy enforced by the OS: sandbox, process, paths, network, desktop; deny by default."
+          },
+          {
+            "id": "acs",
+            "label": "Agent Control Specification",
+            "kind": "artefact",
+            "summary": "Eight interception points, a snapshot of the session, a policy engine and a normalised verdict; hooks, not rules."
+          },
+          {
+            "id": "modes",
+            "label": "Permissive, learning, enforcement",
+            "kind": "method",
+            "summary": "Measure the reach, calibrate it, enforce it: the ABP's three verbs as platform modes."
+          },
+          {
+            "id": "shared",
+            "label": "Shared responsibility, for agents",
+            "kind": "concept",
+            "summary": "Every platform draws its line at the granularity it can touch."
+          },
+          {
+            "id": "above",
+            "label": "Business logic above the line",
+            "kind": "claim",
+            "summary": "Labels, voice, quantity and customer are business content no platform can supply."
+          },
+          {
+            "id": "scenarios",
+            "label": "Eight scenarios, three designs",
+            "kind": "example",
+            "summary": "Plain: 8 open. ABP: 8 named, 0 bounded. ABP on MXC and ACS: 3 OS boundaries, 4 if the rule is written, 1 accepted."
+          },
+          {
+            "id": "owner",
+            "label": "Same code, different owner",
+            "kind": "claim",
+            "summary": "An MXC file or ACS manifest the agent can edit is a setting, not a boundary."
+          },
+          {
+            "id": "compile",
+            "label": "The policy writes the rules",
+            "kind": "question",
+            "summary": "Generating MXC JSON and ACS policies from ABP rows: a design, not a product."
+          }
+        ],
+        "edges": [
+          {
+            "from": "acs",
+            "to": "mxc",
+            "rel": "extends"
+          },
+          {
+            "from": "modes",
+            "to": "mxc",
+            "rel": "example-of"
+          },
+          {
+            "from": "shared",
+            "to": "mxc",
+            "rel": "answers"
+          },
+          {
+            "from": "above",
+            "to": "shared",
+            "rel": "depends-on"
+          },
+          {
+            "from": "scenarios",
+            "to": "above",
+            "rel": "example-of"
+          },
+          {
+            "from": "owner",
+            "to": "acs",
+            "rel": "compared-with"
+          },
+          {
+            "from": "compile",
+            "to": "above",
+            "rel": "leads-to"
+          }
+        ],
+        "links": {
+          "articles": [
+            "the-same-argument-in-our-words",
+            "authority-outside-the-model",
+            "the-behaviour-policy-is-the-business-logic",
+            "hope-or-enforcement",
+            "a-second-reader-the-agent-cannot-skip",
+            "connector-twin-before-you-deploy-an-agent",
+            "footprint-and-blast-radius",
+            "every-risk-is-already-accepted",
+            "riskmandate-ten-questions",
+            "how-to-run-synthetic-users"
+          ],
+          "pages": [
+            "/demos/vaults/hope-or-enforcement/index.html",
+            "/demos/vaults/connector-twin/index.html",
+            "/articles/data/where-the-platform-draws-the-line__mxc-website-policy.json",
+            "/articles/data/where-the-platform-draws-the-line__scenarios.json"
+          ],
+          "sites": [
+            "https://blogs.windows.com/windowsdeveloper/2026/10/07/microsoft-execution-containers-policy-driven-containment-for-ai-agents/",
+            "https://github.com/microsoft/mxc",
+            "https://commandline.microsoft.com/agent-control-specification-runtime-governance/",
+            "https://riskmandate.ai/lab-connector-grants.html",
+            "https://aws.amazon.com/compliance/shared-responsibility-model/"
+          ]
+        },
+        "quotes": [
+          {
+            "text": "The unit of restriction is the application and the tool. It is not the data, and it is not the business.",
+            "why": "The line every platform draws."
+          },
+          {
+            "text": "The policy names it, proposes the boundaries that shrink it",
+            "why": "What a behaviour policy does with a risk inside the mandate."
+          },
+          {
+            "text": "Where the platform draws its line, the business's work starts.",
+            "why": "The close."
+          }
+        ]
+      }
+    },
+    {
       "slug": "the-same-argument-in-our-words",
       "title": "The same argument, in our words: Satya Nadella on models as insider risks, translated into the language of RiskMandate",
       "date": "2026-10-11",
@@ -93,6 +269,7 @@
         "connector-twin-before-you-deploy-an-agent"
       ],
       "links_in": [
+        "where-the-platform-draws-the-line",
         "authority-outside-the-model"
       ],
       "graph": {
@@ -300,6 +477,7 @@
         "riskmandate-ten-questions"
       ],
       "links_in": [
+        "where-the-platform-draws-the-line",
         "the-same-argument-in-our-words"
       ],
       "graph": {
@@ -497,6 +675,7 @@
         "a-link-to-a-persona"
       ],
       "links_in": [
+        "where-the-platform-draws-the-line",
         "authority-outside-the-model"
       ],
       "graph": {
@@ -2805,6 +2984,7 @@
         "every-mistake-added-a-rule"
       ],
       "links_in": [
+        "where-the-platform-draws-the-line",
         "the-same-argument-in-our-words",
         "authority-outside-the-model",
         "one-article-five-readers",
@@ -3633,6 +3813,7 @@
         "the-investigation-github-owes-its-customers"
       ],
       "links_in": [
+        "where-the-platform-draws-the-line",
         "authority-outside-the-model",
         "a-mac-of-the-agents-own"
       ],
@@ -4932,6 +5113,7 @@
         "the-agent-team-as-it-runs"
       ],
       "links_in": [
+        "where-the-platform-draws-the-line",
         "the-same-argument-in-our-words",
         "authority-outside-the-model",
         "one-article-five-readers",
@@ -6322,6 +6504,7 @@
         "ai-baseline-control-framework"
       ],
       "links_in": [
+        "where-the-platform-draws-the-line",
         "the-same-argument-in-our-words",
         "one-article-five-readers",
         "riskmandate-ten-questions",
@@ -11372,6 +11555,7 @@
         "six-agents-one-inbox"
       ],
       "links_in": [
+        "where-the-platform-draws-the-line",
         "the-same-argument-in-our-words",
         "authority-outside-the-model",
         "one-article-five-readers",
@@ -13345,6 +13529,7 @@
         "introducing-fractal-semantic-graphs"
       ],
       "links_in": [
+        "where-the-platform-draws-the-line",
         "the-same-argument-in-our-words",
         "authority-outside-the-model",
         "one-article-five-readers",
@@ -13617,6 +13802,7 @@
       ],
       "links_out": [],
       "links_in": [
+        "where-the-platform-draws-the-line",
         "the-same-argument-in-our-words",
         "authority-outside-the-model",
         "riskmandate-ten-questions",

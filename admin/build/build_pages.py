@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.41'
+SITE_VERSION = 'v0.7.42'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,16 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.41', '2026-10-11', 'this release',
+    ('v0.7.42', '2026-10-11', 'this release',
+     "WHERE THE PLATFORM DRAWS THE LINE. Microsoft Execution Containers (generally available on 7 October) and the Agent "
+     "Control Specification, briefed field by field: the JSON policy (an example that validates against the stable 1.0.0 "
+     "schema, published as data), four sandboxes and where each runs, the three modes mapped to measure, calibrate and "
+     "enforce, organisation policy and agent identity, and ACS's eight interception points. The argument: the shared "
+     "responsibility model applied to agents; each platform draws its line at what it can touch, and the business logic "
+     "above it is the deployer's. Eight scenarios run three ways (reasoned, not run, published as data), a map from MXC "
+     "and ACS to the Agent Behaviour Policy, and where to start. Researched and drafted in a separate session from a "
+     "voice memo, rewritten here in the site's voice. Three figures; a pitch to the Editor."),
+    ('v0.7.41', '2026-10-11', 'git fe39b263',
      "AN ANSWER TO SATYA NADELLA ON MODELS AS INSIDER RISKS, IN TWO ARTICLES. The same argument, in our words: his post "
      "of 10 October translated idea by idea into this network's vocabulary (software was the law, the ultimate insider, "
      "every risk is already accepted, the grant is not the mandate, the enforcer test), where it came from, and the two "

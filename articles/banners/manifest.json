@@ -6,6 +6,23 @@
  "generated_by": "admin/build/build_pages.py",
  "entries": [
   {
+   "slug": "where-the-platform-draws-the-line",
+   "kind": "article",
+   "kicker": "SGit Newsroom",
+   "date": "2026-10-11",
+   "author": "Dinis Cruz",
+   "title": "Where the platform draws the line: Microsoft Execution Containers, the shared responsibility model for agents, and the business logic above it",
+   "teaser": "Microsoft's MXC and ACS, briefed field by field and mapped to Agent Behaviour Policies: the platform bounds what it can see; the business logic is above.",
+   "ideas": [
+    "Business logic above the line",
+    "Same code, different owner",
+    "Permissive, learning, enforcement"
+   ],
+   "hero": "articles/images/pl-stack.webp",
+   "url": "sgit.ai/articles/where-the-platform-draws-the-line.html",
+   "out": "articles/banners/where-the-platform-draws-the-line.jpg"
+  },
+  {
    "slug": "the-same-argument-in-our-words",
    "kind": "article",
    "kicker": "SGit Newsroom",
@@ -1236,10 +1253,10 @@
     "Next: an issue picked for what you care about"
    ],
    "mosaic": [
+    "articles/cards/where-the-platform-draws-the-line.webp",
     "articles/cards/the-same-argument-in-our-words.webp",
     "articles/cards/authority-outside-the-model.webp",
-    "articles/cards/how-to-run-synthetic-users.webp",
-    "articles/cards/a-link-to-a-persona.webp"
+    "articles/cards/how-to-run-synthetic-users.webp"
    ],
    "url": "sgit.ai/subscribe/",
    "out": "articles/banners/subscribe.jpg"

@@ -2,7 +2,7 @@
 
 > sgit is git for encrypted vaults) and a vault is a unit of work: data, app, history and sources, versioned like git and handed over with a single read key. No account, no hosting, nothing to install for the reader; the server stores ciphertext it cannot read. Twenty-five real vaults you can open.
 
-*Source: <https://sgit.ai/index.html> · site v0.7.41 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/index.html> · site v0.7.42 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -25,17 +25,17 @@ SGit Newsroom
 
 ## Start with an argument, not a menu
 
-The articles carry most of what this site believes, with the figures, the data and the links to check it. Sixty-nine so far; the newsroom picks where to start.
+The articles carry most of what this site believes, with the figures, the data and the links to check it. Seventy so far; the newsroom picks where to start.
 
 [Built three ways2026-10-08Agents & policy**Hope or enforcement: one customer service agent, three designs, and who keeps each promise**One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.**Why it leads.** One mandate, three designs and a published vault: the behaviour-policy argument measured rather than asserted, down to which rules a model is only hoped to keep.Read it →](articles/hope-or-enforcement.md)
 
 ### Also new
 
-1. 2026-10-11[The same argument, in our words](articles/the-same-argument-in-our-words.md)
-2. 2026-10-11[Authority outside the model](articles/authority-outside-the-model.md)
-3. 2026-10-10[How to run synthetic users on your own site](articles/how-to-run-synthetic-users.md)
-4. 2026-10-10[A link to a persona](articles/a-link-to-a-persona.md)
-5. 2026-10-10[Pay after you read](articles/pay-after-you-read.md)
+1. 2026-10-11[Where the platform draws the line](articles/where-the-platform-draws-the-line.md)
+2. 2026-10-11[The same argument, in our words](articles/the-same-argument-in-our-words.md)
+3. 2026-10-11[Authority outside the model](articles/authority-outside-the-model.md)
+4. 2026-10-10[How to run synthetic users on your own site](articles/how-to-run-synthetic-users.md)
+5. 2026-10-10[A link to a persona](articles/a-link-to-a-persona.md)
 [Thread2026-10-08Historian**Range is the feature, so the stop has to be designed**Four articles from one day, written for different reasons, end on the same line: an agent's range is what makes it useful, and it is also why the decision to stop cannot be left to the agent.](articles/desk/range-is-the-feature-so-the-stop-is-designed.md)
 
 [A scale for deciding2026-10-08**Agency is not a yes**Seven dimensions, seven levels, and the line below which a decider carries liability rather than agency. Its own vault holds the scale.](articles/agency-is-not-a-yes.md)[Live, local2026-10-08**The waiting room knew first**A hospital IT outage nobody could check from home, kept as evidence in a vault while it was still happening.](articles/the-waiting-room-knew-first.md)[Complexity2026-10-08**Every mistake added a rule**When every agent mistake adds a rule, the rules become the problem. Mapped, with the way back to shipping.](articles/every-mistake-added-a-rule.md)
@@ -62,7 +62,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-303site releases, each verified live before it was called done
+304site releases, each verified live before it was called done
 
 54vaults published with a deliberately public read key
 

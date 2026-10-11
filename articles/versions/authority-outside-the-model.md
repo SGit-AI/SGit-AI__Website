@@ -2,7 +2,7 @@
 
 > Every published version of the article "Authority outside the model", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/authority-outside-the-model.html> · site v0.7.41 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/authority-outside-the-model.html> · site v0.7.42 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,7 +16,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.0.0** | 2026-10-11 | published | 4,887 | first published | this release | [current](../authority-outside-the-model.md) |
+| **v1.0.0** | 2026-10-11 | published | 4,887 | first published | [`fe39b263d`](https://github.com/SGit-AI/SGit-AI__Website/commit/fe39b263dfb07565c369f90b431c4eceb0c12f28) | [current](../authority-outside-the-model.md) |
 
 [← Back to the article](../authority-outside-the-model.md) · [All articles](../index.md)
 

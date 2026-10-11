@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-11",
-  "site_version": "v0.7.41",
+  "site_version": "v0.7.42",
   "about": "https://sgit.ai/newsroom/index.html",
   "front": {
     "edition": "2026-10-08",
@@ -72,6 +72,39 @@
     }
   ],
   "articles": [
+    {
+      "slug": "where-the-platform-draws-the-line",
+      "title": "Where the platform draws the line: Microsoft Execution Containers, the shared responsibility model for agents, and the business logic above it",
+      "date": "2026-10-11",
+      "updated": "",
+      "author": "Dinis Cruz",
+      "url": "https://sgit.ai/articles/where-the-platform-draws-the-line.html",
+      "markdown": "https://sgit.ai/articles/where-the-platform-draws-the-line.md",
+      "card": "https://sgit.ai/articles/cards/where-the-platform-draws-the-line.webp",
+      "graph": "https://sgit.ai/articles/graphs/where-the-platform-draws-the-line.json",
+      "teaser": "Microsoft's MXC and ACS, briefed field by field and mapped to Agent Behaviour Policies: the platform bounds what it can see; the business logic is above.",
+      "summary": "On 7 October Microsoft made Microsoft Execution Containers (MXC) generally available: a containment layer for AI agents, declared in JSON and enforced by the operating system. With its companion, the Agent Control Specification (ACS), it is the most complete platform control for agents I have seen, and it confirms the direction of travel: the policy sits outside the agent, the agent cannot grant itself more, and you observe before you enforce. This article is a briefing on how the two actually work, field by field, and a map from them to RiskMandate's Agent Behaviour Policy. My argument is the shared responsibility model, applied to agents. Every platform draws its line where it can see and touch: files, network addresses and ports, the desktop, and with ACS the arguments of a tool call. Above that line is what a business actually runs on: what a Gmail label means, whose voice an email goes out in, how many refunds in a day is normal, which customer this run is for. Eight scenarios, each run three ways (a plain agent, an agent with a behaviour policy, and an agent with a behaviour policy on top of MXC and ACS), show what the platform turns into boundaries, what it hands back to the business, and what only a named person can accept. The platform is an important stage of the climb, not the summit.",
+      "topics": [
+        "agents-and-policy"
+      ],
+      "tags": [
+        "riskmandate",
+        "agent-behaviour-policy",
+        "microsoft",
+        "mxc",
+        "execution-containers",
+        "agent-control-specification",
+        "containment",
+        "shared-responsibility",
+        "business-logic",
+        "barriers",
+        "briefing",
+        "article"
+      ],
+      "placement": [],
+      "linkedin": null,
+      "notes": []
+    },
     {
       "slug": "the-same-argument-in-our-words",
       "title": "The same argument, in our words: Satya Nadella on models as insider risks, translated into the language of RiskMandate",
