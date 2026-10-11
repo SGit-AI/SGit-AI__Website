@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.51'
+SITE_VERSION = 'v0.7.52'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,12 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.51', '2026-10-11', 'this release',
+    ('v0.7.52', '2026-10-11', 'this release',
+     "SGIT-AI 0.21.0. The update page for agent teams, covering 0.19.0, 0.20.0 and 0.21.0: what now refuses and what to do, "
+     "the new history commands (undo, reflog, amend, revert --as-commit, revision shorthand, log filters), signed tags, "
+     "--force-with-lease, branches, notes for vault owners and mixed 0.20/0.21 teams. The History integrity guide, "
+     "rewritten for 0.21.0, and the release notes, with what is still open. Every example run on 0.21.0 from PyPI."),
+    ('v0.7.51', '2026-10-11', 'git 4fc19cc5',
      "FROM ME TO YOU, IN A LINK. A personal reading list in the URL fragment (from, to, articles to read, to look at, "
      "and to follow), opened on the newsroom as a persona the reader can keep or remove; a stable public number for "
      "every article; and a page to make a list for anyone. Two briefs: one for the newsroom to build it (validation, "

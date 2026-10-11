@@ -5,6 +5,13 @@
     <link>https://sgit.ai/updates/index.html</link>
     <description>What changed on sgit and on this site, as it happens.</description>
     <item>
+      <title>sgit-ai 0.21.0: history you can trust, history commands you expected, and a security release (includes 0.19.0 and 0.20.0)</title>
+      <link>https://sgit.ai/updates/index.html#sgit-ai-0-21-0</link>
+      <guid isPermaLink="true">https://sgit.ai/updates/index.html#sgit-ai-0-21-0</guid>
+      <pubDate>2026-10-11</pubDate>
+      <description>The CLI&#x27;s release notes, carried here because the site has no change log for the CLI itself. sgit ai 0.21.0 has been on PyPI since 10 October 2026. Upgrade with sgit update , which wraps pip install upgrade sgit ai , and check with sgit version . It includes 0…</description>
+    </item>
+    <item>
       <title>Rate what you read, and the rating sets the price</title>
       <link>https://sgit.ai/updates/index.html#the-reader-card</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-reader-card</guid>
@@ -136,13 +143,6 @@
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#dsit-ai-risk-toolkit</guid>
       <pubDate>2026-09-20</pubDate>
       <description>The DSIT AI Risk Toolkit is an independent reference edition of the UK government&#x27;s AI Risk Management Toolkit, and it is the first vault submitted under the sgit public read prefix that the credentials page now asks for. It models the guidance, the official w…</description>
-    </item>
-    <item>
-      <title>The site&#x27;s own vault mirror is gone, deleted, purged from history, force-pushed</title>
-      <link>https://sgit.ai/updates/index.html#the-mirror-is-gone</link>
-      <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-mirror-is-gone</guid>
-      <pubDate>2026-09-19</pubDate>
-      <description>For 76 releases this site was one folder that was both an sgit vault and a git repository, and every release pushed both. Today the vault mirror was removed from the tree, purged from all 112 commits with git filter repo , and the branch force pushed. The repo…</description>
     </item>
   </channel>
 </rss>

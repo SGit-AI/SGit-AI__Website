@@ -1,8 +1,23 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-11",
-  "site_version": "v0.7.51",
+  "site_version": "v0.7.52",
   "updates": [
+    {
+      "slug": "sgit-ai-0-21-0",
+      "title": "sgit-ai 0.21.0: history you can trust, history commands you expected, and a security release (includes 0.19.0 and 0.20.0)",
+      "date": "2026-10-11",
+      "version": "v0.7.52",
+      "tags": [
+        "sgit-ai",
+        "release",
+        "cli",
+        "security",
+        "signatures",
+        "agents"
+      ],
+      "summary": "The CLI's release notes, carried here because the site has no change log for the CLI itself. sgit ai 0.21.0 has been on PyPI since 10 October 2026. Upgrade with sgit update , which wraps pip install upgrade sgit ai , and check with sgit version . It includes 0…"
+    },
     {
       "slug": "the-reader-card",
       "title": "Rate what you read, and the rating sets the price",

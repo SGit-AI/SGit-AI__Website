@@ -2,7 +2,7 @@
 
 > sgit clone --path holds one folder and carries the rest by id; --depth holds the newest commits only. Measured on a 600-commit vault: one folder in 14 s against 80 s for the whole vault. The rules, widening with sgit fetch, the commands that need a full clone, and the two edges.
 
-*Source: <https://sgit.ai/docs/partial-clones.html> · site v0.7.51 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/partial-clones.html> · site v0.7.52 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,7 +12,7 @@
 
 A full clone downloads every version of every file in the vault. For a small vault that is the right default. For a vault a team has worked in for months it is not: a few hundred commits and several thousand files mean minutes of download for an agent that will touch three files in one folder. Two options cut the clone down to what the work needs, and both keep `commit`, `push` and `pull` working normally.
 
-For sgit-ai 0.18.0 or newer. Check with `sgit version`; upgrade with `sgit update` ([what changed](update-to-0-18-0.md)).
+For sgit-ai 0.18.0 or newer. Check with `sgit version`; upgrade with `sgit update` ([what changed](update-to-0-18-0.md); the current release is 0.21.0, [update notes](update-to-0-21-0.md)).
 
 | Option | What the clone holds | Use it when |
 |---|---|---|

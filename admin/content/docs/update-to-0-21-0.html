@@ -1,0 +1,105 @@
+<main class="doc">
+  <p class="crumb"><a href="index.html">Docs</a> / Guides</p>
+  <h1>Update sgit-ai to 0.21.0</h1>
+  <p class="lead">A page for an agent, or a person running agents, that has been told "read this and update". Ten minutes. sgit-ai 0.21.0 was published to PyPI on 10 October 2026. It includes everything in 0.19.0 and 0.20.0, so coming from 0.18.0 or older this is the only page you need. <b>Your daily loop does not change</b>: <code>pull</code>, work, <code>commit</code>, <code>push</code>. What changes is what sgit now refuses to do, and a set of history commands you have been missing.</p>
+
+  <h2>1. Update and check</h2>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit update</span>          <span class="d"># wraps: pip install --upgrade sgit-ai</span>
+<span class="p">$</span> <span class="cmd">sgit version</span>
+sgit-ai v0.21.0</pre>
+  <p>If <code>sgit version</code> still shows an older number, you have more than one Python environment; run <code>python -m pip install --upgrade sgit-ai</code> in the one your harness uses, then check again. <a href="installation.html">Installation</a> has the rest. Your existing clones need nothing: the first command in each one records the server it uses and moves its bookkeeping to the 0.21.0 layout.</p>
+
+  <h2 id="refuses">2. What now refuses, and what to do</h2>
+  <p>0.21.0 is a security release. Each of these used to work, or work silently and do damage. Each refusal names the file or branch and says what to do; none changes anything before it stops.</p>
+  <div class="tablewrap"><table>
+    <tr><th>You see</th><th>Why</th><th>What to do</th></tr>
+    <tr><td><code>warning: skipped symlink &lt;path&gt;</code> on commit</td><td>sgit never stores, follows or writes through a link. A link to <code>.sg_vault/local/vault_key</code> used to commit the vault key itself</td><td>Nothing. Commit the real file if you meant to. A tracked file replaced by a link keeps its committed version; <code>status</code> and <code>pull</code> name it</td></tr>
+    <tr><td><code>cannot read &lt;file&gt; (Permission denied); nothing was changed</code></td><td>A file sgit cannot open used to read as deleted, and a commit removed it for everyone</td><td>Close the program holding it or fix its permissions, then run the command again</td></tr>
+    <tr><td>a refusal naming <code>SGIT_DEFAULT_BASE_URL</code></td><td>The variable used to silently redirect a vault, with your token and write key, to whatever host it named</td><td>Name the server once: <code>sgit --base-url &lt;url&gt; &lt;command&gt;</code> (the flag goes before a group too), or <code>sgit remote add origin &lt;url&gt;</code>. Vaults made by 0.21.0 already record it</td></tr>
+    <tr><td>a commit refused over a zip that holds a key</td><td>A backup zip (or any zip) holding a vault key or a private signing key would hand it to every reader</td><td>Delete it, or move it out of the vault folder. <code>sgit commit --allow-secret-file &lt;path&gt;</code> commits one on purpose</td></tr>
+    <tr><td><code>a branch named '&lt;name&gt;' already exists on the server</code> on push</td><td>A teammate pushed a branch with that name first; yours used to land where nobody could see it</td><td><code>sgit branch rename &lt;name&gt; &lt;new-name&gt;</code>, then <code>sgit push</code></td></tr>
+    <tr><td><code>the named branch was REWOUND</code>; <code>push</code> exits 1</td><td>Someone force-pushed, or the server served an old pointer</td><td>Do not accept it on your own; tell the vault owner. If it was deliberate: <code>sgit pull --accept-rewind</code>, which keeps your own unpushed commits and drops the removed ones</td></tr>
+    <tr><td><code>this vault needs sgit-ai &gt;= X.Y.Z</code></td><td>The owner raised the vault's minimum client</td><td><code>sgit update</code>, then retry</td></tr>
+    <tr><td>a pull, clone or push refused over an unsigned commit</td><td>The vault requires signed commits (<code>signatures-required</code>)</td><td>Tell the vault owner. If your clone has no signing key (it says <code>UNSIGNED</code> when you commit), clone the vault again</td></tr>
+    <tr><td><code>'abcdef1' is not a valid tag name</code>, or a revision refused as ambiguous</td><td>A tag named like a commit id would shadow it</td><td>Pick another name. For an existing short-hex tag write <code>tag:&lt;name&gt;</code>, or the full commit id</td></tr>
+    <tr><td><code>sgit: 'log' is now sgit history log</code> (exit 2)</td><td>Commands moved into groups in earlier releases</td><td>Use the name it prints</td></tr>
+  </table></div>
+
+  <h2 id="new">3. New commands worth knowing</h2>
+  <p>All local, all safe to try. Every example below is output from 0.21.0 on the live dev server, 11 October 2026.</p>
+  <h3>History, the way git users expect it</h3>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit history log --grep more --stat</span>
+  f7a8b9646ae9 (HEAD)  add more  ~1  [blobs:+1]
+      M  notes.md
+
+<span class="p">$</span> <span class="cmd">sgit history show HEAD~1</span>
+commit obj-cas-imm-bb27e943d81d
+parent obj-cas-imm-326e87100964
+    first notes
++ notes.md  (8 bytes)</pre>
+  <ul>
+    <li><b>Revisions everywhere a commit is named:</b> <code>HEAD</code>, <code>@</code>, <code>HEAD~2</code>, <code>HEAD^2</code>, <code>@{1}</code> (where this clone's head was), tag names, the 12-hex id <code>history log</code> prints, or any unique prefix of 4+ characters.</li>
+    <li><b>Log filters:</b> <code>--grep</code>, <code>--since</code> / <code>--until</code> (<code>2026-10-08</code>, <code>3d</code>, <code>"2 weeks ago"</code>, <code>yesterday</code>), <code>--author</code> (a signing key id or branch name), <code>--stat</code>. They follow merged-in commits too.</li>
+  </ul>
+  <h3>Undo, amend, revert</h3>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit history undo</span>
+Undone: this clone's head is back at f7a8b9646ae9 (was d9c5d05ea052).
+  1 file(s) restored, 0 removed. Run it again to redo; sgit history reflog shows every move.
+
+<span class="p">$</span> <span class="cmd">sgit history reflog -n 3</span>
+  @{0}  f7a8b9646ae9  2026-10-11 15:54:26  add more  (was d9c5d05ea052)
+  @{1}  d9c5d05ea052  2026-10-11 15:54:25  local mistake  (was f7a8b9646ae9)
+  @{2}  f7a8b9646ae9  2026-10-11 15:54:09  add more  (was bb27e943d81d)</pre>
+  <div class="tablewrap"><table>
+    <tr><th>Command</th><th>What it does</th><th>When</th></tr>
+    <tr><td><code>sgit history undo</code></td><td>moves this clone's head back to before its last move, restoring the files; run again to redo</td><td>a local commit you regret, before pushing</td></tr>
+    <tr><td><code>sgit history reflog</code></td><td>every move of this clone's head (local, last 1,000); <code>sgit history reset &lt;id&gt;</code> brings one back</td><td>after a reset, an accepted rewind or a bad merge</td></tr>
+    <tr><td><code>sgit commit --amend [-m …]</code></td><td>replaces the last commit; refused once it is on the server</td><td>a typo in the message, a forgotten file</td></tr>
+    <tr><td><code>sgit history revert --as-commit --commit &lt;rev&gt;</code></td><td>a new, signed commit that inverts an earlier one (git's <code>revert</code>)</td><td>undoing a <b>pushed</b> change for everyone</td></tr>
+  </table></div>
+  <p>Plain <code>sgit history revert</code> still restores files without committing, as before.</p>
+  <h3>Tags, branches, safer force</h3>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit vault tag create v1.0 -m "first release"</span>
+Tagged f7a8b9646ae9 as v1.0, signed by this clone.
+<span class="p">$</span> <span class="cmd">sgit vault tag list</span>
+  ✓ v1.0  f7a8b9646ae9  2026-10-11 15:54 UTC  first release</pre>
+  <ul>
+    <li><b>Signed tags</b> (<code>sgit vault tag create | list | show | delete</code>): an encrypted, signed object; the name lives only in the encrypted branch index, so the server never sees it. Tags do not move without <code>--force</code>, and a pull reports a tag that moved. A tag name works wherever a commit does.</li>
+    <li><b>Branches work end to end:</b> <code>branch new</code>, <code>branch switch</code> (fetches first), <code>branch merge &lt;name&gt;</code>, and <code>branch rename</code> for a branch not yet pushed. Before 0.21.0, work on a branch was pushed to the main branch.</li>
+    <li><b><code>sgit push --force-with-lease</code></b>: forces only if the remote is still where this clone last accepted it, and writes with compare-and-swap, so a teammate's push is never clobbered. Running <code>status</code> in between does not satisfy the lease.</li>
+    <li><b><code>sgit doctor</code></b> names the server it checks and sends the same headers as push and pull; <code>sgit clone - &lt;dir&gt;</code> reads the vault key from stdin, so it never appears in your command line or shell history.</li>
+  </ul>
+
+  <h2 id="owners">4. If you are the vault owner</h2>
+  <p>Nothing changes for a vault until you raise it. 0.21.0 is the first release where the history-integrity features are safe for a team of writers.</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit vault format --set 2 --min-client 0.21.0 --feature signatures-required</span>
+Vault format updated and written to the server.
+  …
+  Format:      2  (new objects get 32-hex ids)
+  Min client:  0.21.0   (this client: v0.21.0)
+  Features:    ids-128, signatures-required, signed-since-82bcf306a04a</pre>
+  <ul>
+    <li><b><code>--min-client 0.21.0</code></b> is the recommended floor: a 0.19.0 or 0.20.0 client is then refused by name (<code>this vault needs sgit-ai &gt;= 0.21.0 and this is 0.20.0: run `sgit update`</code>, checked on 11 October). It also keeps 0.20.0 clients from dropping the vault's tags, below.</li>
+    <li><b><code>signatures-required</code></b> now works with several writers. Clone, pull and push all check it. Only commits after the moment you switch it on (<code>signed-since-…</code>) must be signed, so older unsigned history is fine.</li>
+    <li><b>Clients older than 0.19.0 do not know the gate exists.</b> On a raised vault they fail and blame the data ("integrity check refused vault data", "missing file … sgit check fsck"). The fix for them is <code>sgit update</code>, never <code>vault move</code> or <code>fsck --repair</code>. Raise a vault only when every writer is on 0.21.0.</li>
+  </ul>
+  <p>The whole model (the gate, 128-bit ids, rewinds, signatures) is in <a href="history-integrity.html">History integrity</a>.</p>
+
+  <h2 id="interop">5. Mixed teams: 0.20.0 and 0.21.0 on one vault</h2>
+  <p>Clone, pull, commit and push work in both directions, and every commit verifies (checked live on 10 and 11 October). Two things to know:</p>
+  <ul>
+    <li><b>Tags disappear while a 0.20.0 client is active.</b> The first push of a 0.20.0 clone leaves the server with no tags; a 0.21.0 clone that still holds them restores them on its next pull, but a fresh clone made in between sees none. For a vault that uses tags: <code>--min-client 0.21.0</code>.</li>
+    <li><b>A 0.20.0 backup has no signing key.</b> A clone restored from it makes unsigned commits (it warns <code>UNSIGNED</code>); under <code>signatures-required</code> it cannot push until it is cloned again. 0.21.0 backups carry the key.</li>
+  </ul>
+  <div class="warnbox"><b>If anyone on your team is still on 0.20.0 or older:</b> after <code>sgit vault uninit</code>, delete the <code>*__uninit.zip</code> it leaves in the folder before the next <code>sgit commit</code>. On those versions the zip, which holds the vault key, is committed like any other file. 0.21.0 names it so it is never committed, and refuses any zip holding a key.</div>
+
+  <h2>6. If you want the detail</h2>
+  <ul>
+    <li><a href="../updates/index.html#sgit-ai-0-21-0">sgit-ai 0.21.0, the release notes</a>: what changed since 0.18.0, and how it was checked.</li>
+    <li><a href="history-integrity.html">History integrity</a>: the format gate, signatures, rewinds and the checklist for raising a vault.</li>
+    <li><a href="agents-sharing-one-vault.html">Agents sharing one vault</a>: the recommended loop for a team.</li>
+    <li>The CLI's full change log, with every fix: <a href="https://github.com/SGit-AI/SGit-AI__CLI/blob/main/CHANGELOG.md">CHANGELOG.md</a>.</li>
+  </ul>
+
+  <div class="pagenav"><a href="installation.html">← Installation</a><a href="history-integrity.html">History integrity →</a></div>
+</main>

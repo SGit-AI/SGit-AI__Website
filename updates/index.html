@@ -26,7 +26,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.7.51</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.7.52</a>
   <sg-meter class="meter-nav" view="balance"></sg-meter>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
@@ -120,12 +120,13 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.7.51 &middot; 11 Oct 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.7.52 &middot; 11 Oct 2026</span></a></div>
 <main class="doc">
  <h1>Updates</h1>
  <p class="lead">What changed on sgit and on this site, as it happens, one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
  <p class="small dim">Follow along: <a href="feed.xml">RSS</a> &middot; <a href="updates.json">JSON</a>. Every entry links to the release that carries it.</p>
- <details class="updtoc" open><summary>75 entries, newest first</summary><ul>
+ <details class="updtoc" open><summary>76 entries, newest first</summary><ul>
+<li><span class="dim">2026-10-11</span> <a href="#sgit-ai-0-21-0">sgit-ai 0.21.0: history you can trust, history commands you expected, and a security release (includes 0.19.0 and 0.20.0)</a></li>
 <li><span class="dim">2026-10-10</span> <a href="#the-reader-card">Rate what you read, and the rating sets the price</a></li>
 <li><span class="dim">2026-10-10</span> <a href="#the-meter-goes-live">The reading meter goes live: pay for what you read, go below zero if you like</a></li>
 <li><span class="dim">2026-10-10</span> <a href="#share-your-reading">Send us your reading, get a front page designed for you</a></li>
@@ -202,6 +203,88 @@
 <li><span class="dim">2026-08-17</span> <a href="#printing-stopped-costing-every-reader">Printing stopped costing every reader</a></li>
 <li><span class="dim">2026-08-17</span> <a href="#green-does-not-mean-live">Green does not mean live</a></li>
  </ul></details>
+ <h2 class="upd-date">2026-10-11</h2>
+ <article class="upd" id="sgit-ai-0-21-0">
+ <h3><a href="#sgit-ai-0-21-0">sgit-ai 0.21.0: history you can trust, history commands you expected, and a security release (includes 0.19.0 and 0.20.0)</a> <a class="upd-ver" href="../admin/versions.html">v0.7.52</a></h3>
+ <p class="chips"><span class="chip">sgit-ai</span><span class="chip">release</span><span class="chip">cli</span><span class="chip">security</span><span class="chip">signatures</span><span class="chip">agents</span></p>
+<p><b>The CLI's release notes, carried here because the site has no change log for the CLI itself.</b> sgit-ai 0.21.0 has been on PyPI since 10 October 2026. Upgrade with <code>sgit update</code>, which wraps <code>pip install --upgrade sgit-ai</code>, and check with <code>sgit version</code>. It includes 0.19.0 (7 October) and 0.20.0 (8 October), so there is no reason to stop at either. The short version for an agent team, with what now refuses and what to do, is <a href="../docs/update-to-0-21-0.html">Update sgit-ai to 0.21.0</a>.</p>
+<h2>Status</h2>
+<p>Three releases in four days, and this is the one to run.</p>
+<ul>
+<li><b>0.19.0 and 0.20.0</b> added history integrity: a per-vault format gate, 128-bit object ids, rewind detection and signature checks.</li>
+<li><b>This site found four bugs in 0.20.0</b> by running it the way a real team does: a teammate joining after a policy was switched on, and an agent following <code>status</code>'s advice after a rewind. Each bug made a safety feature fail in practice.</li>
+<li><b>0.21.0 fixes all four.</b> It then went through five rounds of review and live re-testing by this site's agent before release. That review found more, and everything it marked as blocking was fixed and re-checked on the live server before 0.21.0 shipped.</li>
+</ul>
+<p>The CLI's test suites at release:</p>
+<div class="tablewrap"><table>
+<tr><th>Suite</th><th>Tests</th></tr>
+<tr><td>Unit</td><td>4,164</td></tr>
+<tr><td>Security</td><td>157 (41 three rounds before release)</td></tr>
+<tr><td>Integration, against a real SG/Send server</td><td>74</td></tr>
+<tr><td>QA scenarios</td><td>122</td></tr>
+</table></div>
+<p>The security suite includes one test per accepted risk. Each of those tests performs the attack and asserts that it still works, so the day a gap closes or moves, the suite says so.</p>
+<h2>What changed since 0.18.0, in one table</h2>
+<div class="tablewrap"><table>
+<tr><th>Area</th><th>0.18.0</th><th>0.21.0</th></tr>
+<tr><td>Who may open a vault</td><td>any client</td><td>the owner sets a format and a minimum client; older clients from 0.19.0 on are refused by name and told to update</td></tr>
+<tr><td>Object ids</td><td>48-bit</td><td>128-bit for new objects on a raised vault (<code>sgit vault format --set 2</code>)</td></tr>
+<tr><td>A server or a key holder rewinding the branch</td><td>invisible</td><td>detected per branch, refused, and accepted only on purpose (<code>pull --accept-rewind</code>, which keeps your own work)</td></tr>
+<tr><td>Commit signatures</td><td>written, never checked</td><td>checked (<code>sgit check verify</code>), and requirable for clone, pull and push (<code>signatures-required</code>)</td></tr>
+<tr><td>Undo</td><td>none</td><td><code>history undo</code>, <code>history reflog</code>, <code>commit --amend</code>, <code>revert --as-commit</code></td></tr>
+<tr><td>Naming commits</td><td>full <code>obj-cas-imm-…</code> ids</td><td><code>HEAD~2</code>, <code>@{1}</code>, tags, 12-hex ids, 4+ character prefixes</td></tr>
+<tr><td>Tags</td><td>none</td><td>signed tags, with names only in the encrypted index</td></tr>
+<tr><td>Force push</td><td><code>--force</code></td><td><code>--force-with-lease</code>, with compare-and-swap on the server</td></tr>
+<tr><td>Branches</td><td>work on a branch was pushed to the main branch</td><td>work end to end: new, switch, merge, rename</td></tr>
+<tr><td>Two pushes racing</td><td>the loser printed "pushed"</td><td>the loser fails and is told to pull first</td></tr>
+</table></div>
+<h2>New, for agents</h2>
+<p><b>History commands git users reach for.</b></p>
+<ul>
+<li><b>Revision shorthand</b> works wherever a commit is named.</li>
+<li><b><code>sgit history log</code></b> gains <code>--grep</code>, <code>--since</code>, <code>--until</code>, <code>--author</code> and <code>--stat</code>.</li>
+<li><b><code>sgit history undo</code></b> moves the clone back to before its last move; run it again to redo.</li>
+<li><b><code>sgit history reflog</code></b> shows every move this clone's head made.</li>
+<li><b><code>sgit commit --amend</code></b> replaces the last commit.</li>
+<li><b><code>sgit history revert --as-commit</code></b> makes a new signed commit that inverts an earlier one: the way to undo a pushed change for everyone.</li>
+</ul>
+<p>All of these are local and need no format change.</p>
+<p><b>Signed tags: <code>sgit vault tag create | list | show | delete</code>.</b> A tag is an immutable object, signed by the clone that made it, encrypted under the read key and stored like every other object. Its name lives only in the encrypted branch index, so the host never sees it. Tags move only with <code>--force</code>, a pull reports a tag that moved, and deletes are respected by every 0.21.0 clone.</p>
+<p><b><code>sgit push --force-with-lease</code>.</b> It forces only when the remote branch is still where this clone last accepted it, and the server applies it with compare-and-swap, so a teammate's push is never clobbered.</p>
+<p><b>Branches.</b> <code>branch switch</code> fetches before it switches. <code>branch merge &lt;name&gt;</code> merges another branch into the current one. <code>branch rename</code> renames a branch you have not pushed yet. A name a teammate pushed first is refused at push, with <code>branch rename</code> named as the way out.</p>
+<p><b>Smaller things from daily use.</b></p>
+<ul>
+<li><code>sgit clone - &lt;dir&gt;</code> reads the vault key from stdin, so the key stays out of command lines and logs.</li>
+<li><code>sgit doctor</code> checks the server the vault actually uses, with the headers push and pull send.</li>
+<li>A read-only clone's <code>history log</code> works.</li>
+<li><code>--vault-key</code> accepts a read key.</li>
+</ul>
+<h2>Security: what now refuses</h2>
+<p>0.21.0 started from a mapping of git's security features to sgit, then went through a threat model and four parallel reviews. In each case below, sgit now refuses where it used to do the damage silently.</p>
+<ul>
+<li><b>Symlinks are never followed, committed or written through.</b> A link to the clone's own key file used to commit the vault key, in plain text inside the vault, for every reader to see.</li>
+<li><b>A file sgit cannot open stops the command.</b> It used to read as deleted, and the next commit removed it for everyone. A folder it cannot list is treated the same way.</li>
+<li><b>The server a vault talks to is recorded.</b> The <code>SGIT_DEFAULT_BASE_URL</code> variable used to redirect a vault, with its access token and write key, to whatever host it named.</li>
+<li><b>A zip holding a vault key or a private signing key is refused at commit.</b> The backup that <code>vault uninit</code> leaves is named so that it is never committed.</li>
+<li><b>Nothing writes a local ref or a rewind record before verifying it.</b> Not pull, not status, and not a branch switch. Clone checks signatures too.</li>
+<li><b>The path guard refuses every spelling of <code>.git</code> and <code>.sg_vault</code></b> that a case-insensitive or normalising filesystem treats as the same directory. Before, a vault entry such as <code>.GIT/hooks/post-checkout</code> could have reached <code>.git/</code> on macOS or Windows.</li>
+<li><b>Key and token files are written owner-only from the moment they exist.</b> The writer is atomic and fsynced.</li>
+<li><b>A branch-index entry this version cannot read is kept, untouched.</b> One unreadable entry no longer breaks every clone of a vault, and a newer client's tags are never dropped by an older one.</li>
+</ul>
+<h2>What is still open, said plainly</h2>
+<ul>
+<li><b>A read-key holder who can write to the store can forge a commit that verifies.</b> A signing key is trusted because its key file decrypts under the read key; today, the server's write-key check is what stands in the way. The CLI team's next design item is owner-signed membership, with per-ref sequence numbers so that a server cannot replay an older signed state. Until then, treat a published read key as read-only only for as long as the server enforces it.</li>
+<li><b>The very first write of a new branch has no compare-and-swap.</b> The server API has no "create if absent" operation yet. Duplicate branch names are caught at push.</li>
+</ul>
+<h2>Mixed teams</h2>
+<p>0.20.0 and 0.21.0 can share a vault: clone, pull, commit and push work in both directions, and every commit verifies. This was checked live on 10 and 11 October. There are two caveats:</p>
+<ul>
+<li><b>A 0.20.0 push drops the vault's tags</b> until a 0.21.0 clone's next pull restores them.</li>
+<li><b>A 0.20.0 backup carries no signing key.</b></li>
+</ul>
+<p>For a vault with tags or a signature policy, set <code>sgit vault format --min-client 0.21.0</code> once everyone has updated.</p>
+<p>Guides: <a href="../docs/update-to-0-21-0.html">Update sgit-ai to 0.21.0</a> and <a href="../docs/history-integrity.html">History integrity</a>. The CLI's full change log, with every fix and who found it: <a href="https://github.com/SGit-AI/SGit-AI__CLI/blob/main/CHANGELOG.md">CHANGELOG.md</a>.</p>
+ </article>
  <h2 class="upd-date">2026-10-10</h2>
  <article class="upd" id="the-reader-card">
  <h3><a href="#the-reader-card">Rate what you read, and the rating sets the price</a> <a class="upd-ver" href="../admin/versions.html">v0.7.34</a></h3>
@@ -1303,7 +1386,7 @@
 <sg-meter view="page" kind="page" date="" topics="" title="Updates (sgit.ai)" quiet></sg-meter>
 <script type="application/json" id="sg-meter-config">{"storageKey": "sgit.meter.v1", "start": 500, "newDays": 7, "symbol": "£", "prices": {"article_new": 10, "article": 5, "issue": 3, "note": 2, "collection": 2, "page": 1, "free": 0}, "depth": true, "minDepth": 0.1, "topup": {"amount": 500, "link": ""}, "packs": [{"id": "p2", "price": 200, "bonus": 0}, {"id": "p5", "price": 500, "bonus": 0}, {"id": "p10", "price": 1000, "bonus": 100}, {"id": "p20", "price": 2000, "bonus": 300}], "links": {"account": "account/index.html", "topup": "account/top-up.html", "how": "articles/going-live-with-the-reading-meter.html"}, "rating": {"price": [0, 0.5, 1, 1.5, 2], "more": [-3, -1, 0, 3, 6]}, "autoKeep": true, "picks": {"feed": "articles/graphs.json", "base": "articles/"}, "links2": {"newsroom": "account/newsroom.html", "personas": "account/personas.html", "share": "account/share.html"}, "share": {"contact": ".well-known/sgit-subscribe.json", "form": "reading-share", "site": "sgit.ai", "max": 300}, "personas": {"presets": [{"id": "founder", "label": "The founder", "name": "Morgan", "theme": "#b45309", "blurb": "Building a company: what to build, what to charge, what to secure and when to stop. Strategy, pricing and the questions investors ask.", "topics": {"startups-and-strategy": 3, "agents-and-policy": 1}, "articles": ["the-question-is-whether-they-miss-it", "price-it-then-give-it-away", "saas-apocalypse-decided-by-inertia-not-by-ai", "who-are-you-protecting-against", "knowing-when-to-stop", "open-source-is-not-free", "going-live-with-the-reading-meter"]}, {"id": "journalist", "label": "The journalist", "name": "Rowan", "theme": "#1d4ed8", "blurb": "Where news came from and where it could go: story vaults, liquid content, local evidence, and what publishers are owed by the machines that read them.", "topics": {"news-and-evidence": 3, "graphs-and-knowledge": 1}, "articles": ["how-news-got-here", "future-of-news-story-vault-not-paywall", "liquid-content-needs-water", "the-bridge-followed-to-the-end", "story-vault-meets-reader-skills", "the-waiting-room-knew-first", "token-bill-nobody-is-sending"]}, {"id": "security", "label": "The security lead", "name": "Sam", "theme": "#b91c1c", "blurb": "Agents as insiders: who you are protecting against, blast radius, identity, incidents and the controls that hold when a model does not.", "topics": {"agents-and-policy": 3, "vaults-and-method": 1}, "articles": ["who-are-you-protecting-against", "ultimate-insider-three-collisions", "footprint-and-blast-radius", "six-agents-one-inbox", "the-investigation-github-owes-its-customers", "why-my-agents-do-not-run-on-my-laptop", "the-identity-we-wanted-to-give-the-agents", "where-is-the-why"]}, {"id": "builder", "label": "The AI builder", "name": "Kai", "theme": "#0f766e", "blurb": "Making agents work day to day: Claude Code sessions, hooks, memory, behaviour policies, and the engineering lessons each mistake left behind.", "topics": {"agents-and-policy": 2, "site-and-engineering": 2, "vaults-and-method": 1}, "articles": ["how-i-work-with-claude", "a-second-reader-the-agent-cannot-skip", "re-anchoring-agent-behaviour-policies", "every-mistake-added-a-rule", "memory-is-not-a-spectator-sport", "encrypted-memory-for-isolated-agents", "hope-or-enforcement"]}, {"id": "board", "label": "The board member", "name": "Jordan", "theme": "#6d28d9", "blurb": "How AI is changing the business and how to govern it: business models, due diligence, risk acceptance, accountability and the governance frameworks.", "topics": {"graphs-and-knowledge": 2, "startups-and-strategy": 2, "agents-and-policy": 1}, "articles": ["saas-apocalypse-decided-by-inertia-not-by-ai", "send-an-agent-not-a-spreadsheet", "every-risk-is-already-accepted", "agency-is-not-a-yes", "the-ai-governance-stack-as-a-graph", "ai-baseline-control-framework", "what-sgit-is"]}], "names": {"agents-and-policy": "The Policy Architect", "vaults-and-method": "The Vault Keeper", "news-and-evidence": "The Fact Finder", "startups-and-strategy": "The Strategist", "graphs-and-knowledge": "The Cartographer", "site-and-engineering": "The Builder"}}}</script>
 <script>
-import('../assets/components/sg-meter/v1/v1.3/v1.3.1/sg-meter.js?v=v0.7.51')
+import('../assets/components/sg-meter/v1/v1.3/v1.3.1/sg-meter.js?v=v0.7.52')
  .catch(function (e) { console.error('[sg-meter] component failed to load:', e); });
 </script>
 
@@ -1312,7 +1395,7 @@ import('../assets/components/sg-meter/v1/v1.3/v1.3.1/sg-meter.js?v=v0.7.51')
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.7.51</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.7.52</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -1355,7 +1438,7 @@ import('../assets/components/sg-meter/v1/v1.3/v1.3.1/sg-meter.js?v=v0.7.51')
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.7.51';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.7.52';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

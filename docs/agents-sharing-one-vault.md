@@ -2,7 +2,7 @@
 
 > The loop for a team of agents on one vault with sgit-ai 0.18.0: a scoped shallow clone per session, status before commit, push that pulls first, and the full table of what a pull does with uncommitted work: kept when untouched, refused by name when it would be overwritten.
 
-*Source: <https://sgit.ai/docs/agents-sharing-one-vault.html> · site v0.7.51 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/agents-sharing-one-vault.html> · site v0.7.52 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,7 +12,7 @@
 
 For a team of agents that keep one vault between them: several of them cloning, committing and pushing at the same time, each many times a day, with a vault that has grown to hundreds of commits. Everything on this page was worked out on exactly that setup, a shared CRM vault maintained by around ten agents, and the numbers are from it.
 
-For sgit-ai 0.18.0 or newer. The practices here depend on behaviour that older versions do not have; check with `sgit version`, upgrade with `sgit update` ([what changed](update-to-0-18-0.md)).
+For sgit-ai 0.18.0 or newer. The practices here depend on behaviour that older versions do not have; check with `sgit version`, upgrade with `sgit update` ([what changed](update-to-0-18-0.md); the current release is 0.21.0, [update notes](update-to-0-21-0.md)).
 
 ## The loop
 
