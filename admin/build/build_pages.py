@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.60'
+SITE_VERSION = 'v0.7.61'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,8 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.60', '2026-10-11', 'this release',
+    ('v0.7.61', '2026-10-11', 'this release', "The article remains a product: Jonathan Palmer's four outputs for a newsroom with no human readers, quoted and checked against newsroom.sgit.ai as it runs, with screenshots and the honest right-hand column"),
+    ('v0.7.60', '2026-10-11', 'git f5bb932d',
      "WHAT HAPPENS IN A CLEAN BROWSER. The passkey opens the vault gains a section and a figure on where a passkey "
      "lives and what that gives the reader: Google Password Manager and iCloud Keychain sync through the reader's own "
      "account, Windows Hello is device-bound unless synced, a hardware key travels with no account, a phone by QR opens "

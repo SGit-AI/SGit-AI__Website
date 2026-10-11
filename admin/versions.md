@@ -2,7 +2,7 @@
 
 > Every release of the sgit.ai site: version, date, vault commit, and changes. The version increments on every push.
 
-*Source: <https://sgit.ai/admin/versions.html> · site v0.7.60 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/admin/versions.html> · site v0.7.61 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,12 +10,14 @@
 
 # Release history
 
-The site version (**v0.7.60**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
+The site version (**v0.7.61**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
 
-| v0.7.60 | 2026-10-11 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.59...v0.7.60) | WHAT HAPPENS IN A CLEAN BROWSER. The passkey opens the vault gains a section and a figure on where a passkey lives and what that gives the reader: Google Password Manager and iCloud Keychain sync through the reader's own account, Windows Hello is device-bound unless synced, a hardware key travels with no account, a phone by QR opens a clean laptop one scan at a time, and Chrome's own profile store signs but returns no PRF bytes in 2026 tests. The rule: the same newsroom on every device needs a synced provider or a hardware key; a clean browser gives one device plus the recovery code. The page checks prf.enabled at creation and offers a ladder of alternatives; the brief tests a clean profile.**Updated:**[The passkey opens the vault: touch a passkey, and a master vault for every user, with no server of ours, no account and no email](../articles/the-passkey-opens-the-vault.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.59...v0.7.60). |
+| v0.7.61 | 2026-10-11 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.60...v0.7.61) | The article remains a product: Jonathan Palmer's four outputs for a newsroom with no human readers, quoted and checked against newsroom.sgit.ai as it runs, with screenshots and the honest right-hand column[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.60...v0.7.61). |
+
+| v0.7.60 | 2026-10-11 | [git f5bb932d](https://github.com/SGit-AI/SGit-AI__Website/commit/f5bb932d) | WHAT HAPPENS IN A CLEAN BROWSER. The passkey opens the vault gains a section and a figure on where a passkey lives and what that gives the reader: Google Password Manager and iCloud Keychain sync through the reader's own account, Windows Hello is device-bound unless synced, a hardware key travels with no account, a phone by QR opens a clean laptop one scan at a time, and Chrome's own profile store signs but returns no PRF bytes in 2026 tests. The rule: the same newsroom on every device needs a synced provider or a hardware key; a clean browser gives one device plus the recovery code. The page checks prf.enabled at creation and offers a ladder of alternatives; the brief tests a clean profile.**Updated:**[The passkey opens the vault: touch a passkey, and a master vault for every user, with no server of ours, no account and no email](../articles/the-passkey-opens-the-vault.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/f5bb932d). |
 
 | v0.7.59 | 2026-10-11 | [git ad8b5b75](https://github.com/SGit-AI/SGit-AI__Website/commit/ad8b5b75) | The key-chain figure in The passkey opens the vault catches up with v0.7.58: Google sees nothing in the MVP, and the steps are numbered from the passkey.[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/ad8b5b75). |
 

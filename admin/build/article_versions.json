@@ -1763,6 +1763,7 @@
    "words": 4244
   }
  ],
+ "the-article-remains-a-product": [],
  "the-behaviour-policy-is-the-business-logic": [
   {
    "commit": "d66096615",
@@ -1987,6 +1988,16 @@
    "subject": "site v0.7.58: the passkey opens the vault, reviewed (passkey-only MVP, no sign-in, measured unlock cost)",
    "version": "v1.1.0",
    "words": 3923
+  },
+  {
+   "commit": "f5bb932d6",
+   "date": "2026-10-11",
+   "full": "f5bb932d615519485ef0a23f604d8d8e138fdf0b",
+   "kind": "minor",
+   "path": "admin/content/articles/the-passkey-opens-the-vault.md",
+   "subject": "site v0.7.60: what happens in a clean browser (where a passkey lives, and the ladder when PRF is off)",
+   "version": "v1.2.0",
+   "words": 4595
   }
  ],
  "the-question-is-whether-they-miss-it": [
