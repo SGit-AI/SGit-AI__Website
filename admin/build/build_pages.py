@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.40'
+SITE_VERSION = 'v0.7.41'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,17 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.40', '2026-10-10', 'this release',
+    ('v0.7.41', '2026-10-11', 'this release',
+     "AN ANSWER TO SATYA NADELLA ON MODELS AS INSIDER RISKS, IN TWO ARTICLES. The same argument, in our words: his post "
+     "of 10 October translated idea by idea into this network's vocabulary (software was the law, the ultimate insider, "
+     "every risk is already accepted, the grant is not the mandate, the enforcer test), where it came from, and the two "
+     "places the languages differ (the unit: model or deployment; the frame: observation or authority). Authority "
+     "outside the model: his seven principles one at a time, with what runs, what is published as design and what is "
+     "only argued, an honest maturity table and the five things the list leaves out. Researched and drafted in a "
+     "separate session, rewritten here in the site's voice, with three additions from this week: synthetic users that "
+     "found real bugs, the harness safety check that stopped our own persona agents, and the ratio of expectations in "
+     "this session's policy. Six figures; a pitch to the Editor."),
+    ('v0.7.40', '2026-10-10', 'git 6c29e29c',
      "HOW TO RUN SYNTHETIC USERS, AND FIVE ON NEWSROOM.SGIT.AI. A how-to article from three studies (store.sgit.ai, "
      "riskmandate.ai and a new one): five to ten invented users of about five types, each a profile record, with an "
      "expected journey written first, driving a real browser one screenshot at a time, interviewed and asked for a "

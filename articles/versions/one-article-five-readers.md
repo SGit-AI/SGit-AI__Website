@@ -2,7 +2,7 @@
 
 > Every published version of the article "One article, five readers", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/one-article-five-readers.html> · site v0.7.40 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/one-article-five-readers.html> · site v0.7.41 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,7 +16,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.0.1** | 2026-10-10 | patch | 4,034 | front matter only (the text is unchanged) | this release | [what changed](one-article-five-readers/v1.0.1.md) · [current](../one-article-five-readers.md) |
+| **v1.0.1** | 2026-10-11 | patch | 4,034 | front matter only (the text is unchanged) | this release | [what changed](one-article-five-readers/v1.0.1.md) · [current](../one-article-five-readers.md) |
 | **v1.0.0** | 2026-10-10 | published | 4,034 | first published | [`f1c358a02`](https://github.com/SGit-AI/SGit-AI__Website/commit/f1c358a0274711776820b3c1435447a8c726a057) |  |
 
 [← Back to the article](../one-article-five-readers.md) · [All articles](../index.md)

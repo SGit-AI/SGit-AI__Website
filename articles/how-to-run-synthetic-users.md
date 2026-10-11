@@ -2,7 +2,7 @@
 
 > A how-to, from three studies we have published: store.sgit.ai in September, riskmandate.ai the day after, and newsroom.sgit.ai on 10 October, run for this article. Five to ten invented users of about five types, each with a profile, a question they arrive with and an expected journey, drive a real browser one screenshot at a time, saying what they see, think, ask and do; then they are interviewed and rate the experience, and their findings are ordered by what they cost. Claude Sonnet is good enough to play each user; the study can live in a GitHub repository or in an encrypted vault shared by a link. On the newsroom, five readers took 62 steps, asked 51 questions the site did not answer and produced 31 findings, six blocking; four of them left. Two findings turned out to be caused by our own tooling, and one turned out to be a real bug: 51 of 527 figures missing after the move. This article sets out each step with examples and screenshots, what went wrong, and a template to start from.
 
-*Source: <https://sgit.ai/articles/how-to-run-synthetic-users.html> · site v0.7.40 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/how-to-run-synthetic-users.html> · site v0.7.41 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -231,6 +231,10 @@ Vaults & methodSite & engineering[This article as a graph →](graphs.md#how-to-
 ### Builds on
 
 - [A link to a persona: send people to the newsroom as someone, not as nobody](a-link-to-a-persona.md) Send a CISO to the newsroom as a CISO: personas kept in a vault by the newsroom's agents, opened from a link, followed or forked.
+
+### Continued by
+
+- [Authority outside the model: an answer to Satya Nadella on models as insider risks, principle by principle, with what we run, what we ship and what we plan](authority-outside-the-model.md) Satya Nadella's seven principles for models as insider risks, answered one by one: what we run, what is design, and the five things the list leaves out.
 
 [All articles](index.md) · [All graphs](graphs.md)
 
