@@ -1247,23 +1247,67 @@
    "out": "articles/banners/green-does-not-mean-live.jpg"
   },
   {
+   "slug": "005-no-server-by-design",
+   "kind": "issue",
+   "kicker": "SGit Newsroom · Issue 5",
+   "date": "2026-10-11",
+   "author": "Dinis Cruz",
+   "title": "No server, by design: a newsroom that runs in your browser, a model in the tab, and the agents that read, test and draw for it",
+   "teaser": "All the logic in the reader's browser, the keys and the model that make it possible, and the agents that read, test and draw for it.",
+   "ideas": [
+    "No servers of mine with logic in them",
+    "Keep the meaning in the data, not in the prompt",
+    "A gap is a missing edge, and a missing edge is a query"
+   ],
+   "mosaic": [
+    "articles/cards/no-server-by-design.webp",
+    "articles/cards/a-model-in-the-tab.webp",
+    "articles/cards/where-the-vault-keys-live.webp",
+    "articles/cards/rfc-0001-public-key-cryptography-for-sgit.webp"
+   ],
+   "url": "sgit.ai/articles/newsletter/2026/10/11/005-no-server-by-design.html",
+   "out": "articles/banners/005-no-server-by-design.jpg"
+  },
+  {
+   "slug": "004-authority-outside-the-model",
+   "kind": "issue",
+   "kicker": "SGit Newsroom · Issue 4",
+   "date": "2026-10-11",
+   "author": "Dinis Cruz",
+   "title": "Authority outside the model: Satya Nadella on models as insider risks, the platforms that now enforce, and the controls we run on our own agents",
+   "teaser": "An agent's limits only hold if they sit outside the agent. What that takes, from the platform to the daily routine.",
+   "ideas": [
+    "A control bounds a grant only if it is enforced by something the grant does not include",
+    "An agent must not be the one that decides its own limits",
+    "A rule kept by the agent it governs is hope"
+   ],
+   "mosaic": [
+    "articles/cards/authority-outside-the-model.webp",
+    "articles/cards/the-same-argument-in-our-words.webp",
+    "articles/cards/where-the-platform-draws-the-line.webp",
+    "articles/cards/riskmandate-ten-questions.webp"
+   ],
+   "url": "sgit.ai/articles/newsletter/2026/10/11/004-authority-outside-the-model.html",
+   "out": "articles/banners/004-authority-outside-the-model.jpg"
+  },
+  {
    "slug": "003-pay-after-you-read",
    "kind": "issue",
    "kicker": "SGit Newsroom · Issue 3",
    "date": "2026-10-11",
    "author": "Dinis Cruz",
-   "title": "Pay after you read, no server by design, and authority that sits outside the model",
-   "teaser": "A newsroom you pay after you read, that runs in your browser, and what it takes for an agent's limits to sit outside the agent.",
+   "title": "Pay after you read: a newsroom that charges for the share you read, lets you go below zero, and keeps your persona",
+   "teaser": "A newsroom you pay after you read, that never nags, and builds a persona that is yours.",
    "ideas": [
-    "Pay after you see the value",
-    "No servers of mine with logic in them",
-    "A control bounds a grant only if it is enforced by something the grant does not include"
+    "You pay after you see the value",
+    "Going below zero is not a failure state",
+    "The reader should pay because paying helps them"
    ],
    "mosaic": [
     "articles/cards/pay-after-you-read.webp",
     "articles/cards/going-live-with-the-reading-meter.webp",
-    "articles/cards/who-will-game-the-reading-meter.webp",
-    "articles/cards/pay-to-keep-your-persona.webp"
+    "articles/cards/a-meter-in-the-browser.webp",
+    "articles/cards/who-will-game-the-reading-meter.webp"
    ],
    "url": "sgit.ai/articles/newsletter/2026/10/11/003-pay-after-you-read.html",
    "out": "articles/banners/003-pay-after-you-read.jpg"
@@ -1335,21 +1379,13 @@
    "out": "articles/banners/subscribe.jpg"
   },
   {
-   "slug": "003-2026-10-11-week",
+   "slug": "005-2026-10-11-noserver",
    "kind": "collage",
    "kicker": "SGit Newsroom",
-   "title": "Three days in six pictures, one from each of the lead articles",
+   "title": "No server, by design, in six pictures, one from each of six of the articles",
    "date": "",
    "author": "Dinis Cruz",
    "items": [
-    {
-     "src": "articles/images/pv-wardley-today.webp",
-     "label": "Pay after you read"
-    },
-    {
-     "src": "articles/images/gp-why.webp",
-     "label": "Pay to keep your persona"
-    },
     {
      "src": "articles/images/ns-architecture.webp",
      "label": "No server by design"
@@ -1359,22 +1395,102 @@
      "label": "A model in the tab"
     },
     {
+     "src": "articles/images/km-architecture.webp",
+     "label": "Where the vault keys live"
+    },
+    {
+     "src": "articles/images/fr-five.webp",
+     "label": "One article and five readers"
+    },
+    {
+     "src": "demos/vaults/newsroom-synthetic-users/images/app-front.webp",
+     "label": "Synthetic users"
+    },
+    {
+     "src": "articles/images/ib-conclusion.webp",
+     "label": "The infographic bake-off"
+    }
+   ],
+   "url": "sgit.ai/articles/",
+   "out": "articles/banners/collages/005-2026-10-11-noserver.jpg"
+  },
+  {
+   "slug": "004-2026-10-11-authority",
+   "kind": "collage",
+   "kicker": "SGit Newsroom",
+   "title": "Authority outside the model in six pictures, one from each of the first six articles",
+   "date": "",
+   "author": "Dinis Cruz",
+   "items": [
+    {
      "src": "articles/images/om-seven.webp",
      "label": "Authority outside the model"
     },
     {
+     "src": "articles/images/tl-phrasebook.webp",
+     "label": "The same argument in our words"
+    },
+    {
      "src": "articles/images/pl-stack.webp",
      "label": "Where the platform draws the line"
+    },
+    {
+     "src": "articles/images/tq-model.webp",
+     "label": "Ten questions for RiskMandate"
+    },
+    {
+     "src": "articles/images/ck-flow.webp",
+     "label": "A second reader"
+    },
+    {
+     "src": "articles/images/ra-compactions.webp",
+     "label": "Re-anchoring"
     }
    ],
    "url": "sgit.ai/articles/",
-   "out": "articles/banners/collages/003-2026-10-11-week.jpg"
+   "out": "articles/banners/collages/004-2026-10-11-authority.jpg"
+  },
+  {
+   "slug": "003-2026-10-11-meter",
+   "kind": "collage",
+   "kicker": "SGit Newsroom",
+   "title": "The reading meter in six pictures, one from each of the articles that built it",
+   "date": "",
+   "author": "Dinis Cruz",
+   "items": [
+    {
+     "src": "articles/images/pv-wardley-today.webp",
+     "label": "Pay after you read"
+    },
+    {
+     "src": "articles/images/gl-anchors.webp",
+     "label": "Going live with the reading meter"
+    },
+    {
+     "src": "articles/images/gg-ladder.webp",
+     "label": "Who will game the reading meter"
+    },
+    {
+     "src": "articles/images/gp-why.webp",
+     "label": "Pay to keep your persona"
+    },
+    {
+     "src": "articles/images/pl-flow.webp",
+     "label": "A link to a persona"
+    },
+    {
+     "src": "articles/images/ar-layers.webp",
+     "label": "The agent is the reader"
+    }
+   ],
+   "url": "sgit.ai/articles/",
+   "out": "articles/banners/collages/003-2026-10-11-meter.jpg"
   },
   {
    "slug": "003-2026-10-11-personas",
    "kind": "collage",
    "kicker": "SGit Newsroom",
-   "title": "A newsroom of your own: picks for each persona, the graph of what you read, and the card where you rate what you read",
+   "title": "A newsroom of your own: picks for each persona, the graph of what you read, and the personas you keep",
    "date": "",
    "author": "Dinis Cruz",
    "items": [
@@ -1387,8 +1503,8 @@
      "label": "A persona as a graph"
     },
     {
-     "src": "articles/images/gl-line.webp",
-     "label": "The reader card at the foot of an article"
+     "src": "articles/images/gp-personas.webp",
+     "label": "Your personas"
     }
    ],
    "url": "sgit.ai/articles/",

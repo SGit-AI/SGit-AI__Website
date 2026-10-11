@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.7.47). Nothing here needs a second request. Individual pages live at the paths
+> (v0.7.48). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -73,7 +73,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-309site releases, each verified live before it was called done
+310site releases, each verified live before it was called done
 
 54vaults published with a deliberately public read key
 
@@ -6264,7 +6264,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.7.47, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.7.48, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -6627,7 +6627,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-309**site releases since 14 August**
+310**site releases since 14 August**
 each verified live before it was called done
 
 54**vaults published with a public read key**
@@ -12187,12 +12187,14 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.7.47**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
+The site version (**v0.7.48**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
 
-| v0.7.47 | 2026-10-11 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.46...v0.7.47) | NEWSLETTER ISSUE 3: PAY AFTER YOU READ, NO SERVER BY DESIGN, AND AUTHORITY THAT SITS OUTSIDE THE MODEL. The 24 articles published from 9 to 11 October in one issue: the reading meter from demonstration to a working model (pay by depth, the rating sets the price, below zero without nagging, personas, a link to a persona; payments live and the hypotheses reviewed on 6 December), the newsroom running in the browser and a language model in the tab, five agent readers and what their graphs save, and the answer to Satya Nadella on models as insider risks with Microsoft's agent containers mapped to behaviour policies. Eleven quotes, each checked word for word against its article; two collages and a LinkedIn cover rendered; every article listed by topic.[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.46...v0.7.47). |
+| v0.7.48 | 2026-10-11 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.47...v0.7.48) | THE NEWSLETTER, SPLIT INTO THREE ISSUES OF EIGHT. Issue 3 tried to cover all 24 articles from 9 to 11 October; that is too much for one LinkedIn post, and good articles were lost in the middle. It is now three issues, grouped by theme rather than date, each with its own narrative, collage, quotes checked word for word and LinkedIn cover, and links to the other two: Issue 3, pay after you read (the reading meter, the plan and its hypotheses, who could game it, personas, a link to a persona, agents that pay, open source); Issue 4, authority outside the model (Nadella's seven principles, the same argument in our words, Microsoft's containers, RiskMandate's ten questions, the second reader, re-anchoring, how I work with Claude, a Mac of the agent's own); Issue 5, no server by design (the browser as the application, a model in the tab, the vault keys, RFC 0001, five readers, synthetic users, the infographic bake-off, the governance stack as a graph). Issue 3 keeps its address.[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.47...v0.7.48). |
+
+| v0.7.47 | 2026-10-11 | [git 15766d6b](https://github.com/SGit-AI/SGit-AI__Website/commit/15766d6b) | NEWSLETTER ISSUE 3: PAY AFTER YOU READ, NO SERVER BY DESIGN, AND AUTHORITY THAT SITS OUTSIDE THE MODEL. The 24 articles published from 9 to 11 October in one issue: the reading meter from demonstration to a working model (pay by depth, the rating sets the price, below zero without nagging, personas, a link to a persona; payments live and the hypotheses reviewed on 6 December), the newsroom running in the browser and a language model in the tab, five agent readers and what their graphs save, and the answer to Satya Nadella on models as insider risks with Microsoft's agent containers mapped to behaviour policies. Eleven quotes, each checked word for word against its article; two collages and a LinkedIn cover rendered; every article listed by topic.[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/15766d6b). |
 
 | v0.7.46 | 2026-10-11 | [git 89cf1469](https://github.com/SGit-AI/SGit-AI__Website/commit/89cf1469) | A MODEL IN THE TAB. Chrome 148 (5 May 2026) lets any page prompt Gemini Nano on the reader's own machine: the hardest piece of the client-side pattern from No server, by design. A briefing on the built-in AI APIs and their status, what the Prompt API accepts and returns, the hardware it needs and the model's lifecycle; why a first run felt so rough (the download never stopped, the page lost the progress bar); why there are so few examples; the objections from Mozilla, WebKit, the W3C TAG and Microsoft, taken seriously; why a small model fits anchored graph slices; and a map of what to build first. Drafted in a separate session from a voice memo; a last pass here for plainer wording and one correction (in-browser models existed before; the browser now supplies one for every site). Four figures. A vault with measurements follows.**New:**[A model in the tab: Chrome now ships an LLM to capable desktops, and it is the hardest piece of the client-side puzzle](../articles/a-model-in-the-tab.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/89cf1469). |
 
@@ -15796,7 +15798,7 @@ There is a longer account of this one in [Green does not mean live](../articles/
 >
 > Page: https://sgit.ai/articles/index.html
 
-Edition of 2026-10-0873 articles · 4 desk notes · 5 collections · 3 issuessgit.ai · v0.7.47
+Edition of 2026-10-0873 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.48
 
 # SGit Newsroom
 
@@ -46190,8 +46192,10 @@ Computed at every build from the files: placements that point at nothing, articl
 - To do`newsroom/pitches/2026-10-10__one-article-five-readers.md` open pitch from agent@riskmandate.ai: lead for one-article-five-readers
 - To do`newsroom/pitches/2026-10-10__going-live-with-the-reading-meter.md` open pitch from journalist: lead for going-live-with-the-reading-meter
 - To do`newsroom/pitches/2026-10-10__a-meter-in-the-browser.md` open pitch from journalist: lead for a-meter-in-the-browser
-- Note`newsroom/newsletter/003-2026-10-11.md` issue 3 has no linkedin: URL yet; add it once it is posted
-- Note`newsroom/newsletter/002-2026-10-08.md` issue 2 has no linkedin: URL yet; add it once it is posted
+- Note`newsroom/newsletter/005-2026-10-11.md` issue 5 has no linkedin: URL yet; add it once it is posted
+- Note`newsroom/newsletter/004-2026-10-11.md` issue 4 has no linkedin: URL yet; add it once it is posted
+
+and 2 more; `python3 admin/build/desk.py` lists them all.
 
 ## The desk: six roles
 
@@ -46466,7 +46470,7 @@ One entry per run of a desk role, newest first, each its own file and never edit
 >
 > Page: https://sgit.ai/articles/collections/index.html
 
-Edition of 2026-10-0873 articles · 4 desk notes · 5 collections · 3 issuessgit.ai · v0.7.47
+Edition of 2026-10-0873 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.48
 
 # Collections
 
@@ -46485,7 +46489,7 @@ A collection is one file in `admin/content/newsroom/collections/`. [How the desk
 >
 > Page: https://sgit.ai/articles/desk/index.html
 
-Edition of 2026-10-0873 articles · 4 desk notes · 5 collections · 3 issuessgit.ai · v0.7.47
+Edition of 2026-10-0873 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.48
 
 # From the desk
 
@@ -47208,7 +47212,7 @@ One issue a week or so, when there is enough to say: what was published on sgit.
 
 **Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
 
-The latest issue: [**Issue 3, Pay after you read, no server by design, and authority that sits outside the model**](../articles/newsletter/2026/10/11/003-pay-after-you-read.md) (2026-10-11). [All issues](../articles/newsletter/index.md).
+The latest issue: [**Issue 5, No server, by design: a newsroom that runs in your browser, a model in the tab, and the agents that read, test and draw for it**](../articles/newsletter/2026/10/11/005-no-server-by-design.md) (2026-10-11). [All issues](../articles/newsletter/index.md).
 
 ## What happens to your address
 
@@ -47223,7 +47227,7 @@ Your browser encrypts it to the public key of the agent that runs the list, then
 >
 > Page: https://sgit.ai/articles/newsletter/index.html
 
-Edition of 2026-10-0873 articles · 4 desk notes · 5 collections · 3 issuessgit.ai · v0.7.47
+Edition of 2026-10-0873 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.48
 
 # The newsletter
 
@@ -47231,13 +47235,29 @@ The regular issue of the SGit Newsroom: what was published, what it adds up to, 
 
 ## Issues
 
+Issue 52026-10-11
+
+## [No server, by design: a newsroom that runs in your browser, a model in the tab, and the agents that read, test and draw for it](../../articles/newsletter/2026/10/11/005-no-server-by-design.md)
+
+Everything in the last two issues runs in the reader's browser. First the database was retired and the file system took its place; now the back end is retired too, and what is left on the server side is commodity that holds no logic and cannot read the data. Eight articles on how that works and what it makes possible. Why there is no server, and why that made a business decision possible; Chrome's model in the tab, the hardest remaining piece; where the vault keys live and an RFC for keys a reader cannot write with; and the agents that do the newsroom's work: five readers sent through every article, synthetic users driving a real browser, image models judged blind, and a governance framework kept as a graph.
+
+8 articles
+
+Issue 42026-10-11
+
+## [Authority outside the model: Satya Nadella on models as insider risks, the platforms that now enforce, and the controls we run on our own agents](../../articles/newsletter/2026/10/11/004-authority-outside-the-model.md)
+
+The CEO of one of the largest AI vendors published seven principles for treating models as insider risks, and Microsoft shipped containers and a control specification for agents. Both say what this network has been arguing: an agent's limits must sit outside the agent. Eight articles on what that means in practice. An answer to the seven principles, one by one, with what runs and what is only designed; the same argument translated into the language of behaviour policies; where the platform draws its line and why the business logic sits above it; ten hard questions for RiskMandate; and the controls we run on our own agents every day, from a second reader that fails closed to a desktop of their own.
+
+8 articles
+
 Issue 32026-10-11
 
-## [Pay after you read, no server by design, and authority that sits outside the model](../../articles/newsletter/2026/10/11/003-pay-after-you-read.md)
+## [Pay after you read: a newsroom that charges for the share you read, lets you go below zero, and keeps your persona](../../articles/newsletter/2026/10/11/003-pay-after-you-read.md)
 
-Three days and twenty-four articles. The reading meter went from an experiment to a working model: you pay for the share of a page you read, you say how useful it was and that sets the price, your balance can go below zero without a word of nagging, and your reading builds personas that are yours. Underneath it, the whole newsroom now runs in the reader's browser, with a language model arriving in the tab as the last piece. And from the other side of the network, an answer to Satya Nadella on models as insider risks, and Microsoft's new agent containers mapped to the behaviour policies they make enforceable.
+What would you pay for an article if you only paid after reading it, and only as much as it was worth to you? On 10 October the reading meter on this site went from a demonstration to a working answer, one release at a time. You pay for the share of a page you scroll through. You say how useful it was, and that sets the price, from free to double. Your balance can go below zero without a word of nagging. And your reading builds personas that are yours, kept in your browser, that a link can share. Eight articles: the plan, the numbers we will be judged on, who could cheat it, why readers should pay because it helps them, and why agents will pay too.
 
-12 articles
+8 articles
 
 Issue 22026-10-08
 
@@ -47257,72 +47277,34 @@ What it takes to let agents do real work for a business, from four sides: a team
 
 **Get the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../../subscribe/index.md)
 
-Next issue: not yet due (0 article(s) since issue 3; due at 5 or after 7 days). Issues are written by the [Journalist](../../newsroom/roles/journalist.md) from the articles' own data; every quote is checked against its article when the site is built.
+Next issue: not yet due (0 article(s) since issue 5; due at 5 or after 7 days). Issues are written by the [Journalist](../../newsroom/roles/journalist.md) from the articles' own data; every quote is checked against its article when the site is built.
 
 
 
 ==============================================================================
-# Issue 3: Pay after you read, no server by design, and authority that sits outside the model, SGit Newsroom
+# Issue 5: No server, by design: a newsroom that runs in your browser, a model in the tab, and the agents that read, test and draw for it, SGit Newsroom
 
-> Three days and twenty-four articles. The reading meter went from an experiment to a working model: you pay for the share of a page you read, you say how useful it was and that sets the price, your balance can go below zero without a word of nagging, and your reading builds personas that are yours. Underneath it, the whole newsroom now runs in the reader's browser, with a language model arriving in the tab as the last piece. And from the other side of the network, an answer to Satya Nadella on models as insider risks, and Microsoft's new agent containers mapped to the behaviour policies they make enforceable.
+> Everything in the last two issues runs in the reader's browser. First the database was retired and the file system took its place; now the back end is retired too, and what is left on the server side is commodity that holds no logic and cannot read the data. Eight articles on how that works and what it makes possible. Why there is no server, and why that made a business decision possible; Chrome's model in the tab, the hardest remaining piece; where the vault keys live and an RFC for keys a reader cannot write with; and the agents that do the newsroom's work: five readers sent through every article, synthetic users driving a real browser, image models judged blind, and a governance framework kept as a graph.
 >
-> Page: https://sgit.ai/articles/newsletter/2026/10/11/003-pay-after-you-read.html
+> Page: https://sgit.ai/articles/newsletter/2026/10/11/005-no-server-by-design.html
 
-[Home](../../../../../index.md) / [SGit Newsroom](../../../../../articles/index.md) / [Newsletter](../../../../../articles/newsletter/index.md) / Issue 3
+[Home](../../../../../index.md) / [SGit Newsroom](../../../../../articles/index.md) / [Newsletter](../../../../../articles/newsletter/index.md) / Issue 5
 
-SGit Newsroom · Issue 3 · 2026-10-11
+SGit Newsroom · Issue 5 · 2026-10-11
 
-# Pay after you read, no server by design, and authority that sits outside the model
+# No server, by design: a newsroom that runs in your browser, a model in the tab, and the agents that read, test and draw for it
 
 By [Dinis Cruz](../../../../../about/index.md), written with the [Journalist](../../../../../newsroom/roles/journalist.md)
 
-***Abstract:** Three days and twenty-four articles. The reading meter went from an experiment to a working model: you pay for the share of a page you read, you say how useful it was and that sets the price, your balance can go below zero without a word of nagging, and your reading builds personas that are yours. Underneath it, the whole newsroom now runs in the reader's browser, with a language model arriving in the tab as the last piece. And from the other side of the network, an answer to Satya Nadella on models as insider risks, and Microsoft's new agent containers mapped to the behaviour policies they make enforceable.*
+***Abstract:** Everything in the last two issues runs in the reader's browser. First the database was retired and the file system took its place; now the back end is retired too, and what is left on the server side is commodity that holds no logic and cannot read the data. Eight articles on how that works and what it makes possible. Why there is no server, and why that made a business decision possible; Chrome's model in the tab, the hardest remaining piece; where the vault keys live and an RFC for keys a reader cannot write with; and the agents that do the newsroom's work: five readers sent through every article, synthetic users driving a real browser, image models judged blind, and a governance framework kept as a graph.*
 
-What would you pay for an article, if you only paid after you had read it, and only as much as it was worth to you? Most of what was published between 9 and 11 October is the answer to that question, built and tested one release at a time, and the infrastructure that let it be built in an afternoon. The rest is the same idea from the agents' side: a limit is only a limit if the thing it limits cannot change it.
+The reading meter, the personas, the newsroom of your own, the encrypted sharing: none of it runs on a server. This issue is about why, what that takes, and the agents that do the work around it. It is the third of three on what was published between 9 and 11 October, after [pay after you read](https://sgit.ai/articles/newsletter/2026/10/11/003-pay-after-you-read.html) and [authority outside the model](https://sgit.ai/articles/newsletter/2026/10/11/004-authority-outside-the-model.html).
 
-Three days in six pictures, one from each of the lead articles
-
-## Pay after you read
-
-The reading meter started on 10 October as a demonstration, a few pence a page from five pounds of credit kept in the browser. By the end of the afternoon it was something else. [Pay after you read](https://sgit.ai/articles/pay-after-you-read.html) tells how, in seven releases in under four hours, each one coming from using the one before:
-
->
-
-You pay after you see the value.
-
-You pay for the share of a page you scroll through, not for opening it. At the foot of each article you say how useful it was, and that sets the price, from free to double. Your balance can go below zero and stay there; nothing is blocked and nothing nags. [Going live with the reading meter](https://sgit.ai/articles/going-live-with-the-reading-meter.html) wrote down the business case, the numbers we expect and the ones that would prove us wrong, before the first payment:
-
->
-
-And going below zero is not a failure state.
-
-Six changes, and five hypotheses written down before the first payment, each with what we expect and what would prove us wrong.
-
-The payment link is now live on newsroom.sgit.ai, so the eight weeks have started, and the hypotheses will be reviewed on 6 December. [Who will game the reading meter](https://sgit.ai/articles/who-will-game-the-reading-meter.html) is the security side: eight kinds of reader, none of them attackers, nine ways to cheat a meter kept in the browser, and why every one of them is allowed. Its sharpest line is about agents, which move between kinds of reader in a single request:
-
->
-
-An agent is not a step; it is a lift.
-
-## Your reading, kept by you
-
-The meter keeps a history because a ledger has to, and that history builds a persona: a name, a front page of its own, and a graph you can watch grow. [Pay to keep your persona](https://sgit.ai/articles/pay-to-keep-your-persona.html) argues that this, not guilt, is what a reader would pay for: time, context, focus, and a persona that follows you between devices.
-
->
-
-The reader should pay because paying helps them.
-
-A newsroom of your own: picks for each persona, the graph of what you read, and the card where you rate what you read
-
-[A link to a persona](https://sgit.ai/articles/a-link-to-a-persona.html) is the next step, written as a brief: personas kept in a vault by the newsroom's own agents, so that a link can open the newsroom as a CISO, a data protection officer or one particular person, and the reader can follow the persona or make it their own.
-
->
-
-The better move is for the person who sends the link to choose it
+No server, by design, in six pictures, one from each of six of the articles
 
 ## No server, by design
 
-None of that runs on a server. [No server, by design](https://sgit.ai/articles/no-server-by-design.html) explains the choice: first the database was retired, the file system took its place, and now the back end is retired too. What is left on the server side is commodity, static hosting and a vault server that stores ciphertext it cannot read:
+[No server, by design](https://sgit.ai/articles/no-server-by-design.html) is the decision in two steps. First the database was retired: the file system is the database, and every intermediate result is a file you can version, diff and read. Now the back end is retired too: the application moves to the browser. What is left on the server side is commodity, static hosting, a vault server that stores ciphertext it cannot read, a payment link, and each is a product, not code of mine:
 
 >
 
@@ -47330,41 +47312,136 @@ It is no servers of mine with logic in them.
 
 The SGit Newsroom's architecture: every piece of application logic runs in the reader's browser.
 
-[A model in the tab](https://sgit.ai/articles/a-model-in-the-tab.html) is about the hardest remaining piece. Chrome now ships a language model that any page can prompt, offline, on capable desktops. It is real and it has rough edges, and the objections to it are serious; the way through is to keep the meaning where it belongs:
+It is also what made the reading meter's business decisions possible: a server cannot read the reader's data, so anything that needs to has to happen where the key is, and the gaps that leaves are written down rather than closed.
+
+## A model in the tab
+
+[A model in the tab](https://sgit.ai/articles/a-model-in-the-tab.html) is about the hardest remaining piece. Chrome now ships a language model that any page can prompt, offline, on capable desktops. It is real and stable, it has rough edges, and the objections to it from other browser makers are serious. The way to build on it without being captured by it:
 
 >
 
 The way to build on it without being captured by it is to keep the meaning in the data, not in the prompt.
 
-Two pieces underneath it all were also written up: [where the vault keys live](https://sgit.ai/articles/where-the-vault-keys-live.html), on how a key travels sealed to a registry instead of through a chat, and [RFC 0001](https://sgit.ai/articles/rfc-0001-public-key-cryptography-for-sgit.html), a request for comments on two key pairs so that a reader cannot write.
+## The keys underneath
 
-## The agent is the reader
-
-The newsroom's articles are long, so [one article, five readers](https://sgit.ai/articles/one-article-five-readers.html) sends five agents through each one after it is written: a librarian, a cartographer, a historian, an explainer and a storyteller. [The agent is the reader](https://sgit.ai/articles/the-agent-is-the-reader.html) does the arithmetic on what that produces. A curated graph answers a question about a concept in a median of 2,579 tokens, against 25,698 to read the five articles:
+If the server cannot read anything, the key is everything. [Where the vault keys live](https://sgit.ai/articles/where-the-vault-keys-live.html) is key management as it actually runs: one secret per vault and the keys derived from it, a password manager and a registry kept by its own agent, and new keys that travel sealed on a write-only lane instead of through a chat.
 
 >
 
-If a publisher saves an agent more tokens than it charges, paying is rational.
+The key is the whole question.
 
-What five articles became, in tokens: the catalogue is large, and what an agent loads from it is small.
+Where everything lives: encryption and decryption happen in the client; the edge, the API and the bucket only ever handle ciphertext and hashes of capability keys.
 
-Two more pieces on making things with agents: [how to run synthetic users](https://sgit.ai/articles/how-to-run-synthetic-users.html), five invented readers driving a real browser, which found bugs every test had passed over; and [the infographic bake-off](https://sgit.ai/articles/the-infographic-bake-off.html), every image model on OpenRouter given eleven briefs, 101 images judged blind, for $10.44.
+[RFC 0001](https://sgit.ai/articles/rfc-0001-public-key-cryptography-for-sgit.html) closes the gap that remains: today, whoever can read a vault can also produce data every client accepts. The obvious fix does not work, and what does is two key pairs, so that a reader cannot write and a host cannot forge, with fourteen questions for reviewers.
 
-## Authority outside the model
+>
 
-Satya Nadella published seven principles for treating models as insider risks. [Authority outside the model](https://sgit.ai/articles/authority-outside-the-model.html) answers them one by one, with what we run, what is only designed and what is argued, and names five things the list leaves out. Its core is the test this network has used for a while:
+Two key pairs work.
+
+## The agents that do the work
+
+A newsroom that runs in the browser still needs people, and agents, to make what it serves. Four articles on the agents that read, test and draw for it.
+
+[One article, five readers](https://sgit.ai/articles/one-article-five-readers.html) keeps the prose first, then sends five agents through each article once it is written: a librarian that catalogues every fact with the sentence it came from, a cartographer that maps the concepts, a historian, an explainer and a storyteller. Cataloguing everything turned them into fact-checkers nobody had asked for.
+
+>
+
+Keep writing the article first.
+
+One article, five readers: the catalogue, the map, the place in the arc, two minutes, and a deck.
+
+[How to run synthetic users](https://sgit.ai/articles/how-to-run-synthetic-users.html) is a how-to from three studies: invented readers with a situation and a question, driving a real browser one screenshot at a time, saying what they see and think. The rule that makes it work:
+
+>
+
+Give the agent the screenshot, not the page's code.
+
+[The infographic bake-off](https://sgit.ai/articles/the-infographic-bake-off.html) gave every image model on OpenRouter the same eleven briefs, judged 101 images blind, and recorded every cost, $10.44 in all, to answer which model for which kind of picture.
+
+And [the AI governance stack as a graph](https://sgit.ai/articles/the-ai-governance-stack-as-a-graph.html) takes Hari Kota's ten-layer stack, keeps it exactly as posted, and makes the graph underneath it the model, with 119 edges between the layers, each citing the provision it rests on:
+
+>
+
+A gap is a missing edge, and a missing edge is a query.
+
+## The eight articles
+
+### No server
+
+The decision, and the model that arrives in the tab.
+
+- [**No server, by design: first I retired the database, now I am retiring the back end**](../../../../../articles/no-server-by-design.md). First the database went, now the back end: the SGit Newsroom runs all its logic in the browser, on commodity servers that cannot read your data.
+- [**A model in the tab: Chrome now ships an LLM to capable desktops, and it is the hardest piece of the client-side puzzle**](../../../../../articles/a-model-in-the-tab.md). Chrome now ships a language model any page can prompt, offline, on capable desktops. The last piece of the client-side puzzle, with rough edges.
+
+### The keys
+
+Where the vault keys live, and keys a reader cannot write with.
+
+- [**Where the vault keys live: key management at sgit-ai v0.20.0, and what comes next**](../../../../../articles/where-the-vault-keys-live.md). Vault key management at sgit-ai v0.20.0: the one secret, where keys are kept, how they travel sealed on append lanes, and what comes next.
+- [**RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer**](../../../../../articles/rfc-0001-public-key-cryptography-for-sgit.md). A Request for Comments: two key pairs so a reader cannot write, sealed files only named people can open, and fourteen questions for reviewers.
+
+### The agents that do the work
+
+Five readers per article, synthetic users, image models judged blind, and a governance stack kept as a graph.
+
+- [**One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece**](../../../../../articles/one-article-five-readers.md). Write the article first, then send five agent readers through it: a catalogue, an ontology and maps, the arc, two minutes, and a deck.
+- [**How to run synthetic users on your own site: five people who do not exist, a browser, and an afternoon**](../../../../../articles/how-to-run-synthetic-users.md). Five invented users, a model reading screenshots, and a real browser: how to run synthetic users, from three studies.
+- [**The infographic bake-off: which image model for which job, judged blind on 10 October 2026**](../../../../../articles/the-infographic-bake-off.md). Every image model on OpenRouter, eleven briefs, 101 images judged blind, $10.44: which model for which infographic, and what it costs.
+- [**The AI governance stack, as a graph: an answer to Hari Kota, built**](../../../../../articles/the-ai-governance-stack-as-a-graph.md). Hari Kota's ten-layer AI governance stack, kept as posted and turned into a fractal semantic graph: the gaps become missing edges, and queries.
+
+*This is issue 5 of the SGit Newsroom newsletter, also published on LinkedIn in [Deterministic GenAI](https://www.linkedin.com/newsletters/deterministic-genai-7174563523795005440/). Every article it links to is on [sgit.ai](https://sgit.ai/articles/index.html), with its sources and its data. To get the next issue by email, [subscribe at sgit.ai/subscribe](https://sgit.ai/subscribe/).*
+
+**Posting this issue on LinkedIn?** The cover is [005-no-server-by-design.jpg](../../../../../articles/banners/005-no-server-by-design.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page. LinkedIn drops images from a paste, so add these where they appear, in this order, with the caption under each:
+
+1. [005-2026-10-11-noserver.jpg](../../../../../articles/banners/collages/005-2026-10-11-noserver.jpg) No server, by design, in six pictures, one from each of six of the articles
+2. [ns-architecture.webp](../../../../../articles/images/ns-architecture.webp) The SGit Newsroom's architecture: every piece of application logic runs in the reader's browser.
+3. [km-architecture.webp](../../../../../articles/images/km-architecture.webp) Where everything lives: encryption and decryption happen in the client; the edge, the API and the bucket only ever handle ciphertext and hashes of capability keys.
+4. [fr-five.webp](../../../../../articles/images/fr-five.webp) One article, five readers: the catalogue, the map, the place in the arc, two minutes, and a deck.
+
+[← All issues](../../../../../articles/newsletter/index.md)
+
+
+
+==============================================================================
+# Issue 4: Authority outside the model: Satya Nadella on models as insider risks, the platforms that now enforce, and the controls we run on our own agents, SGit Newsroom
+
+> The CEO of one of the largest AI vendors published seven principles for treating models as insider risks, and Microsoft shipped containers and a control specification for agents. Both say what this network has been arguing: an agent's limits must sit outside the agent. Eight articles on what that means in practice. An answer to the seven principles, one by one, with what runs and what is only designed; the same argument translated into the language of behaviour policies; where the platform draws its line and why the business logic sits above it; ten hard questions for RiskMandate; and the controls we run on our own agents every day, from a second reader that fails closed to a desktop of their own.
+>
+> Page: https://sgit.ai/articles/newsletter/2026/10/11/004-authority-outside-the-model.html
+
+[Home](../../../../../index.md) / [SGit Newsroom](../../../../../articles/index.md) / [Newsletter](../../../../../articles/newsletter/index.md) / Issue 4
+
+SGit Newsroom · Issue 4 · 2026-10-11
+
+# Authority outside the model: Satya Nadella on models as insider risks, the platforms that now enforce, and the controls we run on our own agents
+
+By [Dinis Cruz](../../../../../about/index.md), written with the [Journalist](../../../../../newsroom/roles/journalist.md)
+
+***Abstract:** The CEO of one of the largest AI vendors published seven principles for treating models as insider risks, and Microsoft shipped containers and a control specification for agents. Both say what this network has been arguing: an agent's limits must sit outside the agent. Eight articles on what that means in practice. An answer to the seven principles, one by one, with what runs and what is only designed; the same argument translated into the language of behaviour policies; where the platform draws its line and why the business logic sits above it; ten hard questions for RiskMandate; and the controls we run on our own agents every day, from a second reader that fails closed to a desktop of their own.*
+
+When an agent breaks a rule, the first question is who was keeping the rule. If the answer is the agent, it was not a rule, it was a hope. This week that argument went mainstream: Satya Nadella published seven principles for treating models as insider risks, and Microsoft shipped the containers to enforce some of them. This issue is eight articles on what it takes for an agent's limits to sit outside the agent. It is the second of three on what was published between 9 and 11 October, after [pay after you read](https://sgit.ai/articles/newsletter/2026/10/11/003-pay-after-you-read.html) and before [no server, by design](https://sgit.ai/articles/newsletter/2026/10/11/005-no-server-by-design.html).
+
+Authority outside the model in six pictures, one from each of the first six articles
+
+## Seven principles, answered
+
+[Authority outside the model](https://sgit.ai/articles/authority-outside-the-model.html) answers Satya Nadella's seven principles one by one: what stands behind each on this network today, what runs, what is a published design, and what is only argued, with a table that keeps the three apart. It names five things the list leaves out, starting with the mandate, because watching an agent tells you what it did, not whether it was allowed. Its core is the test this network has used for a while:
 
 >
 
 a control bounds a grant only if it is enforced by something the grant does not include.
 
-[The same argument, in our words](https://sgit.ai/articles/the-same-argument-in-our-words.html) translates his post idea by idea into the vocabulary of behaviour policies, and finds the same ending read from the other side:
+Nadella's seven principles, and what stands behind each one on this network today.
+
+[The same argument, in our words](https://sgit.ai/articles/the-same-argument-in-our-words.html) translates his post idea by idea into the vocabulary of behaviour policies, reach, mandate, gap, barriers and accepted risk, and finds that his ending and ours are the same sentence read from opposite ends:
 
 >
 
 the more you can constrain an agent, the more you can trust it, and the more autonomy you can afford to give it.
 
-[Where the platform draws the line](https://sgit.ai/articles/where-the-platform-draws-the-line.html) reads Microsoft's new execution containers and agent control specification field by field. The platform bounds what it can see, files, addresses and processes, and the business logic is above that line. That is the shared responsibility model again, and rows of a behaviour policy that were hope can now become boundaries:
+## Where the platform draws the line
+
+[Where the platform draws the line](https://sgit.ai/articles/where-the-platform-draws-the-line.html) reads Microsoft's new execution containers and agent control specification field by field. The platform puts the policy outside the workload and enforces it in the operating system, and it can only name what it can see: files, addresses, processes. That is the shared responsibility model again, and the business logic sits above the line:
 
 >
 
@@ -47372,71 +47449,196 @@ an agent must not be the one that decides its own limits.
 
 The shared responsibility model, drawn for agents: each layer can only name what it can see.
 
-Closer to home, [a second reader the agent cannot skip](https://sgit.ai/articles/a-second-reader-the-agent-cannot-skip.html) is a hook that makes a second model approve every email draft, failing closed, after two went out in my voice despite a written rule; [re-anchoring](https://sgit.ai/articles/re-anchoring-agent-behaviour-policies.html) prints an agent's rules back after each summary of a long session; and [how I work with Claude](https://sgit.ai/articles/how-i-work-with-claude.html) is the practical guide behind all of it.
+Run the same agent three ways, it finds, and rows of a behaviour policy that were hope can now become boundaries kept by the platform. [Ten hard questions for RiskMandate](https://sgit.ai/articles/riskmandate-ten-questions.html) is where that policy comes from: the questions a co-founder brought back from a conference, about bypasses, liability, insurance and what a customer is actually paying for, answered in a two-hour interview.
 
-## Everything published from 9 to 11 October
+>
 
-Twenty-four articles were published from 2026-10-09 to 2026-10-11, grouped below by what they are about.
+RiskMandate defines the risk that comes with the mandate a business gives an agent.
 
-### Paying for reading
+## The controls we run on our own agents
 
-The reading meter, from the first version to a working model, and who could game it.
+The principles are easy to state. These four articles are what keeping them looks like on a real system, every day.
 
-- [**Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time**](../../../../../articles/pay-after-you-read.md). Seven releases in one afternoon turned the reading meter into a working model: pay after you read, and the rating sets the price.
-- [**Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks**](../../../../../articles/going-live-with-the-reading-meter.md). Pay for the share of a page you read, go below zero with no nagging, top up £5 on Stripe: the plan, and the numbers we check in eight weeks.
-- [**A meter in the browser: a penny a page, a history you keep, and a site that picks for you**](../../../../../articles/a-meter-in-the-browser.md). Every page now costs a few pence from £5 of credit kept in your browser, and the reading history it keeps is what personalises the site.
-- [**Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen**](../../../../../articles/who-will-game-the-reading-meter.md). Eight kinds of reader, none of them attackers, nine ways to cheat a browser meter, and the quieter risks that will actually happen.
-- [**Pay to keep your persona: readers should pay because it helps them, not because they feel they should**](../../../../../articles/pay-to-keep-your-persona.md). Readers should pay because it helps them: a persona with a name and a graph, several for focus, and one that follows you between devices.
-- [**A link to a persona: send people to the newsroom as someone, not as nobody**](../../../../../articles/a-link-to-a-persona.md). Send a CISO to the newsroom as a CISO: personas kept in a vault by the newsroom's agents, opened from a link, followed or forked.
+[A second reader the agent cannot skip](https://sgit.ai/articles/a-second-reader-the-agent-cannot-skip.html) starts with two emails that went out in my voice despite a written rule, and ends with a hook that makes a second model approve every draft, run by the harness rather than the agent, failing closed:
 
-### No server, by design
+>
 
-The newsroom in the browser, a model in the tab, and the keys and cryptography underneath.
+A rule kept by the agent it governs is hope.
 
-- [**No server, by design: first I retired the database, now I am retiring the back end**](../../../../../articles/no-server-by-design.md). First the database went, now the back end: the SGit Newsroom runs all its logic in the browser, on commodity servers that cannot read your data.
-- [**A model in the tab: Chrome now ships an LLM to capable desktops, and it is the hardest piece of the client-side puzzle**](../../../../../articles/a-model-in-the-tab.md). Chrome now ships a language model any page can prompt, offline, on capable desktops. The last piece of the client-side puzzle, with rough edges.
-- [**Where the vault keys live: key management at sgit-ai v0.20.0, and what comes next**](../../../../../articles/where-the-vault-keys-live.md). Vault key management at sgit-ai v0.20.0: the one secret, where keys are kept, how they travel sealed on append lanes, and what comes next.
-- [**RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer**](../../../../../articles/rfc-0001-public-key-cryptography-for-sgit.md). A Request for Comments: two key pairs so a reader cannot write, sealed files only named people can open, and fourteen questions for reviewers.
+[Re-anchoring](https://sgit.ai/articles/re-anchoring-agent-behaviour-policies.html) deals with the forgetting. A long session is summarised again and again, each time replacing most of what the agent had in view, and nothing says what was kept. So the rules live in a file, printed back after every summary, with a short report every few answers to show it is still working:
 
-### Reading and making with agents
+>
 
-Five agent readers, what their graphs save, synthetic users, image models judged blind, and a governance stack as a graph.
+The rules are restored, not remembered.
 
-- [**One article, five readers: a librarian, a cartographer, a historian, an explainer and a storyteller read the same piece**](../../../../../articles/one-article-five-readers.md). Write the article first, then send five agent readers through it: a catalogue, an ontology and maps, the arc, two minutes, and a deck.
-- [**The agent is the reader: why agents will pay for graphs, personas and signed claims, because it is cheaper than not paying**](../../../../../articles/the-agent-is-the-reader.md). Agents pay to read the raw web and guess its meaning. A curated graph answers for 90% fewer tokens, so paying the publisher is cheaper than not paying.
-- [**How to run synthetic users on your own site: five people who do not exist, a browser, and an afternoon**](../../../../../articles/how-to-run-synthetic-users.md). Five invented users, a model reading screenshots, and a real browser: how to run synthetic users, from three studies.
-- [**The infographic bake-off: which image model for which job, judged blind on 10 October 2026**](../../../../../articles/the-infographic-bake-off.md). Every image model on OpenRouter, eleven briefs, 101 images judged blind, $10.44: which model for which infographic, and what it costs.
-- [**The AI governance stack, as a graph: an answer to Hari Kota, built**](../../../../../articles/the-ai-governance-stack-as-a-graph.md). Hari Kota's ten-layer AI governance stack, kept as posted and turned into a fractal semantic graph: the gaps become missing edges, and queries.
+Every summary in the session that runs this site, read from its own transcript: each turned about 785,000 tokens into 9,000 to 19,000, and all eighteen were automatic.
 
-### Authority outside the model
+[How I work with Claude](https://sgit.ai/articles/how-i-work-with-claude.html) is the practical guide behind all of it: one session per topic, named agents with a role file, curated memory, vaults, and policy before connectors.
 
-Models as insider risks, the platforms that now enforce some of the limits, and the controls we run on our own agents.
+>
+
+Memory is what the session reads.
+
+And [a Mac of the agent's own](https://sgit.ai/articles/a-mac-of-the-agents-own.html) is the next dedicated resource after a mailbox, a code-host account and a Claude account: a desktop, read against what Apple's licence allows, built clean for every run from vaults and erased at the end.
+
+>
+
+The vaults are the state.
+
+## The eight articles
+
+### The principles
+
+Models as insider risks, answered and translated.
 
 - [**Authority outside the model: an answer to Satya Nadella on models as insider risks, principle by principle, with what we run, what we ship and what we plan**](../../../../../articles/authority-outside-the-model.md). Satya Nadella's seven principles for models as insider risks, answered one by one: what we run, what is design, and the five things the list leaves out.
 - [**The same argument, in our words: Satya Nadella on models as insider risks, translated into the language of RiskMandate**](../../../../../articles/the-same-argument-in-our-words.md). Satya Nadella's case for treating models as insider risks, translated idea by idea into our vocabulary: reach, mandate, gap, barriers and accepted risk.
+
+### The platform and the policy
+
+What the operating system can now enforce, and the behaviour policy above it.
+
 - [**Where the platform draws the line: Microsoft Execution Containers, the shared responsibility model for agents, and the business logic above it**](../../../../../articles/where-the-platform-draws-the-line.md). Microsoft's MXC and ACS, briefed field by field and mapped to Agent Behaviour Policies: the platform bounds what it can see; the business logic is above.
 - [**Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not**](../../../../../articles/riskmandate-ten-questions.md). Ten hard questions from a conference, answered in a two-hour interview: what RiskMandate does, what it deliberately is not, and how mature each part is.
+
+### On our own agents
+
+A second reader, rules that survive summaries, the daily routine, and a desktop of their own.
+
 - [**A second reader the agent cannot skip: how two wrong emails became a gate on every draft**](../../../../../articles/a-second-reader-the-agent-cannot-skip.md). Two emails went out in my voice despite a written rule. The fix: a hook that makes a second model approve every draft, failing closed.
 - [**Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not**](../../../../../articles/re-anchoring-agent-behaviour-policies.md). Summaries keep under 2% of a long session. Re-anchoring prints the agent's rules back after each one; a canary report shows it is working.
 - [**How I work with Claude: one session per topic, agents with names, and memory you curate**](../../../../../articles/how-i-work-with-claude.md). A practical guide from a year of daily use: one Claude session per topic, named agents with a role.md, curated memory, vaults, and policy before connectors.
-
-### Business plans and economics
-
-A desktop for an agent, and who pays for the long tail of open source.
-
 - [**A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies**](../../../../../articles/a-mac-of-the-agents-own.md). A business plan for a Mac of the agent's own: what Apple's licence allows, a desktop built from vaults per run, and three behaviour policies for one agent.
+
+*This is issue 4 of the SGit Newsroom newsletter, also published on LinkedIn in [Deterministic GenAI](https://www.linkedin.com/newsletters/deterministic-genai-7174563523795005440/). Every article it links to is on [sgit.ai](https://sgit.ai/articles/index.html), with its sources and its data. To get the next issue by email, [subscribe at sgit.ai/subscribe](https://sgit.ai/subscribe/).*
+
+**Posting this issue on LinkedIn?** The cover is [004-authority-outside-the-model.jpg](../../../../../articles/banners/004-authority-outside-the-model.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page. LinkedIn drops images from a paste, so add these where they appear, in this order, with the caption under each:
+
+1. [004-2026-10-11-authority.jpg](../../../../../articles/banners/collages/004-2026-10-11-authority.jpg) Authority outside the model in six pictures, one from each of the first six articles
+2. [om-seven.webp](../../../../../articles/images/om-seven.webp) Nadella's seven principles, and what stands behind each one on this network today.
+3. [pl-stack.webp](../../../../../articles/images/pl-stack.webp) The shared responsibility model, drawn for agents: each layer can only name what it can see.
+4. [ra-compactions.webp](../../../../../articles/images/ra-compactions.webp) Every summary in the session that runs this site, read from its own transcript: each turned about 785,000 tokens into 9,000 to 19,000, and all eighteen were automatic.
+
+[← All issues](../../../../../articles/newsletter/index.md)
+
+
+
+==============================================================================
+# Issue 3: Pay after you read: a newsroom that charges for the share you read, lets you go below zero, and keeps your persona, SGit Newsroom
+
+> What would you pay for an article if you only paid after reading it, and only as much as it was worth to you? On 10 October the reading meter on this site went from a demonstration to a working answer, one release at a time. You pay for the share of a page you scroll through. You say how useful it was, and that sets the price, from free to double. Your balance can go below zero without a word of nagging. And your reading builds personas that are yours, kept in your browser, that a link can share. Eight articles: the plan, the numbers we will be judged on, who could cheat it, why readers should pay because it helps them, and why agents will pay too.
+>
+> Page: https://sgit.ai/articles/newsletter/2026/10/11/003-pay-after-you-read.html
+
+[Home](../../../../../index.md) / [SGit Newsroom](../../../../../articles/index.md) / [Newsletter](../../../../../articles/newsletter/index.md) / Issue 3
+
+SGit Newsroom · Issue 3 · 2026-10-11
+
+# Pay after you read: a newsroom that charges for the share you read, lets you go below zero, and keeps your persona
+
+By [Dinis Cruz](../../../../../about/index.md), written with the [Journalist](../../../../../newsroom/roles/journalist.md)
+
+***Abstract:** What would you pay for an article if you only paid after reading it, and only as much as it was worth to you? On 10 October the reading meter on this site went from a demonstration to a working answer, one release at a time. You pay for the share of a page you scroll through. You say how useful it was, and that sets the price, from free to double. Your balance can go below zero without a word of nagging. And your reading builds personas that are yours, kept in your browser, that a link can share. Eight articles: the plan, the numbers we will be judged on, who could cheat it, why readers should pay because it helps them, and why agents will pay too.*
+
+What would you pay for an article, if you only paid after you had read it, and only as much as it was worth to you? On 10 October the reading meter on this site went from a demonstration to a working answer, built and tested one release at a time. This issue is that story, in eight articles. It is the first of three on what was published between 9 and 11 October; the next two are about [authority outside the model](https://sgit.ai/articles/newsletter/2026/10/11/004-authority-outside-the-model.html) and about [a newsroom with no server](https://sgit.ai/articles/newsletter/2026/10/11/005-no-server-by-design.html).
+
+The reading meter in six pictures, one from each of the articles that built it
+
+## Seven releases in an afternoon
+
+[A meter in the browser](https://sgit.ai/articles/a-meter-in-the-browser.html) started it: every page a few pence, from five pounds of credit kept in the reader's browser, with no account and nothing sent anywhere. By the end of the afternoon it was something else, and [pay after you read](https://sgit.ai/articles/pay-after-you-read.html) tells how, in seven releases in under four hours, each one coming from using the one before:
+
+>
+
+You pay after you see the value.
+
+You pay for the share of a page you scroll through, not for opening it. At the foot of each article you say how useful it was, and that sets the price, from free to double. Your balance can go below zero and stay there; nothing is blocked and nothing nags.
+
+The reader card at the foot of an article: what it has cost, how much was read, and the choice not to pay.
+
+## The numbers, written down first
+
+[Going live with the reading meter](https://sgit.ai/articles/going-live-with-the-reading-meter.html) is the plan and the business case: why below zero is allowed when most reader-funded sites count your articles and ask, what a subscription commits you to, what Stripe takes from a five-pound payment, and five hypotheses, with the number that would prove each one wrong, written down before the first payment.
+
+>
+
+And going below zero is not a failure state.
+
+Six changes, and five hypotheses written down before the first payment, each with what we expect and what would prove us wrong.
+
+The payment link is now live, so the eight weeks have started; the hypotheses will be reviewed on 6 December.
+
+## Who could cheat it, and why that is allowed
+
+Everything the meter knows is in the reader's browser, so anyone can change it. [Who will game the reading meter](https://sgit.ai/articles/who-will-game-the-reading-meter.html) goes one level below "who are you protecting against": eight kinds of reader, from engineers who are invisible by habit to people who can barely click, none of them attackers, and nine ways to cheat, each of which changes a number only the cheater can see. The risks that will actually happen are quieter. Its sharpest line is about agents, which move between kinds of reader in a single request:
+
+>
+
+An agent is not a step; it is a lift.
+
+## Pay because it helps you
+
+[Pay to keep your persona](https://sgit.ai/articles/pay-to-keep-your-persona.html) is the value proposition underneath. Paying because you have to, because you are made to feel you should, or because it is the right thing to do works to a degree, and does not scale. What a reader would pay for is what helps them: time, context, focus, and a persona built from their reading that follows them between devices.
+
+>
+
+The reader should pay because paying helps them.
+
+A newsroom of your own: picks for each persona, the graph of what you read, and the personas you keep
+
+[A link to a persona](https://sgit.ai/articles/a-link-to-a-persona.html) is the next step, written as a brief. Personas kept in a vault by the newsroom's own agents, so that a link can open the newsroom as a CISO, a data protection officer or one particular person, and the reader can follow the persona or make it their own:
+
+>
+
+The better move is for the person who sends the link to choose it
+
+## And the agents will pay too
+
+[The agent is the reader](https://sgit.ai/articles/the-agent-is-the-reader.html) turns the question around. Agents already pay, in tokens, to read the raw web and guess what it means. A curated graph of an article answers a question about one of its concepts in a median of 2,579 tokens, against 25,698 to read the five articles behind it, and comes with citations:
+
+>
+
+If a publisher saves an agent more tokens than it charges, paying is rational.
+
+[Open source is not free](https://sgit.ai/articles/open-source-is-not-free.html) is the same question for software: who pays to keep the old versions working, measured from public data, with five ways to pay for it simulated. Its finding for pence is the one the meter is built on:
+
+>
+
+Pence only work aggregated.
+
+## The eight articles
+
+### The meter
+
+From a few pence a page to paying after you read, and the plan it is judged by.
+
+- [**A meter in the browser: a penny a page, a history you keep, and a site that picks for you**](../../../../../articles/a-meter-in-the-browser.md). Every page now costs a few pence from £5 of credit kept in your browser, and the reading history it keeps is what personalises the site.
+- [**Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time**](../../../../../articles/pay-after-you-read.md). Seven releases in one afternoon turned the reading meter into a working model: pay after you read, and the rating sets the price.
+- [**Going live with the reading meter: pay for what you read, go below zero if you like, and the numbers we will check in eight weeks**](../../../../../articles/going-live-with-the-reading-meter.md). Pay for the share of a page you read, go below zero with no nagging, top up £5 on Stripe: the plan, and the numbers we check in eight weeks.
+- [**Who will game the reading meter? Eight kinds of reader, nine ways to cheat, and the risks that will actually happen**](../../../../../articles/who-will-game-the-reading-meter.md). Eight kinds of reader, none of them attackers, nine ways to cheat a browser meter, and the quieter risks that will actually happen.
+
+### Your persona
+
+Why readers would pay, and a link that opens the newsroom as someone.
+
+- [**Pay to keep your persona: readers should pay because it helps them, not because they feel they should**](../../../../../articles/pay-to-keep-your-persona.md). Readers should pay because it helps them: a persona with a name and a graph, several for focus, and one that follows you between devices.
+- [**A link to a persona: send people to the newsroom as someone, not as nobody**](../../../../../articles/a-link-to-a-persona.md). Send a CISO to the newsroom as a CISO: personas kept in a vault by the newsroom's agents, opened from a link, followed or forked.
+
+### Who else pays
+
+Agents that pay to save tokens, and the long tail of open source.
+
+- [**The agent is the reader: why agents will pay for graphs, personas and signed claims, because it is cheaper than not paying**](../../../../../articles/the-agent-is-the-reader.md). Agents pay to read the raw web and guess its meaning. A curated graph answers for 90% fewer tokens, so paying the publisher is cheaper than not paying.
 - [**Open source is not free: who pays to keep the long tail working?**](../../../../../articles/open-source-is-not-free.md). An old iMac, the long tail of old versions that projects are not paid to support, measured from public data, and five ways to pay for it, simulated.
 
 *This is issue 3 of the SGit Newsroom newsletter, also published on LinkedIn in [Deterministic GenAI](https://www.linkedin.com/newsletters/deterministic-genai-7174563523795005440/). Every article it links to is on [sgit.ai](https://sgit.ai/articles/index.html), with its sources and its data. To get the next issue by email, [subscribe at sgit.ai/subscribe](https://sgit.ai/subscribe/).*
 
 **Posting this issue on LinkedIn?** The cover is [003-pay-after-you-read.jpg](../../../../../articles/banners/003-pay-after-you-read.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page. LinkedIn drops images from a paste, so add these where they appear, in this order, with the caption under each:
 
-1. [003-2026-10-11-week.jpg](../../../../../articles/banners/collages/003-2026-10-11-week.jpg) Three days in six pictures, one from each of the lead articles
-2. [gl-anchors.webp](../../../../../articles/images/gl-anchors.webp) Six changes, and five hypotheses written down before the first payment, each with what we expect and what would prove us wrong.
-3. [003-2026-10-11-personas.jpg](../../../../../articles/banners/collages/003-2026-10-11-personas.jpg) A newsroom of your own: picks for each persona, the graph of what you read, and the card where you rate what you read
-4. [ns-architecture.webp](../../../../../articles/images/ns-architecture.webp) The SGit Newsroom's architecture: every piece of application logic runs in the reader's browser.
-5. [ar-layers.webp](../../../../../articles/images/ar-layers.webp) What five articles became, in tokens: the catalogue is large, and what an agent loads from it is small.
-6. [pl-stack.webp](../../../../../articles/images/pl-stack.webp) The shared responsibility model, drawn for agents: each layer can only name what it can see.
+1. [003-2026-10-11-meter.jpg](../../../../../articles/banners/collages/003-2026-10-11-meter.jpg) The reading meter in six pictures, one from each of the articles that built it
+2. [gl-line.webp](../../../../../articles/images/gl-line.webp) The reader card at the foot of an article: what it has cost, how much was read, and the choice not to pay.
+3. [gl-anchors.webp](../../../../../articles/images/gl-anchors.webp) Six changes, and five hypotheses written down before the first payment, each with what we expect and what would prove us wrong.
+4. [003-2026-10-11-personas.jpg](../../../../../articles/banners/collages/003-2026-10-11-personas.jpg) A newsroom of your own: picks for each persona, the graph of what you read, and the personas you keep
 
 [← All issues](../../../../../articles/newsletter/index.md)
 

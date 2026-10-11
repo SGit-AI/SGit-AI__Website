@@ -2,7 +2,7 @@
 
 > How the articles on sgit.ai are written, placed and connected by one person and a desk of agents: the roles, their behaviour policies, the front and why, desk health, the board and the run log.
 
-*Source: <https://sgit.ai/newsroom/index.html> · site v0.7.47 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/newsroom/index.html> · site v0.7.48 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -56,8 +56,10 @@ Computed at every build from the files: placements that point at nothing, articl
 - To do`newsroom/pitches/2026-10-10__one-article-five-readers.md` open pitch from agent@riskmandate.ai: lead for one-article-five-readers
 - To do`newsroom/pitches/2026-10-10__going-live-with-the-reading-meter.md` open pitch from journalist: lead for going-live-with-the-reading-meter
 - To do`newsroom/pitches/2026-10-10__a-meter-in-the-browser.md` open pitch from journalist: lead for a-meter-in-the-browser
-- Note`newsroom/newsletter/003-2026-10-11.md` issue 3 has no linkedin: URL yet; add it once it is posted
-- Note`newsroom/newsletter/002-2026-10-08.md` issue 2 has no linkedin: URL yet; add it once it is posted
+- Note`newsroom/newsletter/005-2026-10-11.md` issue 5 has no linkedin: URL yet; add it once it is posted
+- Note`newsroom/newsletter/004-2026-10-11.md` issue 4 has no linkedin: URL yet; add it once it is posted
+
+and 2 more; `python3 admin/build/desk.py` lists them all.
 
 ## The desk: six roles
 

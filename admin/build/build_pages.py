@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.47'
+SITE_VERSION = 'v0.7.48'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,17 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.47', '2026-10-11', 'this release',
+    ('v0.7.48', '2026-10-11', 'this release',
+     "THE NEWSLETTER, SPLIT INTO THREE ISSUES OF EIGHT. Issue 3 tried to cover all 24 articles from 9 to 11 October; "
+     "that is too much for one LinkedIn post, and good articles were lost in the middle. It is now three issues, grouped "
+     "by theme rather than date, each with its own narrative, collage, quotes checked word for word and LinkedIn cover, "
+     "and links to the other two: Issue 3, pay after you read (the reading meter, the plan and its hypotheses, who could "
+     "game it, personas, a link to a persona, agents that pay, open source); Issue 4, authority outside the model "
+     "(Nadella's seven principles, the same argument in our words, Microsoft's containers, RiskMandate's ten questions, "
+     "the second reader, re-anchoring, how I work with Claude, a Mac of the agent's own); Issue 5, no server by design "
+     "(the browser as the application, a model in the tab, the vault keys, RFC 0001, five readers, synthetic users, the "
+     "infographic bake-off, the governance stack as a graph). Issue 3 keeps its address.",),
+    ('v0.7.47', '2026-10-11', 'git 15766d6b',
      "NEWSLETTER ISSUE 3: PAY AFTER YOU READ, NO SERVER BY DESIGN, AND AUTHORITY THAT SITS OUTSIDE THE MODEL. The 24 "
      "articles published from 9 to 11 October in one issue: the reading meter from demonstration to a working model "
      "(pay by depth, the rating sets the price, below zero without nagging, personas, a link to a persona; payments live "
