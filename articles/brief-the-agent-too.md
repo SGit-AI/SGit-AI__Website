@@ -2,7 +2,7 @@
 
 > The reading list in a link went live on newsroom.sgit.ai 81 minutes after its brief, and it works well. But it is written for a person, and more and more, the people I mentor and advise read through an agent. One founder I work with handed an article of mine on threat tiers to their agent, which realised the team had been defending against states while basic things, like backups, were not done, and reset the target to organised crime for money. That is a new kind of communication: me to the person's agent, which checks what I wrote, challenges it and explains to its person what applies. Some articles should go to the agent, not the person. This article maps the routes a message now takes, argues that content needs a second package, a brief written for an agent, and connects it to memory: our workflows stay affordable because articles are compression we control, and an agent that comes back should read only what changed, not everything again. That is why an agent would pay. It ends with what to build next: a version of every reading list for the reader's agent, onboarding packs for starting a project, a file of changes since a date, and, later, an account and a direct line to someone's agent, plus the rules for writing to someone else's agent safely.
 
-*Source: <https://sgit.ai/articles/brief-the-agent-too.html> · site v0.7.55 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/brief-the-agent-too.html> · site v0.7.56 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -124,6 +124,10 @@ Vaults & methodNews & evidence[This article as a graph →](graphs.md#brief-the-
 - [Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes](encrypted-memory-for-isolated-agents.md) Agents in isolated, ephemeral places need memory that outlives them. Five sgit deployment patterns, from a Mac mini to Kubernetes, with ciphertext-only servers.
 - [Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not](re-anchoring-agent-behaviour-policies.md) Summaries keep under 2% of a long session. Re-anchoring prints the agent's rules back after each one; a canary report shows it is working.
 - [A link to a persona: send people to the newsroom as someone, not as nobody](a-link-to-a-persona.md) Send a CISO to the newsroom as a CISO: personas kept in a vault by the newsroom's agents, opened from a link, followed or forked.
+
+### Continued by
+
+- [Go slow to go fast: moving the newsroom from an explorer project to a villager one, with the brief to do it](explorer-to-villager-newsroom.md) The newsroom is live and charging. Move the reader code to its own repo, same bytes and same bugs, then map, test, review and refactor before new features.
 
 [All articles](index.md) · [All graphs](graphs.md)
 

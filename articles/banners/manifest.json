@@ -6,6 +6,23 @@
  "generated_by": "admin/build/build_pages.py",
  "entries": [
   {
+   "slug": "explorer-to-villager-newsroom",
+   "kind": "article",
+   "kicker": "SGit Newsroom",
+   "date": "2026-10-11",
+   "author": "Dinis Cruz",
+   "title": "Go slow to go fast: moving the newsroom from an explorer project to a villager one, with the brief to do it",
+   "teaser": "The newsroom is live and charging. Move the reader code to its own repo, same bytes and same bugs, then map, test, review and refactor before new features.",
+   "ideas": [
+    "Go slow to go fast",
+    "Content stays, the reader app moves",
+    "Same bytes served"
+   ],
+   "hero": "articles/images/ev-split.webp",
+   "url": "sgit.ai/articles/explorer-to-villager-newsroom.html",
+   "out": "articles/banners/explorer-to-villager-newsroom.jpg"
+  },
+  {
    "slug": "the-passkey-opens-the-vault",
    "kind": "article",
    "kicker": "SGit Newsroom",
@@ -1438,10 +1455,10 @@
     "Next: an issue picked for what you care about"
    ],
    "mosaic": [
+    "articles/cards/explorer-to-villager-newsroom.webp",
     "articles/cards/the-passkey-opens-the-vault.webp",
     "articles/cards/i-miss-it.webp",
-    "articles/cards/brief-the-agent-too.webp",
-    "articles/cards/a-reading-list-in-a-link.webp"
+    "articles/cards/brief-the-agent-too.webp"
    ],
    "url": "sgit.ai/subscribe/",
    "out": "articles/banners/subscribe.jpg"

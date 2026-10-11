@@ -1,0 +1,26 @@
+# Versions of Go slow to go fast, sgit.ai
+
+> Every published version of the article "Go slow to go fast", with the date, the words and what changed.
+
+*Source: <https://sgit.ai/articles/versions/explorer-to-villager-newsroom.html> · site v0.7.56 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+
+---
+
+[Home](../../index.md) / [Articles](../index.md) / [Go slow to go fast](../explorer-to-villager-newsroom.md) / Versions
+
+# Versions of: Go slow to go fast
+
+1 published version of [Go slow to go fast: moving the newsroom from an explorer project to a villager one, with the brief to do it](../explorer-to-villager-newsroom.md). The current one is **v1.0.0**.
+
+v1.0.0 is the article as first published. A change to its text (title, abstract or body) is the next minor version, v1.1.0; a change only to its other details (a LinkedIn link, the release it belongs to) is the next patch, v1.0.1. The list is read from the site's git history at every build, so it cannot be edited by hand and cannot leave a version out. Views extracted from an article, such as the Five readers, are not part of its text and do not change its version.
+
+| Version | Date | Kind | Words | Change from the version before | Commit |  |
+|---|---|---|---|---|---|---|
+| **v1.0.0** | 2026-10-11 | published | 2,784 | first published | this release | [current](../explorer-to-villager-newsroom.md) |
+
+[← Back to the article](../explorer-to-villager-newsroom.md) · [All articles](../index.md)
+
+
+---
+
+*[Site index for agents](../../llms.txt) · [HTML version](https://sgit.ai/articles/versions/explorer-to-villager-newsroom.html)*

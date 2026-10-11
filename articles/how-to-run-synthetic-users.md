@@ -2,7 +2,7 @@
 
 > A how-to, from three studies we have published: store.sgit.ai in September, riskmandate.ai the day after, and newsroom.sgit.ai on 10 October, run for this article. Five to ten invented users of about five types, each with a profile, a question they arrive with and an expected journey, drive a real browser one screenshot at a time, saying what they see, think, ask and do; then they are interviewed and rate the experience, and their findings are ordered by what they cost. Claude Sonnet is good enough to play each user; the study can live in a GitHub repository or in an encrypted vault shared by a link. On the newsroom, five readers took 62 steps, asked 51 questions the site did not answer and produced 31 findings, six blocking; four of them left. Two findings turned out to be caused by our own tooling, and one turned out to be a real bug: 51 of 527 figures missing after the move. This article sets out each step with examples and screenshots, what went wrong, and a template to start from.
 
-*Source: <https://sgit.ai/articles/how-to-run-synthetic-users.html> · site v0.7.55 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/how-to-run-synthetic-users.html> · site v0.7.56 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -234,6 +234,7 @@ Vaults & methodSite & engineering[This article as a graph →](graphs.md#how-to-
 
 ### Continued by
 
+- [Go slow to go fast: moving the newsroom from an explorer project to a villager one, with the brief to do it](explorer-to-villager-newsroom.md) The newsroom is live and charging. Move the reader code to its own repo, same bytes and same bugs, then map, test, review and refactor before new features.
 - [The passkey opens the vault: sign in with Google, touch a passkey, and a master vault for every user, with no server of ours](the-passkey-opens-the-vault.md) Sign in with Google says who you are; a passkey's PRF bytes derive a door vault, which opens your master vault. No key is stored anywhere.
 - [I miss it, so it is working: the people who decide the roadmap have to use the product, and the vault the newsroom now needs](i-miss-it.md) I read the newsroom on four devices and they do not agree. Missing a feature is the best sign; the makers must use it. And the brief for the reader's vault.
 - [From me to you, in a link: a personal reading list, two briefs to build and use it, and the loop that makes it a day's work](a-reading-list-in-a-link.md) A reading list from one person to another, in a link the server never sees; a brief to build it, a brief to use it, and the loop that ships it in a day.

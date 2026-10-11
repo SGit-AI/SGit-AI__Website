@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-11",
-  "site_version": "v0.7.55",
+  "site_version": "v0.7.56",
   "about": "https://sgit.ai/newsroom/index.html",
   "front": {
     "edition": "2026-10-08",
@@ -72,6 +72,41 @@
     }
   ],
   "articles": [
+    {
+      "slug": "explorer-to-villager-newsroom",
+      "title": "Go slow to go fast: moving the newsroom from an explorer project to a villager one, with the brief to do it",
+      "date": "2026-10-11",
+      "updated": "",
+      "author": "Dinis Cruz",
+      "url": "https://sgit.ai/articles/explorer-to-villager-newsroom.html",
+      "markdown": "https://sgit.ai/articles/explorer-to-villager-newsroom.md",
+      "card": "https://sgit.ai/articles/cards/explorer-to-villager-newsroom.webp",
+      "graph": "https://sgit.ai/articles/graphs/explorer-to-villager-newsroom.json",
+      "teaser": "The newsroom is live and charging. Move the reader code to its own repo, same bytes and same bugs, then map, test, review and refactor before new features.",
+      "summary": "The newsroom's first MVP already has a crazy amount of powerful features, and it is live, and it is taking money. Like most explorer projects, it is also bundled in the middle of something much bigger: the application that bills, remembers and personalises sits in the same repository as 74 articles and their images. Measured on newsroom v0.8.0, the live reader code is about 2,700 lines, and the tests that cover it are 433. I want to keep shipping a massive number of features without breaking anything, so this is the moment to take a step back and go slow to go fast. This article is the case for it and the brief: move every feature that is not content into its own repository, as a pure refactoring, with the same behaviour and the same bugs, checked by hashing the files the live site serves; map every file, capability and web control; build the safety net, with bugs and vulnerabilities written down as tests that pass; review it for security and quality, with every finding a GitHub issue; refactor until no change that alters what a reader sees or pays can slip through; and build a pipeline fast enough to run on every commit, in Node, in three browser engines, against a pre-production copy and with synthetic readers. Then the explorer returns, with the vault and the passkey.",
+      "topics": [
+        "site-and-engineering",
+        "startups-and-strategy"
+      ],
+      "tags": [
+        "engineering",
+        "explorer",
+        "villager",
+        "refactoring",
+        "testing",
+        "ci",
+        "security-review",
+        "code-review",
+        "newsroom",
+        "sg-meter",
+        "github-issues",
+        "brief",
+        "article"
+      ],
+      "placement": [],
+      "linkedin": null,
+      "notes": []
+    },
     {
       "slug": "the-passkey-opens-the-vault",
       "title": "The passkey opens the vault: sign in with Google, touch a passkey, and a master vault for every user, with no server of ours",

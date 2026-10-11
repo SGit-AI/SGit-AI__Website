@@ -487,6 +487,7 @@
    "words": 3746
   }
  ],
+ "explorer-to-villager-newsroom": [],
  "footprint-and-blast-radius": [
   {
    "commit": "14a7e67e5",
@@ -1935,7 +1936,18 @@
    "words": 8570
   }
  ],
- "the-passkey-opens-the-vault": [],
+ "the-passkey-opens-the-vault": [
+  {
+   "commit": "4dc636a97",
+   "date": "2026-10-11",
+   "full": "4dc636a977875ed66ce4865410ad7e9c9f7de848",
+   "kind": "published",
+   "path": "admin/content/articles/the-passkey-opens-the-vault.md",
+   "subject": "site v0.7.55: the passkey opens the vault (Google sign-in, passkey PRF, and a master vault per user)",
+   "version": "v1.0.0",
+   "words": 3531
+  }
+ ],
  "the-question-is-whether-they-miss-it": [
   {
    "commit": "d856aa886",

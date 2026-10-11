@@ -2,7 +2,7 @@
 
 > The missing piece of the client-side puzzle is a user who can open their own vaults on any device, in a few seconds, with nothing to remember. This is the design. Sign in with Google says who you are. A passkey, through the WebAuthn PRF extension, gives the browser 32 bytes that only your authenticator can produce for this site, and from those bytes the browser computes the key of a small door vault, which holds the key of your master vault, which holds the keys of everything else, starting with your newsroom vault. The question I could not answer, where the encrypted vault key is stored, has a simple answer: nowhere. sgit vault keys are made in the client, so the door's key and its id can be computed from the passkey on any device, before anything is fetched, and there is no chicken and egg. A recovery code makes a second door to the same master. Google holds no key; its Drive app-data folder can keep a backup. PRF is now supported by Google Password Manager, iCloud Keychain, Windows Hello and Firefox. The first part is the technical design and the brief for the MVP on newsroom.sgit.ai, end to end; the second is what it enables: accounts with no server, for this site and for any other.
 
-*Source: <https://sgit.ai/articles/the-passkey-opens-the-vault.html> · site v0.7.55 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/the-passkey-opens-the-vault.html> · site v0.7.56 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -175,6 +175,10 @@ Vaults & methodSite & engineering[This article as a graph →](graphs.md#the-pas
 - [RFC 0001: two ways to add public-key cryptography to sgit, and the questions we want you to answer](rfc-0001-public-key-cryptography-for-sgit.md) A Request for Comments: two key pairs so a reader cannot write, sealed files only named people can open, and fourteen questions for reviewers.
 - [Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time](pay-after-you-read.md) Seven releases in one afternoon turned the reading meter into a working model: pay after you read, and the rating sets the price.
 - [Where the vault keys live: key management at sgit-ai v0.20.0, and what comes next](where-the-vault-keys-live.md) Vault key management at sgit-ai v0.20.0: the one secret, where keys are kept, how they travel sealed on append lanes, and what comes next.
+
+### Continued by
+
+- [Go slow to go fast: moving the newsroom from an explorer project to a villager one, with the brief to do it](explorer-to-villager-newsroom.md) The newsroom is live and charging. Move the reader code to its own repo, same bytes and same bugs, then map, test, review and refactor before new features.
 
 [All articles](index.md) · [All graphs](graphs.md)
 

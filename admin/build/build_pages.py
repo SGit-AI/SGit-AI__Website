@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.55'
+SITE_VERSION = 'v0.7.56'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,14 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.55', '2026-10-11', 'this release',
+    ('v0.7.56', '2026-10-11', 'this release',
+     "GO SLOW TO GO FAST. The newsroom moves from an explorer project to a villager one: the reader application (SG "
+     "Meter, the account, reading lists, personas, sharing) to its own repository as a pure refactoring, proved by the "
+     "live site serving the same bytes; then map, test (bugs as passing tests, no mocks), review (every finding a GitHub "
+     "issue), refactor, and only then new features. Measured on newsroom v0.8.0: about 2,700 lines of live reader code, "
+     "433 lines of tests, one deploy workflow, no Content-Security-Policy. A pipeline under two minutes per commit, and "
+     "the brief. Three figures."),
+    ('v0.7.55', '2026-10-11', 'git 4dc636a9',
      "THE PASSKEY OPENS THE VAULT. The design for a client-side account: Sign in with Google for who you are, a passkey "
      "with the WebAuthn PRF extension for what you can open, and a master vault per user. Where the vault key is stored: "
      "nowhere; sgit vault keys are made in the client, so a door vault's key and id are derived from the PRF bytes, and "
