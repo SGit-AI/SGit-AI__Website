@@ -2,7 +2,7 @@
 
 > Every published version of the article "Go slow to go fast", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/explorer-to-villager-newsroom.html> · site v0.7.58 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/explorer-to-villager-newsroom.html> · site v0.7.59 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,7 +16,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.2.0** | 2026-10-11 | minor | 3,362 | +63 / −0 words; 1 changed, 0 added, 0 removed paragraphs | this release | [what changed](explorer-to-villager-newsroom/v1.2.0.md) · [current](../explorer-to-villager-newsroom.md) |
+| **v1.2.0** | 2026-10-11 | minor | 3,362 | +63 / −0 words; 1 changed, 0 added, 0 removed paragraphs | [`cd0dbdc22`](https://github.com/SGit-AI/SGit-AI__Website/commit/cd0dbdc22a71f902d0bd9e998f2803dd81589796) | [what changed](explorer-to-villager-newsroom/v1.2.0.md) · [current](../explorer-to-villager-newsroom.md) |
 | **v1.1.0** | 2026-10-11 | minor | 3,299 | +732 / −217 words; 10 changed, 5 added, 3 removed paragraphs | [`002b84173`](https://github.com/SGit-AI/SGit-AI__Website/commit/002b841736c7bbf6213625f61eae7a643f3eaf5d) | [what changed](explorer-to-villager-newsroom/v1.1.0.md) |
 | **v1.0.0** | 2026-10-11 | published | 2,784 | first published | [`0c0b1d3b2`](https://github.com/SGit-AI/SGit-AI__Website/commit/0c0b1d3b2716592f4dc42bff79444f0a944a096d) |  |
 

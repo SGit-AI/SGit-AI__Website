@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.58'
+SITE_VERSION = 'v0.7.59'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,10 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.58', '2026-10-11', 'this release',
+    ('v0.7.59', '2026-10-11', 'this release',
+     "The key-chain figure in The passkey opens the vault catches up with v0.7.58: Google sees nothing in the MVP, and "
+     "the steps are numbered from the passkey."),
+    ('v0.7.58', '2026-10-11', 'git cd0dbdc2',
      "THE PASSKEY OPENS THE VAULT, REVIEWED. The MVP is passkey-only: no Google sign-in, no OAuth, no app, no email; "
      "the page makes a discoverable credential through WebAuthn and the site learns a credential id, a public key and "
      "32 PRF bytes. Sign-in with Google becomes a later, optional phase on its own origin. Also from the review: the "
