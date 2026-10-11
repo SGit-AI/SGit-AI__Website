@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.57'
+SITE_VERSION = 'v0.7.58'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,16 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.57', '2026-10-11', 'this release',
+    ('v0.7.58', '2026-10-11', 'this release',
+     "THE PASSKEY OPENS THE VAULT, REVIEWED. The MVP is passkey-only: no Google sign-in, no OAuth, no app, no email; "
+     "the page makes a discoverable credential through WebAuthn and the site learns a credential id, a public key and "
+     "32 PRF bytes. Sign-in with Google becomes a later, optional phase on its own origin. Also from the review: the "
+     "unlock costs up to six PBKDF2 derivations of 600,000 iterations (measured: about 105 ms each in headless "
+     "Chromium, slower on a phone) with mitigations; the passphrase is the hex of 32 bytes, since sgit accepts any "
+     "printable passphrase, and only the id needs rejection sampling; the rule against third-party scripts applies to "
+     "the whole origin, with the vault code vendored; the Drive backup is an availability backup wrapped under the "
+     "recovery code. Two figures re-rendered. And the villager brief names the repository SGit-AI__Newsroom__API."),
+    ('v0.7.57', '2026-10-11', 'git 002b8417',
      "GO SLOW TO GO FAST, REVIEWED. Corrections to the explorer-to-villager article after a review of its plan against "
      "the newsroom repository: the reader code has two upstreams today (the account pages, subscribe and the meter to "
      "v1.3.1 are imported from sgit.ai on every sync and rewritten to load the newsroom's v1.4.0 fork), so the new "

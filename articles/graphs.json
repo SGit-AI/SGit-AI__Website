@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-11",
-  "site_version": "v0.7.57",
+  "site_version": "v0.7.58",
   "schema": "https://sgit.ai/articles/graphs.html",
   "topics": [
     {
@@ -216,7 +216,7 @@
     },
     {
       "slug": "the-passkey-opens-the-vault",
-      "title": "The passkey opens the vault: sign in with Google, touch a passkey, and a master vault for every user, with no server of ours",
+      "title": "The passkey opens the vault: touch a passkey, and a master vault for every user, with no server of ours, no account and no email",
       "date": "2026-10-11",
       "updated": "",
       "url": "https://sgit.ai/articles/the-passkey-opens-the-vault.html",
@@ -259,13 +259,13 @@
           "vaults-and-method",
           "site-and-engineering"
         ],
-        "core_idea": "An end-to-end, client-side account: Sign in with Google for identity, a passkey with the WebAuthn PRF extension for 32 bytes only the user's authenticator can produce for the site, and sgit vaults. Because sgit vault keys are made in the client, the browser derives a door vault's key and id from the PRF bytes with HKDF, so nothing has to be stored or found first; the door holds the master vault key, and the master holds the keys of the user's other vaults, the access key, a key pair and the list of doors. A 128-bit recovery code derives a recovery door. Google holds no key; Drive's app-data folder can keep a backup. PRF works in Google Password Manager, iCloud Keychain, Windows Hello and Firefox. The page that holds keys loads no third-party scripts. The pattern gives any static site accounts with no server and data the operator cannot read.",
+        "core_idea": "An end-to-end, client-side account with no sign-in, no account and no email: a passkey with the WebAuthn PRF extension for 32 bytes only the user's authenticator can produce for the site, and sgit vaults. Because sgit vault keys are made in the client, the browser derives a door vault's key and id from the PRF bytes with HKDF, so nothing has to be stored or found first; the door holds the master vault key, and the master holds the keys of the user's other vaults, the access key, a key pair and the list of doors. A 128-bit recovery code derives a recovery door. Google holds no key; Drive's app-data folder can keep a backup. PRF works in Google Password Manager, iCloud Keychain, Windows Hello and Firefox. The page that holds keys loads no third-party scripts. The pattern gives any static site accounts with no server and data the operator cannot read.",
         "nodes": [
           {
             "id": "google",
-            "label": "Sign in with Google",
+            "label": "Sign in, later and optional",
             "kind": "concept",
-            "summary": "Who you are; ties purchases to you; holds no key."
+            "summary": "Not in the MVP; on its own origin; continuity and backup; never a key."
           },
           {
             "id": "prf",
@@ -381,8 +381,8 @@
             "why": "The answer to where the vault key lives."
           },
           {
-            "text": "Sign in with Google and the passkey are two separate steps, for two separate jobs: who you are, and what you can open.",
-            "why": "The distinction the design rests on."
+            "text": "There is no sign-in in this flow at all: the page registers a discoverable credential with a random user handle, and the only login involved is the one you already have with your passkey provider, which syncs it.",
+            "why": "What the passkey needs, and what it does not."
           }
         ]
       }
