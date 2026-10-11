@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.48'
+SITE_VERSION = 'v0.7.49'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,13 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.48', '2026-10-11', 'this release',
+    ('v0.7.49', '2026-10-11', 'this release',
+     "FOR PUBLISHERS. A new page, /publishers/, to send to journalists, publishers and anyone thinking about the future of "
+     "news: what newsroom.sgit.ai is in one paragraph, how to try it in five minutes (read, rate, your account, your "
+     "newsroom, read as a persona, a real £5 top-up, send your reading), a table of what is live, why it is worth their "
+     "time without claiming a first, what is not done, three articles to read, and what we would like back: their "
+     "reaction. Screenshots from the live newsroom (v0.7.1) on 11 October."),
+    ('v0.7.48', '2026-10-11', 'git 9844edc6',
      "THE NEWSLETTER, SPLIT INTO THREE ISSUES OF EIGHT. Issue 3 tried to cover all 24 articles from 9 to 11 October; "
      "that is too much for one LinkedIn post, and good articles were lost in the middle. It is now three issues, grouped "
      "by theme rather than date, each with its own narrative, collage, quotes checked word for word and LinkedIn cover, "
@@ -4903,6 +4909,7 @@ Quick answers (so you do not need a second request for the common questions):
 
 LLMS_SECTIONS = [
     ('why', 'Why this exists'),
+    ('publishers', 'For publishers (newsroom.sgit.ai as a working publication: what is live, how to try it in five minutes, what is not done, and what we would like back)'),
     ('about', 'About the author (Dinis Cruz: the record, the signed articles, writing elsewhere, and interests declared)'),
     ('partnerships', 'Partnerships (the business case for specific partnerships, made from public material only: what the organisation is trying to do, what is published here that answers it, and a first concrete piece of work)'),
     ('startups', 'For startups (building a product on vaults: what you get on day one, the loop from first vault to first customer, and what you still have to bring)'),
