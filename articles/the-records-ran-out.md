@@ -2,7 +2,7 @@
 
 > On 11 October The New Stack published a piece by Ignacio Aldama, an engineer at Bit Cloud, in which a brand-new Claude Code session with no history and no local code found a support console's shared ticket contract in two MCP calls, from the dependency records the build platform writes as each component is versioned, and then left the contract alone because it knew two components depended on it. It is a good demonstration and an honest one, because he then says where the records ran out. They describe structure, not behaviour; a green build can hide tests that never ran; a demo carries a public signing secret and a list of unfinished work; and memory, which holds intent, is not tied to a code version. Those edges are exactly where sgit and RiskMandate sit. Label every fact with how it is known. Treat a skipped test as a control that did not run. Accept a demo shortcut by name and for an interval, or stop. Keep memory and records in one encrypted, versioned history so the intent of version 1.4 is recorded at 1.4. And let records cross a company boundary with publish, clone and mirror. What exists, what is documented and what is only proposed are marked as such.
 
-*Source: <https://sgit.ai/articles/the-records-ran-out.html> · site v0.7.80 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/the-records-ran-out.html> · site v0.7.81 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -97,6 +97,8 @@ Agents & policySite & engineering[This article as a graph →](graphs.md#the-rec
 - [Footprint and blast radius: what the agent actually did, and what it would have cost](footprint-and-blast-radius.md) Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Posting this article on LinkedIn?** The cover is [the-records-ran-out.jpg](../articles/banners/the-records-ran-out.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
 **Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 

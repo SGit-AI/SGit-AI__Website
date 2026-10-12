@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-12",
-  "site_version": "v0.7.80",
+  "site_version": "v0.7.81",
   "about": "https://sgit.ai/newsroom/index.html",
   "front": {
     "edition": "2026-10-08",
@@ -72,6 +72,40 @@
     }
   ],
   "articles": [
+    {
+      "slug": "sovereignty-is-the-ability-to-move",
+      "title": "Sovereignty is the ability to move: play where the ball is going, take away the dot, and keep a twin that works",
+      "date": "2026-10-12",
+      "updated": "",
+      "author": "Dinis Cruz",
+      "url": "https://sgit.ai/articles/sovereignty-is-the-ability-to-move.html",
+      "markdown": "https://sgit.ai/articles/sovereignty-is-the-ability-to-move.md",
+      "card": "https://sgit.ai/articles/cards/sovereignty-is-the-ability-to-move.webp",
+      "graph": "https://sgit.ai/articles/graphs/sovereignty-is-the-ability-to-move.json",
+      "teaser": "Sovereignty is the ability to move: take away each dot on the map, and keep a twin that works for the minimum viable company, tested in QA.",
+      "summary": "I spent today at a sovereignty event, and what struck me most is how much of Europe's sovereignty conversation is about things we do not control and will not control soon: frontier models, giant data centres, GPUs. That is playing where the ball is, not where it is going, and in padel, which I am learning, that is the difference between having all the time in the world and having none. My view is that technology sovereignty is the ability to move, and that it comes from treating every dot in the stack, commodity, product or custom built, as something you can replace. The test is a Wardley map with one question: take away the dot, what happens? If the answer is that the service stops, that is a board-level risk with a name next to it. The fix is not an alternative that is as good as today, which is why most efforts never start. It is a twin of the thing you do not control, running in your QA environment, good enough for the minimum viable company: the priority customers and the services that must not stop, slower, dearer, tested every week. Can it move is the first question; is it cheap and does it scale is the second, and we keep confusing them. Open source is the only kind of control that survives an acquisition. Europe does not lack startups or talent; it lacks the commercial open source model that would let its many small players add up. And now, with models that can read a map and run a simulation on a twin, this analysis can finally be done at scale.",
+      "topics": [
+        "startups-and-strategy",
+        "site-and-engineering"
+      ],
+      "tags": [
+        "sovereignty",
+        "resilience",
+        "europe",
+        "wardley-maps",
+        "twins",
+        "open-source",
+        "minimum-viable-company",
+        "qa",
+        "testing",
+        "disaster-recovery",
+        "strategy",
+        "article"
+      ],
+      "placement": [],
+      "linkedin": null,
+      "notes": []
+    },
     {
       "slug": "the-records-ran-out",
       "title": "The records ran out: a fresh agent found the shared contract in two MCP calls, and where sgit and RiskMandate fit at the edges",

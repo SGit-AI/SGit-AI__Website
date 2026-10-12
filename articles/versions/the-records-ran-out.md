@@ -2,7 +2,7 @@
 
 > Every published version of the article "The records ran out", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/the-records-ran-out.html> · site v0.7.80 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/the-records-ran-out.html> · site v0.7.81 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,7 +16,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.0.0** | 2026-10-12 | published | 2,412 | first published | this release | [current](../the-records-ran-out.md) |
+| **v1.0.0** | 2026-10-12 | published | 2,412 | first published | [`95102cad3`](https://github.com/SGit-AI/SGit-AI__Website/commit/95102cad3c7ee3db796102a3d186ddbaf8a10918) | [current](../the-records-ran-out.md) |
 
 [← Back to the article](../the-records-ran-out.md) · [All articles](../index.md)
 

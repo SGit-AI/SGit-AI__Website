@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.80'
+SITE_VERSION = 'v0.7.81'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,16 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.80', '2026-10-12', 'this release',
+    ('v0.7.81', '2026-10-12', 'this release',
+     "SOVEREIGNTY IS THE ABILITY TO MOVE. A new article from a day at a sovereignty event: the conversation in "
+     "Europe is mostly about things it does not control (frontier models, data centres, GPUs), which is playing "
+     "where the ball is, not where it is going. Sovereignty is the ability to move workloads and actions; the test "
+     "is a Wardley map where each dot is taken away and the blast radius followed up to the customer, across the "
+     "whole stack; the answer is a twin that works for the minimum viable company, run in QA all the time, scored "
+     "on a five-level maturity model; can it move comes before is it cheap; only open source survives an "
+     "acquisition; Europe lacks a commercial open source model, not startups or talent (Prosus and Dealroom, "
+     "Stanford's founder study). Figures: take away the dot as three frames with controls, and the maturity model.",),
+    ('v0.7.80', '2026-10-12', 'git 95102cad',
      "THE RECORDS RAN OUT. A new article answering Ignacio Aldama's piece in The New Stack of 11 October, in which "
      "a fresh Claude Code session found a shared contract in two MCP calls from build-generated dependency records "
      "and then, in his words, the records ran out. Each of his edges gets its name and what fills it: a route list "
