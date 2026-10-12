@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.79'
+SITE_VERSION = 'v0.7.80'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,15 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.79', '2026-10-12', 'this release',
+    ('v0.7.80', '2026-10-12', 'this release',
+     "THE RECORDS RAN OUT. A new article answering Ignacio Aldama's piece in The New Stack of 11 October, in which "
+     "a fresh Claude Code session found a shared contract in two MCP calls from build-generated dependency records "
+     "and then, in his words, the records ran out. Each of his edges gets its name and what fills it: a route list "
+     "in a test fake is documented, not observed; a skipped test is an expectation reported as a control; a demo "
+     "signing secret is a grant wider than the mandate, to be accepted by name and for an interval; memory and "
+     "records belong in one encrypted, versioned sgit history; and sgit publish, clone and mirror carry records "
+     "across a company boundary. Exists, documented and proposed are marked as such. One figure.",),
+    ('v0.7.79', '2026-10-12', 'git 5f24a3cb',
      "MOVE THE CLOUD, NOT THE CODE. A new article from a digital sovereignty event: workloads stay on hyperscalers "
      "because moving means changing code, so the application must not know it has moved; its S3, EC2 and IAM calls "
      "land on an open source twin the client cannot tell from the real service, and the twin decides where the "

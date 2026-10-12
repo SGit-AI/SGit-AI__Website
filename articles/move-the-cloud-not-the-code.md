@@ -2,7 +2,7 @@
 
 > At a digital sovereignty event today a conversation with the chief executive of an infrastructure company with a large footprint in Romania kept returning to one point: sovereignty has to work in practice, and in practice what stops workloads moving is not policy or price but code. Every call to S3, EC2 and IAM is written into applications that work today and that nobody wants to touch. So the requirement is that the application must not know it has moved: the same calls land on a twin, an open source service the client cannot tell from the real one, and the twin decides where the bytes go, real S3, an sgit vault, a European operator's data centre, a laptop. The S3 twin exists. Then the part I think matters most: the reason to move must never be sovereignty or cost reduction, which are important and never urgent. A migration carries risk, so the person signing it needs value that lands the day they switch and gives them cover: backups that exist, every object version controlled, encryption with the key held elsewhere, a journal of every call, behaviour policies the agents cannot skip, cost per workload, a top-of-register risk moved. That value sits in the twin layer, and an sgit vault behind it supplies most of it. The rule for the project: no new features during the move. And the business model for an infrastructure operator who sells it that way.
 
-*Source: <https://sgit.ai/articles/move-the-cloud-not-the-code.html> · site v0.7.79 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/move-the-cloud-not-the-code.html> · site v0.7.80 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -125,6 +125,8 @@ Startups & strategyAgents & policy[This article as a graph →](graphs.md#move-t
 - [Where the platform draws the line: Microsoft Execution Containers, the shared responsibility model for agents, and the business logic above it](where-the-platform-draws-the-line.md) Microsoft's MXC and ACS, briefed field by field and mapped to Agent Behaviour Policies: the platform bounds what it can see; the business logic is above.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Posting this article on LinkedIn?** The cover is [move-the-cloud-not-the-code.jpg](../articles/banners/move-the-cloud-not-the-code.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
 **Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
