@@ -2,7 +2,7 @@
 
 > Every published version of the article "The investigation GitHub owes its customers", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/the-investigation-github-owes-its-customers.html> · site v0.7.63 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/the-investigation-github-owes-its-customers.html> · site v0.7.64 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -17,7 +17,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
 | **v1.1.1** | 2026-10-07 | patch | 5,932 | front matter only (the text is unchanged) | [`d86d0b70a`](https://github.com/SGit-AI/SGit-AI__Website/commit/d86d0b70abbe2879a585ed04c090b63f3584ca4e) | [what changed](the-investigation-github-owes-its-customers/v1.1.1.md) · [current](../the-investigation-github-owes-its-customers.md) |
-| **v1.1.0** | 2026-10-05 | minor | 5,932 | +0 / −0 words; 0 changed, 0 added, 0 removed paragraphs | [`dc11503b4`](https://github.com/SGit-AI/SGit-AI__Website/commit/dc11503b4e81577d032450317d0f74659a25190a) | [what changed](the-investigation-github-owes-its-customers/v1.1.0.md) |
+| **v1.1.0** | 2026-10-05 | minor | 5,932 | +78 / −1 words; 15 changed, 0 added, 0 removed paragraphs | [`dc11503b4`](https://github.com/SGit-AI/SGit-AI__Website/commit/dc11503b4e81577d032450317d0f74659a25190a) | [what changed](the-investigation-github-owes-its-customers/v1.1.0.md) |
 | **v1.0.0** | 2026-10-05 | published | 5,855 | first published | [`ae21f7588`](https://github.com/SGit-AI/SGit-AI__Website/commit/ae21f7588b88f65a30c69cd7805204aeef6c3e81) |  |
 
 [← Back to the article](../the-investigation-github-owes-its-customers.md) · [All articles](../index.md)

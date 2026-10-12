@@ -2,7 +2,7 @@
 
 > Every published version of the article "Who are you protecting against? Draw the security line where the attacker is, not above it", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/who-are-you-protecting-against.html> · site v0.7.63 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/who-are-you-protecting-against.html> · site v0.7.64 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,7 +16,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.1.0** | 2026-10-10 | minor | 3,062 | +3,079 / −0 words; 0 changed, 61 added, 0 removed paragraphs | [`ed8f0cd7f`](https://github.com/SGit-AI/SGit-AI__Website/commit/ed8f0cd7fe707dcf72f34b29c1b45f01551ee3bd) | [what changed](who-are-you-protecting-against/v1.1.0.md) · [current](../who-are-you-protecting-against.md) |
+| **v1.1.0** | 2026-10-10 | minor | 3,062 | +3 / −32 words; 3 changed, 0 added, 0 removed paragraphs | [`ed8f0cd7f`](https://github.com/SGit-AI/SGit-AI__Website/commit/ed8f0cd7fe707dcf72f34b29c1b45f01551ee3bd) | [what changed](who-are-you-protecting-against/v1.1.0.md) · [current](../who-are-you-protecting-against.md) |
 | **v1.0.0** | 2026-10-08 | published | 3,091 | first published | [`a23144066`](https://github.com/SGit-AI/SGit-AI__Website/commit/a231440667ee385f5e908eb7f0bd3effebd0fd56) |  |
 
 [← Back to the article](../who-are-you-protecting-against.md) · [All articles](../index.md)

@@ -2,7 +2,7 @@
 
 > Every published version of the article "The bridge, followed to the end", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/the-bridge-followed-to-the-end.html> · site v0.7.63 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/the-bridge-followed-to-the-end.html> · site v0.7.64 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,9 +16,9 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.3.0** | 2026-10-08 | minor | 4,355 | +0 / −0 words; 0 changed, 0 added, 0 removed paragraphs | [`7d88785be`](https://github.com/SGit-AI/SGit-AI__Website/commit/7d88785be63296909b7915161cbebc407c24f12a) | [what changed](the-bridge-followed-to-the-end/v1.3.0.md) · [current](../the-bridge-followed-to-the-end.md) |
-| **v1.2.0** | 2026-10-08 | minor | 4,312 | +0 / −0 words; 0 changed, 0 added, 0 removed paragraphs | [`e328e3beb`](https://github.com/SGit-AI/SGit-AI__Website/commit/e328e3bebec7feb57cdf7dde76e854d1bb98128f) | [what changed](the-bridge-followed-to-the-end/v1.2.0.md) |
-| **v1.1.0** | 2026-10-08 | minor | 3,731 | +0 / −0 words; 0 changed, 0 added, 0 removed paragraphs | [`a071264ce`](https://github.com/SGit-AI/SGit-AI__Website/commit/a071264cef549f48e53c77cf4dd65ceb1be1dcd7) | [what changed](the-bridge-followed-to-the-end/v1.1.0.md) |
+| **v1.3.0** | 2026-10-08 | minor | 4,355 | +43 / −0 words; 6 changed, 0 added, 0 removed paragraphs | [`7d88785be`](https://github.com/SGit-AI/SGit-AI__Website/commit/7d88785be63296909b7915161cbebc407c24f12a) | [what changed](the-bridge-followed-to-the-end/v1.3.0.md) · [current](../the-bridge-followed-to-the-end.md) |
+| **v1.2.0** | 2026-10-08 | minor | 4,312 | +1,229 / −648 words; 12 changed, 16 added, 9 removed paragraphs | [`e328e3beb`](https://github.com/SGit-AI/SGit-AI__Website/commit/e328e3bebec7feb57cdf7dde76e854d1bb98128f) | [what changed](the-bridge-followed-to-the-end/v1.2.0.md) |
+| **v1.1.0** | 2026-10-08 | minor | 3,731 | +1,198 / −0 words; 0 changed, 18 added, 0 removed paragraphs | [`a071264ce`](https://github.com/SGit-AI/SGit-AI__Website/commit/a071264cef549f48e53c77cf4dd65ceb1be1dcd7) | [what changed](the-bridge-followed-to-the-end/v1.1.0.md) |
 | **v1.0.0** | 2026-10-07 | published | 2,533 | first published | [`9e71c7d67`](https://github.com/SGit-AI/SGit-AI__Website/commit/9e71c7d67485efd3e51d0472eaac1c9aaf07e396) |  |
 
 [← Back to the article](../the-bridge-followed-to-the-end.md) · [All articles](../index.md)

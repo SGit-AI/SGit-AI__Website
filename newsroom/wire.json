@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-12",
-  "site_version": "v0.7.63",
+  "site_version": "v0.7.64",
   "about": "https://sgit.ai/newsroom/index.html",
   "front": {
     "edition": "2026-10-08",
@@ -145,16 +145,16 @@
     },
     {
       "slug": "the-passkey-opens-the-vault",
-      "title": "The passkey opens the vault: a top vault computed from a passkey, vaults all the way down, and no server of ours",
+      "title": "The passkey opens the vault: a door per path, a master vault for every user, and no server of ours",
       "date": "2026-10-11",
-      "updated": "2026-10-11",
+      "updated": "2026-10-12",
       "author": "Dinis Cruz",
       "url": "https://sgit.ai/articles/the-passkey-opens-the-vault.html",
       "markdown": "https://sgit.ai/articles/the-passkey-opens-the-vault.md",
       "card": "https://sgit.ai/articles/cards/the-passkey-opens-the-vault.webp",
       "graph": "https://sgit.ai/articles/graphs/the-passkey-opens-the-vault.json",
-      "teaser": "A passkey's PRF bytes compute the top vault, a keyring for every other key, so no key is stored and the passkey is a lock, not an identity.",
-      "summary": "The missing piece of the client-side puzzle is a user who can open their own vaults on any device, in a few seconds, with nothing to remember and nothing to sign up for. This is the design, revised after a review of its first version. A passkey, through the WebAuthn PRF extension, gives the browser 32 bytes that only your authenticator can produce for this site, and from those bytes the browser computes the key and the id of your top vault. The top vault is the root of a chain we already use everywhere, vaults that hold the keys of other vaults: it holds the keys of your reading vault and your notes vault, the read keys you have been given, your access key, and your key pairs for this site, which are generated at random and never derived from the passkey, because the passkey is a lock, not an identity. The question I could not answer, where the top key is stored, has the answer nowhere: it is computed, and the only stored secret is the one inside the passkey, kept by whichever store you were already signed in to, Google, Apple or Microsoft, which is why the vault travels wherever that store does. Several passkeys give several tops, an admin and a reader, with the provider's own picker as the switch; a key moves between tops by copying, and a top is retired by deleting its vault, after which the passkey opens nothing. The first part is the design and the brief for the MVP on newsroom.sgit.ai; the second is what it enables for every other site we run.",
+      "teaser": "Tested: a passkey's PRF bytes compute a door that holds the master's key, and a different path to the same passkey gives different bytes, so a door per path.",
+      "summary": "The missing piece of the client-side puzzle is a user who can open their own vaults on any device, in a few seconds, with nothing to remember and nothing to sign up for. This is the design, in its third version, and this one has been tested. A passkey, through the WebAuthn PRF extension, gives the browser 32 bytes that only your authenticator can produce for this site, and from those bytes the browser computes the key and the address of a small door vault, which holds the key of your master vault, which holds the keys of everything else: your reading vault, the read keys you have been given, your access key, and your key pairs, which are generated at random and never derived from the passkey. A review on 11 October took the door out of the design as a layer too many; a test on newsroom.sgit.ai on 11 and 12 October put it back, for a reason the review could not have known. One Google Password Manager passkey gave the same bytes on a Mac and an iPhone through the provider on each device, and the derivation agreed with sgit's Python byte for byte; the same passkey, answering a QR code from an iPad and from that same Mac, gave a different set of bytes, consistently, with the same credential id. Apple's forums report the same for iCloud Keychain since late 2024. So the claim is narrower than I wrote: the same passkey gives the same bytes through the same kind of path. The unit of the design is the path, not the passkey: a door per set of bytes, each recording where it came from, added in a normal first-week step that moves no key through a person, with the recovery code as the way in where no door opens yet, and an unknown door address meaning no door here yet, never an error. The platform path, which an iCloud Keychain passkey gave identically across a Mac, an iPad and an iPhone in Safari and Chrome, is the common case and works.",
       "topics": [
         "vaults-and-method",
         "site-and-engineering"
@@ -171,6 +171,7 @@
         "architecture",
         "brief",
         "secrets",
+        "lab",
         "article"
       ],
       "placement": [],
@@ -978,6 +979,43 @@
       "notes": []
     },
     {
+      "slug": "a-mac-of-the-agents-own",
+      "title": "A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies",
+      "date": "2026-10-09",
+      "updated": "",
+      "author": "Dinis Cruz",
+      "url": "https://sgit.ai/articles/a-mac-of-the-agents-own.html",
+      "markdown": "https://sgit.ai/articles/a-mac-of-the-agents-own.md",
+      "card": "https://sgit.ai/articles/cards/a-mac-of-the-agents-own.webp",
+      "graph": "https://sgit.ai/articles/graphs/a-mac-of-the-agents-own.json",
+      "teaser": "A business plan for a Mac of the agent's own: what Apple's licence allows, a desktop built from vaults per run, and three behaviour policies for one agent.",
+      "summary": "Our agents already have dedicated resources with a small blast radius: their own mailbox, their own code-host account, their own Claude account. The next one is a desktop of their own, and it should be a Mac, because that is where most agent desktop apps arrive first. This is a business plan for somebody else to build, following our earlier research on renting an agent a desktop. It started as a pool of Macs rented by the minute, and Apple's licence rules that out: a leased Mac must be held for at least 24 hours, for developer services, by one customer, and virtual copies may not be time-shared. So the plan is the shapes that are allowed: a dedicated Mac per customer, run for them, with a per-minute meter on top and a clean desktop per run built from encrypted vaults; developer agents on leased Macs; software for the Mac mini you keep; and a request to Apple for terms. The reason to want any of it is in the three behaviour policies: the same customer service agent on your own Mac, on a dedicated Mac and on a hardened one, where the excess nothing bounds falls from 23 rows to 11 to 3.",
+      "topics": [
+        "startups-and-strategy",
+        "agents-and-policy",
+        "vaults-and-method"
+      ],
+      "tags": [
+        "agents",
+        "agent-desktops",
+        "macos",
+        "business-plan",
+        "agent-behaviour-policy",
+        "licensing",
+        "vaults",
+        "pki",
+        "sgit",
+        "wardley-maps",
+        "isolation",
+        "cowork",
+        "computer-use",
+        "article"
+      ],
+      "placement": [],
+      "linkedin": null,
+      "notes": []
+    },
+    {
       "slug": "riskmandate-ten-questions",
       "title": "Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not",
       "date": "2026-10-09",
@@ -1044,43 +1082,6 @@
         "agent-behaviour-policy",
         "cowork",
         "guide",
-        "article"
-      ],
-      "placement": [],
-      "linkedin": null,
-      "notes": []
-    },
-    {
-      "slug": "a-mac-of-the-agents-own",
-      "title": "A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies",
-      "date": "2026-10-09",
-      "updated": "",
-      "author": "Dinis Cruz",
-      "url": "https://sgit.ai/articles/a-mac-of-the-agents-own.html",
-      "markdown": "https://sgit.ai/articles/a-mac-of-the-agents-own.md",
-      "card": "https://sgit.ai/articles/cards/a-mac-of-the-agents-own.webp",
-      "graph": "https://sgit.ai/articles/graphs/a-mac-of-the-agents-own.json",
-      "teaser": "A business plan for a Mac of the agent's own: what Apple's licence allows, a desktop built from vaults per run, and three behaviour policies for one agent.",
-      "summary": "Our agents already have dedicated resources with a small blast radius: their own mailbox, their own code-host account, their own Claude account. The next one is a desktop of their own, and it should be a Mac, because that is where most agent desktop apps arrive first. This is a business plan for somebody else to build, following our earlier research on renting an agent a desktop. It started as a pool of Macs rented by the minute, and Apple's licence rules that out: a leased Mac must be held for at least 24 hours, for developer services, by one customer, and virtual copies may not be time-shared. So the plan is the shapes that are allowed: a dedicated Mac per customer, run for them, with a per-minute meter on top and a clean desktop per run built from encrypted vaults; developer agents on leased Macs; software for the Mac mini you keep; and a request to Apple for terms. The reason to want any of it is in the three behaviour policies: the same customer service agent on your own Mac, on a dedicated Mac and on a hardened one, where the excess nothing bounds falls from 23 rows to 11 to 3.",
-      "topics": [
-        "startups-and-strategy",
-        "agents-and-policy",
-        "vaults-and-method"
-      ],
-      "tags": [
-        "agents",
-        "agent-desktops",
-        "macos",
-        "business-plan",
-        "agent-behaviour-policy",
-        "licensing",
-        "vaults",
-        "pki",
-        "sgit",
-        "wardley-maps",
-        "isolation",
-        "cowork",
-        "computer-use",
         "article"
       ],
       "placement": [],

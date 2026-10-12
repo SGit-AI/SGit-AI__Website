@@ -2,7 +2,7 @@
 
 > Every published version of the article "The wall under the reply", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/the-wall-under-the-reply.html> · site v0.7.63 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/the-wall-under-the-reply.html> · site v0.7.64 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -17,9 +17,9 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
 | **v1.3.1** | 2026-10-07 | patch | 4,105 | front matter only (the text is unchanged) | [`d86d0b70a`](https://github.com/SGit-AI/SGit-AI__Website/commit/d86d0b70abbe2879a585ed04c090b63f3584ca4e) | [what changed](the-wall-under-the-reply/v1.3.1.md) · [current](../the-wall-under-the-reply.md) |
-| **v1.3.0** | 2026-10-05 | minor | 4,105 | +0 / −0 words; 0 changed, 0 added, 0 removed paragraphs | [`413c644fe`](https://github.com/SGit-AI/SGit-AI__Website/commit/413c644fe8d685d19a226b4f91dd2bdd59275c56) | [what changed](the-wall-under-the-reply/v1.3.0.md) |
-| **v1.2.0** | 2026-10-04 | minor | 4,107 | +0 / −0 words; 0 changed, 0 added, 0 removed paragraphs | [`025e22b73`](https://github.com/SGit-AI/SGit-AI__Website/commit/025e22b7365d362245d9227cb97ef5418e9d7931) | [what changed](the-wall-under-the-reply/v1.2.0.md) |
-| **v1.1.0** | 2026-10-04 | minor | 4,100 | +0 / −0 words; 0 changed, 0 added, 0 removed paragraphs | [`b5a363102`](https://github.com/SGit-AI/SGit-AI__Website/commit/b5a36310284da7ccf07414fe5cee6db92a7f95be) | [what changed](the-wall-under-the-reply/v1.1.0.md) |
+| **v1.3.0** | 2026-10-05 | minor | 4,105 | +0 / −2 words; 1 changed, 0 added, 0 removed paragraphs | [`413c644fe`](https://github.com/SGit-AI/SGit-AI__Website/commit/413c644fe8d685d19a226b4f91dd2bdd59275c56) | [what changed](the-wall-under-the-reply/v1.3.0.md) |
+| **v1.2.0** | 2026-10-04 | minor | 4,107 | +10 / −3 words; 2 changed, 0 added, 0 removed paragraphs | [`025e22b73`](https://github.com/SGit-AI/SGit-AI__Website/commit/025e22b7365d362245d9227cb97ef5418e9d7931) | [what changed](the-wall-under-the-reply/v1.2.0.md) |
+| **v1.1.0** | 2026-10-04 | minor | 4,100 | +254 / −0 words; 0 changed, 4 added, 0 removed paragraphs | [`b5a363102`](https://github.com/SGit-AI/SGit-AI__Website/commit/b5a36310284da7ccf07414fe5cee6db92a7f95be) | [what changed](the-wall-under-the-reply/v1.1.0.md) |
 | **v1.0.0** | 2026-10-04 | published | 3,846 | first published | [`12ba9608e`](https://github.com/SGit-AI/SGit-AI__Website/commit/12ba9608eb14d48dcfb059de32704097a81295ce) |  |
 
 [← Back to the article](../the-wall-under-the-reply.md) · [All articles](../index.md)

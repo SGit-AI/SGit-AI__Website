@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-12",
-  "site_version": "v0.7.63",
+  "site_version": "v0.7.64",
   "schema": "https://sgit.ai/articles/graphs.html",
   "topics": [
     {
@@ -468,13 +468,13 @@
     },
     {
       "slug": "the-passkey-opens-the-vault",
-      "title": "The passkey opens the vault: a top vault computed from a passkey, vaults all the way down, and no server of ours",
+      "title": "The passkey opens the vault: a door per path, a master vault for every user, and no server of ours",
       "date": "2026-10-11",
-      "updated": "2026-10-11",
+      "updated": "2026-10-12",
       "url": "https://sgit.ai/articles/the-passkey-opens-the-vault.html",
       "markdown": "https://sgit.ai/articles/the-passkey-opens-the-vault.md",
       "card": "https://sgit.ai/articles/cards/the-passkey-opens-the-vault.webp",
-      "teaser": "A passkey's PRF bytes compute the top vault, a keyring for every other key, so no key is stored and the passkey is a lock, not an identity.",
+      "teaser": "Tested: a passkey's PRF bytes compute a door that holds the master's key, and a different path to the same passkey gives different bytes, so a door per path.",
       "topics": [
         "vaults-and-method",
         "site-and-engineering"
@@ -491,6 +491,7 @@
         "architecture",
         "brief",
         "secrets",
+        "lab",
         "article"
       ],
       "links_out": [
@@ -506,12 +507,12 @@
       ],
       "graph": {
         "slug": "the-passkey-opens-the-vault",
-        "teaser": "A passkey's PRF bytes compute the top vault, a keyring for every other key, so no key is stored and the passkey is a lock, not an identity.",
+        "teaser": "Tested: a passkey's PRF bytes compute a door that holds the master's key, and a different path to the same passkey gives different bytes, so a door per path.",
         "topics": [
           "vaults-and-method",
           "site-and-engineering"
         ],
-        "core_idea": "An end-to-end, client-side account with no sign-in to the site: a passkey with the WebAuthn PRF extension for 32 bytes only the user's authenticator can produce for the site, and sgit vaults. Because sgit vault keys are made in the client, the browser computes the top vault's key and id from the PRF bytes with HKDF, so nothing has to be stored or found first; the top is the root of the chain of vaults that hold other vaults' keys, holding the keys of the reading and notes vaults, received read keys, the access key, and key pairs that are generated at random and never derived from the passkey. The user is signed in where they already are, Apple, Google or Microsoft, and the vault travels with that passkey store. Several passkeys give several tops, chosen in the store's own picker, for separating admin from reader; keys move between tops by copying and rotating; a top is retired by deleting its vault, after which its passkey opens nothing. Recovery is the top key saved once. PRF works in Google Password Manager, iCloud Keychain, Windows Hello and Firefox. The page that holds keys loads no third-party scripts.",
+        "core_idea": "An end-to-end, client-side account with no sign-in to the site: a passkey with the WebAuthn PRF extension gives 32 bytes only the user's authenticator can produce for the site, and because sgit vault keys are made in the client the browser computes a door vault's key and address from them, so nothing is stored or found first; the door holds the master vault's key and a record of its provider, path, credential id, device and date, and the master holds the keys of the vaults below, received read keys, the access key, key pairs generated at random and never derived from the passkey, and the list of its doors. A test on newsroom.sgit.ai on 11 and 12 October 2026 held for the platform path, the derivation and a door on a real server, and showed that the same passkey reached by a phone over QR gives different bytes, so the claim is narrowed to the same kind of path and the unit of the design is a door per path: added in the first week while unlocked with no key typed, bootstrapped by the recovery code where no device has both paths, with an unknown address meaning no door here yet and a door retired by deleting its file, never by destroying its derived address.",
         "nodes": [
           {
             "id": "store",
@@ -523,31 +524,31 @@
             "id": "prf",
             "label": "Passkey with PRF",
             "kind": "concept",
-            "summary": "32 bytes only your authenticator produces for this site, the same on synced devices."
+            "summary": "32 bytes only your authenticator produces for this site; the same on every device it syncs to, through the same kind of path."
           },
           {
             "id": "door",
-            "label": "The top vault, computed",
+            "label": "A door per path, computed",
             "kind": "method",
-            "summary": "Key and id computed from the PRF bytes with HKDF; the root of the chain, a keyring and nothing else."
+            "summary": "Key and address computed from the PRF bytes with HKDF; one file holding the master key and its record: provider, path, credential id, device, date."
           },
           {
             "id": "keyring",
-            "label": "What the top holds",
+            "label": "The master vault",
             "kind": "artefact",
-            "summary": "The keys of the vaults below, received read keys, the access key, and the key pairs for the site."
+            "summary": "The keys of the vaults below, received read keys, the access key, random key pairs, and the list of doors with their keys."
           },
           {
             "id": "nowhere",
             "label": "Where the key lives: nowhere",
             "kind": "claim",
-            "summary": "sgit keys are made in the client, so the top is computed, not stored; delete the vault and the passkey opens nothing."
+            "summary": "sgit keys are made in the client, so the door is computed, not stored; the lab created one on a real server and opened it again."
           },
           {
             "id": "recovery",
-            "label": "The top key, saved once",
+            "label": "The recovery code, a door of its own",
             "kind": "method",
-            "summary": "Shown at first run and kept in a password manager; opens the top without the passkey."
+            "summary": "128 bits, shown once; derives the recovery door, and is the way a new path joins where no device has both paths."
           },
           {
             "id": "noscripts",
@@ -559,7 +560,7 @@
             "id": "support",
             "label": "PRF support in 2026",
             "kind": "example",
-            "summary": "Google Password Manager, iCloud Keychain, Windows Hello, Firefox."
+            "summary": "Google Password Manager, iCloud Keychain, Windows Hello, Firefox; tested on a Mac, an iPhone and an iPad."
           },
           {
             "id": "enables",
@@ -581,21 +582,45 @@
           },
           {
             "id": "several",
-            "label": "Several passkeys, several tops",
+            "label": "Several passkeys, several masters",
             "kind": "method",
-            "summary": "Distinct user handles and names, the store's picker as the switch; an admin top on a hardware key, a reader top in the cloud."
+            "summary": "A second passkey for another role computes its own doors to its own master; the store's picker is the switch."
           },
           {
             "id": "retire",
-            "label": "Move and retire",
+            "label": "Retire a door, never destroy its address",
             "kind": "method",
-            "summary": "Copy an entry between tops, rotate what moved for security, delete a retired top with the write key, then delete the passkey in the store."
+            "summary": "A door is retired by deleting its one file; a destroyed vault id can never be used again, and a door's address is derived from the passkey."
           },
           {
             "id": "chain",
             "label": "Vaults all the way down",
             "kind": "concept",
             "summary": "The pattern already in use: vaults that hold the keys of other vaults, so a read key to one child exposes nothing above it."
+          },
+          {
+            "id": "test",
+            "label": "The test, 11 and 12 October",
+            "kind": "example",
+            "summary": "One Google Password Manager passkey: the same bytes on a Mac and an iPhone by the platform path; different bytes, consistently, when the phone answered a QR code from an iPad or that Mac."
+          },
+          {
+            "id": "path",
+            "label": "The unit is the path",
+            "kind": "claim",
+            "summary": "Whatever produced a distinct set of bytes gets a distinct door; every door points at the same master."
+          },
+          {
+            "id": "adddoor",
+            "label": "Add a door, no key typed",
+            "kind": "method",
+            "summary": "While unlocked, ask for the bytes by the other path and write the new door from memory; a normal first-week step."
+          },
+          {
+            "id": "nodoor",
+            "label": "No door here yet",
+            "kind": "claim",
+            "summary": "An unknown derived address means a path with no door; the page offers an open device or the recovery code, never an error."
           }
         ],
         "edges": [
@@ -612,7 +637,37 @@
           {
             "from": "door",
             "to": "keyring",
-            "rel": "produces"
+            "rel": "leads-to"
+          },
+          {
+            "from": "test",
+            "to": "path",
+            "rel": "leads-to"
+          },
+          {
+            "from": "path",
+            "to": "door",
+            "rel": "extends"
+          },
+          {
+            "from": "test",
+            "to": "prf",
+            "rel": "contrasts"
+          },
+          {
+            "from": "adddoor",
+            "to": "path",
+            "rel": "depends-on"
+          },
+          {
+            "from": "nodoor",
+            "to": "path",
+            "rel": "depends-on"
+          },
+          {
+            "from": "recovery",
+            "to": "adddoor",
+            "rel": "extends"
           },
           {
             "from": "chain",
@@ -631,18 +686,18 @@
           },
           {
             "from": "several",
-            "to": "door",
+            "to": "keyring",
             "rel": "extends"
           },
           {
             "from": "retire",
-            "to": "several",
+            "to": "door",
             "rel": "depends-on"
           },
           {
             "from": "recovery",
             "to": "door",
-            "rel": "leads-to"
+            "rel": "example-of"
           },
           {
             "from": "noscripts",
@@ -676,6 +731,9 @@
           ],
           "pages": [],
           "sites": [
+            "https://newsroom.sgit.ai/passkey/",
+            "https://newsroom.sgit.ai/admin/notes/2026-10-12__one-door-per-passkey-path.md",
+            "https://developer.apple.com/forums/thread/764730",
             "https://secrets.sgit.ai/",
             "https://www.corbado.com/blog/passkeys-prf-webauthn",
             "https://web.dev/articles/webauthn-related-origin-requests"
@@ -683,16 +741,20 @@
         },
         "quotes": [
           {
-            "text": "The answer, after the research, is that it is not kept anywhere. It is computed.",
-            "why": "The answer to where the top key lives."
+            "text": "The same passkey gives the same bytes on every device it syncs to, **through the same kind of path**.",
+            "why": "The narrowed claim."
           },
           {
-            "text": "More important, the passkey is a lock, not an identity: it opens the top and does nothing else.",
+            "text": "The test is the requirement.",
+            "why": "Why the door layer is back."
+          },
+          {
+            "text": "The page never treats it as a failure, because a provider's fix can move a path's bytes at any time",
+            "why": "An unknown address means no door here yet."
+          },
+          {
+            "text": "The passkey is a lock, not an identity.",
             "why": "Why the key pairs are never derived from the passkey."
-          },
-          {
-            "text": "Deleting either side retires the pair.",
-            "why": "The coupling between a passkey and the vault it computes."
           }
         ]
       }
@@ -5381,6 +5443,212 @@
       }
     },
     {
+      "slug": "a-mac-of-the-agents-own",
+      "title": "A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies",
+      "date": "2026-10-09",
+      "updated": "",
+      "url": "https://sgit.ai/articles/a-mac-of-the-agents-own.html",
+      "markdown": "https://sgit.ai/articles/a-mac-of-the-agents-own.md",
+      "card": "https://sgit.ai/articles/cards/a-mac-of-the-agents-own.webp",
+      "teaser": "A business plan for a Mac of the agent's own: what Apple's licence allows, a desktop built from vaults per run, and three behaviour policies for one agent.",
+      "topics": [
+        "startups-and-strategy",
+        "agents-and-policy",
+        "vaults-and-method"
+      ],
+      "tags": [
+        "agents",
+        "agent-desktops",
+        "macos",
+        "business-plan",
+        "agent-behaviour-policy",
+        "licensing",
+        "vaults",
+        "pki",
+        "sgit",
+        "wardley-maps",
+        "isolation",
+        "cowork",
+        "computer-use",
+        "article"
+      ],
+      "links_out": [
+        "an-agent-desktop-by-the-minute",
+        "why-my-agents-do-not-run-on-my-laptop",
+        "six-agents-one-inbox",
+        "the-agent-team-as-it-runs",
+        "encrypted-memory-for-isolated-agents",
+        "riskmandate-ten-questions",
+        "hope-or-enforcement"
+      ],
+      "links_in": [],
+      "graph": {
+        "slug": "a-mac-of-the-agents-own",
+        "teaser": "A business plan for a Mac of the agent's own: what Apple's licence allows, a desktop built from vaults per run, and three behaviour policies for one agent.",
+        "topics": [
+          "startups-and-strategy",
+          "agents-and-policy",
+          "vaults-and-method"
+        ],
+        "core_idea": "After a mailbox, a code-host account and a Claude account, an agent's next dedicated resource is a desktop, and it should be a Mac; Apple's licence rules out a pool rented by the minute, so the business is a dedicated Mac per customer, run for them, metered by the minute, built clean per run from encrypted vaults with keys by PKI and erased at the end, plus developer agents, software for your own Mac and a request to Apple for terms; the behaviour policies show why: the same agent's unbounded excess falls from 23 rows to 11 to 3.",
+        "nodes": [
+          {
+            "id": "next",
+            "label": "The next dedicated resource",
+            "kind": "claim",
+            "summary": "After a mailbox, a code-host account and a Claude account, a desktop of the agent's own."
+          },
+          {
+            "id": "mac",
+            "label": "Why a Mac",
+            "kind": "claim",
+            "summary": "Agent desktop apps ship to the Mac first; it is familiar; and it is the one you cannot rent by the minute."
+          },
+          {
+            "id": "licence",
+            "label": "What Apple's licence allows",
+            "kind": "concept",
+            "summary": "Leases of 24 hours or more, for developer services, to one customer; no time-sharing of virtual copies."
+          },
+          {
+            "id": "shapes",
+            "label": "The shapes that are allowed",
+            "kind": "method",
+            "summary": "Your Mac run for you, a dedicated Mac metered, developer agents, software, and asking Apple."
+          },
+          {
+            "id": "vaults",
+            "label": "A clean Mac, a key, a vault",
+            "kind": "method",
+            "summary": "Install sgit, decrypt one key, clone the set-up vault, run its signed program; erase at the end."
+          },
+          {
+            "id": "pki",
+            "label": "Keys by PKI",
+            "kind": "method",
+            "summary": "Each desktop's own key pair; vault keys encrypted to it; the private key in its keychain."
+          },
+          {
+            "id": "abps",
+            "label": "Three desktops, one agent",
+            "kind": "example",
+            "summary": "Unbounded excess 23 on your own Mac, 11 on a dedicated Mac, 3 on a hardened one."
+          },
+          {
+            "id": "admin",
+            "label": "The shop admin screen",
+            "kind": "claim",
+            "summary": "What remains on the hardened Mac is mostly one screen that shows every customer."
+          },
+          {
+            "id": "economics",
+            "label": "A meter on a Mac one customer holds",
+            "kind": "artefact",
+            "summary": "About £211 a month against £119 for a Mac mini you run and £390 for daily leases, on assumptions."
+          },
+          {
+            "id": "map",
+            "label": "Productising the agent's desktop",
+            "kind": "artefact",
+            "summary": "A Wardley map: the desktop moves to product on parts that are already products or commodities."
+          },
+          {
+            "id": "ask",
+            "label": "What are we looking for?",
+            "kind": "question",
+            "summary": "Dedicated Macs with erase and provision APIs, a meter, a developer offer, and a joint approach to Apple."
+          }
+        ],
+        "edges": [
+          {
+            "from": "next",
+            "to": "mac",
+            "rel": "leads-to"
+          },
+          {
+            "from": "mac",
+            "to": "licence",
+            "rel": "depends-on"
+          },
+          {
+            "from": "licence",
+            "to": "shapes",
+            "rel": "produces"
+          },
+          {
+            "from": "vaults",
+            "to": "shapes",
+            "rel": "extends"
+          },
+          {
+            "from": "pki",
+            "to": "vaults",
+            "rel": "extends"
+          },
+          {
+            "from": "abps",
+            "to": "next",
+            "rel": "answers"
+          },
+          {
+            "from": "admin",
+            "to": "abps",
+            "rel": "example-of"
+          },
+          {
+            "from": "economics",
+            "to": "shapes",
+            "rel": "depends-on"
+          },
+          {
+            "from": "map",
+            "to": "shapes",
+            "rel": "compared-with"
+          },
+          {
+            "from": "ask",
+            "to": "shapes",
+            "rel": "answers"
+          }
+        ],
+        "links": {
+          "articles": [
+            "an-agent-desktop-by-the-minute",
+            "why-my-agents-do-not-run-on-my-laptop",
+            "six-agents-one-inbox",
+            "the-agent-team-as-it-runs",
+            "encrypted-memory-for-isolated-agents",
+            "hope-or-enforcement",
+            "riskmandate-ten-questions"
+          ],
+          "pages": [
+            "demos/vaults/agent-desk/index.html",
+            "startups/business-plans.html",
+            "docs/pki.html",
+            "docs/partial-clones.html"
+          ],
+          "sites": [
+            "https://abp.sgit.ai/",
+            "https://riskmandate.ai/"
+          ]
+        },
+        "quotes": [
+          {
+            "text": "The pool of Macs rented by the minute that I first imagined is not allowed.",
+            "why": "The licence finding, stated first."
+          },
+          {
+            "text": "Per-minute pricing survives, as a meter on a Mac one customer holds, never as a share of a Mac that others use.",
+            "why": "How the business model survives the licence."
+          },
+          {
+            "text": "The only secrets are the ones the agent is supposed to have.",
+            "why": "Why a dedicated desktop shrinks the grant."
+          }
+        ]
+      }
+    },
+    {
       "slug": "riskmandate-ten-questions",
       "title": "Ten hard questions for RiskMandate, answered: the mandate, the reach, the gap, and what we are deliberately not",
       "date": "2026-10-09",
@@ -5842,212 +6110,6 @@
       }
     },
     {
-      "slug": "a-mac-of-the-agents-own",
-      "title": "A Mac of the agent's own: a business plan for agent desktops, what Apple's licence allows, and three behaviour policies",
-      "date": "2026-10-09",
-      "updated": "",
-      "url": "https://sgit.ai/articles/a-mac-of-the-agents-own.html",
-      "markdown": "https://sgit.ai/articles/a-mac-of-the-agents-own.md",
-      "card": "https://sgit.ai/articles/cards/a-mac-of-the-agents-own.webp",
-      "teaser": "A business plan for a Mac of the agent's own: what Apple's licence allows, a desktop built from vaults per run, and three behaviour policies for one agent.",
-      "topics": [
-        "startups-and-strategy",
-        "agents-and-policy",
-        "vaults-and-method"
-      ],
-      "tags": [
-        "agents",
-        "agent-desktops",
-        "macos",
-        "business-plan",
-        "agent-behaviour-policy",
-        "licensing",
-        "vaults",
-        "pki",
-        "sgit",
-        "wardley-maps",
-        "isolation",
-        "cowork",
-        "computer-use",
-        "article"
-      ],
-      "links_out": [
-        "an-agent-desktop-by-the-minute",
-        "why-my-agents-do-not-run-on-my-laptop",
-        "six-agents-one-inbox",
-        "the-agent-team-as-it-runs",
-        "encrypted-memory-for-isolated-agents",
-        "riskmandate-ten-questions",
-        "hope-or-enforcement"
-      ],
-      "links_in": [],
-      "graph": {
-        "slug": "a-mac-of-the-agents-own",
-        "teaser": "A business plan for a Mac of the agent's own: what Apple's licence allows, a desktop built from vaults per run, and three behaviour policies for one agent.",
-        "topics": [
-          "startups-and-strategy",
-          "agents-and-policy",
-          "vaults-and-method"
-        ],
-        "core_idea": "After a mailbox, a code-host account and a Claude account, an agent's next dedicated resource is a desktop, and it should be a Mac; Apple's licence rules out a pool rented by the minute, so the business is a dedicated Mac per customer, run for them, metered by the minute, built clean per run from encrypted vaults with keys by PKI and erased at the end, plus developer agents, software for your own Mac and a request to Apple for terms; the behaviour policies show why: the same agent's unbounded excess falls from 23 rows to 11 to 3.",
-        "nodes": [
-          {
-            "id": "next",
-            "label": "The next dedicated resource",
-            "kind": "claim",
-            "summary": "After a mailbox, a code-host account and a Claude account, a desktop of the agent's own."
-          },
-          {
-            "id": "mac",
-            "label": "Why a Mac",
-            "kind": "claim",
-            "summary": "Agent desktop apps ship to the Mac first; it is familiar; and it is the one you cannot rent by the minute."
-          },
-          {
-            "id": "licence",
-            "label": "What Apple's licence allows",
-            "kind": "concept",
-            "summary": "Leases of 24 hours or more, for developer services, to one customer; no time-sharing of virtual copies."
-          },
-          {
-            "id": "shapes",
-            "label": "The shapes that are allowed",
-            "kind": "method",
-            "summary": "Your Mac run for you, a dedicated Mac metered, developer agents, software, and asking Apple."
-          },
-          {
-            "id": "vaults",
-            "label": "A clean Mac, a key, a vault",
-            "kind": "method",
-            "summary": "Install sgit, decrypt one key, clone the set-up vault, run its signed program; erase at the end."
-          },
-          {
-            "id": "pki",
-            "label": "Keys by PKI",
-            "kind": "method",
-            "summary": "Each desktop's own key pair; vault keys encrypted to it; the private key in its keychain."
-          },
-          {
-            "id": "abps",
-            "label": "Three desktops, one agent",
-            "kind": "example",
-            "summary": "Unbounded excess 23 on your own Mac, 11 on a dedicated Mac, 3 on a hardened one."
-          },
-          {
-            "id": "admin",
-            "label": "The shop admin screen",
-            "kind": "claim",
-            "summary": "What remains on the hardened Mac is mostly one screen that shows every customer."
-          },
-          {
-            "id": "economics",
-            "label": "A meter on a Mac one customer holds",
-            "kind": "artefact",
-            "summary": "About £211 a month against £119 for a Mac mini you run and £390 for daily leases, on assumptions."
-          },
-          {
-            "id": "map",
-            "label": "Productising the agent's desktop",
-            "kind": "artefact",
-            "summary": "A Wardley map: the desktop moves to product on parts that are already products or commodities."
-          },
-          {
-            "id": "ask",
-            "label": "What are we looking for?",
-            "kind": "question",
-            "summary": "Dedicated Macs with erase and provision APIs, a meter, a developer offer, and a joint approach to Apple."
-          }
-        ],
-        "edges": [
-          {
-            "from": "next",
-            "to": "mac",
-            "rel": "leads-to"
-          },
-          {
-            "from": "mac",
-            "to": "licence",
-            "rel": "depends-on"
-          },
-          {
-            "from": "licence",
-            "to": "shapes",
-            "rel": "produces"
-          },
-          {
-            "from": "vaults",
-            "to": "shapes",
-            "rel": "extends"
-          },
-          {
-            "from": "pki",
-            "to": "vaults",
-            "rel": "extends"
-          },
-          {
-            "from": "abps",
-            "to": "next",
-            "rel": "answers"
-          },
-          {
-            "from": "admin",
-            "to": "abps",
-            "rel": "example-of"
-          },
-          {
-            "from": "economics",
-            "to": "shapes",
-            "rel": "depends-on"
-          },
-          {
-            "from": "map",
-            "to": "shapes",
-            "rel": "compared-with"
-          },
-          {
-            "from": "ask",
-            "to": "shapes",
-            "rel": "answers"
-          }
-        ],
-        "links": {
-          "articles": [
-            "an-agent-desktop-by-the-minute",
-            "why-my-agents-do-not-run-on-my-laptop",
-            "six-agents-one-inbox",
-            "the-agent-team-as-it-runs",
-            "encrypted-memory-for-isolated-agents",
-            "hope-or-enforcement",
-            "riskmandate-ten-questions"
-          ],
-          "pages": [
-            "demos/vaults/agent-desk/index.html",
-            "startups/business-plans.html",
-            "docs/pki.html",
-            "docs/partial-clones.html"
-          ],
-          "sites": [
-            "https://abp.sgit.ai/",
-            "https://riskmandate.ai/"
-          ]
-        },
-        "quotes": [
-          {
-            "text": "The pool of Macs rented by the minute that I first imagined is not allowed.",
-            "why": "The licence finding, stated first."
-          },
-          {
-            "text": "Per-minute pricing survives, as a meter on a Mac one customer holds, never as a share of a Mac that others use.",
-            "why": "How the business model survives the licence."
-          },
-          {
-            "text": "The only secrets are the ones the agent is supposed to have.",
-            "why": "Why a dedicated desktop shrinks the grant."
-          }
-        ]
-      }
-    },
-    {
       "slug": "the-waiting-room-knew-first",
       "title": "The waiting room knew first: a live local story, and the gap where local information used to be",
       "date": "2026-10-08",
@@ -6294,9 +6356,9 @@
         "no-server-by-design",
         "where-the-vault-keys-live",
         "rfc-0001-public-key-cryptography-for-sgit",
+        "a-mac-of-the-agents-own",
         "riskmandate-ten-questions",
-        "how-i-work-with-claude",
-        "a-mac-of-the-agents-own"
+        "how-i-work-with-claude"
       ],
       "graph": {
         "slug": "encrypted-memory-for-isolated-agents",
@@ -6946,9 +7008,9 @@
         "authority-outside-the-model",
         "one-article-five-readers",
         "a-second-reader-the-agent-cannot-skip",
+        "a-mac-of-the-agents-own",
         "riskmandate-ten-questions",
         "how-i-work-with-claude",
-        "a-mac-of-the-agents-own",
         "knowing-when-to-stop",
         "agency-is-not-a-yes"
       ],
@@ -9654,8 +9716,8 @@
       ],
       "links_in": [
         "authority-outside-the-model",
-        "how-i-work-with-claude",
         "a-mac-of-the-agents-own",
+        "how-i-work-with-claude",
         "encrypted-memory-for-isolated-agents",
         "an-agent-desktop-by-the-minute",
         "where-is-the-why",
@@ -10133,9 +10195,9 @@
       ],
       "links_in": [
         "authority-outside-the-model",
+        "a-mac-of-the-agents-own",
         "riskmandate-ten-questions",
         "how-i-work-with-claude",
-        "a-mac-of-the-agents-own",
         "encrypted-memory-for-isolated-agents",
         "knowing-when-to-stop",
         "agency-is-not-a-yes",
@@ -14539,8 +14601,8 @@
       ],
       "links_in": [
         "the-same-argument-in-our-words",
-        "riskmandate-ten-questions",
         "a-mac-of-the-agents-own",
+        "riskmandate-ten-questions",
         "the-behaviour-policy-is-the-business-logic",
         "ai-baseline-control-framework",
         "where-is-the-why",

@@ -2,7 +2,7 @@
 
 > Every published version of the article "Footprint and blast radius", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/footprint-and-blast-radius.html> · site v0.7.63 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/footprint-and-blast-radius.html> · site v0.7.64 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -17,7 +17,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
 | **v1.1.1** | 2026-10-07 | patch | 4,151 | front matter only (the text is unchanged) | [`d86d0b70a`](https://github.com/SGit-AI/SGit-AI__Website/commit/d86d0b70abbe2879a585ed04c090b63f3584ca4e) | [what changed](footprint-and-blast-radius/v1.1.1.md) · [current](../footprint-and-blast-radius.md) |
-| **v1.1.0** | 2026-10-02 | minor | 4,151 | +0 / −0 words; 0 changed, 0 added, 0 removed paragraphs | [`d2a2832e7`](https://github.com/SGit-AI/SGit-AI__Website/commit/d2a2832e7dad7c5d3b581f5e8371d12a538fd3c3) | [what changed](footprint-and-blast-radius/v1.1.0.md) |
+| **v1.1.0** | 2026-10-02 | minor | 4,151 | +48 / −0 words; 1 changed, 0 added, 0 removed paragraphs | [`d2a2832e7`](https://github.com/SGit-AI/SGit-AI__Website/commit/d2a2832e7dad7c5d3b581f5e8371d12a538fd3c3) | [what changed](footprint-and-blast-radius/v1.1.0.md) |
 | **v1.0.0** | 2026-10-02 | published | 4,103 | first published | [`14a7e67e5`](https://github.com/SGit-AI/SGit-AI__Website/commit/14a7e67e57d36bbec45196f1681cfea55910145e) |  |
 
 [← Back to the article](../footprint-and-blast-radius.md) · [All articles](../index.md)
