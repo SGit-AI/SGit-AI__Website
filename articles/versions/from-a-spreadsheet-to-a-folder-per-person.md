@@ -2,7 +2,7 @@
 
 > Every published version of the article "From a spreadsheet to a folder per person", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/from-a-spreadsheet-to-a-folder-per-person.html> · site v0.7.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/from-a-spreadsheet-to-a-folder-per-person.html> · site v0.7.73 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,7 +16,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.0.0** | 2026-10-12 | published | 3,088 | first published | this release | [current](../from-a-spreadsheet-to-a-folder-per-person.md) |
+| **v1.0.0** | 2026-10-12 | published | 3,088 | first published | [`b5d755bfc`](https://github.com/SGit-AI/SGit-AI__Website/commit/b5d755bfc16a320be3939a98a2a54d69fdecdca5) | [current](../from-a-spreadsheet-to-a-folder-per-person.md) |
 
 [← Back to the article](../from-a-spreadsheet-to-a-folder-per-person.md) · [All articles](../index.md)
 

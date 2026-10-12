@@ -2,7 +2,7 @@
 
 > I was with someone today who runs their customer relationships in a spreadsheet, a customised one, and runs them well. The jump from that to what our agents do, one folder per person in an encrypted vault with a record, an append-only ledger, every message word for word and a summary the agent rebuilds, is too high to make in one step, and it does not need to be made in one step. Almost all of it can be done with what a Google Workspace account and a Claude seat already give you. This is the walkthrough. The row becomes a folder in Google Drive with four plain documents and one the agent writes; Claude's app, connected to Drive and Gmail, works inside the folder under a behaviour policy that is the instructions of one Project, and the three rules that matter carry straight over from ours: draft and never send, append and never rewrite, stay in the folder. Then the migration from the sheet, five exercises from a question to a campaign so that the habit forms, what the agent will get wrong at first, and when the folders are worth moving into a vault. It is written so that an agent can send it, with the person's own names filled in, to anyone who asks.
 
-*Source: <https://sgit.ai/articles/from-a-spreadsheet-to-a-folder-per-person.html> · site v0.7.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/from-a-spreadsheet-to-a-folder-per-person.html> · site v0.7.73 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -139,7 +139,13 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#from-a-spr
 - [Where the vault keys live: key management at sgit-ai v0.20.0, and what comes next](where-the-vault-keys-live.md) Vault key management at sgit-ai v0.20.0: the one secret, where keys are kept, how they travel sealed on append lanes, and what comes next.
 - [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](replicating-the-agentic-inbox.md) How to copy a working agentic email setup in phases: a mailbox and Claude seat of the agent's own, one session with a policy, then roles talking in files.
 
+### Continued by
+
+- [How the voice works: why these articles sound like me, with a section in which Claude explains it from its side](how-the-voice-works.md) Why these articles sound like their author: a corpus, the voice memos, seven wording rules and a reader who corrects, with Claude explaining it from its side.
+
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Posting this article on LinkedIn?** The cover is [from-a-spreadsheet-to-a-folder-per-person.jpg](../articles/banners/from-a-spreadsheet-to-a-folder-per-person.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
 **Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
