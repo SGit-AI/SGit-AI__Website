@@ -15,7 +15,7 @@ On 10 October, between 12:09 and 15:49, what I had been doing with the reading m
 
 This article does two things. It introduces what was built, because a lot was added in one afternoon and none of it has been described in one place. And it uses the afternoon as a case study, probably the cleanest one we have, of the way I think innovation should happen when you work with agents: the more you have, the faster you go.
 
-!shot pv-wardley-today.webp | images/ | The reading meter at the end of 10 October, as a Wardley map: everything added that afternoon sits on the left, built on components that already existed on the right. The animated version, one release at a time, is in How it grew.
+!shot pv-wardley-today.webp | images/ | The reading meter at the end of 10 October, as a Wardley map: everything added that afternoon sits on the left, built on components that already existed on the right. The animated version, one release at a time, is in How it grew. | wardley-map
 
 ## In short
 
@@ -105,7 +105,7 @@ There is a direct line between something working, trying it out, and improving i
 
 The Wardley map makes the same point. Every new component sits at the genesis end, on the left, and every one of them is built on components further right that were already there and already boring: browser storage, git, Stripe, the build, vaults, append lanes, the sealed envelope. The afternoon was cheap because the right-hand side of the map was already built.
 
-!shot pv-wardley-anim.webp | images/ | The afternoon as a Wardley map, one release at a time: what already existed, then each feature as it was added and what it was built on, ending with what comes next. Times are UTC, from the commits.
+!frames pv-wardley-1.webp, pv-wardley-2.webp, pv-wardley-3.webp, pv-wardley-4.webp, pv-wardley-5.webp, pv-wardley-6.webp, pv-wardley-7.webp, pv-wardley-8.webp | images/ | The afternoon as a Wardley map, one release at a time: what already existed, then each feature as it was added and what it was built on, ending with what comes next. Times are UTC, from the commits. | wardley-map
 
 ## The zigzag: innovate, leverage, commoditise {#ilc}
 

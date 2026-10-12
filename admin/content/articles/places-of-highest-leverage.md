@@ -63,7 +63,7 @@ The hardest part is that going forwards you cannot see the path. Backwards, from
 
 ## Which shoulders, on the map {#map}
 
-!shot lv-wardley.webp | images/ | Which shoulders the passkey work stands on. Almost everything under it is a product or a commodity someone else matured; our piece is the door and a door per path; the one custom layer we had to add is the phone by QR, where a provider is not yet mature.
+!shot lv-wardley.webp | images/ | Which shoulders the passkey work stands on. Almost everything under it is a product or a commodity someone else matured; our piece is the door and a door per path; the one custom layer we had to add is the phone by QR, where a provider is not yet mature. | wardley-map
 
 There is a second reason the three days went as fast as they did, and the Wardley map shows it. The passkey work went from genesis, a design on a page, through custom-built, a lab you could press, to a product, a pane on every page, in a day. Within hours of that we were building on it: vaults inside vaults, the reading records, the next brief. It is already on its way to being a commodity for us, something that just works and is not thought about. That is only possible because of what it stands on.
 

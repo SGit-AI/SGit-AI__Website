@@ -140,8 +140,8 @@ def _inline(s, up):
 
 def _render_para(p, up, cls=''):
     c = f' class="{cls.strip()}"' if cls else ''
-    if p.startswith('!shot'):
-        name = p.split('|')[0].replace('!shot', '').strip()
+    if p.startswith(('!shot', '!frames')):
+        name = p.split('|')[0].split(' ', 1)[-1].strip()
         return f'<p class="diff-fig{cls}">[figure {_esc(name)}] {_esc(p.split("|", 2)[-1].strip())}</p>'
     if p.startswith('## '):
         return f'<h2{c}>{_esc(p[3:])}</h2>'

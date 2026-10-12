@@ -27,13 +27,13 @@ const W = 1200, H = 630;
 
 fs.mkdirSync(OUT, { recursive: true });
 
-/* Every article's first !shot becomes that article's card. Parsed from the same
+/* Every article's first !shot (or the first frame of a !frames) becomes that article's card. Parsed from the same
    markdown the page is built from, so the two cannot disagree. */
 const articlesDir = path.join(ROOT, 'admin/content/articles');
 const jobs = [];
 for (const f of fs.readdirSync(articlesDir).filter(f => f.endsWith('.md'))) {
   const src = fs.readFileSync(path.join(articlesDir, f), 'utf8');
-  const m = src.match(/^!shot\s+([^\s|]+)\s*\|\s*([^\s|]+)/m);
+  const m = src.match(/^!(?:shot|frames)\s+([^\s|,]+),?[^|]*\|\s*([^\s|]+)/m);
   if (!m) continue;
   const img = path.join(ROOT, 'articles', m[2], m[1]);
   if (!fs.existsSync(img)) { console.log('  SKIP (no such figure):', m[1]); continue; }
@@ -80,7 +80,7 @@ const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&
 let drawn = 0;
 for (const f of fs.readdirSync(articlesDir).filter(f => f.endsWith('.md'))) {
   const src = fs.readFileSync(path.join(articlesDir, f), 'utf8');
-  if (/^!shot\s+/m.test(src)) continue;
+  if (/^!(?:shot|frames)\s+/m.test(src)) continue;
   const slug = f.replace(/\.md$/, '');
   const title = (src.match(/^title:\s*(.+)$/m) || [, slug])[1].trim();
   const date = (src.match(/^date:\s*(\S+)/m) || [, ''])[1];

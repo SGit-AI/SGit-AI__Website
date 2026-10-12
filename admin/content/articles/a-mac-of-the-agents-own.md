@@ -164,7 +164,7 @@ My own use is the test case: four scheduled runs a day of about half an hour, pl
 
 ## The map
 
-!shot ad-map.webp | images/ | The agent's desktop moves from custom-built to product, on parts that are already products or commodities: Apple silicon Macs, the macOS virtual machine, the models, the desktop agent apps. State, keys and lock-down move with it, because the vaults, the PKI and the policies already exist as parts.
+!shot ad-map.webp | images/ | The agent's desktop moves from custom-built to product, on parts that are already products or commodities: Apple silicon Macs, the macOS virtual machine, the models, the desktop agent apps. State, keys and lock-down move with it, because the vaults, the PKI and the policies already exist as parts. | wardley-map
 
 !source The map, Mermaid wardley-beta source | images/ad-map.webp
 ```

@@ -2,7 +2,7 @@
 
 > A business plan, written to be handed to someone who wants to build it or to collaborate on it. The service helps companies manage the cost of agentic AI, and it starts from a claim this site has made before: cost is an engineering problem. An agent estate whose bill nobody can explain is an estate that shipped from the explorer side without the villager's discipline, and the Wardley map says so: prompts and workflows grown in sessions, running in production on commodity model APIs, with logs, traces and invoices that exist and are never read together, and no one who owns the cost. The service installs nothing. It reads what is already there, draws the footprint of every agent, builds a digital twin of the estate, writes the behaviour policy each agent was in fact running under, and maps cost and capability into one graph. The findings are two lists: what to stop paying for, which pays for the engagement, and what to build, which is the reason to have it: the places of attrition, the gaps, the workflow three teams rebuilt, the policy that would end a loop. The gaps are findings too: a company that cannot provide the data has learned the first one. Vaults carry the data in, the transformations as commits, and anonymised extracts out as sealed envelopes. Four price levels on the RiskMandate pattern, every number a labelled assumption.
 
-*Source: <https://sgit.ai/articles/agentic-cost-is-an-engineering-problem.html> · site v0.7.76 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/agentic-cost-is-an-engineering-problem.html> · site v0.7.77 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,11 +10,13 @@
 
 # Agentic cost is an engineering problem: a business plan for a service that reads the logs a company already has and finds the money, then the engineering
 
-By [Dinis Cruz](../about/index.md) · 2026-10-12 · [article v1.0.0](versions/agentic-cost-is-an-engineering-problem.md) · [site v0.7.74](../admin/versions.md) · business-planagentic-aicostwardley-mapsexplorer-villageragent-behaviour-policydigital-twinlogsvaultsriskmandatestartupsarticle
+By [Dinis Cruz](../about/index.md) · 2026-10-12 · [article v1.1.0, 2 versions](versions/agentic-cost-is-an-engineering-problem.md) · [site v0.7.74](../admin/versions.md) · business-planagentic-aicostwardley-mapsexplorer-villageragent-behaviour-policydigital-twinlogsvaultsriskmandatestartupsarticle
 
 ***Abstract:** A business plan, written to be handed to someone who wants to build it or to collaborate on it. The service helps companies manage the cost of agentic AI, and it starts from a claim this site has made before: cost is an engineering problem. An agent estate whose bill nobody can explain is an estate that shipped from the explorer side without the villager's discipline, and the Wardley map says so: prompts and workflows grown in sessions, running in production on commodity model APIs, with logs, traces and invoices that exist and are never read together, and no one who owns the cost. The service installs nothing. It reads what is already there, draws the footprint of every agent, builds a digital twin of the estate, writes the behaviour policy each agent was in fact running under, and maps cost and capability into one graph. The findings are two lists: what to stop paying for, which pays for the engagement, and what to build, which is the reason to have it: the places of attrition, the gaps, the workflow three teams rebuilt, the policy that would end a loop. The gaps are findings too: a company that cannot provide the data has learned the first one. Vaults carry the data in, the transformations as commits, and anonymised extracts out as sealed envelopes. Four price levels on the RiskMandate pattern, every number a labelled assumption.*
 
 The map in three frames: the problem as most companies have it, what the service adds from what is already there, and where it goes. Agents in production on the explorer side, billed by the token, with logs nobody reads together; then the footprint, the twin, the policy and the graph; then cost as a discipline.
+
+The 3 frames, one image each: [1](images/ac-wardley-1.webp) [2](images/ac-wardley-2.webp) [3](images/ac-wardley-3.webp).
 
 This is a business plan, of the kind this site has published before: [Agent Desk](../articles/an-agent-desktop-by-the-minute.md), [Connector Twin](../articles/connector-twin-before-you-deploy-an-agent.md) and the others on the [business plans page](../startups/business-plans.md). It is written to be handed to someone, and the someone is whoever wants to build it, or build it with me. The service is simple to say: help companies manage the cost of agentic AI, by observing what is already happening.
 
@@ -117,6 +119,10 @@ Startups & strategyAgents & policyVaults & method[This article as a graph →](g
 - [The agent is the reader: why agents will pay for graphs, personas and signed claims, because it is cheaper than not paying](the-agent-is-the-reader.md) Agents pay to read the raw web and guess its meaning. A curated graph answers for 90% fewer tokens, so paying the publisher is cheaper than not paying.
 - [Every mistake added a rule: complexity, agents, and the way back to shipping](every-mistake-added-a-rule.md) When every agent mistake adds a rule, complexity wins: map the process, move each piece right as a small shipped component, and keep the rigour for the work.
 - [The article remains a product: Jonathan Palmer's four outputs for a newsroom with no human readers, checked against one that runs](the-article-remains-a-product.md) Jonathan Palmer's four outputs for a newsroom with no human readers, quoted line by line and checked against newsroom.sgit.ai as it runs, screenshots included.
+
+### Continued by
+
+- [Why I love Wardley maps: the best of ours, how I read one, and a map inside a map inside a map](why-i-love-wardley-maps.md) The best of our Wardley maps with their context, why the technique matters, one map read as a story, and a map inside a map inside a map.
 
 [All articles](index.md) · [All graphs](graphs.md)
 

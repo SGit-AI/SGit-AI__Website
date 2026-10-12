@@ -10,7 +10,7 @@ tags: business-plan, agentic-ai, cost, wardley-maps, explorer-villager, agent-be
 status: published
 ---
 
-!shot ac-wardley-anim.webp | images/ | The map in three frames: the problem as most companies have it, what the service adds from what is already there, and where it goes. Agents in production on the explorer side, billed by the token, with logs nobody reads together; then the footprint, the twin, the policy and the graph; then cost as a discipline.
+!frames ac-wardley-1.webp, ac-wardley-2.webp, ac-wardley-3.webp | images/ | The map in three frames: the problem as most companies have it, what the service adds from what is already there, and where it goes. Agents in production on the explorer side, billed by the token, with logs nobody reads together; then the footprint, the twin, the policy and the graph; then cost as a discipline. | wardley-map
 
 This is a business plan, of the kind this site has published before: [Agent Desk](/articles/an-agent-desktop-by-the-minute.html), [Connector Twin](/articles/connector-twin-before-you-deploy-an-agent.html) and the others on the [business plans page](/startups/business-plans.html). It is written to be handed to someone, and the someone is whoever wants to build it, or build it with me. The service is simple to say: help companies manage the cost of agentic AI, by observing what is already happening.
 
@@ -28,7 +28,7 @@ The reason I think it is a business, and not a consulting engagement, is that th
 
 ## The problem, on a map {#problem}
 
-!shot ac-wardley-problem.webp | images/ | The problem. The person who pays the bill sees a total. Below it, agents in production built from prompts and workflows grown in sessions, on commodity model APIs metered by the token, with logs, traces and invoices that exist and are never read together, and no one who owns the cost.
+!shot ac-wardley-problem.webp | images/ | The problem. The person who pays the bill sees a total. Below it, agents in production built from prompts and workflows grown in sessions, on commodity model APIs metered by the token, with logs, traces and invoices that exist and are never read together, and no one who owns the cost. | wardley-map
 
 Take any company that has agents doing real work: reading a mailbox, running a schedule, answering customers, writing code. Draw the value chain with the person who pays the bill at the top. Under them, the agents. Under the agents, where did they come from? Almost always from a session: someone built a prompt that worked, wrapped it in a workflow, and it went to production because it worked. That is the explorer side of the map, genesis and custom-built, and it is the right place to build something new. It is the wrong place to run something at scale, and [the newsroom's move from explorer to villager](/articles/explorer-to-villager-newsroom.html) is this site's own worked example of what the move involves.
 
@@ -40,7 +40,7 @@ That is why [cost is an engineering problem](/articles/knowing-when-to-stop.html
 
 !shot ac-plan.webp | images/ | Observe, map, find: the three steps, the two lists, how it makes money, why vaults, and the positive frame. Every price is a labelled assumption.
 
-!shot ac-wardley-service.webp | images/ | What the service adds, from what is already there. The footprint read from the logs; the twin of the estate; the behaviour policy each agent was in fact running under; and the cost and capability graph that produces the findings. Nothing is installed in the customer's estate.
+!shot ac-wardley-service.webp | images/ | What the service adds, from what is already there. The footprint read from the logs; the twin of the estate; the behaviour policy each agent was in fact running under; and the cost and capability graph that produces the findings. Nothing is installed in the customer's estate. | wardley-map
 
 **Observe.** No agent is installed and nothing in the customer's environment is changed. The customer drops into a vault what they already have: model and gateway invoices by key and by day; the logs and traces their agents write; the prompts, workflow files and schedules as they are; and whatever they know about who owns which agent. The vault is theirs; the contents are sealed to the service's key, as [RFC 0001](/articles/rfc-0001-public-key-cryptography-for-sgit.html) describes.
 

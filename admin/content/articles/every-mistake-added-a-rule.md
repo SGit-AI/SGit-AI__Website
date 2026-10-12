@@ -46,7 +46,7 @@ A [Wardley map](https://wardley-maps.sgit.ai/) places each component of a system
 
 Here is my friend's verification, mapped. Like every map on this site it is a claim, not a finding, and its source is below the figure so it can be argued with.
 
-!shot cx-map-now.webp | images/ | Map one: the verification as it runs. The person preparing the install needs confidence the tool is safe, which comes from a report, which rests on the tool's tests, holding, and on a team of agents. The six things that keep failing sit in a blob on the left, each rebuilt by hand inside a prompt every session. Files, hashes and git sit at the far right, unused.
+!shot cx-map-now.webp | images/ | Map one: the verification as it runs. The person preparing the install needs confidence the tool is safe, which comes from a report, which rests on the tool's tests, holding, and on a team of agents. The six things that keep failing sit in a blob on the left, each rebuilt by hand inside a prompt every session. Files, hashes and git sit at the far right, unused. | wardley-map
 
 The tool and its tests are where they should be: custom, because that is the work. The problem is the blob between the agents and the commodities. Recovery after compaction, capture of every output, proof of which bytes ran, a rule set measured in kilobytes, long sessions, and a STOP rule that fires on everything: each is being built by hand, in a prompt, by an agent, every session, from a memory that compaction rewrites. And at the bottom right, unconnected, are files, hashes and version control, which have solved most of those problems for decades.
 
@@ -98,7 +98,7 @@ The way out is not a better rule. It is to take each piece of the blob, make it 
 | The harness suggests what the rules forbid | Rules fighting the environment | Change the environment, or accept its defaults where they are harmless; a rule that fights the tool loses |
 | Every mistake adds a rule | Policy used as the control | Rules only for incidents, and each rule replaced by structure as soon as one can be built |
 
-!shot cx-map-next.webp | images/ | Map two: the same verification with each piece of process made small and drawn moving right. The tool's tests and the judgment in the report stay custom, because that is the work. Everything else becomes boring on purpose, leaning on files, hashes and git.
+!shot cx-map-next.webp | images/ | Map two: the same verification with each piece of process made small and drawn moving right. The tool's tests and the judgment in the report stay custom, because that is the work. Everything else becomes boring on purpose, leaning on files, hashes and git. | wardley-map
 
 The table is not new advice. It is what [nfrs.sgit.ai](https://nfrs.sgit.ai/) found when it measured this estate against its own list of non-functional requirements and read down the failure column: "what a machine enforces, holds; what attention enforces, drifts." [coding.sgit.ai](https://coding.sgit.ai/) found the same from the other side: 31 documented rules, and the working automated enforcement is four structural guards, each of which encodes an incident rather than a rule. The rule that keeps that set healthy, as nfrs.sgit.ai puts it, is that every guard encodes a rule that was violated at least once. Rules that come from incidents, enforced by machines, stay few. Rules that come from worry, enforced by attention, multiply.
 

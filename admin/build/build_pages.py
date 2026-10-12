@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.76'
+SITE_VERSION = 'v0.7.77'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,22 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.76', '2026-10-12', 'this release', "Places of highest leverage gains a second path figure: the zigzag, three to five routes open at every step, two walked back, one parked, and the straight line that only exists in hindsight"),
+    ('v0.7.77', '2026-10-12', 'this release',
+     "WHY I LOVE WARDLEY MAPS, AND THE MAPS AS DATA. A new article, Why I love Wardley maps, collects the best of the "
+     "maps drawn on this site with the context each came from, says why the technique matters (a graph with two kinds "
+     "of context, the evolution axis as a choice, every dot a claim, altitude, build or buy, whether a market exists "
+     "with sgit and RiskMandate as the two answers, flow and hooks, a common language, peace), reads one map as a "
+     "story frame by frame, and draws a map inside a map inside a map: three altitudes of this business where the dot "
+     "on the parent is the anchor of the child. Two decks as plain pages, articles/decks/why-i-love-wardley-maps and "
+     "reading-one-map, print to PDF in the browser, one slide per landscape page, nothing uploaded. Three engine "
+     "changes, made because collecting the maps should have been a query and was not: (1) a !frames directive, "
+     "several images in one figure with play, pause, previous, next, a counter and a numbered button per frame, "
+     "which replaces the two animated WebPs that nobody could stop or step through; the markdown twin and a page "
+     "without JavaScript get the frames as numbered links; (2) a trailing kind on !shot and !frames (wardley-map, "
+     "collage) carried as data-kind on the figure; (3) every article's graph, per-article and combined, now lists its "
+     "figures with file, URL, caption, kind and frames, so a picture and its context travel together and every "
+     "Wardley map on the site is one filter over articles/graphs.json. Eleven existing maps tagged.",),
+    ('v0.7.76', '2026-10-12', 'git a1d7ed1f', "Places of highest leverage gains a second path figure: the zigzag, three to five routes open at every step, two walked back, one parked, and the straight line that only exists in hindsight"),
     ('v0.7.75', '2026-10-12', 'git 913d06f6', "Places of highest leverage: where to focus when the agents can go in every direction, told with three days of real steps, two walked back, one parked, the passkey stack on a Wardley map, and why the brief depends on the possible"),
     ('v0.7.74', '2026-10-12', 'git 9e6468e4', "Agentic cost is an engineering problem: a business plan for a service that reads the logs a company already has, draws the footprint, the twin and the policy of every agent, and finds the money first and the engineering second; Wardley maps in three frames, the plan figure, four price levels"),
     ('v0.7.73', '2026-10-12', 'git 8bd68c05', "How the voice works: why these articles sound like their author, the corpus, the memos, seven wording rules and a reader who corrects, the shift from language to content corrections measured, and a marked section in which Claude explains it from its side"),
@@ -5912,7 +5927,10 @@ def articles_graphs_body():
            '<a href="graphs.json">all articles in one file</a>, with the topics, the teasers and the links '
            'between articles resolved, or one file per article at <code>articles/graphs/&lt;slug&gt;.json</code> '
            '(for example <a href="graphs/footprint-and-blast-radius.json">this one</a>). The pages on this site are '
-           'rendered from the same files at build time; nothing here is hand-written HTML.</p>',
+           'rendered from the same files at build time; nothing here is hand-written HTML. Since v0.7.77 each '
+           'graph also carries the article\'s <code>figures</code>: file, URL, caption, the kind the author gave it '
+           '(<code>wardley-map</code>, for one) and every frame of a multi-frame figure, so a picture and its '
+           'context travel together and "every Wardley map on this site" is a filter, not a reading list.</p>',
            f' <p class="small dim">{len(GRAPHS)} of {len(ARTICLES)} articles have a graph. The map draws every article in '
            'date order round the circle, oldest at the top and clockwise from there, sized by how many other articles '
            'link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an '
@@ -5960,9 +5978,30 @@ def articles_graphs_body():
 # names exists), and it only shows up when somebody shares the link. The cards are built
 # by a separate tool because they need sharp, so this is the reminder to run it. Same
 # shape as the LLMS_SECTIONS check: the build refuses rather than guessing.
+def shot_lines(body):
+    """Every `!shot` and `!frames` line of an article body, parsed the way content.py renders
+    them: names (one, or the frames in order), dir, caption, size and kind. One parser, so the
+    card, the banner hero and the graph's figure index cannot disagree about what a line means."""
+    out = []
+    for m in re.finditer(r'^!(shot|frames)\s+(.+)$', body, re.M):
+        parts = [x.strip() for x in m.group(2).split('|')]
+        names = [n.strip() for n in parts[0].split(',') if n.strip()]
+        if not names:
+            continue
+        tail = parts[3:]
+        out.append({
+            'frames': m.group(1) == 'frames', 'names': names,
+            'dir': parts[1] if len(parts) > 1 and parts[1] else 'images/',
+            'caption': parts[2] if len(parts) > 2 else '',
+            'size': next((x for x in tail if x in ('small', 'narrow', 'medium')), ''),
+            'kind': next((x for x in tail if x and x not in ('small', 'narrow', 'medium')), ''),
+        })
+    return out
+
+
 _missing_cards = []
 for _a in ARTICLES:
-    if not re.search(r'^!shot\s+([^\s|]+)\s*\|\s*([^\s|]+)', _a['body'], re.M):
+    if not shot_lines(_a['body']):
         continue
     if not os.path.exists(os.path.join(ROOT, 'og', _a['slug'] + '.jpg')):
         _missing_cards.append(_a['slug'])
@@ -7444,11 +7483,30 @@ BANNER_DIR = 'articles/banners'
 
 
 def _first_shot(a):
-    m = re.search(r'^!shot\s+([^|\s]+)\s*\|\s*([^|]*?)\s*\|', a['body'], re.M)
-    if not m:
+    shots = shot_lines(a['body'])
+    if not shots:
         return None
-    p = os.path.normpath(os.path.join('articles', m.group(2).strip() or 'images/', m.group(1).strip()))
+    p = os.path.normpath(os.path.join('articles', shots[0]['dir'], shots[0]['names'][0]))
     return p if os.path.exists(os.path.join(ROOT, p)) else None
+
+
+def art_figures(a):
+    """The article's figures as data, for articles/graphs/<slug>.json and graphs.json (v0.7.77).
+    Each: the file, its public URL, the caption, the kind if the author gave one (wardley-map,
+    architecture, ...) and, for a `!frames` figure, every frame in order. The point is reuse:
+    a page that wants every Wardley map on the site, or an agent that needs the picture and
+    its context together, reads this instead of parsing seventy articles."""
+    figs = []
+    for sh in shot_lines(a['body']):
+        base = os.path.normpath(os.path.join('articles', sh['dir']))
+        urls = [f'https://sgit.ai/{base}/{n}' for n in sh['names']]
+        fig = {'file': sh['names'][0], 'url': urls[0], 'caption': sh['caption']}
+        if sh['kind']:
+            fig['kind'] = sh['kind']
+        if sh['frames']:
+            fig['frames'] = urls
+        figs.append(fig)
+    return figs
 
 
 def article_ideas(a, n=3):
@@ -7874,12 +7932,17 @@ for _a in ARTICLES:
         'card': f'https://sgit.ai/articles/cards/{art_card_img(_a)}',
         'teaser': art_teaser(_a), 'topics': art_topics(_a), 'tags': _a['tags'],
         'links_out': ARTICLE_OUT[_a['slug']], 'links_in': ARTICLE_IN[_a['slug']],
+        # v0.7.77: the article's figures, with captions, kinds and frames, so the graph carries a
+        # link to every picture and the picture's context, and "every Wardley map" is a query.
+        'figures': art_figures(_a),
         'graph': ({k: v for k, v in _g.items() if k != 'where'} if _g else None),
     }
     _pub_graphs.append(_entry)
     if _g:
+        _per = {k: v for k, v in _g.items() if k != 'where'}
+        _per['figures'] = _entry['figures']
         with open(os.path.join(ROOT, 'articles', 'graphs', _a['slug'] + '.json'), 'w') as f:
-            f.write(json.dumps({k: v for k, v in _g.items() if k != 'where'}, indent=2, ensure_ascii=False) + '\n')
+            f.write(json.dumps(_per, indent=2, ensure_ascii=False) + '\n')
 _combined = json.dumps({
     'site': 'https://sgit.ai', 'generated': __import__('datetime').date.today().isoformat(), 'site_version': SITE_VERSION,
     'schema': 'https://sgit.ai/articles/graphs.html',

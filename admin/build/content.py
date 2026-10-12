@@ -206,23 +206,43 @@ class Content_Loader:
                 out.append(f'<!-- trail:{html.escape(line[7:].strip())} -->')
                 continue
 
-            # !shot filename.webp | dir | caption [| small|narrow|medium]   — a walkthrough figure.
+            # !shot filename.webp | dir | caption [| small|narrow|medium] [| kind]   — a walkthrough figure.
             # The optional fourth field narrows a tall figure so it does not dominate the column:
             # small = 42% of the measure (screenshots of a dialog), narrow = 62%, medium = 78%.
-            # Readers get the full size in the lightbox.
-            if line.startswith('!shot '):
+            # Readers get the full size in the lightbox. Any other trailing word is the figure's
+            # KIND (wardley-map, architecture, timeline, ...): it goes on the figure as data-kind
+            # and into the article's graph as figures[].kind, so "every Wardley map on the site" is
+            # one query over articles/graphs.json rather than a read of every article (v0.7.77).
+            #
+            # !frames a.webp, b.webp, c.webp | dir | caption [| size] [| kind]   — the same figure,
+            # several images deep. The page shows one image with play, pause, previous, next and a
+            # "2 of 3" counter, and a numbered button per frame; the markdown twin and a page
+            # without JavaScript get the frames as a numbered list of links. This replaced the
+            # animated WebP, which could not be stopped or stepped through.
+            if line.startswith('!shot ') or line.startswith('!frames '):
                 flush_para(); flush_list()
-                parts = [p.strip() for p in line[6:].split('|')]
-                name = parts[0]
+                multi = line.startswith('!frames ')
+                parts = [p.strip() for p in line.split(' ', 1)[1].split('|')]
+                names = [n.strip() for n in parts[0].split(',') if n.strip()]
+                name = names[0]
                 sdir = parts[1] if len(parts) > 1 and parts[1] else 'images/'
                 cap = parts[2] if len(parts) > 2 else ''
-                size = parts[3] if len(parts) > 3 and parts[3] in ('small', 'narrow', 'medium') else ''
-                cls = 'shot' + (f' shot--{size}' if size else '')
+                size = next((x for x in parts[3:] if x in ('small', 'narrow', 'medium')), '')
+                kind = next((x for x in parts[3:] if x and x not in ('small', 'narrow', 'medium')), '')
+                cls = 'shot' + (f' shot--{size}' if size else '') + (' shot--frames' if multi else '')
+                extra = (f' data-frames="{html.escape(",".join(names), quote=True)}"' if multi else '') \
+                      + (f' data-kind="{html.escape(kind, quote=True)}"' if kind else '')
+                fallback = ''
+                if multi:
+                    links = ' '.join(f'<a href="{html.escape(sdir + n, quote=True)}">{k}</a>'
+                                     for k, n in enumerate(names, 1))
+                    fallback = (f'<noscript><p class="small dim">The {len(names)} frames, one image each: '
+                                f'{links}.</p></noscript>')
                 out.append(
                     f'<figure class="{cls}" data-shot="{html.escape(name, quote=True)}" '
                     f'data-dir="{html.escape(sdir, quote=True)}" '
-                    f'data-alt="{html.escape(cap, quote=True)}">'
-                    f'<figcaption>{self.inline(cap, depth, where)}</figcaption></figure>')
+                    f'data-alt="{html.escape(cap, quote=True)}"{extra}>'
+                    f'<figcaption>{self.inline(cap, depth, where)}</figcaption>{fallback}</figure>')
                 continue
 
             if line.startswith('|') and i + 1 < len(lines) \
@@ -298,7 +318,7 @@ class Content_Loader:
 
     def md_to_text(self, md, limit=260):
         """Plain-text summary for the manifest and the feed."""
-        t = re.sub(r'!(shot|site|source|trail) .*', '', md)
+        t = re.sub(r'!(shot|frames|site|source|trail) .*', '', md)
         t = re.sub(r'```.*?```', '', t, flags=re.S)
         t = re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', t)
         t = re.sub(r'[#>*`_-]', ' ', t)

@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-12",
-  "site_version": "v0.7.76",
+  "site_version": "v0.7.77",
   "updates": [
     {
       "slug": "sgit-ai-0-21-0",
@@ -971,6 +971,25 @@
     }
   ],
   "articles": [
+    {
+      "slug": "why-i-love-wardley-maps",
+      "title": "Why I love Wardley maps: the best of ours, how I read one, and a map inside a map inside a map",
+      "date": "2026-10-12",
+      "version": "v0.7.77",
+      "tags": [
+        "wardley-maps",
+        "strategy",
+        "startups",
+        "maps",
+        "fractal-semantic-graphs",
+        "agents",
+        "sgit",
+        "riskmandate",
+        "build-vs-buy",
+        "article"
+      ],
+      "summary": "Since 2022 I have said that Wardley maps changed how I think, and this site has quietly become a place where I draw them: eleven so far in the articles, seven in a vault, five in a conference talk. This is the best of them, with the context each one came from, and the reasons the technique matters to me. A map is a graph with two kinds of context, a value chain that starts with a user and an evolution axis that says how mature each piece is, and the second axis does not have to run from genesis to commodity. The map tells you what is moving the needle, whether you are optimising at the wrong altitude, what to build and what to buy, and whether a market exists at all: a commoditised layer is a hard sell, and custom building on top of it is where the market is. Two worked examples, sgit and RiskMandate. Then one map read step by step, as a story, because that is what a map is for. Then the fractal: every node on a map is a map, and the dot's place on the parent is the anchor of the child. Two decks you can print to PDF from your browser, and the maps published as data so anyone can take them."
+    },
     {
       "slug": "places-of-highest-leverage",
       "title": "Places of highest leverage: where to focus when the agents can go in every direction, told with three days of real steps",

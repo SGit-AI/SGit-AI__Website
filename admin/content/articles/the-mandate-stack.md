@@ -151,7 +151,7 @@ The result is control and throughput together. Nothing on the schedule is missed
 
 ## Two maps: what is being commoditised, and what is being made
 
-!shot ms-map-user.webp | images/ | Map one, from the outside. The anchor is a person who writes to the team. What they see, a reply with Dinis's name on it, is custom. What they do not see, the vaults, the sessions, Workspace and encrypted storage, is product or commodity. Rendered with Mermaid wardley-beta from the source below; every placement is a claim.
+!shot ms-map-user.webp | images/ | Map one, from the outside. The anchor is a person who writes to the team. What they see, a reply with Dinis's name on it, is custom. What they do not see, the vaults, the sessions, Workspace and encrypted storage, is product or commodity. Rendered with Mermaid wardley-beta from the source below; every placement is a claim. | wardley-map
 
 A Wardley map places each component by how visible it is to the user, vertically, and by how evolved it is, horizontally, from genesis through custom-built and product to commodity. The maps here are drawn in the spirit of [wardley-maps.sgit.ai](https://wardley-maps.sgit.ai/): a map is a claim, not a picture, and the source is published next to the render so the claim can be argued with. The placements are this article's, made from the briefing, and a reader who would put a component elsewhere is probably right about something.
 
@@ -198,7 +198,7 @@ wardley-beta
   "Drafts role" --> "Google Workspace"
 ```
 
-!shot ms-map-team.webp | images/ | Map two, from the inside. The anchor is Dinis. The dashed arrows are the movement the team is making: shared memory and the sgit CLI toward commodity, the behaviour policies, the graphs and the custom interfaces from genesis toward product. Everything rests on encrypted storage, which is already a commodity. Rendered with Mermaid wardley-beta from the source below.
+!shot ms-map-team.webp | images/ | Map two, from the inside. The anchor is Dinis. The dashed arrows are the movement the team is making: shared memory and the sgit CLI toward commodity, the behaviour policies, the graphs and the custom interfaces from genesis toward product. Everything rests on encrypted storage, which is already a commodity. Rendered with Mermaid wardley-beta from the source below. | wardley-map
 
 The second map takes Dinis's point of view and adds movement. What he sees is a CRM that is current without typing, drafts to review, decision drafts in the thread, and the custom interfaces the tool loop produces. The arrows say what the team is doing to its own components. Shared memory runs on sgit, and sgit runs on encrypted object storage, S3. Each of those is being pushed to the right on purpose, so that a vault is a folder, a push is a command, the host sees ciphertext and sizes, and nothing above them has to know how any of it works. The behaviour policies, the graphs over people and the custom interfaces move the other way, from genesis toward custom and product, because those are the parts the team is building to sell. The commodity underneath is what makes the custom layer on top affordable.
 

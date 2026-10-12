@@ -62,3 +62,11 @@ relations go in `links.articles`, not in `edges`.
 
 Eight to sixteen nodes. Ten to twenty-four edges. One or two quotes. The graph is a
 map of the argument, not an index of every noun.
+
+### Figures (derived, not written here)
+
+The published files, `articles/graphs/<slug>.json` and `articles/graphs.json`, carry a
+`figures` list the build derives from the article's `!shot` and `!frames` lines: `file`,
+`url`, `caption`, `kind` when the directive's trailing word gives one (`wardley-map`,
+`collage`, `architecture`...), and `frames` with every frame's URL for a `!frames` figure.
+Do not write `figures` in a source graph; tag the figure in the article instead.

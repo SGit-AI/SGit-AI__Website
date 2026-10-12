@@ -2,7 +2,7 @@
 
 > When a team of agents can build almost anything, the scarce thing is direction, and this article is about how I choose it. The rule I have used since I was a CISO is to work at the place of highest leverage: where I can add the most value right now, am not blocked, and can just start, even without knowing how the whole problem will be solved, because by the time I get there I will have better tooling and a better view. The last three days are the worked example. The newsroom went from a reading meter to pay by depth, personas, an encrypted share, a persona in a link, a reading list in a link, a passkey design, a lab that corrected the design, real vaults from the browser and a vault pane, each step shipped and used before the next was chosen, two steps walked back, and a branch parked because it is only valuable with many readers. On a Wardley map the passkey work moved from genesis to a product in a day because almost every shoulder it stands on is a commodity someone else matured; the one custom layer we had to add is where a provider is not. The path looks obvious backwards and was five choices at every step going forwards; walking back is not failure, and parking is not either. Constraints, saying no, shipping to a user even when the user is me, and the brief that could not be written until the art of the possible was known.
 
-*Source: <https://sgit.ai/articles/places-of-highest-leverage.html> · site v0.7.76 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/places-of-highest-leverage.html> · site v0.7.77 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 # Places of highest leverage: where to focus when the agents can go in every direction, told with three days of real steps
 
-By [Dinis Cruz](../about/index.md) · 2026-10-12 · [article v1.1.0, 2 versions](versions/places-of-highest-leverage.md) · [site v0.7.75](../admin/versions.md) · startupsfocusleveragewardley-mapsexplorer-villagershippingconstraintsagentsnewsroomfeedback-loopstrategyarticle
+By [Dinis Cruz](../about/index.md) · 2026-10-12 · [article v1.2.0, 3 versions](versions/places-of-highest-leverage.md) · [site v0.7.75](../admin/versions.md) · startupsfocusleveragewardley-mapsexplorer-villagershippingconstraintsagentsnewsroomfeedback-loopstrategyarticle
 
 ***Abstract:** When a team of agents can build almost anything, the scarce thing is direction, and this article is about how I choose it. The rule I have used since I was a CISO is to work at the place of highest leverage: where I can add the most value right now, am not blocked, and can just start, even without knowing how the whole problem will be solved, because by the time I get there I will have better tooling and a better view. The last three days are the worked example. The newsroom went from a reading meter to pay by depth, personas, an encrypted share, a persona in a link, a reading list in a link, a passkey design, a lab that corrected the design, real vaults from the browser and a vault pane, each step shipped and used before the next was chosen, two steps walked back, and a branch parked because it is only valuable with many readers. On a Wardley map the passkey work moved from genesis to a product in a day because almost every shoulder it stands on is a commodity someone else matured; the one custom layer we had to add is where a provider is not. The path looks obvious backwards and was five choices at every step going forwards; walking back is not failure, and parking is not either. Constraints, saying no, shipping to a user even when the user is me, and the brief that could not be written until the art of the possible was known.*
 
@@ -110,6 +110,10 @@ Startups & strategyAgents & policySite & engineering[This article as a graph →
 - [The site is an inbox: deciding before reading, marks that build the reader's own graph, and why I could not write this brief until the vault existed](the-site-is-an-inbox.md) The site as an inbox that starts empty: decide fast before reading, mark slowly while reading, build a graph you own, and sign what you send to the newsroom.
 - [Go slow to go fast: moving the newsroom from an explorer project to a villager one, with the brief to do it](explorer-to-villager-newsroom.md) The newsroom is live and charging. Move the reader code to its own repo, same bytes and same bugs, then map, test, review and refactor before new features.
 - [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](how-much-of-this-did-i-write.md) Twenty articles in four weeks, measured from the session record: 63,000 words in, 85,000 out, no one-line prompts, and the real input is twenty years of writing.
+
+### Continued by
+
+- [Why I love Wardley maps: the best of ours, how I read one, and a map inside a map inside a map](why-i-love-wardley-maps.md) The best of our Wardley maps with their context, why the technique matters, one map read as a story, and a map inside a map inside a map.
 
 [All articles](index.md) · [All graphs](graphs.md)
 

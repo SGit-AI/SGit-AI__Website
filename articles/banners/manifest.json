@@ -6,6 +6,23 @@
  "generated_by": "admin/build/build_pages.py",
  "entries": [
   {
+   "slug": "why-i-love-wardley-maps",
+   "kind": "article",
+   "kicker": "SGit Newsroom",
+   "date": "2026-10-12",
+   "author": "Dinis Cruz",
+   "title": "Why I love Wardley maps: the best of ours, how I read one, and a map inside a map inside a map",
+   "teaser": "The best of our Wardley maps with their context, why the technique matters, one map read as a story, and a map inside a map inside a map.",
+   "ideas": [
+    "The evolution axis is a choice",
+    "Every dot is a claim about something real",
+    "A common language, and many maps"
+   ],
+   "hero": "articles/images/wm-best-of.webp",
+   "url": "sgit.ai/articles/why-i-love-wardley-maps.html",
+   "out": "articles/banners/why-i-love-wardley-maps.jpg"
+  },
+  {
    "slug": "places-of-highest-leverage",
    "kind": "article",
    "kicker": "SGit Newsroom",
@@ -35,7 +52,7 @@
     "Two lists, in this order",
     "The gaps are findings"
    ],
-   "hero": "articles/images/ac-wardley-anim.webp",
+   "hero": "articles/images/ac-wardley-1.webp",
    "url": "sgit.ai/articles/agentic-cost-is-an-engineering-problem.html",
    "out": "articles/banners/agentic-cost-is-an-engineering-problem.jpg"
   },
@@ -1642,10 +1659,10 @@
     "Next: an issue picked for what you care about"
    ],
    "mosaic": [
+    "articles/cards/why-i-love-wardley-maps.webp",
     "articles/cards/places-of-highest-leverage.webp",
     "articles/cards/agentic-cost-is-an-engineering-problem.webp",
-    "articles/cards/how-the-voice-works.webp",
-    "articles/cards/from-a-spreadsheet-to-a-folder-per-person.webp"
+    "articles/cards/how-the-voice-works.webp"
    ],
    "url": "sgit.ai/subscribe/",
    "out": "articles/banners/subscribe.jpg"
