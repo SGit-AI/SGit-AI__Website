@@ -2,7 +2,7 @@
 
 > Every published version of the article "The key is the billing system", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/the-key-is-the-billing-system.html> · site v0.7.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/the-key-is-the-billing-system.html> · site v0.7.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,7 +16,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.0.0** | 2026-10-12 | published | 4,199 | first published | this release | [current](../the-key-is-the-billing-system.md) |
+| **v1.0.0** | 2026-10-12 | published | 4,199 | first published | [`92806e639`](https://github.com/SGit-AI/SGit-AI__Website/commit/92806e639f813cd64f58a2c6960cbd5a5190806d) | [current](../the-key-is-the-billing-system.md) |
 
 [← Back to the article](../the-key-is-the-billing-system.md) · [All articles](../index.md)
 

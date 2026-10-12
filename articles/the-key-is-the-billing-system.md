@@ -2,7 +2,7 @@
 
 > VoiceDebrief.ai turns a voice note into a transcript, a translation and a debrief in one pass, in the browser, on the user's own OpenRouter key, with no account, no server and nothing stored; a 42-second note costs about a third of a penny. It was built in the open in three weeks of August 2026, 239 commits and 27 releases in the first three weeks, and then it stopped: eleven commits the week after, three the week after that. The handbrake was the commercial model, which was never meant to be a billing system. A user pays five pounds, we keep our cut at the moment of payment, and the rest becomes the credit limit on a key we hand them; the provider meters it and there is nothing of ours to run. OpenRouter's Management API describes that mechanism, "unique API keys for each customer instance", and OpenRouter's terms forbid using it to resell access to models, so the plan was dead on the page that documented it. This is the same shape as the Agent Desk finding, where Apple's licence stops a Mac being leased for less than a day: the product is possible, the licence is the blocker. This article is the state of the union: what runs, why no server is not a preference but the product, what a backend would cost in complexity, what every speech-to-text provider's terms and docs say about a capped key in a user's hand, and the four routes left. ElevenLabs is the nearest fit, with per-key credit limits, OEM terms for making the service available to end users, and a grants programme. It ends with the brief for the agents that will write to the providers, with one sentence to ask each of them.
 
-*Source: <https://sgit.ai/articles/the-key-is-the-billing-system.html> · site v0.7.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/the-key-is-the-billing-system.html> · site v0.7.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -137,6 +137,8 @@ Startups & strategySite & engineeringAgents & policy[This article as a graph →
 - [Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time](pay-after-you-read.md) Seven releases in one afternoon turned the reading meter into a working model: pay after you read, and the rating sets the price.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Posting this article on LinkedIn?** The cover is [the-key-is-the-billing-system.jpg](../articles/banners/the-key-is-the-billing-system.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
 **Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 

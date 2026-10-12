@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.71'
+SITE_VERSION = 'v0.7.72'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,8 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.71', '2026-10-12', 'this release', "The key is the billing system: VoiceDebrief, a product with no server, the capped key it cannot sell, every provider's terms and docs mapped, four routes, and the brief for the agents that will write to them"),
+    ('v0.7.72', '2026-10-12', 'this release', "From a spreadsheet to a folder per person: the walkthrough from a spreadsheet CRM to one Drive folder per contact worked by Claude under a six-line policy, the migration, five exercises, the two predictable mistakes, and when to move to a vault"),
+    ('v0.7.71', '2026-10-12', 'git 92806e63', "The key is the billing system: VoiceDebrief, a product with no server, the capped key it cannot sell, every provider's terms and docs mapped, four routes, and the brief for the agents that will write to them"),
     ('v0.7.70', '2026-10-12', 'git 06e64133', "Ways to read one article, published: the previous release's page build failed on an over-length graph teaser and its fix reused the version, which the deploy refused; this release carries the built page, its card and banner"),
     ('v0.7.69', '2026-10-12', 'git 4613d724', "Ways to read one article: the five readers' views delivered as a choice in the pane about the piece, headlines, infographic, two minutes, slides, what is new, facts, relationships, vocabulary, at my level; deterministic first, a model in the tab second; the finished article kept whole at the centre; the brief for phone, tablet, desktop and email"),
     ('v0.7.68', '2026-10-12', 'git ec397561', "Firing journalists is the worst thing a publication can do: what a hiring decision says about a publisher's centre of gravity, the 2026 cuts from Press Gazette's tracker, what you measure is what you become, the two failure modes, who to hire instead, and five counts to read a publisher from outside"),

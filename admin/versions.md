@@ -2,7 +2,7 @@
 
 > Every release of the sgit.ai site: version, date, vault commit, and changes. The version increments on every push.
 
-*Source: <https://sgit.ai/admin/versions.html> · site v0.7.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/admin/versions.html> · site v0.7.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,12 +10,14 @@
 
 # Release history
 
-The site version (**v0.7.71**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
+The site version (**v0.7.72**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
 
-| v0.7.71 | 2026-10-12 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.70...v0.7.71) | The key is the billing system: VoiceDebrief, a product with no server, the capped key it cannot sell, every provider's terms and docs mapped, four routes, and the brief for the agents that will write to them[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.70...v0.7.71). |
+| v0.7.72 | 2026-10-12 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.71...v0.7.72) | From a spreadsheet to a folder per person: the walkthrough from a spreadsheet CRM to one Drive folder per contact worked by Claude under a six-line policy, the migration, five exercises, the two predictable mistakes, and when to move to a vault[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.71...v0.7.72). |
+
+| v0.7.71 | 2026-10-12 | [git 92806e63](https://github.com/SGit-AI/SGit-AI__Website/commit/92806e63) | The key is the billing system: VoiceDebrief, a product with no server, the capped key it cannot sell, every provider's terms and docs mapped, four routes, and the brief for the agents that will write to them**New:**[The key is the billing system: VoiceDebrief, a product with no server, the one thing it cannot sell, and who could let it](../articles/the-key-is-the-billing-system.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/92806e63). |
 
 | v0.7.70 | 2026-10-12 | [git 06e64133](https://github.com/SGit-AI/SGit-AI__Website/commit/06e64133) | Ways to read one article, published: the previous release's page build failed on an over-length graph teaser and its fix reused the version, which the deploy refused; this release carries the built page, its card and banner**Updated:**[Ways to read one article: the finished piece stays at the centre, and the reader picks the way in](../articles/ways-to-read-one-article.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/06e64133). |
 
