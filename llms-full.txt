@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.7.69). Nothing here needs a second request. Individual pages live at the paths
+> (v0.7.70). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -73,7 +73,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-331site releases, each verified live before it was called done
+332site releases, each verified live before it was called done
 
 54vaults published with a deliberately public read key
 
@@ -6563,7 +6563,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.7.69, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.7.70, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -6926,7 +6926,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-331**site releases since 14 August**
+332**site releases since 14 August**
 each verified live before it was called done
 
 54**vaults published with a public read key**
@@ -12747,12 +12747,14 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.7.69**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
+The site version (**v0.7.70**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
 
-| v0.7.69 | 2026-10-12 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.68...v0.7.69) | Ways to read one article: the five readers' views delivered as a choice in the pane about the piece, headlines, infographic, two minutes, slides, what is new, facts, relationships, vocabulary, at my level; deterministic first, a model in the tab second; the finished article kept whole at the centre; the brief for phone, tablet, desktop and email**Updated:**[Ways to read one article: the finished piece stays at the centre, and the reader picks the way in](../articles/ways-to-read-one-article.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.68...v0.7.69). |
+| v0.7.70 | 2026-10-12 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.69...v0.7.70) | Ways to read one article, published: the previous release's page build failed on an over-length graph teaser and its fix reused the version, which the deploy refused; this release carries the built page, its card and banner**Updated:**[Ways to read one article: the finished piece stays at the centre, and the reader picks the way in](../articles/ways-to-read-one-article.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.69...v0.7.70). |
+
+| v0.7.69 | 2026-10-12 | [git 4613d724](https://github.com/SGit-AI/SGit-AI__Website/commit/4613d724) | Ways to read one article: the five readers' views delivered as a choice in the pane about the piece, headlines, infographic, two minutes, slides, what is new, facts, relationships, vocabulary, at my level; deterministic first, a model in the tab second; the finished article kept whole at the centre; the brief for phone, tablet, desktop and email**Updated:**[Ways to read one article: the finished piece stays at the centre, and the reader picks the way in](../articles/ways-to-read-one-article.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/4613d724). |
 
 | v0.7.68 | 2026-10-12 | [git ec397561](https://github.com/SGit-AI/SGit-AI__Website/commit/ec397561) | Firing journalists is the worst thing a publication can do: what a hiring decision says about a publisher's centre of gravity, the 2026 cuts from Press Gazette's tracker, what you measure is what you become, the two failure modes, who to hire instead, and five counts to read a publisher from outside**New:**[Firing journalists is the worst thing a publication can do: what a hiring decision says about where a publisher is going, and who to hire instead](../articles/firing-journalists.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/ec397561). |
 
@@ -16498,7 +16500,7 @@ There is a longer account of this one in [Green does not mean live](../articles/
 >
 > Page: https://sgit.ai/articles/index.html
 
-Edition of 2026-10-0884 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.69
+Edition of 2026-10-0884 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.70
 
 # SGit Newsroom
 
@@ -21813,7 +21815,7 @@ As of 11 October 2026, newsroom.sgit.ai v0.7.1 and sgit.ai v0.7.49. Screenshots 
 
 # Ways to read one article: the finished piece stays at the centre, and the reader picks the way in
 
-By [Dinis Cruz](../about/index.md) · 2026-10-12 · [article v1.0.0](versions/ways-to-read-one-article.md) · [site v0.7.69](../admin/versions.md) · newsroomreadingviewsfive-readersinfographicsslidesgraphslocal-modelspersonasmobileemailbriefarticle
+By [Dinis Cruz](../about/index.md) · 2026-10-12 · [article v1.0.1, 2 versions](versions/ways-to-read-one-article.md) · [site v0.7.70](../admin/versions.md) · newsroomreadingviewsfive-readersinfographicsslidesgraphslocal-modelspersonasmobileemailbriefarticle
 
 ***Abstract:** One article, five readers worked: a Librarian, a Cartographer, a Historian, an Explainer and a Storyteller read five articles after they were written and produced the catalogue, the maps, the arc, the two-minute version and the deck. What did not work was the delivery. All of it landed as one more fold under the abstract, everything mixed, a wall of material next to a wall of text, and a reader with two minutes was no better off than before. This article is the next step, now that the pane on the right of every newsroom page is about the piece in front of the reader. The reader picks the way in, one tap, and can set a default: headlines, the infographic, two minutes, the slides, what is new against what they have read, the facts, the relationships, the vocabulary, or, through a model in their own browser, a view at their level and through their persona. Most of those are computed from views that already exist, deterministic and explainable; a local model is for the rest, and none of it round-trips to the publisher. And one thing is kept whole on purpose: the finished article. It has a beginning, a pacing, a surprise and a voice, and it is the one artefact that has to make sense from end to end, which a graph cannot. The modes are ways in, not replacements, and the brief says how to build them for a phone, a tablet, a desktop and an email.*
 
@@ -21941,15 +21943,39 @@ News & evidenceGraphs & knowledgeSite & engineering[This article as a graph →]
 
 # Versions of: Ways to read one article
 
-1 published version of [Ways to read one article: the finished piece stays at the centre, and the reader picks the way in](../ways-to-read-one-article.md). The current one is **v1.0.0**.
+2 published versions of [Ways to read one article: the finished piece stays at the centre, and the reader picks the way in](../ways-to-read-one-article.md). The current one is **v1.0.1**.
 
 v1.0.0 is the article as first published. A change to its text (title, abstract or body) is the next minor version, v1.1.0; a change only to its other details (a LinkedIn link, the release it belongs to) is the next patch, v1.0.1. The list is read from the site's git history at every build, so it cannot be edited by hand and cannot leave a version out. Views extracted from an article, such as the Five readers, are not part of its text and do not change its version.
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.0.0** | 2026-10-12 | published | 2,767 | first published | [`942ce892f`](https://github.com/SGit-AI/SGit-AI__Website/commit/942ce892f39a12e4047ac87953dd30b682140006) | [current](../ways-to-read-one-article.md) |
+| **v1.0.1** | 2026-10-12 | patch | 2,767 | front matter only (the text is unchanged) | this release | [what changed](ways-to-read-one-article/v1.0.1.md) · [current](../ways-to-read-one-article.md) |
+| **v1.0.0** | 2026-10-12 | published | 2,767 | first published | [`942ce892f`](https://github.com/SGit-AI/SGit-AI__Website/commit/942ce892f39a12e4047ac87953dd30b682140006) |  |
 
 [← Back to the article](../ways-to-read-one-article.md) · [All articles](../index.md)
+
+
+
+==============================================================================
+# Ways to read one article: what changed in v1.0.1, sgit.ai
+
+> The changes to the article "Ways to read one article" in v1.0.1, paragraph by paragraph.
+>
+> Page: https://sgit.ai/articles/versions/ways-to-read-one-article/v1.0.1.html
+
+[Home](../../../index.md) / [Articles](../../index.md) / [Ways to read one article](../../ways-to-read-one-article.md) / [Versions](../ways-to-read-one-article.md) / v1.0.1
+
+# Ways to read one article: what changed in v1.0.1
+
+From v1.0.0 (2026-10-12, `942ce892f`) to v1.0.1 (2026-10-12, this release), paragraph by paragraph.
+
+0 paragraphs added, 0 removed, 0 changed in place, 51 unchanged. About 0 words added and 0 removed. Insertions are marked like this, deletions like this; unchanged runs are folded to one line; figures appear as their file names.
+
+[all versions](../ways-to-read-one-article.md)
+
+The text is identical. This version changed only the article's other details, such as a link or the release it belongs to.
+
+[all versions](../ways-to-read-one-article.md)
 
 
 
@@ -50640,7 +50666,7 @@ One entry per run of a desk role, newest first, each its own file and never edit
 >
 > Page: https://sgit.ai/articles/collections/index.html
 
-Edition of 2026-10-0884 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.69
+Edition of 2026-10-0884 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.70
 
 # Collections
 
@@ -50659,7 +50685,7 @@ A collection is one file in `admin/content/newsroom/collections/`. [How the desk
 >
 > Page: https://sgit.ai/articles/desk/index.html
 
-Edition of 2026-10-0884 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.69
+Edition of 2026-10-0884 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.70
 
 # From the desk
 
@@ -51397,7 +51423,7 @@ Your browser encrypts it to the public key of the agent that runs the list, then
 >
 > Page: https://sgit.ai/articles/newsletter/index.html
 
-Edition of 2026-10-0884 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.69
+Edition of 2026-10-0884 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.70
 
 # The newsletter
 
