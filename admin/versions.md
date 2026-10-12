@@ -2,7 +2,7 @@
 
 > Every release of the sgit.ai site: version, date, vault commit, and changes. The version increments on every push.
 
-*Source: <https://sgit.ai/admin/versions.html> · site v0.7.64 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/admin/versions.html> · site v0.7.65 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,12 +10,14 @@
 
 # Release history
 
-The site version (**v0.7.64**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
+The site version (**v0.7.65**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
 
-| v0.7.64 | 2026-10-12 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.63...v0.7.64) | The passkey opens the vault, revised after the newsroom's lab: a door per path, not per passkey; the claim narrowed to the same kind of path; add a door as a first-week step with no key typed; an unknown door address means no door here yet; the four figures redrawn**Updated:**[The passkey opens the vault: a door per path, a master vault for every user, and no server of ours](../articles/the-passkey-opens-the-vault.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.63...v0.7.64). |
+| v0.7.65 | 2026-10-12 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.64...v0.7.65) | Two agents, one vault: the Industry Wire written into an encrypted vault by one agent and drawn by newsroom.sgit.ai with only the read key; the workflow from both git logs, with screenshots and one figure[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.64...v0.7.65). |
+
+| v0.7.64 | 2026-10-12 | [git 999b0124](https://github.com/SGit-AI/SGit-AI__Website/commit/999b0124) | The passkey opens the vault, revised after the newsroom's lab: a door per path, not per passkey; the claim narrowed to the same kind of path; add a door as a first-week step with no key typed; an unknown door address means no door here yet; the four figures redrawn**Updated:**[The passkey opens the vault: a door per path, a master vault for every user, and no server of ours](../articles/the-passkey-opens-the-vault.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/999b0124). |
 
 | v0.7.63 | 2026-10-12 | [git b775af0b](https://github.com/SGit-AI/SGit-AI__Website/commit/b775af0b) | Creating and writing a vault from JavaScript: a new SG/Vault docs page recommending one code base for every site that writes vaults, the vault UI library behind dev.vault.sgraph.ai, with the exact methods for create, open, read, write and push, how the keys, objects and wire work, two traps found by testing it (a write into an unloaded folder is silently dropped; reading the ref before every pushIfMatch defeats the compare-and-swap), a tested round trip with sgit 0.21.0, and what the library still lacks against 0.21**New:**[Creating and writing a vault from JavaScript, SG/Vault](../docs/vault/vault-from-javascript.md).**Updated:**[SG/Vault & the vault platform](../docs/vault/index.md), [Three surfaces: which one are you building for?](../docs/surfaces.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/b775af0b). |
 

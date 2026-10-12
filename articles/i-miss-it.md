@@ -2,7 +2,7 @@
 
 > I read the newsroom on my iPhone, my iPad, my laptops and my iMac, and they do not agree: four balances, four sets of personas, four reading histories. I miss a feature, and that is the best news this week. The test I keep coming back to, from For a startup, the most important question is whether they miss it, applies to the people who build a product too: if they have access, can change it, and still do not use it, something is missing, and it is not the code. I failed that test with good ideas before, The Cyber Boardroom and MyFeeds among them. The vaults pass it now: I create them all the time, my agents create them, and they are getting good because they are used. And when the people who decide the roadmap are users, the next feature announces itself; with agents that can build almost anything, that sense of direction is the scarce part, and the speed of the loop, from a comment to an article to a feature, is the moat. This article makes that case, and ends with the brief for the feature I miss: the reader's own encrypted vault on the newsroom, with an access key, a key pair for signing and receiving, a log per device that merges without conflict, adding a device, and a one-way line to the agent that edits the site.
 
-*Source: <https://sgit.ai/articles/i-miss-it.html> · site v0.7.64 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/i-miss-it.html> · site v0.7.65 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -140,6 +140,7 @@ Startups & strategySite & engineering[This article as a graph →](graphs.md#i-m
 
 ### Continued by
 
+- [Two agents, one vault: the Industry Wire is written into an encrypted vault by one agent and drawn by newsroom.sgit.ai, which holds only the read key](two-agents-one-vault.md) One agent writes the Industry Wire into an encrypted vault; newsroom.sgit.ai holds only the read key and draws it, so a commit reaches the page with no release.
 - [The article remains a product: Jonathan Palmer's four outputs for a newsroom with no human readers, checked against one that runs](the-article-remains-a-product.md) Jonathan Palmer's four outputs for a newsroom with no human readers, quoted line by line and checked against newsroom.sgit.ai as it runs, screenshots included.
 - [Go slow to go fast: moving the newsroom from an explorer project to a villager one, with the brief to do it](explorer-to-villager-newsroom.md) The newsroom is live and charging. Move the reader code to its own repo, same bytes and same bugs, then map, test, review and refactor before new features.
 - [The passkey opens the vault: a door per path, a master vault for every user, and no server of ours](the-passkey-opens-the-vault.md) Tested: a passkey's PRF bytes compute a door that holds the master's key, and a different path to the same passkey gives different bytes, so a door per path.

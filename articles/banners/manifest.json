@@ -6,6 +6,23 @@
  "generated_by": "admin/build/build_pages.py",
  "entries": [
   {
+   "slug": "two-agents-one-vault",
+   "kind": "article",
+   "kicker": "SGit Newsroom",
+   "date": "2026-10-12",
+   "author": "Dinis Cruz",
+   "title": "Two agents, one vault: the Industry Wire is written into an encrypted vault by one agent and drawn by newsroom.sgit.ai, which holds only the read key",
+   "teaser": "One agent writes the Industry Wire into an encrypted vault; newsroom.sgit.ai holds only the read key and draws it, so a commit reaches the page with no release.",
+   "ideas": [
+    "The site holds only the read key",
+    "A commit, not a release",
+    "The contract"
+   ],
+   "hero": "articles/images/iw-flow.webp",
+   "url": "sgit.ai/articles/two-agents-one-vault.html",
+   "out": "articles/banners/two-agents-one-vault.jpg"
+  },
+  {
    "slug": "the-article-remains-a-product",
    "kind": "article",
    "kicker": "SGit Newsroom",
@@ -1472,10 +1489,10 @@
     "Next: an issue picked for what you care about"
    ],
    "mosaic": [
+    "articles/cards/two-agents-one-vault.webp",
     "articles/cards/the-article-remains-a-product.webp",
     "articles/cards/explorer-to-villager-newsroom.webp",
-    "articles/cards/the-passkey-opens-the-vault.webp",
-    "articles/cards/i-miss-it.webp"
+    "articles/cards/the-passkey-opens-the-vault.webp"
    ],
    "url": "sgit.ai/subscribe/",
    "out": "articles/banners/subscribe.jpg"
