@@ -1949,6 +1949,7 @@
    "words": 5932
   }
  ],
+ "the-key-is-the-billing-system": [],
  "the-mandate-stack": [
   {
    "commit": "dfc8f597a",
@@ -2310,6 +2311,16 @@
    "path": "admin/content/articles/ways-to-read-one-article.md",
    "subject": "site v0.7.69: ways to read one article (the finished piece at the centre, the reader picks the way in)",
    "version": "v1.0.0",
+   "words": 2767
+  },
+  {
+   "commit": "06e64133a",
+   "date": "2026-10-12",
+   "full": "06e64133a6d624e2d3f2cea6732f8f4e7363ccb7",
+   "kind": "patch",
+   "path": "admin/content/articles/ways-to-read-one-article.md",
+   "subject": "site v0.7.70: ways to read one article, published (the built page, card and banner; v0.7.69's build failed on a teaser and its fix reused the tag)",
+   "version": "v1.0.1",
    "words": 2767
   }
  ],
