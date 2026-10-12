@@ -2,7 +2,7 @@
 
 > Every published version of the article "The vault is live", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/the-vault-is-live.html> · site v0.7.66 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/the-vault-is-live.html> · site v0.7.67 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,7 +16,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.0.0** | 2026-10-12 | published | 3,498 | first published | this release | [current](../the-vault-is-live.md) |
+| **v1.0.0** | 2026-10-12 | published | 3,498 | first published | [`bfe088e64`](https://github.com/SGit-AI/SGit-AI__Website/commit/bfe088e64acfc2a9ab2d7e99a3faaff7468d38cd) | [current](../the-vault-is-live.md) |
 
 [← Back to the article](../the-vault-is-live.md) · [All articles](../index.md)
 

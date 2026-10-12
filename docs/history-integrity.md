@@ -2,7 +2,7 @@
 
 > sgit vault format (format 2, 128-bit ids, --min-client), who can open a raised vault and what old clients say, the shared branch index, rewind detection and --accept-rewind, sgit check verify, signatures-required and what a signature proves, and a checklist for raising a vault. For sgit-ai 0.21.0.
 
-*Source: <https://sgit.ai/docs/history-integrity.html> · site v0.7.66 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/history-integrity.html> · site v0.7.67 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

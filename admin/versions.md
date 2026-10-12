@@ -2,7 +2,7 @@
 
 > Every release of the sgit.ai site: version, date, vault commit, and changes. The version increments on every push.
 
-*Source: <https://sgit.ai/admin/versions.html> · site v0.7.66 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/admin/versions.html> · site v0.7.67 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,12 +10,14 @@
 
 # Release history
 
-The site version (**v0.7.66**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
+The site version (**v0.7.67**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
 
-| v0.7.66 | 2026-10-12 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.65...v0.7.66) | The vault is live: the reader's vault running on newsroom.sgit.ai by 02:22, and the architecture as it stands, drawn: the layers, the key chain and files, the sync model, the tests, the timeline, and why the properties of what runs are the constraints the next brief is thought with[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.65...v0.7.66). |
+| v0.7.67 | 2026-10-12 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.66...v0.7.67) | The site is an inbox: the brief for what a reader does with the vault, deciding before reading, marks of six kinds that build the reader's own graph, the free signals, personas with keys and a signed lane to the newsroom, and why the brief could not be written until the vault ran[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.66...v0.7.67). |
+
+| v0.7.66 | 2026-10-12 | [git bfe088e6](https://github.com/SGit-AI/SGit-AI__Website/commit/bfe088e6) | The vault is live: the reader's vault running on newsroom.sgit.ai by 02:22, and the architecture as it stands, drawn: the layers, the key chain and files, the sync model, the tests, the timeline, and why the properties of what runs are the constraints the next brief is thought with**New:**[The vault is live: from a design on 11 October to a reader's vault on newsroom.sgit.ai by two in the morning, and how all of it fits together](../articles/the-vault-is-live.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/bfe088e6). |
 
 | v0.7.65 | 2026-10-12 | [git 691aa447](https://github.com/SGit-AI/SGit-AI__Website/commit/691aa447) | Two agents, one vault: the Industry Wire written into an encrypted vault by one agent and drawn by newsroom.sgit.ai with only the read key; the workflow from both git logs, with screenshots and one figure**New:**[Two agents, one vault: the Industry Wire is written into an encrypted vault by one agent and drawn by newsroom.sgit.ai, which holds only the read key](../articles/two-agents-one-vault.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/691aa447). |
 

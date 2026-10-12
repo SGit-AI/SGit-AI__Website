@@ -2,7 +2,7 @@
 
 > On 11 October this site published a design for a reader's account with no server: a passkey computes the address of a small door vault, the door holds the key of a master vault, the master holds everything else. By 02:22 UTC on 12 October it was running on newsroom.sgit.ai. Not as a demo: a Vault button beside the balance on every page opens a pane that enables the account with a passkey, creates three real sgit vaults on the vault server with an access key pasted once, writes this device's reading records as one file in one commit, lists every device of yours, and brings their activity into this browser so the meter shows one balance. In between came a lab with every step as a card, a finding that put the door layer back into the design, the vault library that runs dev.vault.sgraph.ai vendored unedited with every hash checked, a mock of the vault server for the tests, a round trip through the sgit command line in CI, and a live check on an iPad that made three vaults from an iCloud Keychain passkey and opened them again after a refresh. This article is the architecture as it stands, drawn: the layers in the browser, the key chain and the files in each vault, the sync model that has no conflicts by construction, the tests, and what is not yet built. It is also the point of the whole exercise, which is that I could not have written the next brief until this one existed, because the properties of what runs are the constraints I think with.
 
-*Source: <https://sgit.ai/articles/the-vault-is-live.html> · site v0.7.66 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/the-vault-is-live.html> · site v0.7.67 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -135,7 +135,13 @@ Vaults & methodSite & engineering[This article as a graph →](graphs.md#the-vau
 - [Pay after you read: how a reading meter became a working business model in one afternoon, one release at a time](pay-after-you-read.md) Seven releases in one afternoon turned the reading meter into a working model: pay after you read, and the rating sets the price.
 - [Two agents, one vault: the Industry Wire is written into an encrypted vault by one agent and drawn by newsroom.sgit.ai, which holds only the read key](two-agents-one-vault.md) One agent writes the Industry Wire into an encrypted vault; newsroom.sgit.ai holds only the read key and draws it, so a commit reaches the page with no release.
 
+### Continued by
+
+- [The site is an inbox: deciding before reading, marks that build the reader's own graph, and why I could not write this brief until the vault existed](the-site-is-an-inbox.md) The site as an inbox that starts empty: decide fast before reading, mark slowly while reading, build a graph you own, and sign what you send to the newsroom.
+
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Posting this article on LinkedIn?** The cover is [the-vault-is-live.jpg](../articles/banners/the-vault-is-live.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
 **Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
