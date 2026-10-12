@@ -519,6 +519,7 @@
    "words": 3362
   }
  ],
+ "firing-journalists": [],
  "footprint-and-blast-radius": [
   {
    "commit": "14a7e67e5",
@@ -2125,7 +2126,18 @@
    "words": 3791
   }
  ],
- "the-site-is-an-inbox": [],
+ "the-site-is-an-inbox": [
+  {
+   "commit": "1b9e8db50",
+   "date": "2026-10-12",
+   "full": "1b9e8db50d61ebe15b25928b1ab8bcee9e753fcf",
+   "kind": "published",
+   "path": "admin/content/articles/the-site-is-an-inbox.md",
+   "subject": "site v0.7.67: the site is an inbox (the brief for what a reader does with the vault)",
+   "version": "v1.0.0",
+   "words": 3392
+  }
+ ],
  "the-vault-is-live": [
   {
    "commit": "bfe088e64",

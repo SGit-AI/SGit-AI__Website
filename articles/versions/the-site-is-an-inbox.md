@@ -2,7 +2,7 @@
 
 > Every published version of the article "The site is an inbox", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/the-site-is-an-inbox.html> · site v0.7.67 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/the-site-is-an-inbox.html> · site v0.7.68 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,7 +16,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.0.0** | 2026-10-12 | published | 3,392 | first published | this release | [current](../the-site-is-an-inbox.md) |
+| **v1.0.0** | 2026-10-12 | published | 3,392 | first published | [`1b9e8db50`](https://github.com/SGit-AI/SGit-AI__Website/commit/1b9e8db50d61ebe15b25928b1ab8bcee9e753fcf) | [current](../the-site-is-an-inbox.md) |
 
 [← Back to the article](../the-site-is-an-inbox.md) · [All articles](../index.md)
 

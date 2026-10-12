@@ -2,7 +2,7 @@
 
 > With the reader's vault live on newsroom.sgit.ai, the next brief is about what a reader does with it, and it starts from one image: the site is an inbox that starts empty. Every piece that arrives, an article this site wrote or a story the wire aggregated, is something I have not decided about yet, and the first thing I do with it is decide, in a second, with nothing loaded: read now, read later, not for me, more of this, less of this, comment, move it to another persona. That is the inbox mode, and it is thinking fast. Reading is the slow mode, and it is where the marks live: highlights of different kinds, not one or two as Medium has but interesting, great phrase, not sure, fact, evidence, question, each a node in a graph the reader owns and that connects to the graphs this site already publishes for every article; the pane on the right becomes about the piece in front of you; the piece can be shown with every term a link, or classified sentence by sentence. The signals that come free, scroll depth, time while awake, where you came from and went to, are kept the way the meter keeps them: in the browser, in the vault when you ask, shown to an agent only by your read key. Comments for the newsroom go down the write-only lane, signed by the persona's key, with a copy kept. None of it is gamified: a decision is offered where you would take it, never at the end of a page to make you scroll there. The brief is the second part. The first part is why I could not have written it two days ago: the properties of what runs are the constraints I think with, and the constraints are what let me think.
 
-*Source: <https://sgit.ai/articles/the-site-is-an-inbox.html> · site v0.7.67 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/the-site-is-an-inbox.html> · site v0.7.68 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -134,7 +134,13 @@ News & evidenceGraphs & knowledgeVaults & method[This article as a graph →](gr
 - [The passkey opens the vault: a door per path, a master vault for every user, and no server of ours](the-passkey-opens-the-vault.md) Tested: a passkey's PRF bytes compute a door that holds the master's key, and a different path to the same passkey gives different bytes, so a door per path.
 - [I miss it, so it is working: the people who decide the roadmap have to use the product, and the vault the newsroom now needs](i-miss-it.md) I read the newsroom on four devices and they do not agree. Missing a feature is the best sign; the makers must use it. And the brief for the reader's vault.
 
+### Continued by
+
+- [Firing journalists is the worst thing a publication can do: what a hiring decision says about where a publisher is going, and who to hire instead](firing-journalists.md) A hiring decision is a direction of travel: fire the journalists and the centre of gravity moves to packaging, where the metric makes clickbait by construction.
+
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Posting this article on LinkedIn?** The cover is [the-site-is-an-inbox.jpg](../articles/banners/the-site-is-an-inbox.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
 **Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 

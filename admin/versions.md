@@ -2,7 +2,7 @@
 
 > Every release of the sgit.ai site: version, date, vault commit, and changes. The version increments on every push.
 
-*Source: <https://sgit.ai/admin/versions.html> · site v0.7.67 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/admin/versions.html> · site v0.7.68 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,12 +10,14 @@
 
 # Release history
 
-The site version (**v0.7.67**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
+The site version (**v0.7.68**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
 
-| v0.7.67 | 2026-10-12 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.66...v0.7.67) | The site is an inbox: the brief for what a reader does with the vault, deciding before reading, marks of six kinds that build the reader's own graph, the free signals, personas with keys and a signed lane to the newsroom, and why the brief could not be written until the vault ran[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.66...v0.7.67). |
+| v0.7.68 | 2026-10-12 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.67...v0.7.68) | Firing journalists is the worst thing a publication can do: what a hiring decision says about a publisher's centre of gravity, the 2026 cuts from Press Gazette's tracker, what you measure is what you become, the two failure modes, who to hire instead, and five counts to read a publisher from outside[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.67...v0.7.68). |
+
+| v0.7.67 | 2026-10-12 | [git 1b9e8db5](https://github.com/SGit-AI/SGit-AI__Website/commit/1b9e8db5) | The site is an inbox: the brief for what a reader does with the vault, deciding before reading, marks of six kinds that build the reader's own graph, the free signals, personas with keys and a signed lane to the newsroom, and why the brief could not be written until the vault ran**New:**[The site is an inbox: deciding before reading, marks that build the reader's own graph, and why I could not write this brief until the vault existed](../articles/the-site-is-an-inbox.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/1b9e8db5). |
 
 | v0.7.66 | 2026-10-12 | [git bfe088e6](https://github.com/SGit-AI/SGit-AI__Website/commit/bfe088e6) | The vault is live: the reader's vault running on newsroom.sgit.ai by 02:22, and the architecture as it stands, drawn: the layers, the key chain and files, the sync model, the tests, the timeline, and why the properties of what runs are the constraints the next brief is thought with**New:**[The vault is live: from a design on 11 October to a reader's vault on newsroom.sgit.ai by two in the morning, and how all of it fits together](../articles/the-vault-is-live.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/bfe088e6). |
 
