@@ -2,7 +2,7 @@
 
 > Every published version of the article "Every mistake added a rule", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/every-mistake-added-a-rule.html> · site v0.7.77 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/every-mistake-added-a-rule.html> · site v0.7.78 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,7 +16,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.1.0** | 2026-10-12 | minor | 5,303 | +4 / −0 words; 2 changed, 0 added, 0 removed paragraphs | this release | [what changed](every-mistake-added-a-rule/v1.1.0.md) · [current](../every-mistake-added-a-rule.md) |
+| **v1.1.0** | 2026-10-12 | minor | 5,303 | +4 / −0 words; 2 changed, 0 added, 0 removed paragraphs | [`55ef24d34`](https://github.com/SGit-AI/SGit-AI__Website/commit/55ef24d348815b0b677ea871e0340baea7804bf9) | [what changed](every-mistake-added-a-rule/v1.1.0.md) · [current](../every-mistake-added-a-rule.md) |
 | **v1.0.0** | 2026-10-08 | published | 5,299 | first published | [`647cb6f44`](https://github.com/SGit-AI/SGit-AI__Website/commit/647cb6f448a5e0964f67bbd72e296c5ea79c88ee) |  |
 
 [← Back to the article](../every-mistake-added-a-rule.md) · [All articles](../index.md)

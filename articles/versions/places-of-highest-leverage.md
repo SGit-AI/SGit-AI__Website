@@ -2,7 +2,7 @@
 
 > Every published version of the article "Places of highest leverage", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/places-of-highest-leverage.html> · site v0.7.77 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/places-of-highest-leverage.html> · site v0.7.78 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,7 +16,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.2.0** | 2026-10-12 | minor | 3,077 | +2 / −0 words; 1 changed, 0 added, 0 removed paragraphs | this release | [what changed](places-of-highest-leverage/v1.2.0.md) · [current](../places-of-highest-leverage.md) |
+| **v1.2.0** | 2026-10-12 | minor | 3,077 | +2 / −0 words; 1 changed, 0 added, 0 removed paragraphs | [`55ef24d34`](https://github.com/SGit-AI/SGit-AI__Website/commit/55ef24d348815b0b677ea871e0340baea7804bf9) | [what changed](places-of-highest-leverage/v1.2.0.md) · [current](../places-of-highest-leverage.md) |
 | **v1.1.0** | 2026-10-12 | minor | 3,075 | +46 / −0 words; 0 changed, 1 added, 0 removed paragraphs | [`752faa4c4`](https://github.com/SGit-AI/SGit-AI__Website/commit/752faa4c4b22951f8f6758dda4d6bc211d3a1614) | [what changed](places-of-highest-leverage/v1.1.0.md) |
 | **v1.0.0** | 2026-10-12 | published | 3,029 | first published | [`7b9e4eaac`](https://github.com/SGit-AI/SGit-AI__Website/commit/7b9e4eaac3b72dd62f6f9642aa86d4ddf5f71454) |  |
 

@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.77'
+SITE_VERSION = 'v0.7.78'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,18 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.77', '2026-10-12', 'this release',
+    ('v0.7.78', '2026-10-12', 'this release',
+     "JUDO FOR SMALL COUNTRIES. A new article for the people met this week from Romania and the people in Portugal: "
+     "the race for frontier models, GPUs and data centres is a commoditised layer a small country cannot win and "
+     "should not enter; the opportunity is the plumbing a talented person stands on to sell a service to the world "
+     "(company formation, cross-border hiring, payments, language, contracts, tax), still custom built in most of "
+     "Europe and a road the state should build once, open source and on open schemas because there is no "
+     "sovereignty without the ability to leave. Estonia as the case study with its numbers, Portugal's Amalia as a "
+     "public model, DeepSeek's constrained training run as the constraint that produced the innovation, Romania's "
+     "sector figures and UiPath, what was learned spending millions on a distributed workforce, and a five-move "
+     "playbook: map the attrition, commoditise the plumbing, create the demand, put the money where the market is "
+     "genesis, regulate what settled. Two figures: the small country's Wardley map and the playbook.",),
+    ('v0.7.77', '2026-10-12', 'git 55ef24d3',
      "WHY I LOVE WARDLEY MAPS, AND THE MAPS AS DATA. A new article, Why I love Wardley maps, collects the best of the "
      "maps drawn on this site with the context each came from, says why the technique matters (a graph with two kinds "
      "of context, the evolution axis as a choice, every dot a claim, altitude, build or buy, whether a market exists "
