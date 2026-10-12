@@ -2,7 +2,7 @@
 
 > Every release of the sgit.ai site: version, date, vault commit, and changes. The version increments on every push.
 
-*Source: <https://sgit.ai/admin/versions.html> · site v0.7.73 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/admin/versions.html> · site v0.7.74 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,12 +10,14 @@
 
 # Release history
 
-The site version (**v0.7.73**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
+The site version (**v0.7.74**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
 
-| v0.7.73 | 2026-10-12 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.72...v0.7.73) | How the voice works: why these articles sound like their author, the corpus, the memos, seven wording rules and a reader who corrects, the shift from language to content corrections measured, and a marked section in which Claude explains it from its side**New:**[How the voice works: why these articles sound like me, with a section in which Claude explains it from its side](../articles/how-the-voice-works.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.72...v0.7.73). |
+| v0.7.74 | 2026-10-12 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.73...v0.7.74) | Agentic cost is an engineering problem: a business plan for a service that reads the logs a company already has, draws the footprint, the twin and the policy of every agent, and finds the money first and the engineering second; Wardley maps in three frames, the plan figure, four price levels**New:**[Agentic cost is an engineering problem: a business plan for a service that reads the logs a company already has and finds the money, then the engineering](../articles/agentic-cost-is-an-engineering-problem.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.73...v0.7.74). |
+
+| v0.7.73 | 2026-10-12 | [git 8bd68c05](https://github.com/SGit-AI/SGit-AI__Website/commit/8bd68c05) | How the voice works: why these articles sound like their author, the corpus, the memos, seven wording rules and a reader who corrects, the shift from language to content corrections measured, and a marked section in which Claude explains it from its side**New:**[How the voice works: why these articles sound like me, with a section in which Claude explains it from its side](../articles/how-the-voice-works.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/8bd68c05). |
 
 | v0.7.72 | 2026-10-12 | [git b5d755bf](https://github.com/SGit-AI/SGit-AI__Website/commit/b5d755bf) | From a spreadsheet to a folder per person: the walkthrough from a spreadsheet CRM to one Drive folder per contact worked by Claude under a six-line policy, the migration, five exercises, the two predictable mistakes, and when to move to a vault**New:**[From a spreadsheet to a folder per person: how to run your contacts the way our agents do, with Google Drive, Gmail and the Claude app, before you touch a vault](../articles/from-a-spreadsheet-to-a-folder-per-person.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/b5d755bf). |
 

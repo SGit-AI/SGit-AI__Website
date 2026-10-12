@@ -135,6 +135,7 @@
    "words": 3512
   }
  ],
+ "agentic-cost-is-an-engineering-problem": [],
  "ai-baseline-control-framework": [
   {
    "commit": "9e42bb6ad",
@@ -829,7 +830,18 @@
    "words": 4346
   }
  ],
- "how-the-voice-works": [],
+ "how-the-voice-works": [
+  {
+   "commit": "8bd68c050",
+   "date": "2026-10-12",
+   "full": "8bd68c0504984e56ec945f3a52c2bcfb438c7919",
+   "kind": "published",
+   "path": "admin/content/articles/how-the-voice-works.md",
+   "subject": "site v0.7.73: how the voice works (why these articles sound like their author, with a section in Claude's own voice)",
+   "version": "v1.0.0",
+   "words": 2715
+  }
+ ],
  "how-to-run-synthetic-users": [
   {
    "commit": "6c29e29c8",

@@ -2,7 +2,7 @@
 
 > A friend who uses agents better than most, one writing, others verifying, ChatGPT reviewing, every claim resting on an output read in full, sent me two messages about a verification that keeps breaking. The code is holding up. The process around it is not: long sessions compact and skip steps, outputs of failing commands are lost, prompts have grown to 100 KB, scripts are edited in place, the harness suggests what the rules forbid, and every mistake added a rule that caused new mistakes. This is complexity, and it is what hits the founders who are doing the right thing, clever, careful, now working as engineers without the scar tissue of engineering. This article maps their process as a Wardley map, where complexity is a position, custom-built process sitting where commodities already exist, and maps it again with each piece made small, shipped and moved right. Then it sets out the principles I work by: map it, commoditise small chunks and let them compound, ship, keep sessions small and the context yours, memory as versioned files, slow down when complexity hits, security by asset and attack vector, rules for incidents and machines for enforcement, run it in five environments, reverse-engineer the path to the destination, and learn the engineering that already exists. It ends with direct answers to their questions on compaction, audit cards and what deserves a STOP.
 
-*Source: <https://sgit.ai/articles/every-mistake-added-a-rule.html> · site v0.7.73 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/every-mistake-added-a-rule.html> · site v0.7.74 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -509,6 +509,7 @@ Agents & policySite & engineering[This article as a graph →](graphs.md#every-m
 
 ### Continued by
 
+- [Agentic cost is an engineering problem: a business plan for a service that reads the logs a company already has and finds the money, then the engineering](agentic-cost-is-an-engineering-problem.md) A business plan: read the logs a company already has, draw each agent's footprint, twin and policy, and find the money first and the engineering second.
 - [From a spreadsheet to a folder per person: how to run your contacts the way our agents do, with Google Drive, Gmail and the Claude app, before you touch a vault](from-a-spreadsheet-to-a-folder-per-person.md) A walkthrough from a spreadsheet CRM to one Drive folder per person, worked by Claude under a six-line policy, with five exercises, before any vault is needed.
 - [Two agents, one vault: the Industry Wire is written into an encrypted vault by one agent and drawn by newsroom.sgit.ai, which holds only the read key](two-agents-one-vault.md) One agent writes the Industry Wire into an encrypted vault; newsroom.sgit.ai holds only the read key and draws it, so a commit reaches the page with no release.
 - [No server, by design: first I retired the database, now I am retiring the back end](no-server-by-design.md) First the database went, now the back end: the SGit Newsroom runs all its logic in the browser, on commodity servers that cannot read your data.
