@@ -2,7 +2,7 @@
 
 > Every release of the sgit.ai site: version, date, vault commit, and changes. The version increments on every push.
 
-*Source: <https://sgit.ai/admin/versions.html> · site v0.7.62 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/admin/versions.html> · site v0.7.63 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,12 +10,14 @@
 
 # Release history
 
-The site version (**v0.7.62**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
+The site version (**v0.7.63**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
 
-| v0.7.62 | 2026-10-11 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.61...v0.7.62) | The passkey opens the vault, revised: the computed vault is the top of the chain, the master vault becomes its first child, key pairs are random and never derived from the passkey, several passkeys give several tops, and a top is retired by deleting its vault; sign-in to the site is out of the design**Updated:**[The passkey opens the vault: a top vault computed from a passkey, vaults all the way down, and no server of ours](../articles/the-passkey-opens-the-vault.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.61...v0.7.62). |
+| v0.7.63 | 2026-10-12 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.62...v0.7.63) | Creating and writing a vault from JavaScript: a new SG/Vault docs page recommending one code base for every site that writes vaults, the vault UI library behind dev.vault.sgraph.ai, with the exact methods for create, open, read, write and push, how the keys, objects and wire work, two traps found by testing it (a write into an unloaded folder is silently dropped; reading the ref before every pushIfMatch defeats the compare-and-swap), a tested round trip with sgit 0.21.0, and what the library still lacks against 0.21**Updated:**[SG/Vault & the vault platform](../docs/vault/index.md), [Three surfaces: which one are you building for?](../docs/surfaces.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.62...v0.7.63). |
+
+| v0.7.62 | 2026-10-11 | [git 421ac0a1](https://github.com/SGit-AI/SGit-AI__Website/commit/421ac0a1) | The passkey opens the vault, revised: the computed vault is the top of the chain, the master vault becomes its first child, key pairs are random and never derived from the passkey, several passkeys give several tops, and a top is retired by deleting its vault; sign-in to the site is out of the design**Updated:**[The passkey opens the vault: a top vault computed from a passkey, vaults all the way down, and no server of ours](../articles/the-passkey-opens-the-vault.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/421ac0a1). |
 
 | v0.7.61 | 2026-10-11 | [git eaa92d0f](https://github.com/SGit-AI/SGit-AI__Website/commit/eaa92d0f) | The article remains a product: Jonathan Palmer's four outputs for a newsroom with no human readers, quoted and checked against newsroom.sgit.ai as it runs, with screenshots and the honest right-hand column**New:**[The article remains a product: Jonathan Palmer's four outputs for a newsroom with no human readers, checked against one that runs](../articles/the-article-remains-a-product.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/eaa92d0f). |
 

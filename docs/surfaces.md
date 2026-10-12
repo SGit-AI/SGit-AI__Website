@@ -2,7 +2,7 @@
 
 > _page.json inside a vault, an HTML vault app, or a page on a *.sgit.ai site: what each can do, which credential each uses, and the trust direction that inverts between them, plus the same job done on all three, and where each surface’s guidance lives.
 
-*Source: <https://sgit.ai/docs/surfaces.html> · site v0.7.62 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/surfaces.html> · site v0.7.63 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -46,7 +46,7 @@ The last two rows are the ones people get wrong. Inside a vault host, **the host
 |---|---|
 | **`_page.json` and markdown** | [Publishing content without code](vault/content-authoring.md), the syntax. [Markdown and file viewers: what not to build](briefs/markdown-and-file-viewers.md), the decision |
 | **HTML vault apps** | [Building vault apps](vault/vault-apps.md), the project shape and `app.json`. [The window.sg bridge](vault/sg-bridge.md), the runtime and its permission model |
-| **`*.sgit.ai` site pages** | [Reading a vault from a site page](briefs/sgit-ai-site-pages.md), the brief. [Reading one file out of a vault](vault/reading-a-vault-file.md), the primitive. [Decks from a vault, on a site](briefs/vault-decks-on-a-site.md), a worked example |
+| **`*.sgit.ai` site pages** | [Reading a vault from a site page](briefs/sgit-ai-site-pages.md), the brief. [Reading one file out of a vault](vault/reading-a-vault-file.md), the primitive. [Creating and writing a vault from JavaScript](vault/vault-from-javascript.md), the library for everything that writes. [Decks from a vault, on a site](briefs/vault-decks-on-a-site.md), a worked example |
 | **All three** | [Publishing a vault: the method](../demos/vaults/publishing.md), read keys are publishable, vault keys never are, whichever surface you are on |
 
 ## They combine, and the combination is usually right

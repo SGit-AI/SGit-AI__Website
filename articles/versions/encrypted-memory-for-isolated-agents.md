@@ -2,7 +2,7 @@
 
 > Every published version of the article "Encrypted memory for agents that run somewhere else", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/encrypted-memory-for-isolated-agents.html> · site v0.7.62 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/encrypted-memory-for-isolated-agents.html> · site v0.7.63 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,7 +16,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.1.0** | 2026-10-08 | minor | 4,234 | +132 / −0 words; 5 changed, 0 added, 0 removed paragraphs | [`be27891d9`](https://github.com/SGit-AI/SGit-AI__Website/commit/be27891d9020e266d715d670063d4fe1b0dc9bb1) | [what changed](encrypted-memory-for-isolated-agents/v1.1.0.md) · [current](../encrypted-memory-for-isolated-agents.md) |
+| **v1.1.0** | 2026-10-08 | minor | 4,234 | +0 / −0 words; 0 changed, 0 added, 0 removed paragraphs | [`be27891d9`](https://github.com/SGit-AI/SGit-AI__Website/commit/be27891d9020e266d715d670063d4fe1b0dc9bb1) | [what changed](encrypted-memory-for-isolated-agents/v1.1.0.md) · [current](../encrypted-memory-for-isolated-agents.md) |
 | **v1.0.0** | 2026-10-08 | published | 4,102 | first published | [`b39da50f2`](https://github.com/SGit-AI/SGit-AI__Website/commit/b39da50f29e37fdcc4a0f8c598862e540054d05e) |  |
 
 [← Back to the article](../encrypted-memory-for-isolated-agents.md) · [All articles](../index.md)

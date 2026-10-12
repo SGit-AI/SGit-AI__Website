@@ -750,6 +750,12 @@
     "desc": "The primitive under every live embed on this site: derive the address from a published read key, fetch ciphertext over CORS, decrypt in the browser, and the sandbox rules for rendering what comes back, including why a PDF is a download and not an embed."
   },
   {
+    "path": "docs/vault/vault-from-javascript.html",
+    "section": "vault",
+    "title": "Creating and writing a vault from JavaScript, SG/Vault",
+    "desc": "Create, open, read, write and push a vault from any web page with the library that runs dev.vault.sgraph.ai: the one code base to use, the exact methods, what goes over the wire, and where it stands against sgit 0.21."
+  },
+  {
     "path": "docs/vault/static-hosting.html",
     "section": "vault",
     "title": "Static hosting on GitHub Pages, SG/Vault",

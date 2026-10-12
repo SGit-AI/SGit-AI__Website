@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en" data-root="../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Creating and writing a vault from JavaScript, SG/Vault</title>
+<meta name="description" content="Create, open, read, write and push a vault from any web page with the library that runs dev.vault.sgraph.ai: the one code base to use, the exact methods, what goes over the wire, and where it stands against sgit 0.21.">
+<link rel="canonical" href="https://sgit.ai/docs/vault/vault-from-javascript.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/docs/vault/vault-from-javascript.html">
+<meta property="og:title" content="Creating and writing a vault from JavaScript, SG/Vault">
+<meta property="og:description" content="Create, open, read, write and push a vault from any web page with the library that runs dev.vault.sgraph.ai: the one code base to use, the exact methods, what goes over the wire, and where it stands against sgit 0.21.">
+<meta property="og:image" content="https://sgit.ai/og/default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Creating and writing a vault from JavaScript, SG/Vault">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgit.ai/og/default.jpg">
+<link rel="alternate" type="text/markdown" href="vault-from-javascript.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Creating and writing a vault from JavaScript, SG/Vault", "headline": "Creating and writing a vault from JavaScript, SG/Vault", "description": "Create, open, read, write and push a vault from any web page with the library that runs dev.vault.sgraph.ai: the one code base to use, the exact methods, what goes over the wire, and where it stands against sgit 0.21.", "url": "https://sgit.ai/docs/vault/vault-from-javascript.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.7.63</a>
+  <sg-meter class="meter-nav" view="balance"></sg-meter>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+ <div class="ni ni-has">
+ <a class="nl" href="../../articles/index.html">Newsroom<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../articles/index.html">Front page</a>
+ <a class="sl" href="../../articles/newsletter/index.html">Newsletter</a>
+ <a class="sl" href="../../articles/index.html#all">Every article</a>
+ <a class="sl" href="../../articles/collections/index.html">Collections</a>
+ <a class="sl" href="../../articles/desk/index.html">From the desk</a>
+ <a class="sl" href="../../articles/graphs.html">As graphs</a>
+ <a class="sl" href="../../newsroom/index.html">How it runs</a>
+ <a class="sl" href="../../subscribe/index.html">Subscribe</a>
+ <a class="sl" href="../../account/newsroom.html">Your newsroom</a>
+ <a class="sl" href="../../account/share.html">A newsroom designed for you</a>
+ <a class="sl" href="../../account/index.html">Your reading account</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../../investors/index.html">Investors</a>
+ <a class="sl" href="../../startups/index.html">Startups</a>
+ <a class="sl" href="../../startups/business-plans.html">Business plans</a>
+ <a class="sl" href="../../about/index.html">About the author</a>
+ <a class="sl" href="../../partnerships/index.html">Partnerships</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl here" href="../../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../docs/index.html">Documentation</a>
+ <a class="sl" href="../../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl" href="../../docs/guidance/repositories.html">Every repository</a>
+ <a class="sl" href="../../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../../api/index.html">HTTP API</a>
+ <a class="sl" href="../../docs/credentials.html">Credentials</a>
+ <a class="sl here" href="../../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../../deploy/index.html">Deploy</a>
+ <a class="sl" href="../../meter/index.html">SG Meter</a>
+ <a class="sl" href="../../skills/index.html">Skills</a>
+ <a class="sl" href="../../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../../demos/index.html">Demos</a>
+ <a class="sl" href="../../demos/fractal-graphs/index.html">Fractal graphs</a>
+ <a class="sl" href="../../demos/fractal-graphs/performance.html">Performance & cost</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../../agents/index.html">Agents</a></div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../compare/index.html">Comparisons</a>
+ <a class="sl" href="../../demos/fractal-graphs/performance.html">Performance & cost</a>
+ <a class="sl" href="../../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../../lessons/index.html">Lessons learned</a>
+ <a class="sl" href="../../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../team/index.html">How the site is run</a>
+ <a class="sl" href="../../team/index.html#roles">Roles</a>
+ <a class="sl" href="../../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../../team/board.html">The board</a>
+ <a class="sl" href="../../updates/index.html">Updates</a>
+ <a class="sl" href="../../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../network/index.html">All sites</a>
+ <a class="sl" href="../../network/nhi.html">nhi</a>
+ <a class="sl" href="../../network/pki.html">pki</a>
+ <a class="sl" href="../../network/graphs.html">graphs</a>
+ <a class="sl" href="../../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<div class="llmschip"><a href="llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/docs/vault/llms.txt</span><span class="llmschip-m">v0.7.63 &middot; 12 Oct 2026</span></a></div>
+<main class="doc">
+  <p class="crumb"><a href="../../index.html">Home</a> / <a href="../index.html">Docs</a> / Creating and writing a vault from JavaScript</p>
+  <p class="surface"><b>Surface:</b> a page on a <code>*.sgit.ai</code> site, outside every vault host. <a href="../surfaces.html">The other surfaces &rarr;</a></p>
+  <h1>Creating, opening and writing a vault from JavaScript</h1>
+  <p class="lead">A web page that wants its own vault (newsroom.sgit.ai keeping a reader's notes, a tool saving its output) needs the same five actions the CLI has: create, open, read, write and commit, push. All five already exist in the browser, in the library that runs <a href="https://dev.vault.sgraph.ai">dev.vault.sgraph.ai</a>. This page is the recommendation to use that library and nothing else, the exact methods for each action, and a technical account of what goes over the wire. <a href="reading-a-vault-file.html">Reading one file with a read key</a> is the read-only half of the same story.</p>
+
+  <div class="note"><b>The one-sentence version.</b> Load the twelve vault library scripts from dev.vault.sgraph.ai, construct an <code>SGSend</code> with the API endpoint and an access token, then <code>SGVault.create</code> or <code>SGVault.open</code>; every file write is one encrypted commit sent as one <code>POST /batch</code>, and <code>pushIfMatch()</code> publishes it. <b>One code base</b>: every site that writes vaults uses this library, so a fix in it is a fix everywhere.</div>
+
+  <p class="small dim">Checked on 12 October 2026. The library is vault UI <code>v0.2.3</code> (<code>sgraph_ai_app_send__ui__vault/v0/v0.2/v0.2.3/_common/js/lib/</code> in <a href="https://github.com/the-cyber-boardroom/SGraph-AI__App__Send/tree/dev/sgraph_ai_app_send__ui__vault">SGraph-AI__App__Send</a>); the twelve files served by dev.vault.sgraph.ai are byte-identical to that folder. Every code sample below was run: create, write and push with the library, <code>sgit clone</code> and <code>sgit push</code> with sgit-ai 0.21.0, then open and read back with the library.</p>
+
+  <h2 id="recommendation">The recommendation: one code base</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Code</th><th>Where it lives</th><th>Use it for</th></tr>
+    <tr><td><b>The vault UI library</b>: <code>SGSend</code>, <code>SGVault</code> and its parts</td><td>SGraph-AI__App__Send, served at <code>dev.vault.sgraph.ai/_common/js/lib/</code></td><td><b>Everything that writes</b>: create, open with a vault key, read, write, commit, push, pull, merge, history. It is what dev.vault.sgraph.ai itself runs, so it is the most exercised writer there is</td></tr>
+    <tr><td>The tools modules: <code>core/vault-client</code>, <code>vault-session</code>, <code>vault-write</code>, the <code>sg-vault-*</code> components</td><td>SGraph-AI__Tools, served at <code>dev.tools.sgraph.ai/core/</code> as versioned ES modules</td><td>Read-only embedding (<code>sg-vault-content</code>, <code>sg-vault-key</code>, <code>sg-vault-fetch</code>). Their write path is an older port of the library above: one PUT per object, no compare-and-swap, no branch index, and vault creation from token-style keys only</td></tr>
+    <tr><td>The readers on this site: <code>assets/vault-embed.js</code>, <code>assets/vault-docs.js</code></td><td>This repo</td><td>Reading one file with a published read key, <a href="reading-a-vault-file.html">as documented here</a></td></tr>
+    <tr><td>The sgit CLI</td><td><a href="https://github.com/SGit-AI/SGit-AI__CLI">SGit-AI__CLI</a>, on PyPI as <code>sgit-ai</code></td><td>The reference for the format: agents, scripts, and the 0.21 features the browser does not have yet (<a href="#compat">below</a>)</td></tr>
+  </table></div>
+  <p>So a site does not write its own vault writer, and does not copy one from the tools modules. Two ports drift: the tools port needed its own fix before it could open vaults made by sgit 0.16, and the format is moving again with 0.19 to 0.21. Gaps found by using the library are fixed in the library, in SGraph-AI__App__Send, and every site picks them up.</p>
+
+  <h2 id="load">Loading the library</h2>
+  <p>The files are plain scripts, not ES modules: each declares a global class, and the <code>sg-vault--*.js</code> files add methods to <code>SGVault.prototype</code>. Order matters. A classic <code>&lt;script src&gt;</code> from another origin needs no CORS, so this works on any page:</p>
+<pre class="shell">&lt;script src="https://dev.vault.sgraph.ai/_common/js/lib/sg-send/sg-send-crypto.js"&gt;&lt;/script&gt;
+&lt;script src="https://dev.vault.sgraph.ai/_common/js/lib/sg-send/sg-send.js"&gt;&lt;/script&gt;
+&lt;script src="https://dev.vault.sgraph.ai/_common/js/lib/sg-vault/sg-vault-crypto.js"&gt;&lt;/script&gt;
+&lt;script src="https://dev.vault.sgraph.ai/_common/js/lib/sg-vault/sg-vault-object-store.js"&gt;&lt;/script&gt;
+&lt;script src="https://dev.vault.sgraph.ai/_common/js/lib/sg-vault/sg-vault-ref-manager.js"&gt;&lt;/script&gt;
+&lt;script src="https://dev.vault.sgraph.ai/_common/js/lib/sg-vault/sg-vault-commit.js"&gt;&lt;/script&gt;
+&lt;script src="https://dev.vault.sgraph.ai/_common/js/lib/sg-vault/sg-vault.js"&gt;&lt;/script&gt;
+&lt;script src="https://dev.vault.sgraph.ai/_common/js/lib/sg-vault/sg-vault--file-ops.js"&gt;&lt;/script&gt;
+&lt;script src="https://dev.vault.sgraph.ai/_common/js/lib/sg-vault/sg-vault--folder-ops.js"&gt;&lt;/script&gt;
+&lt;script src="https://dev.vault.sgraph.ai/_common/js/lib/sg-vault/sg-vault--sync.js"&gt;&lt;/script&gt;
+&lt;script src="https://dev.vault.sgraph.ai/_common/js/lib/sg-vault/sg-vault--history.js"&gt;&lt;/script&gt;
+&lt;script src="https://dev.vault.sgraph.ai/_common/js/lib/sg-vault/sg-vault--branches.js"&gt;&lt;/script&gt;</pre>
+  <p>Three things to know about that list:</p>
+  <ul>
+    <li><b>The path is not versioned.</b> Every deploy of the vault UI overwrites it. A site that must not change under its readers (any site holding keys, newsroom.sgit.ai included) copies these twelve files into its own repo at a known commit and loads them from its own origin; <a href="../../articles/the-passkey-opens-the-vault.html">the passkey design</a> already requires that. It is still one code base: the copy is pinned, never edited, and refreshed from upstream.</li>
+    <li><b>The API takes any origin.</b> Measured against <code>dev.send.sgraph.ai</code>: the preflight answers <code>access-control-allow-origin: *</code> and allows <code>x-sgraph-access-token</code> and <code>x-sgraph-vault-write-key</code>. Do not add <code>X-API-Key</code> to a browser request (the Python CLI sends it); it is not on the allowed list, so the preflight fails and nothing is sent.</li>
+    <li><b>Web Crypto needs a secure context</b>, https or localhost. Key derivation is two PBKDF2 runs of 600,000 iterations, done in parallel: about a second on a laptop, more on a phone, once per open.</li>
+  </ul>
+
+  <h2 id="actions">The five actions</h2>
+
+  <h3 id="create">1 · Create a vault</h3>
+<pre class="shell">const sgSend = new SGSend({ endpoint: 'https://dev.send.sgraph.ai', token: accessToken })
+const passphrase = randomPassphrase()                 // 24 chars of [a-z0-9], as sgit init makes
+const vault = await SGVault.create(sgSend, passphrase, { name: 'My notes' })
+const vaultKey = vault.getVaultKey()                  // "&lt;passphrase&gt;:&lt;vault_id&gt;": store it, it is the only way back in
+
+function randomPassphrase(n = 24) {
+  const abc = 'abcdefghijklmnopqrstuvwxyz0123456789', out = []
+  while (out.length &lt; n) {                             // rejection sampling: no modulo bias
+    for (const b of crypto.getRandomValues(new Uint8Array(n))) if (b &lt; 252 &amp;&amp; out.length &lt; n) out.push(abc[b % 36])
+  }
+  return out.join('')
+}</pre>
+  <p><code>create</code> picks a random 8-character vault id, derives the keys, and sends the first commit, the named ref, the clone ref and the branch index as <b>one</b> <code>POST /batch</code>. There is no separate "create vault" endpoint: the server creates the vault on the first write and remembers the SHA-256 of the write key that made it, and from then on only that write key can write. The write needs an access token, so <b>creating a vault needs an access token</b>; opening and reading do not.</p>
+  <p>The passphrase is the caller's to choose, and its strength is the vault's strength: there is no rate limit on guessing it offline. Use 24 random characters as above, the same shape <code>sgit init</code> generates. The vault's display name is stored encrypted, in <code>.vault-settings.json</code>.</p>
+
+  <h3 id="open">2 · Open a vault</h3>
+<pre class="shell">const vault = await SGVault.open(sgSend, vaultKey, { cloneBranch: deviceBranch })   // see the box below
+vault.writable        // true: a vault key carries the write key
+vault.name            // decrypted from .vault-settings.json
+vault.listFolder('/') // [{ name, type: 'file'|'folder', size, content_hash }]</pre>
+  <p><code>open</code> reads the branch index, then the named ref <b>live</b> (refs are never cached), then this browser's clone ref, and loads the root folder. Sub-folders load lazily. If the CLI or another browser published while this one sat still, open shows the newer published head rather than the stale clone. A key copied from sgit output carries a prefix (<code>sgit_private_vault_</code> followed by the key); <code>open</code> does not strip it, so pass the key through <code>SGVaultCrypto.stripKeyPrefix()</code> first. For a read key instead of a vault key, see <a href="#readonly">read-only access</a>.</p>
+  <div class="warnbox"><b>Give every device its own clone branch.</b> The clone branch defaults to <code>web-ui</code>, so two browsers opening the same vault key commit to the <em>same</em> working ref, and when their work diverges <code>open</code> keeps showing that shared clone head rather than what was published. Pass <code>{ cloneBranch: id }</code> with an id made once per device and kept in local storage, for example <code>'nr-' + crypto.randomUUID().slice(0, 8)</code>. A client that only reads should use its own name too, or <a href="#readonly"><code>openReadOnly</code></a>.</div>
+
+  <h3 id="read">3 · Read a file</h3>
+<pre class="shell">async function ensureLoaded(vault, folder) {          // load every folder on the path
+  let path = ''
+  for (const part of folder.split('/').filter(Boolean)) {
+    path += '/' + part
+    if (vault.needsLoading(path)) await vault.loadSubTreeOnDemand(path)
+  }
+}
+await ensureLoaded(vault, '/notes')
+const bytes = await vault.getFile('/notes', 'today.md')  // ArrayBuffer, decrypted
+const text  = new TextDecoder().decode(bytes)</pre>
+  <p>Files are addressed as <code>(folder, name)</code>, folder paths start with <code>/</code>. Files over 4 MB are fetched through a presigned S3 URL automatically.</p>
+
+  <h3 id="write">4 · Write: every write is a commit</h3>
+<pre class="shell">async function writeFile(vault, folder, name, data) {
+  await ensureLoaded(vault, folder)                       // REQUIRED, see the warning below
+  let path = ''
+  for (const part of folder.split('/').filter(Boolean)) { // create missing folders
+    path += '/' + part
+    if (!vault.listFolder(path)) await vault.createFolder(path)
+  }
+  const bytes  = typeof data === 'string' ? new TextEncoder().encode(data) : data
+  const exists = (vault.listFolder(folder) || []).some(e =&gt; e.name === name &amp;&amp; e.type === 'file')
+  return exists ? vault.updateFile(folder, name, bytes) : vault.addFile(folder, name, bytes)
+}
+await writeFile(vault, '/notes', 'today.md', '# Today\n')</pre>
+  <p>There is no staging area, and no separate commit call. <code>addFile</code>, <code>updateFile</code>, <code>removeFile</code>, <code>renameFile</code>, <code>moveFile</code>, <code>createFolder</code> and the other folder operations each make one commit, with a generated message such as <code>Add today.md</code>, and send the blob, the changed trees, the commit and the clone ref as one <code>POST /batch</code>. <code>addFiles([{ folderPath, fileName, fileData }])</code> writes many files as one commit. A commit lands on this browser's private clone branch; nobody else sees it until it is pushed.</p>
+  <div class="warnbox"><b>Load a folder before writing into it.</b> After <code>open</code>, sub-folders are placeholders. <code>addFile('/notes', …)</code> on a folder that was never loaded makes a commit called <code>Add …</code> whose tree still points at the old folder, so the file is silently missing and the push reports success. Reproduced on 12 October 2026 with v0.2.3. The <code>ensureLoaded</code> call in <code>writeFile</code> above prevents it; the fix belongs in the library (<a href="#upstream">below</a>).</div>
+
+  <h3 id="push">5 · Push: publish with compare-and-swap</h3>
+<pre class="shell">async function publish(vault) {
+  if (vault._refManager.lastRawRef(vault._refFileId) === undefined)
+    await vault.getBehindCount()               // only if never read: arms the compare-and-swap
+  try { await vault.pushIfMatch(); return }
+  catch (e) { if (e.code !== 'ECAS') throw e } // somebody else published first
+  const theirs = await vault._refManager.readRef(vault._refFileId)
+  const r = await vault.merge(theirs, { publish: false })   // fast-forward or three-way, file level
+  if (r.conflicts.length) throw new Error('conflicts: ' + r.conflicts.join(', '))
+  await vault.pushIfMatch()
+}</pre>
+  <p><code>pushIfMatch()</code> moves the named ref only if the server still holds the exact bytes this client last read for it. If someone else published in between, it throws <code>ECAS</code> and the caller merges and retries. That is the pattern the vault host's own headless kernel uses (<code>kernel-app-handlers.js</code>, <code>_safePush</code>), and the two <code>_refManager</code> calls are copied from it, which is why they reach into an underscore field; a public <code>safePush()</code> is on the <a href="#upstream">upstream list</a>.</p>
+  <ul>
+    <li><b>Do not call <code>push()</code>.</b> It moves the named ref unconditionally, which silently drops whatever another client published since your last read. The vault UI's shells still call it; the CLI reports the result as a rewind.</li>
+    <li><b>Read the ref once after <code>create</code>, and only then.</b> A new vault has only ever <em>written</em> its named ref, so <code>pushIfMatch</code> throws <code>ENOMATCH</code> until something reads it; <code>open</code> has already read it. But any read re-arms the comparison: calling <code>getBehindCount()</code> or <code>readRef</code> immediately before every <code>pushIfMatch</code> compares against the bytes just fetched, which turns the compare-and-swap into a blind overwrite. That is why <code>publish</code> reads only when the ref has never been read. Tested with two writers racing on 12 October 2026: with the guard, the second gets <code>ECAS</code>, merges, and both changes survive; without it, the first writer's commit is lost.</li>
+    <li><b>Pull</b> with <code>pull()</code> when there is nothing unpushed (it refuses otherwise), or with <code>merge(theirs)</code> when there is. <code>getAheadCount()</code> and <code>getBehindCount()</code> report the distance.</li>
+  </ul>
+
+  <h3 id="readonly">Read-only access</h3>
+  <p>A read key, 64 hex characters plus the vault id, decrypts but cannot write:</p>
+<pre class="shell">const cred = SGVaultCrypto.parseReadOnlyCredential(readKey)   // "&lt;64 hex&gt;:&lt;vault_id&gt;", prefix optional
+const c    = await SGVaultCrypto.deriveReadOnlyCreds(cred.vaultId, cred.readKeyHex)
+const ro   = await SGVault.openReadOnly(new SGSend({ endpoint }), c.vaultId, c.readKeyB64, c.refFileId)
+ro.writable   // false</pre>
+  <p>For a page that only shows one file, the 90-line reader in <a href="reading-a-vault-file.html">Reading one file out of a vault</a> is smaller.</p>
+
+  <h2 id="api">The methods</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Call</th><th>What it does</th></tr>
+    <tr><td><code>new SGSend({ endpoint, token })</code></td><td>The HTTP client. <code>endpoint</code> is <code>https://dev.send.sgraph.ai</code> (or <code>https://send.sgraph.ai</code>); <code>token</code> is the access token, sent as <code>x-sgraph-access-token</code>, needed only for writes</td></tr>
+    <tr><td><code>SGVault.create(sgSend, passphrase, { name, description })</code></td><td>New vault with a random id; one batch write. Returns an open, writable vault</td></tr>
+    <tr><td><code>SGVault.open(sgSend, vaultKey, { cloneBranch })</code></td><td>Open with <code>passphrase:vault_id</code>. <code>cloneBranch</code> names this client's private branch; the default, <code>web-ui</code>, is shared by every browser, <a href="#open">so set it</a></td></tr>
+    <tr><td><code>SGVault.openReadOnly(sgSend, vaultId, readKeyB64, refFileId)</code></td><td>Open with a read key; <code>writable</code> is false</td></tr>
+    <tr><td><code>vault.getVaultKey()</code> &middot; <code>vaultId</code> &middot; <code>name</code> &middot; <code>writable</code> &middot; <code>setName(n)</code> &middot; <code>getStats()</code></td><td>Key and properties. <code>setName</code> is a commit</td></tr>
+    <tr><td><code>listFolder(path)</code> &middot; <code>needsLoading(path)</code> &middot; <code>loadSubTreeOnDemand(path)</code></td><td>Browse; sub-folders load on demand</td></tr>
+    <tr><td><code>getFile(folder, name)</code></td><td>Decrypted bytes</td></tr>
+    <tr><td><code>addFile</code> &middot; <code>addFiles</code> &middot; <code>updateFile</code> &middot; <code>removeFile</code> &middot; <code>renameFile</code> &middot; <code>moveFile</code></td><td>One commit each (<code>addFiles</code>: one for the lot)</td></tr>
+    <tr><td><code>createFolder</code> &middot; <code>removeFolder</code> &middot; <code>renameFolder</code> &middot; <code>moveFolder</code></td><td>One commit each</td></tr>
+    <tr><td><code>pushIfMatch()</code> &middot; <code>pull()</code> &middot; <code>merge(commitId, { publish })</code> &middot; <code>getAheadCount()</code> &middot; <code>getBehindCount()</code></td><td>Sync. <code>push()</code> also exists; <a href="#push">do not use it</a></td></tr>
+    <tr><td><code>logCommits({ limit, from })</code> &middot; <code>listTreeAt(commitId, path)</code> &middot; <code>readFileAt(commitId, path)</code></td><td>History: <code>[{ id, parents, tree_id, timestamp_ms, message }]</code>, and any file at any commit</td></tr>
+    <tr><td><code>getBranches()</code> &middot; <code>switchBranch(headRefId)</code></td><td>Branches from the branch index</td></tr>
+    <tr><td><code>SGVaultCrypto.stripKeyPrefix</code> &middot; <code>classifyKey</code> &middot; <code>parseVaultKey</code> &middot; <code>deriveKeys</code></td><td>Key handling, no network</td></tr>
+  </table></div>
+  <p>Errors carry a <code>code</code> where the caller is expected to act: <code>ECAS</code> (the named ref moved: merge and retry), <code>ENOMATCH</code> (compare-and-swap before any read), <code>EREADONLY</code> (a static host, no write API). HTTP failures throw with the status and the server's detail, for example a 403 when the access token is missing.</p>
+
+  <h2 id="how">How it works</h2>
+
+  <h3 id="keys">Keys: everything comes from the vault key</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Derived</th><th>How</th><th>Used for</th></tr>
+    <tr><td><b>read key</b>, 32 bytes</td><td>PBKDF2-HMAC-SHA256, 600,000 iterations, password = passphrase, salt <code>sg-vault-v1:&lt;vault_id&gt;</code></td><td>AES-256-GCM over every object, ref and name; the HMAC key for file ids. This is the read key sgit prints, in hex</td></tr>
+    <tr><td><b>write key</b>, 32 bytes</td><td>The same PBKDF2 with salt <code>sg-vault-v1:write:&lt;vault_id&gt;</code></td><td>Never encrypts anything. Sent as lowercase hex in <code>x-sgraph-vault-write-key</code>; the server compares its SHA-256 with the one the first writer set</td></tr>
+    <tr><td><b>named ref id</b></td><td><code>ref-pid-muw-</code> + first 12 hex of <code>HMAC-SHA256(read key, "sg-vault-v1:file-id:ref:&lt;vault_id&gt;")</code></td><td>Where the published head lives</td></tr>
+    <tr><td><b>branch index id</b></td><td><code>idx-pid-muw-</code> + HMAC of <code>sg-vault-v1:file-id:branch-index:&lt;vault_id&gt;</code></td><td>The list of branches</td></tr>
+    <tr><td><b>clone ref id</b></td><td><code>ref-pid-snw-</code> + HMAC of <code>sg-vault-v1:file-id:branch-ref:&lt;vault_id&gt;:&lt;branch&gt;</code></td><td>This client's working head (<code>web-ui</code> by default)</td></tr>
+  </table></div>
+  <p>The server receives none of this except the write key's hex, and stores only its hash. Addresses are computed, never looked up: a holder of the read key knows where the head is before making a request.</p>
+
+  <h3 id="objects">Objects: four kinds, all ciphertext</h3>
+  <ul>
+    <li><b>Encryption.</b> AES-256-GCM, a random 12-byte IV, stored as <code>IV || ciphertext || tag</code>: exactly what <code>crypto.subtle.encrypt</code> returns with the IV in front.</li>
+    <li><b>Object ids.</b> <code>obj-cas-imm-</code> + the first 12 hex of SHA-256 over the <em>ciphertext</em>, stored at <code>bare/data/&lt;id&gt;</code>. Content-addressed, so immutable and cacheable forever.</li>
+    <li><b>Blob</b>: the file's bytes, encrypted.</li>
+    <li><b>Tree</b> (<code>tree_v1</code>): <code>{ schema, entries: [{ name_enc, size_enc, content_hash_enc, blob_id, tree_id }] }</code>. Names, sizes and hashes are encrypted one by one, so the folder listing is itself ciphertext; a sub-folder is an entry with a <code>tree_id</code>.</li>
+    <li><b>Commit</b> (<code>commit_v2</code>): <code>{ schema, parents, tree_id, timestamp_ms, message_enc, branch_id, signature }</code>, the message encrypted.</li>
+    <li><b>Ref</b>: <code>{"commit_id": "obj-cas-imm-…"}</code>, encrypted, at <code>bare/refs/&lt;ref id&gt;</code>. The only mutable files are refs and the branch index.</li>
+  </ul>
+
+  <h3 id="branches">Two refs: the clone branch and the named branch</h3>
+  <p>Each client commits to its own clone ref; <code>push</code> copies that commit id into the named ref, which is what everyone else reads. This is the <a href="../two-branch-model.html">two-branch model</a> the CLI uses, so a browser and a terminal are two clones of the same vault. The branch index (<code>branch_index_v1</code>) lists the branches so that <code>sgit clone</code> can find the named ref.</p>
+
+  <h3 id="wire">The wire</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Call</th><th>Auth</th><th>Used by</th></tr>
+    <tr><td><code>GET /api/vault/read/&lt;vault_id&gt;/&lt;path&gt;</code></td><td>none</td><td>refs (with <code>cache: 'no-store'</code>), the branch index, objects</td></tr>
+    <tr><td><code>POST /api/vault/batch/&lt;vault_id&gt;</code> with <code>{"operations": [{op, file_id, data, match}]}</code></td><td>token + write key when any op writes</td><td>every commit, every push, bulk reads. <code>op</code> is <code>read</code>, <code>write</code> or <code>write-if-match</code>; <code>data</code> and <code>match</code> are base64; chunked at 50 operations. A compare-and-swap miss comes back as <code>"status": "conflict"</code> inside an HTTP 200</td></tr>
+    <tr><td><code>PUT /api/vault/write/&lt;vault_id&gt;/&lt;path&gt;</code></td><td>token + write key</td><td>single writes outside a batch</td></tr>
+    <tr><td><code>GET /api/vault/presigned/read-url/&lt;vault_id&gt;/&lt;path&gt;</code></td><td>none</td><td>files over 4 MB</td></tr>
+  </table></div>
+  <p>So one file write is one request carrying four or more encrypted objects, and one push is one request carrying the ref and the index. The full endpoint list is in <a href="../../api/vault-objects.html">API: vault objects</a>, the headers in <a href="../../api/authentication.html">API: authentication</a>.</p>
+
+  <h2 id="compat">With sgit 0.21: what holds and what does not</h2>
+  <p><b>What holds, tested 12 October 2026.</b> A vault made with <code>SGVault.create</code> was cloned by sgit-ai 0.21.0 with every file intact; a CLI commit and push was then opened and read back by the library; a library <code>updateFile</code> and <code>pushIfMatch</code> was pulled by the CLI, which then pushed again without complaint. For a vault at the default format, which is every vault until its owner raises it, the browser and the CLI interoperate in both directions.</p>
+  <p><b>What does not hold yet</b>, from the code and <a href="../history-integrity.html">History integrity</a>:</p>
+  <div class="tablewrap"><table>
+    <tr><th>sgit 0.19&ndash;0.21 feature</th><th>The library today</th><th>Consequence</th></tr>
+    <tr><td>Signed commits; <code>--feature signatures-required</code></td><td>Writes <code>signature: null</code></td><td>On a vault that requires signatures, the CLI refuses to pull or clone past a browser commit. Do not write from the browser to such a vault</td></tr>
+    <tr><td>Format 2: 32-hex object ids</td><td>Always 12-hex</td><td>Readable by everyone, but a format-2 vault receives 48-bit ids from the browser</td></tr>
+    <tr><td>The branch index as a shared document, written with compare-and-swap</td><td><code>pushIfMatch</code> and <code>push</code> overwrite it with a single entry</td><td>Drops the other clones' entries and the format gate from the server's copy. The CLI merges its local copy back on its next pull, so nothing is lost while some clone still holds it; an entry no surviving clone holds is gone</td></tr>
+    <tr><td>Deterministic tree encryption</td><td>Random IVs for tree entries</td><td>Harmless: trees still decrypt; an unchanged folder rewritten by the browser gets a new id instead of the old one</td></tr>
+  </table></div>
+  <p>None of that matters to a site keeping its own vaults (newsroom.sgit.ai's reader vaults are written only by newsroom.sgit.ai) as long as nobody raises their format. It matters as soon as a vault is shared with the CLI under the 0.21 policies, and the fix is in the library, not around it.</p>
+
+  <h2 id="upstream">What the library needs, in SGraph-AI__App__Send</h2>
+  <p>In priority order, each a change to <code>_common/js/lib/sg-vault/</code> that every site then inherits:</p>
+  <ol>
+    <li><b>Fix the lazy-folder write.</b> A write into an unloaded folder should load it (or refuse), never commit a tree that drops the file.</li>
+    <li><b>A public <code>safePush()</code></b>: read the ref if it was never read, <code>pushIfMatch</code>, merge and retry once on <code>ECAS</code>. Then retire unconditional <code>push()</code>.</li>
+    <li><b>A clone branch per device by default</b>, made once and remembered, instead of the shared <code>web-ui</code>.</li>
+    <li><b><code>create(…, { vaultId })</code></b>: let the caller supply the vault id. A vault whose id and passphrase are <em>derived</em> (the passkey's computed top vault) cannot be created through the public API today, only opened.</li>
+    <li><b>Publish at a versioned path</b> (<code>/_common/js/lib/v0.2.3/…</code>, or one bundled file) so a site can pin a version without copying, and move the inline <code>SGVault.createFromToken</code> out of <code>index.html</code>. Token-style keys were dropped from the CLI in 0.15 as guessable, so new sites should not use that path at all.</li>
+    <li><b>Merge the branch index</b> with compare-and-swap instead of overwriting it, keeping other entries, the gate, the keys and the tags.</li>
+    <li><b>Sign commits</b> (P-256, JCS signing bytes, <code>author_key_id</code>; the CLI's <code>tests/_fixtures/interop_vectors.json</code> is the test vector), then <b>format 2</b> ids when the gate says so.</li>
+  </ol>
+
+  <h2 id="newsroom">For newsroom.sgit.ai</h2>
+  <ul>
+    <li><b>Keys.</b> The newsroom already stores vault keys behind a passkey (<a href="../../articles/the-passkey-opens-the-vault.html">the design</a>, <code>passkey/lab.js</code> for the derivation). A vault made with <code>SGVault.create</code> and a random passphrase goes into that keyring as <code>getVaultKey()</code>, and is opened next time with <code>SGVault.open</code>. The lab's own derivation (<code>sgitKeys</code>) is the same PBKDF2 as <code>SGVaultCrypto.deriveKeys</code>, checked against vectors generated with the CLI's own <code>Vault__Crypto</code>.</li>
+    <li><b>The computed top vault</b> needs item 3 above; until then it can be opened but not created by the library.</li>
+    <li><b>The access token</b> is needed for every write. Pasted once and then kept inside the reader's own vault is the shape the design already describes.</li>
+    <li><b>Load a pinned copy</b> of the twelve files from the newsroom's own origin, per the design's no-third-party-scripts rule.</li>
+  </ul>
+
+  <p class="small dim" style="margin-top:2rem"><a href="reading-a-vault-file.html">Reading one file out of a vault</a> &middot; <a href="../../api/vault-objects.html">API: vault objects</a> &middot; <a href="../two-branch-model.html">The two-branch model</a> &middot; <a href="../history-integrity.html">History integrity</a> &middot; <a href="../credentials.html">Credentials</a></p>
+  <div class="pagenav"><a href="reading-a-vault-file.html">← Reading a vault file</a><a href="static-hosting.html">Static hosting →</a></div>
+</main>
+<sg-meter view="page" kind="page" date="" topics="" title="Creating and writing a vault from JavaScript, SG/Vault" quiet></sg-meter>
+<script type="application/json" id="sg-meter-config">{"storageKey": "sgit.meter.v1", "start": 500, "newDays": 7, "symbol": "£", "prices": {"article_new": 10, "article": 5, "issue": 3, "note": 2, "collection": 2, "page": 1, "free": 0}, "depth": true, "minDepth": 0.1, "topup": {"amount": 500, "link": ""}, "packs": [{"id": "p2", "price": 200, "bonus": 0}, {"id": "p5", "price": 500, "bonus": 0}, {"id": "p10", "price": 1000, "bonus": 100}, {"id": "p20", "price": 2000, "bonus": 300}], "links": {"account": "account/index.html", "topup": "account/top-up.html", "how": "articles/going-live-with-the-reading-meter.html"}, "rating": {"price": [0, 0.5, 1, 1.5, 2], "more": [-3, -1, 0, 3, 6]}, "autoKeep": true, "picks": {"feed": "articles/graphs.json", "base": "articles/"}, "links2": {"newsroom": "account/newsroom.html", "personas": "account/personas.html", "share": "account/share.html"}, "share": {"contact": ".well-known/sgit-subscribe.json", "form": "reading-share", "site": "sgit.ai", "max": 300}, "personas": {"presets": [{"id": "founder", "label": "The founder", "name": "Morgan", "theme": "#b45309", "blurb": "Building a company: what to build, what to charge, what to secure and when to stop. Strategy, pricing and the questions investors ask.", "topics": {"startups-and-strategy": 3, "agents-and-policy": 1}, "articles": ["the-question-is-whether-they-miss-it", "price-it-then-give-it-away", "saas-apocalypse-decided-by-inertia-not-by-ai", "who-are-you-protecting-against", "knowing-when-to-stop", "open-source-is-not-free", "going-live-with-the-reading-meter"]}, {"id": "journalist", "label": "The journalist", "name": "Rowan", "theme": "#1d4ed8", "blurb": "Where news came from and where it could go: story vaults, liquid content, local evidence, and what publishers are owed by the machines that read them.", "topics": {"news-and-evidence": 3, "graphs-and-knowledge": 1}, "articles": ["how-news-got-here", "future-of-news-story-vault-not-paywall", "liquid-content-needs-water", "the-bridge-followed-to-the-end", "story-vault-meets-reader-skills", "the-waiting-room-knew-first", "token-bill-nobody-is-sending"]}, {"id": "security", "label": "The security lead", "name": "Sam", "theme": "#b91c1c", "blurb": "Agents as insiders: who you are protecting against, blast radius, identity, incidents and the controls that hold when a model does not.", "topics": {"agents-and-policy": 3, "vaults-and-method": 1}, "articles": ["who-are-you-protecting-against", "ultimate-insider-three-collisions", "footprint-and-blast-radius", "six-agents-one-inbox", "the-investigation-github-owes-its-customers", "why-my-agents-do-not-run-on-my-laptop", "the-identity-we-wanted-to-give-the-agents", "where-is-the-why"]}, {"id": "builder", "label": "The AI builder", "name": "Kai", "theme": "#0f766e", "blurb": "Making agents work day to day: Claude Code sessions, hooks, memory, behaviour policies, and the engineering lessons each mistake left behind.", "topics": {"agents-and-policy": 2, "site-and-engineering": 2, "vaults-and-method": 1}, "articles": ["how-i-work-with-claude", "a-second-reader-the-agent-cannot-skip", "re-anchoring-agent-behaviour-policies", "every-mistake-added-a-rule", "memory-is-not-a-spectator-sport", "encrypted-memory-for-isolated-agents", "hope-or-enforcement"]}, {"id": "board", "label": "The board member", "name": "Jordan", "theme": "#6d28d9", "blurb": "How AI is changing the business and how to govern it: business models, due diligence, risk acceptance, accountability and the governance frameworks.", "topics": {"graphs-and-knowledge": 2, "startups-and-strategy": 2, "agents-and-policy": 1}, "articles": ["saas-apocalypse-decided-by-inertia-not-by-ai", "send-an-agent-not-a-spreadsheet", "every-risk-is-already-accepted", "agency-is-not-a-yes", "the-ai-governance-stack-as-a-graph", "ai-baseline-control-framework", "what-sgit-is"]}], "names": {"agents-and-policy": "The Policy Architect", "vaults-and-method": "The Vault Keeper", "news-and-evidence": "The Fact Finder", "startups-and-strategy": "The Strategist", "graphs-and-knowledge": "The Cartographer", "site-and-engineering": "The Builder"}}}</script>
+<script>
+import('../../assets/components/sg-meter/v1/v1.3/v1.3.1/sg-meter.js?v=v0.7.63')
+ .catch(function (e) { console.error('[sg-meter] component failed to load:', e); });
+</script>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../../admin/versions.html">v0.7.63</a> · <a href="../../admin/index.html">engineering</a> · <a href="vault-from-javascript.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../../docs/surfaces.html">Three surfaces</a>
+    <a href="../../docs/installation.html">Installation</a>
+    <a href="../../docs/quickstart.html">Quickstart</a>
+    <a href="../../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../../docs/agents.html">Working with AI agents</a>
+    <a href="../../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../../docs/vault/vault-from-javascript.html">Writing a vault from JavaScript</a>
+    <a href="../../docs/vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../../security/index.html">Security</a>
+    <a href="../../why/index.html">Why does this exist?</a>
+    <a href="../../use-cases/index.html">Use cases</a>
+    <a href="../../case-studies/index.html">Case studies</a>
+    <a href="../../skills/index.html">Skills for AI agents</a>
+    <a href="../../docs/briefs/index.html">Cross-team briefs</a>
+    <a href="../../articles/index.html#subscribe">Subscribe to new articles</a>
+    <a href="../../llms.txt">llms.txt</a>
+    <a href="../../llms-full.txt">llms-full.txt</a>
+    <a href="../../admin/index.html">Admin &amp; engineering</a>
+    <a href="../../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.7.63';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+var mine=V.slice(3),last=0;
+function fresh(){if(location.hostname!=='sgit.ai'||Date.now()-last<60000)return;last=Date.now();
+fetch('/version.txt?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.text():''}).then(function(t){t=(t||'').trim();if(!/^v[0-9]+[.][0-9]+[.][0-9]+$/.test(t)||t===mine)return;
+var k='sgit.fresh:'+location.pathname;try{if(sessionStorage.getItem(k)===t)return;sessionStorage.setItem(k,t)}catch(e){}
+var u=new URL(location.href);u.searchParams.set('v',t);location.replace(u.href)}).catch(function(){})}
+try{var u=new URL(location.href);if(u.searchParams.get('v')===mine){u.searchParams.delete('v');history.replaceState(history.state,'',u.pathname+u.search+u.hash)}}catch(e){}
+fresh();addEventListener('pageshow',function(e){if(e.persisted){last=0;fresh()}});document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')fresh()});
+})();
+</script>
+</body>
+</html>

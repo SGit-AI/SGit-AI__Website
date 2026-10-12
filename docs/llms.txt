@@ -1,9 +1,9 @@
 # Using sgit, sgit.ai
 
-> The CLI and the model behind it, installation, quickstart, the two-branch model, messaging between vaults, and what sgit does not do. Generated at build time (v0.7.62).
+> The CLI and the model behind it, installation, quickstart, the two-branch model, messaging between vaults, and what sgit does not do. Generated at build time (v0.7.63).
 > The whole-site map is /llms.txt; every page here also exists as `.md`.
 
-## Pages (50)
+## Pages (51)
 - [Documentation](/docs/index.md): sgit documentation: quickstart, concepts, guides for humans and AI agents, and the honest limitations page.
 - [What is sgit](/docs/what-is-sgit.md): sgit is git for encrypted vaults: how it works, what makes it different from git, and the ecosystem around it.
 - [Installation](/docs/installation.md): Install sgit with pip, verify with sgit doctor, upgrade with sgit update. Python 3.11+, two runtime dependencies.
@@ -45,6 +45,7 @@
 - [Sub-vaults](/docs/vault/sub-vaults.md): Vaults inside vaults: link files, owner records, read-only team access, click-to-load external embeds, and the extract-and-embed workflow.
 - [Git repos inside vaults](/docs/vault/git-and-vaults.md): Run git and sgit side by side: the encrypted store in a git remote, the leak-audit boundary, the GitHub round trip, plus a pure-Python git reader preview.
 - [Reading one file out of a vault](/docs/vault/reading-a-vault-file.md): The primitive under every live embed on this site: derive the address from a published read key, fetch ciphertext over CORS, decrypt in the browser, and the sandbox rules for rendering what comes back, including why a PDF is a download and not an embed.
+- [Creating and writing a vault from JavaScript](/docs/vault/vault-from-javascript.md): Create, open, read, write and push a vault from any web page with the library that runs dev.vault.sgraph.ai: the one code base to use, the exact methods, what goes over the wire, and where it stands against sgit 0.21.
 - [Static hosting on GitHub Pages](/docs/vault/static-hosting.md): Serve an encrypted vault and its app from GitHub Pages or S3 with zero backend: deterministic GET paths, client-side decryption, clean read-only degradation.
 - [Sending messages between vaults](/docs/vault-messaging.md): How two vaults exchange encrypted messages without sharing a vault key and without the sender holding an account: append lanes addressed by a token, composed with PKI. Worked example in CLI, curl and sg.append, with the one step that is not yet wired marked PROPOSED.
 - [Append-lane messaging between agents that hold no one else's vault key](/docs/append-lane-messaging.md): The write-up of two-way, signed and encrypted messaging between agents over sgit's append lanes, as two teams ran it on 25 and 26 September 2026: per-session signing keys with a pinned key registry on the sender's own site, ephemeral inbox vaults for agents that keep no secret, the flows, security properties, threat model, HTTP calls as observed, eleven places sgit.ai's docs differed, and recommendations for sgit. Relayed by sgit.newsroom.sgit.ai.

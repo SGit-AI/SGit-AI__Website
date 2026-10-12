@@ -2,7 +2,7 @@
 
 > The official working documentation for the SGraph vault platform: the SG/Vault browser app, the SG/Send zero-knowledge API, and vault apps.
 
-*Source: <https://sgit.ai/docs/vault/index.html> · site v0.7.62 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/vault/index.html> · site v0.7.63 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -58,7 +58,7 @@ A vault can contain an `index.html` plus an `app.json`. When the vault opens, th
 
 ## Build
 
-[Building vault appsThe project shape, app.json, and the authoring contract](vault-apps.md) [The window.sg bridgeThe runtime API, permissions, and the sovereignty rail](sg-bridge.md)
+[Building vault appsThe project shape, app.json, and the authoring contract](vault-apps.md) [The window.sg bridgeThe runtime API, permissions, and the sovereignty rail](sg-bridge.md) [Writing a vault from JavaScriptCreate, open, write and push from any web page, one library](vault-from-javascript.md)
 
 ## Compose & integrate
 

@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.62'
+SITE_VERSION = 'v0.7.63'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,8 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.62', '2026-10-11', 'this release', "The passkey opens the vault, revised: the computed vault is the top of the chain, the master vault becomes its first child, key pairs are random and never derived from the passkey, several passkeys give several tops, and a top is retired by deleting its vault; sign-in to the site is out of the design"),
+    ('v0.7.63', '2026-10-12', 'this release', "Creating and writing a vault from JavaScript: a new SG/Vault docs page recommending one code base for every site that writes vaults, the vault UI library behind dev.vault.sgraph.ai, with the exact methods for create, open, read, write and push, how the keys, objects and wire work, two traps found by testing it (a write into an unloaded folder is silently dropped; reading the ref before every pushIfMatch defeats the compare-and-swap), a tested round trip with sgit 0.21.0, and what the library still lacks against 0.21"),
+    ('v0.7.62', '2026-10-11', 'git 421ac0a1', "The passkey opens the vault, revised: the computed vault is the top of the chain, the master vault becomes its first child, key pairs are random and never derived from the passkey, several passkeys give several tops, and a top is retired by deleting its vault; sign-in to the site is out of the design"),
     ('v0.7.61', '2026-10-11', 'git eaa92d0f', "The article remains a product: Jonathan Palmer's four outputs for a newsroom with no human readers, quoted and checked against newsroom.sgit.ai as it runs, with screenshots and the honest right-hand column"),
     ('v0.7.60', '2026-10-11', 'git f5bb932d',
      "WHAT HAPPENS IN A CLEAN BROWSER. The passkey opens the vault gains a section and a figure on where a passkey "
@@ -4217,6 +4218,7 @@ def footer(p, md=''):
     <a href="{p}docs/vault/sub-vaults.html">Sub-vaults</a>
     <a href="{p}docs/vault/git-and-vaults.html">Git repos inside vaults</a>
     <a href="{p}docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="{p}docs/vault/vault-from-javascript.html">Writing a vault from JavaScript</a>
     <a href="{p}docs/vault/static-hosting.html">Static hosting</a>
     <a href="https://sgraph.ai">More at sgraph.ai</a>
   </div>

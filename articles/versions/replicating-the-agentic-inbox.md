@@ -2,7 +2,7 @@
 
 > Every published version of the article "Replicating the agentic inbox", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/replicating-the-agentic-inbox.html> · site v0.7.62 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/replicating-the-agentic-inbox.html> · site v0.7.63 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -17,9 +17,9 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
 | **v1.3.1** | 2026-10-07 | patch | 5,531 | front matter only (the text is unchanged) | [`d86d0b70a`](https://github.com/SGit-AI/SGit-AI__Website/commit/d86d0b70abbe2879a585ed04c090b63f3584ca4e) | [what changed](replicating-the-agentic-inbox/v1.3.1.md) · [current](../replicating-the-agentic-inbox.md) |
-| **v1.3.0** | 2026-10-03 | minor | 5,531 | +23 / −0 words; 2 changed, 0 added, 0 removed paragraphs | [`ca7206922`](https://github.com/SGit-AI/SGit-AI__Website/commit/ca7206922b1a03609fef0ac9c0d6e1a4ad0d40ab) | [what changed](replicating-the-agentic-inbox/v1.3.0.md) |
-| **v1.2.0** | 2026-10-03 | minor | 5,508 | +230 / −0 words; 0 changed, 2 added, 0 removed paragraphs | [`1576cdd8c`](https://github.com/SGit-AI/SGit-AI__Website/commit/1576cdd8ca11ec8bf944b399a80db200727db078) | [what changed](replicating-the-agentic-inbox/v1.2.0.md) |
-| **v1.1.0** | 2026-10-03 | minor | 5,278 | +2,568 / −510 words; 10 changed, 23 added, 5 removed paragraphs | [`a93621273`](https://github.com/SGit-AI/SGit-AI__Website/commit/a936212736864fd39de4fc4350ac2cf7ba1ac248) | [what changed](replicating-the-agentic-inbox/v1.1.0.md) |
+| **v1.3.0** | 2026-10-03 | minor | 5,531 | +0 / −0 words; 0 changed, 0 added, 0 removed paragraphs | [`ca7206922`](https://github.com/SGit-AI/SGit-AI__Website/commit/ca7206922b1a03609fef0ac9c0d6e1a4ad0d40ab) | [what changed](replicating-the-agentic-inbox/v1.3.0.md) |
+| **v1.2.0** | 2026-10-03 | minor | 5,508 | +0 / −0 words; 0 changed, 0 added, 0 removed paragraphs | [`1576cdd8c`](https://github.com/SGit-AI/SGit-AI__Website/commit/1576cdd8ca11ec8bf944b399a80db200727db078) | [what changed](replicating-the-agentic-inbox/v1.2.0.md) |
+| **v1.1.0** | 2026-10-03 | minor | 5,278 | +0 / −0 words; 0 changed, 0 added, 0 removed paragraphs | [`a93621273`](https://github.com/SGit-AI/SGit-AI__Website/commit/a936212736864fd39de4fc4350ac2cf7ba1ac248) | [what changed](replicating-the-agentic-inbox/v1.1.0.md) |
 | **v1.0.0** | 2026-10-02 | published | 3,220 | first published | [`23d0aad35`](https://github.com/SGit-AI/SGit-AI__Website/commit/23d0aad359943625af5e3b4e0a40c23ad604dede) |  |
 
 [← Back to the article](../replicating-the-agentic-inbox.md) · [All articles](../index.md)
