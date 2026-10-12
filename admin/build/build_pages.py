@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.81'
+SITE_VERSION = 'v0.7.82'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,15 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.81', '2026-10-12', 'this release',
+    ('v0.7.82', '2026-10-12', 'this release',
+     "NOT A STRAIGHT LINE. A new article on the meta-strategy behind the last weeks: focus as undivided attention "
+     "on the place of highest leverage, not as working on one product. The newsroom solved RiskMandate's oldest "
+     "problem, where to keep the master vault's key, in two days after six months of attempts that failed the "
+     "simplicity test, because the newsroom had the momentum to need it; it is also building RiskMandate's agentic "
+     "workflows and becoming the public example of a behaviour policy in action. The history behind it: The Cyber "
+     "Boardroom and MyFeeds, both paused, and the 2025 writing the newsroom stands on. One figure: three projects "
+     "and the path between them.",),
+    ('v0.7.81', '2026-10-12', 'git 050dcbb6',
      "SOVEREIGNTY IS THE ABILITY TO MOVE. A new article from a day at a sovereignty event: the conversation in "
      "Europe is mostly about things it does not control (frontier models, data centres, GPUs), which is playing "
      "where the ball is, not where it is going. Sovereignty is the ability to move workloads and actions; the test "
