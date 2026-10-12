@@ -2,7 +2,7 @@
 
 > Every release of the sgit.ai site: version, date, vault commit, and changes. The version increments on every push.
 
-*Source: <https://sgit.ai/admin/versions.html> · site v0.7.75 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/admin/versions.html> · site v0.7.76 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,12 +10,14 @@
 
 # Release history
 
-The site version (**v0.7.75**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
+The site version (**v0.7.76**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
 
-| v0.7.75 | 2026-10-12 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.74...v0.7.75) | Places of highest leverage: where to focus when the agents can go in every direction, told with three days of real steps, two walked back, one parked, the passkey stack on a Wardley map, and why the brief depends on the possible**New:**[Places of highest leverage: where to focus when the agents can go in every direction, told with three days of real steps](../articles/places-of-highest-leverage.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.74...v0.7.75). |
+| v0.7.76 | 2026-10-12 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.75...v0.7.76) | Places of highest leverage gains a second path figure: the zigzag, three to five routes open at every step, two walked back, one parked, and the straight line that only exists in hindsight**Updated:**[Places of highest leverage: where to focus when the agents can go in every direction, told with three days of real steps](../articles/places-of-highest-leverage.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.75...v0.7.76). |
+
+| v0.7.75 | 2026-10-12 | [git 913d06f6](https://github.com/SGit-AI/SGit-AI__Website/commit/913d06f6) | Places of highest leverage: where to focus when the agents can go in every direction, told with three days of real steps, two walked back, one parked, the passkey stack on a Wardley map, and why the brief depends on the possible[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/913d06f6). |
 
 | v0.7.74 | 2026-10-12 | [git 9e6468e4](https://github.com/SGit-AI/SGit-AI__Website/commit/9e6468e4) | Agentic cost is an engineering problem: a business plan for a service that reads the logs a company already has, draws the footprint, the twin and the policy of every agent, and finds the money first and the engineering second; Wardley maps in three frames, the plan figure, four price levels**New:**[Agentic cost is an engineering problem: a business plan for a service that reads the logs a company already has and finds the money, then the engineering](../articles/agentic-cost-is-an-engineering-problem.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/9e6468e4). |
 

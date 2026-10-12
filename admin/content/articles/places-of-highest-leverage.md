@@ -57,6 +57,8 @@ Walking back is what a two-way door looks like from inside. The distinction, fro
 
 Parking is the same move at the level of a branch. A tangent reaches diminishing returns, or it turns out there is no demand yet, and you stop. Not because it was wrong; because its leverage is lower than something else's today. The parked branch stays on the map, with the reason, and the reason has a date on it: when there are many readers, the wire's scheduling becomes a place of high leverage. That is also why I do not feel ownership of any of these pieces. They are open, the record is public, and the thing I am attached to is the feedback loop, not any one feature in it.
 
+!shot lv-zigzag.webp | images/ | The same thing as a shape rather than a record: three to five routes open at every step, one taken and shipped, two walked a little way and walked back, one parked, and the straight line that only exists in hindsight.
+
 The hardest part is that going forwards you cannot see the path. Backwards, from the vault pane, the sequence looks inevitable: of course the meter led to personas led to sharing led to a vault led to a passkey. Forwards, at each step, there were five choices, and the figure shows the ones passed over in grey: a paywall, a subscription, an account, a recommender, analytics, a server, Google sign-in. Any of them could have been taken. The method in the madness is only visible by walking backwards, and that is fine, as long as each step forwards was shipped and used before the next was chosen. That is the discipline that replaces foresight.
 
 ## Which shoulders, on the map {#map}

@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.75'
+SITE_VERSION = 'v0.7.76'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,8 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.75', '2026-10-12', 'this release', "Places of highest leverage: where to focus when the agents can go in every direction, told with three days of real steps, two walked back, one parked, the passkey stack on a Wardley map, and why the brief depends on the possible"),
+    ('v0.7.76', '2026-10-12', 'this release', "Places of highest leverage gains a second path figure: the zigzag, three to five routes open at every step, two walked back, one parked, and the straight line that only exists in hindsight"),
+    ('v0.7.75', '2026-10-12', 'git 913d06f6', "Places of highest leverage: where to focus when the agents can go in every direction, told with three days of real steps, two walked back, one parked, the passkey stack on a Wardley map, and why the brief depends on the possible"),
     ('v0.7.74', '2026-10-12', 'git 9e6468e4', "Agentic cost is an engineering problem: a business plan for a service that reads the logs a company already has, draws the footprint, the twin and the policy of every agent, and finds the money first and the engineering second; Wardley maps in three frames, the plan figure, four price levels"),
     ('v0.7.73', '2026-10-12', 'git 8bd68c05', "How the voice works: why these articles sound like their author, the corpus, the memos, seven wording rules and a reader who corrects, the shift from language to content corrections measured, and a marked section in which Claude explains it from its side"),
     ('v0.7.72', '2026-10-12', 'git b5d755bf', "From a spreadsheet to a folder per person: the walkthrough from a spreadsheet CRM to one Drive folder per contact worked by Claude under a six-line policy, the migration, five exercises, the two predictable mistakes, and when to move to a vault"),
