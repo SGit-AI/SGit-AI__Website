@@ -2,7 +2,7 @@
 
 > Every published version of the article "Two agents, one vault", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/two-agents-one-vault.html> · site v0.7.65 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/two-agents-one-vault.html> · site v0.7.66 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,7 +16,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.0.0** | 2026-10-12 | published | 4,095 | first published | this release | [current](../two-agents-one-vault.md) |
+| **v1.0.0** | 2026-10-12 | published | 4,095 | first published | [`691aa4470`](https://github.com/SGit-AI/SGit-AI__Website/commit/691aa4470f2b5060972cf29dca5363922d45dc8f) | [current](../two-agents-one-vault.md) |
 
 [← Back to the article](../two-agents-one-vault.md) · [All articles](../index.md)
 

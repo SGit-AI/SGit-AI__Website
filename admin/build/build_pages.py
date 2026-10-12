@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.65'
+SITE_VERSION = 'v0.7.66'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,8 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.65', '2026-10-12', 'this release', "Two agents, one vault: the Industry Wire written into an encrypted vault by one agent and drawn by newsroom.sgit.ai with only the read key; the workflow from both git logs, with screenshots and one figure"),
+    ('v0.7.66', '2026-10-12', 'this release', "The vault is live: the reader's vault running on newsroom.sgit.ai by 02:22, and the architecture as it stands, drawn: the layers, the key chain and files, the sync model, the tests, the timeline, and why the properties of what runs are the constraints the next brief is thought with"),
+    ('v0.7.65', '2026-10-12', 'git 691aa447', "Two agents, one vault: the Industry Wire written into an encrypted vault by one agent and drawn by newsroom.sgit.ai with only the read key; the workflow from both git logs, with screenshots and one figure"),
     ('v0.7.64', '2026-10-12', 'git 999b0124', "The passkey opens the vault, revised after the newsroom's lab: a door per path, not per passkey; the claim narrowed to the same kind of path; add a door as a first-week step with no key typed; an unknown door address means no door here yet; the four figures redrawn"),
     ('v0.7.63', '2026-10-12', 'git b775af0b', "Creating and writing a vault from JavaScript: a new SG/Vault docs page recommending one code base for every site that writes vaults, the vault UI library behind dev.vault.sgraph.ai, with the exact methods for create, open, read, write and push, how the keys, objects and wire work, two traps found by testing it (a write into an unloaded folder is silently dropped; reading the ref before every pushIfMatch defeats the compare-and-swap), a tested round trip with sgit 0.21.0, and what the library still lacks against 0.21"),
     ('v0.7.62', '2026-10-11', 'git 421ac0a1', "The passkey opens the vault, revised: the computed vault is the top of the chain, the master vault becomes its first child, key pairs are random and never derived from the passkey, several passkeys give several tops, and a top is retired by deleting its vault; sign-in to the site is out of the design"),

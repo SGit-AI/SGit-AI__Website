@@ -2,7 +2,7 @@
 
 > Open newsroom.sgit.ai/wire/#lens=dinis and you get a week of industry news read as me: forty stories across five beats, each with its primary source, who else covered it, one exact quote and why it matters, twenty-five of them reaching me through a named concern and fourteen withheld with the reason, and a personal brief at the top. None of it is on the newsroom. It is in an encrypted sgit vault that a separate agent wrote on the afternoon of 11 October, in a session the newsroom never saw, with a write key the newsroom does not have. The newsroom's own agent, in its session, took the vault's read key, published it on purpose, and built three pages and about four hundred lines of code that open the vault in the reader's browser, decrypt it and draw it as text, with twenty-eight checks against the real vault in CI. A commit to the vault is on the page within two minutes, with no release of the site. This article walks the workflow from both sides, with the two git logs as the record: what the wire desk wrote and under what rules, what the newsroom holds and what it refused, why the vault is the right interface between two agents that never share a session, and the honest list of what is unreviewed. It is also the first running piece of a plan I had years ago and did not use, and I am now its first reader.
 
-*Source: <https://sgit.ai/articles/two-agents-one-vault.html> · site v0.7.65 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/two-agents-one-vault.html> · site v0.7.66 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -147,7 +147,13 @@ Vaults & methodNews & evidenceAgents & policy[This article as a graph →](graph
 - [I miss it, so it is working: the people who decide the roadmap have to use the product, and the vault the newsroom now needs](i-miss-it.md) I read the newsroom on four devices and they do not agree. Missing a feature is the best sign; the makers must use it. And the brief for the reader's vault.
 - [The passkey opens the vault: a door per path, a master vault for every user, and no server of ours](the-passkey-opens-the-vault.md) Tested: a passkey's PRF bytes compute a door that holds the master's key, and a different path to the same passkey gives different bytes, so a door per path.
 
+### Continued by
+
+- [The vault is live: from a design on 11 October to a reader's vault on newsroom.sgit.ai by two in the morning, and how all of it fits together](the-vault-is-live.md) The reader's vault runs on newsroom.sgit.ai: a passkey opens three real vaults, each device writes one file, and the architecture is drawn as it stands.
+
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Posting this article on LinkedIn?** The cover is [two-agents-one-vault.jpg](../articles/banners/two-agents-one-vault.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
 **Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 

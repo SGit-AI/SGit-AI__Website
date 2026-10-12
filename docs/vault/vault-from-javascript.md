@@ -2,7 +2,7 @@
 
 > Create, open, read, write and push a vault from any web page with the library that runs dev.vault.sgraph.ai: the one code base to use, the exact methods, what goes over the wire, and where it stands against sgit 0.21.
 
-*Source: <https://sgit.ai/docs/vault/vault-from-javascript.html> · site v0.7.65 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/vault/vault-from-javascript.html> · site v0.7.66 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

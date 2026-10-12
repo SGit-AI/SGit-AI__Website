@@ -6,6 +6,23 @@
  "generated_by": "admin/build/build_pages.py",
  "entries": [
   {
+   "slug": "the-vault-is-live",
+   "kind": "article",
+   "kicker": "SGit Newsroom",
+   "date": "2026-10-12",
+   "author": "Dinis Cruz",
+   "title": "The vault is live: from a design on 11 October to a reader's vault on newsroom.sgit.ai by two in the morning, and how all of it fits together",
+   "teaser": "The reader's vault runs on newsroom.sgit.ai: a passkey opens three real vaults, each device writes one file, and the architecture is drawn as it stands.",
+   "ideas": [
+    "One code base, vendored",
+    "Local storage stays primary",
+    "Records, never totals"
+   ],
+   "hero": "articles/images/av-stack.webp",
+   "url": "sgit.ai/articles/the-vault-is-live.html",
+   "out": "articles/banners/the-vault-is-live.jpg"
+  },
+  {
    "slug": "two-agents-one-vault",
    "kind": "article",
    "kicker": "SGit Newsroom",
@@ -1489,10 +1506,10 @@
     "Next: an issue picked for what you care about"
    ],
    "mosaic": [
+    "articles/cards/the-vault-is-live.webp",
     "articles/cards/two-agents-one-vault.webp",
     "articles/cards/the-article-remains-a-product.webp",
-    "articles/cards/explorer-to-villager-newsroom.webp",
-    "articles/cards/the-passkey-opens-the-vault.webp"
+    "articles/cards/explorer-to-villager-newsroom.webp"
    ],
    "url": "sgit.ai/subscribe/",
    "out": "articles/banners/subscribe.jpg"
