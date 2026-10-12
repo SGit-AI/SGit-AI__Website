@@ -2,7 +2,7 @@
 
 > Every published version of the article "Agentic cost is an engineering problem", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/agentic-cost-is-an-engineering-problem.html> · site v0.7.74 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/agentic-cost-is-an-engineering-problem.html> · site v0.7.75 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,7 +16,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.0.0** | 2026-10-12 | published | 2,659 | first published | this release | [current](../agentic-cost-is-an-engineering-problem.md) |
+| **v1.0.0** | 2026-10-12 | published | 2,659 | first published | [`9e6468e4a`](https://github.com/SGit-AI/SGit-AI__Website/commit/9e6468e4a26b084b20f862b09625637be6afdd51) | [current](../agentic-cost-is-an-engineering-problem.md) |
 
 [← Back to the article](../agentic-cost-is-an-engineering-problem.md) · [All articles](../index.md)
 

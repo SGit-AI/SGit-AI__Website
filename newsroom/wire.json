@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-12",
-  "site_version": "v0.7.74",
+  "site_version": "v0.7.75",
   "about": "https://sgit.ai/newsroom/index.html",
   "front": {
     "edition": "2026-10-08",
@@ -72,6 +72,41 @@
     }
   ],
   "articles": [
+    {
+      "slug": "places-of-highest-leverage",
+      "title": "Places of highest leverage: where to focus when the agents can go in every direction, told with three days of real steps",
+      "date": "2026-10-12",
+      "updated": "",
+      "author": "Dinis Cruz",
+      "url": "https://sgit.ai/articles/places-of-highest-leverage.html",
+      "markdown": "https://sgit.ai/articles/places-of-highest-leverage.md",
+      "card": "https://sgit.ai/articles/cards/places-of-highest-leverage.webp",
+      "graph": "https://sgit.ai/articles/graphs/places-of-highest-leverage.json",
+      "teaser": "Where to focus when agents can go in every direction: the place of highest leverage, shown on three days of real steps, two walked back and one parked.",
+      "summary": "When a team of agents can build almost anything, the scarce thing is direction, and this article is about how I choose it. The rule I have used since I was a CISO is to work at the place of highest leverage: where I can add the most value right now, am not blocked, and can just start, even without knowing how the whole problem will be solved, because by the time I get there I will have better tooling and a better view. The last three days are the worked example. The newsroom went from a reading meter to pay by depth, personas, an encrypted share, a persona in a link, a reading list in a link, a passkey design, a lab that corrected the design, real vaults from the browser and a vault pane, each step shipped and used before the next was chosen, two steps walked back, and a branch parked because it is only valuable with many readers. On a Wardley map the passkey work moved from genesis to a product in a day because almost every shoulder it stands on is a commodity someone else matured; the one custom layer we had to add is where a provider is not. The path looks obvious backwards and was five choices at every step going forwards; walking back is not failure, and parking is not either. Constraints, saying no, shipping to a user even when the user is me, and the brief that could not be written until the art of the possible was known.",
+      "topics": [
+        "startups-and-strategy",
+        "agents-and-policy",
+        "site-and-engineering"
+      ],
+      "tags": [
+        "startups",
+        "focus",
+        "leverage",
+        "wardley-maps",
+        "explorer-villager",
+        "shipping",
+        "constraints",
+        "agents",
+        "newsroom",
+        "feedback-loop",
+        "strategy",
+        "article"
+      ],
+      "placement": [],
+      "linkedin": null,
+      "notes": []
+    },
     {
       "slug": "agentic-cost-is-an-engineering-problem",
       "title": "Agentic cost is an engineering problem: a business plan for a service that reads the logs a company already has and finds the money, then the engineering",
