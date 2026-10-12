@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.83'
+SITE_VERSION = 'v0.7.84'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,14 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.83', '2026-10-12', 'this release',
+    ('v0.7.84', '2026-10-12', 'this release',
+     "WHO OWNS THE WORDS. A new article answering an early user of the agentic workflow at agent@riskmandate.ai "
+     "(not named; the email is paraphrased, not quoted): models today are not sentient and are far more than "
+     "next-word prediction; in loops they make real decisions, but responsibility stays with whoever granted the "
+     "reach; the only reason to address the agents directly is an attack; disclosure is a label, not a team; an "
+     "agent is an employee with a job description, which a behaviour policy publishes; diversity is resilience; "
+     "and fluent writing was never the real value. One figure: who decides, and who answers.",),
+    ('v0.7.83', '2026-10-12', 'git e9b8d570',
      "WHAT OPEN SOURCE IS, AND IS NOT. A new article from misconceptions heard at an event: open source is a "
      "copyright licence, from the GPL's copyleft to the 1998 pragmatic reframing; nobody controlling it, anybody "
      "contributing, more or less secure, costing nothing, open weights as open source and no licence as the most open "

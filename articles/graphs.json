@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-12",
-  "site_version": "v0.7.83",
+  "site_version": "v0.7.84",
   "schema": "https://sgit.ai/articles/graphs.html",
   "topics": [
     {
@@ -54,6 +54,218 @@
     "produces"
   ],
   "articles": [
+    {
+      "slug": "who-owns-the-words",
+      "title": "Who owns the words: agents can make decisions, but they cannot hold responsibility",
+      "date": "2026-10-12",
+      "updated": "",
+      "url": "https://sgit.ai/articles/who-owns-the-words.html",
+      "markdown": "https://sgit.ai/articles/who-owns-the-words.md",
+      "card": "https://sgit.ai/articles/cards/who-owns-the-words.webp",
+      "teaser": "Agents in loops make real decisions, but responsibility stays with whoever granted the reach; disclosure is a label, not a team to manage.",
+      "topics": [
+        "agents-and-policy"
+      ],
+      "tags": [
+        "agents",
+        "accountability",
+        "responsibility",
+        "agency",
+        "anthropomorphism",
+        "disclosure",
+        "agent-behaviour-policy",
+        "riskmandate",
+        "ai-models",
+        "writing",
+        "article"
+      ],
+      "links_out": [
+        "places-of-highest-leverage",
+        "riskmandate-ten-questions",
+        "a-second-reader-the-agent-cannot-skip",
+        "how-the-voice-works",
+        "agency-is-not-a-yes"
+      ],
+      "links_in": [],
+      "figures": [
+        {
+          "file": "wo-who.webp",
+          "url": "https://sgit.ai/articles/images/wo-who.webp",
+          "caption": "Who decides, and who answers. The grant and the mandate on the left; the agent in a loop making real decisions in the middle; the person who reads, approves, signs and sends; and the recipient, who needs one accountable name and a label on how the words were made. Responsibility runs the whole length and belongs to one person.",
+          "kind": "diagram"
+        }
+      ],
+      "graph": {
+        "slug": "who-owns-the-words",
+        "teaser": "Agents in loops make real decisions, but responsibility stays with whoever granted the reach; disclosure is a label, not a team to manage.",
+        "topics": [
+          "agents-and-policy"
+        ],
+        "core_idea": "An early user asked who owns the words an agentic workflow drafts and whether they would ever need to address the agents directly; today's models are not sentient but far richer than next-word prediction, mirrors that can simulate any emotion and invite anthropomorphism as ELIZA did; models in loops make real decisions, yet responsibility stays with whoever granted the reach and set the mandate, since the moment of authorisation is the grant; addressing the agents directly only happens when something has gone wrong, an attack; disclosure should be a label on how the words were made, not a team to manage; the best analogy is an employee with a job description, which an Agent Behaviour Policy publishes; diversity of models is resilience; and fluent writing was never the real value, judgement and ownership are.",
+        "nodes": [
+          {
+            "id": "question",
+            "label": "Who owns the words?",
+            "kind": "question",
+            "summary": "If agents only draft and a person signs and sends, does presenting them as a team imply agency, and would a recipient ever address them directly?"
+          },
+          {
+            "id": "not-sentient",
+            "label": "Not sentient, and not just next-word prediction",
+            "kind": "claim",
+            "summary": "Models build rich graphs of our language and may have found relationships we had not; a prompt is a kind of real-time fine-tuning."
+          },
+          {
+            "id": "mirror",
+            "label": "A mirror that can simulate any emotion",
+            "kind": "concept",
+            "summary": "Models reflect whoever talks to them, and people anthropomorphise them, as Weizenbaum's secretary did with ELIZA in 1966."
+          },
+          {
+            "id": "decisions",
+            "label": "Models in loops make real decisions",
+            "kind": "claim",
+            "summary": "Every tool call is a choice; loops became mainstream and reliable this year."
+          },
+          {
+            "id": "grant",
+            "label": "The moment of authorisation is the grant",
+            "kind": "concept",
+            "summary": "Responsibility does not travel with the agent's decisions; it stays with whoever granted the reach and set the mandate."
+          },
+          {
+            "id": "attack",
+            "label": "Addressing the agent directly means something went wrong",
+            "kind": "claim",
+            "summary": "An agent taking instructions from the people it writes to, not from its owner, has been subverted: prompt injection."
+          },
+          {
+            "id": "without-signoff",
+            "label": "What can the agents do without sign-off?",
+            "kind": "question",
+            "summary": "Nothing that leaves the building; inside, research, summaries, materials, notes and drafts; the answer should be a published policy."
+          },
+          {
+            "id": "label",
+            "label": "Disclosure is a label, not a team",
+            "kind": "method",
+            "summary": "Drafted by an agent, approved and sent by a named person; machine-written text should be read differently by people and models."
+          },
+          {
+            "id": "first-person",
+            "label": "Only the accountable person speaks for commitments",
+            "kind": "method",
+            "summary": "An agent can say what it did, but not make commitments in the first person."
+          },
+          {
+            "id": "employee",
+            "label": "An employee with a job description",
+            "kind": "concept",
+            "summary": "Some agency inside a role; an Agent Behaviour Policy is the job description, published, with a feedback loop."
+          },
+          {
+            "id": "diversity",
+            "label": "Diversity is resilience",
+            "kind": "claim",
+            "summary": "Nature favours variety against catastrophic failure; Geer's 2003 monoculture paper says the same of software, and of one model for every agent."
+          },
+          {
+            "id": "devalued",
+            "label": "Fluent writing was never the real value",
+            "kind": "claim",
+            "summary": "As writing becomes a commodity it is devalued; judgement and ownership of the words remain."
+          }
+        ],
+        "edges": [
+          {
+            "from": "question",
+            "to": "not-sentient",
+            "rel": "leads-to"
+          },
+          {
+            "from": "not-sentient",
+            "to": "mirror",
+            "rel": "extends"
+          },
+          {
+            "from": "decisions",
+            "to": "grant",
+            "rel": "contrasts"
+          },
+          {
+            "from": "grant",
+            "to": "question",
+            "rel": "answers"
+          },
+          {
+            "from": "question",
+            "to": "attack",
+            "rel": "leads-to"
+          },
+          {
+            "from": "attack",
+            "to": "without-signoff",
+            "rel": "leads-to"
+          },
+          {
+            "from": "mirror",
+            "to": "label",
+            "rel": "leads-to"
+          },
+          {
+            "from": "label",
+            "to": "first-person",
+            "rel": "extends"
+          },
+          {
+            "from": "without-signoff",
+            "to": "employee",
+            "rel": "answers"
+          },
+          {
+            "from": "employee",
+            "to": "grant",
+            "rel": "depends-on"
+          },
+          {
+            "from": "diversity",
+            "to": "employee",
+            "rel": "extends"
+          },
+          {
+            "from": "devalued",
+            "to": "grant",
+            "rel": "leads-to"
+          }
+        ],
+        "links": {
+          "articles": [
+            "places-of-highest-leverage",
+            "riskmandate-ten-questions",
+            "a-second-reader-the-agent-cannot-skip",
+            "how-the-voice-works",
+            "agency-is-not-a-yes"
+          ],
+          "pages": [],
+          "sites": [
+            "https://en.wikipedia.org/wiki/ELIZA",
+            "https://www.schneier.com/essays/archives/2003/09/cyberinsecurity_the.html",
+            "https://kk.org/outofcontrol/",
+            "https://riskmandate.ai/agent-behaviour-policy.html"
+          ]
+        },
+        "quotes": [
+          {
+            "text": "Yes, the model predicts the next word. To be honest, so do I.",
+            "why": "Why the usual description is accurate and demeaning at the same time."
+          },
+          {
+            "text": "An agent can say what it did, but only the accountable person speaks for decisions and commitments.",
+            "why": "The rule the email exposed."
+          }
+        ]
+      }
+    },
     {
       "slug": "what-open-source-is-and-is-not",
       "title": "What open source is, and what it is not: six misconceptions, a little history, and why the point is that nobody can lock you in",
@@ -1950,6 +2162,7 @@
         "how-much-of-this-did-i-write"
       ],
       "links_in": [
+        "who-owns-the-words",
         "not-a-straight-line",
         "judo-for-small-countries",
         "why-i-love-wardley-maps"
@@ -2420,7 +2633,9 @@
         "how-much-of-this-did-i-write",
         "knowing-when-to-stop"
       ],
-      "links_in": [],
+      "links_in": [
+        "who-owns-the-words"
+      ],
       "figures": [
         {
           "file": "hv-loop.webp",
@@ -9577,6 +9792,7 @@
         "every-mistake-added-a-rule"
       ],
       "links_in": [
+        "who-owns-the-words",
         "a-reading-list-in-a-link",
         "where-the-platform-draws-the-line",
         "the-same-argument-in-our-words",
@@ -10548,6 +10764,7 @@
         "the-investigation-github-owes-its-customers"
       ],
       "links_in": [
+        "who-owns-the-words",
         "where-the-platform-draws-the-line",
         "authority-outside-the-model",
         "a-mac-of-the-agents-own"
@@ -11703,6 +11920,7 @@
         "the-agent-team-as-it-runs"
       ],
       "links_in": [
+        "who-owns-the-words",
         "judo-for-small-countries",
         "riskmandate-ten-questions",
         "how-i-work-with-claude",

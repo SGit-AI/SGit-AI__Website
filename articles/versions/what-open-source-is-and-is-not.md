@@ -2,7 +2,7 @@
 
 > Every published version of the article "What open source is, and what it is not", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/what-open-source-is-and-is-not.html> · site v0.7.83 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/what-open-source-is-and-is-not.html> · site v0.7.84 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,7 +16,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.0.0** | 2026-10-12 | published | 2,526 | first published | this release | [current](../what-open-source-is-and-is-not.md) |
+| **v1.0.0** | 2026-10-12 | published | 2,526 | first published | [`e9b8d5708`](https://github.com/SGit-AI/SGit-AI__Website/commit/e9b8d5708f4f93ab8454209f98b3c0e52d9b742a) | [current](../what-open-source-is-and-is-not.md) |
 
 [← Back to the article](../what-open-source-is-and-is-not.md) · [All articles](../index.md)
 
