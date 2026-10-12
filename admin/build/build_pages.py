@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.68'
+SITE_VERSION = 'v0.7.69'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,8 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.68', '2026-10-12', 'this release', "Firing journalists is the worst thing a publication can do: what a hiring decision says about a publisher's centre of gravity, the 2026 cuts from Press Gazette's tracker, what you measure is what you become, the two failure modes, who to hire instead, and five counts to read a publisher from outside"),
+    ('v0.7.69', '2026-10-12', 'this release', "Ways to read one article: the five readers' views delivered as a choice in the pane about the piece, headlines, infographic, two minutes, slides, what is new, facts, relationships, vocabulary, at my level; deterministic first, a model in the tab second; the finished article kept whole at the centre; the brief for phone, tablet, desktop and email"),
+    ('v0.7.68', '2026-10-12', 'git ec397561', "Firing journalists is the worst thing a publication can do: what a hiring decision says about a publisher's centre of gravity, the 2026 cuts from Press Gazette's tracker, what you measure is what you become, the two failure modes, who to hire instead, and five counts to read a publisher from outside"),
     ('v0.7.67', '2026-10-12', 'git 1b9e8db5', "The site is an inbox: the brief for what a reader does with the vault, deciding before reading, marks of six kinds that build the reader's own graph, the free signals, personas with keys and a signed lane to the newsroom, and why the brief could not be written until the vault ran"),
     ('v0.7.66', '2026-10-12', 'git bfe088e6', "The vault is live: the reader's vault running on newsroom.sgit.ai by 02:22, and the architecture as it stands, drawn: the layers, the key chain and files, the sync model, the tests, the timeline, and why the properties of what runs are the constraints the next brief is thought with"),
     ('v0.7.65', '2026-10-12', 'git 691aa447', "Two agents, one vault: the Industry Wire written into an encrypted vault by one agent and drawn by newsroom.sgit.ai with only the read key; the workflow from both git logs, with screenshots and one figure"),

@@ -519,7 +519,18 @@
    "words": 3362
   }
  ],
- "firing-journalists": [],
+ "firing-journalists": [
+  {
+   "commit": "ec3975614",
+   "date": "2026-10-12",
+   "full": "ec39756146dd94d4ddd1123c06d411c8ae7c32f3",
+   "kind": "published",
+   "path": "admin/content/articles/firing-journalists.md",
+   "subject": "site v0.7.68: firing journalists is the worst thing a publication can do",
+   "version": "v1.0.0",
+   "words": 2685
+  }
+ ],
  "footprint-and-blast-radius": [
   {
    "commit": "14a7e67e5",
@@ -2290,6 +2301,7 @@
    "words": 4083
   }
  ],
+ "ways-to-read-one-article": [],
  "what-sgit-is": [
   {
    "commit": "d5082c010",
