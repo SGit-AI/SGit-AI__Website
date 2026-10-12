@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.78'
+SITE_VERSION = 'v0.7.79'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,17 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.78', '2026-10-12', 'this release',
+    ('v0.7.79', '2026-10-12', 'this release',
+     "MOVE THE CLOUD, NOT THE CODE. A new article from a digital sovereignty event: workloads stay on hyperscalers "
+     "because moving means changing code, so the application must not know it has moved; its S3, EC2 and IAM calls "
+     "land on an open source twin the client cannot tell from the real service, and the twin decides where the "
+     "bytes go (the S3 twin exists; EC2 and IAM do not). The reason to move is never sovereignty or cost, which "
+     "are important and never urgent: it is value that lands the day you switch and gives the signer cover, "
+     "backups, versions, encryption with the key held elsewhere, a journal, behaviour policies, cost per workload, "
+     "most of it supplied by an sgit vault behind the twin. No new features during the move, because it is a "
+     "villager project. A business model for a European infrastructure operator, with its assumptions labelled. "
+     "Two figures: the twin layer and what signs a migration.",),
+    ('v0.7.78', '2026-10-12', 'git 6eb7c7df',
      "JUDO FOR SMALL COUNTRIES. A new article for the people met this week from Romania and the people in Portugal: "
      "the race for frontier models, GPUs and data centres is a commoditised layer a small country cannot win and "
      "should not enter; the opportunity is the plumbing a talented person stands on to sell a service to the world "

@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-12",
-  "site_version": "v0.7.78",
+  "site_version": "v0.7.79",
   "about": "https://sgit.ai/newsroom/index.html",
   "front": {
     "edition": "2026-10-08",
@@ -72,6 +72,42 @@
     }
   ],
   "articles": [
+    {
+      "slug": "move-the-cloud-not-the-code",
+      "title": "Move the cloud, not the code: twins, sovereignty that works in practice, and the migration that pays for itself on the day you switch",
+      "date": "2026-10-12",
+      "updated": "",
+      "author": "Dinis Cruz",
+      "url": "https://sgit.ai/articles/move-the-cloud-not-the-code.html",
+      "markdown": "https://sgit.ai/articles/move-the-cloud-not-the-code.md",
+      "card": "https://sgit.ai/articles/cards/move-the-cloud-not-the-code.webp",
+      "graph": "https://sgit.ai/articles/graphs/move-the-cloud-not-the-code.json",
+      "teaser": "Workloads stay on hyperscalers because moving means changing code; a twin lets the code not know, and the value in the twin is what signs the migration.",
+      "summary": "At a digital sovereignty event today a conversation with the chief executive of an infrastructure company with a large footprint in Romania kept returning to one point: sovereignty has to work in practice, and in practice what stops workloads moving is not policy or price but code. Every call to S3, EC2 and IAM is written into applications that work today and that nobody wants to touch. So the requirement is that the application must not know it has moved: the same calls land on a twin, an open source service the client cannot tell from the real one, and the twin decides where the bytes go, real S3, an sgit vault, a European operator's data centre, a laptop. The S3 twin exists. Then the part I think matters most: the reason to move must never be sovereignty or cost reduction, which are important and never urgent. A migration carries risk, so the person signing it needs value that lands the day they switch and gives them cover: backups that exist, every object version controlled, encryption with the key held elsewhere, a journal of every call, behaviour policies the agents cannot skip, cost per workload, a top-of-register risk moved. That value sits in the twin layer, and an sgit vault behind it supplies most of it. The rule for the project: no new features during the move. And the business model for an infrastructure operator who sells it that way.",
+      "topics": [
+        "startups-and-strategy",
+        "agents-and-policy"
+      ],
+      "tags": [
+        "twins",
+        "sovereignty",
+        "migration",
+        "hyperscalers",
+        "s3",
+        "sgit",
+        "vaults",
+        "open-source",
+        "agent-behaviour-policy",
+        "business-model",
+        "villager",
+        "europe",
+        "romania",
+        "article"
+      ],
+      "placement": [],
+      "linkedin": null,
+      "notes": []
+    },
     {
       "slug": "judo-for-small-countries",
       "title": "Judo for small countries: where Portugal, Romania and Estonia can add the most value in AI, and why the race for GPUs is not it",

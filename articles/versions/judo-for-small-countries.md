@@ -2,7 +2,7 @@
 
 > Every published version of the article "Judo for small countries", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/judo-for-small-countries.html> · site v0.7.78 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/judo-for-small-countries.html> · site v0.7.79 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,7 +16,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.0.0** | 2026-10-12 | published | 4,181 | first published | this release | [current](../judo-for-small-countries.md) |
+| **v1.0.0** | 2026-10-12 | published | 4,181 | first published | [`6eb7c7dfc`](https://github.com/SGit-AI/SGit-AI__Website/commit/6eb7c7dfc1d98f1eab6f4442e340e6c48e90ac2d) | [current](../judo-for-small-countries.md) |
 
 [← Back to the article](../judo-for-small-countries.md) · [All articles](../index.md)
 

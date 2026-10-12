@@ -6,6 +6,23 @@
  "generated_by": "admin/build/build_pages.py",
  "entries": [
   {
+   "slug": "move-the-cloud-not-the-code",
+   "kind": "article",
+   "kicker": "SGit Newsroom",
+   "date": "2026-10-12",
+   "author": "Dinis Cruz",
+   "title": "Move the cloud, not the code: twins, sovereignty that works in practice, and the migration that pays for itself on the day you switch",
+   "teaser": "Workloads stay on hyperscalers because moving means changing code; a twin lets the code not know, and the value in the twin is what signs the migration.",
+   "ideas": [
+    "Workloads do not move because moving means changing code",
+    "The application must not know",
+    "The reason to move is never sovereignty or cost"
+   ],
+   "hero": "articles/images/mc-twin.webp",
+   "url": "sgit.ai/articles/move-the-cloud-not-the-code.html",
+   "out": "articles/banners/move-the-cloud-not-the-code.jpg"
+  },
+  {
    "slug": "judo-for-small-countries",
    "kind": "article",
    "kicker": "SGit Newsroom",
@@ -1676,10 +1693,10 @@
     "Next: an issue picked for what you care about"
    ],
    "mosaic": [
+    "articles/cards/move-the-cloud-not-the-code.webp",
     "articles/cards/judo-for-small-countries.webp",
     "articles/cards/why-i-love-wardley-maps.webp",
-    "articles/cards/places-of-highest-leverage.webp",
-    "articles/cards/agentic-cost-is-an-engineering-problem.webp"
+    "articles/cards/places-of-highest-leverage.webp"
    ],
    "url": "sgit.ai/subscribe/",
    "out": "articles/banners/subscribe.jpg"

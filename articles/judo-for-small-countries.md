@@ -2,7 +2,7 @@
 
 > I spent today with people from Romania and I spend a lot of my time with people from Portugal, and this is the article I wanted to hand both. The race for the biggest model, the most GPUs and the largest data centre is a race a small country cannot win and should not enter; on a Wardley map that layer is already a commodity and only capital plays there. The opportunity is the opposite end of the map: the plumbing that a talented person in Braga or Cluj needs in order to sell a service to the world, forming a company, hiring across a border, being paid across Europe, working in every language, a contract and a tax form, all of it still custom built in most of Europe when it should be a road the state built once. Estonia built that road and the numbers show what happens. Then the judo: open source and open schemas because there is no sovereignty without them, what the state pays for belongs to the commons, buy the alternative before the day you need it, small models for every language and culture rather than one frontier model, and agents with the least agency rather than the most. A playbook in five moves, a map, what I learned spending millions on a distributed workforce, and why constraints are the input and not the excuse.
 
-*Source: <https://sgit.ai/articles/judo-for-small-countries.html> · site v0.7.78 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/judo-for-small-countries.html> · site v0.7.79 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -131,6 +131,10 @@ Startups & strategyAgents & policy[This article as a graph →](graphs.md#judo-f
 - [The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered](the-investigation-github-owes-its-customers.md) A global GitHub Actions outage read the way aviation reads an incident: independent inquiry, near-miss reporting, second and third stories, vaults for the evidence.
 - [Zoom into an agent's behaviour policy and you find the business logic](the-behaviour-policy-is-the-business-logic.md) Below the first rules, an agent's behaviour policy is the business: functions, processes, clients, values. Layered, owned, counted, and where vendors plug in.
 - [Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source](agency-is-not-a-yes.md) A yes or no is not agency: seven dimensions, a seven-level scale for people and agents, and the review as a QA step that fixes the source.
+
+### Continued by
+
+- [Move the cloud, not the code: twins, sovereignty that works in practice, and the migration that pays for itself on the day you switch](move-the-cloud-not-the-code.md) Workloads stay on hyperscalers because moving means changing code; a twin lets the code not know, and the value in the twin is what signs the migration.
 
 [All articles](index.md) · [All graphs](graphs.md)
 
