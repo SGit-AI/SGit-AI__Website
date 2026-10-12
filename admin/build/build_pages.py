@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.82'
+SITE_VERSION = 'v0.7.83'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,15 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.82', '2026-10-12', 'this release',
+    ('v0.7.83', '2026-10-12', 'this release',
+     "WHAT OPEN SOURCE IS, AND IS NOT. A new article from misconceptions heard at an event: open source is a "
+     "copyright licence, from the GPL's copyleft to the 1998 pragmatic reframing; nobody controlling it, anybody "
+     "contributing, more or less secure, costing nothing, open weights as open source and no licence as the most open "
+     "choice, each corrected; the security metric is time and money for review; maintainers need funding (Tidelift, "
+     "the xz backdoor); and the point is that nobody can lock you in. Where the memo had history slightly wrong "
+     "(Linux stayed on the GPL; no licence means all rights reserved), the text corrects it. Two figures: the six "
+     "misconceptions, and a timeline from GNU to the Open Source AI Definition.",),
+    ('v0.7.82', '2026-10-12', 'git 39c9e4ca',
      "NOT A STRAIGHT LINE. A new article on the meta-strategy behind the last weeks: focus as undivided attention "
      "on the place of highest leverage, not as working on one product. The newsroom solved RiskMandate's oldest "
      "problem, where to keep the master vault's key, in two days after six months of attempts that failed the "

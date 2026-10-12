@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.82 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.83 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,13 +14,44 @@ Every article here has a semantic graph beside it: the ideas it rests on, the cl
 
 The graphs are data first and pictures second. Take them as JSON: [all articles in one file](graphs.json), with the topics, the teasers and the links between articles resolved, or one file per article at `articles/graphs/<slug>.json` (for example [this one](graphs/footprint-and-blast-radius.json)). The pages on this site are rendered from the same files at build time; nothing here is hand-written HTML. Since v0.7.77 each graph also carries the article's `figures`: file, URL, caption, the kind the author gave it (`wardley-map`, for one) and every frame of a multi-frame figure, so a picture and its context travel together and "every Wardley map on this site" is a filter, not a reading list.
 
-95 of 95 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
+96 of 96 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
 
 ## How the articles connect
 
 *[diagram]*
 
-95 articles, 507 links between them (855 mentions in all). 86 articles cite an earlier one; 10 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (23 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+96 articles, 509 links between them (857 mentions in all). 87 articles cite an earlier one; 10 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (23 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+
+## [What open source is, and what it is not: six misconceptions, a little history, and why the point is that nobody can lock you in](what-open-source-is-and-is-not.md)
+
+2026-10-12 · Startups & strategySite & engineering
+
+Open source is a copyright licence in which the holder grants copying, use and change; it began as the GPL's copyleft and was reframed pragmatically as open source in 1998; the common misconceptions are that nobody controls it, that anybody contributes, that it is more or less secure than proprietary software, that it costs nothing, that open weights are open source, and that no licence is the most open choice; the security metric is whether somebody had the time and money to review the code; maintainers need funding models; and the real power of open source is that nobody can lock you in and the whole development workflow is yours, which is why there is no sovereignty without it.
+
+*[diagram]*
+**concept**claim**example
+
+**13 nodes, 12 edges**
+
+- **Open source is a copyright licence** (concept) The holder uses the right to control copying to grant copying, use and change, on stated terms.
+- **Copyleft made sharing a condition** (concept) The GPL, from Stallman and the FSF in 1989: distribute what you build from it and it carries the same licence; critics called it viral.
+- **Open source, 1998, the pragmatic reframing** (example) Coined by Christine Peterson; the OSI founded by Perens and Raymond; Linux stayed on GPLv2, its pragmatism was the attitude.
+- **No licence is all rights reserved** (claim) Without a licence ordinary copyright applies and nobody may copy; a permissive licence like Apache 2.0 is what opens it.
+- **A few maintainers control what goes in** (claim) Contributions are reviewed, signed off and refused; the control is real and visible; anybody can fork, nobody can change yours.
+- **Most projects are run by a few people** (claim) The barrier to contributing is lower, and outside a few very popular projects contributions are not the norm.
+- **Security is about time, not openness** (claim) Code somebody had the time and money to review is more secure, open or closed; proprietary products are mostly open source underneath.
+- **Somebody is always paying** (claim) Around 60% of maintainers call themselves unpaid hobbyists; paid maintainers adopt more security practices; a tragedy of the commons.
+- **The xz utils backdoor** (example) A critical library maintained by one person, an attacker who earned trust over years, found in 2024 because SSH was slow.
+- **Open weights are a compiled binary** (claim) You can run weights, not rebuild them; the OSI's Open Source AI Definition requires code, parameters and data information.
+- **Openness is not the danger** (claim) The question is how tools are used; Metasploit made exploitation easier and the world adjusted; hosting and distribution are themselves control.
+- **The point is that nobody can lock you in** (claim) Read it, run it, fix it, move it, and own the whole development workflow, which survives an acquisition.
+- **No sovereignty without open source** (claim) Sovereignty is the ability to move, and only control that survives a change of owner counts.
+
+> The control is real. It is just visible. The answer to the misconception heard at the event.
+
+> For me, the power of open source has nothing to do with the fact that people can contribute. The point is no lock-in and owning the workflow.
+
+builds on [A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down](#supply-chain-of-vaults), [Sovereignty is the ability to move: play where the ball is going, take away the dot, and keep a twin that works](#sovereignty-is-the-ability-to-move).
 
 ## [Not a straight line: working for RiskMandate by working on the newsroom, and why the thinking is never wasted](not-a-straight-line.md)
 
@@ -84,7 +115,7 @@ Europe's sovereignty conversation is mostly about frontier models, data centres 
 
 > Even if a supplier is European today, you are one acquisition away from losing that. Why only open source gives control that survives a change of owner.
 
-builds on [Judo for small countries: where Portugal, Romania and Estonia can add the most value in AI, and why the race for GPUs is not it](#judo-for-small-countries), [Agentic cost is an engineering problem: a business plan for a service that reads the logs a company already has and finds the money, then the engineering](#agentic-cost-is-an-engineering-problem), [Why I love Wardley maps: the best of ours, how I read one, and a map inside a map inside a map](#why-i-love-wardley-maps), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Move the cloud, not the code: twins, sovereignty that works in practice, and the migration that pays for itself on the day you switch](#move-the-cloud-not-the-code).
+builds on [Judo for small countries: where Portugal, Romania and Estonia can add the most value in AI, and why the race for GPUs is not it](#judo-for-small-countries), [Agentic cost is an engineering problem: a business plan for a service that reads the logs a company already has and finds the money, then the engineering](#agentic-cost-is-an-engineering-problem), [Why I love Wardley maps: the best of ours, how I read one, and a map inside a map inside a map](#why-i-love-wardley-maps), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Move the cloud, not the code: twins, sovereignty that works in practice, and the migration that pays for itself on the day you switch](#move-the-cloud-not-the-code); continued by [What open source is, and what it is not: six misconceptions, a little history, and why the point is that nobody can lock you in](#what-open-source-is-and-is-not).
 
 ## [The records ran out: a fresh agent found the shared contract in two MCP calls, and where sgit and RiskMandate fit at the edges](the-records-ran-out.md)
 
@@ -2535,7 +2566,7 @@ The food chain is logistics, logistics is a data problem, and a supply chain of 
 
 > What we never calculate is the economic cost of not sharing. The second memo's argument, that openness is the other half of the case.
 
-builds on [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [The SaaS apocalypse will be decided by inertia, not by AI](#saas-apocalypse-decided-by-inertia-not-by-ai); continued by [Judo for small countries: where Portugal, Romania and Estonia can add the most value in AI, and why the race for GPUs is not it](#judo-for-small-countries), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download), [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](#send-an-agent-not-a-spreadsheet).
+builds on [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [The SaaS apocalypse will be decided by inertia, not by AI](#saas-apocalypse-decided-by-inertia-not-by-ai); continued by [What open source is, and what it is not: six misconceptions, a little history, and why the point is that nobody can lock you in](#what-open-source-is-and-is-not), [Judo for small countries: where Portugal, Romania and Estonia can add the most value in AI, and why the race for GPUs is not it](#judo-for-small-countries), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download), [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](#send-an-agent-not-a-spreadsheet).
 
 ## [Every risk is already accepted. The only question is by whom, and for how long.](every-risk-is-already-accepted.md)
 
