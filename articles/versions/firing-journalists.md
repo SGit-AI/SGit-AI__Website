@@ -2,7 +2,7 @@
 
 > Every published version of the article "Firing journalists is the worst thing a publication can do", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/firing-journalists.html> · site v0.7.68 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/firing-journalists.html> · site v0.7.69 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,7 +16,7 @@ v1.0.0 is the article as first published. A change to its text (title, abstract 
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.0.0** | 2026-10-12 | published | 2,685 | first published | this release | [current](../firing-journalists.md) |
+| **v1.0.0** | 2026-10-12 | published | 2,685 | first published | [`ec3975614`](https://github.com/SGit-AI/SGit-AI__Website/commit/ec39756146dd94d4ddd1123c06d411c8ae7c32f3) | [current](../firing-journalists.md) |
 
 [← Back to the article](../firing-journalists.md) · [All articles](../index.md)
 

@@ -2,7 +2,7 @@
 
 > Every release of the sgit.ai site: version, date, vault commit, and changes. The version increments on every push.
 
-*Source: <https://sgit.ai/admin/versions.html> · site v0.7.68 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/admin/versions.html> · site v0.7.69 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,12 +10,14 @@
 
 # Release history
 
-The site version (**v0.7.68**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
+The site version (**v0.7.69**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
 
-| v0.7.68 | 2026-10-12 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.67...v0.7.68) | Firing journalists is the worst thing a publication can do: what a hiring decision says about a publisher's centre of gravity, the 2026 cuts from Press Gazette's tracker, what you measure is what you become, the two failure modes, who to hire instead, and five counts to read a publisher from outside[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.67...v0.7.68). |
+| v0.7.69 | 2026-10-12 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.68...v0.7.69) | Ways to read one article: the five readers' views delivered as a choice in the pane about the piece, headlines, infographic, two minutes, slides, what is new, facts, relationships, vocabulary, at my level; deterministic first, a model in the tab second; the finished article kept whole at the centre; the brief for phone, tablet, desktop and email**Updated:**[Ways to read one article: the finished piece stays at the centre, and the reader picks the way in](../articles/ways-to-read-one-article.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.68...v0.7.69). |
+
+| v0.7.68 | 2026-10-12 | [git ec397561](https://github.com/SGit-AI/SGit-AI__Website/commit/ec397561) | Firing journalists is the worst thing a publication can do: what a hiring decision says about a publisher's centre of gravity, the 2026 cuts from Press Gazette's tracker, what you measure is what you become, the two failure modes, who to hire instead, and five counts to read a publisher from outside**New:**[Firing journalists is the worst thing a publication can do: what a hiring decision says about where a publisher is going, and who to hire instead](../articles/firing-journalists.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/ec397561). |
 
 | v0.7.67 | 2026-10-12 | [git 1b9e8db5](https://github.com/SGit-AI/SGit-AI__Website/commit/1b9e8db5) | The site is an inbox: the brief for what a reader does with the vault, deciding before reading, marks of six kinds that build the reader's own graph, the free signals, personas with keys and a signed lane to the newsroom, and why the brief could not be written until the vault ran**New:**[The site is an inbox: deciding before reading, marks that build the reader's own graph, and why I could not write this brief until the vault existed](../articles/the-site-is-an-inbox.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/1b9e8db5). |
 

@@ -2,7 +2,7 @@
 
 > On 11 October this site published a design for a reader's account with no server: a passkey computes the address of a small door vault, the door holds the key of a master vault, the master holds everything else. By 02:22 UTC on 12 October it was running on newsroom.sgit.ai. Not as a demo: a Vault button beside the balance on every page opens a pane that enables the account with a passkey, creates three real sgit vaults on the vault server with an access key pasted once, writes this device's reading records as one file in one commit, lists every device of yours, and brings their activity into this browser so the meter shows one balance. In between came a lab with every step as a card, a finding that put the door layer back into the design, the vault library that runs dev.vault.sgraph.ai vendored unedited with every hash checked, a mock of the vault server for the tests, a round trip through the sgit command line in CI, and a live check on an iPad that made three vaults from an iCloud Keychain passkey and opened them again after a refresh. This article is the architecture as it stands, drawn: the layers in the browser, the key chain and the files in each vault, the sync model that has no conflicts by construction, the tests, and what is not yet built. It is also the point of the whole exercise, which is that I could not have written the next brief until this one existed, because the properties of what runs are the constraints I think with.
 
-*Source: <https://sgit.ai/articles/the-vault-is-live.html> · site v0.7.68 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/the-vault-is-live.html> · site v0.7.69 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -137,6 +137,7 @@ Vaults & methodSite & engineering[This article as a graph →](graphs.md#the-vau
 
 ### Continued by
 
+- [Ways to read one article: the finished piece stays at the centre, and the reader picks the way in](ways-to-read-one-article.md) The five readers' views arrived as folds inside the long piece; now the reader picks the way in, with a default, and the finished article stays at the centre.
 - [The site is an inbox: deciding before reading, marks that build the reader's own graph, and why I could not write this brief until the vault existed](the-site-is-an-inbox.md) The site as an inbox that starts empty: decide fast before reading, mark slowly while reading, build a graph you own, and sign what you send to the newsroom.
 
 [All articles](index.md) · [All graphs](graphs.md)
