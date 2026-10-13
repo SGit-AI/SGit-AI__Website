@@ -1,8 +1,10 @@
 # Your newsroom, sgit.ai
 
+> **The SGit Newsroom has moved to newsroom.sgit.ai.** This page is now at <https://newsroom.sgit.ai/account/newsroom.html>. This copy stays here for a few weeks and will then be removed.
+
 > Your own front page, one persona at a time: picks, what you kept, and the graph your reading has grown. Worked out in your browser from a history nobody else holds.
 
-*Source: <https://sgit.ai/account/newsroom.html> · site v0.7.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/account/newsroom.html> · site v0.7.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

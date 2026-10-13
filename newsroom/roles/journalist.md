@@ -1,8 +1,10 @@
 # Journalist, a newsroom role on sgit.ai
 
+> **The SGit Newsroom has moved to newsroom.sgit.ai.** This page is now at <https://newsroom.sgit.ai/newsroom/roles/journalist.html>. This copy stays here for a few weeks and will then be removed.
+
 > Writes the long pieces and the short ones. Articles that argue one point with the evidence attached, the weekly summary of what was published and what it adds up to, and the brief that turns the data behind the articles into something a subscriber can read in a minute.
 
-*Source: <https://sgit.ai/newsroom/roles/journalist.html> · site v0.7.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/newsroom/roles/journalist.html> · site v0.7.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

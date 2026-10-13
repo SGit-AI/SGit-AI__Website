@@ -1,8 +1,10 @@
 # Issue 2: How agents decide, when they stop, and a local story kept as evidence, SGit Newsroom
 
+> **The SGit Newsroom has moved to newsroom.sgit.ai.** This page is now at <https://newsroom.sgit.ai/articles/newsletter/2026/10/08/002-how-agents-decide.html>. This copy stays here for a few weeks and will then be removed.
+
 > A day of articles on deciding: what a real decision needs, why an agent that can go anywhere has no reason to stop, what happens when every mistake adds a rule, and one customer service agent built three ways to count which rules are only hoped for. Alongside, a live local story, a hospital outage nobody could check from home, kept as evidence while it was happening.
 
-*Source: <https://sgit.ai/articles/newsletter/2026/10/08/002-how-agents-decide.html> · site v0.7.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/newsletter/2026/10/08/002-how-agents-decide.html> · site v0.7.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

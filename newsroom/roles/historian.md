@@ -1,8 +1,10 @@
 # Historian, a newsroom role on sgit.ai
 
+> **The SGit Newsroom has moved to newsroom.sgit.ai.** This page is now at <https://newsroom.sgit.ai/newsroom/roles/historian.html>. This copy stays here for a few weeks and will then be removed.
+
 > Reads across the articles for what none of them says alone. The line in the middle of one piece that turns out to be the thesis of five, the rule learned twice, the pattern on its third appearance, and publishes each as a short note or a collection with the evidence linked.
 
-*Source: <https://sgit.ai/newsroom/roles/historian.html> · site v0.7.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/newsroom/roles/historian.html> · site v0.7.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

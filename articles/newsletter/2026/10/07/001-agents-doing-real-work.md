@@ -1,8 +1,10 @@
 # Issue 1: A team of agents, written up from the inside, and an open framework built on the same day, SGit Newsroom
 
+> **The SGit Newsroom has moved to newsroom.sgit.ai.** This page is now at <https://newsroom.sgit.ai/articles/newsletter/2026/10/07/001-agents-doing-real-work.html>. This copy stays here for a few weeks and will then be removed.
+
 > What it takes to let agents do real work for a business, from four sides: a team of agents running a small business, written up from the inside; the behaviour policy that says what each agent may do, and the business logic it turns out to hold; the desktops and permission prompts those agents need; and an open AI governance framework turned into a graph, a database and a walk down to EU law within a day of reading it.
 
-*Source: <https://sgit.ai/articles/newsletter/2026/10/07/001-agents-doing-real-work.html> · site v0.7.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/newsletter/2026/10/07/001-agents-doing-real-work.html> · site v0.7.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

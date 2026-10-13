@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.86'
+SITE_VERSION = 'v0.7.87'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,16 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.86', '2026-10-13', 'this release',
+    ('v0.7.87', '2026-10-13', 'this release',
+     "THE NEWSROOM HAS MOVED, PHASE ONE. The SGit Newsroom now lives at newsroom.sgit.ai, which writes and "
+     "publishes its own articles. On this site the Newsroom group leaves the main menu; its pages (articles, "
+     "newsroom, account, subscribe, meter, publishers and the synthetic-users study) stay for a few weeks, each "
+     "with a banner linking to the same page on newsroom.sgit.ai and a canonical URL pointing there, so search "
+     "engines move the traffic rather than drop it; the markdown twins say the same in their first line. Phase "
+     "two deletes the pages. The newsroom builds itself from these pages, so the banner sits between "
+     "moved:start and moved:end comments for its import to cut out, and removes itself on any host other than "
+     "sgit.ai until then.",),
+    ('v0.7.86', '2026-10-13', 'git 2c0eb267',
      "Who owns the words: the section on addressing the agents directly rewritten at the author's request, because "
      "it blurred two questions. Talking to the agents is normal: they read every email to agent@riskmandate.ai. "
      "Going around the accountable person is not, and the only party who would try is an attacker with an "
@@ -4192,23 +4201,9 @@ ASK = [
 
 
 NAV = [
-    # Articles first (v0.6.85). They are where most of what this site argues lives, and until
-    # this release they sat second under Updates, the least-read section. The group is owned
-    # by the newsroom (admin/content/newsroom/): the front page, the desk, the collections.
-    # Labelled Newsroom from v0.6.89: the SGit Newsroom is the front end of the back office.
-    ('articles', 'Newsroom', 'articles/index.html', [
-        ('articles', 'Front page', 'articles/index.html'),
-        ('newsletter', 'Newsletter', 'articles/newsletter/index.html'),
-        ('all', 'Every article', 'articles/index.html#all'),
-        ('collections', 'Collections', 'articles/collections/index.html'),
-        ('desk', 'From the desk', 'articles/desk/index.html'),
-        ('graphs', 'As graphs', 'articles/graphs.html'),
-        ('newsroom', 'How it runs', 'newsroom/index.html'),
-        ('subscribe', 'Subscribe', 'subscribe/index.html'),
-        ('yours', 'Your newsroom', 'account/newsroom.html'),
-        ('share', 'A newsroom designed for you', 'account/share.html'),
-        ('account', 'Your reading account', 'account/index.html'),
-    ]),
+    # The Newsroom group left the menu on 13 October 2026 (v0.7.87): the SGit Newsroom moved to
+    # newsroom.sgit.ai. Its pages stay here for a few weeks with a banner pointing to the same page
+    # there (see MOVED_TO below), then they are deleted.
     ('why', 'Why', 'why/index.html', [
         ('why', 'Why sgit exists', 'why/index.html'),
         ('investors', 'Investors', 'investors/index.html'),
@@ -4575,6 +4570,48 @@ def meter_config():
     }, ensure_ascii=False).replace('</', '<\\/')
 
 
+# ============================================================ moved to newsroom.sgit.ai (v0.7.87)
+# The SGit Newsroom moved to newsroom.sgit.ai. Phase one: the pages stay here, out of the menu, each with
+# a banner linking to the same page there and a canonical URL that points there, so search engines move
+# the traffic rather than drop it. Phase two deletes them. The newsroom builds itself from these pages
+# (sync_newsroom.py imports them; publish.py runs this generator), so the banner (a) sits between
+# <!--moved:start--> and <!--moved:end--> for the import to cut out, and (b) removes itself on any host
+# that is not sgit.ai, in case a copy is served before the import learns to cut it.
+MOVED_PREFIXES = ('articles/', 'newsroom/', 'account/', 'subscribe/', 'meter/', 'publishers/',
+                  'demos/vaults/newsroom-synthetic-users/')
+NEWSROOM_HOST = 'https://newsroom.sgit.ai/'
+
+
+def moved_to(path):
+    """The page's address on newsroom.sgit.ai, or None if the page did not move."""
+    if path in ('articles/index.html', 'articles/index.md'):
+        return NEWSROOM_HOST
+    if path.startswith(MOVED_PREFIXES):
+        return NEWSROOM_HOST + path
+    return None
+
+
+def moved_banner(path):
+    url = moved_to(path)
+    if not url:
+        return ''
+    u = html.escape(url, quote=True)
+    return ('<!--moved:start--><div class="moved-banner" id="moved-banner" role="note"><p><b>The SGit Newsroom has '
+            'moved to newsroom.sgit.ai.</b> This page is now at <a href="' + u + '">' + html.escape(url.replace('https://', ''))
+            + '</a>, with every article and everything new. This copy stays here for a few '
+            'weeks and will then be removed. <a class="moved-go" href="' + u + '">Go to this page on newsroom.sgit.ai</a></p></div>'
+            '<script>(function () { var h = location.hostname; if (h !== "sgit.ai" && h !== "www.sgit.ai" && h !== "localhost"'
+            ' && h !== "127.0.0.1") { var b = document.getElementById("moved-banner"); if (b) b.remove(); } }());</script>'
+            '<!--moved:end-->')
+
+
+def moved_md_line(path):
+    url = moved_to(path)
+    return (f'> **The SGit Newsroom has moved to newsroom.sgit.ai.** This page is now at <{url}>. This copy stays here '
+            f'for a few weeks and will then be removed.\n\n') if url else ''
+
+
+
 def page(path, title, desc, here, body):
     # Root prefix by DEPTH, not by "is nested at all", pages now nest three deep
     # (demos/vaults/<slug>/index.html) and a single '../' silently pointed the nav,
@@ -4676,10 +4713,10 @@ def page(path, title, desc, here, body):
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{title}</title>
 <meta name="description" content="{desc}">
-<link rel="canonical" href="https://sgit.ai/{path}">
+<link rel="canonical" href="{moved_to(path) or 'https://sgit.ai/' + path}">
 {license_link(path)}<meta property="og:type" content="website">
 <meta property="og:site_name" content="sgit.ai">
-<meta property="og:url" content="https://sgit.ai/{path}">
+<meta property="og:url" content="{moved_to(path) or 'https://sgit.ai/' + path}">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:image" content="https://sgit.ai/{card}">
@@ -4695,7 +4732,7 @@ def page(path, title, desc, here, body):
 <body>
 
 {nav(p, here)}
-
+{moved_banner(path)}
 {llms_chip(path)}
 {body}
 
@@ -4972,7 +5009,7 @@ def write_md(path, title, desc, body):
     body = expand_trails(path, body)
     depth = path.count('/')
     root = '../' * depth
-    md = (f'# {title}\n\n> {desc}\n\n'
+    md = (f'# {title}\n\n' + moved_md_line(path) + f'> {desc}\n\n'
              f'*Source: <https://sgit.ai/{path}> · site {SITE_VERSION} · '
              f'this file is generated from the same content as the page, so the two cannot drift. '
              f'Every page on this site has a `.md` twin; internal links below point at them.*\n\n---\n\n'

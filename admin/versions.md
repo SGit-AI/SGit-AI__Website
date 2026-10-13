@@ -2,7 +2,7 @@
 
 > Every release of the sgit.ai site: version, date, vault commit, and changes. The version increments on every push.
 
-*Source: <https://sgit.ai/admin/versions.html> · site v0.7.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/admin/versions.html> · site v0.7.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,12 +10,14 @@
 
 # Release history
 
-The site version (**v0.7.86**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
+The site version (**v0.7.87**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
 
-| v0.7.86 | 2026-10-13 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.85...v0.7.86) | Who owns the words: the section on addressing the agents directly rewritten at the author's request, because it blurred two questions. Talking to the agents is normal: they read every email to agent@riskmandate.ai. Going around the accountable person is not, and the only party who would try is an attacker with an injected instruction, which the design should make fail. What the agents may do without the person is a third question, decided in advance in a published policy: an authorisation, not a bypass. The summary, the In short bullets, the figure and the graph now say the same.**Updated:**[Who owns the words: agents can make decisions, but they cannot hold responsibility](../articles/who-owns-the-words.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.85...v0.7.86). |
+| v0.7.87 | 2026-10-13 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.86...v0.7.87) | THE NEWSROOM HAS MOVED, PHASE ONE. The SGit Newsroom now lives at newsroom.sgit.ai, which writes and publishes its own articles. On this site the Newsroom group leaves the main menu; its pages (articles, newsroom, account, subscribe, meter, publishers and the synthetic-users study) stay for a few weeks, each with a banner linking to the same page on newsroom.sgit.ai and a canonical URL pointing there, so search engines move the traffic rather than drop it; the markdown twins say the same in their first line. Phase two deletes the pages. The newsroom builds itself from these pages, so the banner sits between moved:start and moved:end comments for its import to cut out, and removes itself on any host other than sgit.ai until then.[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.86...v0.7.87). |
+
+| v0.7.86 | 2026-10-13 | [git 2c0eb267](https://github.com/SGit-AI/SGit-AI__Website/commit/2c0eb267) | Who owns the words: the section on addressing the agents directly rewritten at the author's request, because it blurred two questions. Talking to the agents is normal: they read every email to agent@riskmandate.ai. Going around the accountable person is not, and the only party who would try is an attacker with an injected instruction, which the design should make fail. What the agents may do without the person is a third question, decided in advance in a published policy: an authorisation, not a bypass. The summary, the In short bullets, the figure and the graph now say the same.**Updated:**[Who owns the words: agents can make decisions, but they cannot hold responsibility](../articles/who-owns-the-words.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/2c0eb267). |
 
 | v0.7.85 | 2026-10-13 | [git 2a414250](https://github.com/SGit-AI/SGit-AI__Website/commit/2a414250) | Who owns the words: one sentence corrected at the author's request. The email's question is now described as a digression that deserves a proper answer, which is what happened, rather than one the author had not stopped thinking about.**Updated:**[Who owns the words: agents can make decisions, but they cannot hold responsibility](../articles/who-owns-the-words.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/2a414250). |
 

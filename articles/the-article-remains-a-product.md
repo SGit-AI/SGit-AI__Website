@@ -1,8 +1,10 @@
 # The article remains a product: Jonathan Palmer's four outputs for a newsroom with no human readers, checked against one that runs, sgit.ai
 
+> **The SGit Newsroom has moved to newsroom.sgit.ai.** This page is now at <https://newsroom.sgit.ai/articles/the-article-remains-a-product.html>. This copy stays here for a few weeks and will then be removed.
+
 > On 10 October Jonathan Palmer asked on LinkedIn what a news business would look like if it had no human readers tomorrow, and said every publisher should model that exact scenario. His answer is that the newsroom should produce four things besides the article, structured intelligence, continuous intelligence, provenance and verification, and embedded distribution, and that "The article remains a product. It just stops being the only primary output." We have been building a newsroom on that premise since August, so this article takes his post line by line and checks each line against newsroom.sgit.ai as it runs today, with screenshots: a graph beside all 74 articles as JSON, a version history read from git, 21 World News Day op-eds frozen and hashed with a vault anyone can open, and a markdown twin, an llms.txt and a feed for the agents that already read it. It is also honest about the right-hand column: selling the graph, corrections that propagate and paying the fact creator are designed and not running. Then it answers his three questions, what assets would still have value, who would pay and what needs to be produced differently, with the one number we have, and says where we differ: the data assets he wants kept proprietary are the ones we publish with a read key, because provenance is only worth something if someone else can check it.
 
-*Source: <https://sgit.ai/articles/the-article-remains-a-product.html> · site v0.7.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/the-article-remains-a-product.html> · site v0.7.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

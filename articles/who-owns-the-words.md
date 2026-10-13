@@ -1,8 +1,10 @@
 # Who owns the words: agents can make decisions, but they cannot hold responsibility, sgit.ai
 
+> **The SGit Newsroom has moved to newsroom.sgit.ai.** This page is now at <https://newsroom.sgit.ai/articles/who-owns-the-words.html>. This copy stays here for a few weeks and will then be removed.
+
 > One of the early users of the agentic workflow behind agent@riskmandate.ai wrote back with a question I think matters a great deal in 2026. If the agents only gather and draft, and I review, sign off and press send, does presenting them as a team imply an agency they do not have? What a recipient needs is to know who owns the decisions and the responsibility, and to talk to that person. Would they ever need to go to the agents, around me? And what can the agents do without me? This is my answer. What we have today are not sentient beings; they are far richer than "predicting the next word", and they are mirrors that can simulate any emotion, which is why we anthropomorphise them, as people did with ELIZA in the sixties. Since models started running in loops and calling tools, they make real decisions. Responsibility does not travel with those decisions. It stays with whoever granted the reach and set the mandate, which is RiskMandate's line: the moment of authorisation is the grant. Talking to the agents is normal; going around me is not, and the only party who would try is an attacker with an injected instruction. What the agents may do without me is a separate question, answered in advance by a published policy. The disclosure is not a team to manage; it is a label on how the words were made, because people and models should read machine-written text differently. The best analogy is an employee with a job description, and an Agent Behaviour Policy is that job description, published. And the fluent writing these agents produce was never the real value.
 
-*Source: <https://sgit.ai/articles/who-owns-the-words.html> · site v0.7.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/who-owns-the-words.html> · site v0.7.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

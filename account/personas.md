@@ -1,8 +1,10 @@
 # Your personas, sgit.ai
 
+> **The SGit Newsroom has moved to newsroom.sgit.ai.** This page is now at <https://newsroom.sgit.ai/account/personas.html>. This copy stays here for a few weeks and will then be removed.
+
 > Add, name and switch between reading personas, each with its own picks and graph; start from five made from what sgit.ai publishes. Kept in your browser.
 
-*Source: <https://sgit.ai/account/personas.html> · site v0.7.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/account/personas.html> · site v0.7.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

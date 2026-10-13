@@ -1,8 +1,10 @@
 # Versions of Two agents, one vault, sgit.ai
 
+> **The SGit Newsroom has moved to newsroom.sgit.ai.** This page is now at <https://newsroom.sgit.ai/articles/versions/two-agents-one-vault.html>. This copy stays here for a few weeks and will then be removed.
+
 > Every published version of the article "Two agents, one vault", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/two-agents-one-vault.html> · site v0.7.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/two-agents-one-vault.html> · site v0.7.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

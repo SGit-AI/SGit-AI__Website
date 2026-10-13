@@ -1,8 +1,10 @@
 # A newsroom designed for you: send us your reading, sgit.ai
 
+> **The SGit Newsroom has moved to newsroom.sgit.ai.** This page is now at <https://newsroom.sgit.ai/account/share.html>. This copy stays here for a few weeks and will then be removed.
+
 > Read as you normally would, then send us what you read, encrypted in your browser or copied into an email, and get back what your own front page could look like.
 
-*Source: <https://sgit.ai/account/share.html> · site v0.7.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/account/share.html> · site v0.7.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

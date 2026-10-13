@@ -1,8 +1,10 @@
 # Range is the feature, so the stop has to be designed, sgit.ai desk
 
+> **The SGit Newsroom has moved to newsroom.sgit.ai.** This page is now at <https://newsroom.sgit.ai/articles/desk/range-is-the-feature-so-the-stop-is-designed.html>. This copy stays here for a few weeks and will then be removed.
+
 > Four articles from one day, written for different reasons, end on the same line: an agent's range is what makes it useful, and it is also why the decision to stop cannot be left to the agent.
 
-*Source: <https://sgit.ai/articles/desk/range-is-the-feature-so-the-stop-is-designed.html> · site v0.7.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/desk/range-is-the-feature-so-the-stop-is-designed.html> · site v0.7.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

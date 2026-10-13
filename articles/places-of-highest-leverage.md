@@ -1,8 +1,10 @@
 # Places of highest leverage: where to focus when the agents can go in every direction, told with three days of real steps, sgit.ai
 
+> **The SGit Newsroom has moved to newsroom.sgit.ai.** This page is now at <https://newsroom.sgit.ai/articles/places-of-highest-leverage.html>. This copy stays here for a few weeks and will then be removed.
+
 > When a team of agents can build almost anything, the scarce thing is direction, and this article is about how I choose it. The rule I have used since I was a CISO is to work at the place of highest leverage: where I can add the most value right now, am not blocked, and can just start, even without knowing how the whole problem will be solved, because by the time I get there I will have better tooling and a better view. The last three days are the worked example. The newsroom went from a reading meter to pay by depth, personas, an encrypted share, a persona in a link, a reading list in a link, a passkey design, a lab that corrected the design, real vaults from the browser and a vault pane, each step shipped and used before the next was chosen, two steps walked back, and a branch parked because it is only valuable with many readers. On a Wardley map the passkey work moved from genesis to a product in a day because almost every shoulder it stands on is a commodity someone else matured; the one custom layer we had to add is where a provider is not. The path looks obvious backwards and was five choices at every step going forwards; walking back is not failure, and parking is not either. Constraints, saying no, shipping to a user even when the user is me, and the brief that could not be written until the art of the possible was known.
 
-*Source: <https://sgit.ai/articles/places-of-highest-leverage.html> · site v0.7.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/places-of-highest-leverage.html> · site v0.7.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

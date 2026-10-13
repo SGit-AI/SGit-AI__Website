@@ -1,8 +1,10 @@
 # The week to 7 October: the agent team, written up from the inside, sgit.ai desk
 
+> **The SGit Newsroom has moved to newsroom.sgit.ai.** This page is now at <https://newsroom.sgit.ai/articles/desk/the-week-to-7-october.html>. This copy stays here for a few weeks and will then be removed.
+
 > The busiest week of articles on the site so far, and most of it is one story told three times at increasing depth: a team of agents running a business, from the walkthrough to the field notes to the full stack.
 
-*Source: <https://sgit.ai/articles/desk/the-week-to-7-october.html> · site v0.7.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/desk/the-week-to-7-october.html> · site v0.7.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

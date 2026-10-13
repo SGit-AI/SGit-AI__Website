@@ -1,8 +1,10 @@
 # Subscribe to the SGit Newsroom newsletter, sgit.ai
 
+> **The SGit Newsroom has moved to newsroom.sgit.ai.** This page is now at <https://newsroom.sgit.ai/subscribe/index.html>. This copy stays here for a few weeks and will then be removed.
+
 > Get the next issue of the SGit Newsroom by email: what was published, what it adds up to, and what is worth your time, about once a week. Your address is encrypted in your browser.
 
-*Source: <https://sgit.ai/subscribe/index.html> · site v0.7.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/subscribe/index.html> · site v0.7.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

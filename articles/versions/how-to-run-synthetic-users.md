@@ -1,8 +1,10 @@
 # Versions of How to run synthetic users on your own site, sgit.ai
 
+> **The SGit Newsroom has moved to newsroom.sgit.ai.** This page is now at <https://newsroom.sgit.ai/articles/versions/how-to-run-synthetic-users.html>. This copy stays here for a few weeks and will then be removed.
+
 > Every published version of the article "How to run synthetic users on your own site", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/how-to-run-synthetic-users.html> · site v0.7.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/how-to-run-synthetic-users.html> · site v0.7.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

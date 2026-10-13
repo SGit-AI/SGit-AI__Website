@@ -1,8 +1,10 @@
 # What changed in: How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was, sgit.ai
 
+> **The SGit Newsroom has moved to newsroom.sgit.ai.** This page is now at <https://newsroom.sgit.ai/articles/diffs/how-much-of-this-did-i-write.html>. This copy stays here for a few weeks and will then be removed.
+
 > The changes to the article "How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was" between two published versions, paragraph by paragraph, with insertions and deletions marked.
 
-*Source: <https://sgit.ai/articles/diffs/how-much-of-this-did-i-write.html> · site v0.7.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/diffs/how-much-of-this-did-i-write.html> · site v0.7.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

@@ -1,8 +1,10 @@
 # What the human brings, a collection, sgit.ai
 
+> **The SGit Newsroom has moved to newsroom.sgit.ai.** This page is now at <https://newsroom.sgit.ai/articles/collections/what-the-human-brings.html>. This copy stays here for a few weeks and will then be removed.
+
 > Where the person sits in a loop of agents: the direction, the review, the one step that cannot be undone, measured rather than assumed.
 
-*Source: <https://sgit.ai/articles/collections/what-the-human-brings.html> · site v0.7.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/collections/what-the-human-brings.html> · site v0.7.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

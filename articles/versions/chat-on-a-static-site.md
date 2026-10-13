@@ -1,8 +1,10 @@
 # Versions of A chat box on a site with no server, the plan, and the trade it makes, sgit.ai
 
+> **The SGit Newsroom has moved to newsroom.sgit.ai.** This page is now at <https://newsroom.sgit.ai/articles/versions/chat-on-a-static-site.html>. This copy stays here for a few weeks and will then be removed.
+
 > Every published version of the article "A chat box on a site with no server, the plan, and the trade it makes", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/chat-on-a-static-site.html> · site v0.7.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/chat-on-a-static-site.html> · site v0.7.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

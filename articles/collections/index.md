@@ -1,12 +1,14 @@
 # Collections, sgit.ai articles
 
+> **The SGit Newsroom has moved to newsroom.sgit.ai.** This page is now at <https://newsroom.sgit.ai/articles/collections/index.html>. This copy stays here for a few weeks and will then be removed.
+
 > Articles read together, each set with an introduction saying what it shows that no single article does.
 
-*Source: <https://sgit.ai/articles/collections/index.html> · site v0.7.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/collections/index.html> · site v0.7.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
-Edition of 2026-10-0897 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.86
+Edition of 2026-10-0897 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.87
 
 # Collections
 

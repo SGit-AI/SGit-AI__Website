@@ -1,8 +1,10 @@
 # Versions of RFC 0001, sgit.ai
 
+> **The SGit Newsroom has moved to newsroom.sgit.ai.** This page is now at <https://newsroom.sgit.ai/articles/versions/rfc-0001-public-key-cryptography-for-sgit.html>. This copy stays here for a few weeks and will then be removed.
+
 > Every published version of the article "RFC 0001", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/rfc-0001-public-key-cryptography-for-sgit.html> · site v0.7.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/rfc-0001-public-key-cryptography-for-sgit.html> · site v0.7.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

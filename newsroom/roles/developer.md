@@ -1,8 +1,10 @@
 # Developer, a newsroom role on sgit.ai
 
+> **The SGit Newsroom has moved to newsroom.sgit.ai.** This page is now at <https://newsroom.sgit.ai/newsroom/roles/developer.html>. This copy stays here for a few weeks and will then be removed.
+
 > Owns the machinery under the desk. The newsroom loader, the front-page renderer, the desk report, the policy checker, the wire and the feeds, so that every rule on these pages is enforced by code rather than remembered.
 
-*Source: <https://sgit.ai/newsroom/roles/developer.html> · site v0.7.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/newsroom/roles/developer.html> · site v0.7.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

@@ -1,8 +1,10 @@
 # Liquid content needs water: liquefy the journalist's notebook, not the finished product, sgit.ai
 
+> **The SGit Newsroom has moved to newsroom.sgit.ai.** This page is now at <https://newsroom.sgit.ai/articles/liquid-content-needs-water.html>. This copy stays here for a few weeks and will then be removed.
+
 > FT Strategies has published a clear primer on liquid content, journalism built from datafied components that can be shaped into whatever a reader needs. I agree with most of it, and this article is about where I would push. What makes content liquid is the water inside it, and the water is the reporting: the notebook, the interviews, the documents, the hunches, kept with their sources as a graph. So the place to start is not a reinvention of newsroom norms but the opposite, putting the experienced journalist and the way they already work at the centre and giving them tools they have not had, including experts a newsroom could rarely afford. Writing stays theirs, because writing is how the story is found. Read that way, the three things the guide says liquid content is not each become part of it, personalisation becomes the meeting of the reader's graph and the story's, prioritising readers' tastes looks like the brief that produced clickbait, and the money goes beyond advertising, subscriptions and licensing to payment per use that walks back to whoever found the facts.
 
-*Source: <https://sgit.ai/articles/liquid-content-needs-water.html> · site v0.7.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/liquid-content-needs-water.html> · site v0.7.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
