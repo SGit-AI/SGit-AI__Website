@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.7.84). Nothing here needs a second request. Individual pages live at the paths
+> (v0.7.85). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -73,7 +73,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-346site releases, each verified live before it was called done
+347site releases, each verified live before it was called done
 
 54vaults published with a deliberately public read key
 
@@ -6563,7 +6563,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.7.84, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.7.85, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -6926,7 +6926,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-346**site releases since 14 August**
+347**site releases since 14 August**
 each verified live before it was called done
 
 54**vaults published with a public read key**
@@ -12747,12 +12747,14 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.7.84**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
+The site version (**v0.7.85**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
 
-| v0.7.84 | 2026-10-12 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.83...v0.7.84) | WHO OWNS THE WORDS. A new article answering an early user of the agentic workflow at agent@riskmandate.ai (not named; the email is paraphrased, not quoted): models today are not sentient and are far more than next-word prediction; in loops they make real decisions, but responsibility stays with whoever granted the reach; the only reason to address the agents directly is an attack; disclosure is a label, not a team; an agent is an employee with a job description, which a behaviour policy publishes; diversity is resilience; and fluent writing was never the real value. One figure: who decides, and who answers.[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.83...v0.7.84). |
+| v0.7.85 | 2026-10-13 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.84...v0.7.85) | Who owns the words: one sentence corrected at the author's request. The email's question is now described as a digression that deserves a proper answer, which is what happened, rather than one the author had not stopped thinking about.**Updated:**[Who owns the words: agents can make decisions, but they cannot hold responsibility](../articles/who-owns-the-words.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.84...v0.7.85). |
+
+| v0.7.84 | 2026-10-12 | [git 31b49ca9](https://github.com/SGit-AI/SGit-AI__Website/commit/31b49ca9) | WHO OWNS THE WORDS. A new article answering an early user of the agentic workflow at agent@riskmandate.ai (not named; the email is paraphrased, not quoted): models today are not sentient and are far more than next-word prediction; in loops they make real decisions, but responsibility stays with whoever granted the reach; the only reason to address the agents directly is an attack; disclosure is a label, not a team; an agent is an employee with a job description, which a behaviour policy publishes; diversity is resilience; and fluent writing was never the real value. One figure: who decides, and who answers.**New:**[Who owns the words: agents can make decisions, but they cannot hold responsibility](../articles/who-owns-the-words.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/31b49ca9). |
 
 | v0.7.83 | 2026-10-12 | [git e9b8d570](https://github.com/SGit-AI/SGit-AI__Website/commit/e9b8d570) | WHAT OPEN SOURCE IS, AND IS NOT. A new article from misconceptions heard at an event: open source is a copyright licence, from the GPL's copyleft to the 1998 pragmatic reframing; nobody controlling it, anybody contributing, more or less secure, costing nothing, open weights as open source and no licence as the most open choice, each corrected; the security metric is time and money for review; maintainers need funding (Tidelift, the xz backdoor); and the point is that nobody can lock you in. Where the memo had history slightly wrong (Linux stayed on the GPL; no licence means all rights reserved), the text corrects it. Two figures: the six misconceptions, and a timeline from GNU to the Open Source AI Definition.**New:**[What open source is, and what it is not: six misconceptions, a little history, and why the point is that nobody can lock you in](../articles/what-open-source-is-and-is-not.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/e9b8d570). |
 
@@ -16528,7 +16530,7 @@ There is a longer account of this one in [Green does not mean live](../articles/
 >
 > Page: https://sgit.ai/articles/index.html
 
-Edition of 2026-10-0897 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.84
+Edition of 2026-10-0897 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.85
 
 # SGit Newsroom
 
@@ -22166,7 +22168,7 @@ As of 11 October 2026, newsroom.sgit.ai v0.7.1 and sgit.ai v0.7.49. Screenshots 
 
 # Who owns the words: agents can make decisions, but they cannot hold responsibility
 
-By [Dinis Cruz](../about/index.md) · 2026-10-12 · [article v1.0.0](versions/who-owns-the-words.md) · [site v0.7.84](../admin/versions.md) · agentsaccountabilityresponsibilityagencyanthropomorphismdisclosureagent-behaviour-policyriskmandateai-modelswritingarticle
+By [Dinis Cruz](../about/index.md) · 2026-10-12 · [article v1.1.0, 2 versions](versions/who-owns-the-words.md) · [site v0.7.85](../admin/versions.md) · agentsaccountabilityresponsibilityagencyanthropomorphismdisclosureagent-behaviour-policyriskmandateai-modelswritingarticle
 
 ***Abstract:** One of the early users of the agentic workflow behind agent@riskmandate.ai wrote back with a question I think matters a great deal in 2026. If the agents only gather and draft, and I review, sign off and press send, does presenting them as a team imply an agency they do not have? What a recipient needs is to know who owns the decisions and the responsibility, and to talk to that person. Would they ever need to address the agents directly? And if so, what can the agents do without me? This is my answer. What we have today are not sentient beings; they are far richer than "predicting the next word", and they are mirrors that can simulate any emotion, which is why we anthropomorphise them, as people did with ELIZA in the sixties. Since models started running in loops and calling tools, they make real decisions. Responsibility does not travel with those decisions. It stays with whoever granted the reach and set the mandate, which is RiskMandate's line: the moment of authorisation is the grant. The case for addressing the agents directly is an attack. The disclosure is not a team to manage; it is a label on how the words were made, because people and models should read machine-written text differently. The best analogy is an employee with a job description, and an Agent Behaviour Policy is that job description, published. And the fluent writing these agents produce was never the real value.*
 
@@ -22184,7 +22186,7 @@ Who decides, and who answers. The grant and the mandate on the left; the agent i
 
 ## The question
 
-One of the early users of the agentic workflow behind agent@riskmandate.ai wrote back, at the end of an otherwise practical email, with a digression I have not stopped thinking about. Paraphrasing: the setup implies the agents have a certain agency, yet I had said they only collect and draft, and that I review, refine, sign off and press send. So, for a recipient, does it matter how many assistants I use, artificial or human? What matters is who owns the decisions and the responsibility behind the words, and being able to talk to that person without intermediate hoops. Then the probing question: will there ever be a case where they need to address the agents directly, without me? If not, the point stands. If so, a better question appears: what can the agents do for them without my full involvement? They could also see why someone who builds agentic tools would want to show them working, and were happy to carry on.
+One of the early users of the agentic workflow behind agent@riskmandate.ai wrote back, at the end of an otherwise practical email, with a digression that deserves a proper answer. Paraphrasing: the setup implies the agents have a certain agency, yet I had said they only collect and draft, and that I review, refine, sign off and press send. So, for a recipient, does it matter how many assistants I use, artificial or human? What matters is who owns the decisions and the responsibility behind the words, and being able to talk to that person without intermediate hoops. Then the probing question: will there ever be a case where they need to address the agents directly, without me? If not, the point stands. If so, a better question appears: what can the agents do for them without my full involvement? They could also see why someone who builds agentic tools would want to show them working, and were happy to carry on.
 
 I think the question is exactly right, and it goes to the heart of what RiskMandate is about: who is accountable, who authorised what, and what the agent was allowed to do. So here is the answer, and the reasoning under it.
 
@@ -22263,6 +22265,8 @@ Agents & policy[This article as a graph →](graphs.md#who-owns-the-words)
 
 [All articles](index.md) · [All graphs](graphs.md)
 
+**Posting this article on LinkedIn?** The cover is [who-owns-the-words.jpg](../articles/banners/who-owns-the-words.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
+
 **Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
@@ -22280,15 +22284,43 @@ Agents & policy[This article as a graph →](graphs.md#who-owns-the-words)
 
 # Versions of: Who owns the words
 
-1 published version of [Who owns the words: agents can make decisions, but they cannot hold responsibility](../who-owns-the-words.md). The current one is **v1.0.0**.
+2 published versions of [Who owns the words: agents can make decisions, but they cannot hold responsibility](../who-owns-the-words.md). The current one is **v1.1.0**.
 
 v1.0.0 is the article as first published. A change to its text (title, abstract or body) is the next minor version, v1.1.0; a change only to its other details (a LinkedIn link, the release it belongs to) is the next patch, v1.0.1. The list is read from the site's git history at every build, so it cannot be edited by hand and cannot leave a version out. Views extracted from an article, such as the Five readers, are not part of its text and do not change its version.
 
 | Version | Date | Kind | Words | Change from the version before | Commit |  |
 |---|---|---|---|---|---|---|
-| **v1.0.0** | 2026-10-12 | published | 2,586 | first published | this release | [current](../who-owns-the-words.md) |
+| **v1.1.0** | 2026-10-13 | minor | 2,585 | +0 / −1 words; 1 changed, 0 added, 0 removed paragraphs | this release | [what changed](who-owns-the-words/v1.1.0.md) · [current](../who-owns-the-words.md) |
+| **v1.0.0** | 2026-10-12 | published | 2,586 | first published | [`31b49ca97`](https://github.com/SGit-AI/SGit-AI__Website/commit/31b49ca9781e471dcc26daf993cc4752fcfbeae5) |  |
 
 [← Back to the article](../who-owns-the-words.md) · [All articles](../index.md)
+
+
+
+==============================================================================
+# Who owns the words: what changed in v1.1.0, sgit.ai
+
+> The changes to the article "Who owns the words" in v1.1.0, paragraph by paragraph.
+>
+> Page: https://sgit.ai/articles/versions/who-owns-the-words/v1.1.0.html
+
+[Home](../../../index.md) / [Articles](../../index.md) / [Who owns the words](../../who-owns-the-words.md) / [Versions](../who-owns-the-words.md) / v1.1.0
+
+# Who owns the words: what changed in v1.1.0
+
+From v1.0.0 (2026-10-12, `31b49ca97`) to v1.1.0 (2026-10-13, this release), paragraph by paragraph.
+
+0 paragraphs added, 0 removed, 1 changed in place, 45 unchanged. About 0 words added and 1 removed. Insertions are marked like this, deletions like this; unchanged runs are folded to one line; figures appear as their file names.
+
+[all versions](../who-owns-the-words.md)
+
+12 unchanged paragraphs, under In short {#in-short}, The question {#question}
+
+One of the early users of the agentic workflow behind agent@riskmandate.ai wrote back, at the end of an otherwise practical email, with a digression Ithathavedeservesnotastoppedproperthinking about.answer. Paraphrasing: the setup implies the agents have a certain agency, yet I had said they only collect and draft, and that I review, refine, sign off and press send. So, for a recipient, does it matter how many assistants I use, artificial or human? What matters is who owns the decisions and the responsibility behind the words, and being able to talk to that person without intermediate hoops. Then the probing question: will there ever be a case where they need to address the agents directly, without me? If not, the point stands. If so, a better question appears: what can the agents do for them without my full involvement? They could also see why someone who builds agentic tools would want to show them working, and were happy to carry on.
+
+33 unchanged paragraphs, under What we have today {#models}, Decisions without responsibility {#decisions}, When would you talk to the agents directly? {#directly}…
+
+[all versions](../who-owns-the-words.md)
 
 
 
@@ -53749,7 +53781,7 @@ One entry per run of a desk role, newest first, each its own file and never edit
 >
 > Page: https://sgit.ai/articles/collections/index.html
 
-Edition of 2026-10-0897 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.84
+Edition of 2026-10-0897 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.85
 
 # Collections
 
@@ -53768,7 +53800,7 @@ A collection is one file in `admin/content/newsroom/collections/`. [How the desk
 >
 > Page: https://sgit.ai/articles/desk/index.html
 
-Edition of 2026-10-0897 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.84
+Edition of 2026-10-0897 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.85
 
 # From the desk
 
@@ -54506,7 +54538,7 @@ Your browser encrypts it to the public key of the agent that runs the list, then
 >
 > Page: https://sgit.ai/articles/newsletter/index.html
 
-Edition of 2026-10-0897 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.84
+Edition of 2026-10-0897 articles · 4 desk notes · 5 collections · 5 issuessgit.ai · v0.7.85
 
 # The newsletter
 

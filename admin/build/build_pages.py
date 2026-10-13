@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.84'
+SITE_VERSION = 'v0.7.85'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,11 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.84', '2026-10-12', 'this release',
+    ('v0.7.85', '2026-10-13', 'this release',
+     "Who owns the words: one sentence corrected at the author's request. The email's question is now described "
+     "as a digression that deserves a proper answer, which is what happened, rather than one the author had not "
+     "stopped thinking about.",),
+    ('v0.7.84', '2026-10-12', 'git 31b49ca9',
      "WHO OWNS THE WORDS. A new article answering an early user of the agentic workflow at agent@riskmandate.ai "
      "(not named; the email is paraphrased, not quoted): models today are not sentient and are far more than "
      "next-word prediction; in loops they make real decisions, but responsibility stays with whoever granted the "

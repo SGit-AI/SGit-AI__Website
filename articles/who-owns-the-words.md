@@ -2,7 +2,7 @@
 
 > One of the early users of the agentic workflow behind agent@riskmandate.ai wrote back with a question I think matters a great deal in 2026. If the agents only gather and draft, and I review, sign off and press send, does presenting them as a team imply an agency they do not have? What a recipient needs is to know who owns the decisions and the responsibility, and to talk to that person. Would they ever need to address the agents directly? And if so, what can the agents do without me? This is my answer. What we have today are not sentient beings; they are far richer than "predicting the next word", and they are mirrors that can simulate any emotion, which is why we anthropomorphise them, as people did with ELIZA in the sixties. Since models started running in loops and calling tools, they make real decisions. Responsibility does not travel with those decisions. It stays with whoever granted the reach and set the mandate, which is RiskMandate's line: the moment of authorisation is the grant. The case for addressing the agents directly is an attack. The disclosure is not a team to manage; it is a label on how the words were made, because people and models should read machine-written text differently. The best analogy is an employee with a job description, and an Agent Behaviour Policy is that job description, published. And the fluent writing these agents produce was never the real value.
 
-*Source: <https://sgit.ai/articles/who-owns-the-words.html> · site v0.7.84 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/who-owns-the-words.html> · site v0.7.85 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 # Who owns the words: agents can make decisions, but they cannot hold responsibility
 
-By [Dinis Cruz](../about/index.md) · 2026-10-12 · [article v1.0.0](versions/who-owns-the-words.md) · [site v0.7.84](../admin/versions.md) · agentsaccountabilityresponsibilityagencyanthropomorphismdisclosureagent-behaviour-policyriskmandateai-modelswritingarticle
+By [Dinis Cruz](../about/index.md) · 2026-10-12 · [article v1.1.0, 2 versions](versions/who-owns-the-words.md) · [site v0.7.85](../admin/versions.md) · agentsaccountabilityresponsibilityagencyanthropomorphismdisclosureagent-behaviour-policyriskmandateai-modelswritingarticle
 
 ***Abstract:** One of the early users of the agentic workflow behind agent@riskmandate.ai wrote back with a question I think matters a great deal in 2026. If the agents only gather and draft, and I review, sign off and press send, does presenting them as a team imply an agency they do not have? What a recipient needs is to know who owns the decisions and the responsibility, and to talk to that person. Would they ever need to address the agents directly? And if so, what can the agents do without me? This is my answer. What we have today are not sentient beings; they are far richer than "predicting the next word", and they are mirrors that can simulate any emotion, which is why we anthropomorphise them, as people did with ELIZA in the sixties. Since models started running in loops and calling tools, they make real decisions. Responsibility does not travel with those decisions. It stays with whoever granted the reach and set the mandate, which is RiskMandate's line: the moment of authorisation is the grant. The case for addressing the agents directly is an attack. The disclosure is not a team to manage; it is a label on how the words were made, because people and models should read machine-written text differently. The best analogy is an employee with a job description, and an Agent Behaviour Policy is that job description, published. And the fluent writing these agents produce was never the real value.*
 
@@ -28,7 +28,7 @@ Who decides, and who answers. The grant and the mandate on the left; the agent i
 
 ## The question
 
-One of the early users of the agentic workflow behind agent@riskmandate.ai wrote back, at the end of an otherwise practical email, with a digression I have not stopped thinking about. Paraphrasing: the setup implies the agents have a certain agency, yet I had said they only collect and draft, and that I review, refine, sign off and press send. So, for a recipient, does it matter how many assistants I use, artificial or human? What matters is who owns the decisions and the responsibility behind the words, and being able to talk to that person without intermediate hoops. Then the probing question: will there ever be a case where they need to address the agents directly, without me? If not, the point stands. If so, a better question appears: what can the agents do for them without my full involvement? They could also see why someone who builds agentic tools would want to show them working, and were happy to carry on.
+One of the early users of the agentic workflow behind agent@riskmandate.ai wrote back, at the end of an otherwise practical email, with a digression that deserves a proper answer. Paraphrasing: the setup implies the agents have a certain agency, yet I had said they only collect and draft, and that I review, refine, sign off and press send. So, for a recipient, does it matter how many assistants I use, artificial or human? What matters is who owns the decisions and the responsibility behind the words, and being able to talk to that person without intermediate hoops. Then the probing question: will there ever be a case where they need to address the agents directly, without me? If not, the point stands. If so, a better question appears: what can the agents do for them without my full involvement? They could also see why someone who builds agentic tools would want to show them working, and were happy to carry on.
 
 I think the question is exactly right, and it goes to the heart of what RiskMandate is about: who is accountable, who authorised what, and what the agent was allowed to do. So here is the answer, and the reasoning under it.
 
@@ -106,6 +106,8 @@ Agents & policy[This article as a graph →](graphs.md#who-owns-the-words)
 - [Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source](agency-is-not-a-yes.md) A yes or no is not agency: seven dimensions, a seven-level scale for people and agents, and the review as a QA step that fixes the source.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Posting this article on LinkedIn?** The cover is [who-owns-the-words.jpg](../articles/banners/who-owns-the-words.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
 **Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 

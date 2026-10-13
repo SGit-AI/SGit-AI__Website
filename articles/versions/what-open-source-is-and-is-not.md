@@ -2,7 +2,7 @@
 
 > Every published version of the article "What open source is, and what it is not", with the date, the words and what changed.
 
-*Source: <https://sgit.ai/articles/versions/what-open-source-is-and-is-not.html> · site v0.7.84 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/versions/what-open-source-is-and-is-not.html> · site v0.7.85 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
