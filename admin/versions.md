@@ -2,7 +2,7 @@
 
 > Every release of the sgit.ai site: version, date, vault commit, and changes. The version increments on every push.
 
-*Source: <https://sgit.ai/admin/versions.html> · site v0.7.85 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/admin/versions.html> · site v0.7.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,12 +10,14 @@
 
 # Release history
 
-The site version (**v0.7.85**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
+The site version (**v0.7.86**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
 
-| v0.7.85 | 2026-10-13 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.84...v0.7.85) | Who owns the words: one sentence corrected at the author's request. The email's question is now described as a digression that deserves a proper answer, which is what happened, rather than one the author had not stopped thinking about.**Updated:**[Who owns the words: agents can make decisions, but they cannot hold responsibility](../articles/who-owns-the-words.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.84...v0.7.85). |
+| v0.7.86 | 2026-10-13 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.85...v0.7.86) | Who owns the words: the section on addressing the agents directly rewritten at the author's request, because it blurred two questions. Talking to the agents is normal: they read every email to agent@riskmandate.ai. Going around the accountable person is not, and the only party who would try is an attacker with an injected instruction, which the design should make fail. What the agents may do without the person is a third question, decided in advance in a published policy: an authorisation, not a bypass. The summary, the In short bullets, the figure and the graph now say the same.**Updated:**[Who owns the words: agents can make decisions, but they cannot hold responsibility](../articles/who-owns-the-words.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.85...v0.7.86). |
+
+| v0.7.85 | 2026-10-13 | [git 2a414250](https://github.com/SGit-AI/SGit-AI__Website/commit/2a414250) | Who owns the words: one sentence corrected at the author's request. The email's question is now described as a digression that deserves a proper answer, which is what happened, rather than one the author had not stopped thinking about.**Updated:**[Who owns the words: agents can make decisions, but they cannot hold responsibility](../articles/who-owns-the-words.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/2a414250). |
 
 | v0.7.84 | 2026-10-12 | [git 31b49ca9](https://github.com/SGit-AI/SGit-AI__Website/commit/31b49ca9) | WHO OWNS THE WORDS. A new article answering an early user of the agentic workflow at agent@riskmandate.ai (not named; the email is paraphrased, not quoted): models today are not sentient and are far more than next-word prediction; in loops they make real decisions, but responsibility stays with whoever granted the reach; the only reason to address the agents directly is an attack; disclosure is a label, not a team; an agent is an employee with a job description, which a behaviour policy publishes; diversity is resilience; and fluent writing was never the real value. One figure: who decides, and who answers.**New:**[Who owns the words: agents can make decisions, but they cannot hold responsibility](../articles/who-owns-the-words.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/31b49ca9). |
 

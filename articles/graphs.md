@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.85 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -26,7 +26,7 @@ The graphs are data first and pictures second. Take them as JSON: [all articles 
 
 2026-10-12 · Agents & policy
 
-An early user asked who owns the words an agentic workflow drafts and whether they would ever need to address the agents directly; today's models are not sentient but far richer than next-word prediction, mirrors that can simulate any emotion and invite anthropomorphism as ELIZA did; models in loops make real decisions, yet responsibility stays with whoever granted the reach and set the mandate, since the moment of authorisation is the grant; addressing the agents directly only happens when something has gone wrong, an attack; disclosure should be a label on how the words were made, not a team to manage; the best analogy is an employee with a job description, which an Agent Behaviour Policy publishes; diversity of models is resilience; and fluent writing was never the real value, judgement and ownership are.
+An early user asked who owns the words an agentic workflow drafts and whether they would ever need to address the agents directly; today's models are not sentient but far richer than next-word prediction, mirrors that can simulate any emotion and invite anthropomorphism as ELIZA did; models in loops make real decisions, yet responsibility stays with whoever granted the reach and set the mandate, since the moment of authorisation is the grant; talking to the agents is normal, but going around the accountable person is something only an attacker with an injected instruction would try, while what the agents may do without the person is decided in advance in a published policy; disclosure should be a label on how the words were made, not a team to manage; the best analogy is an employee with a job description, which an Agent Behaviour Policy publishes; diversity of models is resilience; and fluent writing was never the real value, judgement and ownership are.
 
 *[diagram]*
 **concept**claim**method**question
@@ -38,8 +38,8 @@ An early user asked who owns the words an agentic workflow drafts and whether th
 - **A mirror that can simulate any emotion** (concept) Models reflect whoever talks to them, and people anthropomorphise them, as Weizenbaum's secretary did with ELIZA in 1966.
 - **Models in loops make real decisions** (claim) Every tool call is a choice; loops became mainstream and reliable this year.
 - **The moment of authorisation is the grant** (concept) Responsibility does not travel with the agent's decisions; it stays with whoever granted the reach and set the mandate.
-- **Addressing the agent directly means something went wrong** (claim) An agent taking instructions from the people it writes to, not from its owner, has been subverted: prompt injection.
-- **What can the agents do without sign-off?** (question) Nothing that leaves the building; inside, research, summaries, materials, notes and drafts; the answer should be a published policy.
+- **Talking to the agent is normal; going around the person is not** (claim) Nobody legitimate needs the agent to act without its owner; the only party who would try is an attacker with an injected instruction, and the design should make it fail.
+- **What the agents may do without the person, decided in advance** (question) Not a bypass but an authorisation written down once: today nothing leaves the building; inside it, research, summaries, materials and drafts; the list belongs in a published policy.
 - **Disclosure is a label, not a team** (method) Drafted by an agent, approved and sent by a named person; machine-written text should be read differently by people and models.
 - **Only the accountable person speaks for commitments** (method) An agent can say what it did, but not make commitments in the first person.
 - **An employee with a job description** (concept) Some agency inside a role; an Agent Behaviour Policy is the job description, published, with a feedback loop.
